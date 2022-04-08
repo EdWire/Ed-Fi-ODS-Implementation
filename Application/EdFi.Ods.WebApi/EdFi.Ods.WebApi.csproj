@@ -45,6 +45,7 @@
     <ProjectReference Include="..\..\..\Ed-Fi-ODS\Application\EdFi.Ods.Composites.Enrollment\EdFi.Ods.Composites.Enrollment.csproj" />
     <ProjectReference Include="..\..\..\Ed-Fi-ODS\Application\EdFi.Ods.Features\EdFi.Ods.Features.csproj" />
     <ProjectReference Include="..\..\..\Ed-Fi-ODS\Application\EdFi.Ods.Standard\EdFi.Ods.Standard.csproj" />
+    <ProjectReference Include="..\..\..\Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.TX\EdFi.Ods.Extensions.TX.csproj" />
   </ItemGroup>
 
   <ItemGroup>
