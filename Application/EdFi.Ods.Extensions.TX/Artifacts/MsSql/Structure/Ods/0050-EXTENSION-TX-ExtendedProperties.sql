@@ -36,26 +36,26 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'ArmedServicesVocAptBatteryDescriptor', @level2type=N'COLUMN', @level2name=N'ArmedServicesVocAptBatteryDescriptorId'
 GO
 
--- Extended Properties [tx].[AsOfStatusALeaver] --
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'AsOfStatusALeaver - This entity is being reported on non-enrolled students and graduates that are enrolled in the prior school year and do not return in the current school year.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaver'
+-- Extended Properties [tx].[AsOfStatusALeavers] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'AsOfStatusALeavers - This entity is being reported on non-enrolled students and graduates that are enrolled in the prior school year and do not return in the current school year.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeavers'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to a school.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaver', @level2type=N'COLUMN', @level2name=N'SchoolId'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to a school.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeavers', @level2type=N'COLUMN', @level2name=N'SchoolId'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1523. StudentUID (StudentUniqueId) is a unique number assigned to a student by the Texas Education Agency.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaver', @level2type=N'COLUMN', @level2name=N'StudentUID'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1523. StudentUID (StudentUniqueId) is a unique number assigned to a student by the Texas Education Agency.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeavers', @level2type=N'COLUMN', @level2name=N'StudentUID'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1325, DC119. A person''s gender.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaver', @level2type=N'COLUMN', @level2name=N'SexDescriptorId'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1325, DC119. A person''s gender.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeavers', @level2type=N'COLUMN', @level2name=N'SexDescriptorId'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1064, E1375. HispanicLatinoEthnicity indicates a person of Cuban, Mexican, Puerto Rican, South or Central American, or other Spanish culture or origin, regardless of race.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaver', @level2type=N'COLUMN', @level2name=N'HispanicLatinoEthnicity'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1064, E1375. HispanicLatinoEthnicity indicates a person of Cuban, Mexican, Puerto Rican, South or Central American, or other Spanish culture or origin, regardless of race.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeavers', @level2type=N'COLUMN', @level2name=N'HispanicLatinoEthnicity'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1517, DC063. The grade level or primary instructional level at which a student enters and receives services in a school or an educational institution during a given academic session.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaver', @level2type=N'COLUMN', @level2name=N'GradeLevelDescriptorId'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1517, DC063. The grade level or primary instructional level at which a student enters and receives services in a school or an educational institution during a given academic session.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeavers', @level2type=N'COLUMN', @level2name=N'GradeLevelDescriptorId'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1001, C162. ExitWithdrawType indicates the reason a prior year student in grade 7-12 student has not enrolled in the district during the current school year.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaver', @level2type=N'COLUMN', @level2name=N'ExitWithdrawTypeDescriptorId'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1001, C162. ExitWithdrawType indicates the reason a prior year student in grade 7-12 student has not enrolled in the district during the current school year.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeavers', @level2type=N'COLUMN', @level2name=N'ExitWithdrawTypeDescriptorId'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0923. LocalStudentID is the student''s local identification number as assigned by the district.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaver', @level2type=N'COLUMN', @level2name=N'LocalStudentID'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0923. LocalStudentID is the student''s local identification number as assigned by the district.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeavers', @level2type=N'COLUMN', @level2name=N'LocalStudentID'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0001. StudentId is the student''s Social Security number or a state-approved alternative identification number.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaver', @level2type=N'COLUMN', @level2name=N'StudentID'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0001. StudentId is the student''s Social Security number or a state-approved alternative identification number.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeavers', @level2type=N'COLUMN', @level2name=N'StudentID'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0706, E1303, C012, DC148. GenerationCode identifies the generation suffix, if any, which the person attaches to his name.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaver', @level2type=N'COLUMN', @level2name=N'GenerationCodeDescriptorId'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0706, E1303, C012, DC148. GenerationCode identifies the generation suffix, if any, which the person attaches to his name.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeavers', @level2type=N'COLUMN', @level2name=N'GenerationCodeDescriptorId'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1000, C161. is a characteristic of a student relating to their individual enrollment circumstances.  It indicates whether the student:
 - attends an open enrollment charter school;
@@ -69,146 +69,171 @@ EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1000, C161. i
 - is enrolled in South Texas ISD (031-916);
 - is a student with a disability enrolled by their parent(s) in a private school (including a home school) but who receives special education and/or related services from the public school district under an individualized services plan (ISP);
 - is a child of a charter school employee; or
-- student-initiated transfer due to remote learning.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaver', @level2type=N'COLUMN', @level2name=N'StudentAttributionDescriptorId'
+- student-initiated transfer due to remote learning.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeavers', @level2type=N'COLUMN', @level2name=N'StudentAttributionDescriptorId'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1596. AssociateDegreeIndicator indicates that the student earned an associate degree prior to graduation from high school.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaver', @level2type=N'COLUMN', @level2name=N'AssociateDegreeIndicator'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1596. AssociateDegreeIndicator indicates that the student earned an associate degree prior to graduation from high school.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeavers', @level2type=N'COLUMN', @level2name=N'AssociateDegreeIndicator'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'AsOfStatusLastFridayOctober indicates the student’s status in the district on the last Friday in October in the current school year.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaver', @level2type=N'COLUMN', @level2name=N'AsOfStatusLastFridayOctoberDescriptorId'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'AsOfStatusLastFridayOctober indicates the student’s status in the district on the last Friday in October in the current school year.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeavers', @level2type=N'COLUMN', @level2name=N'AsOfStatusLastFridayOctoberDescriptorId'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'HomelessStatusPriorYear indicates if a student at any time during the prior school year was identified as homeless.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaver', @level2type=N'COLUMN', @level2name=N'HomelessStatusPriorYearDescriptorId'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'HomelessStatusPriorYear indicates if a student at any time during the prior school year was identified as homeless.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeavers', @level2type=N'COLUMN', @level2name=N'HomelessStatusPriorYearDescriptorId'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'UnaccompaniedYouthPriorYear indicates if a student at any time during the prior school year was identified as an unaccompanied youth.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaver', @level2type=N'COLUMN', @level2name=N'UnaccompaniedYouthPriorYearDescriptorId'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'UnaccompaniedYouthPriorYear indicates if a student at any time during the prior school year was identified as an unaccompanied youth.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeavers', @level2type=N'COLUMN', @level2name=N'UnaccompaniedYouthPriorYearDescriptorId'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'UnschooledAsyleeRefugeePriorYear indicates whether a student’s initial enrollment in a school in the United States in grades 7 through 12 was an unschooled asylee or refugee per TEC §39.027(a-1).', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaver', @level2type=N'COLUMN', @level2name=N'UnschooledAsyleeRefugeePriorYearDescriptorId'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'UnschooledAsyleeRefugeePriorYear indicates whether a student’s initial enrollment in a school in the United States in grades 7 through 12 was an unschooled asylee or refugee per TEC §39.027(a-1).', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeavers', @level2type=N'COLUMN', @level2name=N'UnschooledAsyleeRefugeePriorYearDescriptorId'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'EconomicDisadvantageLastDateOfEnrollment indicates the student’s economic disadvantage status on the last date of their enrollment.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaver', @level2type=N'COLUMN', @level2name=N'EconomicDisadvantageLastDateOfEnrollmentDescriptorId'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'EconomicDisadvantageLastDateOfEnrollment indicates the student’s economic disadvantage status on the last date of their enrollment.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeavers', @level2type=N'COLUMN', @level2name=N'EconomicDisadvantageLastDateOfEnrollmentDescriptorId'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'ParentalPermissionLastDateOfEnrollment indicates in the prior school year whether the student’s parent or legal guardian has approved placement of the student in the required bilingual or English as a Second Language (ESL) program. (See 19 TAC §89.1240)', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaver', @level2type=N'COLUMN', @level2name=N'ParentalPermissionLastDateOfEnrollmentDescriptorId'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'ParentalPermissionLastDateOfEnrollment indicates in the prior school year whether the student’s parent or legal guardian has approved placement of the student in the required bilingual or English as a Second Language (ESL) program. (See 19 TAC §89.1240)', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeavers', @level2type=N'COLUMN', @level2name=N'ParentalPermissionLastDateOfEnrollmentDescriptorId'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'MigrantPriorYear indicates that the student (age 3-21 in the prior school year) was, or the student’s parent, spouse, or guardian was a migratory agricultural worker, including a migratory dairy worker, or a migratory fisher, and who, in the preceding 36 months, in order to obtain, or accompany such parent, spouse, or guardian in order to obtain, temporary or seasonal employment in agricultural or fishing work 1) has moved from one school district to another; or 2) resides in a school district of more than 15,000 square miles, and migrates a distance of 20 miles or more to a temporary residence to engage in a fishing activity.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaver', @level2type=N'COLUMN', @level2name=N'MigrantPriorYear'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'MigrantPriorYear indicates that the student (age 3-21 in the prior school year) was, or the student’s parent, spouse, or guardian was a migratory agricultural worker, including a migratory dairy worker, or a migratory fisher, and who, in the preceding 36 months, in order to obtain, or accompany such parent, spouse, or guardian in order to obtain, temporary or seasonal employment in agricultural or fishing work 1) has moved from one school district to another; or 2) resides in a school district of more than 15,000 square miles, and migrates a distance of 20 miles or more to a temporary residence to engage in a fishing activity.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeavers', @level2type=N'COLUMN', @level2name=N'MigrantPriorYear'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'AdultPreviousAttendancePriorYear indicates whether an adult student (age 18-25) who was enrolled in the prior year in a high school equivalency program, dropout recovery school, or other adult education program (under TEC §29.259), has or has not attended school in the previous nine months prior to enrolling during the prior year.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaver', @level2type=N'COLUMN', @level2name=N'AdultPreviousAttendancePriorYear'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'AdultPreviousAttendancePriorYear indicates whether an adult student (age 18-25) who was enrolled in the prior year in a high school equivalency program, dropout recovery school, or other adult education program (under TEC §29.259), has or has not attended school in the previous nine months prior to enrolling during the prior year.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeavers', @level2type=N'COLUMN', @level2name=N'AdultPreviousAttendancePriorYear'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A prefix used to denote the title, degree, position, or seniority of the person.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaver', @level2type=N'COLUMN', @level2name=N'PersonalTitlePrefix'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A prefix used to denote the title, degree, position, or seniority of the person.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeavers', @level2type=N'COLUMN', @level2name=N'PersonalTitlePrefix'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A name given to an individual at birth, baptism, or during another naming ceremony, or through legal change.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaver', @level2type=N'COLUMN', @level2name=N'FirstName'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A name given to an individual at birth, baptism, or during another naming ceremony, or through legal change.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeavers', @level2type=N'COLUMN', @level2name=N'FirstName'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A secondary name given to an individual at birth, baptism, or during another naming ceremony.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaver', @level2type=N'COLUMN', @level2name=N'MiddleName'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A secondary name given to an individual at birth, baptism, or during another naming ceremony.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeavers', @level2type=N'COLUMN', @level2name=N'MiddleName'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The name borne in common by members of a family.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaver', @level2type=N'COLUMN', @level2name=N'LastSurname'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The name borne in common by members of a family.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeavers', @level2type=N'COLUMN', @level2name=N'LastSurname'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'An appendage, if any, used to denote an individual''s generation in his family (e.g., Jr., Sr., III).', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaver', @level2type=N'COLUMN', @level2name=N'GenerationCodeSuffix'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'An appendage, if any, used to denote an individual''s generation in his family (e.g., Jr., Sr., III).', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeavers', @level2type=N'COLUMN', @level2name=N'GenerationCodeSuffix'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The person''s maiden name.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaver', @level2type=N'COLUMN', @level2name=N'MaidenName'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The person''s maiden name.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeavers', @level2type=N'COLUMN', @level2name=N'MaidenName'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The month, day, and year on which an individual was born.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaver', @level2type=N'COLUMN', @level2name=N'BirthDate'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The month, day, and year on which an individual was born.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeavers', @level2type=N'COLUMN', @level2name=N'BirthDate'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The city the student was born in.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaver', @level2type=N'COLUMN', @level2name=N'BirthCity'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The city the student was born in.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeavers', @level2type=N'COLUMN', @level2name=N'BirthCity'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The abbreviation for the name of the state (within the United States) or extra-state jurisdiction in which an individual was born.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaver', @level2type=N'COLUMN', @level2name=N'BirthStateAbbreviationDescriptorId'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The abbreviation for the name of the state (within the United States) or extra-state jurisdiction in which an individual was born.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeavers', @level2type=N'COLUMN', @level2name=N'BirthStateAbbreviationDescriptorId'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'For students born outside of the U.S., the Province or jurisdiction in which an individual is born.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaver', @level2type=N'COLUMN', @level2name=N'BirthInternationalProvince'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'For students born outside of the U.S., the Province or jurisdiction in which an individual is born.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeavers', @level2type=N'COLUMN', @level2name=N'BirthInternationalProvince'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The country in which an individual is born. It is strongly recommended that entries use only ISO 3166 2-letter country codes.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaver', @level2type=N'COLUMN', @level2name=N'BirthCountryDescriptorId'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The country in which an individual is born. It is strongly recommended that entries use only ISO 3166 2-letter country codes.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeavers', @level2type=N'COLUMN', @level2name=N'BirthCountryDescriptorId'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'For students born outside of the U.S., the date the student entered the U.S.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaver', @level2type=N'COLUMN', @level2name=N'DateEnteredUS'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'For students born outside of the U.S., the date the student entered the U.S.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeavers', @level2type=N'COLUMN', @level2name=N'DateEnteredUS'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Indicator of whether the student was born with other siblings (i.e., twins, triplets, etc.)', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaver', @level2type=N'COLUMN', @level2name=N'MultipleBirthStatus'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Indicator of whether the student was born with other siblings (i.e., twins, triplets, etc.)', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeavers', @level2type=N'COLUMN', @level2name=N'MultipleBirthStatus'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A person''s gender at birth.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaver', @level2type=N'COLUMN', @level2name=N'BirthSexDescriptorId'
-GO
-
--- Extended Properties [tx].[AsOfStatusALeaverDiploma] --
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Extended Diploma common type', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaverDiploma'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to a school.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaverDiploma', @level2type=N'COLUMN', @level2name=N'SchoolId'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1523. StudentUID (StudentUniqueId) is a unique number assigned to a student by the Texas Education Agency.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaverDiploma', @level2type=N'COLUMN', @level2name=N'StudentUID'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The title assigned to the achievement.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaverDiploma', @level2type=N'COLUMN', @level2name=N'AchievementTitle'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The category of achievement attributed to the learner.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaverDiploma', @level2type=N'COLUMN', @level2name=N'AchievementCategoryDescriptorId'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The system that defines the categories by which an achievement is attributed to the learner.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaverDiploma', @level2type=N'COLUMN', @level2name=N'AchievementCategorySystem'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The name of the agent, entity, or institution issuing the element.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaverDiploma', @level2type=N'COLUMN', @level2name=N'IssuerName'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The Uniform Resource Locator (URL) from which the award was issued.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaverDiploma', @level2type=N'COLUMN', @level2name=N'IssuerOriginURL'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The criteria for competency-based completion of the achievement/award.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaverDiploma', @level2type=N'COLUMN', @level2name=N'Criteria'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The Uniform Resource Locator (URL) for the unique address of a web page describing the competency-based completion criteria for the achievement/award.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaverDiploma', @level2type=N'COLUMN', @level2name=N'CriteriaURL'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A statement or reference describing the evidence that the learner met the criteria for attainment of the Achievement.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaverDiploma', @level2type=N'COLUMN', @level2name=N'EvidenceStatement'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The Uniform Resource Locator (URL) for the unique address of an image representing an award or badge associated with the Achievement.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaverDiploma', @level2type=N'COLUMN', @level2name=N'ImageURL'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The month, day, and year on which the student met  graduation requirements and was awarded a diploma.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaverDiploma', @level2type=N'COLUMN', @level2name=N'DiplomaAwardDate'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The level of diploma/credential that is awarded to a student in recognition of his/her completion of the curricular requirements.
-        Minimum high school program
-        Recommended high school program
-        Distinguished Achievement Program.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaverDiploma', @level2type=N'COLUMN', @level2name=N'DiplomaLevelDescriptorId'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The type of diploma/credential that is awarded to a student in recognition of his/her completion of the curricular requirements.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaverDiploma', @level2type=N'COLUMN', @level2name=N'DiplomaTypeDescriptorId'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Indicated a student who reached a state-defined threshold of vocational education and who attained a high school diploma or its recognized state equivalent or GED.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaverDiploma', @level2type=N'COLUMN', @level2name=N'CTECompleter'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The description of diploma given to the student for accomplishments.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaverDiploma', @level2type=N'COLUMN', @level2name=N'DiplomaDescription'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Date on which the award expires.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaverDiploma', @level2type=N'COLUMN', @level2name=N'DiplomaAwardExpiresDate'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A person''s gender at birth.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeavers', @level2type=N'COLUMN', @level2name=N'BirthSexDescriptorId'
 GO
 
--- Extended Properties [tx].[AsOfStatusALeaverIndustryBasedCertificationSet] --
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Common Type IndustryBasedCertificationSet.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaverIndustryBasedCertificationSet'
+-- Extended Properties [tx].[AsOfStatusALeaversEndorsementCompletedSet] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Collection of EndorsementCompleted', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaversEndorsementCompletedSet'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Begin date of the effecive date for the IndustryBasedCertificationSet', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaverIndustryBasedCertificationSet', @level2type=N'COLUMN', @level2name=N'BeginDate'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to a school.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaversEndorsementCompletedSet', @level2type=N'COLUMN', @level2name=N'SchoolId'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1632. DateCertEarned indicates the date upon which the associated data value(s) is/are considered to take effect, or the associated data value(s) change(s).', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaverIndustryBasedCertificationSet', @level2type=N'COLUMN', @level2name=N'DateCertEarned'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1655. IBCVendorCode identifies the organization or company that offered the service.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaverIndustryBasedCertificationSet', @level2type=N'COLUMN', @level2name=N'IBCVendorDescriptorId'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1640. PostSecondaryCertificationLicensure indicates a nationally or internationally recognized business or industry certification or license earned by a student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaverIndustryBasedCertificationSet', @level2type=N'COLUMN', @level2name=N'PostSecondaryCertificationLicensureDescriptorId'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to a school.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaverIndustryBasedCertificationSet', @level2type=N'COLUMN', @level2name=N'SchoolId'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1523. StudentUID (StudentUniqueId) is a unique number assigned to a student by the Texas Education Agency.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaverIndustryBasedCertificationSet', @level2type=N'COLUMN', @level2name=N'StudentUID'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1654. IBCExamFeeAmount identifies the amount of money that was paid for a student’s industry certification exam by the local education agency.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaverIndustryBasedCertificationSet', @level2type=N'COLUMN', @level2name=N'IBCExamFeeAmount'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'End date of the effecive date for the IndustryBasedCertificationSet', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaverIndustryBasedCertificationSet', @level2type=N'COLUMN', @level2name=N'EndDate'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1523. StudentUID (StudentUniqueId) is a unique number assigned to a student by the Texas Education Agency.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaversEndorsementCompletedSet', @level2type=N'COLUMN', @level2name=N'StudentUID'
 GO
 
--- Extended Properties [tx].[AsOfStatusALeaverPersonalIdentificationDocument] --
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The documents presented as evident to verify one''s personal identity; for example: drivers license, passport, birth certificate, etc.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaverPersonalIdentificationDocument'
+-- Extended Properties [tx].[AsOfStatusALeaversEndorsementCompletedSetEndorsementCompleted] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1544 - E1548. EndorsementCompleted indicates the student has successfully completed a FHSP program to earn one of the following endorsements:
+• STEM
+• Business and Industry
+• Public Services
+• Arts and Humanities
+• Multi-Disciplinary Studies', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaversEndorsementCompletedSetEndorsementCompleted'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The primary function of the document used for establishing identity.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaverPersonalIdentificationDocument', @level2type=N'COLUMN', @level2name=N'IdentificationDocumentUseDescriptorId'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1544 - E1548. EndorsementCompleted indicates the student has successfully completed a FHSP program to earn one of the following endorsements:
+• STEM
+• Business and Industry
+• Public Services
+• Arts and Humanities
+• Multi-Disciplinary Studies', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaversEndorsementCompletedSetEndorsementCompleted', @level2type=N'COLUMN', @level2name=N'EndorsementCompletedDescriptorId'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The category of the document relative to its purpose.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaverPersonalIdentificationDocument', @level2type=N'COLUMN', @level2name=N'PersonalInformationVerificationDescriptorId'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to a school.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaversEndorsementCompletedSetEndorsementCompleted', @level2type=N'COLUMN', @level2name=N'SchoolId'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to a school.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaverPersonalIdentificationDocument', @level2type=N'COLUMN', @level2name=N'SchoolId'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1523. StudentUID (StudentUniqueId) is a unique number assigned to a student by the Texas Education Agency.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaverPersonalIdentificationDocument', @level2type=N'COLUMN', @level2name=N'StudentUID'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The title of the document given by the issuer.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaverPersonalIdentificationDocument', @level2type=N'COLUMN', @level2name=N'DocumentTitle'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The day when the document  expires, if null then never expires.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaverPersonalIdentificationDocument', @level2type=N'COLUMN', @level2name=N'DocumentExpirationDate'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The unique identifier on the issuer''s identification system.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaverPersonalIdentificationDocument', @level2type=N'COLUMN', @level2name=N'IssuerDocumentIdentificationCode'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Name of the entity or institution that issued the document.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaverPersonalIdentificationDocument', @level2type=N'COLUMN', @level2name=N'IssuerName'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Country of origin of the document. It is strongly recommended that entries use only ISO 3166 2-letter country codes.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaverPersonalIdentificationDocument', @level2type=N'COLUMN', @level2name=N'IssuerCountryDescriptorId'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1523. StudentUID (StudentUniqueId) is a unique number assigned to a student by the Texas Education Agency.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaversEndorsementCompletedSetEndorsementCompleted', @level2type=N'COLUMN', @level2name=N'StudentUID'
 GO
 
--- Extended Properties [tx].[AsOfStatusALeaverRace] --
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1343,E1059,E1060,E1061,E1062,E1063. The general racial category which most clearly reflects the individual''s recognition of his or her community or with which the individual most identifies as last reported to the education organization. The data model allows for multiple entries so that each individual can specify all appropriate races.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaverRace'
+-- Extended Properties [tx].[AsOfStatusALeaversFinancialAidApplication] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1724. The FinancialAidApplication indicates the manner in which the student completed the graduation requirement of either completing a financial aid application (FAFSA or TAFSA) or submitting an exemption.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaversFinancialAidApplication'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1343,E1059,E1060,E1061,E1062,E1063. The general racial category which most clearly reflects the individual''s recognition of his or her community or with which the individual most identifies as last reported to the education organization. The data model allows for multiple entries so that each individual can specify all appropriate races.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaverRace', @level2type=N'COLUMN', @level2name=N'RaceDescriptorId'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1724. The FinancialAidApplication indicates the manner in which the student completed the graduation requirement of either completing a financial aid application (FAFSA or TAFSA) or submitting an exemption.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaversFinancialAidApplication', @level2type=N'COLUMN', @level2name=N'FinancialAidApplicationDescriptorId'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to a school.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaverRace', @level2type=N'COLUMN', @level2name=N'SchoolId'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to a school.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaversFinancialAidApplication', @level2type=N'COLUMN', @level2name=N'SchoolId'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1523. StudentUID (StudentUniqueId) is a unique number assigned to a student by the Texas Education Agency.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaverRace', @level2type=N'COLUMN', @level2name=N'StudentUID'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1523. StudentUID (StudentUniqueId) is a unique number assigned to a student by the Texas Education Agency.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaversFinancialAidApplication', @level2type=N'COLUMN', @level2name=N'StudentUID'
+GO
+
+-- Extended Properties [tx].[AsOfStatusALeaversGraduationSet] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'DOCUMENTATION PENDING', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaversGraduationSet'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to a school.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaversGraduationSet', @level2type=N'COLUMN', @level2name=N'SchoolId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1523. StudentUID (StudentUniqueId) is a unique number assigned to a student by the Texas Education Agency.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaversGraduationSet', @level2type=N'COLUMN', @level2name=N'StudentUID'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0791. DiplomaAwardDate indicates the month and year that the student graduated from high school.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaversGraduationSet', @level2type=N'COLUMN', @level2name=N'DiplomaAwardDate'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0806. DiplomaType indicates the type of plan under which the student graduated.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaversGraduationSet', @level2type=N'COLUMN', @level2name=N'DiplomaTypeDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The category of achievement attributed to the learner.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaversGraduationSet', @level2type=N'COLUMN', @level2name=N'AchievementCategoryDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1562. IndividualGraduationCommitteeGraduateIndicator Indicates whether a student for whom an IGC was established has graduated based on an IGC decision.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaversGraduationSet', @level2type=N'COLUMN', @level2name=N'IndividualGraduationCommitteeGraduateIndicator'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1589. MilitaryEnlistmentIndicator indicates that a student leaver enlisted in the United States Armed Forces.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaversGraduationSet', @level2type=N'COLUMN', @level2name=N'MilitaryEnlistmentIndicator'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1542. FHSPDistingLevelGraduate', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaversGraduationSet', @level2type=N'COLUMN', @level2name=N'FHSPDistingLevelGraduate'
+GO
+
+-- Extended Properties [tx].[AsOfStatusALeaversGraduationSetFinancialAidApplication] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1724. The FinancialAidApplication indicates the manner in which the student completed the graduation requirement of either completing a financial aid application (FAFSA or TAFSA) or submitting an exemption.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaversGraduationSetFinancialAidApplication'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1724. The FinancialAidApplication indicates the manner in which the student completed the graduation requirement of either completing a financial aid application (FAFSA or TAFSA) or submitting an exemption.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaversGraduationSetFinancialAidApplication', @level2type=N'COLUMN', @level2name=N'FinancialAidApplicationDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to a school.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaversGraduationSetFinancialAidApplication', @level2type=N'COLUMN', @level2name=N'SchoolId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1523. StudentUID (StudentUniqueId) is a unique number assigned to a student by the Texas Education Agency.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaversGraduationSetFinancialAidApplication', @level2type=N'COLUMN', @level2name=N'StudentUID'
+GO
+
+-- Extended Properties [tx].[AsOfStatusALeaversIndustryBasedCertificationSet] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Common Type IndustryBasedCertificationSet.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaversIndustryBasedCertificationSet'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1632. DateCertTaken indicates the date upon which the industry based certification was taken.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaversIndustryBasedCertificationSet', @level2type=N'COLUMN', @level2name=N'DateCertTaken'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1655. IBCVendorCode identifies the organization or company that offered the service.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaversIndustryBasedCertificationSet', @level2type=N'COLUMN', @level2name=N'IBCVendorDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1640. PostSecondaryCertificationLicensure indicates a nationally or internationally recognized business or industry certification or license earned by a student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaversIndustryBasedCertificationSet', @level2type=N'COLUMN', @level2name=N'PostSecondaryCertificationLicensureDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to a school.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaversIndustryBasedCertificationSet', @level2type=N'COLUMN', @level2name=N'SchoolId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1523. StudentUID (StudentUniqueId) is a unique number assigned to a student by the Texas Education Agency.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaversIndustryBasedCertificationSet', @level2type=N'COLUMN', @level2name=N'StudentUID'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1733. PostSecondaryCertLicensureResult indicates the result of a state, nationally, or internationally recognized industry-based certification exam taken by a student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaversIndustryBasedCertificationSet', @level2type=N'COLUMN', @level2name=N'PostSecondaryCertLicensureResultDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1654. IBCExamFeeAmount identifies the amount of money that was paid for a student’s industry certification exam by the local education agency.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaversIndustryBasedCertificationSet', @level2type=N'COLUMN', @level2name=N'IBCExamFeeAmount'
+GO
+
+-- Extended Properties [tx].[AsOfStatusALeaversPersonalIdentificationDocument] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The documents presented as evident to verify one''s personal identity; for example: drivers license, passport, birth certificate, etc.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaversPersonalIdentificationDocument'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The primary function of the document used for establishing identity.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaversPersonalIdentificationDocument', @level2type=N'COLUMN', @level2name=N'IdentificationDocumentUseDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The category of the document relative to its purpose.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaversPersonalIdentificationDocument', @level2type=N'COLUMN', @level2name=N'PersonalInformationVerificationDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to a school.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaversPersonalIdentificationDocument', @level2type=N'COLUMN', @level2name=N'SchoolId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1523. StudentUID (StudentUniqueId) is a unique number assigned to a student by the Texas Education Agency.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaversPersonalIdentificationDocument', @level2type=N'COLUMN', @level2name=N'StudentUID'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The title of the document given by the issuer.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaversPersonalIdentificationDocument', @level2type=N'COLUMN', @level2name=N'DocumentTitle'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The day when the document  expires, if null then never expires.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaversPersonalIdentificationDocument', @level2type=N'COLUMN', @level2name=N'DocumentExpirationDate'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The unique identifier on the issuer''s identification system.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaversPersonalIdentificationDocument', @level2type=N'COLUMN', @level2name=N'IssuerDocumentIdentificationCode'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Name of the entity or institution that issued the document.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaversPersonalIdentificationDocument', @level2type=N'COLUMN', @level2name=N'IssuerName'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Country of origin of the document. It is strongly recommended that entries use only ISO 3166 2-letter country codes.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaversPersonalIdentificationDocument', @level2type=N'COLUMN', @level2name=N'IssuerCountryDescriptorId'
+GO
+
+-- Extended Properties [tx].[AsOfStatusALeaversRace] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1343,E1059,E1060,E1061,E1062,E1063. The general racial category which most clearly reflects the individual''s recognition of his or her community or with which the individual most identifies as last reported to the education organization. The data model allows for multiple entries so that each individual can specify all appropriate races.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaversRace'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1343,E1059,E1060,E1061,E1062,E1063. The general racial category which most clearly reflects the individual''s recognition of his or her community or with which the individual most identifies as last reported to the education organization. The data model allows for multiple entries so that each individual can specify all appropriate races.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaversRace', @level2type=N'COLUMN', @level2name=N'RaceDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to a school.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaversRace', @level2type=N'COLUMN', @level2name=N'SchoolId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1523. StudentUID (StudentUniqueId) is a unique number assigned to a student by the Texas Education Agency.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AsOfStatusALeaversRace', @level2type=N'COLUMN', @level2name=N'StudentUID'
 GO
 
 -- Extended Properties [tx].[AsOfStatusLastDayEnrollmentDescriptor] --
@@ -245,6 +270,62 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Descriptor AuxiliaryRoleId is populated from code table C213.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AuxiliaryRoleIdDescriptor'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'AuxiliaryRoleIdDescriptor', @level2type=N'COLUMN', @level2name=N'AuxiliaryRoleIdDescriptorId'
+GO
+
+-- Extended Properties [tx].[BasicReportingPeriodAttendance] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'This extended entity represents the recording of a student’s regular (basic) reporting period attendance.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'BasicReportingPeriodAttendance'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0975. CalendarCode indicates a unique campus calendar of school days for a particular group of students on a campus. Students with the same instructional track have the same number of days taught in a particular reporting period at a campus.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'BasicReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'CalendarCode'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'GradeLevel indicates the current grade level of the student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'BasicReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'GradeLevelDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'ReportingPeriod indicates the period for which the attendance data are being reported.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'BasicReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'ReportingPeriodDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to a school.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'BasicReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'SchoolId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique alphanumeric code assigned to a student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'BasicReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'StudentUSI'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0935. NumberDaysTaught indicates the number of days of instruction offered, as shown on the school calendar, during a particular reporting period.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'BasicReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'NumberDaysTaught'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0036. TotalDaysAbsent indicates the total number of days the student was absent during a particular reporting period.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'BasicReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'TotalDaysAbsent'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0936. TotalIneligibleDaysPresent indicates the total number of days the student was present and ineligible for Foundation School Program funding during a particular reporting period.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'BasicReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'TotalIneligibleDaysPresent'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0937. TotalEligibleDaysPresent indicates the total number of days the student was present and eligible for Foundation School Program funding during a particular reporting period.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'BasicReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'TotalEligibleDaysPresent'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1678. RSTotalEligibleDaysPresent indicates the total number of days the student was remote synchronous present and eligible for Foundation School Program funding during a particular reporting period.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'BasicReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'RSTotalEligibleDaysPresent'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1679. RATotalEligibleDaysPresent indicates the total number of days the student was remote asynchronous present and eligible for Foundation School Program funding during a particular reporting period.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'BasicReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'RATotalEligibleDaysPresent'
+GO
+
+-- Extended Properties [tx].[BilingualESLFundingDescriptor] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Descriptor BilingualESLFunding is based on code table C225.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'BilingualESLFundingDescriptor'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'BilingualESLFundingDescriptor', @level2type=N'COLUMN', @level2name=N'BilingualESLFundingDescriptorId'
+GO
+
+-- Extended Properties [tx].[BilingualESLProgramReportingPeriodAttendance] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'This extended entity represents the bilingual/ESL program attendance of a student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'BilingualESLProgramReportingPeriodAttendance'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1651. BilingualESLFunding indicates the language program in which the student participates during the reporting period.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'BilingualESLProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'BilingualESLFundingDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0975. CalendarCode indicates a unique campus calendar of school days for a particular group of students on a campus. Students with the same instructional track have the same number of days taught in a particular reporting period at a campus.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'BilingualESLProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'CalendarCode'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'GradeLevel indicates the current grade level of the student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'BilingualESLProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'GradeLevelDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'ReportingPeriod indicates the period for which the attendance data are being reported.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'BilingualESLProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'ReportingPeriodDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to a school.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'BilingualESLProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'SchoolId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique alphanumeric code assigned to a student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'BilingualESLProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'StudentUSI'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0935. NumberDaysTaught indicates the number of days of instruction offered, as shown on the school calendar, during a particular reporting period.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'BilingualESLProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'NumberDaysTaught'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0938. TotalEligBilingualESLDaysPresent indicates the total number of days the student was present and an eligible participant in the state-approved bilingual/ESL program during a particular reporting period.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'BilingualESLProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'TotalEligBilingualESLDaysPresent'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1682. RSTotalEligBilingualESLDaysPresent indicates the total number of days the student was remote synchronous present and an eligible participant in the state-approved bilingual/ESL program during a particular reporting period.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'BilingualESLProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'RSTotalEligBilingualESLDaysPresent'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1683. RATotalEligBilingualESLDaysPresent indicates the total number of days the student was remote asynchronous present and an eligible participant in the state-approved bilingual/ESL program during a particular reporting period.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'BilingualESLProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'RATotalEligBilingualESLDaysPresent'
 GO
 
 -- Extended Properties [tx].[BudgetExt] --
@@ -303,16 +384,6 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Descriptor ChildCountFunding indicates under which federal program the student receiving special education and related services is counted. (C066)', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'ChildCountFundingDescriptor'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'ChildCountFundingDescriptor', @level2type=N'COLUMN', @level2name=N'ChildCountFundingDescriptorId'
-GO
-
--- Extended Properties [tx].[ClassPeriodExtension] --
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'ClassPeriodExtension'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'An indication of the portion of a typical daily session in which students receive instruction in a specified subject (e.g., morning, sixth period, block period, or AB schedules).', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'ClassPeriodExtension', @level2type=N'COLUMN', @level2name=N'ClassPeriodName'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to a school.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'ClassPeriodExtension', @level2type=N'COLUMN', @level2name=N'SchoolId'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Indicates the Begin/end Dates upon which the ClassPeriod is considered to take effect.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'ClassPeriodExtension', @level2type=N'COLUMN', @level2name=N'BeginDate'
 GO
 
 -- Extended Properties [tx].[ClassTypeDescriptor] --
@@ -375,6 +446,48 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'CrisisEventDescriptor', @level2type=N'COLUMN', @level2name=N'CrisisEventDescriptorId'
 GO
 
+-- Extended Properties [tx].[CTEProgramReportingPeriodAttendance] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'This extended entity represents the CTE program attendance of a student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'CTEProgramReportingPeriodAttendance'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0975. CalendarCode indicates a unique campus calendar of school days for a particular group of students on a campus. Students with the same instructional track have the same number of days taught in a particular reporting period at a campus.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'CTEProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'CalendarCode'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'CTEServiceID refers to the approved career and technical education course that generates countact hours during a particular reporting period.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'CTEProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'CTEServiceIdDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'GradeLevel indicates the current grade level of the student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'CTEProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'GradeLevelDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'ReportingPeriod indicates the period for which the attendance data are being reported.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'CTEProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'ReportingPeriodDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to a school.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'CTEProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'SchoolId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique alphanumeric code assigned to a student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'CTEProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'StudentUSI'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0935. NumberDaysTaught indicates the number of days of instruction offered, as shown on the school calendar, during a particular reporting period.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'CTEProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'NumberDaysTaught'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0950. EligibleDaysPresentV1 indicates the total number of days the student was eligible and present and enrolled in an approved career and technical course that generated one contact hour during a particular reporting period.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'CTEProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'EligibleDaysPresentV1'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1696. RSEligibleDaysPresentV1 indicates the total number of days the student was eligible, remote synchronous present and enrolled in an approved career and technical course that generated one contact hour during a particular reporting period.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'CTEProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'RSEligibleDaysPresentV1'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1702. RAEligibleDaysPresentV1 indicates the total number of days the student was eligible, remote asynchronous present and enrolled in an approved career and technical course that generated one contact hour during a particular reporting period.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'CTEProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'RAEligibleDaysPresentV1'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0951. EligibleDaysPresentV2 indicates the total number of days the student was eligible and present and enrolled in an approved career and technical course that generated two contact hours during a particular reporting period.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'CTEProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'EligibleDaysPresentV2'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1697. RSEligibleDaysPresentV2 indicates the total number of days the student was eligible, remote synchronous present and enrolled in an approved career and technical course that generated two contact hours during a particular reporting period.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'CTEProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'RSEligibleDaysPresentV2'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1703. RAEligibleDaysPresentV2 indicates the total number of days the student was eligible, remote asynchronous present and enrolled in an approved career and technical course that generated two contact hours during a particular reporting period.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'CTEProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'RAEligibleDaysPresentV2'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0952. EligibleDaysPresentV3 indicates the total number of days the student was eligible and present and enrolled in an approved career and technical course that generated three contact hours during a particular reporting period.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'CTEProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'EligibleDaysPresentV3'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1698. RSEligibleDaysPresentV3 indicates the total number of days the student was eligible, remote synchronous present and enrolled in an approved career and technical course that generated three contact hours during a particular reporting period.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'CTEProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'RSEligibleDaysPresentV3'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1704. RAEligibleDaysPresentV3 indicates the total number of days the student was eligible, remote asynchronous present and enrolled in an approved career and technical course that generated three contact hours during a particular reporting period.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'CTEProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'RAEligibleDaysPresentV3'
+GO
+
+-- Extended Properties [tx].[CTEServiceIdDescriptor] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'DOCUMENTATION PENDING.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'CTEServiceIdDescriptor'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'CTEServiceIdDescriptor', @level2type=N'COLUMN', @level2name=N'CTEServiceIdDescriptorId'
+GO
+
 -- Extended Properties [tx].[DisciplineActionExtension] --
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'DisciplineActionExtension'
 GO
@@ -393,10 +506,26 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1725. NonMembershipDisciplineRestraintIndicator indicates the discipline incident or restraint event being reported is for a special education student enrolled, not in membership.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'DisciplineActionExtension', @level2type=N'COLUMN', @level2name=N'NonMembershipDisciplineRestraintIndicator'
 GO
 
+-- Extended Properties [tx].[DisciplineIncidentExtension] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'DisciplineIncidentExtension'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A locally assigned unique identifier (within the school or school district) to identify each specific DisciplineIncident or occurrence. The same identifier should be used to document the entire DisciplineIncident even if it included multiple offenses and multiple offenders.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'DisciplineIncidentExtension', @level2type=N'COLUMN', @level2name=N'IncidentIdentifier'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to a school.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'DisciplineIncidentExtension', @level2type=N'COLUMN', @level2name=N'SchoolId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1734. SafeSupportiveSchoolProgramTeamReview indicates whether the Safe and Supportive School Program (SSSP) team conducted a threat assessment related to a reported disciplinary incident.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'DisciplineIncidentExtension', @level2type=N'COLUMN', @level2name=N'SafeSupportiveSchoolProgramTeamReview'
+GO
+
 -- Extended Properties [tx].[DyslexiaRiskDescriptor] --
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Descriptor DyslexiaRisk is populated from Code Table C222.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'DyslexiaRiskDescriptor'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'DyslexiaRiskDescriptor', @level2type=N'COLUMN', @level2name=N'DyslexiaRiskDescriptorId'
+GO
+
+-- Extended Properties [tx].[DyslexiaScreeningExceptionReasonDescriptor] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Descriptor DyslexiaScreeningExceptionReason is based on Code Table C231.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'DyslexiaScreeningExceptionReasonDescriptor'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'DyslexiaScreeningExceptionReasonDescriptor', @level2type=N'COLUMN', @level2name=N'DyslexiaScreeningExceptionReasonDescriptorId'
 GO
 
 -- Extended Properties [tx].[DyslexiaServicesDescriptor] --
@@ -421,6 +550,12 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'DOCUMENTATION PENDING', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'EconomicDisadvantageLastDateOfEnrollmentDescriptor'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'EconomicDisadvantageLastDateOfEnrollmentDescriptor', @level2type=N'COLUMN', @level2name=N'EconomicDisadvantageLastDateOfEnrollmentDescriptorId'
+GO
+
+-- Extended Properties [tx].[EligibilityDelayReasonDescriptor] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Descriptor EligibilityDelayReason is based on Code Table DC164', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'EligibilityDelayReasonDescriptor'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'EligibilityDelayReasonDescriptor', @level2type=N'COLUMN', @level2name=N'EligibilityDelayReasonDescriptorId'
 GO
 
 -- Extended Properties [tx].[ELOActivityDescriptor] --
@@ -457,6 +592,130 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Descriptor EvaluationDelayReason is based on table DC164.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'EvaluationDelayReasonDescriptor'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'EvaluationDelayReasonDescriptor', @level2type=N'COLUMN', @level2name=N'EvaluationDelayReasonDescriptorId'
+GO
+
+-- Extended Properties [tx].[ExtendedSchoolYearServicesAttendance] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'This extended entity represents the students who are served through the Extended School Year (ESY) Services Program.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'ExtendedSchoolYearServicesAttendance'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'InstructionalSetting1 identifies the setting used in providing extended year services component of special education. The InstructionalSetting reported is the EducationalEnvironment in which the student was served during the regular school year.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'ExtendedSchoolYearServicesAttendance', @level2type=N'COLUMN', @level2name=N'FirstInstructionalSettingDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'GradeLevel indicates the current grade level of the student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'ExtendedSchoolYearServicesAttendance', @level2type=N'COLUMN', @level2name=N'GradeLevelDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to a school.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'ExtendedSchoolYearServicesAttendance', @level2type=N'COLUMN', @level2name=N'SchoolId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique alphanumeric code assigned to a student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'ExtendedSchoolYearServicesAttendance', @level2type=N'COLUMN', @level2name=N'StudentUSI'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1013. TotalESYContactHoursInFirstInstructionalSetting indicates the total contact hours in a special education setting provided to the student through the extended school year services component of special education. InstructionalSetting1 reported is the EducationalEnvironment in which the student was served during the regular school year.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'ExtendedSchoolYearServicesAttendance', @level2type=N'COLUMN', @level2name=N'TotalESYContactHoursInFirstInstructionalSetting'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'InstructionalSetting2 identifies the setting used in providing extended year services component of special education. The InstructionalSetting reported is the EducationalEnvironment in which the student was served during the regular school year.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'ExtendedSchoolYearServicesAttendance', @level2type=N'COLUMN', @level2name=N'SecondInstructionalSettingDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1013. TotalESYContactHoursInSecondInstructionalSetting indicates the total contact hours in a special education setting provided to the student through the extended school year services component of special education. InstructionalSetting1 reported is the EducationalEnvironment in which the student was served during the regular school year.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'ExtendedSchoolYearServicesAttendance', @level2type=N'COLUMN', @level2name=N'TotalESYContactHoursInSecondInstructionalSetting'
+GO
+
+-- Extended Properties [tx].[FinancialAidApplicationDescriptor] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Descriptor FinancialAidApplication is based on Code Table C230.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'FinancialAidApplicationDescriptor'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'FinancialAidApplicationDescriptor', @level2type=N'COLUMN', @level2name=N'FinancialAidApplicationDescriptorId'
+GO
+
+-- Extended Properties [tx].[FlexAttendanceProgramDescriptor] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Descriptor FlexAttendanceProgram is based on code table C177.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'FlexAttendanceProgramDescriptor'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'FlexAttendanceProgramDescriptor', @level2type=N'COLUMN', @level2name=N'FlexAttendanceProgramDescriptorId'
+GO
+
+-- Extended Properties [tx].[FlexibleBilingualESLProgramReportingPeriodAttendance] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'This extended entity represents the bilingual/ESL program attendance for the students who are served through a flexible attendance program.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'FlexibleBilingualESLProgramReportingPeriodAttendance'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1651. BilingualESLFunding indicates the language program in which the student participates during the reporting period.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'FlexibleBilingualESLProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'BilingualESLFundingDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0975. CalendarCode indicates a unique campus calendar of school days for a particular group of students on a campus. Students with the same instructional track have the same number of days taught in a particular reporting period at a campus.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'FlexibleBilingualESLProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'CalendarCode'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1045. FlexAttendanceProgram indicates the unique type of flexible attendance program to which the student’s flexible attendance is related.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'FlexibleBilingualESLProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'FlexAttendanceProgramDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'GradeLevel indicates the current grade level of the student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'FlexibleBilingualESLProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'GradeLevelDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'ReportingPeriod indicates the period for which the attendance data are being reported.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'FlexibleBilingualESLProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'ReportingPeriodDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to a school.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'FlexibleBilingualESLProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'SchoolId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique alphanumeric code assigned to a student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'FlexibleBilingualESLProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'StudentUSI'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0935. NumberDaysTaught indicates the number of days of instruction offered, as shown on the school calendar, during a particular reporting period.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'FlexibleBilingualESLProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'NumberDaysTaught'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1050. FlexAttendExcessMinutesInInstrSetting indicates the total number of minutes the student was present in a designated instructional setting above the allowable 360-minute daily limit of combined career and technical education and special education and related services during a particular reporting period.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'FlexibleBilingualESLProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'FlexTotalEligBilingualESLDaysPresent'
+GO
+
+-- Extended Properties [tx].[FlexibleCTEProgramReportingPeriodAttendance] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'This extended entity represents the CTE program attendance for students who are served through a flexible attendance program.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'FlexibleCTEProgramReportingPeriodAttendance'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0975. CalendarCode indicates a unique campus calendar of school days for a particular group of students on a campus. Students with the same instructional track have the same number of days taught in a particular reporting period at a campus.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'FlexibleCTEProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'CalendarCode'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1045. FlexAttendanceProgram indicates the unique type of flexible attendance program to which the student’s flexible attendance is related.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'FlexibleCTEProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'FlexAttendanceProgramDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'GradeLevel indicates the current grade level of the student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'FlexibleCTEProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'GradeLevelDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'ReportingPeriod indicates the period for which the attendance data are being reported.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'FlexibleCTEProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'ReportingPeriodDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to a school.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'FlexibleCTEProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'SchoolId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique alphanumeric code assigned to a student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'FlexibleCTEProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'StudentUSI'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0935. NumberDaysTaught indicates the number of days of instruction offered, as shown on the school calendar, during a particular reporting period.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'FlexibleCTEProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'NumberDaysTaught'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1053. FlexAttendTotalCareerTechMinutesPresent indicates the total number of minutes the student was present in an approved career and technical education course(s) that the student was eligible for and enrolled in during a particular reporting period.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'FlexibleCTEProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'FlexAttendTotalCareerTechMinutesPresent'
+GO
+
+-- Extended Properties [tx].[FlexibleRegularProgramReportingPeriodAttendance] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'This extended entity represents the attendance for students who are served through a flexible attendance program.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'FlexibleRegularProgramReportingPeriodAttendance'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0975. CalendarCode indicates a unique campus calendar of school days for a particular group of students on a campus. Students with the same instructional track have the same number of days taught in a particular reporting period at a campus.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'FlexibleRegularProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'CalendarCode'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1045. FlexAttendanceProgram indicates the unique type of flexible attendance program to which the student’s flexible attendance is related.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'FlexibleRegularProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'FlexAttendanceProgramDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'GradeLevel indicates the current grade level of the student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'FlexibleRegularProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'GradeLevelDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'ReportingPeriod indicates the period for which the attendance data are being reported.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'FlexibleRegularProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'ReportingPeriodDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to a school.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'FlexibleRegularProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'SchoolId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique alphanumeric code assigned to a student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'FlexibleRegularProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'StudentUSI'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0935. NumberDaysTaught indicates the number of days of instruction offered, as shown on the school calendar, during a particular reporting period.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'FlexibleRegularProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'NumberDaysTaught'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1046. FlexAttendTotalEligibleMinutesPresent indicates the total number of minutes the student was present and eligible for Foundation School Program funding during a particular reporting period. Eligiblity for this program is determined by September 1 age and grade level.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'FlexibleRegularProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'FlexAttendTotalEligibleMinutesPresent'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1047. FlexAttendTotalIneligibleMinutesPresent indicates the total number of minutes the student was present and ineligible for Foundation School Program funding during a particular reporting period. Ineligiblity for this program is determined by September 1 age and grade level.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'FlexibleRegularProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'FlexAttendTotalIneligibleMinutesPresent'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1048. FlexTotalEligPregRelSvcsDaysPresent indicates the total number of school days a female student was eligible for Compensatory Education Home Instruction (CEHI) services and/or pregnancy related services during a particular reporting period.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'FlexibleRegularProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'FlexTotalEligPregRelSvcsDaysPresent'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1049. FlexTotalEligSpEdMainstreamDaysPresent indicates the total number of school days a student with a special education individualized education program (IEP) that provided for the mainstream instructional arrangement/setting was eligible for that instructional arrangement/setting during a particular reporting period.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'FlexibleRegularProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'FlexTotalEligSpEdMainstreamDaysPresent'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1653. FlexTotalEligResidentialFacilityDaysPresent indicates the total number of days the student was present and eligible for LEA services while living in a Residential Facility in a flexible attendance program during a particular reporting period.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'FlexibleRegularProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'FlexTotalEligResidentialFacilityDaysPresent'
+GO
+
+-- Extended Properties [tx].[FlexibleSpecialEducationProgramReportingPeriodAttendance] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'This extended entity represents the special education program attendance for students who are served through a flexible attendance program.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'FlexibleSpecialEducationProgramReportingPeriodAttendance'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0975. CalendarCode indicates a unique campus calendar of school days for a particular group of students on a campus. Students with the same instructional track have the same number of days taught in a particular reporting period at a campus.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'FlexibleSpecialEducationProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'CalendarCode'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1045. FlexAttendanceProgram indicates the unique type of flexible attendance program to which the student’s flexible attendance is related.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'FlexibleSpecialEducationProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'FlexAttendanceProgramDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'GradeLevel indicates the current grade level of the student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'FlexibleSpecialEducationProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'GradeLevelDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0173. InstructionalSetting identifies the setting used in providing instruction to students.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'FlexibleSpecialEducationProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'InstructionalSettingDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'ReportingPeriod indicates the period for which the attendance data are being reported.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'FlexibleSpecialEducationProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'ReportingPeriodDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to a school.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'FlexibleSpecialEducationProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'SchoolId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique alphanumeric code assigned to a student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'FlexibleSpecialEducationProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'StudentUSI'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0935. NumberDaysTaught indicates the number of days of instruction offered, as shown on the school calendar, during a particular reporting period.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'FlexibleSpecialEducationProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'NumberDaysTaught'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1051. FlexAttendExcessMinutesInInstrSetting indicates the total number of minutes the student was present in a designated instructional setting above the allowable 360-minute daily limit of combined career and technical education and special education and related services during a particular reporting period.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'FlexibleSpecialEducationProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'FlexAttendDaysEligibleInInstrSetting'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1052. NumberDaysTaught indicates the number of days of instruction offered, as shown on the school calendar, during a particular reporting period.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'FlexibleSpecialEducationProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'FlexAttendExcessMinutesInInstrSetting'
 GO
 
 -- Extended Properties [tx].[FosterCareTypeDescriptor] --
@@ -535,6 +794,12 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Descriptor IBCVendorCode identifies the organization or company that offered the service.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'IBCVendorDescriptor'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'IBCVendorDescriptor', @level2type=N'COLUMN', @level2name=N'IBCVendorDescriptorId'
+GO
+
+-- Extended Properties [tx].[InstructionalSettingDescriptor] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Descriptor InstructionalSetting is based on code table C035.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'InstructionalSettingDescriptor'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'InstructionalSettingDescriptor', @level2type=N'COLUMN', @level2name=N'InstructionalSettingDescriptorId'
 GO
 
 -- Extended Properties [tx].[LangAcqServicesProvidedDescriptor] --
@@ -703,6 +968,12 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'PostSecondaryCertificationLicensureDescriptor', @level2type=N'COLUMN', @level2name=N'PostSecondaryCertificationLicensureDescriptorId'
 GO
 
+-- Extended Properties [tx].[PostSecondaryCertLicensureResultDescriptor] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Descriptor PostSecondaryCertLicensureResult is based on Code Table C232.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'PostSecondaryCertLicensureResultDescriptor'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'PostSecondaryCertLicensureResultDescriptor', @level2type=N'COLUMN', @level2name=N'PostSecondaryCertLicensureResultDescriptorId'
+GO
+
 -- Extended Properties [tx].[PPCDServiceLocationDescriptor] --
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Descriptor PPCDServiceLocation indicates whether or not the Preschool Program for Children with Disabilities (PPCD) student received their special education services in a regular early childhood program, which is defined as a program that is designed for typically developing children ages 3-5 and is not specifically or primarily designed for children with disabilities and includes (at the time of the placement decision) a majority of at least 50 percent of nondisabled children (i.e., children without an individualized education program (IEP)). (C184)', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'PPCDServiceLocationDescriptor'
 GO
@@ -727,10 +998,22 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'ProgramOfStudyDescriptor', @level2type=N'COLUMN', @level2name=N'ProgramOfStudyDescriptorId'
 GO
 
+-- Extended Properties [tx].[RegionalDaySchoolProgramForDeafDescriptor] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Descriptor RegionalDaySchoolProgramForDeaf is based on code table C067.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'RegionalDaySchoolProgramForDeafDescriptor'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'RegionalDaySchoolProgramForDeafDescriptor', @level2type=N'COLUMN', @level2name=N'RegionalDaySchoolProgramForDeafDescriptorId'
+GO
+
 -- Extended Properties [tx].[ReportAssessmentTypeDescriptor] --
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Descriptor ReportAssessmentType is populated from code table DC123.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'ReportAssessmentTypeDescriptor'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'ReportAssessmentTypeDescriptor', @level2type=N'COLUMN', @level2name=N'ReportAssessmentTypeDescriptorId'
+GO
+
+-- Extended Properties [tx].[ReportingPeriodDescriptor] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Descriptor ReportingPeriod is based on code table C130.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'ReportingPeriodDescriptor'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'ReportingPeriodDescriptor', @level2type=N'COLUMN', @level2name=N'ReportingPeriodDescriptorId'
 GO
 
 -- Extended Properties [tx].[RestraintEventExtension] --
@@ -764,9 +1047,9 @@ EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'CampusEnrollme
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Begin date of the effecive date for the CampusEnrollmentType', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SchoolCampusEnrollmentTypeSet', @level2type=N'COLUMN', @level2name=N'BeginDate'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1641, C219. CampusEnrollmentType specifies the method by which the campus draws student enrollment.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SchoolCampusEnrollmentTypeSet', @level2type=N'COLUMN', @level2name=N'CampusEnrollmentTypeDescriptorId'
-GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to a school.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SchoolCampusEnrollmentTypeSet', @level2type=N'COLUMN', @level2name=N'SchoolId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1641, C219. CampusEnrollmentType specifies the method by which the campus draws student enrollment.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SchoolCampusEnrollmentTypeSet', @level2type=N'COLUMN', @level2name=N'CampusEnrollmentTypeDescriptorId'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'End date of the effecive date for the CampusEnrollmentType', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SchoolCampusEnrollmentTypeSet', @level2type=N'COLUMN', @level2name=N'EndDate'
 GO
@@ -836,9 +1119,9 @@ EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'NSLPType with 
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Begin date of the effecive date for the NSLPType', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SchoolNSLPTypeSet', @level2type=N'COLUMN', @level2name=N'BeginDate'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1591, C212. NSLPType indicates a campus''s  National School Lunch Program (NSLP) participation status.  The NSLP provides reimbursement to schools for free or reduced-price meals based on student eligibility.  Options for claiming reimbursement under the NSLP include:  eligibility determined at the individual student/family level (participation in NSLP without using any Provision or the Community Eligibility Program) or at the campus/community level (Provision 2 or Community Eligibility Program).', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SchoolNSLPTypeSet', @level2type=N'COLUMN', @level2name=N'NSLPTypeDescriptorId'
-GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to a school.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SchoolNSLPTypeSet', @level2type=N'COLUMN', @level2name=N'SchoolId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1591, C212. NSLPType indicates a campus''s  National School Lunch Program (NSLP) participation status.  The NSLP provides reimbursement to schools for free or reduced-price meals based on student eligibility.  Options for claiming reimbursement under the NSLP include:  eligibility determined at the individual student/family level (participation in NSLP without using any Provision or the Community Eligibility Program) or at the campus/community level (Provision 2 or Community Eligibility Program).', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SchoolNSLPTypeSet', @level2type=N'COLUMN', @level2name=N'NSLPTypeDescriptorId'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'End date of the effecive date for the NSLPType', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SchoolNSLPTypeSet', @level2type=N'COLUMN', @level2name=N'EndDate'
 GO
@@ -860,6 +1143,8 @@ EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0747, C030. PopulationServed identifies the student population for which a service has been designed or is intended. It does not necessarily identify the program eligibility of the students who receive the service.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SectionSet', @level2type=N'COLUMN', @level2name=N'PopulationServedDescriptorId'
 GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'SPEDStudentAgeRange identifies the age range of Special Education students that teaching and paraprofessional staff provide services to.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SectionSet', @level2type=N'COLUMN', @level2name=N'SPEDStudentAgeRangeDescriptorId'
+GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0948, C135. CourseSequence identifies the unique part(s) of a course when a course is taught during a single grading period or semester or across multiple grading periods or semesters.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SectionSet', @level2type=N'COLUMN', @level2name=N'CourseSequenceDescriptorId'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1072, C182. NonCampusBasedInstruction indicates that a course was offered for class credit or student achievement, but 1) was not taught by a school district/charter school employee or a contracted teacher , or 2) was taught by a school district/charter school employee or a contracted teacher at a facility other than the campus where the student is enrolled. Examples include but are not limited to college based instruction, non-district teacher, non-campus teacher, internet based instruction, electronic Course Pilot (eCP), and Texas Virtual School Network (TxVSN).', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SectionSet', @level2type=N'COLUMN', @level2name=N'NonCampusBasedInstructionDescriptorId'
@@ -874,9 +1159,9 @@ EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1555, DC152. 
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1626, C216. ProgramEvaluationType indicates for each High-Quality PK course/section, the type of program evaluation tool that is used.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SectionSet', @level2type=N'COLUMN', @level2name=N'PKProgramEvaluationTypeDescriptorId'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'CTEHours indicate the number of contact hours assigned to a particular section of a course.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SectionSet', @level2type=N'COLUMN', @level2name=N'CTEHours'
-GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1055. ClassType identifies the type of class providing instruction to students in particular class settings.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SectionSet', @level2type=N'COLUMN', @level2name=N'ClassTypeDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'CTEHours indicate the number of contact hours assigned to a particular section of a course.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SectionSet', @level2type=N'COLUMN', @level2name=N'CTEHours'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The month, day, and year for the end of the period.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SectionSet', @level2type=N'COLUMN', @level2name=N'EndDate'
 GO
@@ -909,6 +1194,80 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SharedServiceArrangementStaffDescriptor', @level2type=N'COLUMN', @level2name=N'SharedServiceArrangementStaffDescriptorId'
 GO
 
+-- Extended Properties [tx].[SpecialEducationProgramReportingPeriodAttendance] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'This extended entity represents the special education program attendance of a student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SpecialEducationProgramReportingPeriodAttendance'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0975. CalendarCode indicates a unique campus calendar of school days for a particular group of students on a campus. Students with the same instructional track have the same number of days taught in a particular reporting period at a campus.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SpecialEducationProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'CalendarCode'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'GradeLevel indicates the current grade level of the student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SpecialEducationProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'GradeLevelDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0173. InstructionalSetting identifies the setting used in providing instruction to students.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SpecialEducationProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'InstructionalSettingDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0833. RegionalDaySchoolProgramForDeaf indicates the student is receiving instructional servies from the regional day school program for the deaf.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SpecialEducationProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'RegionalDaySchoolProgramForDeafDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'ReportingPeriod indicates the period for which the attendance data are being reported.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SpecialEducationProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'ReportingPeriodDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to a school.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SpecialEducationProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'SchoolId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique alphanumeric code assigned to a student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SpecialEducationProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'StudentUSI'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0935. NumberDaysTaught indicates the number of days of instruction offered, as shown on the school calendar, during a particular reporting period.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SpecialEducationProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'NumberDaysTaught'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0944. EligibleDaysPresentInInstrSetting indicates the number of days the student was eligible and present in a designated instructional setting during a particular reporting period.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SpecialEducationProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'EligibleDaysPresentInInstrSetting'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1690. RSEligibleDaysPresentInInstrSetting indicates the number of days the student was eligible and remote synchronous present in a designated instructional setting during a particular reporting period.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SpecialEducationProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'RSEligibleDaysPresentInInstrSetting'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1691. RAEligibleDaysPresentInInstrSetting indicates the number of days the student was eligible and remote asynchronous present in a designated instructional setting during a particular reporting period.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SpecialEducationProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'RAEligibleDaysPresentInInstrSetting'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0945. ExcessHoursInInstructionalSetting indicates the number of hours above the allowable six hours per day of combined career and technical education and special education and related services in a designated instructional setting during a particular reporting period.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SpecialEducationProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'ExcessHoursInInstructionalSetting'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1694. RSExcessHoursInInstructionalSetting indicates the number of hours above the allowable six hours per day of remote synchronous instruction combined career and technical education and special education and related services in a designed instructional setting during a particular reporting period.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SpecialEducationProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'RSExcessHoursInInstructionalSetting'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1695. RAExcessHoursInInstructionalSetting indicates the number of hours above the allowable six hours per day of remote asynchronous instruction combined career and technical education and special education and related services in a designed instructional setting during a particular reporting period.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SpecialEducationProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'RAExcessHoursInInstructionalSetting'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1527. LEAOfRDSPDService indicates the RDSPD Fiscal Agent district that provides the RDSPD service to a particular RDSPD student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SpecialEducationProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'LEAOfRDSPDService'
+GO
+
+-- Extended Properties [tx].[SpecialProgramsReportingPeriodAttendance] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'This extended entity represents the recording of a student’s special programs reporting period attendance.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SpecialProgramsReportingPeriodAttendance'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0975. CalendarCode indicates a unique campus calendar of school days for a particular group of students on a campus. Students with the same instructional track have the same number of days taught in a particular reporting period at a campus.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SpecialProgramsReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'CalendarCode'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'GradeLevel indicates the current grade level of the student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SpecialProgramsReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'GradeLevelDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'ReportingPeriod indicates the period for which the attendance data are being reported.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SpecialProgramsReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'ReportingPeriodDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to a school.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SpecialProgramsReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'SchoolId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique alphanumeric code assigned to a student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SpecialProgramsReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'StudentUSI'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0935. NumberDaysTaught indicates the number of days of instruction offered, as shown on the school calendar, during a particular reporting period.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SpecialProgramsReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'NumberDaysTaught'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0939. TotalEligPregRelSvcsDaysPresent indicates the total number of days a female student was present at school or served through Compensatory Education Home Instruction (CEHI) and an eligible recipient of pregnancy related services during a particular reporting period.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SpecialProgramsReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'TotalEligPregRelSvcsDaysPresent'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1686. RSTotalEligPregRelSvcsDaysPresent indicates the total number of days a female student was remote synchronous present or served through Compensatory Education Home Instruction (CEHI) and an eligible recipient of pregnancy related services during a particular reporting period.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SpecialProgramsReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'RSTotalEligPregRelSvcsDaysPresent'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1687. RATotalEligPregRelSvcsDaysPresent indicates the total number of days a female student was remote asynchronous present or served through Compensatory Education Home Instruction (CEHI) and an eligible recipient of pregnancy related services during a particular reporting period.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SpecialProgramsReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'RATotalEligPregRelSvcsDaysPresent'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0940. TotalEligSpEdMainstreamDaysPresent indicates the total number of days a student with a special education individualized education program which provided for the mainstream instructional arrangement/setting was present during a particular reporting period.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SpecialProgramsReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'TotalEligSpEdMainstreamDaysPresent'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1688. RSTotalEligSpEdMainstreamDaysPresent indicates the total number of days a student with special education individualized education program which provided for the mainstream instructional arrangement/setting was remote synchronous present during a particular reporting period.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SpecialProgramsReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'RSTotalEligSpEdMainstreamDaysPresent'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1689. SpecialProgramsReportingPeriodAttendance indicates the total number of days a student with special education individualized education program which provided for the mainstream instructional arrangement/setting was remote asynchronous present during a particular reporting period.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SpecialProgramsReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'RATotalEligSpEdMainstreamDaysPresent'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1652. TotalEligResidentialFacilityDaysPresent indicates the total number of days the student was present and eligible for LEA services while living in a Residential Facility during a particular reporting period.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SpecialProgramsReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'TotalEligResidentialFacilityDaysPresent'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1684. TotalEligResidentialFacilityDaysPresent indicates the total number of days the student was present and eligible for LEA services while living in a Residential Facility during a particular reporting period.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SpecialProgramsReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'RSTotalEligResidentialFacilityDaysPresent'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1685. RATotalEligResidentialFacilityDaysPresent indicates the total number of days the student was remote asynchronous present and eligible for LEA services in a Residential Facility during a particular reporting period.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SpecialProgramsReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'RATotalEligResidentialFacilityDaysPresent'
+GO
+
+-- Extended Properties [tx].[SPEDStudentAgeRangeDescriptor] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'SPEDStudentAgeRange identifies the age range of Special Education students that teaching and paraprofessional staff provide services to.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SPEDStudentAgeRangeDescriptor'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SPEDStudentAgeRangeDescriptor', @level2type=N'COLUMN', @level2name=N'SPEDStudentAgeRangeDescriptorId'
+GO
+
 -- Extended Properties [tx].[SSAOrgAssociationExt] --
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The SSAOrgAssociationExtension Domain Entity identifies the ESC/LEA fiscal agents and the ESC and/or LEA member(s) for each type of shared services arrangement (SSA) that exists among two or more ESCs and or LEAs.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SSAOrgAssociationExt'
 GO
@@ -928,7 +1287,7 @@ GO
 -- Extended Properties [tx].[StaffEducationOrganizationAssignmentAssociationExtension] --
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StaffEducationOrganizationAssignmentAssociationExtension'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Month, day, and year of the start or effective date of a staff member''s employment, contract, or relationship with the LEA.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StaffEducationOrganizationAssignmentAssociationExtension', @level2type=N'COLUMN', @level2name=N'BeginDate'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Month, day, and year of the start or effective date of a staff member''s employment, contract, or relationship with the education organization.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StaffEducationOrganizationAssignmentAssociationExtension', @level2type=N'COLUMN', @level2name=N'BeginDate'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to an education organization.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StaffEducationOrganizationAssignmentAssociationExtension', @level2type=N'COLUMN', @level2name=N'EducationOrganizationId'
 GO
@@ -942,23 +1301,25 @@ GO
 -- Extended Properties [tx].[StaffEducationOrganizationAssignmentAssociationStaffServiceSet] --
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'DOCUMENTATION PENDING', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StaffEducationOrganizationAssignmentAssociationStaffServiceSet'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Begin date of the effecive date for the StaffServiceSet', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StaffEducationOrganizationAssignmentAssociationStaffServiceSet', @level2type=N'COLUMN', @level2name=N'BeginDate'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Month, day, and year of the start or effective date of a staff member''s employment, contract, or relationship with the education organization.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StaffEducationOrganizationAssignmentAssociationStaffServiceSet', @level2type=N'COLUMN', @level2name=N'BeginDate'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to an education organization.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StaffEducationOrganizationAssignmentAssociationStaffServiceSet', @level2type=N'COLUMN', @level2name=N'EducationOrganizationId'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The titles of employment, official status, or rank of education staff.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StaffEducationOrganizationAssignmentAssociationStaffServiceSet', @level2type=N'COLUMN', @level2name=N'StaffClassificationDescriptorId'
 GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Begin date of the effecive date for the StaffServiceSet', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StaffEducationOrganizationAssignmentAssociationStaffServiceSet', @level2type=N'COLUMN', @level2name=N'StaffServiceBeginDate'
+GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0724. StaffService refers to the services supplied by staff.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StaffEducationOrganizationAssignmentAssociationStaffServiceSet', @level2type=N'COLUMN', @level2name=N'StaffServiceDescriptorId'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique alphanumeric code assigned to a staff.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StaffEducationOrganizationAssignmentAssociationStaffServiceSet', @level2type=N'COLUMN', @level2name=N'StaffUSI'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0017, C050. GradeLevel indicates the current grade level of the student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StaffEducationOrganizationAssignmentAssociationStaffServiceSet', @level2type=N'COLUMN', @level2name=N'GradeLevelDescriptorId'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'SPEDStudentAgeRange identifies the age range of Special Education students that teaching and paraprofessional staff provide services to.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StaffEducationOrganizationAssignmentAssociationStaffServiceSet', @level2type=N'COLUMN', @level2name=N'SPEDStudentAgeRangeDescriptorId'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0747, C030. identifies the student population for which a student has been designed or is intended. It does not necessarily identify the program eligibility of the students who receive the service.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StaffEducationOrganizationAssignmentAssociationStaffServiceSet', @level2type=N'COLUMN', @level2name=N'PopulationServedDescriptorId'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1057. MonthlyMinutes is the total number of minutes devoted to a particular service in a standard month. A standard month is considered to be the four weeks in October including the PEIMS Fall snapshot date (last Friday in October).', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StaffEducationOrganizationAssignmentAssociationStaffServiceSet', @level2type=N'COLUMN', @level2name=N'MonthlyMinutes'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'End date of the effecive date for the StaffServiceSet', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StaffEducationOrganizationAssignmentAssociationStaffServiceSet', @level2type=N'COLUMN', @level2name=N'EndDate'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'End date of the effecive date for the StaffServiceSet', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StaffEducationOrganizationAssignmentAssociationStaffServiceSet', @level2type=N'COLUMN', @level2name=N'StaffServiceEndDate'
 GO
 
 -- Extended Properties [tx].[StaffEducationOrganizationEmploymentAssociationAuxiliaryRoleIdSet] --
@@ -1085,12 +1446,12 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StaffServiceDescriptor', @level2type=N'COLUMN', @level2name=N'StaffServiceDescriptorId'
 GO
 
--- Extended Properties [tx].[StaffTeacherIncentiveAllotmentDesignationCode] --
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1722, DC165. TeacherIncentiveAllotmentDesignationCode indicates a teacher (ROLE-ID 087) is an Active National Board Certified Teacher, holds a current designation (Recognized, Exemplary, or Master) and/or has been submitted by an LEA for a new or change of designation in the Teacher Incentive Allotment.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StaffTeacherIncentiveAllotmentDesignationCode'
+-- Extended Properties [tx].[StaffTeacherIncentiveAllotmentDesignation] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1722, DC165. TeacherIncentiveAllotmentDesignationCode indicates a teacher (ROLE-ID 087) is an Active National Board Certified Teacher, holds a current designation (Recognized, Exemplary, or Master) and/or has been submitted by an LEA for a new or change of designation in the Teacher Incentive Allotment.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StaffTeacherIncentiveAllotmentDesignation'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique alphanumeric code assigned to a staff.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StaffTeacherIncentiveAllotmentDesignationCode', @level2type=N'COLUMN', @level2name=N'StaffUSI'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique alphanumeric code assigned to a staff.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StaffTeacherIncentiveAllotmentDesignation', @level2type=N'COLUMN', @level2name=N'StaffUSI'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1722, DC165. TeacherIncentiveAllotmentDesignationCode indicates a teacher (ROLE-ID 087) is an Active National Board Certified Teacher, holds a current designation (Recognized, Exemplary, or Master) and/or has been submitted by an LEA for a new or change of designation in the Teacher Incentive Allotment.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StaffTeacherIncentiveAllotmentDesignationCode', @level2type=N'COLUMN', @level2name=N'TeacherIncentiveAllotmentDesignationCodeDescriptorId'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1722, DC165. TeacherIncentiveAllotmentDesignationCode indicates a teacher (ROLE-ID 087) is an Active National Board Certified Teacher, holds a current designation (Recognized, Exemplary, or Master) and/or has been submitted by an LEA for a new or change of designation in the Teacher Incentive Allotment.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StaffTeacherIncentiveAllotmentDesignation', @level2type=N'COLUMN', @level2name=N'TeacherIncentiveAllotmentDesignationDescriptorId'
 GO
 
 -- Extended Properties [tx].[StaffTypeDescriptor] --
@@ -1104,11 +1465,87 @@ EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'StaffType with
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Begin date of the effecive date for the StaffTypeSet', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StaffTypeSet', @level2type=N'COLUMN', @level2name=N'BeginDate'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1073, C181. StaffType indicates whether the staff person is on the district payroll or is a contracted professional staff person (instructional and non-instructional)', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StaffTypeSet', @level2type=N'COLUMN', @level2name=N'StaffTypeDescriptorId'
-GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique alphanumeric code assigned to a staff.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StaffTypeSet', @level2type=N'COLUMN', @level2name=N'StaffUSI'
 GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1073, C181. StaffType indicates whether the staff person is on the district payroll or is a contracted professional staff person (instructional and non-instructional)', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StaffTypeSet', @level2type=N'COLUMN', @level2name=N'StaffTypeDescriptorId'
+GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'End date of the effecive date for the StaffTypeSet', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StaffTypeSet', @level2type=N'COLUMN', @level2name=N'EndDate'
+GO
+
+-- Extended Properties [tx].[StudentAcademicRecordDiplomaExtension] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Extension to diploma.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentAcademicRecordDiplomaExtension'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The month, day, and year on which the student met  graduation requirements and was awarded a diploma.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentAcademicRecordDiplomaExtension', @level2type=N'COLUMN', @level2name=N'DiplomaAwardDate'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The type of diploma/credential that is awarded to a student in recognition of his/her completion of the curricular requirements.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentAcademicRecordDiplomaExtension', @level2type=N'COLUMN', @level2name=N'DiplomaTypeDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to an education organization.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentAcademicRecordDiplomaExtension', @level2type=N'COLUMN', @level2name=N'EducationOrganizationId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier for the school year.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentAcademicRecordDiplomaExtension', @level2type=N'COLUMN', @level2name=N'SchoolYear'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique alphanumeric code assigned to a student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentAcademicRecordDiplomaExtension', @level2type=N'COLUMN', @level2name=N'StudentUSI'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The term for the session during the school year.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentAcademicRecordDiplomaExtension', @level2type=N'COLUMN', @level2name=N'TermDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1562. IndividualGraduationCommitteeGraduateIndicator Indicates whether a student for whom an IGC was established has graduated based on an IGC decision.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentAcademicRecordDiplomaExtension', @level2type=N'COLUMN', @level2name=N'IndividualGraduationCommitteeGraduateIndicator'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1589. MilitaryEnlistmentIndicator indicates that a student leaver enlisted in the United States Armed Forces.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentAcademicRecordDiplomaExtension', @level2type=N'COLUMN', @level2name=N'MilitaryEnlistmentIndicator'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1542. FHSPDistingLevelGraduate', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentAcademicRecordDiplomaExtension', @level2type=N'COLUMN', @level2name=N'FHSPDistingLevelGraduate'
+GO
+
+-- Extended Properties [tx].[StudentAcademicRecordDiplomaFinancialAidApplication] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1724. The FinancialAidApplication indicates the manner in which the student completed the graduation requirement of either completing a financial aid application (FAFSA or TAFSA) or submitting an exemption.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentAcademicRecordDiplomaFinancialAidApplication'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The month, day, and year on which the student met  graduation requirements and was awarded a diploma.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentAcademicRecordDiplomaFinancialAidApplication', @level2type=N'COLUMN', @level2name=N'DiplomaAwardDate'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The type of diploma/credential that is awarded to a student in recognition of his/her completion of the curricular requirements.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentAcademicRecordDiplomaFinancialAidApplication', @level2type=N'COLUMN', @level2name=N'DiplomaTypeDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to an education organization.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentAcademicRecordDiplomaFinancialAidApplication', @level2type=N'COLUMN', @level2name=N'EducationOrganizationId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1724. The FinancialAidApplication indicates the manner in which the student completed the graduation requirement of either completing a financial aid application (FAFSA or TAFSA) or submitting an exemption.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentAcademicRecordDiplomaFinancialAidApplication', @level2type=N'COLUMN', @level2name=N'FinancialAidApplicationDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier for the school year.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentAcademicRecordDiplomaFinancialAidApplication', @level2type=N'COLUMN', @level2name=N'SchoolYear'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique alphanumeric code assigned to a student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentAcademicRecordDiplomaFinancialAidApplication', @level2type=N'COLUMN', @level2name=N'StudentUSI'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The term for the session during the school year.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentAcademicRecordDiplomaFinancialAidApplication', @level2type=N'COLUMN', @level2name=N'TermDescriptorId'
+GO
+
+-- Extended Properties [tx].[StudentAcademicRecordEndorsementCompletedSet] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Collection of EndorsementCompleted', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentAcademicRecordEndorsementCompletedSet'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to an education organization.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentAcademicRecordEndorsementCompletedSet', @level2type=N'COLUMN', @level2name=N'EducationOrganizationId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier for the school year.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentAcademicRecordEndorsementCompletedSet', @level2type=N'COLUMN', @level2name=N'SchoolYear'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique alphanumeric code assigned to a student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentAcademicRecordEndorsementCompletedSet', @level2type=N'COLUMN', @level2name=N'StudentUSI'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The term for the session during the school year.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentAcademicRecordEndorsementCompletedSet', @level2type=N'COLUMN', @level2name=N'TermDescriptorId'
+GO
+
+-- Extended Properties [tx].[StudentAcademicRecordEndorsementCompletedSetEndorsementCompleted] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1544 - E1548. EndorsementCompleted indicates the student has successfully completed a FHSP program to earn one of the following endorsements:
+• STEM
+• Business and Industry
+• Public Services
+• Arts and Humanities
+• Multi-Disciplinary Studies', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentAcademicRecordEndorsementCompletedSetEndorsementCompleted'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to an education organization.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentAcademicRecordEndorsementCompletedSetEndorsementCompleted', @level2type=N'COLUMN', @level2name=N'EducationOrganizationId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1544 - E1548. EndorsementCompleted indicates the student has successfully completed a FHSP program to earn one of the following endorsements:
+• STEM
+• Business and Industry
+• Public Services
+• Arts and Humanities
+• Multi-Disciplinary Studies', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentAcademicRecordEndorsementCompletedSetEndorsementCompleted', @level2type=N'COLUMN', @level2name=N'EndorsementCompletedDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier for the school year.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentAcademicRecordEndorsementCompletedSetEndorsementCompleted', @level2type=N'COLUMN', @level2name=N'SchoolYear'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique alphanumeric code assigned to a student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentAcademicRecordEndorsementCompletedSetEndorsementCompleted', @level2type=N'COLUMN', @level2name=N'StudentUSI'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The term for the session during the school year.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentAcademicRecordEndorsementCompletedSetEndorsementCompleted', @level2type=N'COLUMN', @level2name=N'TermDescriptorId'
 GO
 
 -- Extended Properties [tx].[StudentAcademicRecordEndorsementPursuing] --
@@ -1136,9 +1573,9 @@ EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique alpha
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The term for the session during the school year.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentAcademicRecordExtension', @level2type=N'COLUMN', @level2name=N'TermDescriptorId'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1596. AssociateDegreeIndicator indicates that the student earned an associate degree prior to graduation from high school. ', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentAcademicRecordExtension', @level2type=N'COLUMN', @level2name=N'AssociateDegreeIndicator'
-GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1563. IndividualGraduationCommitteeReview indicates whether an IGC has been established for a student regardless of which graduation program type is being pursued.  This is collected for students in grades 11 and 12.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentAcademicRecordExtension', @level2type=N'COLUMN', @level2name=N'IndividualGraduationCommitteeReview'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1596. AssociateDegreeIndicator indicates that the student earned an associate degree prior to graduation from high school. ', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentAcademicRecordExtension', @level2type=N'COLUMN', @level2name=N'AssociateDegreeIndicator'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1541. FHSPParticipant indicates whether a student is currently enrolled in the Foundation High School Program.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentAcademicRecordExtension', @level2type=N'COLUMN', @level2name=N'FHSPParticipant'
 GO
@@ -1148,9 +1585,7 @@ GO
 -- Extended Properties [tx].[StudentAcademicRecordIndustryBasedCertificationSet] --
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Common Type IndustryBasedCertificationSet.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentAcademicRecordIndustryBasedCertificationSet'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Begin date of the effecive date for the IndustryBasedCertificationSet', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentAcademicRecordIndustryBasedCertificationSet', @level2type=N'COLUMN', @level2name=N'BeginDate'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1632. DateCertEarned indicates the date upon which the associated data value(s) is/are considered to take effect, or the associated data value(s) change(s).', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentAcademicRecordIndustryBasedCertificationSet', @level2type=N'COLUMN', @level2name=N'DateCertEarned'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1632. DateCertTaken indicates the date upon which the industry based certification was taken.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentAcademicRecordIndustryBasedCertificationSet', @level2type=N'COLUMN', @level2name=N'DateCertTaken'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to an education organization.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentAcademicRecordIndustryBasedCertificationSet', @level2type=N'COLUMN', @level2name=N'EducationOrganizationId'
 GO
@@ -1164,9 +1599,9 @@ EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique alpha
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The term for the session during the school year.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentAcademicRecordIndustryBasedCertificationSet', @level2type=N'COLUMN', @level2name=N'TermDescriptorId'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1654. IBCExamFeeAmount identifies the amount of money that was paid for a student’s industry certification exam by the local education agency.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentAcademicRecordIndustryBasedCertificationSet', @level2type=N'COLUMN', @level2name=N'IBCExamFeeAmount'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1733. PostSecondaryCertLicensureResult indicates the result of a state, nationally, or internationally recognized industry-based certification exam taken by a student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentAcademicRecordIndustryBasedCertificationSet', @level2type=N'COLUMN', @level2name=N'PostSecondaryCertLicensureResultDescriptorId'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'End date of the effecive date for the IndustryBasedCertificationSet', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentAcademicRecordIndustryBasedCertificationSet', @level2type=N'COLUMN', @level2name=N'EndDate'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1654. IBCExamFeeAmount identifies the amount of money that was paid for a student’s industry certification exam by the local education agency.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentAcademicRecordIndustryBasedCertificationSet', @level2type=N'COLUMN', @level2name=N'IBCExamFeeAmount'
 GO
 
 -- Extended Properties [tx].[StudentApplication] --
@@ -1187,6 +1622,10 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'ApplicationDate is the month, day, and year the application was submitted.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentApplication', @level2type=N'COLUMN', @level2name=N'ApplicationDate'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'ApplicationType indicates the type of application submitted.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentApplication', @level2type=N'COLUMN', @level2name=N'ApplicationTypeDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0706, E1303, C012, DC148. GenerationCode identifies the generation suffix, if any, which the person attaches to his name.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentApplication', @level2type=N'COLUMN', @level2name=N'GenerationCodeDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0001. StudentId is the student''s Social Security number or a state-approved alternative identification number.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentApplication', @level2type=N'COLUMN', @level2name=N'StudentID'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A prefix used to denote the title, degree, position, or seniority of the person.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentApplication', @level2type=N'COLUMN', @level2name=N'PersonalTitlePrefix'
 GO
@@ -1276,13 +1715,27 @@ EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'DyslexiaRisk w
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Begin date of the effecive date for the DyslexiaRisk', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationDyslexiaRiskSet', @level2type=N'COLUMN', @level2name=N'BeginDate'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1644, C222. Descriptor DyslexiaRisk', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationDyslexiaRiskSet', @level2type=N'COLUMN', @level2name=N'DyslexiaRiskDescriptorId'
-GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to an education organization.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationDyslexiaRiskSet', @level2type=N'COLUMN', @level2name=N'EducationOrganizationId'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique alphanumeric code assigned to a student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationDyslexiaRiskSet', @level2type=N'COLUMN', @level2name=N'StudentUSI'
 GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1644, C222. Descriptor DyslexiaRisk', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationDyslexiaRiskSet', @level2type=N'COLUMN', @level2name=N'DyslexiaRiskDescriptorId'
+GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'End date of the effecive date for the DyslexiaRisk', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationDyslexiaRiskSet', @level2type=N'COLUMN', @level2name=N'EndDate'
+GO
+
+-- Extended Properties [tx].[StudentEducationOrganizationAssociationDyslexiaScreeningExceptionReasonSet] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'DyslexiaScreeningExceptionReasonSet with effective dates.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationDyslexiaScreeningExceptionReasonSet'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Begin date of the effecive date for the DyslexiaScreeningExceptionReasonSet.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationDyslexiaScreeningExceptionReasonSet', @level2type=N'COLUMN', @level2name=N'BeginDate'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to an education organization.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationDyslexiaScreeningExceptionReasonSet', @level2type=N'COLUMN', @level2name=N'EducationOrganizationId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique alphanumeric code assigned to a student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationDyslexiaScreeningExceptionReasonSet', @level2type=N'COLUMN', @level2name=N'StudentUSI'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1732. DyslexiaScreeningExceptionReason indicates the reason a student in kindergarten or first grade was not screened for dyslexia or related disorders during the dyslexia screening window.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationDyslexiaScreeningExceptionReasonSet', @level2type=N'COLUMN', @level2name=N'DyslexiaScreeningExceptionReasonDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'End date of the effecive date for the DyslexiaScreeningExceptionReasonSet.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationDyslexiaScreeningExceptionReasonSet', @level2type=N'COLUMN', @level2name=N'EndDate'
 GO
 
 -- Extended Properties [tx].[StudentEducationOrganizationAssociationDyslexiaServicesSet] --
@@ -1304,11 +1757,11 @@ EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'EarlyReadingIn
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Begin date of the effecive date for the EarlyReadingIndicator', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationEarlyReadingIndicatorSet', @level2type=N'COLUMN', @level2name=N'BeginDate'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1522, C195. EarlyReadingIndicator indicates whether a student is eligible for accelerated reading instruction as indicated by the administered reading instrument.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationEarlyReadingIndicatorSet', @level2type=N'COLUMN', @level2name=N'EarlyReadingIndicatorDescriptorId'
-GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to an education organization.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationEarlyReadingIndicatorSet', @level2type=N'COLUMN', @level2name=N'EducationOrganizationId'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique alphanumeric code assigned to a student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationEarlyReadingIndicatorSet', @level2type=N'COLUMN', @level2name=N'StudentUSI'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1522, C195. EarlyReadingIndicator indicates whether a student is eligible for accelerated reading instruction as indicated by the administered reading instrument.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationEarlyReadingIndicatorSet', @level2type=N'COLUMN', @level2name=N'EarlyReadingIndicatorDescriptorId'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'End date of the effecive date for the EarlyReadingIndicator', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationEarlyReadingIndicatorSet', @level2type=N'COLUMN', @level2name=N'EndDate'
 GO
@@ -1318,11 +1771,11 @@ EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'EconomicDisadv
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Begin date of the effecive date for the EconomicDisadvantage', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationEconomicDisadvantageSet', @level2type=N'COLUMN', @level2name=N'BeginDate'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0785, C054. EconomicDisadvantage indicates the student''s economic disadvantage status.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationEconomicDisadvantageSet', @level2type=N'COLUMN', @level2name=N'EconomicDisadvantageDescriptorId'
-GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to an education organization.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationEconomicDisadvantageSet', @level2type=N'COLUMN', @level2name=N'EducationOrganizationId'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique alphanumeric code assigned to a student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationEconomicDisadvantageSet', @level2type=N'COLUMN', @level2name=N'StudentUSI'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0785, C054. EconomicDisadvantage indicates the student''s economic disadvantage status.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationEconomicDisadvantageSet', @level2type=N'COLUMN', @level2name=N'EconomicDisadvantageDescriptorId'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'End date of the effecive date for the EconomicDisadvantage', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationEconomicDisadvantageSet', @level2type=N'COLUMN', @level2name=N'EndDate'
 GO
@@ -1334,9 +1787,9 @@ EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Begin date of 
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to an education organization.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationEmergentBilingualSet', @level2type=N'COLUMN', @level2name=N'EducationOrganizationId'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Descriptor EmergentBilingualIndicator indicates that the student has been identified as an emergent bilingual (EB) student by the Language Proficiency Assessment Committee (LPAC), or English proficient.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationEmergentBilingualSet', @level2type=N'COLUMN', @level2name=N'EmergentBilingualIndicatorDescriptorId'
-GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique alphanumeric code assigned to a student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationEmergentBilingualSet', @level2type=N'COLUMN', @level2name=N'StudentUSI'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Descriptor EmergentBilingualIndicator indicates that the student has been identified as an emergent bilingual (EB) student by the Language Proficiency Assessment Committee (LPAC), or English proficient.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationEmergentBilingualSet', @level2type=N'COLUMN', @level2name=N'EmergentBilingualIndicatorDescriptorId'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'End date of the effecive date for the EmergentBilingualSet', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationEmergentBilingualSet', @level2type=N'COLUMN', @level2name=N'EndDate'
 GO
@@ -1348,9 +1801,9 @@ EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Begin date of 
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to an education organization.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationFosterCareTypeSet', @level2type=N'COLUMN', @level2name=N'EducationOrganizationId'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1528, C196. FosterCareType indicates whether a student is in the conservatorship of the Department of Family and Protective Services (DFPS) currently, or for a prekindergarten student that was previously in the conservatorship of DFPS, or for a prekindergarten student that is or ever has been in foster care in another state or territory, if the student resides in this state (Texas).', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationFosterCareTypeSet', @level2type=N'COLUMN', @level2name=N'FosterCareTypeDescriptorId'
-GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique alphanumeric code assigned to a student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationFosterCareTypeSet', @level2type=N'COLUMN', @level2name=N'StudentUSI'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1528, C196. FosterCareType indicates whether a student is in the conservatorship of the Department of Family and Protective Services (DFPS) currently, or for a prekindergarten student that was previously in the conservatorship of DFPS, or for a prekindergarten student that is or ever has been in foster care in another state or territory, if the student resides in this state (Texas).', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationFosterCareTypeSet', @level2type=N'COLUMN', @level2name=N'FosterCareTypeDescriptorId'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'End date of the effecive date for the FosterCareType', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationFosterCareTypeSet', @level2type=N'COLUMN', @level2name=N'EndDate'
 GO
@@ -1361,6 +1814,8 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Begin date of the effecive date for the HomelessStatus', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationHomelessStatusSet', @level2type=N'COLUMN', @level2name=N'BeginDate'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to an education organization.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationHomelessStatusSet', @level2type=N'COLUMN', @level2name=N'EducationOrganizationId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique alphanumeric code assigned to a student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationHomelessStatusSet', @level2type=N'COLUMN', @level2name=N'StudentUSI'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1082, C189. As defined by 42 U.S.C. Section 11434(a), the term “homeless children and youths” —
 (A) means individuals who lack a fixed, regular, and adequate nighttime residence [within the meaning of section 11302(a)(1)]; and
@@ -1374,8 +1829,6 @@ EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1082, C189. A
 (iii) children and youths who are living in cars, parks, public spaces, abandoned buildings, substandard housing, bus or train stations, or similar settings; and
 
 (iv) migratory children (as such term is defined in section 6399 of title 20) who qualify as homeless for the purposes of this subtitle because the children are living in circumstances described in clauses (i) through (iii).', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationHomelessStatusSet', @level2type=N'COLUMN', @level2name=N'HomelessStatusDescriptorId'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique alphanumeric code assigned to a student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationHomelessStatusSet', @level2type=N'COLUMN', @level2name=N'StudentUSI'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'End date of the effecive date for the HomelessStatus', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationHomelessStatusSet', @level2type=N'COLUMN', @level2name=N'EndDate'
 GO
@@ -1415,9 +1868,9 @@ EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Begin date of 
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to an education organization.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationMilitaryConnectedStudentSet', @level2type=N'COLUMN', @level2name=N'EducationOrganizationId'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1529, C197. MilitaryConnectedStudent indicates a student enrolled in a school district or open-enrollment charter school who is a dependent of an active duty or former member of the United States military, the Texas National Guard, or a reserve force of the United States military, or who is a dependent of a member of the United States military, the Texas National Guard, or a reserve force of the United States military who was killed in the line of duty.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationMilitaryConnectedStudentSet', @level2type=N'COLUMN', @level2name=N'MilitaryConnectedStudentDescriptorId'
-GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique alphanumeric code assigned to a student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationMilitaryConnectedStudentSet', @level2type=N'COLUMN', @level2name=N'StudentUSI'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1529, C197. MilitaryConnectedStudent indicates a student enrolled in a school district or open-enrollment charter school who is a dependent of an active duty or former member of the United States military, the Texas National Guard, or a reserve force of the United States military, or who is a dependent of a member of the United States military, the Texas National Guard, or a reserve force of the United States military who was killed in the line of duty.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationMilitaryConnectedStudentSet', @level2type=N'COLUMN', @level2name=N'MilitaryConnectedStudentDescriptorId'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'End date of the effecive date for MilitaryConnectedStudent', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationMilitaryConnectedStudentSet', @level2type=N'COLUMN', @level2name=N'EndDate'
 GO
@@ -1431,9 +1884,9 @@ EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Order of PK Funding Source.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationPKFundingSourceSet', @level2type=N'COLUMN', @level2name=N'OrderOfPKFundingSource'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1079, E1080, C186. PKFundingSource indicates the source of funding for a Pre-kindergarten student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationPKFundingSourceSet', @level2type=N'COLUMN', @level2name=N'PKFundingSourceDescriptorId'
-GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique alphanumeric code assigned to a student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationPKFundingSourceSet', @level2type=N'COLUMN', @level2name=N'StudentUSI'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1079, E1080, C186. PKFundingSource indicates the source of funding for a Pre-kindergarten student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationPKFundingSourceSet', @level2type=N'COLUMN', @level2name=N'PKFundingSourceDescriptorId'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'End date of the effecive date for the PKFundingSource', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationPKFundingSourceSet', @level2type=N'COLUMN', @level2name=N'EndDate'
 GO
@@ -1515,8 +1968,6 @@ EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The earliest d
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to an education organization.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentLanguageInstructionProgramAssociationParentalPermissionSet', @level2type=N'COLUMN', @level2name=N'EducationOrganizationId'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0896, C093. ParentalPermission indicates whether the student''s parent or legal guardian has approved placement of the student in the required bilingual or English as a Second Language (ESL) program. (See 19 TAC §89.1240.)', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentLanguageInstructionProgramAssociationParentalPermissionSet', @level2type=N'COLUMN', @level2name=N'ParentalPermissionDescriptorId'
-GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'ParentalPermissionSetBeginDate', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentLanguageInstructionProgramAssociationParentalPermissionSet', @level2type=N'COLUMN', @level2name=N'ParentPermissionSetBeginDate'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to an education organization.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentLanguageInstructionProgramAssociationParentalPermissionSet', @level2type=N'COLUMN', @level2name=N'ProgramEducationOrganizationId'
@@ -1526,6 +1977,8 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The type of program.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentLanguageInstructionProgramAssociationParentalPermissionSet', @level2type=N'COLUMN', @level2name=N'ProgramTypeDescriptorId'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique alphanumeric code assigned to a student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentLanguageInstructionProgramAssociationParentalPermissionSet', @level2type=N'COLUMN', @level2name=N'StudentUSI'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0896, C093. ParentalPermission indicates whether the student''s parent or legal guardian has approved placement of the student in the required bilingual or English as a Second Language (ESL) program. (See 19 TAC §89.1240.)', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentLanguageInstructionProgramAssociationParentalPermissionSet', @level2type=N'COLUMN', @level2name=N'ParentalPermissionDescriptorId'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'ParentalPermissionSetBeginDate', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentLanguageInstructionProgramAssociationParentalPermissionSet', @level2type=N'COLUMN', @level2name=N'ParentPermissionSetEndDate'
 GO
@@ -1622,26 +2075,6 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The order by severity of student''s disabilities: 1- Primary, 2 -  Secondary, 3 - Tertiary, etc.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentSpecialEducationProgramAssociationDisabilitySet', @level2type=N'COLUMN', @level2name=N'OrderOfDisability'
 GO
 
--- Extended Properties [tx].[StudentSpecialEducationProgramAssociationESYProgramAssociation] --
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'ESYProgramAssociation represents the students who served through the Extended School Year (ESY) Services Program.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentSpecialEducationProgramAssociationESYProgramAssociation'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The earliest date the student is involved with the program. Typically, this is the date the student becomes eligible for the program.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentSpecialEducationProgramAssociationESYProgramAssociation', @level2type=N'COLUMN', @level2name=N'BeginDate'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to an education organization.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentSpecialEducationProgramAssociationESYProgramAssociation', @level2type=N'COLUMN', @level2name=N'EducationOrganizationId'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to an education organization.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentSpecialEducationProgramAssociationESYProgramAssociation', @level2type=N'COLUMN', @level2name=N'ProgramEducationOrganizationId'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The formal name of the Program of instruction, training, services, or benefits available through federal, state, or local agencies.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentSpecialEducationProgramAssociationESYProgramAssociation', @level2type=N'COLUMN', @level2name=N'ProgramName'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The type of program.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentSpecialEducationProgramAssociationESYProgramAssociation', @level2type=N'COLUMN', @level2name=N'ProgramTypeDescriptorId'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique alphanumeric code assigned to a student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentSpecialEducationProgramAssociationESYProgramAssociation', @level2type=N'COLUMN', @level2name=N'StudentUSI'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1013. TotalESYContactHoursInstructionalSetting indicates the total contact hours in an instructional setting provided to the student through the extended school year services component of special education.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentSpecialEducationProgramAssociationESYProgramAssociation', @level2type=N'COLUMN', @level2name=N'TotalESYContactHoursInstructionalSetting'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'OrderOfSpecialEducationSetting indicates the order of Special Education Setting', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentSpecialEducationProgramAssociationESYProgramAssociation', @level2type=N'COLUMN', @level2name=N'OrderOfSpecialEducationSetting'
-GO
-
 -- Extended Properties [tx].[StudentSpecialEducationProgramAssociationExtension] --
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentSpecialEducationProgramAssociationExtension'
 GO
@@ -1704,28 +2137,26 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1664, DC158. HoursSpentReceivingServices identifies the amount of time in which the student receives services.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentSpecialEducationProgramAssociationLanguageAcquisition', @level2type=N'COLUMN', @level2name=N'HoursSpentReceivingServicesDescriptorId'
 GO
 
--- Extended Properties [tx].[StudentSpecialEducationProgramAssociationSpecialEducationSettingSet] --
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'StudentSPEDProgramAssociationSet represents the Student SPED Program Association Settings with effective dates.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentSpecialEducationProgramAssociationSpecialEducationSettingSet'
+-- Extended Properties [tx].[StudentSpecialEducationProgramAssociationSpecialEducationEnvironmentSet] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'StudentSPEDProgramAssociationSet representshe MedicallyFragile, MultiplyDisabled, LEAOfRDSPDService, ChildCountFunding, PPCDServiceLocation with effective dates.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentSpecialEducationProgramAssociationSpecialEducationEnvironmentSet'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The earliest date the student is involved with the program. Typically, this is the date the student becomes eligible for the program.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentSpecialEducationProgramAssociationSpecialEducationSettingSet', @level2type=N'COLUMN', @level2name=N'BeginDate'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The earliest date the student is involved with the program. Typically, this is the date the student becomes eligible for the program.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentSpecialEducationProgramAssociationSpecialEducationEnvironmentSet', @level2type=N'COLUMN', @level2name=N'BeginDate'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to an education organization.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentSpecialEducationProgramAssociationSpecialEducationSettingSet', @level2type=N'COLUMN', @level2name=N'EducationOrganizationId'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to an education organization.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentSpecialEducationProgramAssociationSpecialEducationEnvironmentSet', @level2type=N'COLUMN', @level2name=N'EducationOrganizationId'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'OrderOfSpecialEducationSetting identifies the oredr if Special Education Setting.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentSpecialEducationProgramAssociationSpecialEducationSettingSet', @level2type=N'COLUMN', @level2name=N'OrderOfSpecialEducationSetting'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'EnvironmentBeginDate indicates the first month, day, and year the EducationalEnvironment becomes true for a student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentSpecialEducationProgramAssociationSpecialEducationEnvironmentSet', @level2type=N'COLUMN', @level2name=N'EnvironmentBeginDate'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to an education organization.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentSpecialEducationProgramAssociationSpecialEducationSettingSet', @level2type=N'COLUMN', @level2name=N'ProgramEducationOrganizationId'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to an education organization.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentSpecialEducationProgramAssociationSpecialEducationEnvironmentSet', @level2type=N'COLUMN', @level2name=N'ProgramEducationOrganizationId'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The formal name of the Program of instruction, training, services, or benefits available through federal, state, or local agencies.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentSpecialEducationProgramAssociationSpecialEducationSettingSet', @level2type=N'COLUMN', @level2name=N'ProgramName'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The formal name of the Program of instruction, training, services, or benefits available through federal, state, or local agencies.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentSpecialEducationProgramAssociationSpecialEducationEnvironmentSet', @level2type=N'COLUMN', @level2name=N'ProgramName'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The type of program.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentSpecialEducationProgramAssociationSpecialEducationSettingSet', @level2type=N'COLUMN', @level2name=N'ProgramTypeDescriptorId'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The type of program.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentSpecialEducationProgramAssociationSpecialEducationEnvironmentSet', @level2type=N'COLUMN', @level2name=N'ProgramTypeDescriptorId'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'SpecialEducationSettingSetBeginDate', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentSpecialEducationProgramAssociationSpecialEducationSettingSet', @level2type=N'COLUMN', @level2name=N'SettingBeginDate'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique alphanumeric code assigned to a student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentSpecialEducationProgramAssociationSpecialEducationEnvironmentSet', @level2type=N'COLUMN', @level2name=N'StudentUSI'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0173, C035. SpecialEducationSetting identifies the setting used in providing instruction to students.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentSpecialEducationProgramAssociationSpecialEducationSettingSet', @level2type=N'COLUMN', @level2name=N'SpecialEducationSettingDescriptorId'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0173. EducationalEnvironment identifies the setting used in providing instruction to students.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentSpecialEducationProgramAssociationSpecialEducationEnvironmentSet', @level2type=N'COLUMN', @level2name=N'EducationalEnvironmentDescriptorId'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique alphanumeric code assigned to a student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentSpecialEducationProgramAssociationSpecialEducationSettingSet', @level2type=N'COLUMN', @level2name=N'StudentUSI'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'SpecialEducationSettingSetEndDate', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentSpecialEducationProgramAssociationSpecialEducationSettingSet', @level2type=N'COLUMN', @level2name=N'SettingEndDate'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'EnvironmentEndDate indicates the first month, day, and year of non-participation in the EducationalEnvironment for a student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentSpecialEducationProgramAssociationSpecialEducationEnvironmentSet', @level2type=N'COLUMN', @level2name=N'EnvironmentEndDate'
 GO
 
 -- Extended Properties [tx].[StudentSpecialEducationProgramAssociationStudentResidentialFacilityAssociation] --
@@ -1817,6 +2248,8 @@ EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1716. Eligibi
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1717. IDEAIndicator indicates whether or not the student was determined eligible and enrolled in special education and related services as a result of the full individual and initial evaluation (FIIE) report and the admission, review, and dismissal (ARD) committee meeting decision.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentSpecialEducationProgramEligibilityAssociation', @level2type=N'COLUMN', @level2name=N'IDEAIndicator'
 GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1731. EligibilityDelayReason refers to the reason why the eligibility determination was completed beyond the required timeframe.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentSpecialEducationProgramEligibilityAssociation', @level2type=N'COLUMN', @level2name=N'EligibilityDelayReasonDescriptorId'
+GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0900, E1632. OriginalECIServicesDate is the month, date, and year when an infant or toddler, from birth through age 2, began participating in the early childhood intervention program. (See Texas Human Resources Code §73.001 and 73.021)', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentSpecialEducationProgramEligibilityAssociation', @level2type=N'COLUMN', @level2name=N'OriginalECIServicesDate'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1712. TransitionNotificationDate indicates the month, day, and year the LEA Notification of Potentially Eligible for Special Education Services was sent by the early childhood intervention (ECI) contractor to the local education agency (LEA) to notify them that a child enrolled in ECI will shortly reach the age of eligibility for Part B services and the child is potentially eligible for services under Part B, early childhood special education (ECSE).  The LEA Notification constitutes a referral to the LEA for an initial evaluation and eligibility determination of the child which the parent may opt out from the referral.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentSpecialEducationProgramEligibilityAssociation', @level2type=N'COLUMN', @level2name=N'TransitionNotificationDate'
@@ -1846,10 +2279,10 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'StudentTitleIPartAProgramAssociationEndDate', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentTitleIPartAProgramAssociationSet', @level2type=N'COLUMN', @level2name=N'StudentTitleIPartAProgramAssociationSetEndDate'
 GO
 
--- Extended Properties [tx].[TeacherIncentiveAllotmentDesignationCodeDescriptor] --
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Descriptor TeacherIncentiveAllotmentDesignationCode is based on code table DC165', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'TeacherIncentiveAllotmentDesignationCodeDescriptor'
+-- Extended Properties [tx].[TeacherIncentiveAllotmentDesignationDescriptor] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Descriptor TeacherIncentiveAllotmentDesignation is based on code table DC165', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'TeacherIncentiveAllotmentDesignationDescriptor'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'TeacherIncentiveAllotmentDesignationCodeDescriptor', @level2type=N'COLUMN', @level2name=N'TeacherIncentiveAllotmentDesignationCodeDescriptorId'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'TeacherIncentiveAllotmentDesignationDescriptor', @level2type=N'COLUMN', @level2name=N'TeacherIncentiveAllotmentDesignationDescriptorId'
 GO
 
 -- Extended Properties [tx].[TitleOfAssessmentDescriptor] --

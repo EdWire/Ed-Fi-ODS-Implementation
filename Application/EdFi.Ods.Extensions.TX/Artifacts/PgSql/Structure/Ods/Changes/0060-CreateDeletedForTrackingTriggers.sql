@@ -53,18 +53,18 @@ $BODY$ LANGUAGE plpgsql;
 CREATE TRIGGER TrackDeletes AFTER DELETE ON tx.ArmedServicesVocAptBatteryDescriptor 
     FOR EACH ROW EXECUTE PROCEDURE tracked_deletes_tx.ArmedServicesVocAptBatteryDescriptor_TR_DelTrkg();
 
-CREATE FUNCTION tracked_deletes_tx.AsOfStatusALeaver_TR_DelTrkg()
+CREATE FUNCTION tracked_deletes_tx.AsOfStatusALeavers_TR_DelTrkg()
     RETURNS trigger AS
 $BODY$
 BEGIN
-    INSERT INTO tracked_deletes_tx.AsOfStatusALeaver(SchoolId, StudentUID, Id, ChangeVersion)
+    INSERT INTO tracked_deletes_tx.AsOfStatusALeavers(SchoolId, StudentUID, Id, ChangeVersion)
     VALUES (OLD.SchoolId, OLD.StudentUID, OLD.Id, nextval('changes.ChangeVersionSequence'));
     RETURN NULL;
 END;
 $BODY$ LANGUAGE plpgsql;
 
-CREATE TRIGGER TrackDeletes AFTER DELETE ON tx.AsOfStatusALeaver 
-    FOR EACH ROW EXECUTE PROCEDURE tracked_deletes_tx.AsOfStatusALeaver_TR_DelTrkg();
+CREATE TRIGGER TrackDeletes AFTER DELETE ON tx.AsOfStatusALeavers 
+    FOR EACH ROW EXECUTE PROCEDURE tracked_deletes_tx.AsOfStatusALeavers_TR_DelTrkg();
 
 CREATE FUNCTION tracked_deletes_tx.AsOfStatusLastDayEnrollmentDescriptor_TR_DelTrkg()
     RETURNS trigger AS
@@ -122,6 +122,46 @@ $BODY$ LANGUAGE plpgsql;
 CREATE TRIGGER TrackDeletes AFTER DELETE ON tx.AuxiliaryRoleIdDescriptor 
     FOR EACH ROW EXECUTE PROCEDURE tracked_deletes_tx.AuxiliaryRoleIdDescriptor_TR_DelTrkg();
 
+CREATE FUNCTION tracked_deletes_tx.BasicReportingPeriodAttendance_TR_DelTrkg()
+    RETURNS trigger AS
+$BODY$
+BEGIN
+    INSERT INTO tracked_deletes_tx.BasicReportingPeriodAttendance(CalendarCode, GradeLevelDescriptorId, ReportingPeriodDescriptorId, SchoolId, StudentUSI, Id, ChangeVersion)
+    VALUES (OLD.CalendarCode, OLD.GradeLevelDescriptorId, OLD.ReportingPeriodDescriptorId, OLD.SchoolId, OLD.StudentUSI, OLD.Id, nextval('changes.ChangeVersionSequence'));
+    RETURN NULL;
+END;
+$BODY$ LANGUAGE plpgsql;
+
+CREATE TRIGGER TrackDeletes AFTER DELETE ON tx.BasicReportingPeriodAttendance 
+    FOR EACH ROW EXECUTE PROCEDURE tracked_deletes_tx.BasicReportingPeriodAttendance_TR_DelTrkg();
+
+CREATE FUNCTION tracked_deletes_tx.BilingualESLFundingDescriptor_TR_DelTrkg()
+    RETURNS trigger AS
+$BODY$
+BEGIN
+    INSERT INTO tracked_deletes_tx.BilingualESLFundingDescriptor(BilingualESLFundingDescriptorId, Id, ChangeVersion)
+    SELECT OLD.BilingualESLFundingDescriptorId, Id, nextval('changes.ChangeVersionSequence')
+    FROM edfi.Descriptor WHERE DescriptorId = OLD.BilingualESLFundingDescriptorId;
+    RETURN NULL;
+END;
+$BODY$ LANGUAGE plpgsql;
+
+CREATE TRIGGER TrackDeletes AFTER DELETE ON tx.BilingualESLFundingDescriptor 
+    FOR EACH ROW EXECUTE PROCEDURE tracked_deletes_tx.BilingualESLFundingDescriptor_TR_DelTrkg();
+
+CREATE FUNCTION tracked_deletes_tx.BilingualESLProgramReportingPeriodAttendance_TR_DelTrkg()
+    RETURNS trigger AS
+$BODY$
+BEGIN
+    INSERT INTO tracked_deletes_tx.BilingualESLProgramReportingPeriodAttendance(BilingualESLFundingDescriptorId, CalendarCode, GradeLevelDescriptorId, ReportingPeriodDescriptorId, SchoolId, StudentUSI, Id, ChangeVersion)
+    VALUES (OLD.BilingualESLFundingDescriptorId, OLD.CalendarCode, OLD.GradeLevelDescriptorId, OLD.ReportingPeriodDescriptorId, OLD.SchoolId, OLD.StudentUSI, OLD.Id, nextval('changes.ChangeVersionSequence'));
+    RETURN NULL;
+END;
+$BODY$ LANGUAGE plpgsql;
+
+CREATE TRIGGER TrackDeletes AFTER DELETE ON tx.BilingualESLProgramReportingPeriodAttendance 
+    FOR EACH ROW EXECUTE PROCEDURE tracked_deletes_tx.BilingualESLProgramReportingPeriodAttendance_TR_DelTrkg();
+
 CREATE FUNCTION tracked_deletes_tx.BudgetExt_TR_DelTrkg()
     RETURNS trigger AS
 $BODY$
@@ -134,6 +174,33 @@ $BODY$ LANGUAGE plpgsql;
 
 CREATE TRIGGER TrackDeletes AFTER DELETE ON tx.BudgetExt 
     FOR EACH ROW EXECUTE PROCEDURE tracked_deletes_tx.BudgetExt_TR_DelTrkg();
+
+CREATE FUNCTION tracked_deletes_tx.CTEProgramReportingPeriodAttendance_TR_DelTrkg()
+    RETURNS trigger AS
+$BODY$
+BEGIN
+    INSERT INTO tracked_deletes_tx.CTEProgramReportingPeriodAttendance(CalendarCode, CTEServiceIdDescriptorId, GradeLevelDescriptorId, ReportingPeriodDescriptorId, SchoolId, StudentUSI, Id, ChangeVersion)
+    VALUES (OLD.CalendarCode, OLD.CTEServiceIdDescriptorId, OLD.GradeLevelDescriptorId, OLD.ReportingPeriodDescriptorId, OLD.SchoolId, OLD.StudentUSI, OLD.Id, nextval('changes.ChangeVersionSequence'));
+    RETURN NULL;
+END;
+$BODY$ LANGUAGE plpgsql;
+
+CREATE TRIGGER TrackDeletes AFTER DELETE ON tx.CTEProgramReportingPeriodAttendance 
+    FOR EACH ROW EXECUTE PROCEDURE tracked_deletes_tx.CTEProgramReportingPeriodAttendance_TR_DelTrkg();
+
+CREATE FUNCTION tracked_deletes_tx.CTEServiceIdDescriptor_TR_DelTrkg()
+    RETURNS trigger AS
+$BODY$
+BEGIN
+    INSERT INTO tracked_deletes_tx.CTEServiceIdDescriptor(CTEServiceIdDescriptorId, Id, ChangeVersion)
+    SELECT OLD.CTEServiceIdDescriptorId, Id, nextval('changes.ChangeVersionSequence')
+    FROM edfi.Descriptor WHERE DescriptorId = OLD.CTEServiceIdDescriptorId;
+    RETURN NULL;
+END;
+$BODY$ LANGUAGE plpgsql;
+
+CREATE TRIGGER TrackDeletes AFTER DELETE ON tx.CTEServiceIdDescriptor 
+    FOR EACH ROW EXECUTE PROCEDURE tracked_deletes_tx.CTEServiceIdDescriptor_TR_DelTrkg();
 
 CREATE FUNCTION tracked_deletes_tx.CalendarWaiverEventTypeDescriptor_TR_DelTrkg()
     RETURNS trigger AS
@@ -246,6 +313,20 @@ $BODY$ LANGUAGE plpgsql;
 CREATE TRIGGER TrackDeletes AFTER DELETE ON tx.DyslexiaRiskDescriptor 
     FOR EACH ROW EXECUTE PROCEDURE tracked_deletes_tx.DyslexiaRiskDescriptor_TR_DelTrkg();
 
+CREATE FUNCTION tracked_deletes_tx.DyslexiaScreeningExceptionReasonDescriptor_TR_DelTrkg()
+    RETURNS trigger AS
+$BODY$
+BEGIN
+    INSERT INTO tracked_deletes_tx.DyslexiaScreeningExceptionReasonDescriptor(DyslexiaScreeningExceptionReasonDescriptorId, Id, ChangeVersion)
+    SELECT OLD.DyslexiaScreeningExceptionReasonDescriptorId, Id, nextval('changes.ChangeVersionSequence')
+    FROM edfi.Descriptor WHERE DescriptorId = OLD.DyslexiaScreeningExceptionReasonDescriptorId;
+    RETURN NULL;
+END;
+$BODY$ LANGUAGE plpgsql;
+
+CREATE TRIGGER TrackDeletes AFTER DELETE ON tx.DyslexiaScreeningExceptionReasonDescriptor 
+    FOR EACH ROW EXECUTE PROCEDURE tracked_deletes_tx.DyslexiaScreeningExceptionReasonDescriptor_TR_DelTrkg();
+
 CREATE FUNCTION tracked_deletes_tx.DyslexiaServicesDescriptor_TR_DelTrkg()
     RETURNS trigger AS
 $BODY$
@@ -330,6 +411,20 @@ $BODY$ LANGUAGE plpgsql;
 CREATE TRIGGER TrackDeletes AFTER DELETE ON tx.EconomicDisadvantageLastDateOfEnrollmentDescriptor 
     FOR EACH ROW EXECUTE PROCEDURE tracked_deletes_tx.EconomicDisadvantageLastDateOfEnrollmentDescriptor_TR_DelTrkg();
 
+CREATE FUNCTION tracked_deletes_tx.EligibilityDelayReasonDescriptor_TR_DelTrkg()
+    RETURNS trigger AS
+$BODY$
+BEGIN
+    INSERT INTO tracked_deletes_tx.EligibilityDelayReasonDescriptor(EligibilityDelayReasonDescriptorId, Id, ChangeVersion)
+    SELECT OLD.EligibilityDelayReasonDescriptorId, Id, nextval('changes.ChangeVersionSequence')
+    FROM edfi.Descriptor WHERE DescriptorId = OLD.EligibilityDelayReasonDescriptorId;
+    RETURN NULL;
+END;
+$BODY$ LANGUAGE plpgsql;
+
+CREATE TRIGGER TrackDeletes AFTER DELETE ON tx.EligibilityDelayReasonDescriptor 
+    FOR EACH ROW EXECUTE PROCEDURE tracked_deletes_tx.EligibilityDelayReasonDescriptor_TR_DelTrkg();
+
 CREATE FUNCTION tracked_deletes_tx.EmergentBilingualIndicatorDescriptor_TR_DelTrkg()
     RETURNS trigger AS
 $BODY$
@@ -385,6 +480,99 @@ $BODY$ LANGUAGE plpgsql;
 
 CREATE TRIGGER TrackDeletes AFTER DELETE ON tx.EvaluationDelayReasonDescriptor 
     FOR EACH ROW EXECUTE PROCEDURE tracked_deletes_tx.EvaluationDelayReasonDescriptor_TR_DelTrkg();
+
+CREATE FUNCTION tracked_deletes_tx.ExtendedSchoolYearServicesAttendance_TR_DelTrkg()
+    RETURNS trigger AS
+$BODY$
+BEGIN
+    INSERT INTO tracked_deletes_tx.ExtendedSchoolYearServicesAttendance(FirstInstructionalSettingDescriptorId, GradeLevelDescriptorId, SchoolId, StudentUSI, Id, ChangeVersion)
+    VALUES (OLD.FirstInstructionalSettingDescriptorId, OLD.GradeLevelDescriptorId, OLD.SchoolId, OLD.StudentUSI, OLD.Id, nextval('changes.ChangeVersionSequence'));
+    RETURN NULL;
+END;
+$BODY$ LANGUAGE plpgsql;
+
+CREATE TRIGGER TrackDeletes AFTER DELETE ON tx.ExtendedSchoolYearServicesAttendance 
+    FOR EACH ROW EXECUTE PROCEDURE tracked_deletes_tx.ExtendedSchoolYearServicesAttendance_TR_DelTrkg();
+
+CREATE FUNCTION tracked_deletes_tx.FinancialAidApplicationDescriptor_TR_DelTrkg()
+    RETURNS trigger AS
+$BODY$
+BEGIN
+    INSERT INTO tracked_deletes_tx.FinancialAidApplicationDescriptor(FinancialAidApplicationDescriptorId, Id, ChangeVersion)
+    SELECT OLD.FinancialAidApplicationDescriptorId, Id, nextval('changes.ChangeVersionSequence')
+    FROM edfi.Descriptor WHERE DescriptorId = OLD.FinancialAidApplicationDescriptorId;
+    RETURN NULL;
+END;
+$BODY$ LANGUAGE plpgsql;
+
+CREATE TRIGGER TrackDeletes AFTER DELETE ON tx.FinancialAidApplicationDescriptor 
+    FOR EACH ROW EXECUTE PROCEDURE tracked_deletes_tx.FinancialAidApplicationDescriptor_TR_DelTrkg();
+
+CREATE FUNCTION tracked_deletes_tx.FlexAttendanceProgramDescriptor_TR_DelTrkg()
+    RETURNS trigger AS
+$BODY$
+BEGIN
+    INSERT INTO tracked_deletes_tx.FlexAttendanceProgramDescriptor(FlexAttendanceProgramDescriptorId, Id, ChangeVersion)
+    SELECT OLD.FlexAttendanceProgramDescriptorId, Id, nextval('changes.ChangeVersionSequence')
+    FROM edfi.Descriptor WHERE DescriptorId = OLD.FlexAttendanceProgramDescriptorId;
+    RETURN NULL;
+END;
+$BODY$ LANGUAGE plpgsql;
+
+CREATE TRIGGER TrackDeletes AFTER DELETE ON tx.FlexAttendanceProgramDescriptor 
+    FOR EACH ROW EXECUTE PROCEDURE tracked_deletes_tx.FlexAttendanceProgramDescriptor_TR_DelTrkg();
+
+CREATE FUNCTION tracked_deletes_tx.FlexibleBilingualESLProgramReportingPeriodAttendance_TR_DelTrkg()
+    RETURNS trigger AS
+$BODY$
+BEGIN
+    INSERT INTO tracked_deletes_tx.FlexibleBilingualESLProgramReportingPeriodAttendance(BilingualESLFundingDescriptorId, CalendarCode, FlexAttendanceProgramDescriptorId, GradeLevelDescriptorId, ReportingPeriodDescriptorId, SchoolId, StudentUSI, Id, ChangeVersion)
+    VALUES (OLD.BilingualESLFundingDescriptorId, OLD.CalendarCode, OLD.FlexAttendanceProgramDescriptorId, OLD.GradeLevelDescriptorId, OLD.ReportingPeriodDescriptorId, OLD.SchoolId, OLD.StudentUSI, OLD.Id, nextval('changes.ChangeVersionSequence'));
+    RETURN NULL;
+END;
+$BODY$ LANGUAGE plpgsql;
+
+CREATE TRIGGER TrackDeletes AFTER DELETE ON tx.FlexibleBilingualESLProgramReportingPeriodAttendance 
+    FOR EACH ROW EXECUTE PROCEDURE tracked_deletes_tx.FlexibleBilingualESLProgramReportingPeriodAttendance_TR_DelTrkg();
+
+CREATE FUNCTION tracked_deletes_tx.FlexibleCTEProgramReportingPeriodAttendance_TR_DelTrkg()
+    RETURNS trigger AS
+$BODY$
+BEGIN
+    INSERT INTO tracked_deletes_tx.FlexibleCTEProgramReportingPeriodAttendance(CalendarCode, FlexAttendanceProgramDescriptorId, GradeLevelDescriptorId, ReportingPeriodDescriptorId, SchoolId, StudentUSI, Id, ChangeVersion)
+    VALUES (OLD.CalendarCode, OLD.FlexAttendanceProgramDescriptorId, OLD.GradeLevelDescriptorId, OLD.ReportingPeriodDescriptorId, OLD.SchoolId, OLD.StudentUSI, OLD.Id, nextval('changes.ChangeVersionSequence'));
+    RETURN NULL;
+END;
+$BODY$ LANGUAGE plpgsql;
+
+CREATE TRIGGER TrackDeletes AFTER DELETE ON tx.FlexibleCTEProgramReportingPeriodAttendance 
+    FOR EACH ROW EXECUTE PROCEDURE tracked_deletes_tx.FlexibleCTEProgramReportingPeriodAttendance_TR_DelTrkg();
+
+CREATE FUNCTION tracked_deletes_tx.FlexibleRegularProgramReportingPeriodAttendance_TR_DelTrkg()
+    RETURNS trigger AS
+$BODY$
+BEGIN
+    INSERT INTO tracked_deletes_tx.FlexibleRegularProgramReportingPeriodAttendance(CalendarCode, FlexAttendanceProgramDescriptorId, GradeLevelDescriptorId, ReportingPeriodDescriptorId, SchoolId, StudentUSI, Id, ChangeVersion)
+    VALUES (OLD.CalendarCode, OLD.FlexAttendanceProgramDescriptorId, OLD.GradeLevelDescriptorId, OLD.ReportingPeriodDescriptorId, OLD.SchoolId, OLD.StudentUSI, OLD.Id, nextval('changes.ChangeVersionSequence'));
+    RETURN NULL;
+END;
+$BODY$ LANGUAGE plpgsql;
+
+CREATE TRIGGER TrackDeletes AFTER DELETE ON tx.FlexibleRegularProgramReportingPeriodAttendance 
+    FOR EACH ROW EXECUTE PROCEDURE tracked_deletes_tx.FlexibleRegularProgramReportingPeriodAttendance_TR_DelTrkg();
+
+CREATE FUNCTION tracked_deletes_tx.FlexibleSpecialEducationProgramReportingPerio_ec6ab0_TR_DelTrkg()
+    RETURNS trigger AS
+$BODY$
+BEGIN
+    INSERT INTO tracked_deletes_tx.FlexibleSpecialEducationProgramReportingPeriodAttendance(CalendarCode, FlexAttendanceProgramDescriptorId, GradeLevelDescriptorId, InstructionalSettingDescriptorId, ReportingPeriodDescriptorId, SchoolId, StudentUSI, Id, ChangeVersion)
+    VALUES (OLD.CalendarCode, OLD.FlexAttendanceProgramDescriptorId, OLD.GradeLevelDescriptorId, OLD.InstructionalSettingDescriptorId, OLD.ReportingPeriodDescriptorId, OLD.SchoolId, OLD.StudentUSI, OLD.Id, nextval('changes.ChangeVersionSequence'));
+    RETURN NULL;
+END;
+$BODY$ LANGUAGE plpgsql;
+
+CREATE TRIGGER TrackDeletes AFTER DELETE ON tx.FlexibleSpecialEducationProgramReportingPeriodAttendance 
+    FOR EACH ROW EXECUTE PROCEDURE tracked_deletes_tx.FlexibleSpecialEducationProgramReportingPerio_ec6ab0_TR_DelTrkg();
 
 CREATE FUNCTION tracked_deletes_tx.FosterCareTypeDescriptor_TR_DelTrkg()
     RETURNS trigger AS
@@ -567,6 +755,20 @@ $BODY$ LANGUAGE plpgsql;
 
 CREATE TRIGGER TrackDeletes AFTER DELETE ON tx.IBCVendorDescriptor 
     FOR EACH ROW EXECUTE PROCEDURE tracked_deletes_tx.IBCVendorDescriptor_TR_DelTrkg();
+
+CREATE FUNCTION tracked_deletes_tx.InstructionalSettingDescriptor_TR_DelTrkg()
+    RETURNS trigger AS
+$BODY$
+BEGIN
+    INSERT INTO tracked_deletes_tx.InstructionalSettingDescriptor(InstructionalSettingDescriptorId, Id, ChangeVersion)
+    SELECT OLD.InstructionalSettingDescriptorId, Id, nextval('changes.ChangeVersionSequence')
+    FROM edfi.Descriptor WHERE DescriptorId = OLD.InstructionalSettingDescriptorId;
+    RETURN NULL;
+END;
+$BODY$ LANGUAGE plpgsql;
+
+CREATE TRIGGER TrackDeletes AFTER DELETE ON tx.InstructionalSettingDescriptor 
+    FOR EACH ROW EXECUTE PROCEDURE tracked_deletes_tx.InstructionalSettingDescriptor_TR_DelTrkg();
 
 CREATE FUNCTION tracked_deletes_tx.LangAcqServicesProvidedDescriptor_TR_DelTrkg()
     RETURNS trigger AS
@@ -805,6 +1007,20 @@ $BODY$ LANGUAGE plpgsql;
 CREATE TRIGGER TrackDeletes AFTER DELETE ON tx.PayrollExt 
     FOR EACH ROW EXECUTE PROCEDURE tracked_deletes_tx.PayrollExt_TR_DelTrkg();
 
+CREATE FUNCTION tracked_deletes_tx.PostSecondaryCertLicensureResultDescriptor_TR_DelTrkg()
+    RETURNS trigger AS
+$BODY$
+BEGIN
+    INSERT INTO tracked_deletes_tx.PostSecondaryCertLicensureResultDescriptor(PostSecondaryCertLicensureResultDescriptorId, Id, ChangeVersion)
+    SELECT OLD.PostSecondaryCertLicensureResultDescriptorId, Id, nextval('changes.ChangeVersionSequence')
+    FROM edfi.Descriptor WHERE DescriptorId = OLD.PostSecondaryCertLicensureResultDescriptorId;
+    RETURN NULL;
+END;
+$BODY$ LANGUAGE plpgsql;
+
+CREATE TRIGGER TrackDeletes AFTER DELETE ON tx.PostSecondaryCertLicensureResultDescriptor 
+    FOR EACH ROW EXECUTE PROCEDURE tracked_deletes_tx.PostSecondaryCertLicensureResultDescriptor_TR_DelTrkg();
+
 CREATE FUNCTION tracked_deletes_tx.PostSecondaryCertificationLicensureDescriptor_TR_DelTrkg()
     RETURNS trigger AS
 $BODY$
@@ -861,6 +1077,20 @@ $BODY$ LANGUAGE plpgsql;
 CREATE TRIGGER TrackDeletes AFTER DELETE ON tx.ProgramOfStudyDescriptor 
     FOR EACH ROW EXECUTE PROCEDURE tracked_deletes_tx.ProgramOfStudyDescriptor_TR_DelTrkg();
 
+CREATE FUNCTION tracked_deletes_tx.RegionalDaySchoolProgramForDeafDescriptor_TR_DelTrkg()
+    RETURNS trigger AS
+$BODY$
+BEGIN
+    INSERT INTO tracked_deletes_tx.RegionalDaySchoolProgramForDeafDescriptor(RegionalDaySchoolProgramForDeafDescriptorId, Id, ChangeVersion)
+    SELECT OLD.RegionalDaySchoolProgramForDeafDescriptorId, Id, nextval('changes.ChangeVersionSequence')
+    FROM edfi.Descriptor WHERE DescriptorId = OLD.RegionalDaySchoolProgramForDeafDescriptorId;
+    RETURN NULL;
+END;
+$BODY$ LANGUAGE plpgsql;
+
+CREATE TRIGGER TrackDeletes AFTER DELETE ON tx.RegionalDaySchoolProgramForDeafDescriptor 
+    FOR EACH ROW EXECUTE PROCEDURE tracked_deletes_tx.RegionalDaySchoolProgramForDeafDescriptor_TR_DelTrkg();
+
 CREATE FUNCTION tracked_deletes_tx.ReportAssessmentTypeDescriptor_TR_DelTrkg()
     RETURNS trigger AS
 $BODY$
@@ -874,6 +1104,20 @@ $BODY$ LANGUAGE plpgsql;
 
 CREATE TRIGGER TrackDeletes AFTER DELETE ON tx.ReportAssessmentTypeDescriptor 
     FOR EACH ROW EXECUTE PROCEDURE tracked_deletes_tx.ReportAssessmentTypeDescriptor_TR_DelTrkg();
+
+CREATE FUNCTION tracked_deletes_tx.ReportingPeriodDescriptor_TR_DelTrkg()
+    RETURNS trigger AS
+$BODY$
+BEGIN
+    INSERT INTO tracked_deletes_tx.ReportingPeriodDescriptor(ReportingPeriodDescriptorId, Id, ChangeVersion)
+    SELECT OLD.ReportingPeriodDescriptorId, Id, nextval('changes.ChangeVersionSequence')
+    FROM edfi.Descriptor WHERE DescriptorId = OLD.ReportingPeriodDescriptorId;
+    RETURN NULL;
+END;
+$BODY$ LANGUAGE plpgsql;
+
+CREATE TRIGGER TrackDeletes AFTER DELETE ON tx.ReportingPeriodDescriptor 
+    FOR EACH ROW EXECUTE PROCEDURE tracked_deletes_tx.ReportingPeriodDescriptor_TR_DelTrkg();
 
 CREATE FUNCTION tracked_deletes_tx.RestraintStaffTypeDescriptor_TR_DelTrkg()
     RETURNS trigger AS
@@ -902,6 +1146,20 @@ $BODY$ LANGUAGE plpgsql;
 
 CREATE TRIGGER TrackDeletes AFTER DELETE ON tx.RoleIdDescriptor 
     FOR EACH ROW EXECUTE PROCEDURE tracked_deletes_tx.RoleIdDescriptor_TR_DelTrkg();
+
+CREATE FUNCTION tracked_deletes_tx.SPEDStudentAgeRangeDescriptor_TR_DelTrkg()
+    RETURNS trigger AS
+$BODY$
+BEGIN
+    INSERT INTO tracked_deletes_tx.SPEDStudentAgeRangeDescriptor(SPEDStudentAgeRangeDescriptorId, Id, ChangeVersion)
+    SELECT OLD.SPEDStudentAgeRangeDescriptorId, Id, nextval('changes.ChangeVersionSequence')
+    FROM edfi.Descriptor WHERE DescriptorId = OLD.SPEDStudentAgeRangeDescriptorId;
+    RETURN NULL;
+END;
+$BODY$ LANGUAGE plpgsql;
+
+CREATE TRIGGER TrackDeletes AFTER DELETE ON tx.SPEDStudentAgeRangeDescriptor 
+    FOR EACH ROW EXECUTE PROCEDURE tracked_deletes_tx.SPEDStudentAgeRangeDescriptor_TR_DelTrkg();
 
 CREATE FUNCTION tracked_deletes_tx.SSAOrgAssociationExt_TR_DelTrkg()
     RETURNS trigger AS
@@ -971,6 +1229,32 @@ $BODY$ LANGUAGE plpgsql;
 CREATE TRIGGER TrackDeletes AFTER DELETE ON tx.SharedServiceArrangementStaffDescriptor 
     FOR EACH ROW EXECUTE PROCEDURE tracked_deletes_tx.SharedServiceArrangementStaffDescriptor_TR_DelTrkg();
 
+CREATE FUNCTION tracked_deletes_tx.SpecialEducationProgramReportingPeriodAttendance_TR_DelTrkg()
+    RETURNS trigger AS
+$BODY$
+BEGIN
+    INSERT INTO tracked_deletes_tx.SpecialEducationProgramReportingPeriodAttendance(CalendarCode, GradeLevelDescriptorId, InstructionalSettingDescriptorId, RegionalDaySchoolProgramForDeafDescriptorId, ReportingPeriodDescriptorId, SchoolId, StudentUSI, Id, ChangeVersion)
+    VALUES (OLD.CalendarCode, OLD.GradeLevelDescriptorId, OLD.InstructionalSettingDescriptorId, OLD.RegionalDaySchoolProgramForDeafDescriptorId, OLD.ReportingPeriodDescriptorId, OLD.SchoolId, OLD.StudentUSI, OLD.Id, nextval('changes.ChangeVersionSequence'));
+    RETURN NULL;
+END;
+$BODY$ LANGUAGE plpgsql;
+
+CREATE TRIGGER TrackDeletes AFTER DELETE ON tx.SpecialEducationProgramReportingPeriodAttendance 
+    FOR EACH ROW EXECUTE PROCEDURE tracked_deletes_tx.SpecialEducationProgramReportingPeriodAttendance_TR_DelTrkg();
+
+CREATE FUNCTION tracked_deletes_tx.SpecialProgramsReportingPeriodAttendance_TR_DelTrkg()
+    RETURNS trigger AS
+$BODY$
+BEGIN
+    INSERT INTO tracked_deletes_tx.SpecialProgramsReportingPeriodAttendance(CalendarCode, GradeLevelDescriptorId, ReportingPeriodDescriptorId, SchoolId, StudentUSI, Id, ChangeVersion)
+    VALUES (OLD.CalendarCode, OLD.GradeLevelDescriptorId, OLD.ReportingPeriodDescriptorId, OLD.SchoolId, OLD.StudentUSI, OLD.Id, nextval('changes.ChangeVersionSequence'));
+    RETURN NULL;
+END;
+$BODY$ LANGUAGE plpgsql;
+
+CREATE TRIGGER TrackDeletes AFTER DELETE ON tx.SpecialProgramsReportingPeriodAttendance 
+    FOR EACH ROW EXECUTE PROCEDURE tracked_deletes_tx.SpecialProgramsReportingPeriodAttendance_TR_DelTrkg();
+
 CREATE FUNCTION tracked_deletes_tx.StaffServiceDescriptor_TR_DelTrkg()
     RETURNS trigger AS
 $BODY$
@@ -1039,19 +1323,19 @@ $BODY$ LANGUAGE plpgsql;
 CREATE TRIGGER TrackDeletes AFTER DELETE ON tx.StudentSpecialEducationProgramEligibilityAssociation 
     FOR EACH ROW EXECUTE PROCEDURE tracked_deletes_tx.StudentSpecialEducationProgramEligibilityAssociation_TR_DelTrkg();
 
-CREATE FUNCTION tracked_deletes_tx.TeacherIncentiveAllotmentDesignationCodeDescriptor_TR_DelTrkg()
+CREATE FUNCTION tracked_deletes_tx.TeacherIncentiveAllotmentDesignationDescriptor_TR_DelTrkg()
     RETURNS trigger AS
 $BODY$
 BEGIN
-    INSERT INTO tracked_deletes_tx.TeacherIncentiveAllotmentDesignationCodeDescriptor(TeacherIncentiveAllotmentDesignationCodeDescriptorId, Id, ChangeVersion)
-    SELECT OLD.TeacherIncentiveAllotmentDesignationCodeDescriptorId, Id, nextval('changes.ChangeVersionSequence')
-    FROM edfi.Descriptor WHERE DescriptorId = OLD.TeacherIncentiveAllotmentDesignationCodeDescriptorId;
+    INSERT INTO tracked_deletes_tx.TeacherIncentiveAllotmentDesignationDescriptor(TeacherIncentiveAllotmentDesignationDescriptorId, Id, ChangeVersion)
+    SELECT OLD.TeacherIncentiveAllotmentDesignationDescriptorId, Id, nextval('changes.ChangeVersionSequence')
+    FROM edfi.Descriptor WHERE DescriptorId = OLD.TeacherIncentiveAllotmentDesignationDescriptorId;
     RETURN NULL;
 END;
 $BODY$ LANGUAGE plpgsql;
 
-CREATE TRIGGER TrackDeletes AFTER DELETE ON tx.TeacherIncentiveAllotmentDesignationCodeDescriptor 
-    FOR EACH ROW EXECUTE PROCEDURE tracked_deletes_tx.TeacherIncentiveAllotmentDesignationCodeDescriptor_TR_DelTrkg();
+CREATE TRIGGER TrackDeletes AFTER DELETE ON tx.TeacherIncentiveAllotmentDesignationDescriptor 
+    FOR EACH ROW EXECUTE PROCEDURE tracked_deletes_tx.TeacherIncentiveAllotmentDesignationDescriptor_TR_DelTrkg();
 
 CREATE FUNCTION tracked_deletes_tx.TitleOfAssessmentDescriptor_TR_DelTrkg()
     RETURNS trigger AS

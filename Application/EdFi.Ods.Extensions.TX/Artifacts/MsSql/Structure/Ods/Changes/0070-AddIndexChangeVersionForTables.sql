@@ -5,8 +5,20 @@ BEGIN TRANSACTION
 COMMIT
 
 BEGIN TRANSACTION
-    IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'tx.AsOfStatusALeaver') AND name = N'UX_AsOfStatusALeaver_ChangeVersion')
-    CREATE INDEX [UX_AsOfStatusALeaver_ChangeVersion] ON [tx].[AsOfStatusALeaver] ([ChangeVersion] ASC)
+    IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'tx.AsOfStatusALeavers') AND name = N'UX_AsOfStatusALeavers_ChangeVersion')
+    CREATE INDEX [UX_AsOfStatusALeavers_ChangeVersion] ON [tx].[AsOfStatusALeavers] ([ChangeVersion] ASC)
+    GO
+COMMIT
+
+BEGIN TRANSACTION
+    IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'tx.BasicReportingPeriodAttendance') AND name = N'UX_BasicReportingPeriodAttendance_ChangeVersion')
+    CREATE INDEX [UX_BasicReportingPeriodAttendance_ChangeVersion] ON [tx].[BasicReportingPeriodAttendance] ([ChangeVersion] ASC)
+    GO
+COMMIT
+
+BEGIN TRANSACTION
+    IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'tx.BilingualESLProgramReportingPeriodAttendance') AND name = N'UX_BilingualESLProgramReportingPeriodAttendance_ChangeVersion')
+    CREATE INDEX [UX_BilingualESLProgramReportingPeriodAttendance_ChangeVersion] ON [tx].[BilingualESLProgramReportingPeriodAttendance] ([ChangeVersion] ASC)
     GO
 COMMIT
 
@@ -17,8 +29,44 @@ BEGIN TRANSACTION
 COMMIT
 
 BEGIN TRANSACTION
+    IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'tx.CTEProgramReportingPeriodAttendance') AND name = N'UX_CTEProgramReportingPeriodAttendance_ChangeVersion')
+    CREATE INDEX [UX_CTEProgramReportingPeriodAttendance_ChangeVersion] ON [tx].[CTEProgramReportingPeriodAttendance] ([ChangeVersion] ASC)
+    GO
+COMMIT
+
+BEGIN TRANSACTION
     IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'tx.ContractedInstructionalStaffFTEExt') AND name = N'UX_ContractedInstructionalStaffFTEExt_ChangeVersion')
     CREATE INDEX [UX_ContractedInstructionalStaffFTEExt_ChangeVersion] ON [tx].[ContractedInstructionalStaffFTEExt] ([ChangeVersion] ASC)
+    GO
+COMMIT
+
+BEGIN TRANSACTION
+    IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'tx.ExtendedSchoolYearServicesAttendance') AND name = N'UX_ExtendedSchoolYearServicesAttendance_ChangeVersion')
+    CREATE INDEX [UX_ExtendedSchoolYearServicesAttendance_ChangeVersion] ON [tx].[ExtendedSchoolYearServicesAttendance] ([ChangeVersion] ASC)
+    GO
+COMMIT
+
+BEGIN TRANSACTION
+    IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'tx.FlexibleBilingualESLProgramReportingPeriodAttendance') AND name = N'UX_FlexibleBilingualESLProgramReportingPeriodAttendance_ChangeVersion')
+    CREATE INDEX [UX_FlexibleBilingualESLProgramReportingPeriodAttendance_ChangeVersion] ON [tx].[FlexibleBilingualESLProgramReportingPeriodAttendance] ([ChangeVersion] ASC)
+    GO
+COMMIT
+
+BEGIN TRANSACTION
+    IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'tx.FlexibleCTEProgramReportingPeriodAttendance') AND name = N'UX_FlexibleCTEProgramReportingPeriodAttendance_ChangeVersion')
+    CREATE INDEX [UX_FlexibleCTEProgramReportingPeriodAttendance_ChangeVersion] ON [tx].[FlexibleCTEProgramReportingPeriodAttendance] ([ChangeVersion] ASC)
+    GO
+COMMIT
+
+BEGIN TRANSACTION
+    IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'tx.FlexibleRegularProgramReportingPeriodAttendance') AND name = N'UX_FlexibleRegularProgramReportingPeriodAttendance_ChangeVersion')
+    CREATE INDEX [UX_FlexibleRegularProgramReportingPeriodAttendance_ChangeVersion] ON [tx].[FlexibleRegularProgramReportingPeriodAttendance] ([ChangeVersion] ASC)
+    GO
+COMMIT
+
+BEGIN TRANSACTION
+    IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'tx.FlexibleSpecialEducationProgramReportingPeriodAttendance') AND name = N'UX_FlexibleSpecialEducationProgramReportingPeriodAttendance_ChangeVersion')
+    CREATE INDEX [UX_FlexibleSpecialEducationProgramReportingPeriodAttendance_ChangeVersion] ON [tx].[FlexibleSpecialEducationProgramReportingPeriodAttendance] ([ChangeVersion] ASC)
     GO
 COMMIT
 
@@ -37,6 +85,18 @@ COMMIT
 BEGIN TRANSACTION
     IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'tx.SharedServiceArrangementExt') AND name = N'UX_SharedServiceArrangementExt_ChangeVersion')
     CREATE INDEX [UX_SharedServiceArrangementExt_ChangeVersion] ON [tx].[SharedServiceArrangementExt] ([ChangeVersion] ASC)
+    GO
+COMMIT
+
+BEGIN TRANSACTION
+    IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'tx.SpecialEducationProgramReportingPeriodAttendance') AND name = N'UX_SpecialEducationProgramReportingPeriodAttendance_ChangeVersion')
+    CREATE INDEX [UX_SpecialEducationProgramReportingPeriodAttendance_ChangeVersion] ON [tx].[SpecialEducationProgramReportingPeriodAttendance] ([ChangeVersion] ASC)
+    GO
+COMMIT
+
+BEGIN TRANSACTION
+    IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'tx.SpecialProgramsReportingPeriodAttendance') AND name = N'UX_SpecialProgramsReportingPeriodAttendance_ChangeVersion')
+    CREATE INDEX [UX_SpecialProgramsReportingPeriodAttendance_ChangeVersion] ON [tx].[SpecialProgramsReportingPeriodAttendance] ([ChangeVersion] ASC)
     GO
 COMMIT
 

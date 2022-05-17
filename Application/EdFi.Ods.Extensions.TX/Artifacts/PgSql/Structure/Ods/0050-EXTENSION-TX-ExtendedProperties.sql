@@ -21,18 +21,18 @@ COMMENT ON COLUMN tx.ApplicationTypeDescriptor.ApplicationTypeDescriptorId IS 'A
 COMMENT ON TABLE tx.ArmedServicesVocAptBatteryDescriptor IS 'Descriptor ArmedServicesVocAptBattery is populated from code table C217.';
 COMMENT ON COLUMN tx.ArmedServicesVocAptBatteryDescriptor.ArmedServicesVocAptBatteryDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
 
--- Extended Properties [tx].[AsOfStatusALeaver] --
-COMMENT ON TABLE tx.AsOfStatusALeaver IS 'AsOfStatusALeaver - This entity is being reported on non-enrolled students and graduates that are enrolled in the prior school year and do not return in the current school year.';
-COMMENT ON COLUMN tx.AsOfStatusALeaver.SchoolId IS 'The identifier assigned to a school.';
-COMMENT ON COLUMN tx.AsOfStatusALeaver.StudentUID IS 'E1523. StudentUID (StudentUniqueId) is a unique number assigned to a student by the Texas Education Agency.';
-COMMENT ON COLUMN tx.AsOfStatusALeaver.SexDescriptorId IS 'E1325, DC119. A person''s gender.';
-COMMENT ON COLUMN tx.AsOfStatusALeaver.HispanicLatinoEthnicity IS 'E1064, E1375. HispanicLatinoEthnicity indicates a person of Cuban, Mexican, Puerto Rican, South or Central American, or other Spanish culture or origin, regardless of race.';
-COMMENT ON COLUMN tx.AsOfStatusALeaver.GradeLevelDescriptorId IS 'E1517, DC063. The grade level or primary instructional level at which a student enters and receives services in a school or an educational institution during a given academic session.';
-COMMENT ON COLUMN tx.AsOfStatusALeaver.ExitWithdrawTypeDescriptorId IS 'E1001, C162. ExitWithdrawType indicates the reason a prior year student in grade 7-12 student has not enrolled in the district during the current school year.';
-COMMENT ON COLUMN tx.AsOfStatusALeaver.LocalStudentID IS 'E0923. LocalStudentID is the student''s local identification number as assigned by the district.';
-COMMENT ON COLUMN tx.AsOfStatusALeaver.StudentID IS 'E0001. StudentId is the student''s Social Security number or a state-approved alternative identification number.';
-COMMENT ON COLUMN tx.AsOfStatusALeaver.GenerationCodeDescriptorId IS 'E0706, E1303, C012, DC148. GenerationCode identifies the generation suffix, if any, which the person attaches to his name.';
-COMMENT ON COLUMN tx.AsOfStatusALeaver.StudentAttributionDescriptorId IS 'E1000, C161. is a characteristic of a student relating to their individual enrollment circumstances.  It indicates whether the student:
+-- Extended Properties [tx].[AsOfStatusALeavers] --
+COMMENT ON TABLE tx.AsOfStatusALeavers IS 'AsOfStatusALeavers - This entity is being reported on non-enrolled students and graduates that are enrolled in the prior school year and do not return in the current school year.';
+COMMENT ON COLUMN tx.AsOfStatusALeavers.SchoolId IS 'The identifier assigned to a school.';
+COMMENT ON COLUMN tx.AsOfStatusALeavers.StudentUID IS 'E1523. StudentUID (StudentUniqueId) is a unique number assigned to a student by the Texas Education Agency.';
+COMMENT ON COLUMN tx.AsOfStatusALeavers.SexDescriptorId IS 'E1325, DC119. A person''s gender.';
+COMMENT ON COLUMN tx.AsOfStatusALeavers.HispanicLatinoEthnicity IS 'E1064, E1375. HispanicLatinoEthnicity indicates a person of Cuban, Mexican, Puerto Rican, South or Central American, or other Spanish culture or origin, regardless of race.';
+COMMENT ON COLUMN tx.AsOfStatusALeavers.GradeLevelDescriptorId IS 'E1517, DC063. The grade level or primary instructional level at which a student enters and receives services in a school or an educational institution during a given academic session.';
+COMMENT ON COLUMN tx.AsOfStatusALeavers.ExitWithdrawTypeDescriptorId IS 'E1001, C162. ExitWithdrawType indicates the reason a prior year student in grade 7-12 student has not enrolled in the district during the current school year.';
+COMMENT ON COLUMN tx.AsOfStatusALeavers.LocalStudentID IS 'E0923. LocalStudentID is the student''s local identification number as assigned by the district.';
+COMMENT ON COLUMN tx.AsOfStatusALeavers.StudentID IS 'E0001. StudentId is the student''s Social Security number or a state-approved alternative identification number.';
+COMMENT ON COLUMN tx.AsOfStatusALeavers.GenerationCodeDescriptorId IS 'E0706, E1303, C012, DC148. GenerationCode identifies the generation suffix, if any, which the person attaches to his name.';
+COMMENT ON COLUMN tx.AsOfStatusALeavers.StudentAttributionDescriptorId IS 'E1000, C161. is a characteristic of a student relating to their individual enrollment circumstances.  It indicates whether the student:
 - attends an open enrollment charter school;
 - is served in a juvenile justice alternative education program (JJAEP);
 - attends school in the district through a Public Education Grant (PEG);
@@ -45,81 +45,101 @@ COMMENT ON COLUMN tx.AsOfStatusALeaver.StudentAttributionDescriptorId IS 'E1000,
 - is a student with a disability enrolled by their parent(s) in a private school (including a home school) but who receives special education and/or related services from the public school district under an individualized services plan (ISP);
 - is a child of a charter school employee; or
 - student-initiated transfer due to remote learning.';
-COMMENT ON COLUMN tx.AsOfStatusALeaver.AssociateDegreeIndicator IS 'E1596. AssociateDegreeIndicator indicates that the student earned an associate degree prior to graduation from high school.';
-COMMENT ON COLUMN tx.AsOfStatusALeaver.AsOfStatusLastFridayOctoberDescriptorId IS 'AsOfStatusLastFridayOctober indicates the student’s status in the district on the last Friday in October in the current school year.';
-COMMENT ON COLUMN tx.AsOfStatusALeaver.HomelessStatusPriorYearDescriptorId IS 'HomelessStatusPriorYear indicates if a student at any time during the prior school year was identified as homeless.';
-COMMENT ON COLUMN tx.AsOfStatusALeaver.UnaccompaniedYouthPriorYearDescriptorId IS 'UnaccompaniedYouthPriorYear indicates if a student at any time during the prior school year was identified as an unaccompanied youth.';
-COMMENT ON COLUMN tx.AsOfStatusALeaver.UnschooledAsyleeRefugeePriorYearDescriptorId IS 'UnschooledAsyleeRefugeePriorYear indicates whether a student’s initial enrollment in a school in the United States in grades 7 through 12 was an unschooled asylee or refugee per TEC §39.027(a-1).';
-COMMENT ON COLUMN tx.AsOfStatusALeaver.EconomicDisadvantageLastDateOfEnrollmentDescriptorId IS 'EconomicDisadvantageLastDateOfEnrollment indicates the student’s economic disadvantage status on the last date of their enrollment.';
-COMMENT ON COLUMN tx.AsOfStatusALeaver.ParentalPermissionLastDateOfEnrollmentDescriptorId IS 'ParentalPermissionLastDateOfEnrollment indicates in the prior school year whether the student’s parent or legal guardian has approved placement of the student in the required bilingual or English as a Second Language (ESL) program. (See 19 TAC §89.1240)';
-COMMENT ON COLUMN tx.AsOfStatusALeaver.MigrantPriorYear IS 'MigrantPriorYear indicates that the student (age 3-21 in the prior school year) was, or the student’s parent, spouse, or guardian was a migratory agricultural worker, including a migratory dairy worker, or a migratory fisher, and who, in the preceding 36 months, in order to obtain, or accompany such parent, spouse, or guardian in order to obtain, temporary or seasonal employment in agricultural or fishing work 1) has moved from one school district to another; or 2) resides in a school district of more than 15,000 square miles, and migrates a distance of 20 miles or more to a temporary residence to engage in a fishing activity.';
-COMMENT ON COLUMN tx.AsOfStatusALeaver.AdultPreviousAttendancePriorYear IS 'AdultPreviousAttendancePriorYear indicates whether an adult student (age 18-25) who was enrolled in the prior year in a high school equivalency program, dropout recovery school, or other adult education program (under TEC §29.259), has or has not attended school in the previous nine months prior to enrolling during the prior year.';
-COMMENT ON COLUMN tx.AsOfStatusALeaver.PersonalTitlePrefix IS 'A prefix used to denote the title, degree, position, or seniority of the person.';
-COMMENT ON COLUMN tx.AsOfStatusALeaver.FirstName IS 'A name given to an individual at birth, baptism, or during another naming ceremony, or through legal change.';
-COMMENT ON COLUMN tx.AsOfStatusALeaver.MiddleName IS 'A secondary name given to an individual at birth, baptism, or during another naming ceremony.';
-COMMENT ON COLUMN tx.AsOfStatusALeaver.LastSurname IS 'The name borne in common by members of a family.';
-COMMENT ON COLUMN tx.AsOfStatusALeaver.GenerationCodeSuffix IS 'An appendage, if any, used to denote an individual''s generation in his family (e.g., Jr., Sr., III).';
-COMMENT ON COLUMN tx.AsOfStatusALeaver.MaidenName IS 'The person''s maiden name.';
-COMMENT ON COLUMN tx.AsOfStatusALeaver.BirthDate IS 'The month, day, and year on which an individual was born.';
-COMMENT ON COLUMN tx.AsOfStatusALeaver.BirthCity IS 'The city the student was born in.';
-COMMENT ON COLUMN tx.AsOfStatusALeaver.BirthStateAbbreviationDescriptorId IS 'The abbreviation for the name of the state (within the United States) or extra-state jurisdiction in which an individual was born.';
-COMMENT ON COLUMN tx.AsOfStatusALeaver.BirthInternationalProvince IS 'For students born outside of the U.S., the Province or jurisdiction in which an individual is born.';
-COMMENT ON COLUMN tx.AsOfStatusALeaver.BirthCountryDescriptorId IS 'The country in which an individual is born. It is strongly recommended that entries use only ISO 3166 2-letter country codes.';
-COMMENT ON COLUMN tx.AsOfStatusALeaver.DateEnteredUS IS 'For students born outside of the U.S., the date the student entered the U.S.';
-COMMENT ON COLUMN tx.AsOfStatusALeaver.MultipleBirthStatus IS 'Indicator of whether the student was born with other siblings (i.e., twins, triplets, etc.)';
-COMMENT ON COLUMN tx.AsOfStatusALeaver.BirthSexDescriptorId IS 'A person''s gender at birth.';
+COMMENT ON COLUMN tx.AsOfStatusALeavers.AssociateDegreeIndicator IS 'E1596. AssociateDegreeIndicator indicates that the student earned an associate degree prior to graduation from high school.';
+COMMENT ON COLUMN tx.AsOfStatusALeavers.AsOfStatusLastFridayOctoberDescriptorId IS 'AsOfStatusLastFridayOctober indicates the student’s status in the district on the last Friday in October in the current school year.';
+COMMENT ON COLUMN tx.AsOfStatusALeavers.HomelessStatusPriorYearDescriptorId IS 'HomelessStatusPriorYear indicates if a student at any time during the prior school year was identified as homeless.';
+COMMENT ON COLUMN tx.AsOfStatusALeavers.UnaccompaniedYouthPriorYearDescriptorId IS 'UnaccompaniedYouthPriorYear indicates if a student at any time during the prior school year was identified as an unaccompanied youth.';
+COMMENT ON COLUMN tx.AsOfStatusALeavers.UnschooledAsyleeRefugeePriorYearDescriptorId IS 'UnschooledAsyleeRefugeePriorYear indicates whether a student’s initial enrollment in a school in the United States in grades 7 through 12 was an unschooled asylee or refugee per TEC §39.027(a-1).';
+COMMENT ON COLUMN tx.AsOfStatusALeavers.EconomicDisadvantageLastDateOfEnrollmentDescriptorId IS 'EconomicDisadvantageLastDateOfEnrollment indicates the student’s economic disadvantage status on the last date of their enrollment.';
+COMMENT ON COLUMN tx.AsOfStatusALeavers.ParentalPermissionLastDateOfEnrollmentDescriptorId IS 'ParentalPermissionLastDateOfEnrollment indicates in the prior school year whether the student’s parent or legal guardian has approved placement of the student in the required bilingual or English as a Second Language (ESL) program. (See 19 TAC §89.1240)';
+COMMENT ON COLUMN tx.AsOfStatusALeavers.MigrantPriorYear IS 'MigrantPriorYear indicates that the student (age 3-21 in the prior school year) was, or the student’s parent, spouse, or guardian was a migratory agricultural worker, including a migratory dairy worker, or a migratory fisher, and who, in the preceding 36 months, in order to obtain, or accompany such parent, spouse, or guardian in order to obtain, temporary or seasonal employment in agricultural or fishing work 1) has moved from one school district to another; or 2) resides in a school district of more than 15,000 square miles, and migrates a distance of 20 miles or more to a temporary residence to engage in a fishing activity.';
+COMMENT ON COLUMN tx.AsOfStatusALeavers.AdultPreviousAttendancePriorYear IS 'AdultPreviousAttendancePriorYear indicates whether an adult student (age 18-25) who was enrolled in the prior year in a high school equivalency program, dropout recovery school, or other adult education program (under TEC §29.259), has or has not attended school in the previous nine months prior to enrolling during the prior year.';
+COMMENT ON COLUMN tx.AsOfStatusALeavers.PersonalTitlePrefix IS 'A prefix used to denote the title, degree, position, or seniority of the person.';
+COMMENT ON COLUMN tx.AsOfStatusALeavers.FirstName IS 'A name given to an individual at birth, baptism, or during another naming ceremony, or through legal change.';
+COMMENT ON COLUMN tx.AsOfStatusALeavers.MiddleName IS 'A secondary name given to an individual at birth, baptism, or during another naming ceremony.';
+COMMENT ON COLUMN tx.AsOfStatusALeavers.LastSurname IS 'The name borne in common by members of a family.';
+COMMENT ON COLUMN tx.AsOfStatusALeavers.GenerationCodeSuffix IS 'An appendage, if any, used to denote an individual''s generation in his family (e.g., Jr., Sr., III).';
+COMMENT ON COLUMN tx.AsOfStatusALeavers.MaidenName IS 'The person''s maiden name.';
+COMMENT ON COLUMN tx.AsOfStatusALeavers.BirthDate IS 'The month, day, and year on which an individual was born.';
+COMMENT ON COLUMN tx.AsOfStatusALeavers.BirthCity IS 'The city the student was born in.';
+COMMENT ON COLUMN tx.AsOfStatusALeavers.BirthStateAbbreviationDescriptorId IS 'The abbreviation for the name of the state (within the United States) or extra-state jurisdiction in which an individual was born.';
+COMMENT ON COLUMN tx.AsOfStatusALeavers.BirthInternationalProvince IS 'For students born outside of the U.S., the Province or jurisdiction in which an individual is born.';
+COMMENT ON COLUMN tx.AsOfStatusALeavers.BirthCountryDescriptorId IS 'The country in which an individual is born. It is strongly recommended that entries use only ISO 3166 2-letter country codes.';
+COMMENT ON COLUMN tx.AsOfStatusALeavers.DateEnteredUS IS 'For students born outside of the U.S., the date the student entered the U.S.';
+COMMENT ON COLUMN tx.AsOfStatusALeavers.MultipleBirthStatus IS 'Indicator of whether the student was born with other siblings (i.e., twins, triplets, etc.)';
+COMMENT ON COLUMN tx.AsOfStatusALeavers.BirthSexDescriptorId IS 'A person''s gender at birth.';
 
--- Extended Properties [tx].[AsOfStatusALeaverDiploma] --
-COMMENT ON TABLE tx.AsOfStatusALeaverDiploma IS 'Extended Diploma common type';
-COMMENT ON COLUMN tx.AsOfStatusALeaverDiploma.SchoolId IS 'The identifier assigned to a school.';
-COMMENT ON COLUMN tx.AsOfStatusALeaverDiploma.StudentUID IS 'E1523. StudentUID (StudentUniqueId) is a unique number assigned to a student by the Texas Education Agency.';
-COMMENT ON COLUMN tx.AsOfStatusALeaverDiploma.AchievementTitle IS 'The title assigned to the achievement.';
-COMMENT ON COLUMN tx.AsOfStatusALeaverDiploma.AchievementCategoryDescriptorId IS 'The category of achievement attributed to the learner.';
-COMMENT ON COLUMN tx.AsOfStatusALeaverDiploma.AchievementCategorySystem IS 'The system that defines the categories by which an achievement is attributed to the learner.';
-COMMENT ON COLUMN tx.AsOfStatusALeaverDiploma.IssuerName IS 'The name of the agent, entity, or institution issuing the element.';
-COMMENT ON COLUMN tx.AsOfStatusALeaverDiploma.IssuerOriginURL IS 'The Uniform Resource Locator (URL) from which the award was issued.';
-COMMENT ON COLUMN tx.AsOfStatusALeaverDiploma.Criteria IS 'The criteria for competency-based completion of the achievement/award.';
-COMMENT ON COLUMN tx.AsOfStatusALeaverDiploma.CriteriaURL IS 'The Uniform Resource Locator (URL) for the unique address of a web page describing the competency-based completion criteria for the achievement/award.';
-COMMENT ON COLUMN tx.AsOfStatusALeaverDiploma.EvidenceStatement IS 'A statement or reference describing the evidence that the learner met the criteria for attainment of the Achievement.';
-COMMENT ON COLUMN tx.AsOfStatusALeaverDiploma.ImageURL IS 'The Uniform Resource Locator (URL) for the unique address of an image representing an award or badge associated with the Achievement.';
-COMMENT ON COLUMN tx.AsOfStatusALeaverDiploma.DiplomaAwardDate IS 'The month, day, and year on which the student met  graduation requirements and was awarded a diploma.';
-COMMENT ON COLUMN tx.AsOfStatusALeaverDiploma.DiplomaLevelDescriptorId IS 'The level of diploma/credential that is awarded to a student in recognition of his/her completion of the curricular requirements.
-        Minimum high school program
-        Recommended high school program
-        Distinguished Achievement Program.';
-COMMENT ON COLUMN tx.AsOfStatusALeaverDiploma.DiplomaTypeDescriptorId IS 'The type of diploma/credential that is awarded to a student in recognition of his/her completion of the curricular requirements.';
-COMMENT ON COLUMN tx.AsOfStatusALeaverDiploma.CTECompleter IS 'Indicated a student who reached a state-defined threshold of vocational education and who attained a high school diploma or its recognized state equivalent or GED.';
-COMMENT ON COLUMN tx.AsOfStatusALeaverDiploma.DiplomaDescription IS 'The description of diploma given to the student for accomplishments.';
-COMMENT ON COLUMN tx.AsOfStatusALeaverDiploma.DiplomaAwardExpiresDate IS 'Date on which the award expires.';
+-- Extended Properties [tx].[AsOfStatusALeaversEndorsementCompletedSet] --
+COMMENT ON TABLE tx.AsOfStatusALeaversEndorsementCompletedSet IS 'Collection of EndorsementCompleted';
+COMMENT ON COLUMN tx.AsOfStatusALeaversEndorsementCompletedSet.SchoolId IS 'The identifier assigned to a school.';
+COMMENT ON COLUMN tx.AsOfStatusALeaversEndorsementCompletedSet.StudentUID IS 'E1523. StudentUID (StudentUniqueId) is a unique number assigned to a student by the Texas Education Agency.';
 
--- Extended Properties [tx].[AsOfStatusALeaverIndustryBasedCertificationSet] --
-COMMENT ON TABLE tx.AsOfStatusALeaverIndustryBasedCertificationSet IS 'Common Type IndustryBasedCertificationSet.';
-COMMENT ON COLUMN tx.AsOfStatusALeaverIndustryBasedCertificationSet.BeginDate IS 'Begin date of the effecive date for the IndustryBasedCertificationSet';
-COMMENT ON COLUMN tx.AsOfStatusALeaverIndustryBasedCertificationSet.DateCertEarned IS 'E1632. DateCertEarned indicates the date upon which the associated data value(s) is/are considered to take effect, or the associated data value(s) change(s).';
-COMMENT ON COLUMN tx.AsOfStatusALeaverIndustryBasedCertificationSet.IBCVendorDescriptorId IS 'E1655. IBCVendorCode identifies the organization or company that offered the service.';
-COMMENT ON COLUMN tx.AsOfStatusALeaverIndustryBasedCertificationSet.PostSecondaryCertificationLicensureDescriptorId IS 'E1640. PostSecondaryCertificationLicensure indicates a nationally or internationally recognized business or industry certification or license earned by a student.';
-COMMENT ON COLUMN tx.AsOfStatusALeaverIndustryBasedCertificationSet.SchoolId IS 'The identifier assigned to a school.';
-COMMENT ON COLUMN tx.AsOfStatusALeaverIndustryBasedCertificationSet.StudentUID IS 'E1523. StudentUID (StudentUniqueId) is a unique number assigned to a student by the Texas Education Agency.';
-COMMENT ON COLUMN tx.AsOfStatusALeaverIndustryBasedCertificationSet.IBCExamFeeAmount IS 'E1654. IBCExamFeeAmount identifies the amount of money that was paid for a student’s industry certification exam by the local education agency.';
-COMMENT ON COLUMN tx.AsOfStatusALeaverIndustryBasedCertificationSet.EndDate IS 'End date of the effecive date for the IndustryBasedCertificationSet';
+-- Extended Properties [tx].[AsOfStatusALeaversEndorsementCompletedSetEndorsementCompleted] --
+COMMENT ON TABLE tx.AsOfStatusALeaversEndorsementCompletedSetEndorsementCompleted IS 'E1544 - E1548. EndorsementCompleted indicates the student has successfully completed a FHSP program to earn one of the following endorsements:
+• STEM
+• Business and Industry
+• Public Services
+• Arts and Humanities
+• Multi-Disciplinary Studies';
+COMMENT ON COLUMN tx.AsOfStatusALeaversEndorsementCompletedSetEndorsementCompleted.EndorsementCompletedDescriptorId IS 'E1544 - E1548. EndorsementCompleted indicates the student has successfully completed a FHSP program to earn one of the following endorsements:
+• STEM
+• Business and Industry
+• Public Services
+• Arts and Humanities
+• Multi-Disciplinary Studies';
+COMMENT ON COLUMN tx.AsOfStatusALeaversEndorsementCompletedSetEndorsementCompleted.SchoolId IS 'The identifier assigned to a school.';
+COMMENT ON COLUMN tx.AsOfStatusALeaversEndorsementCompletedSetEndorsementCompleted.StudentUID IS 'E1523. StudentUID (StudentUniqueId) is a unique number assigned to a student by the Texas Education Agency.';
 
--- Extended Properties [tx].[AsOfStatusALeaverPersonalIdentificationDocument] --
-COMMENT ON TABLE tx.AsOfStatusALeaverPersonalIdentificationDocument IS 'The documents presented as evident to verify one''s personal identity; for example: drivers license, passport, birth certificate, etc.';
-COMMENT ON COLUMN tx.AsOfStatusALeaverPersonalIdentificationDocument.IdentificationDocumentUseDescriptorId IS 'The primary function of the document used for establishing identity.';
-COMMENT ON COLUMN tx.AsOfStatusALeaverPersonalIdentificationDocument.PersonalInformationVerificationDescriptorId IS 'The category of the document relative to its purpose.';
-COMMENT ON COLUMN tx.AsOfStatusALeaverPersonalIdentificationDocument.SchoolId IS 'The identifier assigned to a school.';
-COMMENT ON COLUMN tx.AsOfStatusALeaverPersonalIdentificationDocument.StudentUID IS 'E1523. StudentUID (StudentUniqueId) is a unique number assigned to a student by the Texas Education Agency.';
-COMMENT ON COLUMN tx.AsOfStatusALeaverPersonalIdentificationDocument.DocumentTitle IS 'The title of the document given by the issuer.';
-COMMENT ON COLUMN tx.AsOfStatusALeaverPersonalIdentificationDocument.DocumentExpirationDate IS 'The day when the document  expires, if null then never expires.';
-COMMENT ON COLUMN tx.AsOfStatusALeaverPersonalIdentificationDocument.IssuerDocumentIdentificationCode IS 'The unique identifier on the issuer''s identification system.';
-COMMENT ON COLUMN tx.AsOfStatusALeaverPersonalIdentificationDocument.IssuerName IS 'Name of the entity or institution that issued the document.';
-COMMENT ON COLUMN tx.AsOfStatusALeaverPersonalIdentificationDocument.IssuerCountryDescriptorId IS 'Country of origin of the document. It is strongly recommended that entries use only ISO 3166 2-letter country codes.';
+-- Extended Properties [tx].[AsOfStatusALeaversFinancialAidApplication] --
+COMMENT ON TABLE tx.AsOfStatusALeaversFinancialAidApplication IS 'E1724. The FinancialAidApplication indicates the manner in which the student completed the graduation requirement of either completing a financial aid application (FAFSA or TAFSA) or submitting an exemption.';
+COMMENT ON COLUMN tx.AsOfStatusALeaversFinancialAidApplication.FinancialAidApplicationDescriptorId IS 'E1724. The FinancialAidApplication indicates the manner in which the student completed the graduation requirement of either completing a financial aid application (FAFSA or TAFSA) or submitting an exemption.';
+COMMENT ON COLUMN tx.AsOfStatusALeaversFinancialAidApplication.SchoolId IS 'The identifier assigned to a school.';
+COMMENT ON COLUMN tx.AsOfStatusALeaversFinancialAidApplication.StudentUID IS 'E1523. StudentUID (StudentUniqueId) is a unique number assigned to a student by the Texas Education Agency.';
 
--- Extended Properties [tx].[AsOfStatusALeaverRace] --
-COMMENT ON TABLE tx.AsOfStatusALeaverRace IS 'E1343,E1059,E1060,E1061,E1062,E1063. The general racial category which most clearly reflects the individual''s recognition of his or her community or with which the individual most identifies as last reported to the education organization. The data model allows for multiple entries so that each individual can specify all appropriate races.';
-COMMENT ON COLUMN tx.AsOfStatusALeaverRace.RaceDescriptorId IS 'E1343,E1059,E1060,E1061,E1062,E1063. The general racial category which most clearly reflects the individual''s recognition of his or her community or with which the individual most identifies as last reported to the education organization. The data model allows for multiple entries so that each individual can specify all appropriate races.';
-COMMENT ON COLUMN tx.AsOfStatusALeaverRace.SchoolId IS 'The identifier assigned to a school.';
-COMMENT ON COLUMN tx.AsOfStatusALeaverRace.StudentUID IS 'E1523. StudentUID (StudentUniqueId) is a unique number assigned to a student by the Texas Education Agency.';
+-- Extended Properties [tx].[AsOfStatusALeaversGraduationSet] --
+COMMENT ON TABLE tx.AsOfStatusALeaversGraduationSet IS 'DOCUMENTATION PENDING';
+COMMENT ON COLUMN tx.AsOfStatusALeaversGraduationSet.SchoolId IS 'The identifier assigned to a school.';
+COMMENT ON COLUMN tx.AsOfStatusALeaversGraduationSet.StudentUID IS 'E1523. StudentUID (StudentUniqueId) is a unique number assigned to a student by the Texas Education Agency.';
+COMMENT ON COLUMN tx.AsOfStatusALeaversGraduationSet.DiplomaAwardDate IS 'E0791. DiplomaAwardDate indicates the month and year that the student graduated from high school.';
+COMMENT ON COLUMN tx.AsOfStatusALeaversGraduationSet.DiplomaTypeDescriptorId IS 'E0806. DiplomaType indicates the type of plan under which the student graduated.';
+COMMENT ON COLUMN tx.AsOfStatusALeaversGraduationSet.AchievementCategoryDescriptorId IS 'The category of achievement attributed to the learner.';
+COMMENT ON COLUMN tx.AsOfStatusALeaversGraduationSet.IndividualGraduationCommitteeGraduateIndicator IS 'E1562. IndividualGraduationCommitteeGraduateIndicator Indicates whether a student for whom an IGC was established has graduated based on an IGC decision.';
+COMMENT ON COLUMN tx.AsOfStatusALeaversGraduationSet.MilitaryEnlistmentIndicator IS 'E1589. MilitaryEnlistmentIndicator indicates that a student leaver enlisted in the United States Armed Forces.';
+COMMENT ON COLUMN tx.AsOfStatusALeaversGraduationSet.FHSPDistingLevelGraduate IS 'E1542. FHSPDistingLevelGraduate';
+
+-- Extended Properties [tx].[AsOfStatusALeaversGraduationSetFinancialAidApplication] --
+COMMENT ON TABLE tx.AsOfStatusALeaversGraduationSetFinancialAidApplication IS 'E1724. The FinancialAidApplication indicates the manner in which the student completed the graduation requirement of either completing a financial aid application (FAFSA or TAFSA) or submitting an exemption.';
+COMMENT ON COLUMN tx.AsOfStatusALeaversGraduationSetFinancialAidApplication.FinancialAidApplicationDescriptorId IS 'E1724. The FinancialAidApplication indicates the manner in which the student completed the graduation requirement of either completing a financial aid application (FAFSA or TAFSA) or submitting an exemption.';
+COMMENT ON COLUMN tx.AsOfStatusALeaversGraduationSetFinancialAidApplication.SchoolId IS 'The identifier assigned to a school.';
+COMMENT ON COLUMN tx.AsOfStatusALeaversGraduationSetFinancialAidApplication.StudentUID IS 'E1523. StudentUID (StudentUniqueId) is a unique number assigned to a student by the Texas Education Agency.';
+
+-- Extended Properties [tx].[AsOfStatusALeaversIndustryBasedCertificationSet] --
+COMMENT ON TABLE tx.AsOfStatusALeaversIndustryBasedCertificationSet IS 'Common Type IndustryBasedCertificationSet.';
+COMMENT ON COLUMN tx.AsOfStatusALeaversIndustryBasedCertificationSet.DateCertTaken IS 'E1632. DateCertTaken indicates the date upon which the industry based certification was taken.';
+COMMENT ON COLUMN tx.AsOfStatusALeaversIndustryBasedCertificationSet.IBCVendorDescriptorId IS 'E1655. IBCVendorCode identifies the organization or company that offered the service.';
+COMMENT ON COLUMN tx.AsOfStatusALeaversIndustryBasedCertificationSet.PostSecondaryCertificationLicensureDescriptorId IS 'E1640. PostSecondaryCertificationLicensure indicates a nationally or internationally recognized business or industry certification or license earned by a student.';
+COMMENT ON COLUMN tx.AsOfStatusALeaversIndustryBasedCertificationSet.SchoolId IS 'The identifier assigned to a school.';
+COMMENT ON COLUMN tx.AsOfStatusALeaversIndustryBasedCertificationSet.StudentUID IS 'E1523. StudentUID (StudentUniqueId) is a unique number assigned to a student by the Texas Education Agency.';
+COMMENT ON COLUMN tx.AsOfStatusALeaversIndustryBasedCertificationSet.PostSecondaryCertLicensureResultDescriptorId IS 'E1733. PostSecondaryCertLicensureResult indicates the result of a state, nationally, or internationally recognized industry-based certification exam taken by a student.';
+COMMENT ON COLUMN tx.AsOfStatusALeaversIndustryBasedCertificationSet.IBCExamFeeAmount IS 'E1654. IBCExamFeeAmount identifies the amount of money that was paid for a student’s industry certification exam by the local education agency.';
+
+-- Extended Properties [tx].[AsOfStatusALeaversPersonalIdentificationDocument] --
+COMMENT ON TABLE tx.AsOfStatusALeaversPersonalIdentificationDocument IS 'The documents presented as evident to verify one''s personal identity; for example: drivers license, passport, birth certificate, etc.';
+COMMENT ON COLUMN tx.AsOfStatusALeaversPersonalIdentificationDocument.IdentificationDocumentUseDescriptorId IS 'The primary function of the document used for establishing identity.';
+COMMENT ON COLUMN tx.AsOfStatusALeaversPersonalIdentificationDocument.PersonalInformationVerificationDescriptorId IS 'The category of the document relative to its purpose.';
+COMMENT ON COLUMN tx.AsOfStatusALeaversPersonalIdentificationDocument.SchoolId IS 'The identifier assigned to a school.';
+COMMENT ON COLUMN tx.AsOfStatusALeaversPersonalIdentificationDocument.StudentUID IS 'E1523. StudentUID (StudentUniqueId) is a unique number assigned to a student by the Texas Education Agency.';
+COMMENT ON COLUMN tx.AsOfStatusALeaversPersonalIdentificationDocument.DocumentTitle IS 'The title of the document given by the issuer.';
+COMMENT ON COLUMN tx.AsOfStatusALeaversPersonalIdentificationDocument.DocumentExpirationDate IS 'The day when the document  expires, if null then never expires.';
+COMMENT ON COLUMN tx.AsOfStatusALeaversPersonalIdentificationDocument.IssuerDocumentIdentificationCode IS 'The unique identifier on the issuer''s identification system.';
+COMMENT ON COLUMN tx.AsOfStatusALeaversPersonalIdentificationDocument.IssuerName IS 'Name of the entity or institution that issued the document.';
+COMMENT ON COLUMN tx.AsOfStatusALeaversPersonalIdentificationDocument.IssuerCountryDescriptorId IS 'Country of origin of the document. It is strongly recommended that entries use only ISO 3166 2-letter country codes.';
+
+-- Extended Properties [tx].[AsOfStatusALeaversRace] --
+COMMENT ON TABLE tx.AsOfStatusALeaversRace IS 'E1343,E1059,E1060,E1061,E1062,E1063. The general racial category which most clearly reflects the individual''s recognition of his or her community or with which the individual most identifies as last reported to the education organization. The data model allows for multiple entries so that each individual can specify all appropriate races.';
+COMMENT ON COLUMN tx.AsOfStatusALeaversRace.RaceDescriptorId IS 'E1343,E1059,E1060,E1061,E1062,E1063. The general racial category which most clearly reflects the individual''s recognition of his or her community or with which the individual most identifies as last reported to the education organization. The data model allows for multiple entries so that each individual can specify all appropriate races.';
+COMMENT ON COLUMN tx.AsOfStatusALeaversRace.SchoolId IS 'The identifier assigned to a school.';
+COMMENT ON COLUMN tx.AsOfStatusALeaversRace.StudentUID IS 'E1523. StudentUID (StudentUniqueId) is a unique number assigned to a student by the Texas Education Agency.';
 
 -- Extended Properties [tx].[AsOfStatusLastDayEnrollmentDescriptor] --
 COMMENT ON TABLE tx.AsOfStatusLastDayEnrollmentDescriptor IS 'AsOfStatusLastDayEnrollment indicates the student’s status in the district on the last day of school or last date of enrollment in the current school year.';
@@ -143,6 +163,37 @@ COMMENT ON COLUMN tx.AssessmentResultsObtainedDescriptor.AssessmentResultsObtain
 -- Extended Properties [tx].[AuxiliaryRoleIdDescriptor] --
 COMMENT ON TABLE tx.AuxiliaryRoleIdDescriptor IS 'Descriptor AuxiliaryRoleId is populated from code table C213.';
 COMMENT ON COLUMN tx.AuxiliaryRoleIdDescriptor.AuxiliaryRoleIdDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
+
+-- Extended Properties [tx].[BasicReportingPeriodAttendance] --
+COMMENT ON TABLE tx.BasicReportingPeriodAttendance IS 'This extended entity represents the recording of a student’s regular (basic) reporting period attendance.';
+COMMENT ON COLUMN tx.BasicReportingPeriodAttendance.CalendarCode IS 'E0975. CalendarCode indicates a unique campus calendar of school days for a particular group of students on a campus. Students with the same instructional track have the same number of days taught in a particular reporting period at a campus.';
+COMMENT ON COLUMN tx.BasicReportingPeriodAttendance.GradeLevelDescriptorId IS 'GradeLevel indicates the current grade level of the student.';
+COMMENT ON COLUMN tx.BasicReportingPeriodAttendance.ReportingPeriodDescriptorId IS 'ReportingPeriod indicates the period for which the attendance data are being reported.';
+COMMENT ON COLUMN tx.BasicReportingPeriodAttendance.SchoolId IS 'The identifier assigned to a school.';
+COMMENT ON COLUMN tx.BasicReportingPeriodAttendance.StudentUSI IS 'A unique alphanumeric code assigned to a student.';
+COMMENT ON COLUMN tx.BasicReportingPeriodAttendance.NumberDaysTaught IS 'E0935. NumberDaysTaught indicates the number of days of instruction offered, as shown on the school calendar, during a particular reporting period.';
+COMMENT ON COLUMN tx.BasicReportingPeriodAttendance.TotalDaysAbsent IS 'E0036. TotalDaysAbsent indicates the total number of days the student was absent during a particular reporting period.';
+COMMENT ON COLUMN tx.BasicReportingPeriodAttendance.TotalIneligibleDaysPresent IS 'E0936. TotalIneligibleDaysPresent indicates the total number of days the student was present and ineligible for Foundation School Program funding during a particular reporting period.';
+COMMENT ON COLUMN tx.BasicReportingPeriodAttendance.TotalEligibleDaysPresent IS 'E0937. TotalEligibleDaysPresent indicates the total number of days the student was present and eligible for Foundation School Program funding during a particular reporting period.';
+COMMENT ON COLUMN tx.BasicReportingPeriodAttendance.RSTotalEligibleDaysPresent IS 'E1678. RSTotalEligibleDaysPresent indicates the total number of days the student was remote synchronous present and eligible for Foundation School Program funding during a particular reporting period.';
+COMMENT ON COLUMN tx.BasicReportingPeriodAttendance.RATotalEligibleDaysPresent IS 'E1679. RATotalEligibleDaysPresent indicates the total number of days the student was remote asynchronous present and eligible for Foundation School Program funding during a particular reporting period.';
+
+-- Extended Properties [tx].[BilingualESLFundingDescriptor] --
+COMMENT ON TABLE tx.BilingualESLFundingDescriptor IS 'Descriptor BilingualESLFunding is based on code table C225.';
+COMMENT ON COLUMN tx.BilingualESLFundingDescriptor.BilingualESLFundingDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
+
+-- Extended Properties [tx].[BilingualESLProgramReportingPeriodAttendance] --
+COMMENT ON TABLE tx.BilingualESLProgramReportingPeriodAttendance IS 'This extended entity represents the bilingual/ESL program attendance of a student.';
+COMMENT ON COLUMN tx.BilingualESLProgramReportingPeriodAttendance.BilingualESLFundingDescriptorId IS 'E1651. BilingualESLFunding indicates the language program in which the student participates during the reporting period.';
+COMMENT ON COLUMN tx.BilingualESLProgramReportingPeriodAttendance.CalendarCode IS 'E0975. CalendarCode indicates a unique campus calendar of school days for a particular group of students on a campus. Students with the same instructional track have the same number of days taught in a particular reporting period at a campus.';
+COMMENT ON COLUMN tx.BilingualESLProgramReportingPeriodAttendance.GradeLevelDescriptorId IS 'GradeLevel indicates the current grade level of the student.';
+COMMENT ON COLUMN tx.BilingualESLProgramReportingPeriodAttendance.ReportingPeriodDescriptorId IS 'ReportingPeriod indicates the period for which the attendance data are being reported.';
+COMMENT ON COLUMN tx.BilingualESLProgramReportingPeriodAttendance.SchoolId IS 'The identifier assigned to a school.';
+COMMENT ON COLUMN tx.BilingualESLProgramReportingPeriodAttendance.StudentUSI IS 'A unique alphanumeric code assigned to a student.';
+COMMENT ON COLUMN tx.BilingualESLProgramReportingPeriodAttendance.NumberDaysTaught IS 'E0935. NumberDaysTaught indicates the number of days of instruction offered, as shown on the school calendar, during a particular reporting period.';
+COMMENT ON COLUMN tx.BilingualESLProgramReportingPeriodAttendance.TotalEligBilingualESLDaysPresent IS 'E0938. TotalEligBilingualESLDaysPresent indicates the total number of days the student was present and an eligible participant in the state-approved bilingual/ESL program during a particular reporting period.';
+COMMENT ON COLUMN tx.BilingualESLProgramReportingPeriodAttendance.RSTotalEligBilingualESLDaysPresent IS 'E1682. RSTotalEligBilingualESLDaysPresent indicates the total number of days the student was remote synchronous present and an eligible participant in the state-approved bilingual/ESL program during a particular reporting period.';
+COMMENT ON COLUMN tx.BilingualESLProgramReportingPeriodAttendance.RATotalEligBilingualESLDaysPresent IS 'E1683. RATotalEligBilingualESLDaysPresent indicates the total number of days the student was remote asynchronous present and an eligible participant in the state-approved bilingual/ESL program during a particular reporting period.';
 
 -- Extended Properties [tx].[BudgetExt] --
 COMMENT ON TABLE tx.BudgetExt IS 'The BudgetExtension Domain Entity represents the amount of monies allocated to be spent or received by an education organization as related to a specific account';
@@ -177,12 +228,6 @@ COMMENT ON COLUMN tx.CampusEnrollmentTypeDescriptor.CampusEnrollmentTypeDescript
 -- Extended Properties [tx].[ChildCountFundingDescriptor] --
 COMMENT ON TABLE tx.ChildCountFundingDescriptor IS 'Descriptor ChildCountFunding indicates under which federal program the student receiving special education and related services is counted. (C066)';
 COMMENT ON COLUMN tx.ChildCountFundingDescriptor.ChildCountFundingDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
-
--- Extended Properties [tx].[ClassPeriodExtension] --
-COMMENT ON TABLE tx.ClassPeriodExtension IS '';
-COMMENT ON COLUMN tx.ClassPeriodExtension.ClassPeriodName IS 'An indication of the portion of a typical daily session in which students receive instruction in a specified subject (e.g., morning, sixth period, block period, or AB schedules).';
-COMMENT ON COLUMN tx.ClassPeriodExtension.SchoolId IS 'The identifier assigned to a school.';
-COMMENT ON COLUMN tx.ClassPeriodExtension.BeginDate IS 'Indicates the Begin/end Dates upon which the ClassPeriod is considered to take effect.';
 
 -- Extended Properties [tx].[ClassTypeDescriptor] --
 COMMENT ON TABLE tx.ClassTypeDescriptor IS 'Descriptor ClassType is populated from code table C179.';
@@ -221,6 +266,29 @@ COMMENT ON COLUMN tx.CourseTranscriptExtension.ATCIndicator IS 'E1058. ATCIndica
 COMMENT ON TABLE tx.CrisisEventDescriptor IS 'Descriptor CrisisEvent is populated from Code Table C178.';
 COMMENT ON COLUMN tx.CrisisEventDescriptor.CrisisEventDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
 
+-- Extended Properties [tx].[CTEProgramReportingPeriodAttendance] --
+COMMENT ON TABLE tx.CTEProgramReportingPeriodAttendance IS 'This extended entity represents the CTE program attendance of a student.';
+COMMENT ON COLUMN tx.CTEProgramReportingPeriodAttendance.CalendarCode IS 'E0975. CalendarCode indicates a unique campus calendar of school days for a particular group of students on a campus. Students with the same instructional track have the same number of days taught in a particular reporting period at a campus.';
+COMMENT ON COLUMN tx.CTEProgramReportingPeriodAttendance.CTEServiceIdDescriptorId IS 'CTEServiceID refers to the approved career and technical education course that generates countact hours during a particular reporting period.';
+COMMENT ON COLUMN tx.CTEProgramReportingPeriodAttendance.GradeLevelDescriptorId IS 'GradeLevel indicates the current grade level of the student.';
+COMMENT ON COLUMN tx.CTEProgramReportingPeriodAttendance.ReportingPeriodDescriptorId IS 'ReportingPeriod indicates the period for which the attendance data are being reported.';
+COMMENT ON COLUMN tx.CTEProgramReportingPeriodAttendance.SchoolId IS 'The identifier assigned to a school.';
+COMMENT ON COLUMN tx.CTEProgramReportingPeriodAttendance.StudentUSI IS 'A unique alphanumeric code assigned to a student.';
+COMMENT ON COLUMN tx.CTEProgramReportingPeriodAttendance.NumberDaysTaught IS 'E0935. NumberDaysTaught indicates the number of days of instruction offered, as shown on the school calendar, during a particular reporting period.';
+COMMENT ON COLUMN tx.CTEProgramReportingPeriodAttendance.EligibleDaysPresentV1 IS 'E0950. EligibleDaysPresentV1 indicates the total number of days the student was eligible and present and enrolled in an approved career and technical course that generated one contact hour during a particular reporting period.';
+COMMENT ON COLUMN tx.CTEProgramReportingPeriodAttendance.RSEligibleDaysPresentV1 IS 'E1696. RSEligibleDaysPresentV1 indicates the total number of days the student was eligible, remote synchronous present and enrolled in an approved career and technical course that generated one contact hour during a particular reporting period.';
+COMMENT ON COLUMN tx.CTEProgramReportingPeriodAttendance.RAEligibleDaysPresentV1 IS 'E1702. RAEligibleDaysPresentV1 indicates the total number of days the student was eligible, remote asynchronous present and enrolled in an approved career and technical course that generated one contact hour during a particular reporting period.';
+COMMENT ON COLUMN tx.CTEProgramReportingPeriodAttendance.EligibleDaysPresentV2 IS 'E0951. EligibleDaysPresentV2 indicates the total number of days the student was eligible and present and enrolled in an approved career and technical course that generated two contact hours during a particular reporting period.';
+COMMENT ON COLUMN tx.CTEProgramReportingPeriodAttendance.RSEligibleDaysPresentV2 IS 'E1697. RSEligibleDaysPresentV2 indicates the total number of days the student was eligible, remote synchronous present and enrolled in an approved career and technical course that generated two contact hours during a particular reporting period.';
+COMMENT ON COLUMN tx.CTEProgramReportingPeriodAttendance.RAEligibleDaysPresentV2 IS 'E1703. RAEligibleDaysPresentV2 indicates the total number of days the student was eligible, remote asynchronous present and enrolled in an approved career and technical course that generated two contact hours during a particular reporting period.';
+COMMENT ON COLUMN tx.CTEProgramReportingPeriodAttendance.EligibleDaysPresentV3 IS 'E0952. EligibleDaysPresentV3 indicates the total number of days the student was eligible and present and enrolled in an approved career and technical course that generated three contact hours during a particular reporting period.';
+COMMENT ON COLUMN tx.CTEProgramReportingPeriodAttendance.RSEligibleDaysPresentV3 IS 'E1698. RSEligibleDaysPresentV3 indicates the total number of days the student was eligible, remote synchronous present and enrolled in an approved career and technical course that generated three contact hours during a particular reporting period.';
+COMMENT ON COLUMN tx.CTEProgramReportingPeriodAttendance.RAEligibleDaysPresentV3 IS 'E1704. RAEligibleDaysPresentV3 indicates the total number of days the student was eligible, remote asynchronous present and enrolled in an approved career and technical course that generated three contact hours during a particular reporting period.';
+
+-- Extended Properties [tx].[CTEServiceIdDescriptor] --
+COMMENT ON TABLE tx.CTEServiceIdDescriptor IS 'DOCUMENTATION PENDING.';
+COMMENT ON COLUMN tx.CTEServiceIdDescriptor.CTEServiceIdDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
+
 -- Extended Properties [tx].[DisciplineActionExtension] --
 COMMENT ON TABLE tx.DisciplineActionExtension IS '';
 COMMENT ON COLUMN tx.DisciplineActionExtension.DisciplineActionIdentifier IS 'Identifier assigned by the education organization to the DisciplineAction.';
@@ -231,9 +299,19 @@ COMMENT ON COLUMN tx.DisciplineActionExtension.OfficialLengthOfDisciplinaryAssig
 COMMENT ON COLUMN tx.DisciplineActionExtension.InconsistentCodeOfConduct IS 'E1656. InconsistentCodeOfConduct indicates whether an out-of-school suspension, disciplinary alternative education program placement, or expulsion action is inconsistent with a local education agency’s student code of conduct.';
 COMMENT ON COLUMN tx.DisciplineActionExtension.NonMembershipDisciplineRestraintIndicator IS 'E1725. NonMembershipDisciplineRestraintIndicator indicates the discipline incident or restraint event being reported is for a special education student enrolled, not in membership.';
 
+-- Extended Properties [tx].[DisciplineIncidentExtension] --
+COMMENT ON TABLE tx.DisciplineIncidentExtension IS '';
+COMMENT ON COLUMN tx.DisciplineIncidentExtension.IncidentIdentifier IS 'A locally assigned unique identifier (within the school or school district) to identify each specific DisciplineIncident or occurrence. The same identifier should be used to document the entire DisciplineIncident even if it included multiple offenses and multiple offenders.';
+COMMENT ON COLUMN tx.DisciplineIncidentExtension.SchoolId IS 'The identifier assigned to a school.';
+COMMENT ON COLUMN tx.DisciplineIncidentExtension.SafeSupportiveSchoolProgramTeamReview IS 'E1734. SafeSupportiveSchoolProgramTeamReview indicates whether the Safe and Supportive School Program (SSSP) team conducted a threat assessment related to a reported disciplinary incident.';
+
 -- Extended Properties [tx].[DyslexiaRiskDescriptor] --
 COMMENT ON TABLE tx.DyslexiaRiskDescriptor IS 'Descriptor DyslexiaRisk is populated from Code Table C222.';
 COMMENT ON COLUMN tx.DyslexiaRiskDescriptor.DyslexiaRiskDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
+
+-- Extended Properties [tx].[DyslexiaScreeningExceptionReasonDescriptor] --
+COMMENT ON TABLE tx.DyslexiaScreeningExceptionReasonDescriptor IS 'Descriptor DyslexiaScreeningExceptionReason is based on Code Table C231.';
+COMMENT ON COLUMN tx.DyslexiaScreeningExceptionReasonDescriptor.DyslexiaScreeningExceptionReasonDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
 
 -- Extended Properties [tx].[DyslexiaServicesDescriptor] --
 COMMENT ON TABLE tx.DyslexiaServicesDescriptor IS 'Descriptor DyslexiaServices is based on code table C224.';
@@ -250,6 +328,10 @@ COMMENT ON COLUMN tx.EconomicDisadvantageDescriptor.EconomicDisadvantageDescript
 -- Extended Properties [tx].[EconomicDisadvantageLastDateOfEnrollmentDescriptor] --
 COMMENT ON TABLE tx.EconomicDisadvantageLastDateOfEnrollmentDescriptor IS 'DOCUMENTATION PENDING';
 COMMENT ON COLUMN tx.EconomicDisadvantageLastDateOfEnrollmentDescriptor.EconomicDisadvantageLastDateOfEnrollmentDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
+
+-- Extended Properties [tx].[EligibilityDelayReasonDescriptor] --
+COMMENT ON TABLE tx.EligibilityDelayReasonDescriptor IS 'Descriptor EligibilityDelayReason is based on Code Table DC164';
+COMMENT ON COLUMN tx.EligibilityDelayReasonDescriptor.EligibilityDelayReasonDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
 
 -- Extended Properties [tx].[ELOActivityDescriptor] --
 COMMENT ON TABLE tx.ELOActivityDescriptor IS 'Descriptor ELOActivity is populated from code table C229.';
@@ -274,6 +356,75 @@ COMMENT ON COLUMN tx.EndorsementPursuingDescriptor.EndorsementPursuingDescriptor
 -- Extended Properties [tx].[EvaluationDelayReasonDescriptor] --
 COMMENT ON TABLE tx.EvaluationDelayReasonDescriptor IS 'Descriptor EvaluationDelayReason is based on table DC164.';
 COMMENT ON COLUMN tx.EvaluationDelayReasonDescriptor.EvaluationDelayReasonDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
+
+-- Extended Properties [tx].[ExtendedSchoolYearServicesAttendance] --
+COMMENT ON TABLE tx.ExtendedSchoolYearServicesAttendance IS 'This extended entity represents the students who are served through the Extended School Year (ESY) Services Program.';
+COMMENT ON COLUMN tx.ExtendedSchoolYearServicesAttendance.FirstInstructionalSettingDescriptorId IS 'InstructionalSetting1 identifies the setting used in providing extended year services component of special education. The InstructionalSetting reported is the EducationalEnvironment in which the student was served during the regular school year.';
+COMMENT ON COLUMN tx.ExtendedSchoolYearServicesAttendance.GradeLevelDescriptorId IS 'GradeLevel indicates the current grade level of the student.';
+COMMENT ON COLUMN tx.ExtendedSchoolYearServicesAttendance.SchoolId IS 'The identifier assigned to a school.';
+COMMENT ON COLUMN tx.ExtendedSchoolYearServicesAttendance.StudentUSI IS 'A unique alphanumeric code assigned to a student.';
+COMMENT ON COLUMN tx.ExtendedSchoolYearServicesAttendance.TotalESYContactHoursInFirstInstructionalSetting IS 'E1013. TotalESYContactHoursInFirstInstructionalSetting indicates the total contact hours in a special education setting provided to the student through the extended school year services component of special education. InstructionalSetting1 reported is the EducationalEnvironment in which the student was served during the regular school year.';
+COMMENT ON COLUMN tx.ExtendedSchoolYearServicesAttendance.SecondInstructionalSettingDescriptorId IS 'InstructionalSetting2 identifies the setting used in providing extended year services component of special education. The InstructionalSetting reported is the EducationalEnvironment in which the student was served during the regular school year.';
+COMMENT ON COLUMN tx.ExtendedSchoolYearServicesAttendance.TotalESYContactHoursInSecondInstructionalSetting IS 'E1013. TotalESYContactHoursInSecondInstructionalSetting indicates the total contact hours in a special education setting provided to the student through the extended school year services component of special education. InstructionalSetting1 reported is the EducationalEnvironment in which the student was served during the regular school year.';
+
+-- Extended Properties [tx].[FinancialAidApplicationDescriptor] --
+COMMENT ON TABLE tx.FinancialAidApplicationDescriptor IS 'Descriptor FinancialAidApplication is based on Code Table C230.';
+COMMENT ON COLUMN tx.FinancialAidApplicationDescriptor.FinancialAidApplicationDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
+
+-- Extended Properties [tx].[FlexAttendanceProgramDescriptor] --
+COMMENT ON TABLE tx.FlexAttendanceProgramDescriptor IS 'Descriptor FlexAttendanceProgram is based on code table C177.';
+COMMENT ON COLUMN tx.FlexAttendanceProgramDescriptor.FlexAttendanceProgramDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
+
+-- Extended Properties [tx].[FlexibleBilingualESLProgramReportingPeriodAttendance] --
+COMMENT ON TABLE tx.FlexibleBilingualESLProgramReportingPeriodAttendance IS 'This extended entity represents the bilingual/ESL program attendance for the students who are served through a flexible attendance program.';
+COMMENT ON COLUMN tx.FlexibleBilingualESLProgramReportingPeriodAttendance.BilingualESLFundingDescriptorId IS 'E1651. BilingualESLFunding indicates the language program in which the student participates during the reporting period.';
+COMMENT ON COLUMN tx.FlexibleBilingualESLProgramReportingPeriodAttendance.CalendarCode IS 'E0975. CalendarCode indicates a unique campus calendar of school days for a particular group of students on a campus. Students with the same instructional track have the same number of days taught in a particular reporting period at a campus.';
+COMMENT ON COLUMN tx.FlexibleBilingualESLProgramReportingPeriodAttendance.FlexAttendanceProgramDescriptorId IS 'E1045. FlexAttendanceProgram indicates the unique type of flexible attendance program to which the student’s flexible attendance is related.';
+COMMENT ON COLUMN tx.FlexibleBilingualESLProgramReportingPeriodAttendance.GradeLevelDescriptorId IS 'GradeLevel indicates the current grade level of the student.';
+COMMENT ON COLUMN tx.FlexibleBilingualESLProgramReportingPeriodAttendance.ReportingPeriodDescriptorId IS 'ReportingPeriod indicates the period for which the attendance data are being reported.';
+COMMENT ON COLUMN tx.FlexibleBilingualESLProgramReportingPeriodAttendance.SchoolId IS 'The identifier assigned to a school.';
+COMMENT ON COLUMN tx.FlexibleBilingualESLProgramReportingPeriodAttendance.StudentUSI IS 'A unique alphanumeric code assigned to a student.';
+COMMENT ON COLUMN tx.FlexibleBilingualESLProgramReportingPeriodAttendance.NumberDaysTaught IS 'E0935. NumberDaysTaught indicates the number of days of instruction offered, as shown on the school calendar, during a particular reporting period.';
+COMMENT ON COLUMN tx.FlexibleBilingualESLProgramReportingPeriodAttendance.FlexTotalEligBilingualESLDaysPresent IS 'E1050. FlexAttendExcessMinutesInInstrSetting indicates the total number of minutes the student was present in a designated instructional setting above the allowable 360-minute daily limit of combined career and technical education and special education and related services during a particular reporting period.';
+
+-- Extended Properties [tx].[FlexibleCTEProgramReportingPeriodAttendance] --
+COMMENT ON TABLE tx.FlexibleCTEProgramReportingPeriodAttendance IS 'This extended entity represents the CTE program attendance for students who are served through a flexible attendance program.';
+COMMENT ON COLUMN tx.FlexibleCTEProgramReportingPeriodAttendance.CalendarCode IS 'E0975. CalendarCode indicates a unique campus calendar of school days for a particular group of students on a campus. Students with the same instructional track have the same number of days taught in a particular reporting period at a campus.';
+COMMENT ON COLUMN tx.FlexibleCTEProgramReportingPeriodAttendance.FlexAttendanceProgramDescriptorId IS 'E1045. FlexAttendanceProgram indicates the unique type of flexible attendance program to which the student’s flexible attendance is related.';
+COMMENT ON COLUMN tx.FlexibleCTEProgramReportingPeriodAttendance.GradeLevelDescriptorId IS 'GradeLevel indicates the current grade level of the student.';
+COMMENT ON COLUMN tx.FlexibleCTEProgramReportingPeriodAttendance.ReportingPeriodDescriptorId IS 'ReportingPeriod indicates the period for which the attendance data are being reported.';
+COMMENT ON COLUMN tx.FlexibleCTEProgramReportingPeriodAttendance.SchoolId IS 'The identifier assigned to a school.';
+COMMENT ON COLUMN tx.FlexibleCTEProgramReportingPeriodAttendance.StudentUSI IS 'A unique alphanumeric code assigned to a student.';
+COMMENT ON COLUMN tx.FlexibleCTEProgramReportingPeriodAttendance.NumberDaysTaught IS 'E0935. NumberDaysTaught indicates the number of days of instruction offered, as shown on the school calendar, during a particular reporting period.';
+COMMENT ON COLUMN tx.FlexibleCTEProgramReportingPeriodAttendance.FlexAttendTotalCareerTechMinutesPresent IS 'E1053. FlexAttendTotalCareerTechMinutesPresent indicates the total number of minutes the student was present in an approved career and technical education course(s) that the student was eligible for and enrolled in during a particular reporting period.';
+
+-- Extended Properties [tx].[FlexibleRegularProgramReportingPeriodAttendance] --
+COMMENT ON TABLE tx.FlexibleRegularProgramReportingPeriodAttendance IS 'This extended entity represents the attendance for students who are served through a flexible attendance program.';
+COMMENT ON COLUMN tx.FlexibleRegularProgramReportingPeriodAttendance.CalendarCode IS 'E0975. CalendarCode indicates a unique campus calendar of school days for a particular group of students on a campus. Students with the same instructional track have the same number of days taught in a particular reporting period at a campus.';
+COMMENT ON COLUMN tx.FlexibleRegularProgramReportingPeriodAttendance.FlexAttendanceProgramDescriptorId IS 'E1045. FlexAttendanceProgram indicates the unique type of flexible attendance program to which the student’s flexible attendance is related.';
+COMMENT ON COLUMN tx.FlexibleRegularProgramReportingPeriodAttendance.GradeLevelDescriptorId IS 'GradeLevel indicates the current grade level of the student.';
+COMMENT ON COLUMN tx.FlexibleRegularProgramReportingPeriodAttendance.ReportingPeriodDescriptorId IS 'ReportingPeriod indicates the period for which the attendance data are being reported.';
+COMMENT ON COLUMN tx.FlexibleRegularProgramReportingPeriodAttendance.SchoolId IS 'The identifier assigned to a school.';
+COMMENT ON COLUMN tx.FlexibleRegularProgramReportingPeriodAttendance.StudentUSI IS 'A unique alphanumeric code assigned to a student.';
+COMMENT ON COLUMN tx.FlexibleRegularProgramReportingPeriodAttendance.NumberDaysTaught IS 'E0935. NumberDaysTaught indicates the number of days of instruction offered, as shown on the school calendar, during a particular reporting period.';
+COMMENT ON COLUMN tx.FlexibleRegularProgramReportingPeriodAttendance.FlexAttendTotalEligibleMinutesPresent IS 'E1046. FlexAttendTotalEligibleMinutesPresent indicates the total number of minutes the student was present and eligible for Foundation School Program funding during a particular reporting period. Eligiblity for this program is determined by September 1 age and grade level.';
+COMMENT ON COLUMN tx.FlexibleRegularProgramReportingPeriodAttendance.FlexAttendTotalIneligibleMinutesPresent IS 'E1047. FlexAttendTotalIneligibleMinutesPresent indicates the total number of minutes the student was present and ineligible for Foundation School Program funding during a particular reporting period. Ineligiblity for this program is determined by September 1 age and grade level.';
+COMMENT ON COLUMN tx.FlexibleRegularProgramReportingPeriodAttendance.FlexTotalEligPregRelSvcsDaysPresent IS 'E1048. FlexTotalEligPregRelSvcsDaysPresent indicates the total number of school days a female student was eligible for Compensatory Education Home Instruction (CEHI) services and/or pregnancy related services during a particular reporting period.';
+COMMENT ON COLUMN tx.FlexibleRegularProgramReportingPeriodAttendance.FlexTotalEligSpEdMainstreamDaysPresent IS 'E1049. FlexTotalEligSpEdMainstreamDaysPresent indicates the total number of school days a student with a special education individualized education program (IEP) that provided for the mainstream instructional arrangement/setting was eligible for that instructional arrangement/setting during a particular reporting period.';
+COMMENT ON COLUMN tx.FlexibleRegularProgramReportingPeriodAttendance.FlexTotalEligResidentialFacilityDaysPresent IS 'E1653. FlexTotalEligResidentialFacilityDaysPresent indicates the total number of days the student was present and eligible for LEA services while living in a Residential Facility in a flexible attendance program during a particular reporting period.';
+
+-- Extended Properties [tx].[FlexibleSpecialEducationProgramReportingPeriodAttendance] --
+COMMENT ON TABLE tx.FlexibleSpecialEducationProgramReportingPeriodAttendance IS 'This extended entity represents the special education program attendance for students who are served through a flexible attendance program.';
+COMMENT ON COLUMN tx.FlexibleSpecialEducationProgramReportingPeriodAttendance.CalendarCode IS 'E0975. CalendarCode indicates a unique campus calendar of school days for a particular group of students on a campus. Students with the same instructional track have the same number of days taught in a particular reporting period at a campus.';
+COMMENT ON COLUMN tx.FlexibleSpecialEducationProgramReportingPeriodAttendance.FlexAttendanceProgramDescriptorId IS 'E1045. FlexAttendanceProgram indicates the unique type of flexible attendance program to which the student’s flexible attendance is related.';
+COMMENT ON COLUMN tx.FlexibleSpecialEducationProgramReportingPeriodAttendance.GradeLevelDescriptorId IS 'GradeLevel indicates the current grade level of the student.';
+COMMENT ON COLUMN tx.FlexibleSpecialEducationProgramReportingPeriodAttendance.InstructionalSettingDescriptorId IS 'E0173. InstructionalSetting identifies the setting used in providing instruction to students.';
+COMMENT ON COLUMN tx.FlexibleSpecialEducationProgramReportingPeriodAttendance.ReportingPeriodDescriptorId IS 'ReportingPeriod indicates the period for which the attendance data are being reported.';
+COMMENT ON COLUMN tx.FlexibleSpecialEducationProgramReportingPeriodAttendance.SchoolId IS 'The identifier assigned to a school.';
+COMMENT ON COLUMN tx.FlexibleSpecialEducationProgramReportingPeriodAttendance.StudentUSI IS 'A unique alphanumeric code assigned to a student.';
+COMMENT ON COLUMN tx.FlexibleSpecialEducationProgramReportingPeriodAttendance.NumberDaysTaught IS 'E0935. NumberDaysTaught indicates the number of days of instruction offered, as shown on the school calendar, during a particular reporting period.';
+COMMENT ON COLUMN tx.FlexibleSpecialEducationProgramReportingPeriodAttendance.FlexAttendDaysEligibleInInstrSetting IS 'E1051. FlexAttendExcessMinutesInInstrSetting indicates the total number of minutes the student was present in a designated instructional setting above the allowable 360-minute daily limit of combined career and technical education and special education and related services during a particular reporting period.';
+COMMENT ON COLUMN tx.FlexibleSpecialEducationProgramReportingPeriodAttendance.FlexAttendExcessMinutesInInstrSetting IS 'E1052. NumberDaysTaught indicates the number of days of instruction offered, as shown on the school calendar, during a particular reporting period.';
 
 -- Extended Properties [tx].[FosterCareTypeDescriptor] --
 COMMENT ON TABLE tx.FosterCareTypeDescriptor IS 'Descriptor FosterCareType is populated from Code Table C196.';
@@ -326,6 +477,10 @@ COMMENT ON COLUMN tx.HoursSpentReceivingServicesDescriptor.HoursSpentReceivingSe
 -- Extended Properties [tx].[IBCVendorDescriptor] --
 COMMENT ON TABLE tx.IBCVendorDescriptor IS 'Descriptor IBCVendorCode identifies the organization or company that offered the service.';
 COMMENT ON COLUMN tx.IBCVendorDescriptor.IBCVendorDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
+
+-- Extended Properties [tx].[InstructionalSettingDescriptor] --
+COMMENT ON TABLE tx.InstructionalSettingDescriptor IS 'Descriptor InstructionalSetting is based on code table C035.';
+COMMENT ON COLUMN tx.InstructionalSettingDescriptor.InstructionalSettingDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
 
 -- Extended Properties [tx].[LangAcqServicesProvidedDescriptor] --
 COMMENT ON TABLE tx.LangAcqServicesProvidedDescriptor IS 'Descriptor LangAcqServicesProvided indicates the specific language acquisition services provided to the student. (DC156)';
@@ -432,6 +587,10 @@ COMMENT ON COLUMN tx.PKTeacherRequirementDescriptor.PKTeacherRequirementDescript
 COMMENT ON TABLE tx.PostSecondaryCertificationLicensureDescriptor IS 'Descriptor PostSecondaryCertificationLicensure indicates a nationally or internationally recognized business or industry certification or license earned by a student.';
 COMMENT ON COLUMN tx.PostSecondaryCertificationLicensureDescriptor.PostSecondaryCertificationLicensureDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
 
+-- Extended Properties [tx].[PostSecondaryCertLicensureResultDescriptor] --
+COMMENT ON TABLE tx.PostSecondaryCertLicensureResultDescriptor IS 'Descriptor PostSecondaryCertLicensureResult is based on Code Table C232.';
+COMMENT ON COLUMN tx.PostSecondaryCertLicensureResultDescriptor.PostSecondaryCertLicensureResultDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
+
 -- Extended Properties [tx].[PPCDServiceLocationDescriptor] --
 COMMENT ON TABLE tx.PPCDServiceLocationDescriptor IS 'Descriptor PPCDServiceLocation indicates whether or not the Preschool Program for Children with Disabilities (PPCD) student received their special education services in a regular early childhood program, which is defined as a program that is designed for typically developing children ages 3-5 and is not specifically or primarily designed for children with disabilities and includes (at the time of the placement decision) a majority of at least 50 percent of nondisabled children (i.e., children without an individualized education program (IEP)). (C184)';
 COMMENT ON COLUMN tx.PPCDServiceLocationDescriptor.PPCDServiceLocationDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
@@ -448,9 +607,17 @@ COMMENT ON COLUMN tx.ProgramIntentDescriptor.ProgramIntentDescriptorId IS 'A uni
 COMMENT ON TABLE tx.ProgramOfStudyDescriptor IS 'Descriptor ProgramOfStudy is populated from code table C220.';
 COMMENT ON COLUMN tx.ProgramOfStudyDescriptor.ProgramOfStudyDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
 
+-- Extended Properties [tx].[RegionalDaySchoolProgramForDeafDescriptor] --
+COMMENT ON TABLE tx.RegionalDaySchoolProgramForDeafDescriptor IS 'Descriptor RegionalDaySchoolProgramForDeaf is based on code table C067.';
+COMMENT ON COLUMN tx.RegionalDaySchoolProgramForDeafDescriptor.RegionalDaySchoolProgramForDeafDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
+
 -- Extended Properties [tx].[ReportAssessmentTypeDescriptor] --
 COMMENT ON TABLE tx.ReportAssessmentTypeDescriptor IS 'Descriptor ReportAssessmentType is populated from code table DC123.';
 COMMENT ON COLUMN tx.ReportAssessmentTypeDescriptor.ReportAssessmentTypeDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
+
+-- Extended Properties [tx].[ReportingPeriodDescriptor] --
+COMMENT ON TABLE tx.ReportingPeriodDescriptor IS 'Descriptor ReportingPeriod is based on code table C130.';
+COMMENT ON COLUMN tx.ReportingPeriodDescriptor.ReportingPeriodDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
 
 -- Extended Properties [tx].[RestraintEventExtension] --
 COMMENT ON TABLE tx.RestraintEventExtension IS '';
@@ -471,8 +638,8 @@ COMMENT ON COLUMN tx.RoleIdDescriptor.RoleIdDescriptorId IS 'A unique identifier
 -- Extended Properties [tx].[SchoolCampusEnrollmentTypeSet] --
 COMMENT ON TABLE tx.SchoolCampusEnrollmentTypeSet IS 'CampusEnrollmentType with effective dates';
 COMMENT ON COLUMN tx.SchoolCampusEnrollmentTypeSet.BeginDate IS 'Begin date of the effecive date for the CampusEnrollmentType';
-COMMENT ON COLUMN tx.SchoolCampusEnrollmentTypeSet.CampusEnrollmentTypeDescriptorId IS 'E1641, C219. CampusEnrollmentType specifies the method by which the campus draws student enrollment.';
 COMMENT ON COLUMN tx.SchoolCampusEnrollmentTypeSet.SchoolId IS 'The identifier assigned to a school.';
+COMMENT ON COLUMN tx.SchoolCampusEnrollmentTypeSet.CampusEnrollmentTypeDescriptorId IS 'E1641, C219. CampusEnrollmentType specifies the method by which the campus draws student enrollment.';
 COMMENT ON COLUMN tx.SchoolCampusEnrollmentTypeSet.EndDate IS 'End date of the effecive date for the CampusEnrollmentType';
 
 -- Extended Properties [tx].[SchoolCharterWaitlistSet] --
@@ -512,8 +679,8 @@ COMMENT ON COLUMN tx.SchoolExtension.ExpandedLearningOpportunity IS 'E1613. Expa
 -- Extended Properties [tx].[SchoolNSLPTypeSet] --
 COMMENT ON TABLE tx.SchoolNSLPTypeSet IS 'NSLPType with effective dates';
 COMMENT ON COLUMN tx.SchoolNSLPTypeSet.BeginDate IS 'Begin date of the effecive date for the NSLPType';
-COMMENT ON COLUMN tx.SchoolNSLPTypeSet.NSLPTypeDescriptorId IS 'E1591, C212. NSLPType indicates a campus''s  National School Lunch Program (NSLP) participation status.  The NSLP provides reimbursement to schools for free or reduced-price meals based on student eligibility.  Options for claiming reimbursement under the NSLP include:  eligibility determined at the individual student/family level (participation in NSLP without using any Provision or the Community Eligibility Program) or at the campus/community level (Provision 2 or Community Eligibility Program).';
 COMMENT ON COLUMN tx.SchoolNSLPTypeSet.SchoolId IS 'The identifier assigned to a school.';
+COMMENT ON COLUMN tx.SchoolNSLPTypeSet.NSLPTypeDescriptorId IS 'E1591, C212. NSLPType indicates a campus''s  National School Lunch Program (NSLP) participation status.  The NSLP provides reimbursement to schools for free or reduced-price meals based on student eligibility.  Options for claiming reimbursement under the NSLP include:  eligibility determined at the individual student/family level (participation in NSLP without using any Provision or the Community Eligibility Program) or at the campus/community level (Provision 2 or Community Eligibility Program).';
 COMMENT ON COLUMN tx.SchoolNSLPTypeSet.EndDate IS 'End date of the effecive date for the NSLPType';
 
 -- Extended Properties [tx].[SectionSet] --
@@ -525,6 +692,7 @@ COMMENT ON COLUMN tx.SectionSet.SchoolYear IS 'The identifier for the school yea
 COMMENT ON COLUMN tx.SectionSet.SectionIdentifier IS 'The local identifier assigned to a section.';
 COMMENT ON COLUMN tx.SectionSet.SessionName IS 'The identifier for the calendar for the academic session (e.g., 2010/11, 2011 Summer).';
 COMMENT ON COLUMN tx.SectionSet.PopulationServedDescriptorId IS 'E0747, C030. PopulationServed identifies the student population for which a service has been designed or is intended. It does not necessarily identify the program eligibility of the students who receive the service.';
+COMMENT ON COLUMN tx.SectionSet.SPEDStudentAgeRangeDescriptorId IS 'SPEDStudentAgeRange identifies the age range of Special Education students that teaching and paraprofessional staff provide services to.';
 COMMENT ON COLUMN tx.SectionSet.CourseSequenceDescriptorId IS 'E0948, C135. CourseSequence identifies the unique part(s) of a course when a course is taught during a single grading period or semester or across multiple grading periods or semesters.';
 COMMENT ON COLUMN tx.SectionSet.NonCampusBasedInstructionDescriptorId IS 'E1072, C182. NonCampusBasedInstruction indicates that a course was offered for class credit or student achievement, but 1) was not taught by a school district/charter school employee or a contracted teacher , or 2) was taught by a school district/charter school employee or a contracted teacher at a facility other than the campus where the student is enrolled. Examples include but are not limited to college based instruction, non-district teacher, non-campus teacher, internet based instruction, electronic Course Pilot (eCP), and Texas Virtual School Network (TxVSN).';
 COMMENT ON COLUMN tx.SectionSet.PKCurriculaDescriptorId IS 'E1579, C206. PKCurricula indicates curricula used in the district’s prekindergarten program section TEC 29.1532(c)(6).';
@@ -532,8 +700,8 @@ COMMENT ON COLUMN tx.SectionSet.HighQualityPKProgram IS 'E1580. HighQualityPKPro
 COMMENT ON COLUMN tx.SectionSet.PKStudentInstructionDescriptorId IS 'E1558, DC153. StudentInstruction indicates the PK student type of instruction.';
 COMMENT ON COLUMN tx.SectionSet.PKSchoolTypeDescriptorId IS 'E1555, DC152. PKSchoolType indicates the PK program that is offered at the campus/course/section level.';
 COMMENT ON COLUMN tx.SectionSet.PKProgramEvaluationTypeDescriptorId IS 'E1626, C216. ProgramEvaluationType indicates for each High-Quality PK course/section, the type of program evaluation tool that is used.';
-COMMENT ON COLUMN tx.SectionSet.CTEHours IS 'CTEHours indicate the number of contact hours assigned to a particular section of a course.';
 COMMENT ON COLUMN tx.SectionSet.ClassTypeDescriptorId IS 'E1055. ClassType identifies the type of class providing instruction to students in particular class settings.';
+COMMENT ON COLUMN tx.SectionSet.CTEHours IS 'CTEHours indicate the number of contact hours assigned to a particular section of a course.';
 COMMENT ON COLUMN tx.SectionSet.EndDate IS 'The month, day, and year for the end of the period.';
 
 -- Extended Properties [tx].[ServiceIdDescriptor] --
@@ -553,6 +721,46 @@ COMMENT ON COLUMN tx.SharedServiceArrangementExt.ActualAmount IS 'E0774. ActualA
 COMMENT ON TABLE tx.SharedServiceArrangementStaffDescriptor IS 'Descriptor SharedServiceArrangementStaff is populated from code table C169';
 COMMENT ON COLUMN tx.SharedServiceArrangementStaffDescriptor.SharedServiceArrangementStaffDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
 
+-- Extended Properties [tx].[SpecialEducationProgramReportingPeriodAttendance] --
+COMMENT ON TABLE tx.SpecialEducationProgramReportingPeriodAttendance IS 'This extended entity represents the special education program attendance of a student.';
+COMMENT ON COLUMN tx.SpecialEducationProgramReportingPeriodAttendance.CalendarCode IS 'E0975. CalendarCode indicates a unique campus calendar of school days for a particular group of students on a campus. Students with the same instructional track have the same number of days taught in a particular reporting period at a campus.';
+COMMENT ON COLUMN tx.SpecialEducationProgramReportingPeriodAttendance.GradeLevelDescriptorId IS 'GradeLevel indicates the current grade level of the student.';
+COMMENT ON COLUMN tx.SpecialEducationProgramReportingPeriodAttendance.InstructionalSettingDescriptorId IS 'E0173. InstructionalSetting identifies the setting used in providing instruction to students.';
+COMMENT ON COLUMN tx.SpecialEducationProgramReportingPeriodAttendance.RegionalDaySchoolProgramForDeafDescriptorId IS 'E0833. RegionalDaySchoolProgramForDeaf indicates the student is receiving instructional servies from the regional day school program for the deaf.';
+COMMENT ON COLUMN tx.SpecialEducationProgramReportingPeriodAttendance.ReportingPeriodDescriptorId IS 'ReportingPeriod indicates the period for which the attendance data are being reported.';
+COMMENT ON COLUMN tx.SpecialEducationProgramReportingPeriodAttendance.SchoolId IS 'The identifier assigned to a school.';
+COMMENT ON COLUMN tx.SpecialEducationProgramReportingPeriodAttendance.StudentUSI IS 'A unique alphanumeric code assigned to a student.';
+COMMENT ON COLUMN tx.SpecialEducationProgramReportingPeriodAttendance.NumberDaysTaught IS 'E0935. NumberDaysTaught indicates the number of days of instruction offered, as shown on the school calendar, during a particular reporting period.';
+COMMENT ON COLUMN tx.SpecialEducationProgramReportingPeriodAttendance.EligibleDaysPresentInInstrSetting IS 'E0944. EligibleDaysPresentInInstrSetting indicates the number of days the student was eligible and present in a designated instructional setting during a particular reporting period.';
+COMMENT ON COLUMN tx.SpecialEducationProgramReportingPeriodAttendance.RSEligibleDaysPresentInInstrSetting IS 'E1690. RSEligibleDaysPresentInInstrSetting indicates the number of days the student was eligible and remote synchronous present in a designated instructional setting during a particular reporting period.';
+COMMENT ON COLUMN tx.SpecialEducationProgramReportingPeriodAttendance.RAEligibleDaysPresentInInstrSetting IS 'E1691. RAEligibleDaysPresentInInstrSetting indicates the number of days the student was eligible and remote asynchronous present in a designated instructional setting during a particular reporting period.';
+COMMENT ON COLUMN tx.SpecialEducationProgramReportingPeriodAttendance.ExcessHoursInInstructionalSetting IS 'E0945. ExcessHoursInInstructionalSetting indicates the number of hours above the allowable six hours per day of combined career and technical education and special education and related services in a designated instructional setting during a particular reporting period.';
+COMMENT ON COLUMN tx.SpecialEducationProgramReportingPeriodAttendance.RSExcessHoursInInstructionalSetting IS 'E1694. RSExcessHoursInInstructionalSetting indicates the number of hours above the allowable six hours per day of remote synchronous instruction combined career and technical education and special education and related services in a designed instructional setting during a particular reporting period.';
+COMMENT ON COLUMN tx.SpecialEducationProgramReportingPeriodAttendance.RAExcessHoursInInstructionalSetting IS 'E1695. RAExcessHoursInInstructionalSetting indicates the number of hours above the allowable six hours per day of remote asynchronous instruction combined career and technical education and special education and related services in a designed instructional setting during a particular reporting period.';
+COMMENT ON COLUMN tx.SpecialEducationProgramReportingPeriodAttendance.LEAOfRDSPDService IS 'E1527. LEAOfRDSPDService indicates the RDSPD Fiscal Agent district that provides the RDSPD service to a particular RDSPD student.';
+
+-- Extended Properties [tx].[SpecialProgramsReportingPeriodAttendance] --
+COMMENT ON TABLE tx.SpecialProgramsReportingPeriodAttendance IS 'This extended entity represents the recording of a student’s special programs reporting period attendance.';
+COMMENT ON COLUMN tx.SpecialProgramsReportingPeriodAttendance.CalendarCode IS 'E0975. CalendarCode indicates a unique campus calendar of school days for a particular group of students on a campus. Students with the same instructional track have the same number of days taught in a particular reporting period at a campus.';
+COMMENT ON COLUMN tx.SpecialProgramsReportingPeriodAttendance.GradeLevelDescriptorId IS 'GradeLevel indicates the current grade level of the student.';
+COMMENT ON COLUMN tx.SpecialProgramsReportingPeriodAttendance.ReportingPeriodDescriptorId IS 'ReportingPeriod indicates the period for which the attendance data are being reported.';
+COMMENT ON COLUMN tx.SpecialProgramsReportingPeriodAttendance.SchoolId IS 'The identifier assigned to a school.';
+COMMENT ON COLUMN tx.SpecialProgramsReportingPeriodAttendance.StudentUSI IS 'A unique alphanumeric code assigned to a student.';
+COMMENT ON COLUMN tx.SpecialProgramsReportingPeriodAttendance.NumberDaysTaught IS 'E0935. NumberDaysTaught indicates the number of days of instruction offered, as shown on the school calendar, during a particular reporting period.';
+COMMENT ON COLUMN tx.SpecialProgramsReportingPeriodAttendance.TotalEligPregRelSvcsDaysPresent IS 'E0939. TotalEligPregRelSvcsDaysPresent indicates the total number of days a female student was present at school or served through Compensatory Education Home Instruction (CEHI) and an eligible recipient of pregnancy related services during a particular reporting period.';
+COMMENT ON COLUMN tx.SpecialProgramsReportingPeriodAttendance.RSTotalEligPregRelSvcsDaysPresent IS 'E1686. RSTotalEligPregRelSvcsDaysPresent indicates the total number of days a female student was remote synchronous present or served through Compensatory Education Home Instruction (CEHI) and an eligible recipient of pregnancy related services during a particular reporting period.';
+COMMENT ON COLUMN tx.SpecialProgramsReportingPeriodAttendance.RATotalEligPregRelSvcsDaysPresent IS 'E1687. RATotalEligPregRelSvcsDaysPresent indicates the total number of days a female student was remote asynchronous present or served through Compensatory Education Home Instruction (CEHI) and an eligible recipient of pregnancy related services during a particular reporting period.';
+COMMENT ON COLUMN tx.SpecialProgramsReportingPeriodAttendance.TotalEligSpEdMainstreamDaysPresent IS 'E0940. TotalEligSpEdMainstreamDaysPresent indicates the total number of days a student with a special education individualized education program which provided for the mainstream instructional arrangement/setting was present during a particular reporting period.';
+COMMENT ON COLUMN tx.SpecialProgramsReportingPeriodAttendance.RSTotalEligSpEdMainstreamDaysPresent IS 'E1688. RSTotalEligSpEdMainstreamDaysPresent indicates the total number of days a student with special education individualized education program which provided for the mainstream instructional arrangement/setting was remote synchronous present during a particular reporting period.';
+COMMENT ON COLUMN tx.SpecialProgramsReportingPeriodAttendance.RATotalEligSpEdMainstreamDaysPresent IS 'E1689. SpecialProgramsReportingPeriodAttendance indicates the total number of days a student with special education individualized education program which provided for the mainstream instructional arrangement/setting was remote asynchronous present during a particular reporting period.';
+COMMENT ON COLUMN tx.SpecialProgramsReportingPeriodAttendance.TotalEligResidentialFacilityDaysPresent IS 'E1652. TotalEligResidentialFacilityDaysPresent indicates the total number of days the student was present and eligible for LEA services while living in a Residential Facility during a particular reporting period.';
+COMMENT ON COLUMN tx.SpecialProgramsReportingPeriodAttendance.RSTotalEligResidentialFacilityDaysPresent IS 'E1684. TotalEligResidentialFacilityDaysPresent indicates the total number of days the student was present and eligible for LEA services while living in a Residential Facility during a particular reporting period.';
+COMMENT ON COLUMN tx.SpecialProgramsReportingPeriodAttendance.RATotalEligResidentialFacilityDaysPresent IS 'E1685. RATotalEligResidentialFacilityDaysPresent indicates the total number of days the student was remote asynchronous present and eligible for LEA services in a Residential Facility during a particular reporting period.';
+
+-- Extended Properties [tx].[SPEDStudentAgeRangeDescriptor] --
+COMMENT ON TABLE tx.SPEDStudentAgeRangeDescriptor IS 'SPEDStudentAgeRange identifies the age range of Special Education students that teaching and paraprofessional staff provide services to.';
+COMMENT ON COLUMN tx.SPEDStudentAgeRangeDescriptor.SPEDStudentAgeRangeDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
+
 -- Extended Properties [tx].[SSAOrgAssociationExt] --
 COMMENT ON TABLE tx.SSAOrgAssociationExt IS 'The SSAOrgAssociationExtension Domain Entity identifies the ESC/LEA fiscal agents and the ESC and/or LEA member(s) for each type of shared services arrangement (SSA) that exists among two or more ESCs and or LEAs.';
 COMMENT ON COLUMN tx.SSAOrgAssociationExt.EducationOrganizationId IS 'The identifier assigned to an education organization.';
@@ -565,7 +773,7 @@ COMMENT ON COLUMN tx.SSATypeDescriptor.SSATypeDescriptorId IS 'A unique identifi
 
 -- Extended Properties [tx].[StaffEducationOrganizationAssignmentAssociationExtension] --
 COMMENT ON TABLE tx.StaffEducationOrganizationAssignmentAssociationExtension IS '';
-COMMENT ON COLUMN tx.StaffEducationOrganizationAssignmentAssociationExtension.BeginDate IS 'Month, day, and year of the start or effective date of a staff member''s employment, contract, or relationship with the LEA.';
+COMMENT ON COLUMN tx.StaffEducationOrganizationAssignmentAssociationExtension.BeginDate IS 'Month, day, and year of the start or effective date of a staff member''s employment, contract, or relationship with the education organization.';
 COMMENT ON COLUMN tx.StaffEducationOrganizationAssignmentAssociationExtension.EducationOrganizationId IS 'The identifier assigned to an education organization.';
 COMMENT ON COLUMN tx.StaffEducationOrganizationAssignmentAssociationExtension.StaffClassificationDescriptorId IS 'The titles of employment, official status, or rank of education staff.';
 COMMENT ON COLUMN tx.StaffEducationOrganizationAssignmentAssociationExtension.StaffUSI IS 'A unique alphanumeric code assigned to a staff.';
@@ -573,15 +781,16 @@ COMMENT ON COLUMN tx.StaffEducationOrganizationAssignmentAssociationExtension.Sh
 
 -- Extended Properties [tx].[StaffEducationOrganizationAssignmentAssociationStaffServiceSet] --
 COMMENT ON TABLE tx.StaffEducationOrganizationAssignmentAssociationStaffServiceSet IS 'DOCUMENTATION PENDING';
-COMMENT ON COLUMN tx.StaffEducationOrganizationAssignmentAssociationStaffServiceSet.BeginDate IS 'Begin date of the effecive date for the StaffServiceSet';
+COMMENT ON COLUMN tx.StaffEducationOrganizationAssignmentAssociationStaffServiceSet.BeginDate IS 'Month, day, and year of the start or effective date of a staff member''s employment, contract, or relationship with the education organization.';
 COMMENT ON COLUMN tx.StaffEducationOrganizationAssignmentAssociationStaffServiceSet.EducationOrganizationId IS 'The identifier assigned to an education organization.';
 COMMENT ON COLUMN tx.StaffEducationOrganizationAssignmentAssociationStaffServiceSet.StaffClassificationDescriptorId IS 'The titles of employment, official status, or rank of education staff.';
+COMMENT ON COLUMN tx.StaffEducationOrganizationAssignmentAssociationStaffServiceSet.StaffServiceBeginDate IS 'Begin date of the effecive date for the StaffServiceSet';
 COMMENT ON COLUMN tx.StaffEducationOrganizationAssignmentAssociationStaffServiceSet.StaffServiceDescriptorId IS 'E0724. StaffService refers to the services supplied by staff.';
 COMMENT ON COLUMN tx.StaffEducationOrganizationAssignmentAssociationStaffServiceSet.StaffUSI IS 'A unique alphanumeric code assigned to a staff.';
-COMMENT ON COLUMN tx.StaffEducationOrganizationAssignmentAssociationStaffServiceSet.GradeLevelDescriptorId IS 'E0017, C050. GradeLevel indicates the current grade level of the student.';
+COMMENT ON COLUMN tx.StaffEducationOrganizationAssignmentAssociationStaffServiceSet.SPEDStudentAgeRangeDescriptorId IS 'SPEDStudentAgeRange identifies the age range of Special Education students that teaching and paraprofessional staff provide services to.';
 COMMENT ON COLUMN tx.StaffEducationOrganizationAssignmentAssociationStaffServiceSet.PopulationServedDescriptorId IS 'E0747, C030. identifies the student population for which a student has been designed or is intended. It does not necessarily identify the program eligibility of the students who receive the service.';
 COMMENT ON COLUMN tx.StaffEducationOrganizationAssignmentAssociationStaffServiceSet.MonthlyMinutes IS 'E1057. MonthlyMinutes is the total number of minutes devoted to a particular service in a standard month. A standard month is considered to be the four weeks in October including the PEIMS Fall snapshot date (last Friday in October).';
-COMMENT ON COLUMN tx.StaffEducationOrganizationAssignmentAssociationStaffServiceSet.EndDate IS 'End date of the effecive date for the StaffServiceSet';
+COMMENT ON COLUMN tx.StaffEducationOrganizationAssignmentAssociationStaffServiceSet.StaffServiceEndDate IS 'End date of the effecive date for the StaffServiceSet';
 
 -- Extended Properties [tx].[StaffEducationOrganizationEmploymentAssociationAuxiliary_116d82] --
 COMMENT ON TABLE tx.StaffEducationOrganizationEmploymentAssociationAuxiliary_116d82 IS 'AuxiliaryRoleId with effective dates.';
@@ -657,10 +866,10 @@ COMMENT ON COLUMN tx.StaffSectionAssociationExtension.SharedServiceArrangementSt
 COMMENT ON TABLE tx.StaffServiceDescriptor IS 'StaffService refers to the services supplied by staff.';
 COMMENT ON COLUMN tx.StaffServiceDescriptor.StaffServiceDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
 
--- Extended Properties [tx].[StaffTeacherIncentiveAllotmentDesignationCode] --
-COMMENT ON TABLE tx.StaffTeacherIncentiveAllotmentDesignationCode IS 'E1722, DC165. TeacherIncentiveAllotmentDesignationCode indicates a teacher (ROLE-ID 087) is an Active National Board Certified Teacher, holds a current designation (Recognized, Exemplary, or Master) and/or has been submitted by an LEA for a new or change of designation in the Teacher Incentive Allotment.';
-COMMENT ON COLUMN tx.StaffTeacherIncentiveAllotmentDesignationCode.StaffUSI IS 'A unique alphanumeric code assigned to a staff.';
-COMMENT ON COLUMN tx.StaffTeacherIncentiveAllotmentDesignationCode.TeacherIncentiveAllotmentDesignationCodeDescriptorId IS 'E1722, DC165. TeacherIncentiveAllotmentDesignationCode indicates a teacher (ROLE-ID 087) is an Active National Board Certified Teacher, holds a current designation (Recognized, Exemplary, or Master) and/or has been submitted by an LEA for a new or change of designation in the Teacher Incentive Allotment.';
+-- Extended Properties [tx].[StaffTeacherIncentiveAllotmentDesignation] --
+COMMENT ON TABLE tx.StaffTeacherIncentiveAllotmentDesignation IS 'E1722, DC165. TeacherIncentiveAllotmentDesignationCode indicates a teacher (ROLE-ID 087) is an Active National Board Certified Teacher, holds a current designation (Recognized, Exemplary, or Master) and/or has been submitted by an LEA for a new or change of designation in the Teacher Incentive Allotment.';
+COMMENT ON COLUMN tx.StaffTeacherIncentiveAllotmentDesignation.StaffUSI IS 'A unique alphanumeric code assigned to a staff.';
+COMMENT ON COLUMN tx.StaffTeacherIncentiveAllotmentDesignation.TeacherIncentiveAllotmentDesignationDescriptorId IS 'E1722, DC165. TeacherIncentiveAllotmentDesignationCode indicates a teacher (ROLE-ID 087) is an Active National Board Certified Teacher, holds a current designation (Recognized, Exemplary, or Master) and/or has been submitted by an LEA for a new or change of designation in the Teacher Incentive Allotment.';
 
 -- Extended Properties [tx].[StaffTypeDescriptor] --
 COMMENT ON TABLE tx.StaffTypeDescriptor IS 'Descriptor StaffType is populated from code table C181';
@@ -669,9 +878,56 @@ COMMENT ON COLUMN tx.StaffTypeDescriptor.StaffTypeDescriptorId IS 'A unique iden
 -- Extended Properties [tx].[StaffTypeSet] --
 COMMENT ON TABLE tx.StaffTypeSet IS 'StaffType with effective dates';
 COMMENT ON COLUMN tx.StaffTypeSet.BeginDate IS 'Begin date of the effecive date for the StaffTypeSet';
-COMMENT ON COLUMN tx.StaffTypeSet.StaffTypeDescriptorId IS 'E1073, C181. StaffType indicates whether the staff person is on the district payroll or is a contracted professional staff person (instructional and non-instructional)';
 COMMENT ON COLUMN tx.StaffTypeSet.StaffUSI IS 'A unique alphanumeric code assigned to a staff.';
+COMMENT ON COLUMN tx.StaffTypeSet.StaffTypeDescriptorId IS 'E1073, C181. StaffType indicates whether the staff person is on the district payroll or is a contracted professional staff person (instructional and non-instructional)';
 COMMENT ON COLUMN tx.StaffTypeSet.EndDate IS 'End date of the effecive date for the StaffTypeSet';
+
+-- Extended Properties [tx].[StudentAcademicRecordDiplomaExtension] --
+COMMENT ON TABLE tx.StudentAcademicRecordDiplomaExtension IS 'Extension to diploma.';
+COMMENT ON COLUMN tx.StudentAcademicRecordDiplomaExtension.DiplomaAwardDate IS 'The month, day, and year on which the student met  graduation requirements and was awarded a diploma.';
+COMMENT ON COLUMN tx.StudentAcademicRecordDiplomaExtension.DiplomaTypeDescriptorId IS 'The type of diploma/credential that is awarded to a student in recognition of his/her completion of the curricular requirements.';
+COMMENT ON COLUMN tx.StudentAcademicRecordDiplomaExtension.EducationOrganizationId IS 'The identifier assigned to an education organization.';
+COMMENT ON COLUMN tx.StudentAcademicRecordDiplomaExtension.SchoolYear IS 'The identifier for the school year.';
+COMMENT ON COLUMN tx.StudentAcademicRecordDiplomaExtension.StudentUSI IS 'A unique alphanumeric code assigned to a student.';
+COMMENT ON COLUMN tx.StudentAcademicRecordDiplomaExtension.TermDescriptorId IS 'The term for the session during the school year.';
+COMMENT ON COLUMN tx.StudentAcademicRecordDiplomaExtension.IndividualGraduationCommitteeGraduateIndicator IS 'E1562. IndividualGraduationCommitteeGraduateIndicator Indicates whether a student for whom an IGC was established has graduated based on an IGC decision.';
+COMMENT ON COLUMN tx.StudentAcademicRecordDiplomaExtension.MilitaryEnlistmentIndicator IS 'E1589. MilitaryEnlistmentIndicator indicates that a student leaver enlisted in the United States Armed Forces.';
+COMMENT ON COLUMN tx.StudentAcademicRecordDiplomaExtension.FHSPDistingLevelGraduate IS 'E1542. FHSPDistingLevelGraduate';
+
+-- Extended Properties [tx].[StudentAcademicRecordDiplomaFinancialAidApplication] --
+COMMENT ON TABLE tx.StudentAcademicRecordDiplomaFinancialAidApplication IS 'E1724. The FinancialAidApplication indicates the manner in which the student completed the graduation requirement of either completing a financial aid application (FAFSA or TAFSA) or submitting an exemption.';
+COMMENT ON COLUMN tx.StudentAcademicRecordDiplomaFinancialAidApplication.DiplomaAwardDate IS 'The month, day, and year on which the student met  graduation requirements and was awarded a diploma.';
+COMMENT ON COLUMN tx.StudentAcademicRecordDiplomaFinancialAidApplication.DiplomaTypeDescriptorId IS 'The type of diploma/credential that is awarded to a student in recognition of his/her completion of the curricular requirements.';
+COMMENT ON COLUMN tx.StudentAcademicRecordDiplomaFinancialAidApplication.EducationOrganizationId IS 'The identifier assigned to an education organization.';
+COMMENT ON COLUMN tx.StudentAcademicRecordDiplomaFinancialAidApplication.FinancialAidApplicationDescriptorId IS 'E1724. The FinancialAidApplication indicates the manner in which the student completed the graduation requirement of either completing a financial aid application (FAFSA or TAFSA) or submitting an exemption.';
+COMMENT ON COLUMN tx.StudentAcademicRecordDiplomaFinancialAidApplication.SchoolYear IS 'The identifier for the school year.';
+COMMENT ON COLUMN tx.StudentAcademicRecordDiplomaFinancialAidApplication.StudentUSI IS 'A unique alphanumeric code assigned to a student.';
+COMMENT ON COLUMN tx.StudentAcademicRecordDiplomaFinancialAidApplication.TermDescriptorId IS 'The term for the session during the school year.';
+
+-- Extended Properties [tx].[StudentAcademicRecordEndorsementCompletedSet] --
+COMMENT ON TABLE tx.StudentAcademicRecordEndorsementCompletedSet IS 'Collection of EndorsementCompleted';
+COMMENT ON COLUMN tx.StudentAcademicRecordEndorsementCompletedSet.EducationOrganizationId IS 'The identifier assigned to an education organization.';
+COMMENT ON COLUMN tx.StudentAcademicRecordEndorsementCompletedSet.SchoolYear IS 'The identifier for the school year.';
+COMMENT ON COLUMN tx.StudentAcademicRecordEndorsementCompletedSet.StudentUSI IS 'A unique alphanumeric code assigned to a student.';
+COMMENT ON COLUMN tx.StudentAcademicRecordEndorsementCompletedSet.TermDescriptorId IS 'The term for the session during the school year.';
+
+-- Extended Properties [tx].[StudentAcademicRecordEndorsementCompletedSetEndorsementC_feb164] --
+COMMENT ON TABLE tx.StudentAcademicRecordEndorsementCompletedSetEndorsementC_feb164 IS 'E1544 - E1548. EndorsementCompleted indicates the student has successfully completed a FHSP program to earn one of the following endorsements:
+• STEM
+• Business and Industry
+• Public Services
+• Arts and Humanities
+• Multi-Disciplinary Studies';
+COMMENT ON COLUMN tx.StudentAcademicRecordEndorsementCompletedSetEndorsementC_feb164.EducationOrganizationId IS 'The identifier assigned to an education organization.';
+COMMENT ON COLUMN tx.StudentAcademicRecordEndorsementCompletedSetEndorsementC_feb164.EndorsementCompletedDescriptorId IS 'E1544 - E1548. EndorsementCompleted indicates the student has successfully completed a FHSP program to earn one of the following endorsements:
+• STEM
+• Business and Industry
+• Public Services
+• Arts and Humanities
+• Multi-Disciplinary Studies';
+COMMENT ON COLUMN tx.StudentAcademicRecordEndorsementCompletedSetEndorsementC_feb164.SchoolYear IS 'The identifier for the school year.';
+COMMENT ON COLUMN tx.StudentAcademicRecordEndorsementCompletedSetEndorsementC_feb164.StudentUSI IS 'A unique alphanumeric code assigned to a student.';
+COMMENT ON COLUMN tx.StudentAcademicRecordEndorsementCompletedSetEndorsementC_feb164.TermDescriptorId IS 'The term for the session during the school year.';
 
 -- Extended Properties [tx].[StudentAcademicRecordEndorsementPursuing] --
 COMMENT ON TABLE tx.StudentAcademicRecordEndorsementPursuing IS 'E1544,E1545,E1546,E1547,E1548. EndorsementPursuing indicates whether a student is currently enrolled in (pursuing) or has successfully completed a FHSP program to earn an endorsement.';
@@ -687,23 +943,22 @@ COMMENT ON COLUMN tx.StudentAcademicRecordExtension.EducationOrganizationId IS '
 COMMENT ON COLUMN tx.StudentAcademicRecordExtension.SchoolYear IS 'The identifier for the school year.';
 COMMENT ON COLUMN tx.StudentAcademicRecordExtension.StudentUSI IS 'A unique alphanumeric code assigned to a student.';
 COMMENT ON COLUMN tx.StudentAcademicRecordExtension.TermDescriptorId IS 'The term for the session during the school year.';
-COMMENT ON COLUMN tx.StudentAcademicRecordExtension.AssociateDegreeIndicator IS 'E1596. AssociateDegreeIndicator indicates that the student earned an associate degree prior to graduation from high school. ';
 COMMENT ON COLUMN tx.StudentAcademicRecordExtension.IndividualGraduationCommitteeReview IS 'E1563. IndividualGraduationCommitteeReview indicates whether an IGC has been established for a student regardless of which graduation program type is being pursued.  This is collected for students in grades 11 and 12.';
+COMMENT ON COLUMN tx.StudentAcademicRecordExtension.AssociateDegreeIndicator IS 'E1596. AssociateDegreeIndicator indicates that the student earned an associate degree prior to graduation from high school. ';
 COMMENT ON COLUMN tx.StudentAcademicRecordExtension.FHSPParticipant IS 'E1541. FHSPParticipant indicates whether a student is currently enrolled in the Foundation High School Program.';
 COMMENT ON COLUMN tx.StudentAcademicRecordExtension.FHSPDistingLevelParticipant IS 'E1542. FHSPDistingLevelParticipant indicates whether a student is currently pursuing or has successfully completed the distinguished level of achievement under the Foundation High School Program as provided by TEC 28.025 (b-15).';
 
 -- Extended Properties [tx].[StudentAcademicRecordIndustryBasedCertificationSet] --
 COMMENT ON TABLE tx.StudentAcademicRecordIndustryBasedCertificationSet IS 'Common Type IndustryBasedCertificationSet.';
-COMMENT ON COLUMN tx.StudentAcademicRecordIndustryBasedCertificationSet.BeginDate IS 'Begin date of the effecive date for the IndustryBasedCertificationSet';
-COMMENT ON COLUMN tx.StudentAcademicRecordIndustryBasedCertificationSet.DateCertEarned IS 'E1632. DateCertEarned indicates the date upon which the associated data value(s) is/are considered to take effect, or the associated data value(s) change(s).';
+COMMENT ON COLUMN tx.StudentAcademicRecordIndustryBasedCertificationSet.DateCertTaken IS 'E1632. DateCertTaken indicates the date upon which the industry based certification was taken.';
 COMMENT ON COLUMN tx.StudentAcademicRecordIndustryBasedCertificationSet.EducationOrganizationId IS 'The identifier assigned to an education organization.';
 COMMENT ON COLUMN tx.StudentAcademicRecordIndustryBasedCertificationSet.IBCVendorDescriptorId IS 'E1655. IBCVendorCode identifies the organization or company that offered the service.';
 COMMENT ON COLUMN tx.StudentAcademicRecordIndustryBasedCertificationSet.PostSecondaryCertificationLicensureDescriptorId IS 'E1640. PostSecondaryCertificationLicensure indicates a nationally or internationally recognized business or industry certification or license earned by a student.';
 COMMENT ON COLUMN tx.StudentAcademicRecordIndustryBasedCertificationSet.SchoolYear IS 'The identifier for the school year.';
 COMMENT ON COLUMN tx.StudentAcademicRecordIndustryBasedCertificationSet.StudentUSI IS 'A unique alphanumeric code assigned to a student.';
 COMMENT ON COLUMN tx.StudentAcademicRecordIndustryBasedCertificationSet.TermDescriptorId IS 'The term for the session during the school year.';
+COMMENT ON COLUMN tx.StudentAcademicRecordIndustryBasedCertificationSet.PostSecondaryCertLicensureResultDescriptorId IS 'E1733. PostSecondaryCertLicensureResult indicates the result of a state, nationally, or internationally recognized industry-based certification exam taken by a student.';
 COMMENT ON COLUMN tx.StudentAcademicRecordIndustryBasedCertificationSet.IBCExamFeeAmount IS 'E1654. IBCExamFeeAmount identifies the amount of money that was paid for a student’s industry certification exam by the local education agency.';
-COMMENT ON COLUMN tx.StudentAcademicRecordIndustryBasedCertificationSet.EndDate IS 'End date of the effecive date for the IndustryBasedCertificationSet';
 
 -- Extended Properties [tx].[StudentApplication] --
 COMMENT ON TABLE tx.StudentApplication IS 'DOCUMENTATION PENDING';
@@ -715,6 +970,8 @@ COMMENT ON COLUMN tx.StudentApplication.SexDescriptorId IS 'E1325, DC119. A pers
 COMMENT ON COLUMN tx.StudentApplication.EntryGradeLevelDescriptorId IS 'E1517, DC063. The grade level or primary instructional level at which a student enters and receives services in a school or an educational institution during a given academic session.';
 COMMENT ON COLUMN tx.StudentApplication.ApplicationDate IS 'ApplicationDate is the month, day, and year the application was submitted.';
 COMMENT ON COLUMN tx.StudentApplication.ApplicationTypeDescriptorId IS 'ApplicationType indicates the type of application submitted.';
+COMMENT ON COLUMN tx.StudentApplication.GenerationCodeDescriptorId IS 'E0706, E1303, C012, DC148. GenerationCode identifies the generation suffix, if any, which the person attaches to his name.';
+COMMENT ON COLUMN tx.StudentApplication.StudentID IS 'E0001. StudentId is the student''s Social Security number or a state-approved alternative identification number.';
 COMMENT ON COLUMN tx.StudentApplication.PersonalTitlePrefix IS 'A prefix used to denote the title, degree, position, or seniority of the person.';
 COMMENT ON COLUMN tx.StudentApplication.FirstName IS 'A name given to an individual at birth, baptism, or during another naming ceremony, or through legal change.';
 COMMENT ON COLUMN tx.StudentApplication.MiddleName IS 'A secondary name given to an individual at birth, baptism, or during another naming ceremony.';
@@ -764,10 +1021,18 @@ COMMENT ON COLUMN tx.StudentCrisisEventSet.EndDate IS 'End date of the effecive 
 -- Extended Properties [tx].[StudentEducationOrganizationAssociationDyslexiaRiskSet] --
 COMMENT ON TABLE tx.StudentEducationOrganizationAssociationDyslexiaRiskSet IS 'DyslexiaRisk with effective dates.';
 COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationDyslexiaRiskSet.BeginDate IS 'Begin date of the effecive date for the DyslexiaRisk';
-COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationDyslexiaRiskSet.DyslexiaRiskDescriptorId IS 'E1644, C222. Descriptor DyslexiaRisk';
 COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationDyslexiaRiskSet.EducationOrganizationId IS 'The identifier assigned to an education organization.';
 COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationDyslexiaRiskSet.StudentUSI IS 'A unique alphanumeric code assigned to a student.';
+COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationDyslexiaRiskSet.DyslexiaRiskDescriptorId IS 'E1644, C222. Descriptor DyslexiaRisk';
 COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationDyslexiaRiskSet.EndDate IS 'End date of the effecive date for the DyslexiaRisk';
+
+-- Extended Properties [tx].[StudentEducationOrganizationAssociationDyslexiaScreening_f08d12] --
+COMMENT ON TABLE tx.StudentEducationOrganizationAssociationDyslexiaScreening_f08d12 IS 'DyslexiaScreeningExceptionReasonSet with effective dates.';
+COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationDyslexiaScreening_f08d12.BeginDate IS 'Begin date of the effecive date for the DyslexiaScreeningExceptionReasonSet.';
+COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationDyslexiaScreening_f08d12.EducationOrganizationId IS 'The identifier assigned to an education organization.';
+COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationDyslexiaScreening_f08d12.StudentUSI IS 'A unique alphanumeric code assigned to a student.';
+COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationDyslexiaScreening_f08d12.DyslexiaScreeningExceptionReasonDescriptorId IS 'E1732. DyslexiaScreeningExceptionReason indicates the reason a student in kindergarten or first grade was not screened for dyslexia or related disorders during the dyslexia screening window.';
+COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationDyslexiaScreening_f08d12.EndDate IS 'End date of the effecive date for the DyslexiaScreeningExceptionReasonSet.';
 
 -- Extended Properties [tx].[StudentEducationOrganizationAssociationDyslexiaServicesSet] --
 COMMENT ON TABLE tx.StudentEducationOrganizationAssociationDyslexiaServicesSet IS 'DyslexiaServicesSet with effective dates.';
@@ -780,39 +1045,40 @@ COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationDyslexiaServicesSet.
 -- Extended Properties [tx].[StudentEducationOrganizationAssociationEarlyReadingIndicatorSet] --
 COMMENT ON TABLE tx.StudentEducationOrganizationAssociationEarlyReadingIndicatorSet IS 'EarlyReadingIndicator with effective dates.';
 COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationEarlyReadingIndicatorSet.BeginDate IS 'Begin date of the effecive date for the EarlyReadingIndicator';
-COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationEarlyReadingIndicatorSet.EarlyReadingIndicatorDescriptorId IS 'E1522, C195. EarlyReadingIndicator indicates whether a student is eligible for accelerated reading instruction as indicated by the administered reading instrument.';
 COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationEarlyReadingIndicatorSet.EducationOrganizationId IS 'The identifier assigned to an education organization.';
 COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationEarlyReadingIndicatorSet.StudentUSI IS 'A unique alphanumeric code assigned to a student.';
+COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationEarlyReadingIndicatorSet.EarlyReadingIndicatorDescriptorId IS 'E1522, C195. EarlyReadingIndicator indicates whether a student is eligible for accelerated reading instruction as indicated by the administered reading instrument.';
 COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationEarlyReadingIndicatorSet.EndDate IS 'End date of the effecive date for the EarlyReadingIndicator';
 
 -- Extended Properties [tx].[StudentEducationOrganizationAssociationEconomicDisadvantageSet] --
 COMMENT ON TABLE tx.StudentEducationOrganizationAssociationEconomicDisadvantageSet IS 'EconomicDisadvantage with effective dates.';
 COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationEconomicDisadvantageSet.BeginDate IS 'Begin date of the effecive date for the EconomicDisadvantage';
-COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationEconomicDisadvantageSet.EconomicDisadvantageDescriptorId IS 'E0785, C054. EconomicDisadvantage indicates the student''s economic disadvantage status.';
 COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationEconomicDisadvantageSet.EducationOrganizationId IS 'The identifier assigned to an education organization.';
 COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationEconomicDisadvantageSet.StudentUSI IS 'A unique alphanumeric code assigned to a student.';
+COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationEconomicDisadvantageSet.EconomicDisadvantageDescriptorId IS 'E0785, C054. EconomicDisadvantage indicates the student''s economic disadvantage status.';
 COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationEconomicDisadvantageSet.EndDate IS 'End date of the effecive date for the EconomicDisadvantage';
 
 -- Extended Properties [tx].[StudentEducationOrganizationAssociationEmergentBilingualSet] --
 COMMENT ON TABLE tx.StudentEducationOrganizationAssociationEmergentBilingualSet IS 'EmergentBilingualSet with effective dates.';
 COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationEmergentBilingualSet.BeginDate IS 'Begin date of the effecive date for the EmergentBilingualSet';
 COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationEmergentBilingualSet.EducationOrganizationId IS 'The identifier assigned to an education organization.';
-COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationEmergentBilingualSet.EmergentBilingualIndicatorDescriptorId IS 'Descriptor EmergentBilingualIndicator indicates that the student has been identified as an emergent bilingual (EB) student by the Language Proficiency Assessment Committee (LPAC), or English proficient.';
 COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationEmergentBilingualSet.StudentUSI IS 'A unique alphanumeric code assigned to a student.';
+COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationEmergentBilingualSet.EmergentBilingualIndicatorDescriptorId IS 'Descriptor EmergentBilingualIndicator indicates that the student has been identified as an emergent bilingual (EB) student by the Language Proficiency Assessment Committee (LPAC), or English proficient.';
 COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationEmergentBilingualSet.EndDate IS 'End date of the effecive date for the EmergentBilingualSet';
 
 -- Extended Properties [tx].[StudentEducationOrganizationAssociationFosterCareTypeSet] --
 COMMENT ON TABLE tx.StudentEducationOrganizationAssociationFosterCareTypeSet IS 'FosterCareType  with effective dates.';
 COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationFosterCareTypeSet.BeginDate IS 'Begin date of the effecive date for the FosterCareType';
 COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationFosterCareTypeSet.EducationOrganizationId IS 'The identifier assigned to an education organization.';
-COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationFosterCareTypeSet.FosterCareTypeDescriptorId IS 'E1528, C196. FosterCareType indicates whether a student is in the conservatorship of the Department of Family and Protective Services (DFPS) currently, or for a prekindergarten student that was previously in the conservatorship of DFPS, or for a prekindergarten student that is or ever has been in foster care in another state or territory, if the student resides in this state (Texas).';
 COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationFosterCareTypeSet.StudentUSI IS 'A unique alphanumeric code assigned to a student.';
+COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationFosterCareTypeSet.FosterCareTypeDescriptorId IS 'E1528, C196. FosterCareType indicates whether a student is in the conservatorship of the Department of Family and Protective Services (DFPS) currently, or for a prekindergarten student that was previously in the conservatorship of DFPS, or for a prekindergarten student that is or ever has been in foster care in another state or territory, if the student resides in this state (Texas).';
 COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationFosterCareTypeSet.EndDate IS 'End date of the effecive date for the FosterCareType';
 
 -- Extended Properties [tx].[StudentEducationOrganizationAssociationHomelessStatusSet] --
 COMMENT ON TABLE tx.StudentEducationOrganizationAssociationHomelessStatusSet IS 'HomelessStatus  with effective dates.';
 COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationHomelessStatusSet.BeginDate IS 'Begin date of the effecive date for the HomelessStatus';
 COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationHomelessStatusSet.EducationOrganizationId IS 'The identifier assigned to an education organization.';
+COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationHomelessStatusSet.StudentUSI IS 'A unique alphanumeric code assigned to a student.';
 COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationHomelessStatusSet.HomelessStatusDescriptorId IS 'E1082, C189. As defined by 42 U.S.C. Section 11434(a), the term “homeless children and youths” —
 (A) means individuals who lack a fixed, regular, and adequate nighttime residence [within the meaning of section 11302(a)(1)]; and
 
@@ -825,7 +1091,6 @@ COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationHomelessStatusSet.Ho
 (iii) children and youths who are living in cars, parks, public spaces, abandoned buildings, substandard housing, bus or train stations, or similar settings; and
 
 (iv) migratory children (as such term is defined in section 6399 of title 20) who qualify as homeless for the purposes of this subtitle because the children are living in circumstances described in clauses (i) through (iii).';
-COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationHomelessStatusSet.StudentUSI IS 'A unique alphanumeric code assigned to a student.';
 COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationHomelessStatusSet.EndDate IS 'End date of the effecive date for the HomelessStatus';
 
 -- Extended Properties [tx].[StudentEducationOrganizationAssociationLanguageSet] --
@@ -848,8 +1113,8 @@ COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationLanguageSetLanguageU
 COMMENT ON TABLE tx.StudentEducationOrganizationAssociationMilitaryConnected_662c97 IS 'MilitaryConnectedStudentIndicator with effective dates.';
 COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationMilitaryConnected_662c97.BeginDate IS 'Begin date of the effecive date for MilitaryConnectedStudent';
 COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationMilitaryConnected_662c97.EducationOrganizationId IS 'The identifier assigned to an education organization.';
-COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationMilitaryConnected_662c97.MilitaryConnectedStudentDescriptorId IS 'E1529, C197. MilitaryConnectedStudent indicates a student enrolled in a school district or open-enrollment charter school who is a dependent of an active duty or former member of the United States military, the Texas National Guard, or a reserve force of the United States military, or who is a dependent of a member of the United States military, the Texas National Guard, or a reserve force of the United States military who was killed in the line of duty.';
 COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationMilitaryConnected_662c97.StudentUSI IS 'A unique alphanumeric code assigned to a student.';
+COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationMilitaryConnected_662c97.MilitaryConnectedStudentDescriptorId IS 'E1529, C197. MilitaryConnectedStudent indicates a student enrolled in a school district or open-enrollment charter school who is a dependent of an active duty or former member of the United States military, the Texas National Guard, or a reserve force of the United States military, or who is a dependent of a member of the United States military, the Texas National Guard, or a reserve force of the United States military who was killed in the line of duty.';
 COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationMilitaryConnected_662c97.EndDate IS 'End date of the effecive date for MilitaryConnectedStudent';
 
 -- Extended Properties [tx].[StudentEducationOrganizationAssociationPKFundingSourceSet] --
@@ -857,8 +1122,8 @@ COMMENT ON TABLE tx.StudentEducationOrganizationAssociationPKFundingSourceSet IS
 COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationPKFundingSourceSet.BeginDate IS 'Begin date of the effecive date for the PKFundingSource';
 COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationPKFundingSourceSet.EducationOrganizationId IS 'The identifier assigned to an education organization.';
 COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationPKFundingSourceSet.OrderOfPKFundingSource IS 'Order of PK Funding Source.';
-COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationPKFundingSourceSet.PKFundingSourceDescriptorId IS 'E1079, E1080, C186. PKFundingSource indicates the source of funding for a Pre-kindergarten student.';
 COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationPKFundingSourceSet.StudentUSI IS 'A unique alphanumeric code assigned to a student.';
+COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationPKFundingSourceSet.PKFundingSourceDescriptorId IS 'E1079, E1080, C186. PKFundingSource indicates the source of funding for a Pre-kindergarten student.';
 COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationPKFundingSourceSet.EndDate IS 'End date of the effecive date for the PKFundingSource';
 
 -- Extended Properties [tx].[StudentEducationOrganizationAssociationPKProgramTypeSet] --
@@ -905,12 +1170,12 @@ COMMENT ON COLUMN tx.StudentExtension.AsOfStatusLastDayEnrollmentDescriptorId IS
 COMMENT ON TABLE tx.StudentLanguageInstructionProgramAssociationParentalPerm_710c81 IS 'ParentalPermissionSet with effective dates.';
 COMMENT ON COLUMN tx.StudentLanguageInstructionProgramAssociationParentalPerm_710c81.BeginDate IS 'The earliest date the student is involved with the program. Typically, this is the date the student becomes eligible for the program.';
 COMMENT ON COLUMN tx.StudentLanguageInstructionProgramAssociationParentalPerm_710c81.EducationOrganizationId IS 'The identifier assigned to an education organization.';
-COMMENT ON COLUMN tx.StudentLanguageInstructionProgramAssociationParentalPerm_710c81.ParentalPermissionDescriptorId IS 'E0896, C093. ParentalPermission indicates whether the student''s parent or legal guardian has approved placement of the student in the required bilingual or English as a Second Language (ESL) program. (See 19 TAC §89.1240.)';
 COMMENT ON COLUMN tx.StudentLanguageInstructionProgramAssociationParentalPerm_710c81.ParentPermissionSetBeginDate IS 'ParentalPermissionSetBeginDate';
 COMMENT ON COLUMN tx.StudentLanguageInstructionProgramAssociationParentalPerm_710c81.ProgramEducationOrganizationId IS 'The identifier assigned to an education organization.';
 COMMENT ON COLUMN tx.StudentLanguageInstructionProgramAssociationParentalPerm_710c81.ProgramName IS 'The formal name of the Program of instruction, training, services, or benefits available through federal, state, or local agencies.';
 COMMENT ON COLUMN tx.StudentLanguageInstructionProgramAssociationParentalPerm_710c81.ProgramTypeDescriptorId IS 'The type of program.';
 COMMENT ON COLUMN tx.StudentLanguageInstructionProgramAssociationParentalPerm_710c81.StudentUSI IS 'A unique alphanumeric code assigned to a student.';
+COMMENT ON COLUMN tx.StudentLanguageInstructionProgramAssociationParentalPerm_710c81.ParentalPermissionDescriptorId IS 'E0896, C093. ParentalPermission indicates whether the student''s parent or legal guardian has approved placement of the student in the required bilingual or English as a Second Language (ESL) program. (See 19 TAC §89.1240.)';
 COMMENT ON COLUMN tx.StudentLanguageInstructionProgramAssociationParentalPerm_710c81.ParentPermissionSetEndDate IS 'ParentalPermissionSetBeginDate';
 
 -- Extended Properties [tx].[StudentSchoolAssociationExtension] --
@@ -969,17 +1234,6 @@ COMMENT ON COLUMN tx.StudentSpecialEducationProgramAssociationDisabilitySet.Elig
 COMMENT ON COLUMN tx.StudentSpecialEducationProgramAssociationDisabilitySet.DisabilitySetEndDate IS 'DisabilitySetEndDate';
 COMMENT ON COLUMN tx.StudentSpecialEducationProgramAssociationDisabilitySet.OrderOfDisability IS 'The order by severity of student''s disabilities: 1- Primary, 2 -  Secondary, 3 - Tertiary, etc.';
 
--- Extended Properties [tx].[StudentSpecialEducationProgramAssociationESYProgramAssociation] --
-COMMENT ON TABLE tx.StudentSpecialEducationProgramAssociationESYProgramAssociation IS 'ESYProgramAssociation represents the students who served through the Extended School Year (ESY) Services Program.';
-COMMENT ON COLUMN tx.StudentSpecialEducationProgramAssociationESYProgramAssociation.BeginDate IS 'The earliest date the student is involved with the program. Typically, this is the date the student becomes eligible for the program.';
-COMMENT ON COLUMN tx.StudentSpecialEducationProgramAssociationESYProgramAssociation.EducationOrganizationId IS 'The identifier assigned to an education organization.';
-COMMENT ON COLUMN tx.StudentSpecialEducationProgramAssociationESYProgramAssociation.ProgramEducationOrganizationId IS 'The identifier assigned to an education organization.';
-COMMENT ON COLUMN tx.StudentSpecialEducationProgramAssociationESYProgramAssociation.ProgramName IS 'The formal name of the Program of instruction, training, services, or benefits available through federal, state, or local agencies.';
-COMMENT ON COLUMN tx.StudentSpecialEducationProgramAssociationESYProgramAssociation.ProgramTypeDescriptorId IS 'The type of program.';
-COMMENT ON COLUMN tx.StudentSpecialEducationProgramAssociationESYProgramAssociation.StudentUSI IS 'A unique alphanumeric code assigned to a student.';
-COMMENT ON COLUMN tx.StudentSpecialEducationProgramAssociationESYProgramAssociation.TotalESYContactHoursInstructionalSetting IS 'E1013. TotalESYContactHoursInstructionalSetting indicates the total contact hours in an instructional setting provided to the student through the extended school year services component of special education.';
-COMMENT ON COLUMN tx.StudentSpecialEducationProgramAssociationESYProgramAssociation.OrderOfSpecialEducationSetting IS 'OrderOfSpecialEducationSetting indicates the order of Special Education Setting';
-
 -- Extended Properties [tx].[StudentSpecialEducationProgramAssociationExtension] --
 COMMENT ON TABLE tx.StudentSpecialEducationProgramAssociationExtension IS '';
 COMMENT ON COLUMN tx.StudentSpecialEducationProgramAssociationExtension.BeginDate IS 'The earliest date the student is involved with the program. Typically, this is the date the student becomes eligible for the program.';
@@ -1014,18 +1268,17 @@ COMMENT ON COLUMN tx.StudentSpecialEducationProgramAssociationLanguageAcquisitio
 COMMENT ON COLUMN tx.StudentSpecialEducationProgramAssociationLanguageAcquisition.FrequencyOfServicesDescriptorId IS 'E1663, DC157. FrequencyOfServices identifies the frequency with which a student receives services.';
 COMMENT ON COLUMN tx.StudentSpecialEducationProgramAssociationLanguageAcquisition.HoursSpentReceivingServicesDescriptorId IS 'E1664, DC158. HoursSpentReceivingServices identifies the amount of time in which the student receives services.';
 
--- Extended Properties [tx].[StudentSpecialEducationProgramAssociationSpecialEducatio_c5b076] --
-COMMENT ON TABLE tx.StudentSpecialEducationProgramAssociationSpecialEducatio_c5b076 IS 'StudentSPEDProgramAssociationSet represents the Student SPED Program Association Settings with effective dates.';
-COMMENT ON COLUMN tx.StudentSpecialEducationProgramAssociationSpecialEducatio_c5b076.BeginDate IS 'The earliest date the student is involved with the program. Typically, this is the date the student becomes eligible for the program.';
-COMMENT ON COLUMN tx.StudentSpecialEducationProgramAssociationSpecialEducatio_c5b076.EducationOrganizationId IS 'The identifier assigned to an education organization.';
-COMMENT ON COLUMN tx.StudentSpecialEducationProgramAssociationSpecialEducatio_c5b076.OrderOfSpecialEducationSetting IS 'OrderOfSpecialEducationSetting identifies the oredr if Special Education Setting.';
-COMMENT ON COLUMN tx.StudentSpecialEducationProgramAssociationSpecialEducatio_c5b076.ProgramEducationOrganizationId IS 'The identifier assigned to an education organization.';
-COMMENT ON COLUMN tx.StudentSpecialEducationProgramAssociationSpecialEducatio_c5b076.ProgramName IS 'The formal name of the Program of instruction, training, services, or benefits available through federal, state, or local agencies.';
-COMMENT ON COLUMN tx.StudentSpecialEducationProgramAssociationSpecialEducatio_c5b076.ProgramTypeDescriptorId IS 'The type of program.';
-COMMENT ON COLUMN tx.StudentSpecialEducationProgramAssociationSpecialEducatio_c5b076.SettingBeginDate IS 'SpecialEducationSettingSetBeginDate';
-COMMENT ON COLUMN tx.StudentSpecialEducationProgramAssociationSpecialEducatio_c5b076.SpecialEducationSettingDescriptorId IS 'E0173, C035. SpecialEducationSetting identifies the setting used in providing instruction to students.';
-COMMENT ON COLUMN tx.StudentSpecialEducationProgramAssociationSpecialEducatio_c5b076.StudentUSI IS 'A unique alphanumeric code assigned to a student.';
-COMMENT ON COLUMN tx.StudentSpecialEducationProgramAssociationSpecialEducatio_c5b076.SettingEndDate IS 'SpecialEducationSettingSetEndDate';
+-- Extended Properties [tx].[StudentSpecialEducationProgramAssociationSpecialEducatio_9f4293] --
+COMMENT ON TABLE tx.StudentSpecialEducationProgramAssociationSpecialEducatio_9f4293 IS 'StudentSPEDProgramAssociationSet representshe MedicallyFragile, MultiplyDisabled, LEAOfRDSPDService, ChildCountFunding, PPCDServiceLocation with effective dates.';
+COMMENT ON COLUMN tx.StudentSpecialEducationProgramAssociationSpecialEducatio_9f4293.BeginDate IS 'The earliest date the student is involved with the program. Typically, this is the date the student becomes eligible for the program.';
+COMMENT ON COLUMN tx.StudentSpecialEducationProgramAssociationSpecialEducatio_9f4293.EducationOrganizationId IS 'The identifier assigned to an education organization.';
+COMMENT ON COLUMN tx.StudentSpecialEducationProgramAssociationSpecialEducatio_9f4293.EnvironmentBeginDate IS 'EnvironmentBeginDate indicates the first month, day, and year the EducationalEnvironment becomes true for a student.';
+COMMENT ON COLUMN tx.StudentSpecialEducationProgramAssociationSpecialEducatio_9f4293.ProgramEducationOrganizationId IS 'The identifier assigned to an education organization.';
+COMMENT ON COLUMN tx.StudentSpecialEducationProgramAssociationSpecialEducatio_9f4293.ProgramName IS 'The formal name of the Program of instruction, training, services, or benefits available through federal, state, or local agencies.';
+COMMENT ON COLUMN tx.StudentSpecialEducationProgramAssociationSpecialEducatio_9f4293.ProgramTypeDescriptorId IS 'The type of program.';
+COMMENT ON COLUMN tx.StudentSpecialEducationProgramAssociationSpecialEducatio_9f4293.StudentUSI IS 'A unique alphanumeric code assigned to a student.';
+COMMENT ON COLUMN tx.StudentSpecialEducationProgramAssociationSpecialEducatio_9f4293.EducationalEnvironmentDescriptorId IS 'E0173. EducationalEnvironment identifies the setting used in providing instruction to students.';
+COMMENT ON COLUMN tx.StudentSpecialEducationProgramAssociationSpecialEducatio_9f4293.EnvironmentEndDate IS 'EnvironmentEndDate indicates the first month, day, and year of non-participation in the EducationalEnvironment for a student.';
 
 -- Extended Properties [tx].[StudentSpecialEducationProgramAssociationStudentResident_727129] --
 COMMENT ON TABLE tx.StudentSpecialEducationProgramAssociationStudentResident_727129 IS 'StudentResidentialFacilityAssociation captures enrollment data for students enrolled at a residential facility during a particular school year.';
@@ -1074,6 +1327,7 @@ COMMENT ON COLUMN tx.StudentSpecialEducationProgramEligibilityAssociation.Evalua
 COMMENT ON COLUMN tx.StudentSpecialEducationProgramEligibilityAssociation.EvaluationDelayReasonDescriptorId IS 'E1718, DC164. EvaluationDelayReason refers to the justification as to why the written full individual and initial evaluation (FIIE) report was completed beyond the State-established 45 instructional day timeframe for state performance plan indicator 11 (SPPI-11), or the justification as to why a child who was receiving early childhood intervention (ECI) services had their eligibility for early childhood special education (ECSE) determined beyond the child’s third birthday for SPPI-12.';
 COMMENT ON COLUMN tx.StudentSpecialEducationProgramEligibilityAssociation.EligibilityDeterminationDate IS 'E1716. EligibilityDeterminationDate indicates the month, day, and year the LEA held the admission, review, and dismissal (ARD) committee meeting regarding the child’s initial eligibility determination for special education and related services.  An individualized education plan (IEP) would be developed and implemented for a child admitted into special education on this same date.';
 COMMENT ON COLUMN tx.StudentSpecialEducationProgramEligibilityAssociation.IDEAIndicator IS 'E1717. IDEAIndicator indicates whether or not the student was determined eligible and enrolled in special education and related services as a result of the full individual and initial evaluation (FIIE) report and the admission, review, and dismissal (ARD) committee meeting decision.';
+COMMENT ON COLUMN tx.StudentSpecialEducationProgramEligibilityAssociation.EligibilityDelayReasonDescriptorId IS 'E1731. EligibilityDelayReason refers to the reason why the eligibility determination was completed beyond the required timeframe.';
 COMMENT ON COLUMN tx.StudentSpecialEducationProgramEligibilityAssociation.OriginalECIServicesDate IS 'E0900, E1632. OriginalECIServicesDate is the month, date, and year when an infant or toddler, from birth through age 2, began participating in the early childhood intervention program. (See Texas Human Resources Code §73.001 and 73.021)';
 COMMENT ON COLUMN tx.StudentSpecialEducationProgramEligibilityAssociation.TransitionNotificationDate IS 'E1712. TransitionNotificationDate indicates the month, day, and year the LEA Notification of Potentially Eligible for Special Education Services was sent by the early childhood intervention (ECI) contractor to the local education agency (LEA) to notify them that a child enrolled in ECI will shortly reach the age of eligibility for Part B services and the child is potentially eligible for services under Part B, early childhood special education (ECSE).  The LEA Notification constitutes a referral to the LEA for an initial evaluation and eligibility determination of the child which the parent may opt out from the referral.';
 COMMENT ON COLUMN tx.StudentSpecialEducationProgramEligibilityAssociation.TransitionConferenceDate IS 'E1713. TransitionConferenceDate indicates the month, day, and year when the transition conference was held (for a child receiving early childhood intervention (ECI) services) among the lead agency, the family, and the LEA where the child resides to discuss the child’s potential eligibility for early childhood special education (ECSE) services.';
@@ -1090,9 +1344,9 @@ COMMENT ON COLUMN tx.StudentTitleIPartAProgramAssociationSet.StudentUSI IS 'A un
 COMMENT ON COLUMN tx.StudentTitleIPartAProgramAssociationSet.TitleIPartAParticipantDescriptorId IS 'E0894, C122. An indication of the type of Title I program, if any, in which the student is participating and by which the student is served.';
 COMMENT ON COLUMN tx.StudentTitleIPartAProgramAssociationSet.StudentTitleIPartAProgramAssociationSetEndDate IS 'StudentTitleIPartAProgramAssociationEndDate';
 
--- Extended Properties [tx].[TeacherIncentiveAllotmentDesignationCodeDescriptor] --
-COMMENT ON TABLE tx.TeacherIncentiveAllotmentDesignationCodeDescriptor IS 'Descriptor TeacherIncentiveAllotmentDesignationCode is based on code table DC165';
-COMMENT ON COLUMN tx.TeacherIncentiveAllotmentDesignationCodeDescriptor.TeacherIncentiveAllotmentDesignationCodeDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
+-- Extended Properties [tx].[TeacherIncentiveAllotmentDesignationDescriptor] --
+COMMENT ON TABLE tx.TeacherIncentiveAllotmentDesignationDescriptor IS 'Descriptor TeacherIncentiveAllotmentDesignation is based on code table DC165';
+COMMENT ON COLUMN tx.TeacherIncentiveAllotmentDesignationDescriptor.TeacherIncentiveAllotmentDesignationDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
 
 -- Extended Properties [tx].[TitleOfAssessmentDescriptor] --
 COMMENT ON TABLE tx.TitleOfAssessmentDescriptor IS 'Descriptor TitleOfAssessment is populated from Code Table DC154.';

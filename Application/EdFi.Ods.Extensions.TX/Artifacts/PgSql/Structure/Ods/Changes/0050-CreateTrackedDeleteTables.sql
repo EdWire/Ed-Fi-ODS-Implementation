@@ -36,13 +36,13 @@ CREATE TABLE tracked_deletes_tx.ArmedServicesVocAptBatteryDescriptor
        CONSTRAINT ArmedServicesVocAptBatteryDescriptor_PK PRIMARY KEY (ChangeVersion)
 );
 
-CREATE TABLE tracked_deletes_tx.AsOfStatusALeaver
+CREATE TABLE tracked_deletes_tx.AsOfStatusALeavers
 (
        SchoolId INT NOT NULL,
-       StudentUID VARCHAR(10) NOT NULL,
+       StudentUID VARCHAR(32) NOT NULL,
        Id UUID NOT NULL,
        ChangeVersion BIGINT NOT NULL,
-       CONSTRAINT AsOfStatusALeaver_PK PRIMARY KEY (ChangeVersion)
+       CONSTRAINT AsOfStatusALeavers_PK PRIMARY KEY (ChangeVersion)
 );
 
 CREATE TABLE tracked_deletes_tx.AsOfStatusLastDayEnrollmentDescriptor
@@ -77,6 +77,39 @@ CREATE TABLE tracked_deletes_tx.AuxiliaryRoleIdDescriptor
        CONSTRAINT AuxiliaryRoleIdDescriptor_PK PRIMARY KEY (ChangeVersion)
 );
 
+CREATE TABLE tracked_deletes_tx.BasicReportingPeriodAttendance
+(
+       CalendarCode VARCHAR(60) NOT NULL,
+       GradeLevelDescriptorId INT NOT NULL,
+       ReportingPeriodDescriptorId INT NOT NULL,
+       SchoolId INT NOT NULL,
+       StudentUSI INT NOT NULL,
+       Id UUID NOT NULL,
+       ChangeVersion BIGINT NOT NULL,
+       CONSTRAINT BasicReportingPeriodAttendance_PK PRIMARY KEY (ChangeVersion)
+);
+
+CREATE TABLE tracked_deletes_tx.BilingualESLFundingDescriptor
+(
+       BilingualESLFundingDescriptorId INT NOT NULL,
+       Id UUID NOT NULL,
+       ChangeVersion BIGINT NOT NULL,
+       CONSTRAINT BilingualESLFundingDescriptor_PK PRIMARY KEY (ChangeVersion)
+);
+
+CREATE TABLE tracked_deletes_tx.BilingualESLProgramReportingPeriodAttendance
+(
+       BilingualESLFundingDescriptorId INT NOT NULL,
+       CalendarCode VARCHAR(60) NOT NULL,
+       GradeLevelDescriptorId INT NOT NULL,
+       ReportingPeriodDescriptorId INT NOT NULL,
+       SchoolId INT NOT NULL,
+       StudentUSI INT NOT NULL,
+       Id UUID NOT NULL,
+       ChangeVersion BIGINT NOT NULL,
+       CONSTRAINT BilingualESLProgramReportingPeriodAttendance_PK PRIMARY KEY (ChangeVersion)
+);
+
 CREATE TABLE tracked_deletes_tx.BudgetExt
 (
        EducationOrganizationId INT NOT NULL,
@@ -89,6 +122,27 @@ CREATE TABLE tracked_deletes_tx.BudgetExt
        Id UUID NOT NULL,
        ChangeVersion BIGINT NOT NULL,
        CONSTRAINT BudgetExt_PK PRIMARY KEY (ChangeVersion)
+);
+
+CREATE TABLE tracked_deletes_tx.CTEProgramReportingPeriodAttendance
+(
+       CalendarCode VARCHAR(60) NOT NULL,
+       CTEServiceIdDescriptorId INT NOT NULL,
+       GradeLevelDescriptorId INT NOT NULL,
+       ReportingPeriodDescriptorId INT NOT NULL,
+       SchoolId INT NOT NULL,
+       StudentUSI INT NOT NULL,
+       Id UUID NOT NULL,
+       ChangeVersion BIGINT NOT NULL,
+       CONSTRAINT CTEProgramReportingPeriodAttendance_PK PRIMARY KEY (ChangeVersion)
+);
+
+CREATE TABLE tracked_deletes_tx.CTEServiceIdDescriptor
+(
+       CTEServiceIdDescriptorId INT NOT NULL,
+       Id UUID NOT NULL,
+       ChangeVersion BIGINT NOT NULL,
+       CONSTRAINT CTEServiceIdDescriptor_PK PRIMARY KEY (ChangeVersion)
 );
 
 CREATE TABLE tracked_deletes_tx.CalendarWaiverEventTypeDescriptor
@@ -157,6 +211,14 @@ CREATE TABLE tracked_deletes_tx.DyslexiaRiskDescriptor
        CONSTRAINT DyslexiaRiskDescriptor_PK PRIMARY KEY (ChangeVersion)
 );
 
+CREATE TABLE tracked_deletes_tx.DyslexiaScreeningExceptionReasonDescriptor
+(
+       DyslexiaScreeningExceptionReasonDescriptorId INT NOT NULL,
+       Id UUID NOT NULL,
+       ChangeVersion BIGINT NOT NULL,
+       CONSTRAINT DyslexiaScreeningExceptionReasonDescriptor_PK PRIMARY KEY (ChangeVersion)
+);
+
 CREATE TABLE tracked_deletes_tx.DyslexiaServicesDescriptor
 (
        DyslexiaServicesDescriptorId INT NOT NULL,
@@ -205,6 +267,14 @@ CREATE TABLE tracked_deletes_tx.EconomicDisadvantageLastDateOfEnrollmentDescript
        CONSTRAINT EconomicDisadvantageLastDateOfEnrollmentDescriptor_PK PRIMARY KEY (ChangeVersion)
 );
 
+CREATE TABLE tracked_deletes_tx.EligibilityDelayReasonDescriptor
+(
+       EligibilityDelayReasonDescriptorId INT NOT NULL,
+       Id UUID NOT NULL,
+       ChangeVersion BIGINT NOT NULL,
+       CONSTRAINT EligibilityDelayReasonDescriptor_PK PRIMARY KEY (ChangeVersion)
+);
+
 CREATE TABLE tracked_deletes_tx.EmergentBilingualIndicatorDescriptor
 (
        EmergentBilingualIndicatorDescriptorId INT NOT NULL,
@@ -235,6 +305,87 @@ CREATE TABLE tracked_deletes_tx.EvaluationDelayReasonDescriptor
        Id UUID NOT NULL,
        ChangeVersion BIGINT NOT NULL,
        CONSTRAINT EvaluationDelayReasonDescriptor_PK PRIMARY KEY (ChangeVersion)
+);
+
+CREATE TABLE tracked_deletes_tx.ExtendedSchoolYearServicesAttendance
+(
+       FirstInstructionalSettingDescriptorId INT NOT NULL,
+       GradeLevelDescriptorId INT NOT NULL,
+       SchoolId INT NOT NULL,
+       StudentUSI INT NOT NULL,
+       Id UUID NOT NULL,
+       ChangeVersion BIGINT NOT NULL,
+       CONSTRAINT ExtendedSchoolYearServicesAttendance_PK PRIMARY KEY (ChangeVersion)
+);
+
+CREATE TABLE tracked_deletes_tx.FinancialAidApplicationDescriptor
+(
+       FinancialAidApplicationDescriptorId INT NOT NULL,
+       Id UUID NOT NULL,
+       ChangeVersion BIGINT NOT NULL,
+       CONSTRAINT FinancialAidApplicationDescriptor_PK PRIMARY KEY (ChangeVersion)
+);
+
+CREATE TABLE tracked_deletes_tx.FlexAttendanceProgramDescriptor
+(
+       FlexAttendanceProgramDescriptorId INT NOT NULL,
+       Id UUID NOT NULL,
+       ChangeVersion BIGINT NOT NULL,
+       CONSTRAINT FlexAttendanceProgramDescriptor_PK PRIMARY KEY (ChangeVersion)
+);
+
+CREATE TABLE tracked_deletes_tx.FlexibleBilingualESLProgramReportingPeriodAttendance
+(
+       BilingualESLFundingDescriptorId INT NOT NULL,
+       CalendarCode VARCHAR(60) NOT NULL,
+       FlexAttendanceProgramDescriptorId INT NOT NULL,
+       GradeLevelDescriptorId INT NOT NULL,
+       ReportingPeriodDescriptorId INT NOT NULL,
+       SchoolId INT NOT NULL,
+       StudentUSI INT NOT NULL,
+       Id UUID NOT NULL,
+       ChangeVersion BIGINT NOT NULL,
+       CONSTRAINT FlexibleBilingualESLProgramReportingPeriodAttendance_PK PRIMARY KEY (ChangeVersion)
+);
+
+CREATE TABLE tracked_deletes_tx.FlexibleCTEProgramReportingPeriodAttendance
+(
+       CalendarCode VARCHAR(60) NOT NULL,
+       FlexAttendanceProgramDescriptorId INT NOT NULL,
+       GradeLevelDescriptorId INT NOT NULL,
+       ReportingPeriodDescriptorId INT NOT NULL,
+       SchoolId INT NOT NULL,
+       StudentUSI INT NOT NULL,
+       Id UUID NOT NULL,
+       ChangeVersion BIGINT NOT NULL,
+       CONSTRAINT FlexibleCTEProgramReportingPeriodAttendance_PK PRIMARY KEY (ChangeVersion)
+);
+
+CREATE TABLE tracked_deletes_tx.FlexibleRegularProgramReportingPeriodAttendance
+(
+       CalendarCode VARCHAR(60) NOT NULL,
+       FlexAttendanceProgramDescriptorId INT NOT NULL,
+       GradeLevelDescriptorId INT NOT NULL,
+       ReportingPeriodDescriptorId INT NOT NULL,
+       SchoolId INT NOT NULL,
+       StudentUSI INT NOT NULL,
+       Id UUID NOT NULL,
+       ChangeVersion BIGINT NOT NULL,
+       CONSTRAINT FlexibleRegularProgramReportingPeriodAttendance_PK PRIMARY KEY (ChangeVersion)
+);
+
+CREATE TABLE tracked_deletes_tx.FlexibleSpecialEducationProgramReportingPeriodAttendance
+(
+       CalendarCode VARCHAR(60) NOT NULL,
+       FlexAttendanceProgramDescriptorId INT NOT NULL,
+       GradeLevelDescriptorId INT NOT NULL,
+       InstructionalSettingDescriptorId INT NOT NULL,
+       ReportingPeriodDescriptorId INT NOT NULL,
+       SchoolId INT NOT NULL,
+       StudentUSI INT NOT NULL,
+       Id UUID NOT NULL,
+       ChangeVersion BIGINT NOT NULL,
+       CONSTRAINT FlexibleSpecialEducationProgramReportingPeriodAttendance_PK PRIMARY KEY (ChangeVersion)
 );
 
 CREATE TABLE tracked_deletes_tx.FosterCareTypeDescriptor
@@ -339,6 +490,14 @@ CREATE TABLE tracked_deletes_tx.IBCVendorDescriptor
        Id UUID NOT NULL,
        ChangeVersion BIGINT NOT NULL,
        CONSTRAINT IBCVendorDescriptor_PK PRIMARY KEY (ChangeVersion)
+);
+
+CREATE TABLE tracked_deletes_tx.InstructionalSettingDescriptor
+(
+       InstructionalSettingDescriptorId INT NOT NULL,
+       Id UUID NOT NULL,
+       ChangeVersion BIGINT NOT NULL,
+       CONSTRAINT InstructionalSettingDescriptor_PK PRIMARY KEY (ChangeVersion)
 );
 
 CREATE TABLE tracked_deletes_tx.LangAcqServicesProvidedDescriptor
@@ -485,6 +644,14 @@ CREATE TABLE tracked_deletes_tx.PayrollExt
        CONSTRAINT PayrollExt_PK PRIMARY KEY (ChangeVersion)
 );
 
+CREATE TABLE tracked_deletes_tx.PostSecondaryCertLicensureResultDescriptor
+(
+       PostSecondaryCertLicensureResultDescriptorId INT NOT NULL,
+       Id UUID NOT NULL,
+       ChangeVersion BIGINT NOT NULL,
+       CONSTRAINT PostSecondaryCertLicensureResultDescriptor_PK PRIMARY KEY (ChangeVersion)
+);
+
 CREATE TABLE tracked_deletes_tx.PostSecondaryCertificationLicensureDescriptor
 (
        PostSecondaryCertificationLicensureDescriptorId INT NOT NULL,
@@ -517,12 +684,28 @@ CREATE TABLE tracked_deletes_tx.ProgramOfStudyDescriptor
        CONSTRAINT ProgramOfStudyDescriptor_PK PRIMARY KEY (ChangeVersion)
 );
 
+CREATE TABLE tracked_deletes_tx.RegionalDaySchoolProgramForDeafDescriptor
+(
+       RegionalDaySchoolProgramForDeafDescriptorId INT NOT NULL,
+       Id UUID NOT NULL,
+       ChangeVersion BIGINT NOT NULL,
+       CONSTRAINT RegionalDaySchoolProgramForDeafDescriptor_PK PRIMARY KEY (ChangeVersion)
+);
+
 CREATE TABLE tracked_deletes_tx.ReportAssessmentTypeDescriptor
 (
        ReportAssessmentTypeDescriptorId INT NOT NULL,
        Id UUID NOT NULL,
        ChangeVersion BIGINT NOT NULL,
        CONSTRAINT ReportAssessmentTypeDescriptor_PK PRIMARY KEY (ChangeVersion)
+);
+
+CREATE TABLE tracked_deletes_tx.ReportingPeriodDescriptor
+(
+       ReportingPeriodDescriptorId INT NOT NULL,
+       Id UUID NOT NULL,
+       ChangeVersion BIGINT NOT NULL,
+       CONSTRAINT ReportingPeriodDescriptor_PK PRIMARY KEY (ChangeVersion)
 );
 
 CREATE TABLE tracked_deletes_tx.RestraintStaffTypeDescriptor
@@ -539,6 +722,14 @@ CREATE TABLE tracked_deletes_tx.RoleIdDescriptor
        Id UUID NOT NULL,
        ChangeVersion BIGINT NOT NULL,
        CONSTRAINT RoleIdDescriptor_PK PRIMARY KEY (ChangeVersion)
+);
+
+CREATE TABLE tracked_deletes_tx.SPEDStudentAgeRangeDescriptor
+(
+       SPEDStudentAgeRangeDescriptorId INT NOT NULL,
+       Id UUID NOT NULL,
+       ChangeVersion BIGINT NOT NULL,
+       CONSTRAINT SPEDStudentAgeRangeDescriptor_PK PRIMARY KEY (ChangeVersion)
 );
 
 CREATE TABLE tracked_deletes_tx.SSAOrgAssociationExt
@@ -587,6 +778,32 @@ CREATE TABLE tracked_deletes_tx.SharedServiceArrangementStaffDescriptor
        CONSTRAINT SharedServiceArrangementStaffDescriptor_PK PRIMARY KEY (ChangeVersion)
 );
 
+CREATE TABLE tracked_deletes_tx.SpecialEducationProgramReportingPeriodAttendance
+(
+       CalendarCode VARCHAR(60) NOT NULL,
+       GradeLevelDescriptorId INT NOT NULL,
+       InstructionalSettingDescriptorId INT NOT NULL,
+       RegionalDaySchoolProgramForDeafDescriptorId INT NOT NULL,
+       ReportingPeriodDescriptorId INT NOT NULL,
+       SchoolId INT NOT NULL,
+       StudentUSI INT NOT NULL,
+       Id UUID NOT NULL,
+       ChangeVersion BIGINT NOT NULL,
+       CONSTRAINT SpecialEducationProgramReportingPeriodAttendance_PK PRIMARY KEY (ChangeVersion)
+);
+
+CREATE TABLE tracked_deletes_tx.SpecialProgramsReportingPeriodAttendance
+(
+       CalendarCode VARCHAR(60) NOT NULL,
+       GradeLevelDescriptorId INT NOT NULL,
+       ReportingPeriodDescriptorId INT NOT NULL,
+       SchoolId INT NOT NULL,
+       StudentUSI INT NOT NULL,
+       Id UUID NOT NULL,
+       ChangeVersion BIGINT NOT NULL,
+       CONSTRAINT SpecialProgramsReportingPeriodAttendance_PK PRIMARY KEY (ChangeVersion)
+);
+
 CREATE TABLE tracked_deletes_tx.StaffServiceDescriptor
 (
        StaffServiceDescriptorId INT NOT NULL,
@@ -632,12 +849,12 @@ CREATE TABLE tracked_deletes_tx.StudentSpecialEducationProgramEligibilityAssocia
        CONSTRAINT StudentSpecialEducationProgramEligibilityAssociation_PK PRIMARY KEY (ChangeVersion)
 );
 
-CREATE TABLE tracked_deletes_tx.TeacherIncentiveAllotmentDesignationCodeDescriptor
+CREATE TABLE tracked_deletes_tx.TeacherIncentiveAllotmentDesignationDescriptor
 (
-       TeacherIncentiveAllotmentDesignationCodeDescriptorId INT NOT NULL,
+       TeacherIncentiveAllotmentDesignationDescriptorId INT NOT NULL,
        Id UUID NOT NULL,
        ChangeVersion BIGINT NOT NULL,
-       CONSTRAINT TeacherIncentiveAllotmentDesignationCodeDescriptor_PK PRIMARY KEY (ChangeVersion)
+       CONSTRAINT TeacherIncentiveAllotmentDesignationDescriptor_PK PRIMARY KEY (ChangeVersion)
 );
 
 CREATE TABLE tracked_deletes_tx.TitleOfAssessmentDescriptor

@@ -36,10 +36,10 @@ CREATE TABLE tx.ArmedServicesVocAptBatteryDescriptor (
     CONSTRAINT ArmedServicesVocAptBatteryDescriptor_PK PRIMARY KEY (ArmedServicesVocAptBatteryDescriptorId)
 ); 
 
--- Table tx.AsOfStatusALeaver --
-CREATE TABLE tx.AsOfStatusALeaver (
+-- Table tx.AsOfStatusALeavers --
+CREATE TABLE tx.AsOfStatusALeavers (
     SchoolId INT NOT NULL,
-    StudentUID VARCHAR(10) NOT NULL,
+    StudentUID VARCHAR(32) NOT NULL,
     SexDescriptorId INT NULL,
     HispanicLatinoEthnicity BOOLEAN NULL,
     GradeLevelDescriptorId INT NULL,
@@ -75,76 +75,105 @@ CREATE TABLE tx.AsOfStatusALeaver (
     CreateDate TIMESTAMP NOT NULL,
     LastModifiedDate TIMESTAMP NOT NULL,
     Id UUID NOT NULL,
-    CONSTRAINT AsOfStatusALeaver_PK PRIMARY KEY (SchoolId, StudentUID)
+    CONSTRAINT AsOfStatusALeavers_PK PRIMARY KEY (SchoolId, StudentUID)
 ); 
-ALTER TABLE tx.AsOfStatusALeaver ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
-ALTER TABLE tx.AsOfStatusALeaver ALTER COLUMN Id SET DEFAULT gen_random_uuid();
-ALTER TABLE tx.AsOfStatusALeaver ALTER COLUMN LastModifiedDate SET DEFAULT current_timestamp;
+ALTER TABLE tx.AsOfStatusALeavers ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+ALTER TABLE tx.AsOfStatusALeavers ALTER COLUMN Id SET DEFAULT gen_random_uuid();
+ALTER TABLE tx.AsOfStatusALeavers ALTER COLUMN LastModifiedDate SET DEFAULT current_timestamp;
 
--- Table tx.AsOfStatusALeaverDiploma --
-CREATE TABLE tx.AsOfStatusALeaverDiploma (
+-- Table tx.AsOfStatusALeaversEndorsementCompletedSet --
+CREATE TABLE tx.AsOfStatusALeaversEndorsementCompletedSet (
     SchoolId INT NOT NULL,
-    StudentUID VARCHAR(10) NOT NULL,
-    AchievementTitle VARCHAR(60) NULL,
-    AchievementCategoryDescriptorId INT NULL,
-    AchievementCategorySystem VARCHAR(60) NULL,
-    IssuerName VARCHAR(150) NULL,
-    IssuerOriginURL VARCHAR(255) NULL,
-    Criteria VARCHAR(150) NULL,
-    CriteriaURL VARCHAR(255) NULL,
-    EvidenceStatement VARCHAR(150) NULL,
-    ImageURL VARCHAR(255) NULL,
-    DiplomaAwardDate DATE NOT NULL,
-    DiplomaLevelDescriptorId INT NULL,
-    DiplomaTypeDescriptorId INT NOT NULL,
-    CTECompleter BOOLEAN NULL,
-    DiplomaDescription VARCHAR(80) NULL,
-    DiplomaAwardExpiresDate DATE NULL,
+    StudentUID VARCHAR(32) NOT NULL,
     CreateDate TIMESTAMP NOT NULL,
-    CONSTRAINT AsOfStatusALeaverDiploma_PK PRIMARY KEY (SchoolId, StudentUID)
+    CONSTRAINT AsOfStatusALeaversEndorsementCompletedSet_PK PRIMARY KEY (SchoolId, StudentUID)
 ); 
-ALTER TABLE tx.AsOfStatusALeaverDiploma ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+ALTER TABLE tx.AsOfStatusALeaversEndorsementCompletedSet ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
 
--- Table tx.AsOfStatusALeaverIndustryBasedCertificationSet --
-CREATE TABLE tx.AsOfStatusALeaverIndustryBasedCertificationSet (
-    BeginDate DATE NOT NULL,
-    DateCertEarned DATE NOT NULL,
+-- Table tx.AsOfStatusALeaversEndorsementCompletedSetEndorsementCompleted --
+CREATE TABLE tx.AsOfStatusALeaversEndorsementCompletedSetEndorsementCompleted (
+    EndorsementCompletedDescriptorId INT NOT NULL,
+    SchoolId INT NOT NULL,
+    StudentUID VARCHAR(32) NOT NULL,
+    CreateDate TIMESTAMP NOT NULL,
+    CONSTRAINT AsOfStatusALeaversEndorsementCompletedSetEndorseme_046bac_PK PRIMARY KEY (EndorsementCompletedDescriptorId, SchoolId, StudentUID)
+); 
+ALTER TABLE tx.AsOfStatusALeaversEndorsementCompletedSetEndorsementCompleted ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+
+-- Table tx.AsOfStatusALeaversFinancialAidApplication --
+CREATE TABLE tx.AsOfStatusALeaversFinancialAidApplication (
+    FinancialAidApplicationDescriptorId INT NOT NULL,
+    SchoolId INT NOT NULL,
+    StudentUID VARCHAR(32) NOT NULL,
+    CreateDate TIMESTAMP NOT NULL,
+    CONSTRAINT AsOfStatusALeaversFinancialAidApplication_PK PRIMARY KEY (FinancialAidApplicationDescriptorId, SchoolId, StudentUID)
+); 
+ALTER TABLE tx.AsOfStatusALeaversFinancialAidApplication ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+
+-- Table tx.AsOfStatusALeaversGraduationSet --
+CREATE TABLE tx.AsOfStatusALeaversGraduationSet (
+    SchoolId INT NOT NULL,
+    StudentUID VARCHAR(32) NOT NULL,
+    DiplomaAwardDate DATE NOT NULL,
+    DiplomaTypeDescriptorId INT NOT NULL,
+    AchievementCategoryDescriptorId INT NOT NULL,
+    IndividualGraduationCommitteeGraduateIndicator BOOLEAN NULL,
+    MilitaryEnlistmentIndicator BOOLEAN NULL,
+    FHSPDistingLevelGraduate BOOLEAN NULL,
+    CreateDate TIMESTAMP NOT NULL,
+    CONSTRAINT AsOfStatusALeaversGraduationSet_PK PRIMARY KEY (SchoolId, StudentUID)
+); 
+ALTER TABLE tx.AsOfStatusALeaversGraduationSet ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+
+-- Table tx.AsOfStatusALeaversGraduationSetFinancialAidApplication --
+CREATE TABLE tx.AsOfStatusALeaversGraduationSetFinancialAidApplication (
+    FinancialAidApplicationDescriptorId INT NOT NULL,
+    SchoolId INT NOT NULL,
+    StudentUID VARCHAR(32) NOT NULL,
+    CreateDate TIMESTAMP NOT NULL,
+    CONSTRAINT AsOfStatusALeaversGraduationSetFinancialAidApplication_PK PRIMARY KEY (FinancialAidApplicationDescriptorId, SchoolId, StudentUID)
+); 
+ALTER TABLE tx.AsOfStatusALeaversGraduationSetFinancialAidApplication ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+
+-- Table tx.AsOfStatusALeaversIndustryBasedCertificationSet --
+CREATE TABLE tx.AsOfStatusALeaversIndustryBasedCertificationSet (
+    DateCertTaken DATE NOT NULL,
     IBCVendorDescriptorId INT NOT NULL,
     PostSecondaryCertificationLicensureDescriptorId INT NOT NULL,
     SchoolId INT NOT NULL,
-    StudentUID VARCHAR(10) NOT NULL,
+    StudentUID VARCHAR(32) NOT NULL,
+    PostSecondaryCertLicensureResultDescriptorId INT NOT NULL,
     IBCExamFeeAmount DECIMAL(5, 2) NULL,
-    EndDate DATE NULL,
     CreateDate TIMESTAMP NOT NULL,
-    CONSTRAINT AsOfStatusALeaverIndustryBasedCertificationSet_PK PRIMARY KEY (BeginDate, DateCertEarned, IBCVendorDescriptorId, PostSecondaryCertificationLicensureDescriptorId, SchoolId, StudentUID)
+    CONSTRAINT AsOfStatusALeaversIndustryBasedCertificationSet_PK PRIMARY KEY (DateCertTaken, IBCVendorDescriptorId, PostSecondaryCertificationLicensureDescriptorId, SchoolId, StudentUID)
 ); 
-ALTER TABLE tx.AsOfStatusALeaverIndustryBasedCertificationSet ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+ALTER TABLE tx.AsOfStatusALeaversIndustryBasedCertificationSet ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
 
--- Table tx.AsOfStatusALeaverPersonalIdentificationDocument --
-CREATE TABLE tx.AsOfStatusALeaverPersonalIdentificationDocument (
+-- Table tx.AsOfStatusALeaversPersonalIdentificationDocument --
+CREATE TABLE tx.AsOfStatusALeaversPersonalIdentificationDocument (
     IdentificationDocumentUseDescriptorId INT NOT NULL,
     PersonalInformationVerificationDescriptorId INT NOT NULL,
     SchoolId INT NOT NULL,
-    StudentUID VARCHAR(10) NOT NULL,
+    StudentUID VARCHAR(32) NOT NULL,
     DocumentTitle VARCHAR(60) NULL,
     DocumentExpirationDate DATE NULL,
     IssuerDocumentIdentificationCode VARCHAR(60) NULL,
     IssuerName VARCHAR(150) NULL,
     IssuerCountryDescriptorId INT NULL,
     CreateDate TIMESTAMP NOT NULL,
-    CONSTRAINT AsOfStatusALeaverPersonalIdentificationDocument_PK PRIMARY KEY (IdentificationDocumentUseDescriptorId, PersonalInformationVerificationDescriptorId, SchoolId, StudentUID)
+    CONSTRAINT AsOfStatusALeaversPersonalIdentificationDocument_PK PRIMARY KEY (IdentificationDocumentUseDescriptorId, PersonalInformationVerificationDescriptorId, SchoolId, StudentUID)
 ); 
-ALTER TABLE tx.AsOfStatusALeaverPersonalIdentificationDocument ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+ALTER TABLE tx.AsOfStatusALeaversPersonalIdentificationDocument ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
 
--- Table tx.AsOfStatusALeaverRace --
-CREATE TABLE tx.AsOfStatusALeaverRace (
+-- Table tx.AsOfStatusALeaversRace --
+CREATE TABLE tx.AsOfStatusALeaversRace (
     RaceDescriptorId INT NOT NULL,
     SchoolId INT NOT NULL,
-    StudentUID VARCHAR(10) NOT NULL,
+    StudentUID VARCHAR(32) NOT NULL,
     CreateDate TIMESTAMP NOT NULL,
-    CONSTRAINT AsOfStatusALeaverRace_PK PRIMARY KEY (RaceDescriptorId, SchoolId, StudentUID)
+    CONSTRAINT AsOfStatusALeaversRace_PK PRIMARY KEY (RaceDescriptorId, SchoolId, StudentUID)
 ); 
-ALTER TABLE tx.AsOfStatusALeaverRace ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+ALTER TABLE tx.AsOfStatusALeaversRace ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
 
 -- Table tx.AsOfStatusLastDayEnrollmentDescriptor --
 CREATE TABLE tx.AsOfStatusLastDayEnrollmentDescriptor (
@@ -180,6 +209,57 @@ CREATE TABLE tx.AuxiliaryRoleIdDescriptor (
     AuxiliaryRoleIdDescriptorId INT NOT NULL,
     CONSTRAINT AuxiliaryRoleIdDescriptor_PK PRIMARY KEY (AuxiliaryRoleIdDescriptorId)
 ); 
+
+-- Table tx.BasicReportingPeriodAttendance --
+CREATE TABLE tx.BasicReportingPeriodAttendance (
+    CalendarCode VARCHAR(60) NOT NULL,
+    GradeLevelDescriptorId INT NOT NULL,
+    ReportingPeriodDescriptorId INT NOT NULL,
+    SchoolId INT NOT NULL,
+    StudentUSI INT NOT NULL,
+    NumberDaysTaught INT NOT NULL,
+    TotalDaysAbsent DECIMAL(4, 1) NOT NULL,
+    TotalIneligibleDaysPresent DECIMAL(4, 1) NULL,
+    TotalEligibleDaysPresent DECIMAL(4, 1) NOT NULL,
+    RSTotalEligibleDaysPresent DECIMAL(4, 1) NOT NULL,
+    RATotalEligibleDaysPresent DECIMAL(4, 1) NOT NULL,
+    Discriminator VARCHAR(128) NULL,
+    CreateDate TIMESTAMP NOT NULL,
+    LastModifiedDate TIMESTAMP NOT NULL,
+    Id UUID NOT NULL,
+    CONSTRAINT BasicReportingPeriodAttendance_PK PRIMARY KEY (CalendarCode, GradeLevelDescriptorId, ReportingPeriodDescriptorId, SchoolId, StudentUSI)
+); 
+ALTER TABLE tx.BasicReportingPeriodAttendance ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+ALTER TABLE tx.BasicReportingPeriodAttendance ALTER COLUMN Id SET DEFAULT gen_random_uuid();
+ALTER TABLE tx.BasicReportingPeriodAttendance ALTER COLUMN LastModifiedDate SET DEFAULT current_timestamp;
+
+-- Table tx.BilingualESLFundingDescriptor --
+CREATE TABLE tx.BilingualESLFundingDescriptor (
+    BilingualESLFundingDescriptorId INT NOT NULL,
+    CONSTRAINT BilingualESLFundingDescriptor_PK PRIMARY KEY (BilingualESLFundingDescriptorId)
+); 
+
+-- Table tx.BilingualESLProgramReportingPeriodAttendance --
+CREATE TABLE tx.BilingualESLProgramReportingPeriodAttendance (
+    BilingualESLFundingDescriptorId INT NOT NULL,
+    CalendarCode VARCHAR(60) NOT NULL,
+    GradeLevelDescriptorId INT NOT NULL,
+    ReportingPeriodDescriptorId INT NOT NULL,
+    SchoolId INT NOT NULL,
+    StudentUSI INT NOT NULL,
+    NumberDaysTaught INT NOT NULL,
+    TotalEligBilingualESLDaysPresent DECIMAL(4, 1) NULL,
+    RSTotalEligBilingualESLDaysPresent DECIMAL(4, 1) NULL,
+    RATotalEligBilingualESLDaysPresent DECIMAL(4, 1) NULL,
+    Discriminator VARCHAR(128) NULL,
+    CreateDate TIMESTAMP NOT NULL,
+    LastModifiedDate TIMESTAMP NOT NULL,
+    Id UUID NOT NULL,
+    CONSTRAINT BilingualESLProgramReportingPeriodAttendance_PK PRIMARY KEY (BilingualESLFundingDescriptorId, CalendarCode, GradeLevelDescriptorId, ReportingPeriodDescriptorId, SchoolId, StudentUSI)
+); 
+ALTER TABLE tx.BilingualESLProgramReportingPeriodAttendance ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+ALTER TABLE tx.BilingualESLProgramReportingPeriodAttendance ALTER COLUMN Id SET DEFAULT gen_random_uuid();
+ALTER TABLE tx.BilingualESLProgramReportingPeriodAttendance ALTER COLUMN LastModifiedDate SET DEFAULT current_timestamp;
 
 -- Table tx.BudgetExt --
 CREATE TABLE tx.BudgetExt (
@@ -234,16 +314,6 @@ CREATE TABLE tx.ChildCountFundingDescriptor (
     CONSTRAINT ChildCountFundingDescriptor_PK PRIMARY KEY (ChildCountFundingDescriptorId)
 ); 
 
--- Table tx.ClassPeriodExtension --
-CREATE TABLE tx.ClassPeriodExtension (
-    ClassPeriodName VARCHAR(60) NOT NULL,
-    SchoolId INT NOT NULL,
-    BeginDate DATE NULL,
-    CreateDate TIMESTAMP NOT NULL,
-    CONSTRAINT ClassPeriodExtension_PK PRIMARY KEY (ClassPeriodName, SchoolId)
-); 
-ALTER TABLE tx.ClassPeriodExtension ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
-
 -- Table tx.ClassTypeDescriptor --
 CREATE TABLE tx.ClassTypeDescriptor (
     ClassTypeDescriptorId INT NOT NULL,
@@ -296,6 +366,40 @@ CREATE TABLE tx.CrisisEventDescriptor (
     CONSTRAINT CrisisEventDescriptor_PK PRIMARY KEY (CrisisEventDescriptorId)
 ); 
 
+-- Table tx.CTEProgramReportingPeriodAttendance --
+CREATE TABLE tx.CTEProgramReportingPeriodAttendance (
+    CalendarCode VARCHAR(60) NOT NULL,
+    CTEServiceIdDescriptorId INT NOT NULL,
+    GradeLevelDescriptorId INT NOT NULL,
+    ReportingPeriodDescriptorId INT NOT NULL,
+    SchoolId INT NOT NULL,
+    StudentUSI INT NOT NULL,
+    NumberDaysTaught INT NOT NULL,
+    EligibleDaysPresentV1 DECIMAL(4, 1) NULL,
+    RSEligibleDaysPresentV1 DECIMAL(4, 1) NULL,
+    RAEligibleDaysPresentV1 DECIMAL(4, 1) NULL,
+    EligibleDaysPresentV2 DECIMAL(4, 1) NULL,
+    RSEligibleDaysPresentV2 DECIMAL(4, 1) NULL,
+    RAEligibleDaysPresentV2 DECIMAL(4, 1) NULL,
+    EligibleDaysPresentV3 DECIMAL(4, 1) NULL,
+    RSEligibleDaysPresentV3 DECIMAL(4, 1) NULL,
+    RAEligibleDaysPresentV3 DECIMAL(4, 1) NULL,
+    Discriminator VARCHAR(128) NULL,
+    CreateDate TIMESTAMP NOT NULL,
+    LastModifiedDate TIMESTAMP NOT NULL,
+    Id UUID NOT NULL,
+    CONSTRAINT CTEProgramReportingPeriodAttendance_PK PRIMARY KEY (CalendarCode, CTEServiceIdDescriptorId, GradeLevelDescriptorId, ReportingPeriodDescriptorId, SchoolId, StudentUSI)
+); 
+ALTER TABLE tx.CTEProgramReportingPeriodAttendance ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+ALTER TABLE tx.CTEProgramReportingPeriodAttendance ALTER COLUMN Id SET DEFAULT gen_random_uuid();
+ALTER TABLE tx.CTEProgramReportingPeriodAttendance ALTER COLUMN LastModifiedDate SET DEFAULT current_timestamp;
+
+-- Table tx.CTEServiceIdDescriptor --
+CREATE TABLE tx.CTEServiceIdDescriptor (
+    CTEServiceIdDescriptorId INT NOT NULL,
+    CONSTRAINT CTEServiceIdDescriptor_PK PRIMARY KEY (CTEServiceIdDescriptorId)
+); 
+
 -- Table tx.DisciplineActionExtension --
 CREATE TABLE tx.DisciplineActionExtension (
     DisciplineActionIdentifier VARCHAR(20) NOT NULL,
@@ -310,10 +414,26 @@ CREATE TABLE tx.DisciplineActionExtension (
 ); 
 ALTER TABLE tx.DisciplineActionExtension ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
 
+-- Table tx.DisciplineIncidentExtension --
+CREATE TABLE tx.DisciplineIncidentExtension (
+    IncidentIdentifier VARCHAR(20) NOT NULL,
+    SchoolId INT NOT NULL,
+    SafeSupportiveSchoolProgramTeamReview BOOLEAN NULL,
+    CreateDate TIMESTAMP NOT NULL,
+    CONSTRAINT DisciplineIncidentExtension_PK PRIMARY KEY (IncidentIdentifier, SchoolId)
+); 
+ALTER TABLE tx.DisciplineIncidentExtension ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+
 -- Table tx.DyslexiaRiskDescriptor --
 CREATE TABLE tx.DyslexiaRiskDescriptor (
     DyslexiaRiskDescriptorId INT NOT NULL,
     CONSTRAINT DyslexiaRiskDescriptor_PK PRIMARY KEY (DyslexiaRiskDescriptorId)
+); 
+
+-- Table tx.DyslexiaScreeningExceptionReasonDescriptor --
+CREATE TABLE tx.DyslexiaScreeningExceptionReasonDescriptor (
+    DyslexiaScreeningExceptionReasonDescriptorId INT NOT NULL,
+    CONSTRAINT DyslexiaScreeningExceptionReasonDescriptor_PK PRIMARY KEY (DyslexiaScreeningExceptionReasonDescriptorId)
 ); 
 
 -- Table tx.DyslexiaServicesDescriptor --
@@ -338,6 +458,12 @@ CREATE TABLE tx.EconomicDisadvantageDescriptor (
 CREATE TABLE tx.EconomicDisadvantageLastDateOfEnrollmentDescriptor (
     EconomicDisadvantageLastDateOfEnrollmentDescriptorId INT NOT NULL,
     CONSTRAINT EconomicDisadvantageLastDateOfEnrollmentDescriptor_PK PRIMARY KEY (EconomicDisadvantageLastDateOfEnrollmentDescriptorId)
+); 
+
+-- Table tx.EligibilityDelayReasonDescriptor --
+CREATE TABLE tx.EligibilityDelayReasonDescriptor (
+    EligibilityDelayReasonDescriptorId INT NOT NULL,
+    CONSTRAINT EligibilityDelayReasonDescriptor_PK PRIMARY KEY (EligibilityDelayReasonDescriptorId)
 ); 
 
 -- Table tx.ELOActivityDescriptor --
@@ -375,6 +501,124 @@ CREATE TABLE tx.EvaluationDelayReasonDescriptor (
     EvaluationDelayReasonDescriptorId INT NOT NULL,
     CONSTRAINT EvaluationDelayReasonDescriptor_PK PRIMARY KEY (EvaluationDelayReasonDescriptorId)
 ); 
+
+-- Table tx.ExtendedSchoolYearServicesAttendance --
+CREATE TABLE tx.ExtendedSchoolYearServicesAttendance (
+    FirstInstructionalSettingDescriptorId INT NOT NULL,
+    GradeLevelDescriptorId INT NOT NULL,
+    SchoolId INT NOT NULL,
+    StudentUSI INT NOT NULL,
+    TotalESYContactHoursInFirstInstructionalSetting DECIMAL(4, 1) NOT NULL,
+    SecondInstructionalSettingDescriptorId INT NULL,
+    TotalESYContactHoursInSecondInstructionalSetting DECIMAL(4, 1) NULL,
+    Discriminator VARCHAR(128) NULL,
+    CreateDate TIMESTAMP NOT NULL,
+    LastModifiedDate TIMESTAMP NOT NULL,
+    Id UUID NOT NULL,
+    CONSTRAINT ExtendedSchoolYearServicesAttendance_PK PRIMARY KEY (FirstInstructionalSettingDescriptorId, GradeLevelDescriptorId, SchoolId, StudentUSI)
+); 
+ALTER TABLE tx.ExtendedSchoolYearServicesAttendance ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+ALTER TABLE tx.ExtendedSchoolYearServicesAttendance ALTER COLUMN Id SET DEFAULT gen_random_uuid();
+ALTER TABLE tx.ExtendedSchoolYearServicesAttendance ALTER COLUMN LastModifiedDate SET DEFAULT current_timestamp;
+
+-- Table tx.FinancialAidApplicationDescriptor --
+CREATE TABLE tx.FinancialAidApplicationDescriptor (
+    FinancialAidApplicationDescriptorId INT NOT NULL,
+    CONSTRAINT FinancialAidApplicationDescriptor_PK PRIMARY KEY (FinancialAidApplicationDescriptorId)
+); 
+
+-- Table tx.FlexAttendanceProgramDescriptor --
+CREATE TABLE tx.FlexAttendanceProgramDescriptor (
+    FlexAttendanceProgramDescriptorId INT NOT NULL,
+    CONSTRAINT FlexAttendanceProgramDescriptor_PK PRIMARY KEY (FlexAttendanceProgramDescriptorId)
+); 
+
+-- Table tx.FlexibleBilingualESLProgramReportingPeriodAttendance --
+CREATE TABLE tx.FlexibleBilingualESLProgramReportingPeriodAttendance (
+    BilingualESLFundingDescriptorId INT NOT NULL,
+    CalendarCode VARCHAR(60) NOT NULL,
+    FlexAttendanceProgramDescriptorId INT NOT NULL,
+    GradeLevelDescriptorId INT NOT NULL,
+    ReportingPeriodDescriptorId INT NOT NULL,
+    SchoolId INT NOT NULL,
+    StudentUSI INT NOT NULL,
+    NumberDaysTaught INT NOT NULL,
+    FlexTotalEligBilingualESLDaysPresent DECIMAL(4, 1) NOT NULL,
+    Discriminator VARCHAR(128) NULL,
+    CreateDate TIMESTAMP NOT NULL,
+    LastModifiedDate TIMESTAMP NOT NULL,
+    Id UUID NOT NULL,
+    CONSTRAINT FlexibleBilingualESLProgramReportingPeriodAttendance_PK PRIMARY KEY (BilingualESLFundingDescriptorId, CalendarCode, FlexAttendanceProgramDescriptorId, GradeLevelDescriptorId, ReportingPeriodDescriptorId, SchoolId, StudentUSI)
+); 
+ALTER TABLE tx.FlexibleBilingualESLProgramReportingPeriodAttendance ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+ALTER TABLE tx.FlexibleBilingualESLProgramReportingPeriodAttendance ALTER COLUMN Id SET DEFAULT gen_random_uuid();
+ALTER TABLE tx.FlexibleBilingualESLProgramReportingPeriodAttendance ALTER COLUMN LastModifiedDate SET DEFAULT current_timestamp;
+
+-- Table tx.FlexibleCTEProgramReportingPeriodAttendance --
+CREATE TABLE tx.FlexibleCTEProgramReportingPeriodAttendance (
+    CalendarCode VARCHAR(60) NOT NULL,
+    FlexAttendanceProgramDescriptorId INT NOT NULL,
+    GradeLevelDescriptorId INT NOT NULL,
+    ReportingPeriodDescriptorId INT NOT NULL,
+    SchoolId INT NOT NULL,
+    StudentUSI INT NOT NULL,
+    NumberDaysTaught INT NOT NULL,
+    FlexAttendTotalCareerTechMinutesPresent INT NOT NULL,
+    Discriminator VARCHAR(128) NULL,
+    CreateDate TIMESTAMP NOT NULL,
+    LastModifiedDate TIMESTAMP NOT NULL,
+    Id UUID NOT NULL,
+    CONSTRAINT FlexibleCTEProgramReportingPeriodAttendance_PK PRIMARY KEY (CalendarCode, FlexAttendanceProgramDescriptorId, GradeLevelDescriptorId, ReportingPeriodDescriptorId, SchoolId, StudentUSI)
+); 
+ALTER TABLE tx.FlexibleCTEProgramReportingPeriodAttendance ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+ALTER TABLE tx.FlexibleCTEProgramReportingPeriodAttendance ALTER COLUMN Id SET DEFAULT gen_random_uuid();
+ALTER TABLE tx.FlexibleCTEProgramReportingPeriodAttendance ALTER COLUMN LastModifiedDate SET DEFAULT current_timestamp;
+
+-- Table tx.FlexibleRegularProgramReportingPeriodAttendance --
+CREATE TABLE tx.FlexibleRegularProgramReportingPeriodAttendance (
+    CalendarCode VARCHAR(60) NOT NULL,
+    FlexAttendanceProgramDescriptorId INT NOT NULL,
+    GradeLevelDescriptorId INT NOT NULL,
+    ReportingPeriodDescriptorId INT NOT NULL,
+    SchoolId INT NOT NULL,
+    StudentUSI INT NOT NULL,
+    NumberDaysTaught INT NOT NULL,
+    FlexAttendTotalEligibleMinutesPresent INT NOT NULL,
+    FlexAttendTotalIneligibleMinutesPresent INT NOT NULL,
+    FlexTotalEligPregRelSvcsDaysPresent DECIMAL(4, 1) NULL,
+    FlexTotalEligSpEdMainstreamDaysPresent DECIMAL(4, 1) NULL,
+    FlexTotalEligResidentialFacilityDaysPresent DECIMAL(4, 1) NULL,
+    Discriminator VARCHAR(128) NULL,
+    CreateDate TIMESTAMP NOT NULL,
+    LastModifiedDate TIMESTAMP NOT NULL,
+    Id UUID NOT NULL,
+    CONSTRAINT FlexibleRegularProgramReportingPeriodAttendance_PK PRIMARY KEY (CalendarCode, FlexAttendanceProgramDescriptorId, GradeLevelDescriptorId, ReportingPeriodDescriptorId, SchoolId, StudentUSI)
+); 
+ALTER TABLE tx.FlexibleRegularProgramReportingPeriodAttendance ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+ALTER TABLE tx.FlexibleRegularProgramReportingPeriodAttendance ALTER COLUMN Id SET DEFAULT gen_random_uuid();
+ALTER TABLE tx.FlexibleRegularProgramReportingPeriodAttendance ALTER COLUMN LastModifiedDate SET DEFAULT current_timestamp;
+
+-- Table tx.FlexibleSpecialEducationProgramReportingPeriodAttendance --
+CREATE TABLE tx.FlexibleSpecialEducationProgramReportingPeriodAttendance (
+    CalendarCode VARCHAR(60) NOT NULL,
+    FlexAttendanceProgramDescriptorId INT NOT NULL,
+    GradeLevelDescriptorId INT NOT NULL,
+    InstructionalSettingDescriptorId INT NOT NULL,
+    ReportingPeriodDescriptorId INT NOT NULL,
+    SchoolId INT NOT NULL,
+    StudentUSI INT NOT NULL,
+    NumberDaysTaught INT NOT NULL,
+    FlexAttendDaysEligibleInInstrSetting DECIMAL(4, 1) NOT NULL,
+    FlexAttendExcessMinutesInInstrSetting INT NOT NULL,
+    Discriminator VARCHAR(128) NULL,
+    CreateDate TIMESTAMP NOT NULL,
+    LastModifiedDate TIMESTAMP NOT NULL,
+    Id UUID NOT NULL,
+    CONSTRAINT FlexibleSpecialEducationProgramReportingPeriodAttendance_PK PRIMARY KEY (CalendarCode, FlexAttendanceProgramDescriptorId, GradeLevelDescriptorId, InstructionalSettingDescriptorId, ReportingPeriodDescriptorId, SchoolId, StudentUSI)
+); 
+ALTER TABLE tx.FlexibleSpecialEducationProgramReportingPeriodAttendance ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+ALTER TABLE tx.FlexibleSpecialEducationProgramReportingPeriodAttendance ALTER COLUMN Id SET DEFAULT gen_random_uuid();
+ALTER TABLE tx.FlexibleSpecialEducationProgramReportingPeriodAttendance ALTER COLUMN LastModifiedDate SET DEFAULT current_timestamp;
 
 -- Table tx.FosterCareTypeDescriptor --
 CREATE TABLE tx.FosterCareTypeDescriptor (
@@ -452,6 +696,12 @@ CREATE TABLE tx.HoursSpentReceivingServicesDescriptor (
 CREATE TABLE tx.IBCVendorDescriptor (
     IBCVendorDescriptorId INT NOT NULL,
     CONSTRAINT IBCVendorDescriptor_PK PRIMARY KEY (IBCVendorDescriptorId)
+); 
+
+-- Table tx.InstructionalSettingDescriptor --
+CREATE TABLE tx.InstructionalSettingDescriptor (
+    InstructionalSettingDescriptorId INT NOT NULL,
+    CONSTRAINT InstructionalSettingDescriptor_PK PRIMARY KEY (InstructionalSettingDescriptorId)
 ); 
 
 -- Table tx.LangAcqServicesProvidedDescriptor --
@@ -620,6 +870,12 @@ CREATE TABLE tx.PostSecondaryCertificationLicensureDescriptor (
     CONSTRAINT PostSecondaryCertificationLicensureDescriptor_PK PRIMARY KEY (PostSecondaryCertificationLicensureDescriptorId)
 ); 
 
+-- Table tx.PostSecondaryCertLicensureResultDescriptor --
+CREATE TABLE tx.PostSecondaryCertLicensureResultDescriptor (
+    PostSecondaryCertLicensureResultDescriptorId INT NOT NULL,
+    CONSTRAINT PostSecondaryCertLicensureResultDescriptor_PK PRIMARY KEY (PostSecondaryCertLicensureResultDescriptorId)
+); 
+
 -- Table tx.PPCDServiceLocationDescriptor --
 CREATE TABLE tx.PPCDServiceLocationDescriptor (
     PPCDServiceLocationDescriptorId INT NOT NULL,
@@ -644,10 +900,22 @@ CREATE TABLE tx.ProgramOfStudyDescriptor (
     CONSTRAINT ProgramOfStudyDescriptor_PK PRIMARY KEY (ProgramOfStudyDescriptorId)
 ); 
 
+-- Table tx.RegionalDaySchoolProgramForDeafDescriptor --
+CREATE TABLE tx.RegionalDaySchoolProgramForDeafDescriptor (
+    RegionalDaySchoolProgramForDeafDescriptorId INT NOT NULL,
+    CONSTRAINT RegionalDaySchoolProgramForDeafDescriptor_PK PRIMARY KEY (RegionalDaySchoolProgramForDeafDescriptorId)
+); 
+
 -- Table tx.ReportAssessmentTypeDescriptor --
 CREATE TABLE tx.ReportAssessmentTypeDescriptor (
     ReportAssessmentTypeDescriptorId INT NOT NULL,
     CONSTRAINT ReportAssessmentTypeDescriptor_PK PRIMARY KEY (ReportAssessmentTypeDescriptorId)
+); 
+
+-- Table tx.ReportingPeriodDescriptor --
+CREATE TABLE tx.ReportingPeriodDescriptor (
+    ReportingPeriodDescriptorId INT NOT NULL,
+    CONSTRAINT ReportingPeriodDescriptor_PK PRIMARY KEY (ReportingPeriodDescriptorId)
 ); 
 
 -- Table tx.RestraintEventExtension --
@@ -677,11 +945,11 @@ CREATE TABLE tx.RoleIdDescriptor (
 -- Table tx.SchoolCampusEnrollmentTypeSet --
 CREATE TABLE tx.SchoolCampusEnrollmentTypeSet (
     BeginDate DATE NOT NULL,
-    CampusEnrollmentTypeDescriptorId INT NOT NULL,
     SchoolId INT NOT NULL,
+    CampusEnrollmentTypeDescriptorId INT NOT NULL,
     EndDate DATE NULL,
     CreateDate TIMESTAMP NOT NULL,
-    CONSTRAINT SchoolCampusEnrollmentTypeSet_PK PRIMARY KEY (BeginDate, CampusEnrollmentTypeDescriptorId, SchoolId)
+    CONSTRAINT SchoolCampusEnrollmentTypeSet_PK PRIMARY KEY (BeginDate, SchoolId)
 ); 
 ALTER TABLE tx.SchoolCampusEnrollmentTypeSet ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
 
@@ -738,11 +1006,11 @@ ALTER TABLE tx.SchoolExtension ALTER COLUMN CreateDate SET DEFAULT current_times
 -- Table tx.SchoolNSLPTypeSet --
 CREATE TABLE tx.SchoolNSLPTypeSet (
     BeginDate DATE NOT NULL,
-    NSLPTypeDescriptorId INT NOT NULL,
     SchoolId INT NOT NULL,
+    NSLPTypeDescriptorId INT NOT NULL,
     EndDate DATE NULL,
     CreateDate TIMESTAMP NOT NULL,
-    CONSTRAINT SchoolNSLPTypeSet_PK PRIMARY KEY (BeginDate, NSLPTypeDescriptorId, SchoolId)
+    CONSTRAINT SchoolNSLPTypeSet_PK PRIMARY KEY (BeginDate, SchoolId)
 ); 
 ALTER TABLE tx.SchoolNSLPTypeSet ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
 
@@ -755,6 +1023,7 @@ CREATE TABLE tx.SectionSet (
     SectionIdentifier VARCHAR(255) NOT NULL,
     SessionName VARCHAR(60) NOT NULL,
     PopulationServedDescriptorId INT NULL,
+    SPEDStudentAgeRangeDescriptorId INT NULL,
     CourseSequenceDescriptorId INT NULL,
     NonCampusBasedInstructionDescriptorId INT NULL,
     PKCurriculaDescriptorId INT NULL,
@@ -762,8 +1031,8 @@ CREATE TABLE tx.SectionSet (
     PKStudentInstructionDescriptorId INT NULL,
     PKSchoolTypeDescriptorId INT NULL,
     PKProgramEvaluationTypeDescriptorId INT NULL,
-    CTEHours DATE NULL,
     ClassTypeDescriptorId INT NULL,
+    CTEHours INT NULL,
     EndDate DATE NULL,
     CreateDate TIMESTAMP NOT NULL,
     CONSTRAINT SectionSet_PK PRIMARY KEY (BeginDate, LocalCourseCode, SchoolId, SchoolYear, SectionIdentifier, SessionName)
@@ -798,6 +1067,66 @@ ALTER TABLE tx.SharedServiceArrangementExt ALTER COLUMN LastModifiedDate SET DEF
 CREATE TABLE tx.SharedServiceArrangementStaffDescriptor (
     SharedServiceArrangementStaffDescriptorId INT NOT NULL,
     CONSTRAINT SharedServiceArrangementStaffDescriptor_PK PRIMARY KEY (SharedServiceArrangementStaffDescriptorId)
+); 
+
+-- Table tx.SpecialEducationProgramReportingPeriodAttendance --
+CREATE TABLE tx.SpecialEducationProgramReportingPeriodAttendance (
+    CalendarCode VARCHAR(60) NOT NULL,
+    GradeLevelDescriptorId INT NOT NULL,
+    InstructionalSettingDescriptorId INT NOT NULL,
+    RegionalDaySchoolProgramForDeafDescriptorId INT NOT NULL,
+    ReportingPeriodDescriptorId INT NOT NULL,
+    SchoolId INT NOT NULL,
+    StudentUSI INT NOT NULL,
+    NumberDaysTaught INT NOT NULL,
+    EligibleDaysPresentInInstrSetting DECIMAL(4, 1) NULL,
+    RSEligibleDaysPresentInInstrSetting DECIMAL(4, 1) NULL,
+    RAEligibleDaysPresentInInstrSetting DECIMAL(4, 1) NULL,
+    ExcessHoursInInstructionalSetting DECIMAL(4, 1) NULL,
+    RSExcessHoursInInstructionalSetting DECIMAL(4, 1) NULL,
+    RAExcessHoursInInstructionalSetting DECIMAL(4, 1) NULL,
+    LEAOfRDSPDService INT NULL,
+    Discriminator VARCHAR(128) NULL,
+    CreateDate TIMESTAMP NOT NULL,
+    LastModifiedDate TIMESTAMP NOT NULL,
+    Id UUID NOT NULL,
+    CONSTRAINT SpecialEducationProgramReportingPeriodAttendance_PK PRIMARY KEY (CalendarCode, GradeLevelDescriptorId, InstructionalSettingDescriptorId, RegionalDaySchoolProgramForDeafDescriptorId, ReportingPeriodDescriptorId, SchoolId, StudentUSI)
+); 
+ALTER TABLE tx.SpecialEducationProgramReportingPeriodAttendance ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+ALTER TABLE tx.SpecialEducationProgramReportingPeriodAttendance ALTER COLUMN Id SET DEFAULT gen_random_uuid();
+ALTER TABLE tx.SpecialEducationProgramReportingPeriodAttendance ALTER COLUMN LastModifiedDate SET DEFAULT current_timestamp;
+
+-- Table tx.SpecialProgramsReportingPeriodAttendance --
+CREATE TABLE tx.SpecialProgramsReportingPeriodAttendance (
+    CalendarCode VARCHAR(60) NOT NULL,
+    GradeLevelDescriptorId INT NOT NULL,
+    ReportingPeriodDescriptorId INT NOT NULL,
+    SchoolId INT NOT NULL,
+    StudentUSI INT NOT NULL,
+    NumberDaysTaught INT NOT NULL,
+    TotalEligPregRelSvcsDaysPresent DECIMAL(4, 1) NULL,
+    RSTotalEligPregRelSvcsDaysPresent DECIMAL(4, 1) NULL,
+    RATotalEligPregRelSvcsDaysPresent DECIMAL(4, 1) NULL,
+    TotalEligSpEdMainstreamDaysPresent DECIMAL(4, 1) NULL,
+    RSTotalEligSpEdMainstreamDaysPresent DECIMAL(4, 1) NULL,
+    RATotalEligSpEdMainstreamDaysPresent DECIMAL(4, 1) NULL,
+    TotalEligResidentialFacilityDaysPresent DECIMAL(4, 1) NULL,
+    RSTotalEligResidentialFacilityDaysPresent DECIMAL(4, 1) NULL,
+    RATotalEligResidentialFacilityDaysPresent DECIMAL(4, 1) NULL,
+    Discriminator VARCHAR(128) NULL,
+    CreateDate TIMESTAMP NOT NULL,
+    LastModifiedDate TIMESTAMP NOT NULL,
+    Id UUID NOT NULL,
+    CONSTRAINT SpecialProgramsReportingPeriodAttendance_PK PRIMARY KEY (CalendarCode, GradeLevelDescriptorId, ReportingPeriodDescriptorId, SchoolId, StudentUSI)
+); 
+ALTER TABLE tx.SpecialProgramsReportingPeriodAttendance ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+ALTER TABLE tx.SpecialProgramsReportingPeriodAttendance ALTER COLUMN Id SET DEFAULT gen_random_uuid();
+ALTER TABLE tx.SpecialProgramsReportingPeriodAttendance ALTER COLUMN LastModifiedDate SET DEFAULT current_timestamp;
+
+-- Table tx.SPEDStudentAgeRangeDescriptor --
+CREATE TABLE tx.SPEDStudentAgeRangeDescriptor (
+    SPEDStudentAgeRangeDescriptorId INT NOT NULL,
+    CONSTRAINT SPEDStudentAgeRangeDescriptor_PK PRIMARY KEY (SPEDStudentAgeRangeDescriptorId)
 ); 
 
 -- Table tx.SSAOrgAssociationExt --
@@ -838,14 +1167,15 @@ CREATE TABLE tx.StaffEducationOrganizationAssignmentAssociationStaffServiceSet (
     BeginDate DATE NOT NULL,
     EducationOrganizationId INT NOT NULL,
     StaffClassificationDescriptorId INT NOT NULL,
+    StaffServiceBeginDate DATE NOT NULL,
     StaffServiceDescriptorId INT NOT NULL,
     StaffUSI INT NOT NULL,
-    GradeLevelDescriptorId INT NULL,
+    SPEDStudentAgeRangeDescriptorId INT NULL,
     PopulationServedDescriptorId INT NULL,
     MonthlyMinutes INT NOT NULL,
-    EndDate DATE NULL,
+    StaffServiceEndDate DATE NULL,
     CreateDate TIMESTAMP NOT NULL,
-    CONSTRAINT StaffEducationOrganizationAssignmentAssociationSta_0bf4c3_PK PRIMARY KEY (BeginDate, EducationOrganizationId, StaffClassificationDescriptorId, StaffServiceDescriptorId, StaffUSI)
+    CONSTRAINT StaffEducationOrganizationAssignmentAssociationSta_0bf4c3_PK PRIMARY KEY (BeginDate, EducationOrganizationId, StaffClassificationDescriptorId, StaffServiceBeginDate, StaffServiceDescriptorId, StaffUSI)
 ); 
 ALTER TABLE tx.StaffEducationOrganizationAssignmentAssociationStaffServiceSet ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
 
@@ -933,14 +1263,14 @@ CREATE TABLE tx.StaffServiceDescriptor (
     CONSTRAINT StaffServiceDescriptor_PK PRIMARY KEY (StaffServiceDescriptorId)
 ); 
 
--- Table tx.StaffTeacherIncentiveAllotmentDesignationCode --
-CREATE TABLE tx.StaffTeacherIncentiveAllotmentDesignationCode (
+-- Table tx.StaffTeacherIncentiveAllotmentDesignation --
+CREATE TABLE tx.StaffTeacherIncentiveAllotmentDesignation (
     StaffUSI INT NOT NULL,
-    TeacherIncentiveAllotmentDesignationCodeDescriptorId INT NOT NULL,
+    TeacherIncentiveAllotmentDesignationDescriptorId INT NOT NULL,
     CreateDate TIMESTAMP NOT NULL,
-    CONSTRAINT StaffTeacherIncentiveAllotmentDesignationCode_PK PRIMARY KEY (StaffUSI, TeacherIncentiveAllotmentDesignationCodeDescriptorId)
+    CONSTRAINT StaffTeacherIncentiveAllotmentDesignation_PK PRIMARY KEY (StaffUSI, TeacherIncentiveAllotmentDesignationDescriptorId)
 ); 
-ALTER TABLE tx.StaffTeacherIncentiveAllotmentDesignationCode ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+ALTER TABLE tx.StaffTeacherIncentiveAllotmentDesignation ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
 
 -- Table tx.StaffTypeDescriptor --
 CREATE TABLE tx.StaffTypeDescriptor (
@@ -951,13 +1281,66 @@ CREATE TABLE tx.StaffTypeDescriptor (
 -- Table tx.StaffTypeSet --
 CREATE TABLE tx.StaffTypeSet (
     BeginDate DATE NOT NULL,
-    StaffTypeDescriptorId INT NOT NULL,
     StaffUSI INT NOT NULL,
+    StaffTypeDescriptorId INT NOT NULL,
     EndDate DATE NULL,
     CreateDate TIMESTAMP NOT NULL,
-    CONSTRAINT StaffTypeSet_PK PRIMARY KEY (BeginDate, StaffTypeDescriptorId, StaffUSI)
+    CONSTRAINT StaffTypeSet_PK PRIMARY KEY (BeginDate, StaffUSI)
 ); 
 ALTER TABLE tx.StaffTypeSet ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+
+-- Table tx.StudentAcademicRecordDiplomaExtension --
+CREATE TABLE tx.StudentAcademicRecordDiplomaExtension (
+    DiplomaAwardDate DATE NOT NULL,
+    DiplomaTypeDescriptorId INT NOT NULL,
+    EducationOrganizationId INT NOT NULL,
+    SchoolYear SMALLINT NOT NULL,
+    StudentUSI INT NOT NULL,
+    TermDescriptorId INT NOT NULL,
+    IndividualGraduationCommitteeGraduateIndicator BOOLEAN NULL,
+    MilitaryEnlistmentIndicator BOOLEAN NULL,
+    FHSPDistingLevelGraduate BOOLEAN NULL,
+    CreateDate TIMESTAMP NOT NULL,
+    CONSTRAINT StudentAcademicRecordDiplomaExtension_PK PRIMARY KEY (DiplomaAwardDate, DiplomaTypeDescriptorId, EducationOrganizationId, SchoolYear, StudentUSI, TermDescriptorId)
+); 
+ALTER TABLE tx.StudentAcademicRecordDiplomaExtension ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+
+-- Table tx.StudentAcademicRecordDiplomaFinancialAidApplication --
+CREATE TABLE tx.StudentAcademicRecordDiplomaFinancialAidApplication (
+    DiplomaAwardDate DATE NOT NULL,
+    DiplomaTypeDescriptorId INT NOT NULL,
+    EducationOrganizationId INT NOT NULL,
+    FinancialAidApplicationDescriptorId INT NOT NULL,
+    SchoolYear SMALLINT NOT NULL,
+    StudentUSI INT NOT NULL,
+    TermDescriptorId INT NOT NULL,
+    CreateDate TIMESTAMP NOT NULL,
+    CONSTRAINT StudentAcademicRecordDiplomaFinancialAidApplication_PK PRIMARY KEY (DiplomaAwardDate, DiplomaTypeDescriptorId, EducationOrganizationId, FinancialAidApplicationDescriptorId, SchoolYear, StudentUSI, TermDescriptorId)
+); 
+ALTER TABLE tx.StudentAcademicRecordDiplomaFinancialAidApplication ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+
+-- Table tx.StudentAcademicRecordEndorsementCompletedSet --
+CREATE TABLE tx.StudentAcademicRecordEndorsementCompletedSet (
+    EducationOrganizationId INT NOT NULL,
+    SchoolYear SMALLINT NOT NULL,
+    StudentUSI INT NOT NULL,
+    TermDescriptorId INT NOT NULL,
+    CreateDate TIMESTAMP NOT NULL,
+    CONSTRAINT StudentAcademicRecordEndorsementCompletedSet_PK PRIMARY KEY (EducationOrganizationId, SchoolYear, StudentUSI, TermDescriptorId)
+); 
+ALTER TABLE tx.StudentAcademicRecordEndorsementCompletedSet ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+
+-- Table tx.StudentAcademicRecordEndorsementCompletedSetEndorsementC_feb164 --
+CREATE TABLE tx.StudentAcademicRecordEndorsementCompletedSetEndorsementC_feb164 (
+    EducationOrganizationId INT NOT NULL,
+    EndorsementCompletedDescriptorId INT NOT NULL,
+    SchoolYear SMALLINT NOT NULL,
+    StudentUSI INT NOT NULL,
+    TermDescriptorId INT NOT NULL,
+    CreateDate TIMESTAMP NOT NULL,
+    CONSTRAINT StudentAcademicRecordEndorsementCompletedSetEndors_feb164_PK PRIMARY KEY (EducationOrganizationId, EndorsementCompletedDescriptorId, SchoolYear, StudentUSI, TermDescriptorId)
+); 
+ALTER TABLE tx.StudentAcademicRecordEndorsementCompletedSetEndorsementC_feb164 ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
 
 -- Table tx.StudentAcademicRecordEndorsementPursuing --
 CREATE TABLE tx.StudentAcademicRecordEndorsementPursuing (
@@ -977,8 +1360,8 @@ CREATE TABLE tx.StudentAcademicRecordExtension (
     SchoolYear SMALLINT NOT NULL,
     StudentUSI INT NOT NULL,
     TermDescriptorId INT NOT NULL,
-    AssociateDegreeIndicator BOOLEAN NULL,
     IndividualGraduationCommitteeReview BOOLEAN NULL,
+    AssociateDegreeIndicator BOOLEAN NULL,
     FHSPParticipant BOOLEAN NULL,
     FHSPDistingLevelParticipant BOOLEAN NULL,
     CreateDate TIMESTAMP NOT NULL,
@@ -988,18 +1371,17 @@ ALTER TABLE tx.StudentAcademicRecordExtension ALTER COLUMN CreateDate SET DEFAUL
 
 -- Table tx.StudentAcademicRecordIndustryBasedCertificationSet --
 CREATE TABLE tx.StudentAcademicRecordIndustryBasedCertificationSet (
-    BeginDate DATE NOT NULL,
-    DateCertEarned DATE NOT NULL,
+    DateCertTaken DATE NOT NULL,
     EducationOrganizationId INT NOT NULL,
     IBCVendorDescriptorId INT NOT NULL,
     PostSecondaryCertificationLicensureDescriptorId INT NOT NULL,
     SchoolYear SMALLINT NOT NULL,
     StudentUSI INT NOT NULL,
     TermDescriptorId INT NOT NULL,
+    PostSecondaryCertLicensureResultDescriptorId INT NOT NULL,
     IBCExamFeeAmount DECIMAL(5, 2) NULL,
-    EndDate DATE NULL,
     CreateDate TIMESTAMP NOT NULL,
-    CONSTRAINT StudentAcademicRecordIndustryBasedCertificationSet_PK PRIMARY KEY (BeginDate, DateCertEarned, EducationOrganizationId, IBCVendorDescriptorId, PostSecondaryCertificationLicensureDescriptorId, SchoolYear, StudentUSI, TermDescriptorId)
+    CONSTRAINT StudentAcademicRecordIndustryBasedCertificationSet_PK PRIMARY KEY (DateCertTaken, EducationOrganizationId, IBCVendorDescriptorId, PostSecondaryCertificationLicensureDescriptorId, SchoolYear, StudentUSI, TermDescriptorId)
 ); 
 ALTER TABLE tx.StudentAcademicRecordIndustryBasedCertificationSet ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
 
@@ -1013,6 +1395,8 @@ CREATE TABLE tx.StudentApplication (
     EntryGradeLevelDescriptorId INT NOT NULL,
     ApplicationDate DATE NOT NULL,
     ApplicationTypeDescriptorId INT NOT NULL,
+    GenerationCodeDescriptorId INT NULL,
+    StudentID VARCHAR(9) NOT NULL,
     PersonalTitlePrefix VARCHAR(30) NULL,
     FirstName VARCHAR(75) NOT NULL,
     MiddleName VARCHAR(75) NULL,
@@ -1085,14 +1469,26 @@ ALTER TABLE tx.StudentCrisisEventSet ALTER COLUMN CreateDate SET DEFAULT current
 -- Table tx.StudentEducationOrganizationAssociationDyslexiaRiskSet --
 CREATE TABLE tx.StudentEducationOrganizationAssociationDyslexiaRiskSet (
     BeginDate DATE NOT NULL,
-    DyslexiaRiskDescriptorId INT NOT NULL,
     EducationOrganizationId INT NOT NULL,
     StudentUSI INT NOT NULL,
+    DyslexiaRiskDescriptorId INT NOT NULL,
     EndDate DATE NULL,
     CreateDate TIMESTAMP NOT NULL,
-    CONSTRAINT StudentEducationOrganizationAssociationDyslexiaRiskSet_PK PRIMARY KEY (BeginDate, DyslexiaRiskDescriptorId, EducationOrganizationId, StudentUSI)
+    CONSTRAINT StudentEducationOrganizationAssociationDyslexiaRiskSet_PK PRIMARY KEY (BeginDate, EducationOrganizationId, StudentUSI)
 ); 
 ALTER TABLE tx.StudentEducationOrganizationAssociationDyslexiaRiskSet ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+
+-- Table tx.StudentEducationOrganizationAssociationDyslexiaScreening_f08d12 --
+CREATE TABLE tx.StudentEducationOrganizationAssociationDyslexiaScreening_f08d12 (
+    BeginDate DATE NOT NULL,
+    EducationOrganizationId INT NOT NULL,
+    StudentUSI INT NOT NULL,
+    DyslexiaScreeningExceptionReasonDescriptorId INT NOT NULL,
+    EndDate DATE NULL,
+    CreateDate TIMESTAMP NOT NULL,
+    CONSTRAINT StudentEducationOrganizationAssociationDyslexiaScr_f08d12_PK PRIMARY KEY (BeginDate, EducationOrganizationId, StudentUSI)
+); 
+ALTER TABLE tx.StudentEducationOrganizationAssociationDyslexiaScreening_f08d12 ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
 
 -- Table tx.StudentEducationOrganizationAssociationDyslexiaServicesSet --
 CREATE TABLE tx.StudentEducationOrganizationAssociationDyslexiaServicesSet (
@@ -1109,24 +1505,24 @@ ALTER TABLE tx.StudentEducationOrganizationAssociationDyslexiaServicesSet ALTER 
 -- Table tx.StudentEducationOrganizationAssociationEarlyReadingIndicatorSet --
 CREATE TABLE tx.StudentEducationOrganizationAssociationEarlyReadingIndicatorSet (
     BeginDate DATE NOT NULL,
-    EarlyReadingIndicatorDescriptorId INT NOT NULL,
     EducationOrganizationId INT NOT NULL,
     StudentUSI INT NOT NULL,
+    EarlyReadingIndicatorDescriptorId INT NOT NULL,
     EndDate DATE NULL,
     CreateDate TIMESTAMP NOT NULL,
-    CONSTRAINT StudentEducationOrganizationAssociationEarlyReadin_314fe6_PK PRIMARY KEY (BeginDate, EarlyReadingIndicatorDescriptorId, EducationOrganizationId, StudentUSI)
+    CONSTRAINT StudentEducationOrganizationAssociationEarlyReadin_314fe6_PK PRIMARY KEY (BeginDate, EducationOrganizationId, StudentUSI)
 ); 
 ALTER TABLE tx.StudentEducationOrganizationAssociationEarlyReadingIndicatorSet ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
 
 -- Table tx.StudentEducationOrganizationAssociationEconomicDisadvantageSet --
 CREATE TABLE tx.StudentEducationOrganizationAssociationEconomicDisadvantageSet (
     BeginDate DATE NOT NULL,
-    EconomicDisadvantageDescriptorId INT NOT NULL,
     EducationOrganizationId INT NOT NULL,
     StudentUSI INT NOT NULL,
+    EconomicDisadvantageDescriptorId INT NOT NULL,
     EndDate DATE NULL,
     CreateDate TIMESTAMP NOT NULL,
-    CONSTRAINT StudentEducationOrganizationAssociationEconomicDis_c93358_PK PRIMARY KEY (BeginDate, EconomicDisadvantageDescriptorId, EducationOrganizationId, StudentUSI)
+    CONSTRAINT StudentEducationOrganizationAssociationEconomicDis_c93358_PK PRIMARY KEY (BeginDate, EducationOrganizationId, StudentUSI)
 ); 
 ALTER TABLE tx.StudentEducationOrganizationAssociationEconomicDisadvantageSet ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
 
@@ -1134,11 +1530,11 @@ ALTER TABLE tx.StudentEducationOrganizationAssociationEconomicDisadvantageSet AL
 CREATE TABLE tx.StudentEducationOrganizationAssociationEmergentBilingualSet (
     BeginDate DATE NOT NULL,
     EducationOrganizationId INT NOT NULL,
-    EmergentBilingualIndicatorDescriptorId INT NOT NULL,
     StudentUSI INT NOT NULL,
+    EmergentBilingualIndicatorDescriptorId INT NOT NULL,
     EndDate DATE NULL,
     CreateDate TIMESTAMP NOT NULL,
-    CONSTRAINT StudentEducationOrganizationAssociationEmergentBilingualSet_PK PRIMARY KEY (BeginDate, EducationOrganizationId, EmergentBilingualIndicatorDescriptorId, StudentUSI)
+    CONSTRAINT StudentEducationOrganizationAssociationEmergentBilingualSet_PK PRIMARY KEY (BeginDate, EducationOrganizationId, StudentUSI)
 ); 
 ALTER TABLE tx.StudentEducationOrganizationAssociationEmergentBilingualSet ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
 
@@ -1146,11 +1542,11 @@ ALTER TABLE tx.StudentEducationOrganizationAssociationEmergentBilingualSet ALTER
 CREATE TABLE tx.StudentEducationOrganizationAssociationFosterCareTypeSet (
     BeginDate DATE NOT NULL,
     EducationOrganizationId INT NOT NULL,
-    FosterCareTypeDescriptorId INT NOT NULL,
     StudentUSI INT NOT NULL,
+    FosterCareTypeDescriptorId INT NOT NULL,
     EndDate DATE NULL,
     CreateDate TIMESTAMP NOT NULL,
-    CONSTRAINT StudentEducationOrganizationAssociationFosterCareTypeSet_PK PRIMARY KEY (BeginDate, EducationOrganizationId, FosterCareTypeDescriptorId, StudentUSI)
+    CONSTRAINT StudentEducationOrganizationAssociationFosterCareTypeSet_PK PRIMARY KEY (BeginDate, EducationOrganizationId, StudentUSI)
 ); 
 ALTER TABLE tx.StudentEducationOrganizationAssociationFosterCareTypeSet ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
 
@@ -1158,11 +1554,11 @@ ALTER TABLE tx.StudentEducationOrganizationAssociationFosterCareTypeSet ALTER CO
 CREATE TABLE tx.StudentEducationOrganizationAssociationHomelessStatusSet (
     BeginDate DATE NOT NULL,
     EducationOrganizationId INT NOT NULL,
-    HomelessStatusDescriptorId INT NOT NULL,
     StudentUSI INT NOT NULL,
+    HomelessStatusDescriptorId INT NOT NULL,
     EndDate DATE NULL,
     CreateDate TIMESTAMP NOT NULL,
-    CONSTRAINT StudentEducationOrganizationAssociationHomelessStatusSet_PK PRIMARY KEY (BeginDate, EducationOrganizationId, HomelessStatusDescriptorId, StudentUSI)
+    CONSTRAINT StudentEducationOrganizationAssociationHomelessStatusSet_PK PRIMARY KEY (BeginDate, EducationOrganizationId, StudentUSI)
 ); 
 ALTER TABLE tx.StudentEducationOrganizationAssociationHomelessStatusSet ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
 
@@ -1194,11 +1590,11 @@ ALTER TABLE tx.StudentEducationOrganizationAssociationLanguageSetLanguageUse ALT
 CREATE TABLE tx.StudentEducationOrganizationAssociationMilitaryConnected_662c97 (
     BeginDate DATE NOT NULL,
     EducationOrganizationId INT NOT NULL,
-    MilitaryConnectedStudentDescriptorId INT NOT NULL,
     StudentUSI INT NOT NULL,
+    MilitaryConnectedStudentDescriptorId INT NOT NULL,
     EndDate DATE NULL,
     CreateDate TIMESTAMP NOT NULL,
-    CONSTRAINT StudentEducationOrganizationAssociationMilitaryCon_662c97_PK PRIMARY KEY (BeginDate, EducationOrganizationId, MilitaryConnectedStudentDescriptorId, StudentUSI)
+    CONSTRAINT StudentEducationOrganizationAssociationMilitaryCon_662c97_PK PRIMARY KEY (BeginDate, EducationOrganizationId, StudentUSI)
 ); 
 ALTER TABLE tx.StudentEducationOrganizationAssociationMilitaryConnected_662c97 ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
 
@@ -1207,11 +1603,11 @@ CREATE TABLE tx.StudentEducationOrganizationAssociationPKFundingSourceSet (
     BeginDate DATE NOT NULL,
     EducationOrganizationId INT NOT NULL,
     OrderOfPKFundingSource INT NOT NULL,
-    PKFundingSourceDescriptorId INT NOT NULL,
     StudentUSI INT NOT NULL,
+    PKFundingSourceDescriptorId INT NOT NULL,
     EndDate DATE NULL,
     CreateDate TIMESTAMP NOT NULL,
-    CONSTRAINT StudentEducationOrganizationAssociationPKFundingSourceSet_PK PRIMARY KEY (BeginDate, EducationOrganizationId, OrderOfPKFundingSource, PKFundingSourceDescriptorId, StudentUSI)
+    CONSTRAINT StudentEducationOrganizationAssociationPKFundingSourceSet_PK PRIMARY KEY (BeginDate, EducationOrganizationId, OrderOfPKFundingSource, StudentUSI)
 ); 
 ALTER TABLE tx.StudentEducationOrganizationAssociationPKFundingSourceSet ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
 
@@ -1246,7 +1642,7 @@ CREATE TABLE tx.StudentEducationOrganizationAssociationUnaccompaniedYouthSet (
     UnaccompaniedYouthDescriptorId INT NOT NULL,
     EndDate DATE NULL,
     CreateDate TIMESTAMP NOT NULL,
-    CONSTRAINT StudentEducationOrganizationAssociationUnaccompaniedYouthSet_PK PRIMARY KEY (BeginDate, EducationOrganizationId, StudentUSI, UnaccompaniedYouthDescriptorId)
+    CONSTRAINT StudentEducationOrganizationAssociationUnaccompaniedYouthSet_PK PRIMARY KEY (BeginDate, EducationOrganizationId, StudentUSI)
 ); 
 ALTER TABLE tx.StudentEducationOrganizationAssociationUnaccompaniedYouthSet ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
 
@@ -1258,7 +1654,7 @@ CREATE TABLE tx.StudentEducationOrganizationAssociationUnschooledAsyleeR_9fcf9b 
     UnschooledAsyleeRefugeeDescriptorId INT NOT NULL,
     EndDate DATE NULL,
     CreateDate TIMESTAMP NOT NULL,
-    CONSTRAINT StudentEducationOrganizationAssociationUnschooledA_9fcf9b_PK PRIMARY KEY (BeginDate, EducationOrganizationId, StudentUSI, UnschooledAsyleeRefugeeDescriptorId)
+    CONSTRAINT StudentEducationOrganizationAssociationUnschooledA_9fcf9b_PK PRIMARY KEY (BeginDate, EducationOrganizationId, StudentUSI)
 ); 
 ALTER TABLE tx.StudentEducationOrganizationAssociationUnschooledAsyleeR_9fcf9b ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
 
@@ -1279,15 +1675,15 @@ ALTER TABLE tx.StudentExtension ALTER COLUMN CreateDate SET DEFAULT current_time
 CREATE TABLE tx.StudentLanguageInstructionProgramAssociationParentalPerm_710c81 (
     BeginDate DATE NOT NULL,
     EducationOrganizationId INT NOT NULL,
-    ParentalPermissionDescriptorId INT NOT NULL,
     ParentPermissionSetBeginDate DATE NOT NULL,
     ProgramEducationOrganizationId INT NOT NULL,
     ProgramName VARCHAR(60) NOT NULL,
     ProgramTypeDescriptorId INT NOT NULL,
     StudentUSI INT NOT NULL,
+    ParentalPermissionDescriptorId INT NOT NULL,
     ParentPermissionSetEndDate DATE NULL,
     CreateDate TIMESTAMP NOT NULL,
-    CONSTRAINT StudentLanguageInstructionProgramAssociationParent_710c81_PK PRIMARY KEY (BeginDate, EducationOrganizationId, ParentalPermissionDescriptorId, ParentPermissionSetBeginDate, ProgramEducationOrganizationId, ProgramName, ProgramTypeDescriptorId, StudentUSI)
+    CONSTRAINT StudentLanguageInstructionProgramAssociationParent_710c81_PK PRIMARY KEY (BeginDate, EducationOrganizationId, ParentPermissionSetBeginDate, ProgramEducationOrganizationId, ProgramName, ProgramTypeDescriptorId, StudentUSI)
 ); 
 ALTER TABLE tx.StudentLanguageInstructionProgramAssociationParentalPerm_710c81 ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
 
@@ -1351,21 +1747,6 @@ CREATE TABLE tx.StudentSpecialEducationProgramAssociationDisabilitySet (
 ); 
 ALTER TABLE tx.StudentSpecialEducationProgramAssociationDisabilitySet ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
 
--- Table tx.StudentSpecialEducationProgramAssociationESYProgramAssociation --
-CREATE TABLE tx.StudentSpecialEducationProgramAssociationESYProgramAssociation (
-    BeginDate DATE NOT NULL,
-    EducationOrganizationId INT NOT NULL,
-    ProgramEducationOrganizationId INT NOT NULL,
-    ProgramName VARCHAR(60) NOT NULL,
-    ProgramTypeDescriptorId INT NOT NULL,
-    StudentUSI INT NOT NULL,
-    TotalESYContactHoursInstructionalSetting DECIMAL(4, 1) NOT NULL,
-    OrderOfSpecialEducationSetting INT NOT NULL,
-    CreateDate TIMESTAMP NOT NULL,
-    CONSTRAINT StudentSpecialEducationProgramAssociationESYProgra_74dbac_PK PRIMARY KEY (BeginDate, EducationOrganizationId, ProgramEducationOrganizationId, ProgramName, ProgramTypeDescriptorId, StudentUSI, TotalESYContactHoursInstructionalSetting)
-); 
-ALTER TABLE tx.StudentSpecialEducationProgramAssociationESYProgramAssociation ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
-
 -- Table tx.StudentSpecialEducationProgramAssociationExtension --
 CREATE TABLE tx.StudentSpecialEducationProgramAssociationExtension (
     BeginDate DATE NOT NULL,
@@ -1412,22 +1793,21 @@ CREATE TABLE tx.StudentSpecialEducationProgramAssociationLanguageAcquisition (
 ); 
 ALTER TABLE tx.StudentSpecialEducationProgramAssociationLanguageAcquisition ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
 
--- Table tx.StudentSpecialEducationProgramAssociationSpecialEducatio_c5b076 --
-CREATE TABLE tx.StudentSpecialEducationProgramAssociationSpecialEducatio_c5b076 (
+-- Table tx.StudentSpecialEducationProgramAssociationSpecialEducatio_9f4293 --
+CREATE TABLE tx.StudentSpecialEducationProgramAssociationSpecialEducatio_9f4293 (
     BeginDate DATE NOT NULL,
     EducationOrganizationId INT NOT NULL,
-    OrderOfSpecialEducationSetting INT NOT NULL,
+    EnvironmentBeginDate DATE NOT NULL,
     ProgramEducationOrganizationId INT NOT NULL,
     ProgramName VARCHAR(60) NOT NULL,
     ProgramTypeDescriptorId INT NOT NULL,
-    SettingBeginDate DATE NOT NULL,
-    SpecialEducationSettingDescriptorId INT NOT NULL,
     StudentUSI INT NOT NULL,
-    SettingEndDate DATE NULL,
+    EducationalEnvironmentDescriptorId INT NOT NULL,
+    EnvironmentEndDate DATE NULL,
     CreateDate TIMESTAMP NOT NULL,
-    CONSTRAINT StudentSpecialEducationProgramAssociationSpecialEd_c5b076_PK PRIMARY KEY (BeginDate, EducationOrganizationId, OrderOfSpecialEducationSetting, ProgramEducationOrganizationId, ProgramName, ProgramTypeDescriptorId, SettingBeginDate, SpecialEducationSettingDescriptorId, StudentUSI)
+    CONSTRAINT StudentSpecialEducationProgramAssociationSpecialEd_9f4293_PK PRIMARY KEY (BeginDate, EducationOrganizationId, EnvironmentBeginDate, ProgramEducationOrganizationId, ProgramName, ProgramTypeDescriptorId, StudentUSI)
 ); 
-ALTER TABLE tx.StudentSpecialEducationProgramAssociationSpecialEducatio_c5b076 ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+ALTER TABLE tx.StudentSpecialEducationProgramAssociationSpecialEducatio_9f4293 ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
 
 -- Table tx.StudentSpecialEducationProgramAssociationStudentResident_727129 --
 CREATE TABLE tx.StudentSpecialEducationProgramAssociationStudentResident_727129 (
@@ -1484,6 +1864,7 @@ CREATE TABLE tx.StudentSpecialEducationProgramEligibilityAssociation (
     EvaluationDelayReasonDescriptorId INT NULL,
     EligibilityDeterminationDate DATE NULL,
     IDEAIndicator BOOLEAN NULL,
+    EligibilityDelayReasonDescriptorId INT NULL,
     OriginalECIServicesDate DATE NULL,
     TransitionNotificationDate DATE NULL,
     TransitionConferenceDate DATE NULL,
@@ -1509,14 +1890,14 @@ CREATE TABLE tx.StudentTitleIPartAProgramAssociationSet (
     TitleIPartAParticipantDescriptorId INT NOT NULL,
     StudentTitleIPartAProgramAssociationSetEndDate DATE NULL,
     CreateDate TIMESTAMP NOT NULL,
-    CONSTRAINT StudentTitleIPartAProgramAssociationSet_PK PRIMARY KEY (BeginDate, EducationOrganizationId, ProgramEducationOrganizationId, ProgramName, ProgramTypeDescriptorId, StudentTitleIPartAProgramAssociationSetBeginDate, StudentUSI, TitleIPartAParticipantDescriptorId)
+    CONSTRAINT StudentTitleIPartAProgramAssociationSet_PK PRIMARY KEY (BeginDate, EducationOrganizationId, ProgramEducationOrganizationId, ProgramName, ProgramTypeDescriptorId, StudentTitleIPartAProgramAssociationSetBeginDate, StudentUSI)
 ); 
 ALTER TABLE tx.StudentTitleIPartAProgramAssociationSet ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
 
--- Table tx.TeacherIncentiveAllotmentDesignationCodeDescriptor --
-CREATE TABLE tx.TeacherIncentiveAllotmentDesignationCodeDescriptor (
-    TeacherIncentiveAllotmentDesignationCodeDescriptorId INT NOT NULL,
-    CONSTRAINT TeacherIncentiveAllotmentDesignationCodeDescriptor_PK PRIMARY KEY (TeacherIncentiveAllotmentDesignationCodeDescriptorId)
+-- Table tx.TeacherIncentiveAllotmentDesignationDescriptor --
+CREATE TABLE tx.TeacherIncentiveAllotmentDesignationDescriptor (
+    TeacherIncentiveAllotmentDesignationDescriptorId INT NOT NULL,
+    CONSTRAINT TeacherIncentiveAllotmentDesignationDescriptor_PK PRIMARY KEY (TeacherIncentiveAllotmentDesignationDescriptorId)
 ); 
 
 -- Table tx.TitleOfAssessmentDescriptor --

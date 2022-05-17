@@ -12,12 +12,16 @@
   <Aggregate root="ArmedServicesVocAptBatteryDescriptor">
     <Entity table="ArmedServicesVocAptBatteryDescriptor" isA="Descriptor" schema="tx"/>
   </Aggregate>
-  <Aggregate root="AsOfStatusALeaver">
-    <Entity table="AsOfStatusALeaver" schema="tx"/>
-    <Entity table="AsOfStatusALeaverDiploma" schema="tx"/>
-    <Entity table="AsOfStatusALeaverIndustryBasedCertificationSet" schema="tx"/>
-    <Entity table="AsOfStatusALeaverPersonalIdentificationDocument" schema="tx"/>
-    <Entity table="AsOfStatusALeaverRace" schema="tx"/>
+  <Aggregate root="AsOfStatusALeavers">
+    <Entity table="AsOfStatusALeavers" schema="tx"/>
+    <Entity table="AsOfStatusALeaversEndorsementCompletedSet" schema="tx"/>
+    <Entity table="AsOfStatusALeaversEndorsementCompletedSetEndorsementCompleted" schema="tx" isRequiredCollection="true"/>
+    <Entity table="AsOfStatusALeaversFinancialAidApplication" schema="tx"/>
+    <Entity table="AsOfStatusALeaversGraduationSet" schema="tx"/>
+    <Entity table="AsOfStatusALeaversGraduationSetFinancialAidApplication" schema="tx"/>
+    <Entity table="AsOfStatusALeaversIndustryBasedCertificationSet" schema="tx"/>
+    <Entity table="AsOfStatusALeaversPersonalIdentificationDocument" schema="tx"/>
+    <Entity table="AsOfStatusALeaversRace" schema="tx"/>
   </Aggregate>
   <Aggregate root="AsOfStatusLastDayEnrollmentDescriptor">
     <Entity table="AsOfStatusLastDayEnrollmentDescriptor" isA="Descriptor" schema="tx"/>
@@ -31,8 +35,23 @@
   <Aggregate root="AuxiliaryRoleIdDescriptor">
     <Entity table="AuxiliaryRoleIdDescriptor" isA="Descriptor" schema="tx"/>
   </Aggregate>
+  <Aggregate root="BasicReportingPeriodAttendance">
+    <Entity table="BasicReportingPeriodAttendance" schema="tx"/>
+  </Aggregate>
+  <Aggregate root="BilingualESLFundingDescriptor">
+    <Entity table="BilingualESLFundingDescriptor" isA="Descriptor" schema="tx"/>
+  </Aggregate>
+  <Aggregate root="BilingualESLProgramReportingPeriodAttendance">
+    <Entity table="BilingualESLProgramReportingPeriodAttendance" schema="tx"/>
+  </Aggregate>
   <Aggregate root="BudgetExt">
     <Entity table="BudgetExt" schema="tx"/>
+  </Aggregate>
+  <Aggregate root="CTEProgramReportingPeriodAttendance">
+    <Entity table="CTEProgramReportingPeriodAttendance" schema="tx"/>
+  </Aggregate>
+  <Aggregate root="CTEServiceIdDescriptor">
+    <Entity table="CTEServiceIdDescriptor" isA="Descriptor" schema="tx"/>
   </Aggregate>
   <Aggregate root="CalendarWaiverEventTypeDescriptor">
     <Entity table="CalendarWaiverEventTypeDescriptor" isA="Descriptor" schema="tx"/>
@@ -58,6 +77,9 @@
   <Aggregate root="DyslexiaRiskDescriptor">
     <Entity table="DyslexiaRiskDescriptor" isA="Descriptor" schema="tx"/>
   </Aggregate>
+  <Aggregate root="DyslexiaScreeningExceptionReasonDescriptor">
+    <Entity table="DyslexiaScreeningExceptionReasonDescriptor" isA="Descriptor" schema="tx"/>
+  </Aggregate>
   <Aggregate root="DyslexiaServicesDescriptor">
     <Entity table="DyslexiaServicesDescriptor" isA="Descriptor" schema="tx"/>
   </Aggregate>
@@ -76,6 +98,9 @@
   <Aggregate root="EconomicDisadvantageLastDateOfEnrollmentDescriptor">
     <Entity table="EconomicDisadvantageLastDateOfEnrollmentDescriptor" isA="Descriptor" schema="tx"/>
   </Aggregate>
+  <Aggregate root="EligibilityDelayReasonDescriptor">
+    <Entity table="EligibilityDelayReasonDescriptor" isA="Descriptor" schema="tx"/>
+  </Aggregate>
   <Aggregate root="EmergentBilingualIndicatorDescriptor">
     <Entity table="EmergentBilingualIndicatorDescriptor" isA="Descriptor" schema="tx"/>
   </Aggregate>
@@ -87,6 +112,27 @@
   </Aggregate>
   <Aggregate root="EvaluationDelayReasonDescriptor">
     <Entity table="EvaluationDelayReasonDescriptor" isA="Descriptor" schema="tx"/>
+  </Aggregate>
+  <Aggregate root="ExtendedSchoolYearServicesAttendance">
+    <Entity table="ExtendedSchoolYearServicesAttendance" schema="tx"/>
+  </Aggregate>
+  <Aggregate root="FinancialAidApplicationDescriptor">
+    <Entity table="FinancialAidApplicationDescriptor" isA="Descriptor" schema="tx"/>
+  </Aggregate>
+  <Aggregate root="FlexAttendanceProgramDescriptor">
+    <Entity table="FlexAttendanceProgramDescriptor" isA="Descriptor" schema="tx"/>
+  </Aggregate>
+  <Aggregate root="FlexibleBilingualESLProgramReportingPeriodAttendance">
+    <Entity table="FlexibleBilingualESLProgramReportingPeriodAttendance" schema="tx"/>
+  </Aggregate>
+  <Aggregate root="FlexibleCTEProgramReportingPeriodAttendance">
+    <Entity table="FlexibleCTEProgramReportingPeriodAttendance" schema="tx"/>
+  </Aggregate>
+  <Aggregate root="FlexibleRegularProgramReportingPeriodAttendance">
+    <Entity table="FlexibleRegularProgramReportingPeriodAttendance" schema="tx"/>
+  </Aggregate>
+  <Aggregate root="FlexibleSpecialEducationProgramReportingPeriodAttendance">
+    <Entity table="FlexibleSpecialEducationProgramReportingPeriodAttendance" schema="tx"/>
   </Aggregate>
   <Aggregate root="FosterCareTypeDescriptor">
     <Entity table="FosterCareTypeDescriptor" isA="Descriptor" schema="tx"/>
@@ -126,6 +172,9 @@
   </Aggregate>
   <Aggregate root="IBCVendorDescriptor">
     <Entity table="IBCVendorDescriptor" isA="Descriptor" schema="tx"/>
+  </Aggregate>
+  <Aggregate root="InstructionalSettingDescriptor">
+    <Entity table="InstructionalSettingDescriptor" isA="Descriptor" schema="tx"/>
   </Aggregate>
   <Aggregate root="LangAcqServicesProvidedDescriptor">
     <Entity table="LangAcqServicesProvidedDescriptor" isA="Descriptor" schema="tx"/>
@@ -178,6 +227,9 @@
   <Aggregate root="PayrollExt">
     <Entity table="PayrollExt" schema="tx"/>
   </Aggregate>
+  <Aggregate root="PostSecondaryCertLicensureResultDescriptor">
+    <Entity table="PostSecondaryCertLicensureResultDescriptor" isA="Descriptor" schema="tx"/>
+  </Aggregate>
   <Aggregate root="PostSecondaryCertificationLicensureDescriptor">
     <Entity table="PostSecondaryCertificationLicensureDescriptor" isA="Descriptor" schema="tx"/>
   </Aggregate>
@@ -190,14 +242,23 @@
   <Aggregate root="ProgramOfStudyDescriptor">
     <Entity table="ProgramOfStudyDescriptor" isA="Descriptor" schema="tx"/>
   </Aggregate>
+  <Aggregate root="RegionalDaySchoolProgramForDeafDescriptor">
+    <Entity table="RegionalDaySchoolProgramForDeafDescriptor" isA="Descriptor" schema="tx"/>
+  </Aggregate>
   <Aggregate root="ReportAssessmentTypeDescriptor">
     <Entity table="ReportAssessmentTypeDescriptor" isA="Descriptor" schema="tx"/>
+  </Aggregate>
+  <Aggregate root="ReportingPeriodDescriptor">
+    <Entity table="ReportingPeriodDescriptor" isA="Descriptor" schema="tx"/>
   </Aggregate>
   <Aggregate root="RestraintStaffTypeDescriptor">
     <Entity table="RestraintStaffTypeDescriptor" isA="Descriptor" schema="tx"/>
   </Aggregate>
   <Aggregate root="RoleIdDescriptor">
     <Entity table="RoleIdDescriptor" isA="Descriptor" schema="tx"/>
+  </Aggregate>
+  <Aggregate root="SPEDStudentAgeRangeDescriptor">
+    <Entity table="SPEDStudentAgeRangeDescriptor" isA="Descriptor" schema="tx"/>
   </Aggregate>
   <Aggregate root="SSAOrgAssociationExt">
     <Entity table="SSAOrgAssociationExt" schema="tx"/>
@@ -213,6 +274,12 @@
   </Aggregate>
   <Aggregate root="SharedServiceArrangementStaffDescriptor">
     <Entity table="SharedServiceArrangementStaffDescriptor" isA="Descriptor" schema="tx"/>
+  </Aggregate>
+  <Aggregate root="SpecialEducationProgramReportingPeriodAttendance">
+    <Entity table="SpecialEducationProgramReportingPeriodAttendance" schema="tx"/>
+  </Aggregate>
+  <Aggregate root="SpecialProgramsReportingPeriodAttendance">
+    <Entity table="SpecialProgramsReportingPeriodAttendance" schema="tx"/>
   </Aggregate>
   <Aggregate root="StaffServiceDescriptor">
     <Entity table="StaffServiceDescriptor" isA="Descriptor" schema="tx"/>
@@ -230,8 +297,8 @@
   <Aggregate root="StudentSpecialEducationProgramEligibilityAssociation">
     <Entity table="StudentSpecialEducationProgramEligibilityAssociation" schema="tx"/>
   </Aggregate>
-  <Aggregate root="TeacherIncentiveAllotmentDesignationCodeDescriptor">
-    <Entity table="TeacherIncentiveAllotmentDesignationCodeDescriptor" isA="Descriptor" schema="tx"/>
+  <Aggregate root="TeacherIncentiveAllotmentDesignationDescriptor">
+    <Entity table="TeacherIncentiveAllotmentDesignationDescriptor" isA="Descriptor" schema="tx"/>
   </Aggregate>
   <Aggregate root="TitleOfAssessmentDescriptor">
     <Entity table="TitleOfAssessmentDescriptor" isA="Descriptor" schema="tx"/>
@@ -271,7 +338,7 @@
   </AggregateExtension>
   <AggregateExtension root="Staff">
     <Entity table="StaffParaprofessionalCertificationSet" schema="tx"/>
-    <Entity table="StaffTeacherIncentiveAllotmentDesignationCode" schema="tx"/>
+    <Entity table="StaffTeacherIncentiveAllotmentDesignation" schema="tx"/>
     <Entity table="StaffTypeSet" schema="tx"/>
   </AggregateExtension>
   <AggregateExtension root="StaffEducationOrganizationAssignmentAssociation">
@@ -285,11 +352,15 @@
     <Entity table="StudentCrisisEventSet" schema="tx"/>
   </AggregateExtension>
   <AggregateExtension root="StudentAcademicRecord">
+    <Entity table="StudentAcademicRecordDiplomaFinancialAidApplication" schema="tx"/>
+    <Entity table="StudentAcademicRecordEndorsementCompletedSet" schema="tx"/>
+    <Entity table="StudentAcademicRecordEndorsementCompletedSetEndorsementCompleted" schema="tx" isRequiredCollection="true"/>
     <Entity table="StudentAcademicRecordEndorsementPursuing" schema="tx"/>
     <Entity table="StudentAcademicRecordIndustryBasedCertificationSet" schema="tx"/>
   </AggregateExtension>
   <AggregateExtension root="StudentEducationOrganizationAssociation">
     <Entity table="StudentEducationOrganizationAssociationDyslexiaRiskSet" schema="tx"/>
+    <Entity table="StudentEducationOrganizationAssociationDyslexiaScreeningExceptionReasonSet" schema="tx"/>
     <Entity table="StudentEducationOrganizationAssociationDyslexiaServicesSet" schema="tx"/>
     <Entity table="StudentEducationOrganizationAssociationEarlyReadingIndicatorSet" schema="tx"/>
     <Entity table="StudentEducationOrganizationAssociationEconomicDisadvantageSet" schema="tx"/>
@@ -311,10 +382,9 @@
   <AggregateExtension root="StudentSpecialEducationProgramAssociation">
     <Entity table="StudentSpecialEducationProgramAssociationAssessment" schema="tx"/>
     <Entity table="StudentSpecialEducationProgramAssociationDisabilitySet" schema="tx" isRequiredCollection="true"/>
-    <Entity table="StudentSpecialEducationProgramAssociationESYProgramAssociation" schema="tx"/>
     <Entity table="StudentSpecialEducationProgramAssociationHearingAmplification" schema="tx"/>
     <Entity table="StudentSpecialEducationProgramAssociationLanguageAcquisition" schema="tx"/>
-    <Entity table="StudentSpecialEducationProgramAssociationSpecialEducationSettingSet" schema="tx"/>
+    <Entity table="StudentSpecialEducationProgramAssociationSpecialEducationEnvironmentSet" schema="tx"/>
     <Entity table="StudentSpecialEducationProgramAssociationStudentResidentialFacilityAssociation" schema="tx"/>
     <Entity table="StudentSpecialEducationProgramAssociationStudentSPEDProgramAssociationSet" schema="tx"/>
   </AggregateExtension>

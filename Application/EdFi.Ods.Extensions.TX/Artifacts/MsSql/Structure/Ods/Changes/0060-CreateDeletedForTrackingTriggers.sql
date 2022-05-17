@@ -69,20 +69,20 @@ ALTER TABLE [tx].[ArmedServicesVocAptBatteryDescriptor] ENABLE TRIGGER [tx_Armed
 GO
 
 
-CREATE TRIGGER [tx].[tx_AsOfStatusALeaver_TR_DeleteTracking] ON [tx].[AsOfStatusALeaver] AFTER DELETE AS
+CREATE TRIGGER [tx].[tx_AsOfStatusALeavers_TR_DeleteTracking] ON [tx].[AsOfStatusALeavers] AFTER DELETE AS
 BEGIN
     IF @@rowcount = 0 
         RETURN
 
     SET NOCOUNT ON
 
-    INSERT INTO [tracked_deletes_tx].[AsOfStatusALeaver](SchoolId, StudentUID, Id, ChangeVersion)
+    INSERT INTO [tracked_deletes_tx].[AsOfStatusALeavers](SchoolId, StudentUID, Id, ChangeVersion)
     SELECT  SchoolId, StudentUID, Id, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
     FROM    deleted d
 END
 GO
 
-ALTER TABLE [tx].[AsOfStatusALeaver] ENABLE TRIGGER [tx_AsOfStatusALeaver_TR_DeleteTracking]
+ALTER TABLE [tx].[AsOfStatusALeavers] ENABLE TRIGGER [tx_AsOfStatusALeavers_TR_DeleteTracking]
 GO
 
 
@@ -158,6 +158,58 @@ ALTER TABLE [tx].[AuxiliaryRoleIdDescriptor] ENABLE TRIGGER [tx_AuxiliaryRoleIdD
 GO
 
 
+CREATE TRIGGER [tx].[tx_BasicReportingPeriodAttendance_TR_DeleteTracking] ON [tx].[BasicReportingPeriodAttendance] AFTER DELETE AS
+BEGIN
+    IF @@rowcount = 0 
+        RETURN
+
+    SET NOCOUNT ON
+
+    INSERT INTO [tracked_deletes_tx].[BasicReportingPeriodAttendance](CalendarCode, GradeLevelDescriptorId, ReportingPeriodDescriptorId, SchoolId, StudentUSI, Id, ChangeVersion)
+    SELECT  CalendarCode, GradeLevelDescriptorId, ReportingPeriodDescriptorId, SchoolId, StudentUSI, Id, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
+    FROM    deleted d
+END
+GO
+
+ALTER TABLE [tx].[BasicReportingPeriodAttendance] ENABLE TRIGGER [tx_BasicReportingPeriodAttendance_TR_DeleteTracking]
+GO
+
+
+CREATE TRIGGER [tx].[tx_BilingualESLFundingDescriptor_TR_DeleteTracking] ON [tx].[BilingualESLFundingDescriptor] AFTER DELETE AS
+BEGIN
+    IF @@rowcount = 0 
+        RETURN
+
+    SET NOCOUNT ON
+
+    INSERT INTO [tracked_deletes_tx].[BilingualESLFundingDescriptor](BilingualESLFundingDescriptorId, Id, ChangeVersion)
+    SELECT  d.BilingualESLFundingDescriptorId, Id, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
+    FROM    deleted d
+            INNER JOIN edfi.Descriptor b ON d.BilingualESLFundingDescriptorId = b.DescriptorId
+END
+GO
+
+ALTER TABLE [tx].[BilingualESLFundingDescriptor] ENABLE TRIGGER [tx_BilingualESLFundingDescriptor_TR_DeleteTracking]
+GO
+
+
+CREATE TRIGGER [tx].[tx_BilingualESLProgramReportingPeriodAttendance_TR_DeleteTracking] ON [tx].[BilingualESLProgramReportingPeriodAttendance] AFTER DELETE AS
+BEGIN
+    IF @@rowcount = 0 
+        RETURN
+
+    SET NOCOUNT ON
+
+    INSERT INTO [tracked_deletes_tx].[BilingualESLProgramReportingPeriodAttendance](BilingualESLFundingDescriptorId, CalendarCode, GradeLevelDescriptorId, ReportingPeriodDescriptorId, SchoolId, StudentUSI, Id, ChangeVersion)
+    SELECT  BilingualESLFundingDescriptorId, CalendarCode, GradeLevelDescriptorId, ReportingPeriodDescriptorId, SchoolId, StudentUSI, Id, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
+    FROM    deleted d
+END
+GO
+
+ALTER TABLE [tx].[BilingualESLProgramReportingPeriodAttendance] ENABLE TRIGGER [tx_BilingualESLProgramReportingPeriodAttendance_TR_DeleteTracking]
+GO
+
+
 CREATE TRIGGER [tx].[tx_BudgetExt_TR_DeleteTracking] ON [tx].[BudgetExt] AFTER DELETE AS
 BEGIN
     IF @@rowcount = 0 
@@ -172,6 +224,41 @@ END
 GO
 
 ALTER TABLE [tx].[BudgetExt] ENABLE TRIGGER [tx_BudgetExt_TR_DeleteTracking]
+GO
+
+
+CREATE TRIGGER [tx].[tx_CTEProgramReportingPeriodAttendance_TR_DeleteTracking] ON [tx].[CTEProgramReportingPeriodAttendance] AFTER DELETE AS
+BEGIN
+    IF @@rowcount = 0 
+        RETURN
+
+    SET NOCOUNT ON
+
+    INSERT INTO [tracked_deletes_tx].[CTEProgramReportingPeriodAttendance](CalendarCode, CTEServiceIdDescriptorId, GradeLevelDescriptorId, ReportingPeriodDescriptorId, SchoolId, StudentUSI, Id, ChangeVersion)
+    SELECT  CalendarCode, CTEServiceIdDescriptorId, GradeLevelDescriptorId, ReportingPeriodDescriptorId, SchoolId, StudentUSI, Id, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
+    FROM    deleted d
+END
+GO
+
+ALTER TABLE [tx].[CTEProgramReportingPeriodAttendance] ENABLE TRIGGER [tx_CTEProgramReportingPeriodAttendance_TR_DeleteTracking]
+GO
+
+
+CREATE TRIGGER [tx].[tx_CTEServiceIdDescriptor_TR_DeleteTracking] ON [tx].[CTEServiceIdDescriptor] AFTER DELETE AS
+BEGIN
+    IF @@rowcount = 0 
+        RETURN
+
+    SET NOCOUNT ON
+
+    INSERT INTO [tracked_deletes_tx].[CTEServiceIdDescriptor](CTEServiceIdDescriptorId, Id, ChangeVersion)
+    SELECT  d.CTEServiceIdDescriptorId, Id, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
+    FROM    deleted d
+            INNER JOIN edfi.Descriptor b ON d.CTEServiceIdDescriptorId = b.DescriptorId
+END
+GO
+
+ALTER TABLE [tx].[CTEServiceIdDescriptor] ENABLE TRIGGER [tx_CTEServiceIdDescriptor_TR_DeleteTracking]
 GO
 
 
@@ -318,6 +405,24 @@ ALTER TABLE [tx].[DyslexiaRiskDescriptor] ENABLE TRIGGER [tx_DyslexiaRiskDescrip
 GO
 
 
+CREATE TRIGGER [tx].[tx_DyslexiaScreeningExceptionReasonDescriptor_TR_DeleteTracking] ON [tx].[DyslexiaScreeningExceptionReasonDescriptor] AFTER DELETE AS
+BEGIN
+    IF @@rowcount = 0 
+        RETURN
+
+    SET NOCOUNT ON
+
+    INSERT INTO [tracked_deletes_tx].[DyslexiaScreeningExceptionReasonDescriptor](DyslexiaScreeningExceptionReasonDescriptorId, Id, ChangeVersion)
+    SELECT  d.DyslexiaScreeningExceptionReasonDescriptorId, Id, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
+    FROM    deleted d
+            INNER JOIN edfi.Descriptor b ON d.DyslexiaScreeningExceptionReasonDescriptorId = b.DescriptorId
+END
+GO
+
+ALTER TABLE [tx].[DyslexiaScreeningExceptionReasonDescriptor] ENABLE TRIGGER [tx_DyslexiaScreeningExceptionReasonDescriptor_TR_DeleteTracking]
+GO
+
+
 CREATE TRIGGER [tx].[tx_DyslexiaServicesDescriptor_TR_DeleteTracking] ON [tx].[DyslexiaServicesDescriptor] AFTER DELETE AS
 BEGIN
     IF @@rowcount = 0 
@@ -426,6 +531,24 @@ ALTER TABLE [tx].[EconomicDisadvantageLastDateOfEnrollmentDescriptor] ENABLE TRI
 GO
 
 
+CREATE TRIGGER [tx].[tx_EligibilityDelayReasonDescriptor_TR_DeleteTracking] ON [tx].[EligibilityDelayReasonDescriptor] AFTER DELETE AS
+BEGIN
+    IF @@rowcount = 0 
+        RETURN
+
+    SET NOCOUNT ON
+
+    INSERT INTO [tracked_deletes_tx].[EligibilityDelayReasonDescriptor](EligibilityDelayReasonDescriptorId, Id, ChangeVersion)
+    SELECT  d.EligibilityDelayReasonDescriptorId, Id, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
+    FROM    deleted d
+            INNER JOIN edfi.Descriptor b ON d.EligibilityDelayReasonDescriptorId = b.DescriptorId
+END
+GO
+
+ALTER TABLE [tx].[EligibilityDelayReasonDescriptor] ENABLE TRIGGER [tx_EligibilityDelayReasonDescriptor_TR_DeleteTracking]
+GO
+
+
 CREATE TRIGGER [tx].[tx_EmergentBilingualIndicatorDescriptor_TR_DeleteTracking] ON [tx].[EmergentBilingualIndicatorDescriptor] AFTER DELETE AS
 BEGIN
     IF @@rowcount = 0 
@@ -495,6 +618,127 @@ END
 GO
 
 ALTER TABLE [tx].[EvaluationDelayReasonDescriptor] ENABLE TRIGGER [tx_EvaluationDelayReasonDescriptor_TR_DeleteTracking]
+GO
+
+
+CREATE TRIGGER [tx].[tx_ExtendedSchoolYearServicesAttendance_TR_DeleteTracking] ON [tx].[ExtendedSchoolYearServicesAttendance] AFTER DELETE AS
+BEGIN
+    IF @@rowcount = 0 
+        RETURN
+
+    SET NOCOUNT ON
+
+    INSERT INTO [tracked_deletes_tx].[ExtendedSchoolYearServicesAttendance](FirstInstructionalSettingDescriptorId, GradeLevelDescriptorId, SchoolId, StudentUSI, Id, ChangeVersion)
+    SELECT  FirstInstructionalSettingDescriptorId, GradeLevelDescriptorId, SchoolId, StudentUSI, Id, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
+    FROM    deleted d
+END
+GO
+
+ALTER TABLE [tx].[ExtendedSchoolYearServicesAttendance] ENABLE TRIGGER [tx_ExtendedSchoolYearServicesAttendance_TR_DeleteTracking]
+GO
+
+
+CREATE TRIGGER [tx].[tx_FinancialAidApplicationDescriptor_TR_DeleteTracking] ON [tx].[FinancialAidApplicationDescriptor] AFTER DELETE AS
+BEGIN
+    IF @@rowcount = 0 
+        RETURN
+
+    SET NOCOUNT ON
+
+    INSERT INTO [tracked_deletes_tx].[FinancialAidApplicationDescriptor](FinancialAidApplicationDescriptorId, Id, ChangeVersion)
+    SELECT  d.FinancialAidApplicationDescriptorId, Id, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
+    FROM    deleted d
+            INNER JOIN edfi.Descriptor b ON d.FinancialAidApplicationDescriptorId = b.DescriptorId
+END
+GO
+
+ALTER TABLE [tx].[FinancialAidApplicationDescriptor] ENABLE TRIGGER [tx_FinancialAidApplicationDescriptor_TR_DeleteTracking]
+GO
+
+
+CREATE TRIGGER [tx].[tx_FlexAttendanceProgramDescriptor_TR_DeleteTracking] ON [tx].[FlexAttendanceProgramDescriptor] AFTER DELETE AS
+BEGIN
+    IF @@rowcount = 0 
+        RETURN
+
+    SET NOCOUNT ON
+
+    INSERT INTO [tracked_deletes_tx].[FlexAttendanceProgramDescriptor](FlexAttendanceProgramDescriptorId, Id, ChangeVersion)
+    SELECT  d.FlexAttendanceProgramDescriptorId, Id, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
+    FROM    deleted d
+            INNER JOIN edfi.Descriptor b ON d.FlexAttendanceProgramDescriptorId = b.DescriptorId
+END
+GO
+
+ALTER TABLE [tx].[FlexAttendanceProgramDescriptor] ENABLE TRIGGER [tx_FlexAttendanceProgramDescriptor_TR_DeleteTracking]
+GO
+
+
+CREATE TRIGGER [tx].[tx_FlexibleBilingualESLProgramReportingPeriodAttendance_TR_DeleteTracking] ON [tx].[FlexibleBilingualESLProgramReportingPeriodAttendance] AFTER DELETE AS
+BEGIN
+    IF @@rowcount = 0 
+        RETURN
+
+    SET NOCOUNT ON
+
+    INSERT INTO [tracked_deletes_tx].[FlexibleBilingualESLProgramReportingPeriodAttendance](BilingualESLFundingDescriptorId, CalendarCode, FlexAttendanceProgramDescriptorId, GradeLevelDescriptorId, ReportingPeriodDescriptorId, SchoolId, StudentUSI, Id, ChangeVersion)
+    SELECT  BilingualESLFundingDescriptorId, CalendarCode, FlexAttendanceProgramDescriptorId, GradeLevelDescriptorId, ReportingPeriodDescriptorId, SchoolId, StudentUSI, Id, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
+    FROM    deleted d
+END
+GO
+
+ALTER TABLE [tx].[FlexibleBilingualESLProgramReportingPeriodAttendance] ENABLE TRIGGER [tx_FlexibleBilingualESLProgramReportingPeriodAttendance_TR_DeleteTracking]
+GO
+
+
+CREATE TRIGGER [tx].[tx_FlexibleCTEProgramReportingPeriodAttendance_TR_DeleteTracking] ON [tx].[FlexibleCTEProgramReportingPeriodAttendance] AFTER DELETE AS
+BEGIN
+    IF @@rowcount = 0 
+        RETURN
+
+    SET NOCOUNT ON
+
+    INSERT INTO [tracked_deletes_tx].[FlexibleCTEProgramReportingPeriodAttendance](CalendarCode, FlexAttendanceProgramDescriptorId, GradeLevelDescriptorId, ReportingPeriodDescriptorId, SchoolId, StudentUSI, Id, ChangeVersion)
+    SELECT  CalendarCode, FlexAttendanceProgramDescriptorId, GradeLevelDescriptorId, ReportingPeriodDescriptorId, SchoolId, StudentUSI, Id, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
+    FROM    deleted d
+END
+GO
+
+ALTER TABLE [tx].[FlexibleCTEProgramReportingPeriodAttendance] ENABLE TRIGGER [tx_FlexibleCTEProgramReportingPeriodAttendance_TR_DeleteTracking]
+GO
+
+
+CREATE TRIGGER [tx].[tx_FlexibleRegularProgramReportingPeriodAttendance_TR_DeleteTracking] ON [tx].[FlexibleRegularProgramReportingPeriodAttendance] AFTER DELETE AS
+BEGIN
+    IF @@rowcount = 0 
+        RETURN
+
+    SET NOCOUNT ON
+
+    INSERT INTO [tracked_deletes_tx].[FlexibleRegularProgramReportingPeriodAttendance](CalendarCode, FlexAttendanceProgramDescriptorId, GradeLevelDescriptorId, ReportingPeriodDescriptorId, SchoolId, StudentUSI, Id, ChangeVersion)
+    SELECT  CalendarCode, FlexAttendanceProgramDescriptorId, GradeLevelDescriptorId, ReportingPeriodDescriptorId, SchoolId, StudentUSI, Id, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
+    FROM    deleted d
+END
+GO
+
+ALTER TABLE [tx].[FlexibleRegularProgramReportingPeriodAttendance] ENABLE TRIGGER [tx_FlexibleRegularProgramReportingPeriodAttendance_TR_DeleteTracking]
+GO
+
+
+CREATE TRIGGER [tx].[tx_FlexibleSpecialEducationProgramReportingPeriodAttendance_TR_DeleteTracking] ON [tx].[FlexibleSpecialEducationProgramReportingPeriodAttendance] AFTER DELETE AS
+BEGIN
+    IF @@rowcount = 0 
+        RETURN
+
+    SET NOCOUNT ON
+
+    INSERT INTO [tracked_deletes_tx].[FlexibleSpecialEducationProgramReportingPeriodAttendance](CalendarCode, FlexAttendanceProgramDescriptorId, GradeLevelDescriptorId, InstructionalSettingDescriptorId, ReportingPeriodDescriptorId, SchoolId, StudentUSI, Id, ChangeVersion)
+    SELECT  CalendarCode, FlexAttendanceProgramDescriptorId, GradeLevelDescriptorId, InstructionalSettingDescriptorId, ReportingPeriodDescriptorId, SchoolId, StudentUSI, Id, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
+    FROM    deleted d
+END
+GO
+
+ALTER TABLE [tx].[FlexibleSpecialEducationProgramReportingPeriodAttendance] ENABLE TRIGGER [tx_FlexibleSpecialEducationProgramReportingPeriodAttendance_TR_DeleteTracking]
 GO
 
 
@@ -729,6 +973,24 @@ END
 GO
 
 ALTER TABLE [tx].[IBCVendorDescriptor] ENABLE TRIGGER [tx_IBCVendorDescriptor_TR_DeleteTracking]
+GO
+
+
+CREATE TRIGGER [tx].[tx_InstructionalSettingDescriptor_TR_DeleteTracking] ON [tx].[InstructionalSettingDescriptor] AFTER DELETE AS
+BEGIN
+    IF @@rowcount = 0 
+        RETURN
+
+    SET NOCOUNT ON
+
+    INSERT INTO [tracked_deletes_tx].[InstructionalSettingDescriptor](InstructionalSettingDescriptorId, Id, ChangeVersion)
+    SELECT  d.InstructionalSettingDescriptorId, Id, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
+    FROM    deleted d
+            INNER JOIN edfi.Descriptor b ON d.InstructionalSettingDescriptorId = b.DescriptorId
+END
+GO
+
+ALTER TABLE [tx].[InstructionalSettingDescriptor] ENABLE TRIGGER [tx_InstructionalSettingDescriptor_TR_DeleteTracking]
 GO
 
 
@@ -1037,6 +1299,24 @@ ALTER TABLE [tx].[PayrollExt] ENABLE TRIGGER [tx_PayrollExt_TR_DeleteTracking]
 GO
 
 
+CREATE TRIGGER [tx].[tx_PostSecondaryCertLicensureResultDescriptor_TR_DeleteTracking] ON [tx].[PostSecondaryCertLicensureResultDescriptor] AFTER DELETE AS
+BEGIN
+    IF @@rowcount = 0 
+        RETURN
+
+    SET NOCOUNT ON
+
+    INSERT INTO [tracked_deletes_tx].[PostSecondaryCertLicensureResultDescriptor](PostSecondaryCertLicensureResultDescriptorId, Id, ChangeVersion)
+    SELECT  d.PostSecondaryCertLicensureResultDescriptorId, Id, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
+    FROM    deleted d
+            INNER JOIN edfi.Descriptor b ON d.PostSecondaryCertLicensureResultDescriptorId = b.DescriptorId
+END
+GO
+
+ALTER TABLE [tx].[PostSecondaryCertLicensureResultDescriptor] ENABLE TRIGGER [tx_PostSecondaryCertLicensureResultDescriptor_TR_DeleteTracking]
+GO
+
+
 CREATE TRIGGER [tx].[tx_PostSecondaryCertificationLicensureDescriptor_TR_DeleteTracking] ON [tx].[PostSecondaryCertificationLicensureDescriptor] AFTER DELETE AS
 BEGIN
     IF @@rowcount = 0 
@@ -1109,6 +1389,24 @@ ALTER TABLE [tx].[ProgramOfStudyDescriptor] ENABLE TRIGGER [tx_ProgramOfStudyDes
 GO
 
 
+CREATE TRIGGER [tx].[tx_RegionalDaySchoolProgramForDeafDescriptor_TR_DeleteTracking] ON [tx].[RegionalDaySchoolProgramForDeafDescriptor] AFTER DELETE AS
+BEGIN
+    IF @@rowcount = 0 
+        RETURN
+
+    SET NOCOUNT ON
+
+    INSERT INTO [tracked_deletes_tx].[RegionalDaySchoolProgramForDeafDescriptor](RegionalDaySchoolProgramForDeafDescriptorId, Id, ChangeVersion)
+    SELECT  d.RegionalDaySchoolProgramForDeafDescriptorId, Id, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
+    FROM    deleted d
+            INNER JOIN edfi.Descriptor b ON d.RegionalDaySchoolProgramForDeafDescriptorId = b.DescriptorId
+END
+GO
+
+ALTER TABLE [tx].[RegionalDaySchoolProgramForDeafDescriptor] ENABLE TRIGGER [tx_RegionalDaySchoolProgramForDeafDescriptor_TR_DeleteTracking]
+GO
+
+
 CREATE TRIGGER [tx].[tx_ReportAssessmentTypeDescriptor_TR_DeleteTracking] ON [tx].[ReportAssessmentTypeDescriptor] AFTER DELETE AS
 BEGIN
     IF @@rowcount = 0 
@@ -1124,6 +1422,24 @@ END
 GO
 
 ALTER TABLE [tx].[ReportAssessmentTypeDescriptor] ENABLE TRIGGER [tx_ReportAssessmentTypeDescriptor_TR_DeleteTracking]
+GO
+
+
+CREATE TRIGGER [tx].[tx_ReportingPeriodDescriptor_TR_DeleteTracking] ON [tx].[ReportingPeriodDescriptor] AFTER DELETE AS
+BEGIN
+    IF @@rowcount = 0 
+        RETURN
+
+    SET NOCOUNT ON
+
+    INSERT INTO [tracked_deletes_tx].[ReportingPeriodDescriptor](ReportingPeriodDescriptorId, Id, ChangeVersion)
+    SELECT  d.ReportingPeriodDescriptorId, Id, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
+    FROM    deleted d
+            INNER JOIN edfi.Descriptor b ON d.ReportingPeriodDescriptorId = b.DescriptorId
+END
+GO
+
+ALTER TABLE [tx].[ReportingPeriodDescriptor] ENABLE TRIGGER [tx_ReportingPeriodDescriptor_TR_DeleteTracking]
 GO
 
 
@@ -1160,6 +1476,24 @@ END
 GO
 
 ALTER TABLE [tx].[RoleIdDescriptor] ENABLE TRIGGER [tx_RoleIdDescriptor_TR_DeleteTracking]
+GO
+
+
+CREATE TRIGGER [tx].[tx_SPEDStudentAgeRangeDescriptor_TR_DeleteTracking] ON [tx].[SPEDStudentAgeRangeDescriptor] AFTER DELETE AS
+BEGIN
+    IF @@rowcount = 0 
+        RETURN
+
+    SET NOCOUNT ON
+
+    INSERT INTO [tracked_deletes_tx].[SPEDStudentAgeRangeDescriptor](SPEDStudentAgeRangeDescriptorId, Id, ChangeVersion)
+    SELECT  d.SPEDStudentAgeRangeDescriptorId, Id, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
+    FROM    deleted d
+            INNER JOIN edfi.Descriptor b ON d.SPEDStudentAgeRangeDescriptorId = b.DescriptorId
+END
+GO
+
+ALTER TABLE [tx].[SPEDStudentAgeRangeDescriptor] ENABLE TRIGGER [tx_SPEDStudentAgeRangeDescriptor_TR_DeleteTracking]
 GO
 
 
@@ -1251,6 +1585,40 @@ ALTER TABLE [tx].[SharedServiceArrangementStaffDescriptor] ENABLE TRIGGER [tx_Sh
 GO
 
 
+CREATE TRIGGER [tx].[tx_SpecialEducationProgramReportingPeriodAttendance_TR_DeleteTracking] ON [tx].[SpecialEducationProgramReportingPeriodAttendance] AFTER DELETE AS
+BEGIN
+    IF @@rowcount = 0 
+        RETURN
+
+    SET NOCOUNT ON
+
+    INSERT INTO [tracked_deletes_tx].[SpecialEducationProgramReportingPeriodAttendance](CalendarCode, GradeLevelDescriptorId, InstructionalSettingDescriptorId, RegionalDaySchoolProgramForDeafDescriptorId, ReportingPeriodDescriptorId, SchoolId, StudentUSI, Id, ChangeVersion)
+    SELECT  CalendarCode, GradeLevelDescriptorId, InstructionalSettingDescriptorId, RegionalDaySchoolProgramForDeafDescriptorId, ReportingPeriodDescriptorId, SchoolId, StudentUSI, Id, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
+    FROM    deleted d
+END
+GO
+
+ALTER TABLE [tx].[SpecialEducationProgramReportingPeriodAttendance] ENABLE TRIGGER [tx_SpecialEducationProgramReportingPeriodAttendance_TR_DeleteTracking]
+GO
+
+
+CREATE TRIGGER [tx].[tx_SpecialProgramsReportingPeriodAttendance_TR_DeleteTracking] ON [tx].[SpecialProgramsReportingPeriodAttendance] AFTER DELETE AS
+BEGIN
+    IF @@rowcount = 0 
+        RETURN
+
+    SET NOCOUNT ON
+
+    INSERT INTO [tracked_deletes_tx].[SpecialProgramsReportingPeriodAttendance](CalendarCode, GradeLevelDescriptorId, ReportingPeriodDescriptorId, SchoolId, StudentUSI, Id, ChangeVersion)
+    SELECT  CalendarCode, GradeLevelDescriptorId, ReportingPeriodDescriptorId, SchoolId, StudentUSI, Id, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
+    FROM    deleted d
+END
+GO
+
+ALTER TABLE [tx].[SpecialProgramsReportingPeriodAttendance] ENABLE TRIGGER [tx_SpecialProgramsReportingPeriodAttendance_TR_DeleteTracking]
+GO
+
+
 CREATE TRIGGER [tx].[tx_StaffServiceDescriptor_TR_DeleteTracking] ON [tx].[StaffServiceDescriptor] AFTER DELETE AS
 BEGIN
     IF @@rowcount = 0 
@@ -1339,21 +1707,21 @@ ALTER TABLE [tx].[StudentSpecialEducationProgramEligibilityAssociation] ENABLE T
 GO
 
 
-CREATE TRIGGER [tx].[tx_TeacherIncentiveAllotmentDesignationCodeDescriptor_TR_DeleteTracking] ON [tx].[TeacherIncentiveAllotmentDesignationCodeDescriptor] AFTER DELETE AS
+CREATE TRIGGER [tx].[tx_TeacherIncentiveAllotmentDesignationDescriptor_TR_DeleteTracking] ON [tx].[TeacherIncentiveAllotmentDesignationDescriptor] AFTER DELETE AS
 BEGIN
     IF @@rowcount = 0 
         RETURN
 
     SET NOCOUNT ON
 
-    INSERT INTO [tracked_deletes_tx].[TeacherIncentiveAllotmentDesignationCodeDescriptor](TeacherIncentiveAllotmentDesignationCodeDescriptorId, Id, ChangeVersion)
-    SELECT  d.TeacherIncentiveAllotmentDesignationCodeDescriptorId, Id, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
+    INSERT INTO [tracked_deletes_tx].[TeacherIncentiveAllotmentDesignationDescriptor](TeacherIncentiveAllotmentDesignationDescriptorId, Id, ChangeVersion)
+    SELECT  d.TeacherIncentiveAllotmentDesignationDescriptorId, Id, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
     FROM    deleted d
-            INNER JOIN edfi.Descriptor b ON d.TeacherIncentiveAllotmentDesignationCodeDescriptorId = b.DescriptorId
+            INNER JOIN edfi.Descriptor b ON d.TeacherIncentiveAllotmentDesignationDescriptorId = b.DescriptorId
 END
 GO
 
-ALTER TABLE [tx].[TeacherIncentiveAllotmentDesignationCodeDescriptor] ENABLE TRIGGER [tx_TeacherIncentiveAllotmentDesignationCodeDescriptor_TR_DeleteTracking]
+ALTER TABLE [tx].[TeacherIncentiveAllotmentDesignationDescriptor] ENABLE TRIGGER [tx_TeacherIncentiveAllotmentDesignationDescriptor_TR_DeleteTracking]
 GO
 
 

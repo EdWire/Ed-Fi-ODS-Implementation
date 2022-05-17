@@ -28,17 +28,21 @@
 	  <AutoGen>True</AutoGen>
 	  <DesignTime>True</DesignTime>
 	</Content>
-    <Content Include="Artifacts\**\Schemas\*.xsd">
+    <EmbeddedResource Include="Artifacts\**\Schemas\*.xsd">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="EdFi.Ods.Extensions.ExtensionName.nuspec">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Content>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Marker_EdFi_Ods_Extensions_TX.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Content>
-    <Content Include="assemblyMetadata.json" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Artifacts\Metadata\**\ApiModel-EXTENSION.json">
@@ -51,19 +55,11 @@
       <DesignTime>True</DesignTime>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="assemblyMetadata.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Remove="Artifacts\MsSql\Data\Security\**" />
-    <Content Remove="Artifacts\MsSql\Data\Security\**" />
-    <EmbeddedResource Remove="Artifacts\MsSql\Data\Security\**" />
-    <None Remove="Artifacts\MsSql\Data\Security\**" />
+    <ProjectReference Include="..\..\..\Ed-Fi-ODS\Application\EdFi.Ods.Api\EdFi.Ods.Api.csproj" />
+    <ProjectReference Include="..\..\..\Ed-Fi-ODS\Application\EdFi.Ods.Common\EdFi.Ods.Common.csproj" />
+    <ProjectReference Include="..\..\..\Ed-Fi-ODS\Application\EdFi.Ods.Standard\EdFi.Ods.Standard.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="$(SolutionDir)..\..\Ed-Fi-ODS\Application\EdFi.Ods.Api\EdFi.Ods.Api.csproj" />
-    <ProjectReference Include="$(SolutionDir)..\..\Ed-Fi-ODS\Application\EdFi.Ods.Common\EdFi.Ods.Common.csproj" />
-    <ProjectReference Include="$(SolutionDir)..\..\Ed-Fi-ODS\Application\EdFi.Ods.Standard\EdFi.Ods.Standard.csproj" />
-  </ItemGroup>
-  <Target Name="PreBuild" BeforeTargets="PreBuildEvent">
-    <Exec Command="mkdir $(ProjectDir)\Artifacts\PgSql\Data\Ods&#xD;&#xA;mkdir $(ProjectDir)\Artifacts\PgSql\Data\Security&#xD;&#xA;mkdir $(ProjectDir)\Artifacts\MsSql\Data\Ods&#xD;&#xA;mkdir $(ProjectDir)\Artifacts\MsSql\Data\Security&#xD;&#xA;copy $(ProjectDir)\CustomDatabaseScripts\PgSql\Data\Ods\*.* $(ProjectDir)\Artifacts\PgSql\Data\Ods&#xD;&#xA;copy $(ProjectDir)\CustomDatabaseScripts\PgSql\Data\Security\*.* $(ProjectDir)\Artifacts\PgSql\DataSecurity&#xD;&#xA;copy $(ProjectDir)\CustomDatabaseScripts\MsSql\Data\Ods\*.* $(ProjectDir)\Artifacts\MsSql\Data\Ods&#xD;&#xA;copy $(ProjectDir)\CustomDatabaseScripts\MsSql\Data\Security\*.* $(ProjectDir)\Artifacts\MsSql\DataSecurity" />
-  </Target>
 </Project>

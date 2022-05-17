@@ -6,8 +6,22 @@ BEGIN TRANSACTION
 COMMIT
 
 BEGIN TRANSACTION
-    IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'tx.AsOfStatusALeaver') AND name = N'UX_AsOfStatusALeaver_Id')
-    CREATE UNIQUE NONCLUSTERED INDEX UX_AsOfStatusALeaver_Id ON [tx].[AsOfStatusALeaver]
+    IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'tx.AsOfStatusALeavers') AND name = N'UX_AsOfStatusALeavers_Id')
+    CREATE UNIQUE NONCLUSTERED INDEX UX_AsOfStatusALeavers_Id ON [tx].[AsOfStatusALeavers]
+    (Id) WITH (PAD_INDEX = ON, FILLFACTOR = 75, STATISTICS_NORECOMPUTE = OFF) ON [PRIMARY]
+    GO
+COMMIT
+
+BEGIN TRANSACTION
+    IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'tx.BasicReportingPeriodAttendance') AND name = N'UX_BasicReportingPeriodAttendance_Id')
+    CREATE UNIQUE NONCLUSTERED INDEX UX_BasicReportingPeriodAttendance_Id ON [tx].[BasicReportingPeriodAttendance]
+    (Id) WITH (PAD_INDEX = ON, FILLFACTOR = 75, STATISTICS_NORECOMPUTE = OFF) ON [PRIMARY]
+    GO
+COMMIT
+
+BEGIN TRANSACTION
+    IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'tx.BilingualESLProgramReportingPeriodAttendance') AND name = N'UX_BilingualESLProgramReportingPeriodAttendance_Id')
+    CREATE UNIQUE NONCLUSTERED INDEX UX_BilingualESLProgramReportingPeriodAttendance_Id ON [tx].[BilingualESLProgramReportingPeriodAttendance]
     (Id) WITH (PAD_INDEX = ON, FILLFACTOR = 75, STATISTICS_NORECOMPUTE = OFF) ON [PRIMARY]
     GO
 COMMIT
@@ -27,6 +41,48 @@ BEGIN TRANSACTION
 COMMIT
 
 BEGIN TRANSACTION
+    IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'tx.CTEProgramReportingPeriodAttendance') AND name = N'UX_CTEProgramReportingPeriodAttendance_Id')
+    CREATE UNIQUE NONCLUSTERED INDEX UX_CTEProgramReportingPeriodAttendance_Id ON [tx].[CTEProgramReportingPeriodAttendance]
+    (Id) WITH (PAD_INDEX = ON, FILLFACTOR = 75, STATISTICS_NORECOMPUTE = OFF) ON [PRIMARY]
+    GO
+COMMIT
+
+BEGIN TRANSACTION
+    IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'tx.ExtendedSchoolYearServicesAttendance') AND name = N'UX_ExtendedSchoolYearServicesAttendance_Id')
+    CREATE UNIQUE NONCLUSTERED INDEX UX_ExtendedSchoolYearServicesAttendance_Id ON [tx].[ExtendedSchoolYearServicesAttendance]
+    (Id) WITH (PAD_INDEX = ON, FILLFACTOR = 75, STATISTICS_NORECOMPUTE = OFF) ON [PRIMARY]
+    GO
+COMMIT
+
+BEGIN TRANSACTION
+    IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'tx.FlexibleBilingualESLProgramReportingPeriodAttendance') AND name = N'UX_FlexibleBilingualESLProgramReportingPeriodAttendance_Id')
+    CREATE UNIQUE NONCLUSTERED INDEX UX_FlexibleBilingualESLProgramReportingPeriodAttendance_Id ON [tx].[FlexibleBilingualESLProgramReportingPeriodAttendance]
+    (Id) WITH (PAD_INDEX = ON, FILLFACTOR = 75, STATISTICS_NORECOMPUTE = OFF) ON [PRIMARY]
+    GO
+COMMIT
+
+BEGIN TRANSACTION
+    IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'tx.FlexibleCTEProgramReportingPeriodAttendance') AND name = N'UX_FlexibleCTEProgramReportingPeriodAttendance_Id')
+    CREATE UNIQUE NONCLUSTERED INDEX UX_FlexibleCTEProgramReportingPeriodAttendance_Id ON [tx].[FlexibleCTEProgramReportingPeriodAttendance]
+    (Id) WITH (PAD_INDEX = ON, FILLFACTOR = 75, STATISTICS_NORECOMPUTE = OFF) ON [PRIMARY]
+    GO
+COMMIT
+
+BEGIN TRANSACTION
+    IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'tx.FlexibleRegularProgramReportingPeriodAttendance') AND name = N'UX_FlexibleRegularProgramReportingPeriodAttendance_Id')
+    CREATE UNIQUE NONCLUSTERED INDEX UX_FlexibleRegularProgramReportingPeriodAttendance_Id ON [tx].[FlexibleRegularProgramReportingPeriodAttendance]
+    (Id) WITH (PAD_INDEX = ON, FILLFACTOR = 75, STATISTICS_NORECOMPUTE = OFF) ON [PRIMARY]
+    GO
+COMMIT
+
+BEGIN TRANSACTION
+    IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'tx.FlexibleSpecialEducationProgramReportingPeriodAttendance') AND name = N'UX_FlexibleSpecialEducationProgramReportingPeriodAttendance_Id')
+    CREATE UNIQUE NONCLUSTERED INDEX UX_FlexibleSpecialEducationProgramReportingPeriodAttendance_Id ON [tx].[FlexibleSpecialEducationProgramReportingPeriodAttendance]
+    (Id) WITH (PAD_INDEX = ON, FILLFACTOR = 75, STATISTICS_NORECOMPUTE = OFF) ON [PRIMARY]
+    GO
+COMMIT
+
+BEGIN TRANSACTION
     IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'tx.PayrollExt') AND name = N'UX_PayrollExt_Id')
     CREATE UNIQUE NONCLUSTERED INDEX UX_PayrollExt_Id ON [tx].[PayrollExt]
     (Id) WITH (PAD_INDEX = ON, FILLFACTOR = 75, STATISTICS_NORECOMPUTE = OFF) ON [PRIMARY]
@@ -36,6 +92,20 @@ COMMIT
 BEGIN TRANSACTION
     IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'tx.SharedServiceArrangementExt') AND name = N'UX_SharedServiceArrangementExt_Id')
     CREATE UNIQUE NONCLUSTERED INDEX UX_SharedServiceArrangementExt_Id ON [tx].[SharedServiceArrangementExt]
+    (Id) WITH (PAD_INDEX = ON, FILLFACTOR = 75, STATISTICS_NORECOMPUTE = OFF) ON [PRIMARY]
+    GO
+COMMIT
+
+BEGIN TRANSACTION
+    IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'tx.SpecialEducationProgramReportingPeriodAttendance') AND name = N'UX_SpecialEducationProgramReportingPeriodAttendance_Id')
+    CREATE UNIQUE NONCLUSTERED INDEX UX_SpecialEducationProgramReportingPeriodAttendance_Id ON [tx].[SpecialEducationProgramReportingPeriodAttendance]
+    (Id) WITH (PAD_INDEX = ON, FILLFACTOR = 75, STATISTICS_NORECOMPUTE = OFF) ON [PRIMARY]
+    GO
+COMMIT
+
+BEGIN TRANSACTION
+    IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'tx.SpecialProgramsReportingPeriodAttendance') AND name = N'UX_SpecialProgramsReportingPeriodAttendance_Id')
+    CREATE UNIQUE NONCLUSTERED INDEX UX_SpecialProgramsReportingPeriodAttendance_Id ON [tx].[SpecialProgramsReportingPeriodAttendance]
     (Id) WITH (PAD_INDEX = ON, FILLFACTOR = 75, STATISTICS_NORECOMPUTE = OFF) ON [PRIMARY]
     GO
 COMMIT
