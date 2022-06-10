@@ -60,7 +60,9 @@
     "PopulatedTemplateScript": ""
   },
   "Plugin": {
-    "Folder": "",
-    "Scripts": []
+    "Folder": "../../Plugin",
+    "Scripts": [ 
+      "tpdm" 
+    ]
   }
 }
