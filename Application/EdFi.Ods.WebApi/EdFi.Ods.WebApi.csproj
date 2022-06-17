@@ -18,7 +18,6 @@
     <_WebToolingArtifacts Remove="Properties\PublishProfiles\EdGraphFolder.pubxml" />
     <Content Include="../../LICENSE.txt" Link="LICENSE.txt" CopyToPublishDirectory="Always" />
     <Content Include="../../NOTICES.md" Link="NOTICES.md" CopyToPublishDirectory="Always" />
-    <Content Update="appsettings.development.json" CopyToPublishDirectory="Never" CopyToOutputDirectory="Always" />
     <Content Update="log4net.development.config" CopyToPublishDirectory="Never" CopyToOutputDirectory="Always" />
   </ItemGroup>
 
