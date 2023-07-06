@@ -8,6 +8,7 @@
     <ThreadPoolMinThreads>250</ThreadPoolMinThreads>
     <RestorePackages>true</RestorePackages>
     <UserSecretsId>f1506d66-289c-44cb-a2e2-80411cc690ec</UserSecretsId>
+    <ThreadPoolMinThreads>250</ThreadPoolMinThreads>
   </PropertyGroup>
 
   <ItemGroup>
