@@ -1,3 +1,31 @@
+ALTER TABLE tx.ActualExt ADD CONSTRAINT FK_e3a1b1_ActualFunctionDescriptor FOREIGN KEY (ActualFunctionDescriptorId)
+REFERENCES tx.ActualFunctionDescriptor (ActualFunctionDescriptorId)
+;
+
+CREATE INDEX FK_e3a1b1_ActualFunctionDescriptor
+ON tx.ActualExt (ActualFunctionDescriptorId ASC);
+
+ALTER TABLE tx.ActualExt ADD CONSTRAINT FK_e3a1b1_ActualFundDescriptor FOREIGN KEY (ActualFundDescriptorId)
+REFERENCES tx.ActualFundDescriptor (ActualFundDescriptorId)
+;
+
+CREATE INDEX FK_e3a1b1_ActualFundDescriptor
+ON tx.ActualExt (ActualFundDescriptorId ASC);
+
+ALTER TABLE tx.ActualExt ADD CONSTRAINT FK_e3a1b1_ActualObjectDescriptor FOREIGN KEY (ActualObjectDescriptorId)
+REFERENCES tx.ActualObjectDescriptor (ActualObjectDescriptorId)
+;
+
+CREATE INDEX FK_e3a1b1_ActualObjectDescriptor
+ON tx.ActualExt (ActualObjectDescriptorId ASC);
+
+ALTER TABLE tx.ActualExt ADD CONSTRAINT FK_e3a1b1_ActualProgramIntentDescriptor FOREIGN KEY (ActualProgramIntentDescriptorId)
+REFERENCES tx.ActualProgramIntentDescriptor (ActualProgramIntentDescriptorId)
+;
+
+CREATE INDEX FK_e3a1b1_ActualProgramIntentDescriptor
+ON tx.ActualExt (ActualProgramIntentDescriptorId ASC);
+
 ALTER TABLE tx.ActualExt ADD CONSTRAINT FK_e3a1b1_EducationOrganization FOREIGN KEY (EducationOrganizationId)
 REFERENCES edfi.EducationOrganization (EducationOrganizationId)
 ;
@@ -5,33 +33,25 @@ REFERENCES edfi.EducationOrganization (EducationOrganizationId)
 CREATE INDEX FK_e3a1b1_EducationOrganization
 ON tx.ActualExt (EducationOrganizationId ASC);
 
-ALTER TABLE tx.ActualExt ADD CONSTRAINT FK_e3a1b1_FunctionDescriptor FOREIGN KEY (FunctionDescriptorId)
-REFERENCES tx.FunctionDescriptor (FunctionDescriptorId)
+ALTER TABLE tx.ActualFunctionDescriptor ADD CONSTRAINT FK_d017dc_Descriptor FOREIGN KEY (ActualFunctionDescriptorId)
+REFERENCES edfi.Descriptor (DescriptorId)
+ON DELETE CASCADE
 ;
 
-CREATE INDEX FK_e3a1b1_FunctionDescriptor
-ON tx.ActualExt (FunctionDescriptorId ASC);
-
-ALTER TABLE tx.ActualExt ADD CONSTRAINT FK_e3a1b1_FundDescriptor FOREIGN KEY (FundDescriptorId)
-REFERENCES tx.FundDescriptor (FundDescriptorId)
+ALTER TABLE tx.ActualFundDescriptor ADD CONSTRAINT FK_668c2d_Descriptor FOREIGN KEY (ActualFundDescriptorId)
+REFERENCES edfi.Descriptor (DescriptorId)
+ON DELETE CASCADE
 ;
 
-CREATE INDEX FK_e3a1b1_FundDescriptor
-ON tx.ActualExt (FundDescriptorId ASC);
-
-ALTER TABLE tx.ActualExt ADD CONSTRAINT FK_e3a1b1_ObjectDescriptor FOREIGN KEY (ObjectDescriptorId)
-REFERENCES tx.ObjectDescriptor (ObjectDescriptorId)
+ALTER TABLE tx.ActualObjectDescriptor ADD CONSTRAINT FK_ec1911_Descriptor FOREIGN KEY (ActualObjectDescriptorId)
+REFERENCES edfi.Descriptor (DescriptorId)
+ON DELETE CASCADE
 ;
 
-CREATE INDEX FK_e3a1b1_ObjectDescriptor
-ON tx.ActualExt (ObjectDescriptorId ASC);
-
-ALTER TABLE tx.ActualExt ADD CONSTRAINT FK_e3a1b1_ProgramIntentDescriptor FOREIGN KEY (ProgramIntentDescriptorId)
-REFERENCES tx.ProgramIntentDescriptor (ProgramIntentDescriptorId)
+ALTER TABLE tx.ActualProgramIntentDescriptor ADD CONSTRAINT FK_77e711_Descriptor FOREIGN KEY (ActualProgramIntentDescriptorId)
+REFERENCES edfi.Descriptor (DescriptorId)
+ON DELETE CASCADE
 ;
-
-CREATE INDEX FK_e3a1b1_ProgramIntentDescriptor
-ON tx.ActualExt (ProgramIntentDescriptorId ASC);
 
 ALTER TABLE tx.ADAEligibilityDescriptor ADD CONSTRAINT FK_30a385_Descriptor FOREIGN KEY (ADAEligibilityDescriptorId)
 REFERENCES edfi.Descriptor (DescriptorId)
@@ -83,6 +103,11 @@ CREATE INDEX FK_75a008_TitleOfAssessmentDescriptor
 ON tx.AssessmentExtension (TitleOfAssessmentDescriptorId ASC);
 
 ALTER TABLE tx.AssessmentResultsObtainedDescriptor ADD CONSTRAINT FK_71bf40_Descriptor FOREIGN KEY (AssessmentResultsObtainedDescriptorId)
+REFERENCES edfi.Descriptor (DescriptorId)
+ON DELETE CASCADE
+;
+
+ALTER TABLE tx.AssociateDegreeIndicatorDescriptor ADD CONSTRAINT FK_b8f1a7_Descriptor FOREIGN KEY (AssociateDegreeIndicatorDescriptorId)
 REFERENCES edfi.Descriptor (DescriptorId)
 ON DELETE CASCADE
 ;
@@ -160,6 +185,34 @@ REFERENCES edfi.Student (StudentUSI)
 CREATE INDEX FK_017565_Student
 ON tx.BilingualESLProgramReportingPeriodAttendance (StudentUSI ASC);
 
+ALTER TABLE tx.BudgetExt ADD CONSTRAINT FK_1c17d1_BudgetFunctionDescriptor FOREIGN KEY (BudgetFunctionDescriptorId)
+REFERENCES tx.BudgetFunctionDescriptor (BudgetFunctionDescriptorId)
+;
+
+CREATE INDEX FK_1c17d1_BudgetFunctionDescriptor
+ON tx.BudgetExt (BudgetFunctionDescriptorId ASC);
+
+ALTER TABLE tx.BudgetExt ADD CONSTRAINT FK_1c17d1_BudgetFundDescriptor FOREIGN KEY (BudgetFundDescriptorId)
+REFERENCES tx.BudgetFundDescriptor (BudgetFundDescriptorId)
+;
+
+CREATE INDEX FK_1c17d1_BudgetFundDescriptor
+ON tx.BudgetExt (BudgetFundDescriptorId ASC);
+
+ALTER TABLE tx.BudgetExt ADD CONSTRAINT FK_1c17d1_BudgetObjectDescriptor FOREIGN KEY (BudgetObjectDescriptorId)
+REFERENCES tx.BudgetObjectDescriptor (BudgetObjectDescriptorId)
+;
+
+CREATE INDEX FK_1c17d1_BudgetObjectDescriptor
+ON tx.BudgetExt (BudgetObjectDescriptorId ASC);
+
+ALTER TABLE tx.BudgetExt ADD CONSTRAINT FK_1c17d1_BudgetProgramIntentDescriptor FOREIGN KEY (BudgetProgramIntentDescriptorId)
+REFERENCES tx.BudgetProgramIntentDescriptor (BudgetProgramIntentDescriptorId)
+;
+
+CREATE INDEX FK_1c17d1_BudgetProgramIntentDescriptor
+ON tx.BudgetExt (BudgetProgramIntentDescriptorId ASC);
+
 ALTER TABLE tx.BudgetExt ADD CONSTRAINT FK_1c17d1_EducationOrganization FOREIGN KEY (EducationOrganizationId)
 REFERENCES edfi.EducationOrganization (EducationOrganizationId)
 ;
@@ -167,33 +220,25 @@ REFERENCES edfi.EducationOrganization (EducationOrganizationId)
 CREATE INDEX FK_1c17d1_EducationOrganization
 ON tx.BudgetExt (EducationOrganizationId ASC);
 
-ALTER TABLE tx.BudgetExt ADD CONSTRAINT FK_1c17d1_FunctionDescriptor FOREIGN KEY (FunctionDescriptorId)
-REFERENCES tx.FunctionDescriptor (FunctionDescriptorId)
+ALTER TABLE tx.BudgetFunctionDescriptor ADD CONSTRAINT FK_1f2721_Descriptor FOREIGN KEY (BudgetFunctionDescriptorId)
+REFERENCES edfi.Descriptor (DescriptorId)
+ON DELETE CASCADE
 ;
 
-CREATE INDEX FK_1c17d1_FunctionDescriptor
-ON tx.BudgetExt (FunctionDescriptorId ASC);
-
-ALTER TABLE tx.BudgetExt ADD CONSTRAINT FK_1c17d1_FundDescriptor FOREIGN KEY (FundDescriptorId)
-REFERENCES tx.FundDescriptor (FundDescriptorId)
+ALTER TABLE tx.BudgetFundDescriptor ADD CONSTRAINT FK_91869f_Descriptor FOREIGN KEY (BudgetFundDescriptorId)
+REFERENCES edfi.Descriptor (DescriptorId)
+ON DELETE CASCADE
 ;
 
-CREATE INDEX FK_1c17d1_FundDescriptor
-ON tx.BudgetExt (FundDescriptorId ASC);
-
-ALTER TABLE tx.BudgetExt ADD CONSTRAINT FK_1c17d1_ObjectDescriptor FOREIGN KEY (ObjectDescriptorId)
-REFERENCES tx.ObjectDescriptor (ObjectDescriptorId)
+ALTER TABLE tx.BudgetObjectDescriptor ADD CONSTRAINT FK_949d94_Descriptor FOREIGN KEY (BudgetObjectDescriptorId)
+REFERENCES edfi.Descriptor (DescriptorId)
+ON DELETE CASCADE
 ;
 
-CREATE INDEX FK_1c17d1_ObjectDescriptor
-ON tx.BudgetExt (ObjectDescriptorId ASC);
-
-ALTER TABLE tx.BudgetExt ADD CONSTRAINT FK_1c17d1_ProgramIntentDescriptor FOREIGN KEY (ProgramIntentDescriptorId)
-REFERENCES tx.ProgramIntentDescriptor (ProgramIntentDescriptorId)
+ALTER TABLE tx.BudgetProgramIntentDescriptor ADD CONSTRAINT FK_f3de4f_Descriptor FOREIGN KEY (BudgetProgramIntentDescriptorId)
+REFERENCES edfi.Descriptor (DescriptorId)
+ON DELETE CASCADE
 ;
-
-CREATE INDEX FK_1c17d1_ProgramIntentDescriptor
-ON tx.BudgetExt (ProgramIntentDescriptorId ASC);
 
 ALTER TABLE tx.CalendarDateExtension ADD CONSTRAINT FK_1a442d_CalendarDate FOREIGN KEY (CalendarCode, Date, SchoolId, SchoolYear)
 REFERENCES edfi.CalendarDate (CalendarCode, Date, SchoolId, SchoolYear)
@@ -222,10 +267,22 @@ REFERENCES edfi.Descriptor (DescriptorId)
 ON DELETE CASCADE
 ;
 
+ALTER TABLE tx.CIStaffProgramIntentDescriptor ADD CONSTRAINT FK_32756d_Descriptor FOREIGN KEY (CIStaffProgramIntentDescriptorId)
+REFERENCES edfi.Descriptor (DescriptorId)
+ON DELETE CASCADE
+;
+
 ALTER TABLE tx.ClassTypeDescriptor ADD CONSTRAINT FK_b9ac1a_Descriptor FOREIGN KEY (ClassTypeDescriptorId)
 REFERENCES edfi.Descriptor (DescriptorId)
 ON DELETE CASCADE
 ;
+
+ALTER TABLE tx.ContractedInstructionalStaffFTEExt ADD CONSTRAINT FK_c6c091_CIStaffProgramIntentDescriptor FOREIGN KEY (CIStaffProgramIntentDescriptorId)
+REFERENCES tx.CIStaffProgramIntentDescriptor (CIStaffProgramIntentDescriptorId)
+;
+
+CREATE INDEX FK_c6c091_CIStaffProgramIntentDescriptor
+ON tx.ContractedInstructionalStaffFTEExt (CIStaffProgramIntentDescriptorId ASC);
 
 ALTER TABLE tx.ContractedInstructionalStaffFTEExt ADD CONSTRAINT FK_c6c091_EducationOrganization FOREIGN KEY (EducationOrganizationId)
 REFERENCES edfi.EducationOrganization (EducationOrganizationId)
@@ -233,13 +290,6 @@ REFERENCES edfi.EducationOrganization (EducationOrganizationId)
 
 CREATE INDEX FK_c6c091_EducationOrganization
 ON tx.ContractedInstructionalStaffFTEExt (EducationOrganizationId ASC);
-
-ALTER TABLE tx.ContractedInstructionalStaffFTEExt ADD CONSTRAINT FK_c6c091_ProgramIntentDescriptor FOREIGN KEY (ProgramIntentDescriptorId)
-REFERENCES tx.ProgramIntentDescriptor (ProgramIntentDescriptorId)
-;
-
-CREATE INDEX FK_c6c091_ProgramIntentDescriptor
-ON tx.ContractedInstructionalStaffFTEExt (ProgramIntentDescriptorId ASC);
 
 ALTER TABLE tx.ContractedInstructionalStaffFTEExt ADD CONSTRAINT FK_c6c091_School FOREIGN KEY (SchoolId)
 REFERENCES edfi.School (SchoolId)
@@ -608,16 +658,6 @@ REFERENCES edfi.Descriptor (DescriptorId)
 ON DELETE CASCADE
 ;
 
-ALTER TABLE tx.FunctionDescriptor ADD CONSTRAINT FK_8397f0_Descriptor FOREIGN KEY (FunctionDescriptorId)
-REFERENCES edfi.Descriptor (DescriptorId)
-ON DELETE CASCADE
-;
-
-ALTER TABLE tx.FundDescriptor ADD CONSTRAINT FK_f23409_Descriptor FOREIGN KEY (FundDescriptorId)
-REFERENCES edfi.Descriptor (DescriptorId)
-ON DELETE CASCADE
-;
-
 ALTER TABLE tx.GenerationCodeDescriptor ADD CONSTRAINT FK_de43bd_Descriptor FOREIGN KEY (GenerationCodeDescriptorId)
 REFERENCES edfi.Descriptor (DescriptorId)
 ON DELETE CASCADE
@@ -727,12 +767,12 @@ REFERENCES edfi.Descriptor (DescriptorId)
 ON DELETE CASCADE
 ;
 
-ALTER TABLE tx.NSLPTypeDescriptor ADD CONSTRAINT FK_bbdb8c_Descriptor FOREIGN KEY (NSLPTypeDescriptorId)
+ALTER TABLE tx.NonEnrolledStudentUILActivityDescriptor ADD CONSTRAINT FK_b5caa6_Descriptor FOREIGN KEY (NonEnrolledStudentUILActivityDescriptorId)
 REFERENCES edfi.Descriptor (DescriptorId)
 ON DELETE CASCADE
 ;
 
-ALTER TABLE tx.ObjectDescriptor ADD CONSTRAINT FK_bd38bc_Descriptor FOREIGN KEY (ObjectDescriptorId)
+ALTER TABLE tx.NSLPTypeDescriptor ADD CONSTRAINT FK_bbdb8c_Descriptor FOREIGN KEY (NSLPTypeDescriptorId)
 REFERENCES edfi.Descriptor (DescriptorId)
 ON DELETE CASCADE
 ;
@@ -766,27 +806,6 @@ REFERENCES edfi.EducationOrganization (EducationOrganizationId)
 CREATE INDEX FK_4c1df0_EducationOrganization
 ON tx.PayrollExt (EducationOrganizationId ASC);
 
-ALTER TABLE tx.PayrollExt ADD CONSTRAINT FK_4c1df0_FunctionDescriptor FOREIGN KEY (FunctionDescriptorId)
-REFERENCES tx.FunctionDescriptor (FunctionDescriptorId)
-;
-
-CREATE INDEX FK_4c1df0_FunctionDescriptor
-ON tx.PayrollExt (FunctionDescriptorId ASC);
-
-ALTER TABLE tx.PayrollExt ADD CONSTRAINT FK_4c1df0_FundDescriptor FOREIGN KEY (FundDescriptorId)
-REFERENCES tx.FundDescriptor (FundDescriptorId)
-;
-
-CREATE INDEX FK_4c1df0_FundDescriptor
-ON tx.PayrollExt (FundDescriptorId ASC);
-
-ALTER TABLE tx.PayrollExt ADD CONSTRAINT FK_4c1df0_ObjectDescriptor FOREIGN KEY (ObjectDescriptorId)
-REFERENCES tx.ObjectDescriptor (ObjectDescriptorId)
-;
-
-CREATE INDEX FK_4c1df0_ObjectDescriptor
-ON tx.PayrollExt (ObjectDescriptorId ASC);
-
 ALTER TABLE tx.PayrollExt ADD CONSTRAINT FK_4c1df0_PayrollActivityDescriptor FOREIGN KEY (PayrollActivityDescriptorId)
 REFERENCES tx.PayrollActivityDescriptor (PayrollActivityDescriptorId)
 ;
@@ -794,12 +813,33 @@ REFERENCES tx.PayrollActivityDescriptor (PayrollActivityDescriptorId)
 CREATE INDEX FK_4c1df0_PayrollActivityDescriptor
 ON tx.PayrollExt (PayrollActivityDescriptorId ASC);
 
-ALTER TABLE tx.PayrollExt ADD CONSTRAINT FK_4c1df0_ProgramIntentDescriptor FOREIGN KEY (ProgramIntentDescriptorId)
-REFERENCES tx.ProgramIntentDescriptor (ProgramIntentDescriptorId)
+ALTER TABLE tx.PayrollExt ADD CONSTRAINT FK_4c1df0_PayrollFunctionDescriptor FOREIGN KEY (PayrollFunctionDescriptorId)
+REFERENCES tx.PayrollFunctionDescriptor (PayrollFunctionDescriptorId)
 ;
 
-CREATE INDEX FK_4c1df0_ProgramIntentDescriptor
-ON tx.PayrollExt (ProgramIntentDescriptorId ASC);
+CREATE INDEX FK_4c1df0_PayrollFunctionDescriptor
+ON tx.PayrollExt (PayrollFunctionDescriptorId ASC);
+
+ALTER TABLE tx.PayrollExt ADD CONSTRAINT FK_4c1df0_PayrollFundDescriptor FOREIGN KEY (PayrollFundDescriptorId)
+REFERENCES tx.PayrollFundDescriptor (PayrollFundDescriptorId)
+;
+
+CREATE INDEX FK_4c1df0_PayrollFundDescriptor
+ON tx.PayrollExt (PayrollFundDescriptorId ASC);
+
+ALTER TABLE tx.PayrollExt ADD CONSTRAINT FK_4c1df0_PayrollObjectDescriptor FOREIGN KEY (PayrollObjectDescriptorId)
+REFERENCES tx.PayrollObjectDescriptor (PayrollObjectDescriptorId)
+;
+
+CREATE INDEX FK_4c1df0_PayrollObjectDescriptor
+ON tx.PayrollExt (PayrollObjectDescriptorId ASC);
+
+ALTER TABLE tx.PayrollExt ADD CONSTRAINT FK_4c1df0_PayrollProgramIntentDescriptor FOREIGN KEY (PayrollProgramIntentDescriptorId)
+REFERENCES tx.PayrollProgramIntentDescriptor (PayrollProgramIntentDescriptorId)
+;
+
+CREATE INDEX FK_4c1df0_PayrollProgramIntentDescriptor
+ON tx.PayrollExt (PayrollProgramIntentDescriptorId ASC);
 
 ALTER TABLE tx.PayrollExt ADD CONSTRAINT FK_4c1df0_Staff FOREIGN KEY (StaffUSI)
 REFERENCES edfi.Staff (StaffUSI)
@@ -807,6 +847,26 @@ REFERENCES edfi.Staff (StaffUSI)
 
 CREATE INDEX FK_4c1df0_Staff
 ON tx.PayrollExt (StaffUSI ASC);
+
+ALTER TABLE tx.PayrollFunctionDescriptor ADD CONSTRAINT FK_4fb9c8_Descriptor FOREIGN KEY (PayrollFunctionDescriptorId)
+REFERENCES edfi.Descriptor (DescriptorId)
+ON DELETE CASCADE
+;
+
+ALTER TABLE tx.PayrollFundDescriptor ADD CONSTRAINT FK_e9d5cc_Descriptor FOREIGN KEY (PayrollFundDescriptorId)
+REFERENCES edfi.Descriptor (DescriptorId)
+ON DELETE CASCADE
+;
+
+ALTER TABLE tx.PayrollObjectDescriptor ADD CONSTRAINT FK_fbd61a_Descriptor FOREIGN KEY (PayrollObjectDescriptorId)
+REFERENCES edfi.Descriptor (DescriptorId)
+ON DELETE CASCADE
+;
+
+ALTER TABLE tx.PayrollProgramIntentDescriptor ADD CONSTRAINT FK_883150_Descriptor FOREIGN KEY (PayrollProgramIntentDescriptorId)
+REFERENCES edfi.Descriptor (DescriptorId)
+ON DELETE CASCADE
+;
 
 ALTER TABLE tx.PKCurriculaDescriptor ADD CONSTRAINT FK_774b17_Descriptor FOREIGN KEY (PKCurriculaDescriptorId)
 REFERENCES edfi.Descriptor (DescriptorId)
@@ -869,6 +929,13 @@ REFERENCES tx.AsOfStatusLastFridayOctoberDescriptor (AsOfStatusLastFridayOctober
 
 CREATE INDEX FK_51b088_AsOfStatusLastFridayOctoberDescriptor
 ON tx.PriorYearLeaver (AsOfStatusLastFridayOctoberDescriptorId ASC);
+
+ALTER TABLE tx.PriorYearLeaver ADD CONSTRAINT FK_51b088_AssociateDegreeIndicatorDescriptor FOREIGN KEY (AssociateDegreeIndicatorDescriptorId)
+REFERENCES tx.AssociateDegreeIndicatorDescriptor (AssociateDegreeIndicatorDescriptorId)
+;
+
+CREATE INDEX FK_51b088_AssociateDegreeIndicatorDescriptor
+ON tx.PriorYearLeaver (AssociateDegreeIndicatorDescriptorId ASC);
 
 ALTER TABLE tx.PriorYearLeaver ADD CONSTRAINT FK_51b088_CountryDescriptor FOREIGN KEY (BirthCountryDescriptorId)
 REFERENCES edfi.CountryDescriptor (CountryDescriptorId)
@@ -933,26 +1000,12 @@ REFERENCES tx.HomelessStatusDescriptor (HomelessStatusDescriptorId)
 CREATE INDEX FK_51b088_HomelessStatusDescriptor
 ON tx.PriorYearLeaver (HomelessStatusDescriptorId ASC);
 
-ALTER TABLE tx.PriorYearLeaver ADD CONSTRAINT FK_51b088_LanguageDescriptor FOREIGN KEY (LanguageDescriptorId)
-REFERENCES edfi.LanguageDescriptor (LanguageDescriptorId)
-;
-
-CREATE INDEX FK_51b088_LanguageDescriptor
-ON tx.PriorYearLeaver (LanguageDescriptorId ASC);
-
 ALTER TABLE tx.PriorYearLeaver ADD CONSTRAINT FK_51b088_LanguageInstructionProgramServiceDescriptor FOREIGN KEY (LanguageInstructionProgramServiceDescriptorId)
 REFERENCES edfi.LanguageInstructionProgramServiceDescriptor (LanguageInstructionProgramServiceDescriptorId)
 ;
 
 CREATE INDEX FK_51b088_LanguageInstructionProgramServiceDescriptor
 ON tx.PriorYearLeaver (LanguageInstructionProgramServiceDescriptorId ASC);
-
-ALTER TABLE tx.PriorYearLeaver ADD CONSTRAINT FK_51b088_LanguageUseDescriptor FOREIGN KEY (LanguageUseDescriptorId)
-REFERENCES edfi.LanguageUseDescriptor (LanguageUseDescriptorId)
-;
-
-CREATE INDEX FK_51b088_LanguageUseDescriptor
-ON tx.PriorYearLeaver (LanguageUseDescriptorId ASC);
 
 ALTER TABLE tx.PriorYearLeaver ADD CONSTRAINT FK_51b088_MilitaryConnectedStudentDescriptor FOREIGN KEY (MilitaryConnectedStudentDescriptorId)
 REFERENCES tx.MilitaryConnectedStudentDescriptor (MilitaryConnectedStudentDescriptorId)
@@ -1121,6 +1174,36 @@ ON DELETE CASCADE
 
 CREATE INDEX FK_2afa39_PriorYearLeaver
 ON tx.PriorYearLeaverIndustryBasedCertificationSet (SchoolId ASC, StudentUId ASC);
+
+ALTER TABLE tx.PriorYearLeaverLanguage ADD CONSTRAINT FK_b798bf_LanguageDescriptor FOREIGN KEY (LanguageDescriptorId)
+REFERENCES edfi.LanguageDescriptor (LanguageDescriptorId)
+;
+
+CREATE INDEX FK_b798bf_LanguageDescriptor
+ON tx.PriorYearLeaverLanguage (LanguageDescriptorId ASC);
+
+ALTER TABLE tx.PriorYearLeaverLanguage ADD CONSTRAINT FK_b798bf_PriorYearLeaver FOREIGN KEY (SchoolId, StudentUId)
+REFERENCES tx.PriorYearLeaver (SchoolId, StudentUId)
+ON DELETE CASCADE
+;
+
+CREATE INDEX FK_b798bf_PriorYearLeaver
+ON tx.PriorYearLeaverLanguage (SchoolId ASC, StudentUId ASC);
+
+ALTER TABLE tx.PriorYearLeaverLanguageUse ADD CONSTRAINT FK_4a3052_LanguageUseDescriptor FOREIGN KEY (LanguageUseDescriptorId)
+REFERENCES edfi.LanguageUseDescriptor (LanguageUseDescriptorId)
+;
+
+CREATE INDEX FK_4a3052_LanguageUseDescriptor
+ON tx.PriorYearLeaverLanguageUse (LanguageUseDescriptorId ASC);
+
+ALTER TABLE tx.PriorYearLeaverLanguageUse ADD CONSTRAINT FK_4a3052_PriorYearLeaverLanguage FOREIGN KEY (LanguageDescriptorId, SchoolId, StudentUId)
+REFERENCES tx.PriorYearLeaverLanguage (LanguageDescriptorId, SchoolId, StudentUId)
+ON DELETE CASCADE
+;
+
+CREATE INDEX FK_4a3052_PriorYearLeaverLanguage
+ON tx.PriorYearLeaverLanguageUse (LanguageDescriptorId ASC, SchoolId ASC, StudentUId ASC);
 
 ALTER TABLE tx.PriorYearLeaverParent ADD CONSTRAINT FK_09795e_GenerationCodeDescriptor FOREIGN KEY (GenerationCodeDescriptorId)
 REFERENCES tx.GenerationCodeDescriptor (GenerationCodeDescriptorId)
@@ -1310,11 +1393,6 @@ REFERENCES edfi.TelephoneNumberTypeDescriptor (TelephoneNumberTypeDescriptorId)
 
 CREATE INDEX FK_92c3bc_TelephoneNumberTypeDescriptor
 ON tx.PriorYearLeaverTelephone (TelephoneNumberTypeDescriptorId ASC);
-
-ALTER TABLE tx.ProgramIntentDescriptor ADD CONSTRAINT FK_8b9399_Descriptor FOREIGN KEY (ProgramIntentDescriptorId)
-REFERENCES edfi.Descriptor (DescriptorId)
-ON DELETE CASCADE
-;
 
 ALTER TABLE tx.ProgramOfStudyDescriptor ADD CONSTRAINT FK_a1877b_Descriptor FOREIGN KEY (ProgramOfStudyDescriptorId)
 REFERENCES edfi.Descriptor (DescriptorId)
@@ -1506,12 +1584,12 @@ REFERENCES edfi.EducationOrganization (EducationOrganizationId)
 CREATE INDEX FK_0acbb2_EducationOrganization
 ON tx.SharedServiceArrangementExt (EducationOrganizationId ASC);
 
-ALTER TABLE tx.SharedServiceArrangementExt ADD CONSTRAINT FK_0acbb2_FundDescriptor FOREIGN KEY (FundDescriptorId)
-REFERENCES tx.FundDescriptor (FundDescriptorId)
+ALTER TABLE tx.SharedServiceArrangementExt ADD CONSTRAINT FK_0acbb2_SSAFundDescriptor FOREIGN KEY (SSAFundDescriptorId)
+REFERENCES tx.SSAFundDescriptor (SSAFundDescriptorId)
 ;
 
-CREATE INDEX FK_0acbb2_FundDescriptor
-ON tx.SharedServiceArrangementExt (FundDescriptorId ASC);
+CREATE INDEX FK_0acbb2_SSAFundDescriptor
+ON tx.SharedServiceArrangementExt (SSAFundDescriptorId ASC);
 
 ALTER TABLE tx.SharedServiceArrangementExt ADD CONSTRAINT FK_0acbb2_SSATypeDescriptor FOREIGN KEY (SSATypeDescriptorId)
 REFERENCES tx.SSATypeDescriptor (SSATypeDescriptorId)
@@ -1594,6 +1672,11 @@ REFERENCES edfi.Student (StudentUSI)
 
 CREATE INDEX FK_6c730f_Student
 ON tx.SpecialProgramsReportingPeriodAttendance (StudentUSI ASC);
+
+ALTER TABLE tx.SSAFundDescriptor ADD CONSTRAINT FK_e55dc6_Descriptor FOREIGN KEY (SSAFundDescriptorId)
+REFERENCES edfi.Descriptor (DescriptorId)
+ON DELETE CASCADE
+;
 
 ALTER TABLE tx.SSAOrgAssociationExt ADD CONSTRAINT FK_67e71e_EducationOrganization FOREIGN KEY (EducationOrganizationId)
 REFERENCES edfi.EducationOrganization (EducationOrganizationId)
@@ -1801,6 +1884,13 @@ ON DELETE CASCADE
 CREATE INDEX FK_a79ab1_StudentAcademicRecord
 ON tx.StudentAcademicRecordEndorsementPursuing (EducationOrganizationId ASC, SchoolYear ASC, StudentUSI ASC, TermDescriptorId ASC);
 
+ALTER TABLE tx.StudentAcademicRecordExtension ADD CONSTRAINT FK_ee832f_AssociateDegreeIndicatorDescriptor FOREIGN KEY (AssociateDegreeIndicatorDescriptorId)
+REFERENCES tx.AssociateDegreeIndicatorDescriptor (AssociateDegreeIndicatorDescriptorId)
+;
+
+CREATE INDEX FK_ee832f_AssociateDegreeIndicatorDescriptor
+ON tx.StudentAcademicRecordExtension (AssociateDegreeIndicatorDescriptorId ASC);
+
 ALTER TABLE tx.StudentAcademicRecordExtension ADD CONSTRAINT FK_ee832f_StudentAcademicRecord FOREIGN KEY (EducationOrganizationId, SchoolYear, StudentUSI, TermDescriptorId)
 REFERENCES edfi.StudentAcademicRecord (EducationOrganizationId, SchoolYear, StudentUSI, TermDescriptorId)
 ON DELETE CASCADE
@@ -1961,6 +2051,13 @@ REFERENCES tx.DyslexiaRiskDescriptor (DyslexiaRiskDescriptorId)
 
 CREATE INDEX FK_923e97_DyslexiaRiskDescriptor
 ON tx.StudentEducationOrganizationAssociationDyslexiaRiskSet (DyslexiaRiskDescriptorId ASC);
+
+ALTER TABLE tx.StudentEducationOrganizationAssociationDyslexiaRiskSet ADD CONSTRAINT FK_923e97_DyslexiaScreeningExceptionReasonDescriptor FOREIGN KEY (DyslexiaScreeningExceptionReasonDescriptorId)
+REFERENCES tx.DyslexiaScreeningExceptionReasonDescriptor (DyslexiaScreeningExceptionReasonDescriptorId)
+;
+
+CREATE INDEX FK_923e97_DyslexiaScreeningExceptionReasonDescriptor
+ON tx.StudentEducationOrganizationAssociationDyslexiaRiskSet (DyslexiaScreeningExceptionReasonDescriptorId ASC);
 
 ALTER TABLE tx.StudentEducationOrganizationAssociationDyslexiaRiskSet ADD CONSTRAINT FK_923e97_StudentEducationOrganizationAssociation FOREIGN KEY (EducationOrganizationId, StudentUSI)
 REFERENCES edfi.StudentEducationOrganizationAssociation (EducationOrganizationId, StudentUSI)
@@ -2190,6 +2287,21 @@ ON DELETE CASCADE
 
 CREATE INDEX FK_710c81_StudentLanguageInstructionProgramAssociation
 ON tx.StudentLanguageInstructionProgramAssociationParentalPerm_710c81 (BeginDate ASC, EducationOrganizationId ASC, ProgramEducationOrganizationId ASC, ProgramName ASC, ProgramTypeDescriptorId ASC, StudentUSI ASC);
+
+ALTER TABLE tx.StudentNonEnrolledStudentUILActivity ADD CONSTRAINT FK_cb84ea_NonEnrolledStudentUILActivityDescriptor FOREIGN KEY (NonEnrolledStudentUILActivityDescriptorId)
+REFERENCES tx.NonEnrolledStudentUILActivityDescriptor (NonEnrolledStudentUILActivityDescriptorId)
+;
+
+CREATE INDEX FK_cb84ea_NonEnrolledStudentUILActivityDescriptor
+ON tx.StudentNonEnrolledStudentUILActivity (NonEnrolledStudentUILActivityDescriptorId ASC);
+
+ALTER TABLE tx.StudentNonEnrolledStudentUILActivity ADD CONSTRAINT FK_cb84ea_Student FOREIGN KEY (StudentUSI)
+REFERENCES edfi.Student (StudentUSI)
+ON DELETE CASCADE
+;
+
+CREATE INDEX FK_cb84ea_Student
+ON tx.StudentNonEnrolledStudentUILActivity (StudentUSI ASC);
 
 ALTER TABLE tx.StudentProgramAttendanceEventExtension ADD CONSTRAINT FK_3d547c_InstructionalSettingDescriptor FOREIGN KEY (InstructionalSettingDescriptorId)
 REFERENCES tx.InstructionalSettingDescriptor (InstructionalSettingDescriptorId)

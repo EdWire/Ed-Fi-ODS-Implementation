@@ -1,15 +1,31 @@
 -- Extended Properties [tx].[ActualExt] --
 COMMENT ON TABLE tx.ActualExt IS 'The ActualExtension Domain Entity represents the sum of the financial transactions to date relating to a specific account.';
+COMMENT ON COLUMN tx.ActualExt.ActualFunctionDescriptorId IS 'E0317, C146. Function identifies a general operational area and groups together related activities.';
+COMMENT ON COLUMN tx.ActualExt.ActualFundDescriptorId IS 'E0316, C145. Fund identifies the fund group and specific fund (when applicable) for actual financial data.';
+COMMENT ON COLUMN tx.ActualExt.ActualObjectDescriptorId IS 'E0318, C159. Object identifies an account, a transaction, or a source of funds.';
+COMMENT ON COLUMN tx.ActualExt.ActualProgramIntentDescriptorId IS 'E0320, C147. ProgramIntent identifies the cost of instruction and other services that are directed toward a particular need of a specific set of students.';
 COMMENT ON COLUMN tx.ActualExt.BeginDate IS 'E3010. BeginDate indicates the month, day, and year for the specified data element becomes true of the student, staff, program, etc.';
 COMMENT ON COLUMN tx.ActualExt.EducationOrganizationId IS 'The identifier assigned to an education organization.';
 COMMENT ON COLUMN tx.ActualExt.FiscalYear IS 'E0974. FiscalYear is the last digit of the fiscal year, e.g., the fiscal year is 6 for the 2015-16 fiscal year.';
-COMMENT ON COLUMN tx.ActualExt.FunctionDescriptorId IS 'E0317, C146. Function identifies a general operational area and groups together related activities.';
-COMMENT ON COLUMN tx.ActualExt.FundDescriptorId IS 'E0316, C145. Fund identifies the fund group and specific fund (when applicable) for actual financial data.';
-COMMENT ON COLUMN tx.ActualExt.ObjectDescriptorId IS 'E0318, C159. Object identifies an account, a transaction, or a source of funds.';
 COMMENT ON COLUMN tx.ActualExt.Organization IS 'E0319. Organization identifies the unique organizational unit within the district with which the account is associated.';
-COMMENT ON COLUMN tx.ActualExt.ProgramIntentDescriptorId IS 'E0320, C147. ProgramIntent identifies the cost of instruction and other services that are directed toward a particular need of a specific set of students.';
 COMMENT ON COLUMN tx.ActualExt.ActualAmount IS 'E0774. ActualAmount indicates the dollar value associated with actual financial account information.';
 COMMENT ON COLUMN tx.ActualExt.EndDate IS 'E3020. EndDate indicates the month, day, and year for the specified data element becomes false of the student, staff, program, etc.';
+
+-- Extended Properties [tx].[ActualFunctionDescriptor] --
+COMMENT ON TABLE tx.ActualFunctionDescriptor IS 'Descriptor Function is populated from Code Table C146A.';
+COMMENT ON COLUMN tx.ActualFunctionDescriptor.ActualFunctionDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
+
+-- Extended Properties [tx].[ActualFundDescriptor] --
+COMMENT ON TABLE tx.ActualFundDescriptor IS 'Descriptor Fund is populated from Code Table C145A.';
+COMMENT ON COLUMN tx.ActualFundDescriptor.ActualFundDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
+
+-- Extended Properties [tx].[ActualObjectDescriptor] --
+COMMENT ON TABLE tx.ActualObjectDescriptor IS 'Descriptor Object is populated from Code Table C159A.';
+COMMENT ON COLUMN tx.ActualObjectDescriptor.ActualObjectDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
+
+-- Extended Properties [tx].[ActualProgramIntentDescriptor] --
+COMMENT ON TABLE tx.ActualProgramIntentDescriptor IS 'Descriptor ProgramIntent is populated from Code Table C147A.';
+COMMENT ON COLUMN tx.ActualProgramIntentDescriptor.ActualProgramIntentDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
 
 -- Extended Properties [tx].[ADAEligibilityDescriptor] --
 COMMENT ON TABLE tx.ADAEligibilityDescriptor IS 'Descriptor ADAEligibility is populated from Code Table C059.';
@@ -45,6 +61,10 @@ COMMENT ON COLUMN tx.AssessmentExtension.ReportAssessmentTypeDescriptorId IS 'E1
 -- Extended Properties [tx].[AssessmentResultsObtainedDescriptor] --
 COMMENT ON TABLE tx.AssessmentResultsObtainedDescriptor IS 'Descriptor AssessmentResultsObtained identifies the result of tools or assessments used to assess the student''s language acquisition. (DC163)';
 COMMENT ON COLUMN tx.AssessmentResultsObtainedDescriptor.AssessmentResultsObtainedDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
+
+-- Extended Properties [tx].[AssociateDegreeIndicatorDescriptor] --
+COMMENT ON TABLE tx.AssociateDegreeIndicatorDescriptor IS 'Descriptor Function is populated from Code Table C235.';
+COMMENT ON COLUMN tx.AssociateDegreeIndicatorDescriptor.AssociateDegreeIndicatorDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
 
 -- Extended Properties [tx].[AuxiliaryRoleIdDescriptor] --
 COMMENT ON TABLE tx.AuxiliaryRoleIdDescriptor IS 'Descriptor AuxiliaryRoleId is populated from code table C213.';
@@ -84,15 +104,31 @@ COMMENT ON COLUMN tx.BilingualESLProgramReportingPeriodAttendance.RATotalEligBil
 -- Extended Properties [tx].[BudgetExt] --
 COMMENT ON TABLE tx.BudgetExt IS 'The BudgetExtension Domain Entity represents the amount of monies allocated to be spent or received by an education organization as related to a specific account';
 COMMENT ON COLUMN tx.BudgetExt.BeginDate IS 'E3010. BeginDate indicates the month, day, and year for the specified data element becomes true of the student, staff, program, etc.';
+COMMENT ON COLUMN tx.BudgetExt.BudgetFunctionDescriptorId IS 'E0317, C146. Function identifies a general operational area and groups together related activities.';
+COMMENT ON COLUMN tx.BudgetExt.BudgetFundDescriptorId IS 'E0316, C145. Fund identifies the fund group and specific fund (when applicable) for budget data.';
+COMMENT ON COLUMN tx.BudgetExt.BudgetObjectDescriptorId IS 'E0318, C159. Object identifies an account, a transaction, or a source of funds.';
+COMMENT ON COLUMN tx.BudgetExt.BudgetProgramIntentDescriptorId IS 'E0320, C147. ProgramIntent identifies the cost of instruction and other services that are directed toward a particular need of a specific set of students.';
 COMMENT ON COLUMN tx.BudgetExt.EducationOrganizationId IS 'The identifier assigned to an education organization.';
 COMMENT ON COLUMN tx.BudgetExt.FiscalYear IS 'E0974. FiscalYear is the last digit of the fiscal year, e.g., the fiscal year is 6 for the 2015-16 fiscal year.';
-COMMENT ON COLUMN tx.BudgetExt.FunctionDescriptorId IS 'E0317, C146. Function identifies a general operational area and groups together related activities.';
-COMMENT ON COLUMN tx.BudgetExt.FundDescriptorId IS 'E0316, C145. Fund identifies the fund group and specific fund (when applicable) for budget data.';
-COMMENT ON COLUMN tx.BudgetExt.ObjectDescriptorId IS 'E0318, C159. Object identifies an account, a transaction, or a source of funds.';
 COMMENT ON COLUMN tx.BudgetExt.Organization IS 'E0319. Organization identifies the unique organizational unit within the district with which the account is associated.';
-COMMENT ON COLUMN tx.BudgetExt.ProgramIntentDescriptorId IS 'E0320, C147. ProgramIntent identifies the cost of instruction and other services that are directed toward a particular need of a specific set of students.';
 COMMENT ON COLUMN tx.BudgetExt.BudgetAmount IS 'E0321. BudgetAmount indicates the dollar value associated with budget financial account information.';
 COMMENT ON COLUMN tx.BudgetExt.EndDate IS 'E3020. EndDate indicates the month, day, and year for the specified data element becomes false of the student, staff, program, etc.';
+
+-- Extended Properties [tx].[BudgetFunctionDescriptor] --
+COMMENT ON TABLE tx.BudgetFunctionDescriptor IS 'Descriptor Function is populated from Code Table C146B.';
+COMMENT ON COLUMN tx.BudgetFunctionDescriptor.BudgetFunctionDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
+
+-- Extended Properties [tx].[BudgetFundDescriptor] --
+COMMENT ON TABLE tx.BudgetFundDescriptor IS 'Descriptor Fund is populated from Code Table C145B.';
+COMMENT ON COLUMN tx.BudgetFundDescriptor.BudgetFundDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
+
+-- Extended Properties [tx].[BudgetObjectDescriptor] --
+COMMENT ON TABLE tx.BudgetObjectDescriptor IS 'Descriptor Object is populated from Code Table C159B.';
+COMMENT ON COLUMN tx.BudgetObjectDescriptor.BudgetObjectDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
+
+-- Extended Properties [tx].[BudgetProgramIntentDescriptor] --
+COMMENT ON TABLE tx.BudgetProgramIntentDescriptor IS 'Descriptor ProgramIntent is populated from Code Table C147B.';
+COMMENT ON COLUMN tx.BudgetProgramIntentDescriptor.BudgetProgramIntentDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
 
 -- Extended Properties [tx].[CalendarDateExtension] --
 COMMENT ON TABLE tx.CalendarDateExtension IS '';
@@ -117,14 +153,18 @@ COMMENT ON COLUMN tx.CampusEnrollmentTypeDescriptor.CampusEnrollmentTypeDescript
 COMMENT ON TABLE tx.ChildCountFundingDescriptor IS 'Descriptor ChildCountFunding indicates under which federal program the student receiving special education and related services is counted. (C066)';
 COMMENT ON COLUMN tx.ChildCountFundingDescriptor.ChildCountFundingDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
 
+-- Extended Properties [tx].[CIStaffProgramIntentDescriptor] --
+COMMENT ON TABLE tx.CIStaffProgramIntentDescriptor IS 'Descriptor ProgramIntent is populated from Code Table C147C.';
+COMMENT ON COLUMN tx.CIStaffProgramIntentDescriptor.CIStaffProgramIntentDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
+
 -- Extended Properties [tx].[ClassTypeDescriptor] --
 COMMENT ON TABLE tx.ClassTypeDescriptor IS 'Descriptor ClassType is populated from code table C179.';
 COMMENT ON COLUMN tx.ClassTypeDescriptor.ClassTypeDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
 
 -- Extended Properties [tx].[ContractedInstructionalStaffFTEExt] --
 COMMENT ON TABLE tx.ContractedInstructionalStaffFTEExt IS 'The ContractedInstructionalStaffFTEExtension Domain Entity represents financial information for contracted staff by Program Intent Code at the LEA/Campus level.';
+COMMENT ON COLUMN tx.ContractedInstructionalStaffFTEExt.CIStaffProgramIntentDescriptorId IS 'E0320, C147. ProgramIntent identifies the cost of instruction and other services that are directed toward a particular need of a specific set of students.';
 COMMENT ON COLUMN tx.ContractedInstructionalStaffFTEExt.EducationOrganizationId IS 'The identifier assigned to an education organization.';
-COMMENT ON COLUMN tx.ContractedInstructionalStaffFTEExt.ProgramIntentDescriptorId IS 'E0320, C147. ProgramIntent identifies the cost of instruction and other services that are directed toward a particular need of a specific set of students.';
 COMMENT ON COLUMN tx.ContractedInstructionalStaffFTEExt.SchoolId IS 'The identifier assigned to a school.';
 COMMENT ON COLUMN tx.ContractedInstructionalStaffFTEExt.TotalContractedInstrStaffFTE IS 'E0980. TotalContractedInstrStaffFTE is a standard measurement of the portion of professional contracted instructional staff, expressed as a multiple of the standard work day, such as 7.7 FTEs.';
 
@@ -330,14 +370,6 @@ COMMENT ON COLUMN tx.FosterCareTypeDescriptor.FosterCareTypeDescriptorId IS 'A u
 COMMENT ON TABLE tx.FrequencyOfServicesDescriptor IS 'Descriptor FrequencyOfServices identifies the frequency with which a student receives services. (C315)';
 COMMENT ON COLUMN tx.FrequencyOfServicesDescriptor.FrequencyOfServicesDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
 
--- Extended Properties [tx].[FunctionDescriptor] --
-COMMENT ON TABLE tx.FunctionDescriptor IS 'Descriptor Function is populated from Code Table C146.';
-COMMENT ON COLUMN tx.FunctionDescriptor.FunctionDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
-
--- Extended Properties [tx].[FundDescriptor] --
-COMMENT ON TABLE tx.FundDescriptor IS 'Descriptor Fund is populated from Code Table C145.';
-COMMENT ON COLUMN tx.FundDescriptor.FundDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
-
 -- Extended Properties [tx].[GenerationCodeDescriptor] --
 COMMENT ON TABLE tx.GenerationCodeDescriptor IS 'Descriptor GenerationCode is based on Code Table C012';
 COMMENT ON COLUMN tx.GenerationCodeDescriptor.GenerationCodeDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
@@ -405,13 +437,13 @@ COMMENT ON COLUMN tx.MilitaryConnectedStudentDescriptor.MilitaryConnectedStudent
 COMMENT ON TABLE tx.NonCampusBasedInstructionDescriptor IS 'Descriptor NonCampusBasedInstruction is populated by Code Table C182.';
 COMMENT ON COLUMN tx.NonCampusBasedInstructionDescriptor.NonCampusBasedInstructionDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
 
+-- Extended Properties [tx].[NonEnrolledStudentUILActivityDescriptor] --
+COMMENT ON TABLE tx.NonEnrolledStudentUILActivityDescriptor IS 'Descriptor Function is populated from Code Table C234.';
+COMMENT ON COLUMN tx.NonEnrolledStudentUILActivityDescriptor.NonEnrolledStudentUILActivityDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
+
 -- Extended Properties [tx].[NSLPTypeDescriptor] --
 COMMENT ON TABLE tx.NSLPTypeDescriptor IS 'Descriptor NSLPType is populated from code table C212.';
 COMMENT ON COLUMN tx.NSLPTypeDescriptor.NSLPTypeDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
-
--- Extended Properties [tx].[ObjectDescriptor] --
-COMMENT ON TABLE tx.ObjectDescriptor IS 'Descriptor Object is populated from Code Table C159.';
-COMMENT ON COLUMN tx.ObjectDescriptor.ObjectDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
 
 -- Extended Properties [tx].[ParentalPermissionDescriptor] --
 COMMENT ON TABLE tx.ParentalPermissionDescriptor IS 'Descriptor ParentalPermission indicates whether the student''s parent or legal guardian has approved placement of the student in the required bilingual or English as a Second Language (ESL) program. (See 19 TAC §89.1240.) (C093)';
@@ -431,15 +463,31 @@ COMMENT ON TABLE tx.PayrollExt IS 'The PayrollExtension Domain Entity represents
 COMMENT ON COLUMN tx.PayrollExt.BeginDate IS 'E3010. BeginDate indicates the month, day, and year for the specified data element becomes true of the student, staff, program, etc.';
 COMMENT ON COLUMN tx.PayrollExt.EducationOrganizationId IS 'The identifier assigned to an education organization.';
 COMMENT ON COLUMN tx.PayrollExt.FiscalYear IS 'E0974. FiscalYear is the last digit of the fiscal year, e.g., the fiscal year is 4 for the 1993-94 fiscal year.';
-COMMENT ON COLUMN tx.PayrollExt.FunctionDescriptorId IS 'E0317, C146. Function identifies a general operational area and groups together related activities.';
-COMMENT ON COLUMN tx.PayrollExt.FundDescriptorId IS 'E0316, C145. Fund identifies the fund group and specific fund for payroll data.';
-COMMENT ON COLUMN tx.PayrollExt.ObjectDescriptorId IS 'E0318, C159. Object identifies an account, a transaction, or a source of funds.';
 COMMENT ON COLUMN tx.PayrollExt.Organization IS 'E0319. Organization identifies the unique organizational unit within the district with which the account is associated.';
 COMMENT ON COLUMN tx.PayrollExt.PayrollActivityDescriptorId IS 'E0424, C018. PayrollActivity indicates the types of duty for which a staff member receives salary, salary supplements, or bonuses.';
-COMMENT ON COLUMN tx.PayrollExt.ProgramIntentDescriptorId IS 'E0320, C147. ProgramIntent identifies the cost of instruction and other services that are directed toward a particular need of a specific set of students.';
+COMMENT ON COLUMN tx.PayrollExt.PayrollFunctionDescriptorId IS 'E0317, C146. Function identifies a general operational area and groups together related activities.';
+COMMENT ON COLUMN tx.PayrollExt.PayrollFundDescriptorId IS 'E0316, C145. Fund identifies the fund group and specific fund for payroll data.';
+COMMENT ON COLUMN tx.PayrollExt.PayrollObjectDescriptorId IS 'E0318, C159. Object identifies an account, a transaction, or a source of funds.';
+COMMENT ON COLUMN tx.PayrollExt.PayrollProgramIntentDescriptorId IS 'E0320, C147. ProgramIntent identifies the cost of instruction and other services that are directed toward a particular need of a specific set of students.';
 COMMENT ON COLUMN tx.PayrollExt.StaffUSI IS 'A unique alphanumeric code assigned to a staff.';
 COMMENT ON COLUMN tx.PayrollExt.PayrollAmount IS 'E0425. PayrollAmount indicates the dollar value that is paid to a staff member for a given payroll activity per year.';
 COMMENT ON COLUMN tx.PayrollExt.EndDate IS 'E3020. EndDate indicates the month, day, and year for the specified data element becomes false of the student, staff, program, etc.';
+
+-- Extended Properties [tx].[PayrollFunctionDescriptor] --
+COMMENT ON TABLE tx.PayrollFunctionDescriptor IS 'Descriptor Function is populated from Code Table C146P.';
+COMMENT ON COLUMN tx.PayrollFunctionDescriptor.PayrollFunctionDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
+
+-- Extended Properties [tx].[PayrollFundDescriptor] --
+COMMENT ON TABLE tx.PayrollFundDescriptor IS 'Descriptor Fund is populated from Code Table C145P.';
+COMMENT ON COLUMN tx.PayrollFundDescriptor.PayrollFundDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
+
+-- Extended Properties [tx].[PayrollObjectDescriptor] --
+COMMENT ON TABLE tx.PayrollObjectDescriptor IS 'Descriptor Object is populated from Code Table C159P.';
+COMMENT ON COLUMN tx.PayrollObjectDescriptor.PayrollObjectDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
+
+-- Extended Properties [tx].[PayrollProgramIntentDescriptor] --
+COMMENT ON TABLE tx.PayrollProgramIntentDescriptor IS 'Descriptor ProgramIntent is populated from Code Table C147P.';
+COMMENT ON COLUMN tx.PayrollProgramIntentDescriptor.PayrollProgramIntentDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
 
 -- Extended Properties [tx].[PKCurriculaDescriptor] --
 COMMENT ON TABLE tx.PKCurriculaDescriptor IS 'Descriptor PKCurricula indicates curricula used in the district’s prekindergarten program section TEC 29.1532(c)(6). (C206)';
@@ -497,7 +545,7 @@ COMMENT ON COLUMN tx.PriorYearLeaver.StudentId IS 'E0001. StudentId is the stude
 COMMENT ON COLUMN tx.PriorYearLeaver.GenerationCodeDescriptorId IS 'E0706, C012. GenerationCode identifies the generation suffix, if any, which the person attaches to his name.';
 COMMENT ON COLUMN tx.PriorYearLeaver.SexDescriptorId IS 'A person''s gender.';
 COMMENT ON COLUMN tx.PriorYearLeaver.HispanicLatinoEthnicity IS 'E1064. HispanicLatinoEthnicity is an indication that the individual traces his or her origin or descent to Mexico, Puerto Rico, Cuba, Central and South America, and other Spanish cultures, regardless of race. The term, "Spanish origin," can be used in addition to "Hispanic or Latino."';
-COMMENT ON COLUMN tx.PriorYearLeaver.AssociateDegreeIndicator IS 'E1596. AssociateDegreeIndicator indicates that the student earned an associate degree by August 31 immediately following graduation.';
+COMMENT ON COLUMN tx.PriorYearLeaver.AssociateDegreeIndicatorDescriptorId IS 'E1596. AssociateDegreeIndicator indicates that the student earned an associate degree by August 31 immediately following graduation.';
 COMMENT ON COLUMN tx.PriorYearLeaver.FinancialAidApplicationDescriptorId IS 'E1724, C230. The FinancialAidApplication indicates the manner in which the student completed the graduation requirement of either completing a financial aid application (FAFSA or TAFSA) or submitting an exemption.';
 COMMENT ON COLUMN tx.PriorYearLeaver.AsOfStatusLastFridayOctoberDescriptorId IS 'E3007, C324. AsOfStatusLastFridayOctober indicates the student''s status in the district on the last Friday in October in the current school year.';
 COMMENT ON COLUMN tx.PriorYearLeaver.ParentalPermissionDescriptorId IS 'E0896, C093. ParentalPermission indicates whether the student''s parent or legal guardian has approved placement of the student in the required bilingual or English as a Second Language (ESL) program. (See 19 TAC §89.1240.)';
@@ -530,8 +578,6 @@ COMMENT ON COLUMN tx.PriorYearLeaver.BirthCountryDescriptorId IS 'The country in
 COMMENT ON COLUMN tx.PriorYearLeaver.DateEnteredUS IS 'For students born outside of the U.S., the date the student entered the U.S.';
 COMMENT ON COLUMN tx.PriorYearLeaver.MultipleBirthStatus IS 'Indicator of whether the student was born with other siblings (i.e., twins, triplets, etc.)';
 COMMENT ON COLUMN tx.PriorYearLeaver.BirthSexDescriptorId IS 'A person''s gender at birth.';
-COMMENT ON COLUMN tx.PriorYearLeaver.LanguageDescriptorId IS 'E3033, C092. Language indicates the language spoken in the student’s home and the language spoken by the student most of the time, as determined by the student’s home language survey. (see 19 TAC §89.1215).';
-COMMENT ON COLUMN tx.PriorYearLeaver.LanguageUseDescriptorId IS 'E3035, C336. LanguageUse is a description of how the language is used (e.g., Home Language and Student Language).';
 
 -- Extended Properties [tx].[PriorYearLeaverAddress] --
 COMMENT ON TABLE tx.PriorYearLeaverAddress IS 'The set of elements that describes an address, including the street address, city, state, and ZIP code.';
@@ -606,6 +652,19 @@ COMMENT ON COLUMN tx.PriorYearLeaverIndustryBasedCertificationSet.PostSecondaryC
 COMMENT ON COLUMN tx.PriorYearLeaverIndustryBasedCertificationSet.SchoolId IS 'The identifier assigned to a school.';
 COMMENT ON COLUMN tx.PriorYearLeaverIndustryBasedCertificationSet.StudentUId IS 'E1523. StudentUId (StudentUniqueId) is a unique number assigned to a student by the Texas Education Agency.';
 COMMENT ON COLUMN tx.PriorYearLeaverIndustryBasedCertificationSet.IBCExamFeeAmount IS 'E1654. IBCExamFeeAmount identifies the amount of money that was paid for a student''s industry certification exam by the local education agency.';
+
+-- Extended Properties [tx].[PriorYearLeaverLanguage] --
+COMMENT ON TABLE tx.PriorYearLeaverLanguage IS 'E3033, C092. Language indicates the language spoken in the student’s home and the language spoken by the student most of the time, as determined by the student’s home language survey. (see 19 TAC §89.1215).';
+COMMENT ON COLUMN tx.PriorYearLeaverLanguage.LanguageDescriptorId IS 'A specification of which written or spoken communication is being used.';
+COMMENT ON COLUMN tx.PriorYearLeaverLanguage.SchoolId IS 'The identifier assigned to a school.';
+COMMENT ON COLUMN tx.PriorYearLeaverLanguage.StudentUId IS 'E1523. StudentUId (StudentUniqueId) is a unique number assigned to a student by the Texas Education Agency.';
+
+-- Extended Properties [tx].[PriorYearLeaverLanguageUse] --
+COMMENT ON TABLE tx.PriorYearLeaverLanguageUse IS 'A description of how the language is used (e.g. Home Language, Native Language, Spoken Language).';
+COMMENT ON COLUMN tx.PriorYearLeaverLanguageUse.LanguageDescriptorId IS 'A specification of which written or spoken communication is being used.';
+COMMENT ON COLUMN tx.PriorYearLeaverLanguageUse.LanguageUseDescriptorId IS 'A description of how the language is used (e.g. Home Language, Native Language, Spoken Language).';
+COMMENT ON COLUMN tx.PriorYearLeaverLanguageUse.SchoolId IS 'The identifier assigned to a school.';
+COMMENT ON COLUMN tx.PriorYearLeaverLanguageUse.StudentUId IS 'E1523. StudentUId (StudentUniqueId) is a unique number assigned to a student by the Texas Education Agency.';
 
 -- Extended Properties [tx].[PriorYearLeaverParent] --
 COMMENT ON TABLE tx.PriorYearLeaverParent IS 'This entity represents a parent or guardian of a student, such as mother, father, or caretaker, for a prior year leaver.';
@@ -712,10 +771,6 @@ COMMENT ON COLUMN tx.PriorYearLeaverTelephone.TelephoneNumberTypeDescriptorId IS
 COMMENT ON COLUMN tx.PriorYearLeaverTelephone.OrderOfPriority IS 'The order of priority assigned to telephone numbers to define which number to attempt first, second, etc.';
 COMMENT ON COLUMN tx.PriorYearLeaverTelephone.TextMessageCapabilityIndicator IS 'An indication that the telephone number is technically capable of sending and receiving Short Message Service (SMS) text messages.';
 COMMENT ON COLUMN tx.PriorYearLeaverTelephone.DoNotPublishIndicator IS 'An indication that the telephone number should not be published.';
-
--- Extended Properties [tx].[ProgramIntentDescriptor] --
-COMMENT ON TABLE tx.ProgramIntentDescriptor IS 'Descriptor ProgramIntent is populated from Code Table C147.';
-COMMENT ON COLUMN tx.ProgramIntentDescriptor.ProgramIntentDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
 
 -- Extended Properties [tx].[ProgramOfStudyDescriptor] --
 COMMENT ON TABLE tx.ProgramOfStudyDescriptor IS 'Descriptor ProgramOfStudy is populated from code table C220.';
@@ -824,7 +879,7 @@ COMMENT ON COLUMN tx.SectionSet.ChildCareOperationNumber IS 'E1726. ChildCareOpe
 COMMENT ON TABLE tx.SharedServiceArrangementExt IS 'The SharedServiceArrangementExtension Domain Entity represents the sum of the financial transactions to date for shared service arrangements.';
 COMMENT ON COLUMN tx.SharedServiceArrangementExt.EducationOrganizationId IS 'The identifier assigned to an education organization.';
 COMMENT ON COLUMN tx.SharedServiceArrangementExt.FiscalYear IS 'E0974. FiscalYear is the last digit of the fiscal year, e.g., the fiscal year is 4 for the 2013-14 fiscal year.';
-COMMENT ON COLUMN tx.SharedServiceArrangementExt.FundDescriptorId IS 'E0316, C145. Fund identifies the fund group and specific fund (when applicable) for actual financial data.';
+COMMENT ON COLUMN tx.SharedServiceArrangementExt.SSAFundDescriptorId IS 'E0316, C145. Fund identifies the fund group and specific fund (when applicable) for actual financial data.';
 COMMENT ON COLUMN tx.SharedServiceArrangementExt.SSAMemberDistrictId IS 'E0981. SSAMemberDistrictID indicates the county-district number of the school district (as registered with the Texas Education Agency) which is a member district in the shared services arrangement.';
 COMMENT ON COLUMN tx.SharedServiceArrangementExt.SSATypeDescriptorId IS 'E0776, C049. SSAType indicates the type of program or service provided by a shared services arrangement.';
 COMMENT ON COLUMN tx.SharedServiceArrangementExt.ActualAmount IS 'E0774. ActualAmount indicates the dollar value associated with actual financial account information.';
@@ -869,6 +924,10 @@ COMMENT ON COLUMN tx.SpecialProgramsReportingPeriodAttendance.TotalEligResidenti
 COMMENT ON COLUMN tx.SpecialProgramsReportingPeriodAttendance.RSTotalEligResidentialFacilityDaysPresent IS 'E1684. TotalEligResidentialFacilityDaysPresent indicates the total number of days the student was present and eligible for LEA services while living in a Residential Facility during a particular reporting period.';
 COMMENT ON COLUMN tx.SpecialProgramsReportingPeriodAttendance.RATotalEligResidentialFacilityDaysPresent IS 'E1685. RATotalEligResidentialFacilityDaysPresent indicates the total number of days the student was remote asynchronous present and eligible for LEA services in a Residential Facility during a particular reporting period.';
 
+-- Extended Properties [tx].[SSAFundDescriptor] --
+COMMENT ON TABLE tx.SSAFundDescriptor IS 'Descriptor Fund is populated from Code Table C145S.';
+COMMENT ON COLUMN tx.SSAFundDescriptor.SSAFundDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
+
 -- Extended Properties [tx].[SSAOrgAssociationExt] --
 COMMENT ON TABLE tx.SSAOrgAssociationExt IS 'The SSAOrgAssociationExtension Domain Entity identifies the ESC/LEA fiscal agents and the ESC and/or LEA member(s) for each type of shared services arrangement (SSA) that exists among two or more ESCs and or LEAs.';
 COMMENT ON COLUMN tx.SSAOrgAssociationExt.EducationOrganizationId IS 'The identifier assigned to an education organization.';
@@ -899,6 +958,7 @@ COMMENT ON COLUMN tx.StaffEducationOrganizationAssignmentAssociationStaffService
 COMMENT ON COLUMN tx.StaffEducationOrganizationAssignmentAssociationStaffServiceSet.PopulationServedDescriptorId IS 'E0747, C030. identifies the student population for which a student has been designed or is intended. It does not necessarily identify the program eligibility of the students who receive the service.';
 COMMENT ON COLUMN tx.StaffEducationOrganizationAssignmentAssociationStaffServiceSet.MonthlyMinutes IS 'E1057. MonthlyMinutes is the total number of minutes devoted to a particular service in a standard month. A standard month is considered to be the four weeks in October including the PEIMS Fall snapshot date (last Friday in October).';
 COMMENT ON COLUMN tx.StaffEducationOrganizationAssignmentAssociationStaffServiceSet.StaffServiceEndDate IS 'E3061. StaffServiceEndDate indicates the month, day, and year for when the services supplied by the staff becomes false.';
+COMMENT ON COLUMN tx.StaffEducationOrganizationAssignmentAssociationStaffServiceSet.NumberOfStudentsInClass IS 'E0170. NumberOfStudentsInClass indicates the number of students in membership in the class.';
 
 -- Extended Properties [tx].[StaffEducationOrganizationEmploymentAssociationAuxiliary_116d82] --
 COMMENT ON TABLE tx.StaffEducationOrganizationEmploymentAssociationAuxiliary_116d82 IS 'AuxiliaryRoleId with effective dates.';
@@ -947,7 +1007,7 @@ COMMENT ON COLUMN tx.StaffSectionAssociationExtension.SchoolYear IS 'The identif
 COMMENT ON COLUMN tx.StaffSectionAssociationExtension.SectionIdentifier IS 'The local identifier assigned to a section.';
 COMMENT ON COLUMN tx.StaffSectionAssociationExtension.SessionName IS 'The identifier for the calendar for the academic session.';
 COMMENT ON COLUMN tx.StaffSectionAssociationExtension.StaffUSI IS 'A unique alphanumeric code assigned to a staff.';
-COMMENT ON COLUMN tx.StaffSectionAssociationExtension.NumberOfStudentInClass IS 'E0170. NumberOfStudentInClass indicates the number of students in membership in the class.';
+COMMENT ON COLUMN tx.StaffSectionAssociationExtension.NumberOfStudentsInClass IS 'E0170. NumberOfStudentsInClass indicates the number of students in membership in the class.';
 COMMENT ON COLUMN tx.StaffSectionAssociationExtension.MonthlyMinutes IS 'E1057. is the total number of minutes devoted to a particular service in a standard month. A standard month is considered to be the four weeks in October including the PEIMS Fall snapshot date (last Friday in October).';
 COMMENT ON COLUMN tx.StaffSectionAssociationExtension.NumberDaysTaughtWeek1 IS 'E1604. NumberDaysTaughtWeek1 indicates, for a physical education teaching staff responsibility, the number of days in which physical education instruction is provided for each course section by campus during the first week of the 4 weeks in October that includes the last Friday in October.';
 COMMENT ON COLUMN tx.StaffSectionAssociationExtension.NumberDaysTaughtWeek2 IS 'E1605. NumberDaysTaughtWeek2 indicates, for a physical education teaching staff responsibility, the number of days in which physical education instruction is provided for each course section by campus during the first week of the 4 weeks in October that includes the last Friday in October.';
@@ -1026,7 +1086,7 @@ COMMENT ON COLUMN tx.StudentAcademicRecordExtension.SchoolYear IS 'The identifie
 COMMENT ON COLUMN tx.StudentAcademicRecordExtension.StudentUSI IS 'A unique alphanumeric code assigned to a student.';
 COMMENT ON COLUMN tx.StudentAcademicRecordExtension.TermDescriptorId IS 'The term for the session during the school year.';
 COMMENT ON COLUMN tx.StudentAcademicRecordExtension.IndividualGraduationCommitteeReview IS 'E1563. IndividualGraduationCommitteeReview indicates whether an IGC has been established for a student regardless of which graduation program type is being pursued.  This is collected for students in grades 11 and 12.';
-COMMENT ON COLUMN tx.StudentAcademicRecordExtension.AssociateDegreeIndicator IS 'E1596. AssociateDegreeIndicator indicates that the student earned an associate degree prior to graduation from high school. ';
+COMMENT ON COLUMN tx.StudentAcademicRecordExtension.AssociateDegreeIndicatorDescriptorId IS 'E1596. AssociateDegreeIndicator indicates that the student earned an associate degree prior to graduation from high school. ';
 COMMENT ON COLUMN tx.StudentAcademicRecordExtension.FHSPParticipant IS 'E3030. FHSPParticipant indicates whether a student is currently enrolled in the Foundation High School Program.';
 COMMENT ON COLUMN tx.StudentAcademicRecordExtension.FHSPDistingLevelParticipant IS 'E3029. FHSPDistingLevelParticipant indicates whether a student is currently pursuing or has successfully completed the distinguished level of achievement under the Foundation High School Program as provided by TEC 28.025 (b-15).';
 
@@ -1106,6 +1166,7 @@ COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationDyslexiaRiskSet.Begi
 COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationDyslexiaRiskSet.EducationOrganizationId IS 'The identifier assigned to an education organization.';
 COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationDyslexiaRiskSet.StudentUSI IS 'A unique alphanumeric code assigned to a student.';
 COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationDyslexiaRiskSet.DyslexiaRiskDescriptorId IS 'E1644, C222. Descriptor DyslexiaRisk';
+COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationDyslexiaRiskSet.DyslexiaScreeningExceptionReasonDescriptorId IS 'E1732, C231. DyslexiaScreeningExceptionReason indicates the reason a student in kindergarten or first grade was not screened for dyslexia or related disorders during the dyslexia screening window.';
 COMMENT ON COLUMN tx.StudentEducationOrganizationAssociationDyslexiaRiskSet.EndDate IS 'End date of the effecive date for the DyslexiaRisk';
 
 -- Extended Properties [tx].[StudentEducationOrganizationAssociationDyslexiaServicesSet] --
@@ -1240,6 +1301,11 @@ COMMENT ON COLUMN tx.StudentLanguageInstructionProgramAssociationParentalPerm_71
 COMMENT ON COLUMN tx.StudentLanguageInstructionProgramAssociationParentalPerm_710c81.ParentalPermissionDescriptorId IS 'E0896, C093. ParentalPermission indicates whether the student''s parent or legal guardian has approved placement of the student in the required bilingual or English as a Second Language (ESL) program. (See 19 TAC §89.1240.)';
 COMMENT ON COLUMN tx.StudentLanguageInstructionProgramAssociationParentalPerm_710c81.ParentalPermissionSetEndDate IS 'E3043. ParentalPermissionSetEndDate indicates the month, day, and year when the student no longer participates in the required bilingual or English as a Second Language (ESL) program. (See 19 TAC§89.1240.)';
 
+-- Extended Properties [tx].[StudentNonEnrolledStudentUILActivity] --
+COMMENT ON TABLE tx.StudentNonEnrolledStudentUILActivity IS 'E1739. NonEnrolledStudentUILActivity indicates the University Interscholastic League (UIL) activity in which a non-enrolled student participated at a school district that allows participation of non-enrolled students under Section 33.0832.';
+COMMENT ON COLUMN tx.StudentNonEnrolledStudentUILActivity.NonEnrolledStudentUILActivityDescriptorId IS 'E1739. NonEnrolledStudentUILActivity indicates the University Interscholastic League (UIL) activity in which a non-enrolled student participated at a school district that allows participation of non-enrolled students under Section 33.0832.';
+COMMENT ON COLUMN tx.StudentNonEnrolledStudentUILActivity.StudentUSI IS 'A unique alphanumeric code assigned to a student.';
+
 -- Extended Properties [tx].[StudentProgramAttendanceEventExtension] --
 COMMENT ON TABLE tx.StudentProgramAttendanceEventExtension IS '';
 COMMENT ON COLUMN tx.StudentProgramAttendanceEventExtension.AttendanceEventCategoryDescriptorId IS 'A code describing the attendance event, for example:
@@ -1275,6 +1341,8 @@ COMMENT ON COLUMN tx.StudentSchoolAssociationExtension.StudentAttributionDescrip
 - is a child of a charter school employee (LEA or Campus); or
 - student-initiated transfer due to remote learning.';
 COMMENT ON COLUMN tx.StudentSchoolAssociationExtension.EnrollmentTrackingVerificationDescriptorId IS 'E3080, C351. The EnrollmentTrackingVerification indicates the status of the enrollment event.';
+COMMENT ON COLUMN tx.StudentSchoolAssociationExtension.CampusIdOfResidence IS 'E0903. CampusIdOfResidence indicates the unique campus identification number corresponding to the campus attendance area in which the student currently resides.';
+COMMENT ON COLUMN tx.StudentSchoolAssociationExtension.CampusIdOfAccountability IS 'E1027. CampusIdOfAccountability indicates the unique campus identification number to which a student’s attendance and/or leaver accountability data are attributed for campus accountability purposes.';
 
 -- Extended Properties [tx].[StudentSectionAssociationExtension] --
 COMMENT ON TABLE tx.StudentSectionAssociationExtension IS '';
