@@ -17,14 +17,33 @@ namespace EdFi.Ods.WebApi
 {
     public class Program
     {
+        private const string AppConfigurationConnectionStringEnvVarName = "AppConfigurationConnectionString";
+        private const string AppConfigurationSentinalKeyEnvVarName = "AppConfigurationSentinalKey";
+        private const string AppConfigurationMultiTenantKeyEnvVarName = "AppConfigurationMultiTenantKey";
         public static async Task Main(string[] args)
         {
+            string appConfigurationConnectionString = Environment.GetEnvironmentVariable(AppConfigurationConnectionStringEnvVarName);
+            string appConfigurationSentinalKey = Environment.GetEnvironmentVariable(AppConfigurationSentinalKeyEnvVarName);
+            string appConfigurationMultiTenantKey = Environment.GetEnvironmentVariable(AppConfigurationMultiTenantKeyEnvVarName);
+
+
             AssemblyLoaderHelper.LoadAssembliesFromExecutingFolder();
 
             var hostBuilder = Host.CreateDefaultBuilder(args)
                 .ConfigureLogging(ConfigureLogging)
                 .UseServiceProviderFactory(new AutofacServiceProviderFactory())
-                .ConfigureWebHostDefaults(
+                .ConfigureAppConfiguration(c =>
+                {
+                    c.AddAzureAppConfiguration(options =>
+                    {
+                        options.Connect(appConfigurationConnectionString)
+                        .Select(appConfigurationMultiTenantKey)
+                        .ConfigureRefresh(refresh => refresh.Register(appConfigurationSentinalKey, refreshAll: true)
+                        );
+                    });
+                });
+
+            hostBuilder.ConfigureWebHostDefaults(
                     webBuilder =>
                     {
                         webBuilder.ConfigureKestrel(
@@ -63,7 +82,7 @@ namespace EdFi.Ods.WebApi
                 {
                     try
                     {
-                        var plugin = (IPlugin) Activator.CreateInstance(pluginType);
+                        var plugin = (IPlugin)Activator.CreateInstance(pluginType);
                         plugin.ConfigureHost(hostBuilder);
                     }
                     catch (Exception ex)
