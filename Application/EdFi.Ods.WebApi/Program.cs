@@ -17,16 +17,8 @@ namespace EdFi.Ods.WebApi
 {
     public class Program
     {
-        private const string AppConfigurationConnectionStringEnvVarName = "AppConfigurationConnectionString";
-        private const string AppConfigurationSentinalKeyEnvVarName = "AppConfigurationSentinalKey";
-        private const string AppConfigurationMultiTenantKeyEnvVarName = "AppConfigurationMultiTenantKey";
         public static async Task Main(string[] args)
         {
-            string appConfigurationConnectionString = Environment.GetEnvironmentVariable(AppConfigurationConnectionStringEnvVarName);
-            string appConfigurationSentinalKey = Environment.GetEnvironmentVariable(AppConfigurationSentinalKeyEnvVarName);
-            string appConfigurationMultiTenantKey = Environment.GetEnvironmentVariable(AppConfigurationMultiTenantKeyEnvVarName);
-
-
             AssemblyLoaderHelper.LoadAssembliesFromExecutingFolder();
 
             var hostBuilder = Host.CreateDefaultBuilder(args)
@@ -34,12 +26,18 @@ namespace EdFi.Ods.WebApi
                 .UseServiceProviderFactory(new AutofacServiceProviderFactory())
                 .ConfigureAppConfiguration(c =>
                 {
+                    // Make configuration values accessible now
+                    var configuration = c.Build();
+                    string appConfigurationConnectionString = configuration["ApiSettings:Services:AzureAppConfiguration:ConnectionString"];
+                    string appConfigurationMultiTenantKey = configuration["ApiSettings:Services:AzureAppConfiguration:MultiTenantKey"];
+                    string appConfigurationSentinelKey = configuration["ApiSettings:Services:AzureAppConfiguration:SentinelKey"];
+
                     c.AddAzureAppConfiguration(options =>
                     {
                         options.Connect(appConfigurationConnectionString)
-                        .Select(appConfigurationMultiTenantKey)
-                        .ConfigureRefresh(refresh => refresh.Register(appConfigurationSentinalKey, refreshAll: true)
-                        );
+                            .Select(appConfigurationMultiTenantKey)
+                            .ConfigureRefresh(refresh => refresh.Register(appConfigurationSentinelKey, refreshAll: true)
+                            );
                     });
                 });
 
