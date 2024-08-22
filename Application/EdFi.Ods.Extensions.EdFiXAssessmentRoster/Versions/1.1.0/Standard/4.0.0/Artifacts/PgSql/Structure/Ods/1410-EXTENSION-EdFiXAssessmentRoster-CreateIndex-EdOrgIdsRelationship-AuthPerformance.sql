@@ -1,0 +1,6 @@
+
+CREATE INDEX IF NOT EXISTS IX_StudentAssessmentRegistration_AssigningEducationOrganizationId ON edfixassessmentroster.StudentAssessmentRegistration(AssigningEducationOrganizationId) INCLUDE (Id);
+
+CREATE INDEX IF NOT EXISTS IX_StudentAssessmentRegistration_EducationOrganizationId ON edfixassessmentroster.StudentAssessmentRegistration(EducationOrganizationId) INCLUDE (Id);
+
+CREATE INDEX IF NOT EXISTS IX_StudentAssessmentRegistration_SchoolId ON edfixassessmentroster.StudentAssessmentRegistration(SchoolId) INCLUDE (Id);
