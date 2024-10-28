@@ -1,5 +1,5 @@
 {
-  "EnableOwnershipBasedAuthorization": true,
+  "EnableOwnershipBasedAuthorization": false,
   "Vendors": [
     {
       "TenantIdentifier": "Tenant1",

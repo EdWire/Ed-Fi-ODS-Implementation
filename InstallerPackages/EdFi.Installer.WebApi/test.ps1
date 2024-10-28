@@ -181,7 +181,7 @@ function Invoke-FeatureOverride {
                 profiles = $false
                 identityManagement = $false
                 extensions = $false
-                ownershipBasedAuthorization = $true
+                ownershipBasedAuthorization = $false
                 uniqueIdValidation = $true
             }
         }

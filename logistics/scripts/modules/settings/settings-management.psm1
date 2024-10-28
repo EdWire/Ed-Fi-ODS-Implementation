@@ -802,10 +802,10 @@ function Get-DefaultFeatures() {
             @{ Name = 'Profiles'; IsEnabled=$true }
             @{ Name = 'ChangeQueries'; IsEnabled=$true }
             @{ Name = 'IdentityManagement'; IsEnabled=$false }
-            @{ Name = 'OwnershipBasedAuthorization'; IsEnabled=$true }
+            @{ Name = 'OwnershipBasedAuthorization'; IsEnabled=$false }
             @{ Name = 'UniqueIdValidation'; IsEnabled=$false }
             @{ Name = 'XsdMetadata'; IsEnabled=$true }
-            @{ Name = 'MultiTenancy'; IsEnabled=$false }
+            @{ Name = 'MultiTenancy'; IsEnabled=$true }
         )
     }
 }

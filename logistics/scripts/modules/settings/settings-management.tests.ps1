@@ -69,7 +69,7 @@ Describe 'Get-FeatureSubTypesFromSettings' {
             ApiSettings = @{
                 Features = @(
                     @{ Name = 'ChangeQueries'; IsEnabled = $true; }
-                    @{ Name = 'OwnershipBasedAuthorization'; IsEnabled = $true; }
+                    @{ Name = 'OwnershipBasedAuthorization'; IsEnabled = $false; }
                 )
             }
         }
@@ -86,7 +86,7 @@ Describe 'Get-FeatureSubTypesFromSettings' {
                 Features = @(
                     @{ Name = 'Unknown'; IsEnabled = $true; }
                     @{ Name = 'ChangeQueries'; IsEnabled = $true; }
-                    @{ Name = 'OwnershipBasedAuthorization'; IsEnabled = $true; }
+                    @{ Name = 'OwnershipBasedAuthorization'; IsEnabled = $false; }
                 )
             }
         }
@@ -102,7 +102,7 @@ Describe 'Get-FeatureSubTypesFromSettings' {
             ApiSettings = @{
                 Features = @(
                     @{ Name = 'ChangeQueries'; IsEnabled = $false; }
-                    @{ Name = 'OwnershipBasedAuthorization'; IsEnabled = $true; }
+                    @{ Name = 'OwnershipBasedAuthorization'; IsEnabled = $false; }
                 )
             }
         }
