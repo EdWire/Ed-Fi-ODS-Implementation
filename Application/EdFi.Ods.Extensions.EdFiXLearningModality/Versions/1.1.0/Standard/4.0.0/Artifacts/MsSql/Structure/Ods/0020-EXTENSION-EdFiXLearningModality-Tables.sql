@@ -33,6 +33,6 @@ CREATE TABLE [edfixlearningmodality].[ProgramLearningModality] (
     ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [edfixlearningmodality].[ProgramLearningModality] ADD CONSTRAINT [ProgramLearningModality_DF_CreateDate] DEFAULT (getdate()) FOR [CreateDate]
+ALTER TABLE [edfixlearningmodality].[ProgramLearningModality] ADD CONSTRAINT [ProgramLearningModality_DF_CreateDate] DEFAULT (getutcdate()) FOR [CreateDate]
 GO
 

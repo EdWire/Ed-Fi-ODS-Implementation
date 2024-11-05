@@ -16,11 +16,11 @@ CREATE TABLE [edfixassessmentroster].[AssessmentAdministration] (
     ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [edfixassessmentroster].[AssessmentAdministration] ADD CONSTRAINT [AssessmentAdministration_DF_CreateDate] DEFAULT (getdate()) FOR [CreateDate]
+ALTER TABLE [edfixassessmentroster].[AssessmentAdministration] ADD CONSTRAINT [AssessmentAdministration_DF_CreateDate] DEFAULT (getutcdate()) FOR [CreateDate]
 GO
 ALTER TABLE [edfixassessmentroster].[AssessmentAdministration] ADD CONSTRAINT [AssessmentAdministration_DF_Id] DEFAULT (newid()) FOR [Id]
 GO
-ALTER TABLE [edfixassessmentroster].[AssessmentAdministration] ADD CONSTRAINT [AssessmentAdministration_DF_LastModifiedDate] DEFAULT (getdate()) FOR [LastModifiedDate]
+ALTER TABLE [edfixassessmentroster].[AssessmentAdministration] ADD CONSTRAINT [AssessmentAdministration_DF_LastModifiedDate] DEFAULT (getutcdate()) FOR [LastModifiedDate]
 GO
 
 -- Table [edfixassessmentroster].[AssessmentAdministrationContact] --
@@ -45,7 +45,7 @@ CREATE TABLE [edfixassessmentroster].[AssessmentAdministrationContact] (
     ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [edfixassessmentroster].[AssessmentAdministrationContact] ADD CONSTRAINT [AssessmentAdministrationContact_DF_CreateDate] DEFAULT (getdate()) FOR [CreateDate]
+ALTER TABLE [edfixassessmentroster].[AssessmentAdministrationContact] ADD CONSTRAINT [AssessmentAdministrationContact_DF_CreateDate] DEFAULT (getutcdate()) FOR [CreateDate]
 GO
 
 -- Table [edfixassessmentroster].[AssessmentAdministrationPeriod] --
@@ -66,7 +66,7 @@ CREATE TABLE [edfixassessmentroster].[AssessmentAdministrationPeriod] (
     ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [edfixassessmentroster].[AssessmentAdministrationPeriod] ADD CONSTRAINT [AssessmentAdministrationPeriod_DF_CreateDate] DEFAULT (getdate()) FOR [CreateDate]
+ALTER TABLE [edfixassessmentroster].[AssessmentAdministrationPeriod] ADD CONSTRAINT [AssessmentAdministrationPeriod_DF_CreateDate] DEFAULT (getutcdate()) FOR [CreateDate]
 GO
 
 -- Table [edfixassessmentroster].[StudentAssessmentRegistration] --
@@ -96,11 +96,11 @@ CREATE TABLE [edfixassessmentroster].[StudentAssessmentRegistration] (
     ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [edfixassessmentroster].[StudentAssessmentRegistration] ADD CONSTRAINT [StudentAssessmentRegistration_DF_CreateDate] DEFAULT (getdate()) FOR [CreateDate]
+ALTER TABLE [edfixassessmentroster].[StudentAssessmentRegistration] ADD CONSTRAINT [StudentAssessmentRegistration_DF_CreateDate] DEFAULT (getutcdate()) FOR [CreateDate]
 GO
 ALTER TABLE [edfixassessmentroster].[StudentAssessmentRegistration] ADD CONSTRAINT [StudentAssessmentRegistration_DF_Id] DEFAULT (newid()) FOR [Id]
 GO
-ALTER TABLE [edfixassessmentroster].[StudentAssessmentRegistration] ADD CONSTRAINT [StudentAssessmentRegistration_DF_LastModifiedDate] DEFAULT (getdate()) FOR [LastModifiedDate]
+ALTER TABLE [edfixassessmentroster].[StudentAssessmentRegistration] ADD CONSTRAINT [StudentAssessmentRegistration_DF_LastModifiedDate] DEFAULT (getutcdate()) FOR [LastModifiedDate]
 GO
 
 -- Table [edfixassessmentroster].[StudentAssessmentRegistrationAssessmentCustomization] --
@@ -125,6 +125,6 @@ CREATE TABLE [edfixassessmentroster].[StudentAssessmentRegistrationAssessmentCus
     ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [edfixassessmentroster].[StudentAssessmentRegistrationAssessmentCustomization] ADD CONSTRAINT [StudentAssessmentRegistrationAssessmentCustomization_DF_CreateDate] DEFAULT (getdate()) FOR [CreateDate]
+ALTER TABLE [edfixassessmentroster].[StudentAssessmentRegistrationAssessmentCustomization] ADD CONSTRAINT [StudentAssessmentRegistrationAssessmentCustomization_DF_CreateDate] DEFAULT (getutcdate()) FOR [CreateDate]
 GO
 

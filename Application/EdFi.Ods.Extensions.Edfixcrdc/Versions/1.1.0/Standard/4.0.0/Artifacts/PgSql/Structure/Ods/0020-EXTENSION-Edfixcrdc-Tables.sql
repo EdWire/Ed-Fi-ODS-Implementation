@@ -20,9 +20,9 @@ CREATE TABLE edfixcrdc.ClassGroup (
     Id UUID NOT NULL,
     CONSTRAINT ClassGroup_PK PRIMARY KEY (ClassGroupName, CommunityProviderId, CommunityProviderLocationId, SpecialNeedsProvidedIndicator)
 );
-ALTER TABLE edfixcrdc.ClassGroup ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+ALTER TABLE edfixcrdc.ClassGroup ALTER COLUMN CreateDate SET DEFAULT current_timestamp AT TIME ZONE 'UTC';
 ALTER TABLE edfixcrdc.ClassGroup ALTER COLUMN Id SET DEFAULT gen_random_uuid();
-ALTER TABLE edfixcrdc.ClassGroup ALTER COLUMN LastModifiedDate SET DEFAULT current_timestamp;
+ALTER TABLE edfixcrdc.ClassGroup ALTER COLUMN LastModifiedDate SET DEFAULT current_timestamp AT TIME ZONE 'UTC';
 
 -- Table edfixcrdc.ClassGroupCourse --
 CREATE TABLE edfixcrdc.ClassGroupCourse (
@@ -35,7 +35,7 @@ CREATE TABLE edfixcrdc.ClassGroupCourse (
     CreateDate TIMESTAMP NOT NULL,
     CONSTRAINT ClassGroupCourse_PK PRIMARY KEY (ClassGroupName, CommunityProviderId, CommunityProviderLocationId, SpecialNeedsProvidedIndicator, CourseCode, EducationOrganizationId)
 );
-ALTER TABLE edfixcrdc.ClassGroupCourse ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+ALTER TABLE edfixcrdc.ClassGroupCourse ALTER COLUMN CreateDate SET DEFAULT current_timestamp AT TIME ZONE 'UTC';
 
 -- Table edfixcrdc.ClassGroupMeetingTime --
 CREATE TABLE edfixcrdc.ClassGroupMeetingTime (
@@ -49,7 +49,7 @@ CREATE TABLE edfixcrdc.ClassGroupMeetingTime (
     CreateDate TIMESTAMP NOT NULL,
     CONSTRAINT ClassGroupMeetingTime_PK PRIMARY KEY (ClassGroupName, CommunityProviderId, CommunityProviderLocationId, SpecialNeedsProvidedIndicator, MeetingDayDescriptorId, StartTime, StopTime)
 );
-ALTER TABLE edfixcrdc.ClassGroupMeetingTime ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+ALTER TABLE edfixcrdc.ClassGroupMeetingTime ALTER COLUMN CreateDate SET DEFAULT current_timestamp AT TIME ZONE 'UTC';
 
 -- Table edfixcrdc.CommunityProviderLocation --
 CREATE TABLE edfixcrdc.CommunityProviderLocation (
@@ -77,9 +77,9 @@ CREATE TABLE edfixcrdc.CommunityProviderLocation (
     Id UUID NOT NULL,
     CONSTRAINT CommunityProviderLocation_PK PRIMARY KEY (CommunityProviderId, CommunityProviderLocationId)
 );
-ALTER TABLE edfixcrdc.CommunityProviderLocation ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+ALTER TABLE edfixcrdc.CommunityProviderLocation ALTER COLUMN CreateDate SET DEFAULT current_timestamp AT TIME ZONE 'UTC';
 ALTER TABLE edfixcrdc.CommunityProviderLocation ALTER COLUMN Id SET DEFAULT gen_random_uuid();
-ALTER TABLE edfixcrdc.CommunityProviderLocation ALTER COLUMN LastModifiedDate SET DEFAULT current_timestamp;
+ALTER TABLE edfixcrdc.CommunityProviderLocation ALTER COLUMN LastModifiedDate SET DEFAULT current_timestamp AT TIME ZONE 'UTC';
 
 -- Table edfixcrdc.CommunityProviderLocationInstructionalCalendar --
 CREATE TABLE edfixcrdc.CommunityProviderLocationInstructionalCalendar (
@@ -92,7 +92,7 @@ CREATE TABLE edfixcrdc.CommunityProviderLocationInstructionalCalendar (
     CreateDate TIMESTAMP NOT NULL,
     CONSTRAINT CommunityProviderLocationInstructionalCalendar_PK PRIMARY KEY (CommunityProviderId, CommunityProviderLocationId)
 );
-ALTER TABLE edfixcrdc.CommunityProviderLocationInstructionalCalendar ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+ALTER TABLE edfixcrdc.CommunityProviderLocationInstructionalCalendar ALTER COLUMN CreateDate SET DEFAULT current_timestamp AT TIME ZONE 'UTC';
 
 -- Table edfixcrdc.MeetingDayDescriptor --
 CREATE TABLE edfixcrdc.MeetingDayDescriptor (
@@ -115,7 +115,7 @@ CREATE TABLE edfixcrdc.ProgramExtension (
     CreateDate TIMESTAMP NOT NULL,
     CONSTRAINT ProgramExtension_PK PRIMARY KEY (EducationOrganizationId, ProgramName, ProgramTypeDescriptorId)
 );
-ALTER TABLE edfixcrdc.ProgramExtension ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+ALTER TABLE edfixcrdc.ProgramExtension ALTER COLUMN CreateDate SET DEFAULT current_timestamp AT TIME ZONE 'UTC';
 
 -- Table edfixcrdc.RestraintCategoryDescriptor --
 CREATE TABLE edfixcrdc.RestraintCategoryDescriptor (
@@ -132,7 +132,7 @@ CREATE TABLE edfixcrdc.RestraintEventRestraintCategory (
     CreateDate TIMESTAMP NOT NULL,
     CONSTRAINT RestraintEventRestraintCategory_PK PRIMARY KEY (RestraintEventIdentifier, SchoolId, StudentUSI, RestraintCategoryDescriptorId)
 );
-ALTER TABLE edfixcrdc.RestraintEventRestraintCategory ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+ALTER TABLE edfixcrdc.RestraintEventRestraintCategory ALTER COLUMN CreateDate SET DEFAULT current_timestamp AT TIME ZONE 'UTC';
 
 -- Table edfixcrdc.SchoolExtension --
 CREATE TABLE edfixcrdc.SchoolExtension (
@@ -142,7 +142,7 @@ CREATE TABLE edfixcrdc.SchoolExtension (
     CreateDate TIMESTAMP NOT NULL,
     CONSTRAINT SchoolExtension_PK PRIMARY KEY (SchoolId)
 );
-ALTER TABLE edfixcrdc.SchoolExtension ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+ALTER TABLE edfixcrdc.SchoolExtension ALTER COLUMN CreateDate SET DEFAULT current_timestamp AT TIME ZONE 'UTC';
 
 -- Table edfixcrdc.SchoolTechnology --
 CREATE TABLE edfixcrdc.SchoolTechnology (
@@ -155,7 +155,7 @@ CREATE TABLE edfixcrdc.SchoolTechnology (
     CreateDate TIMESTAMP NOT NULL,
     CONSTRAINT SchoolTechnology_PK PRIMARY KEY (SchoolId)
 );
-ALTER TABLE edfixcrdc.SchoolTechnology ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+ALTER TABLE edfixcrdc.SchoolTechnology ALTER COLUMN CreateDate SET DEFAULT current_timestamp AT TIME ZONE 'UTC';
 
 -- Table edfixcrdc.StudentClassGroupAssociation --
 CREATE TABLE edfixcrdc.StudentClassGroupAssociation (
@@ -173,9 +173,9 @@ CREATE TABLE edfixcrdc.StudentClassGroupAssociation (
     Id UUID NOT NULL,
     CONSTRAINT StudentClassGroupAssociation_PK PRIMARY KEY (BeginDate, ClassGroupName, CommunityProviderId, CommunityProviderLocationId, SpecialNeedsProvidedIndicator, StudentUSI)
 );
-ALTER TABLE edfixcrdc.StudentClassGroupAssociation ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+ALTER TABLE edfixcrdc.StudentClassGroupAssociation ALTER COLUMN CreateDate SET DEFAULT current_timestamp AT TIME ZONE 'UTC';
 ALTER TABLE edfixcrdc.StudentClassGroupAssociation ALTER COLUMN Id SET DEFAULT gen_random_uuid();
-ALTER TABLE edfixcrdc.StudentClassGroupAssociation ALTER COLUMN LastModifiedDate SET DEFAULT current_timestamp;
+ALTER TABLE edfixcrdc.StudentClassGroupAssociation ALTER COLUMN LastModifiedDate SET DEFAULT current_timestamp AT TIME ZONE 'UTC';
 
 -- Table edfixcrdc.StudentCommunityProviderLocationAssociation --
 CREATE TABLE edfixcrdc.StudentCommunityProviderLocationAssociation (
@@ -192,9 +192,9 @@ CREATE TABLE edfixcrdc.StudentCommunityProviderLocationAssociation (
     Id UUID NOT NULL,
     CONSTRAINT StudentCommunityProviderLocationAssociation_PK PRIMARY KEY (BeginDate, CommunityProviderId, CommunityProviderLocationId, StudentUSI)
 );
-ALTER TABLE edfixcrdc.StudentCommunityProviderLocationAssociation ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+ALTER TABLE edfixcrdc.StudentCommunityProviderLocationAssociation ALTER COLUMN CreateDate SET DEFAULT current_timestamp AT TIME ZONE 'UTC';
 ALTER TABLE edfixcrdc.StudentCommunityProviderLocationAssociation ALTER COLUMN Id SET DEFAULT gen_random_uuid();
-ALTER TABLE edfixcrdc.StudentCommunityProviderLocationAssociation ALTER COLUMN LastModifiedDate SET DEFAULT current_timestamp;
+ALTER TABLE edfixcrdc.StudentCommunityProviderLocationAssociation ALTER COLUMN LastModifiedDate SET DEFAULT current_timestamp AT TIME ZONE 'UTC';
 
 -- Table edfixcrdc.UngradedDetailDescriptor --
 CREATE TABLE edfixcrdc.UngradedDetailDescriptor (

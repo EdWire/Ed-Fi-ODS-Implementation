@@ -21,5 +21,5 @@ CREATE TABLE edfixlearningmodality.ProgramLearningModality (
     CreateDate TIMESTAMP NOT NULL,
     CONSTRAINT ProgramLearningModality_PK PRIMARY KEY (EducationOrganizationId, ProgramName, ProgramTypeDescriptorId, ModalityTypeDescriptorId)
 );
-ALTER TABLE edfixlearningmodality.ProgramLearningModality ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+ALTER TABLE edfixlearningmodality.ProgramLearningModality ALTER COLUMN CreateDate SET DEFAULT current_timestamp AT TIME ZONE 'UTC';
 

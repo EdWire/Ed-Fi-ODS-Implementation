@@ -10,9 +10,9 @@ CREATE TABLE edfixassessmentroster.AssessmentAdministration (
     Id UUID NOT NULL,
     CONSTRAINT AssessmentAdministration_PK PRIMARY KEY (AdministrationIdentifier, AssessmentIdentifier, AssigningEducationOrganizationId, Namespace)
 );
-ALTER TABLE edfixassessmentroster.AssessmentAdministration ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+ALTER TABLE edfixassessmentroster.AssessmentAdministration ALTER COLUMN CreateDate SET DEFAULT current_timestamp AT TIME ZONE 'UTC';
 ALTER TABLE edfixassessmentroster.AssessmentAdministration ALTER COLUMN Id SET DEFAULT gen_random_uuid();
-ALTER TABLE edfixassessmentroster.AssessmentAdministration ALTER COLUMN LastModifiedDate SET DEFAULT current_timestamp;
+ALTER TABLE edfixassessmentroster.AssessmentAdministration ALTER COLUMN LastModifiedDate SET DEFAULT current_timestamp AT TIME ZONE 'UTC';
 
 -- Table edfixassessmentroster.AssessmentAdministrationContact --
 CREATE TABLE edfixassessmentroster.AssessmentAdministrationContact (
@@ -28,7 +28,7 @@ CREATE TABLE edfixassessmentroster.AssessmentAdministrationContact (
     CreateDate TIMESTAMP NOT NULL,
     CONSTRAINT AssessmentAdministrationContact_PK PRIMARY KEY (AdministrationIdentifier, AssessmentIdentifier, AssigningEducationOrganizationId, Namespace, EducationOrganizationId, ElectronicMailAddress)
 );
-ALTER TABLE edfixassessmentroster.AssessmentAdministrationContact ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+ALTER TABLE edfixassessmentroster.AssessmentAdministrationContact ALTER COLUMN CreateDate SET DEFAULT current_timestamp AT TIME ZONE 'UTC';
 
 -- Table edfixassessmentroster.AssessmentAdministrationPeriod --
 CREATE TABLE edfixassessmentroster.AssessmentAdministrationPeriod (
@@ -41,7 +41,7 @@ CREATE TABLE edfixassessmentroster.AssessmentAdministrationPeriod (
     CreateDate TIMESTAMP NOT NULL,
     CONSTRAINT AssessmentAdministrationPeriod_PK PRIMARY KEY (AdministrationIdentifier, AssessmentIdentifier, AssigningEducationOrganizationId, Namespace, BeginDate)
 );
-ALTER TABLE edfixassessmentroster.AssessmentAdministrationPeriod ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+ALTER TABLE edfixassessmentroster.AssessmentAdministrationPeriod ALTER COLUMN CreateDate SET DEFAULT current_timestamp AT TIME ZONE 'UTC';
 
 -- Table edfixassessmentroster.StudentAssessmentRegistration --
 CREATE TABLE edfixassessmentroster.StudentAssessmentRegistration (
@@ -62,9 +62,9 @@ CREATE TABLE edfixassessmentroster.StudentAssessmentRegistration (
     Id UUID NOT NULL,
     CONSTRAINT StudentAssessmentRegistration_PK PRIMARY KEY (AdministrationIdentifier, AssessmentIdentifier, AssigningEducationOrganizationId, EducationOrganizationId, Namespace, StudentUSI)
 );
-ALTER TABLE edfixassessmentroster.StudentAssessmentRegistration ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+ALTER TABLE edfixassessmentroster.StudentAssessmentRegistration ALTER COLUMN CreateDate SET DEFAULT current_timestamp AT TIME ZONE 'UTC';
 ALTER TABLE edfixassessmentroster.StudentAssessmentRegistration ALTER COLUMN Id SET DEFAULT gen_random_uuid();
-ALTER TABLE edfixassessmentroster.StudentAssessmentRegistration ALTER COLUMN LastModifiedDate SET DEFAULT current_timestamp;
+ALTER TABLE edfixassessmentroster.StudentAssessmentRegistration ALTER COLUMN LastModifiedDate SET DEFAULT current_timestamp AT TIME ZONE 'UTC';
 
 -- Table edfixassessmentroster.StudentAssessmentRegistrationAssessmentCustomization --
 CREATE TABLE edfixassessmentroster.StudentAssessmentRegistrationAssessmentCustomization (
@@ -79,5 +79,5 @@ CREATE TABLE edfixassessmentroster.StudentAssessmentRegistrationAssessmentCustom
     CreateDate TIMESTAMP NOT NULL,
     CONSTRAINT StudentAssessmentRegistrationAssessmentCustomization_PK PRIMARY KEY (AdministrationIdentifier, AssessmentIdentifier, AssigningEducationOrganizationId, EducationOrganizationId, Namespace, StudentUSI, IdentificationCode)
 );
-ALTER TABLE edfixassessmentroster.StudentAssessmentRegistrationAssessmentCustomization ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+ALTER TABLE edfixassessmentroster.StudentAssessmentRegistrationAssessmentCustomization ALTER COLUMN CreateDate SET DEFAULT current_timestamp AT TIME ZONE 'UTC';
 

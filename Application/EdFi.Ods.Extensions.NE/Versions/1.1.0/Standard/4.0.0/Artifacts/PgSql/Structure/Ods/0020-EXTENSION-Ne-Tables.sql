@@ -8,7 +8,7 @@ CREATE TABLE ne.CalendarDateExtension (
     CreateDate TIMESTAMP NOT NULL,
     CONSTRAINT CalendarDateExtension_PK PRIMARY KEY (CalendarCode, Date, SchoolId, SchoolYear)
 );
-ALTER TABLE ne.CalendarDateExtension ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+ALTER TABLE ne.CalendarDateExtension ALTER COLUMN CreateDate SET DEFAULT current_timestamp AT TIME ZONE 'UTC';
 
 -- Table ne.CrisisDetails --
 CREATE TABLE ne.CrisisDetails (
@@ -22,9 +22,9 @@ CREATE TABLE ne.CrisisDetails (
     Id UUID NOT NULL,
     CONSTRAINT CrisisDetails_PK PRIMARY KEY (CrisisEventDescriptorId)
 );
-ALTER TABLE ne.CrisisDetails ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+ALTER TABLE ne.CrisisDetails ALTER COLUMN CreateDate SET DEFAULT current_timestamp AT TIME ZONE 'UTC';
 ALTER TABLE ne.CrisisDetails ALTER COLUMN Id SET DEFAULT gen_random_uuid();
-ALTER TABLE ne.CrisisDetails ALTER COLUMN LastModifiedDate SET DEFAULT current_timestamp;
+ALTER TABLE ne.CrisisDetails ALTER COLUMN LastModifiedDate SET DEFAULT current_timestamp AT TIME ZONE 'UTC';
 
 -- Table ne.CrisisEventDescriptor --
 CREATE TABLE ne.CrisisEventDescriptor (
@@ -48,7 +48,7 @@ CREATE TABLE ne.DisciplineActionExtension (
     CreateDate TIMESTAMP NOT NULL,
     CONSTRAINT DisciplineActionExtension_PK PRIMARY KEY (DisciplineActionIdentifier, DisciplineDate, StudentUSI)
 );
-ALTER TABLE ne.DisciplineActionExtension ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+ALTER TABLE ne.DisciplineActionExtension ALTER COLUMN CreateDate SET DEFAULT current_timestamp AT TIME ZONE 'UTC';
 
 -- Table ne.DisciplineIncidentExtension --
 CREATE TABLE ne.DisciplineIncidentExtension (
@@ -59,7 +59,7 @@ CREATE TABLE ne.DisciplineIncidentExtension (
     CreateDate TIMESTAMP NOT NULL,
     CONSTRAINT DisciplineIncidentExtension_PK PRIMARY KEY (IncidentIdentifier, SchoolId)
 );
-ALTER TABLE ne.DisciplineIncidentExtension ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+ALTER TABLE ne.DisciplineIncidentExtension ALTER COLUMN CreateDate SET DEFAULT current_timestamp AT TIME ZONE 'UTC';
 
 -- Table ne.DualCreditDescriptor --
 CREATE TABLE ne.DualCreditDescriptor (
@@ -110,9 +110,9 @@ CREATE TABLE ne.PostGraduateActivity (
     Id UUID NOT NULL,
     CONSTRAINT PostGraduateActivity_PK PRIMARY KEY (LocalEducationAgencyId, SchoolYear, StudentUSI)
 );
-ALTER TABLE ne.PostGraduateActivity ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+ALTER TABLE ne.PostGraduateActivity ALTER COLUMN CreateDate SET DEFAULT current_timestamp AT TIME ZONE 'UTC';
 ALTER TABLE ne.PostGraduateActivity ALTER COLUMN Id SET DEFAULT gen_random_uuid();
-ALTER TABLE ne.PostGraduateActivity ALTER COLUMN LastModifiedDate SET DEFAULT current_timestamp;
+ALTER TABLE ne.PostGraduateActivity ALTER COLUMN LastModifiedDate SET DEFAULT current_timestamp AT TIME ZONE 'UTC';
 
 -- Table ne.PostGraduateActivityDescriptor --
 CREATE TABLE ne.PostGraduateActivityDescriptor (
@@ -137,7 +137,7 @@ CREATE TABLE ne.SectionDelivery (
     CreateDate TIMESTAMP NOT NULL,
     CONSTRAINT SectionDelivery_PK PRIMARY KEY (LocalCourseCode, SchoolId, SchoolYear, SectionIdentifier, SessionName, SectionDeliveryDescriptorId)
 );
-ALTER TABLE ne.SectionDelivery ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+ALTER TABLE ne.SectionDelivery ALTER COLUMN CreateDate SET DEFAULT current_timestamp AT TIME ZONE 'UTC';
 
 -- Table ne.SectionDeliveryDescriptor --
 CREATE TABLE ne.SectionDeliveryDescriptor (
@@ -156,7 +156,7 @@ CREATE TABLE ne.SectionExtension (
     CreateDate TIMESTAMP NOT NULL,
     CONSTRAINT SectionExtension_PK PRIMARY KEY (LocalCourseCode, SchoolId, SchoolYear, SectionIdentifier, SessionName)
 );
-ALTER TABLE ne.SectionExtension ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+ALTER TABLE ne.SectionExtension ALTER COLUMN CreateDate SET DEFAULT current_timestamp AT TIME ZONE 'UTC';
 
 -- Table ne.SpecialEducationProgramDescriptor --
 CREATE TABLE ne.SpecialEducationProgramDescriptor (
@@ -177,7 +177,7 @@ CREATE TABLE ne.StudentDisciplineIncidentBehaviorAssociationExtension (
     CreateDate TIMESTAMP NOT NULL,
     CONSTRAINT StudentDisciplineIncidentBehaviorAssociationExtension_PK PRIMARY KEY (BehaviorDescriptorId, IncidentIdentifier, SchoolId, StudentUSI)
 );
-ALTER TABLE ne.StudentDisciplineIncidentBehaviorAssociationExtension ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+ALTER TABLE ne.StudentDisciplineIncidentBehaviorAssociationExtension ALTER COLUMN CreateDate SET DEFAULT current_timestamp AT TIME ZONE 'UTC';
 
 -- Table ne.StudentDisciplineIncidentBehaviorAssociationWeapon --
 CREATE TABLE ne.StudentDisciplineIncidentBehaviorAssociationWeapon (
@@ -189,7 +189,7 @@ CREATE TABLE ne.StudentDisciplineIncidentBehaviorAssociationWeapon (
     CreateDate TIMESTAMP NOT NULL,
     CONSTRAINT StudentDisciplineIncidentBehaviorAssociationWeapon_PK PRIMARY KEY (BehaviorDescriptorId, IncidentIdentifier, SchoolId, StudentUSI, WeaponDescriptorId)
 );
-ALTER TABLE ne.StudentDisciplineIncidentBehaviorAssociationWeapon ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+ALTER TABLE ne.StudentDisciplineIncidentBehaviorAssociationWeapon ALTER COLUMN CreateDate SET DEFAULT current_timestamp AT TIME ZONE 'UTC';
 
 -- Table ne.StudentEarlyLearningProgramAssociation --
 CREATE TABLE ne.StudentEarlyLearningProgramAssociation (
@@ -211,7 +211,7 @@ CREATE TABLE ne.StudentEducationOrganizationAssociationExtension (
     CreateDate TIMESTAMP NOT NULL,
     CONSTRAINT StudentEducationOrganizationAssociationExtension_PK PRIMARY KEY (EducationOrganizationId, StudentUSI)
 );
-ALTER TABLE ne.StudentEducationOrganizationAssociationExtension ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+ALTER TABLE ne.StudentEducationOrganizationAssociationExtension ALTER COLUMN CreateDate SET DEFAULT current_timestamp AT TIME ZONE 'UTC';
 
 -- Table ne.StudentEducationOrganizationAssociationStudentCrisisEvent --
 CREATE TABLE ne.StudentEducationOrganizationAssociationStudentCrisisEvent (
@@ -222,7 +222,7 @@ CREATE TABLE ne.StudentEducationOrganizationAssociationStudentCrisisEvent (
     CreateDate TIMESTAMP NOT NULL,
     CONSTRAINT StudentEducationOrganizationAssociationStudentCrisisEvent_PK PRIMARY KEY (EducationOrganizationId, StudentUSI, CrisisEventDescriptorId)
 );
-ALTER TABLE ne.StudentEducationOrganizationAssociationStudentCrisisEvent ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+ALTER TABLE ne.StudentEducationOrganizationAssociationStudentCrisisEvent ALTER COLUMN CreateDate SET DEFAULT current_timestamp AT TIME ZONE 'UTC';
 
 -- Table ne.StudentLanguageInstructionProgramAssociationExtension --
 CREATE TABLE ne.StudentLanguageInstructionProgramAssociationExtension (
@@ -237,7 +237,7 @@ CREATE TABLE ne.StudentLanguageInstructionProgramAssociationExtension (
     CreateDate TIMESTAMP NOT NULL,
     CONSTRAINT StudentLanguageInstructionProgramAssociationExtension_PK PRIMARY KEY (BeginDate, EducationOrganizationId, ProgramEducationOrganizationId, ProgramName, ProgramTypeDescriptorId, StudentUSI)
 );
-ALTER TABLE ne.StudentLanguageInstructionProgramAssociationExtension ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+ALTER TABLE ne.StudentLanguageInstructionProgramAssociationExtension ALTER COLUMN CreateDate SET DEFAULT current_timestamp AT TIME ZONE 'UTC';
 
 -- Table ne.StudentSchoolAssociationExtension --
 CREATE TABLE ne.StudentSchoolAssociationExtension (
@@ -252,7 +252,7 @@ CREATE TABLE ne.StudentSchoolAssociationExtension (
     CreateDate TIMESTAMP NOT NULL,
     CONSTRAINT StudentSchoolAssociationExtension_PK PRIMARY KEY (EntryDate, SchoolId, StudentUSI)
 );
-ALTER TABLE ne.StudentSchoolAssociationExtension ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+ALTER TABLE ne.StudentSchoolAssociationExtension ALTER COLUMN CreateDate SET DEFAULT current_timestamp AT TIME ZONE 'UTC';
 
 -- Table ne.StudentSectionAssociationExtension --
 CREATE TABLE ne.StudentSectionAssociationExtension (
@@ -267,7 +267,7 @@ CREATE TABLE ne.StudentSectionAssociationExtension (
     CreateDate TIMESTAMP NOT NULL,
     CONSTRAINT StudentSectionAssociationExtension_PK PRIMARY KEY (BeginDate, LocalCourseCode, SchoolId, SchoolYear, SectionIdentifier, SessionName, StudentUSI)
 );
-ALTER TABLE ne.StudentSectionAssociationExtension ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+ALTER TABLE ne.StudentSectionAssociationExtension ALTER COLUMN CreateDate SET DEFAULT current_timestamp AT TIME ZONE 'UTC';
 
 -- Table ne.StudentSpecialEducationProgramAssociationExtension --
 CREATE TABLE ne.StudentSpecialEducationProgramAssociationExtension (
@@ -285,7 +285,7 @@ CREATE TABLE ne.StudentSpecialEducationProgramAssociationExtension (
     CreateDate TIMESTAMP NOT NULL,
     CONSTRAINT StudentSpecialEducationProgramAssociationExtension_PK PRIMARY KEY (BeginDate, EducationOrganizationId, ProgramEducationOrganizationId, ProgramName, ProgramTypeDescriptorId, StudentUSI)
 );
-ALTER TABLE ne.StudentSpecialEducationProgramAssociationExtension ALTER COLUMN CreateDate SET DEFAULT current_timestamp;
+ALTER TABLE ne.StudentSpecialEducationProgramAssociationExtension ALTER COLUMN CreateDate SET DEFAULT current_timestamp AT TIME ZONE 'UTC';
 
 -- Table ne.UnilateralRemovalDescriptor --
 CREATE TABLE ne.UnilateralRemovalDescriptor (

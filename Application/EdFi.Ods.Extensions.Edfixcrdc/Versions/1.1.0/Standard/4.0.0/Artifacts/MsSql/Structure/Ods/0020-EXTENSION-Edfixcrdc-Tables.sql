@@ -29,11 +29,11 @@ CREATE TABLE [edfixcrdc].[ClassGroup] (
     ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [edfixcrdc].[ClassGroup] ADD CONSTRAINT [ClassGroup_DF_CreateDate] DEFAULT (getdate()) FOR [CreateDate]
+ALTER TABLE [edfixcrdc].[ClassGroup] ADD CONSTRAINT [ClassGroup_DF_CreateDate] DEFAULT (getutcdate()) FOR [CreateDate]
 GO
 ALTER TABLE [edfixcrdc].[ClassGroup] ADD CONSTRAINT [ClassGroup_DF_Id] DEFAULT (newid()) FOR [Id]
 GO
-ALTER TABLE [edfixcrdc].[ClassGroup] ADD CONSTRAINT [ClassGroup_DF_LastModifiedDate] DEFAULT (getdate()) FOR [LastModifiedDate]
+ALTER TABLE [edfixcrdc].[ClassGroup] ADD CONSTRAINT [ClassGroup_DF_LastModifiedDate] DEFAULT (getutcdate()) FOR [LastModifiedDate]
 GO
 
 -- Table [edfixcrdc].[ClassGroupCourse] --
@@ -55,7 +55,7 @@ CREATE TABLE [edfixcrdc].[ClassGroupCourse] (
     ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [edfixcrdc].[ClassGroupCourse] ADD CONSTRAINT [ClassGroupCourse_DF_CreateDate] DEFAULT (getdate()) FOR [CreateDate]
+ALTER TABLE [edfixcrdc].[ClassGroupCourse] ADD CONSTRAINT [ClassGroupCourse_DF_CreateDate] DEFAULT (getutcdate()) FOR [CreateDate]
 GO
 
 -- Table [edfixcrdc].[ClassGroupMeetingTime] --
@@ -79,7 +79,7 @@ CREATE TABLE [edfixcrdc].[ClassGroupMeetingTime] (
     ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [edfixcrdc].[ClassGroupMeetingTime] ADD CONSTRAINT [ClassGroupMeetingTime_DF_CreateDate] DEFAULT (getdate()) FOR [CreateDate]
+ALTER TABLE [edfixcrdc].[ClassGroupMeetingTime] ADD CONSTRAINT [ClassGroupMeetingTime_DF_CreateDate] DEFAULT (getutcdate()) FOR [CreateDate]
 GO
 
 -- Table [edfixcrdc].[CommunityProviderLocation] --
@@ -112,11 +112,11 @@ CREATE TABLE [edfixcrdc].[CommunityProviderLocation] (
     ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [edfixcrdc].[CommunityProviderLocation] ADD CONSTRAINT [CommunityProviderLocation_DF_CreateDate] DEFAULT (getdate()) FOR [CreateDate]
+ALTER TABLE [edfixcrdc].[CommunityProviderLocation] ADD CONSTRAINT [CommunityProviderLocation_DF_CreateDate] DEFAULT (getutcdate()) FOR [CreateDate]
 GO
 ALTER TABLE [edfixcrdc].[CommunityProviderLocation] ADD CONSTRAINT [CommunityProviderLocation_DF_Id] DEFAULT (newid()) FOR [Id]
 GO
-ALTER TABLE [edfixcrdc].[CommunityProviderLocation] ADD CONSTRAINT [CommunityProviderLocation_DF_LastModifiedDate] DEFAULT (getdate()) FOR [LastModifiedDate]
+ALTER TABLE [edfixcrdc].[CommunityProviderLocation] ADD CONSTRAINT [CommunityProviderLocation_DF_LastModifiedDate] DEFAULT (getutcdate()) FOR [LastModifiedDate]
 GO
 
 -- Table [edfixcrdc].[CommunityProviderLocationInstructionalCalendar] --
@@ -134,7 +134,7 @@ CREATE TABLE [edfixcrdc].[CommunityProviderLocationInstructionalCalendar] (
     ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [edfixcrdc].[CommunityProviderLocationInstructionalCalendar] ADD CONSTRAINT [CommunityProviderLocationInstructionalCalendar_DF_CreateDate] DEFAULT (getdate()) FOR [CreateDate]
+ALTER TABLE [edfixcrdc].[CommunityProviderLocationInstructionalCalendar] ADD CONSTRAINT [CommunityProviderLocationInstructionalCalendar_DF_CreateDate] DEFAULT (getutcdate()) FOR [CreateDate]
 GO
 
 -- Table [edfixcrdc].[MeetingDayDescriptor] --
@@ -169,7 +169,7 @@ CREATE TABLE [edfixcrdc].[ProgramExtension] (
     ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [edfixcrdc].[ProgramExtension] ADD CONSTRAINT [ProgramExtension_DF_CreateDate] DEFAULT (getdate()) FOR [CreateDate]
+ALTER TABLE [edfixcrdc].[ProgramExtension] ADD CONSTRAINT [ProgramExtension_DF_CreateDate] DEFAULT (getutcdate()) FOR [CreateDate]
 GO
 
 -- Table [edfixcrdc].[RestraintCategoryDescriptor] --
@@ -196,7 +196,7 @@ CREATE TABLE [edfixcrdc].[RestraintEventRestraintCategory] (
     ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [edfixcrdc].[RestraintEventRestraintCategory] ADD CONSTRAINT [RestraintEventRestraintCategory_DF_CreateDate] DEFAULT (getdate()) FOR [CreateDate]
+ALTER TABLE [edfixcrdc].[RestraintEventRestraintCategory] ADD CONSTRAINT [RestraintEventRestraintCategory_DF_CreateDate] DEFAULT (getutcdate()) FOR [CreateDate]
 GO
 
 -- Table [edfixcrdc].[SchoolExtension] --
@@ -210,7 +210,7 @@ CREATE TABLE [edfixcrdc].[SchoolExtension] (
     ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [edfixcrdc].[SchoolExtension] ADD CONSTRAINT [SchoolExtension_DF_CreateDate] DEFAULT (getdate()) FOR [CreateDate]
+ALTER TABLE [edfixcrdc].[SchoolExtension] ADD CONSTRAINT [SchoolExtension_DF_CreateDate] DEFAULT (getutcdate()) FOR [CreateDate]
 GO
 
 -- Table [edfixcrdc].[SchoolTechnology] --
@@ -227,7 +227,7 @@ CREATE TABLE [edfixcrdc].[SchoolTechnology] (
     ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [edfixcrdc].[SchoolTechnology] ADD CONSTRAINT [SchoolTechnology_DF_CreateDate] DEFAULT (getdate()) FOR [CreateDate]
+ALTER TABLE [edfixcrdc].[SchoolTechnology] ADD CONSTRAINT [SchoolTechnology_DF_CreateDate] DEFAULT (getutcdate()) FOR [CreateDate]
 GO
 
 -- Table [edfixcrdc].[StudentClassGroupAssociation] --
@@ -254,11 +254,11 @@ CREATE TABLE [edfixcrdc].[StudentClassGroupAssociation] (
     ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [edfixcrdc].[StudentClassGroupAssociation] ADD CONSTRAINT [StudentClassGroupAssociation_DF_CreateDate] DEFAULT (getdate()) FOR [CreateDate]
+ALTER TABLE [edfixcrdc].[StudentClassGroupAssociation] ADD CONSTRAINT [StudentClassGroupAssociation_DF_CreateDate] DEFAULT (getutcdate()) FOR [CreateDate]
 GO
 ALTER TABLE [edfixcrdc].[StudentClassGroupAssociation] ADD CONSTRAINT [StudentClassGroupAssociation_DF_Id] DEFAULT (newid()) FOR [Id]
 GO
-ALTER TABLE [edfixcrdc].[StudentClassGroupAssociation] ADD CONSTRAINT [StudentClassGroupAssociation_DF_LastModifiedDate] DEFAULT (getdate()) FOR [LastModifiedDate]
+ALTER TABLE [edfixcrdc].[StudentClassGroupAssociation] ADD CONSTRAINT [StudentClassGroupAssociation_DF_LastModifiedDate] DEFAULT (getutcdate()) FOR [LastModifiedDate]
 GO
 
 -- Table [edfixcrdc].[StudentCommunityProviderLocationAssociation] --
@@ -282,11 +282,11 @@ CREATE TABLE [edfixcrdc].[StudentCommunityProviderLocationAssociation] (
     ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-ALTER TABLE [edfixcrdc].[StudentCommunityProviderLocationAssociation] ADD CONSTRAINT [StudentCommunityProviderLocationAssociation_DF_CreateDate] DEFAULT (getdate()) FOR [CreateDate]
+ALTER TABLE [edfixcrdc].[StudentCommunityProviderLocationAssociation] ADD CONSTRAINT [StudentCommunityProviderLocationAssociation_DF_CreateDate] DEFAULT (getutcdate()) FOR [CreateDate]
 GO
 ALTER TABLE [edfixcrdc].[StudentCommunityProviderLocationAssociation] ADD CONSTRAINT [StudentCommunityProviderLocationAssociation_DF_Id] DEFAULT (newid()) FOR [Id]
 GO
-ALTER TABLE [edfixcrdc].[StudentCommunityProviderLocationAssociation] ADD CONSTRAINT [StudentCommunityProviderLocationAssociation_DF_LastModifiedDate] DEFAULT (getdate()) FOR [LastModifiedDate]
+ALTER TABLE [edfixcrdc].[StudentCommunityProviderLocationAssociation] ADD CONSTRAINT [StudentCommunityProviderLocationAssociation_DF_LastModifiedDate] DEFAULT (getutcdate()) FOR [LastModifiedDate]
 GO
 
 -- Table [edfixcrdc].[UngradedDetailDescriptor] --
