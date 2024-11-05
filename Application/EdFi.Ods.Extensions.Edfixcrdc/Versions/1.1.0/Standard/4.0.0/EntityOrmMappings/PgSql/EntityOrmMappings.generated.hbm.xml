@@ -1,0 +1,470 @@
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="EdFi.Ods.Extensions.Edfixcrdc" namespace="EdFi.Ods.Entities.NHibernate" default-access="property" auto-import="false">
+
+    <!-- Aggregate reference data class mapping -->
+    <class name="EdFi.Ods.Entities.NHibernate.ClassGroupAggregate.Edfixcrdc.ClassGroupReferenceData" table="ClassGroup" lazy="true"  schema="edfixcrdc" >
+        <!-- Composite primary key -->
+        <composite-id>
+            <key-property name="ClassGroupName" column="ClassGroupName" type="string"  length="75"  />
+            <key-property name="CommunityProviderId" column="CommunityProviderId" type="int"  />
+            <key-property name="CommunityProviderLocationId" column="CommunityProviderLocationId" type="int"  />
+            <key-property name="SpecialNeedsProvidedIndicator" column="SpecialNeedsProvidedIndicator" type="bool"  />
+        </composite-id>
+
+        <property name="Id" column="Id" type="guid" insert="false" update="false" />
+
+        <!-- Readonly property to surface the discriminator value -->
+        <property name="Discriminator" column="Discriminator" type="string" insert="false" update="false" />
+    </class>
+
+  <!-- Class definition -->
+  <class name="EdFi.Ods.Entities.NHibernate.ClassGroupAggregate.Edfixcrdc.ClassGroup" table="ClassGroup" lazy="false" schema="edfixcrdc" discriminator-value="NULL">
+    <!-- Composite primary key -->
+    <composite-id>
+      <key-property name="ClassGroupName" column="ClassGroupName" type="string" length="75" />
+      <key-property name="CommunityProviderId" column="CommunityProviderId" type="int" />
+      <key-property name="CommunityProviderLocationId" column="CommunityProviderLocationId" type="int" />
+      <key-property name="SpecialNeedsProvidedIndicator" column="SpecialNeedsProvidedIndicator" type="bool" />
+    </composite-id>
+
+    <!-- Discriminator -->
+    <discriminator column="Discriminator" type="string" />
+
+    <!-- Optimistic locking for aggregate root -->
+    <version name="LastModifiedDate" column="LastModifiedDate" type="UtcDateTime" />
+
+    <!-- Transient state detection -->
+    <property name="CreateDate" column="CreateDate" type="UtcDateTime" not-null="true" />
+
+    <!-- Unique Guid-based identifier for aggregate root -->
+    <property name="Id" column="Id" type="guid" not-null="true" />
+
+    <!-- Properties -->
+    <property name="Capacity" column="Capacity" type="int" />
+    <property name="DaysAvailablePerWeek" column="DaysAvailablePerWeek" type="int" />
+    <property name="HoursAvailablePerDay" column="HoursAvailablePerDay" type="decimal" />
+    <property name="ServiceDescriptorId" column="ServiceDescriptorId" type="int" />
+
+    <!-- Aggregate references -->
+    <many-to-one name="CommunityProviderLocationReferenceData" class="EdFi.Ods.Entities.NHibernate.CommunityProviderLocationAggregate.Edfixcrdc.CommunityProviderLocationReferenceData" fetch="join" insert="false" update="false" cascade="none" lazy="proxy">
+      <column name="CommunityProviderId" />
+      <column name="CommunityProviderLocationId" />
+    </many-to-one>
+
+    <!-- Back references -->
+
+    <!-- Collections -->
+    <set name="ClassGroupCourses" cascade="all-delete-orphan" inverse="true" lazy="true">
+      <key>
+        <column name="ClassGroupName" />
+        <column name="CommunityProviderId" />
+        <column name="CommunityProviderLocationId" />
+        <column name="SpecialNeedsProvidedIndicator" />
+      </key>
+      <one-to-many class="EdFi.Ods.Entities.NHibernate.ClassGroupAggregate.Edfixcrdc.ClassGroupCourse" />
+    </set>
+
+    <set name="ClassGroupMeetingTimes" cascade="all-delete-orphan" inverse="true" lazy="true">
+      <key>
+        <column name="ClassGroupName" />
+        <column name="CommunityProviderId" />
+        <column name="CommunityProviderLocationId" />
+        <column name="SpecialNeedsProvidedIndicator" />
+      </key>
+      <one-to-many class="EdFi.Ods.Entities.NHibernate.ClassGroupAggregate.Edfixcrdc.ClassGroupMeetingTime" />
+    </set>
+
+</class>
+
+
+
+  <!-- Class definition -->
+  <class name="EdFi.Ods.Entities.NHibernate.ClassGroupAggregate.Edfixcrdc.ClassGroupCourse" table="ClassGroupCourse" lazy="false" schema="edfixcrdc">
+    <!-- Composite primary key -->
+    <composite-id>
+      <key-property name="CourseCode" column="CourseCode" type="string" length="60" />
+      <key-property name="EducationOrganizationId" column="EducationOrganizationId" type="int" />
+      <key-many-to-one name="ClassGroup">
+        <column name="ClassGroupName" />
+        <column name="CommunityProviderId" />
+        <column name="CommunityProviderLocationId" />
+        <column name="SpecialNeedsProvidedIndicator" />
+      </key-many-to-one>
+    </composite-id>
+    <!-- Transient state detection -->
+    <property name="CreateDate" column="CreateDate" type="UtcDateTime" not-null="true" />
+
+
+    <!-- Properties -->
+
+    <!-- Aggregate references -->
+    <many-to-one name="CourseReferenceData" class="EdFi.Ods.Entities.NHibernate.CourseAggregate.EdFi.CourseReferenceData" fetch="join" insert="false" update="false" cascade="none" lazy="proxy">
+      <column name="CourseCode" />
+      <column name="EducationOrganizationId" />
+    </many-to-one>
+
+    <!-- Back references -->
+
+    <!-- Collections -->
+</class>
+
+
+
+  <!-- Class definition -->
+  <class name="EdFi.Ods.Entities.NHibernate.ClassGroupAggregate.Edfixcrdc.ClassGroupMeetingTime" table="ClassGroupMeetingTime" lazy="false" schema="edfixcrdc">
+    <!-- Composite primary key -->
+    <composite-id>
+      <key-property name="MeetingDayDescriptorId" column="MeetingDayDescriptorId" type="int" />
+      <key-property name="StartTime" column="StartTime" type="TimeAsTimeSpan" />
+      <key-property name="StopTime" column="StopTime" type="TimeAsTimeSpan" />
+      <key-many-to-one name="ClassGroup">
+        <column name="ClassGroupName" />
+        <column name="CommunityProviderId" />
+        <column name="CommunityProviderLocationId" />
+        <column name="SpecialNeedsProvidedIndicator" />
+      </key-many-to-one>
+    </composite-id>
+    <!-- Transient state detection -->
+    <property name="CreateDate" column="CreateDate" type="UtcDateTime" not-null="true" />
+
+
+    <!-- Properties -->
+
+    <!-- Aggregate references -->
+
+    <!-- Back references -->
+
+    <!-- Collections -->
+</class>
+
+
+    <!-- Aggregate reference data class mapping -->
+    <class name="EdFi.Ods.Entities.NHibernate.CommunityProviderLocationAggregate.Edfixcrdc.CommunityProviderLocationReferenceData" table="CommunityProviderLocation" lazy="true"  schema="edfixcrdc" >
+        <!-- Composite primary key -->
+        <composite-id>
+            <key-property name="CommunityProviderId" column="CommunityProviderId" type="int"  />
+            <key-property name="CommunityProviderLocationId" column="CommunityProviderLocationId" type="int"  />
+        </composite-id>
+
+        <property name="Id" column="Id" type="guid" insert="false" update="false" />
+
+        <!-- Readonly property to surface the discriminator value -->
+        <property name="Discriminator" column="Discriminator" type="string" insert="false" update="false" />
+    </class>
+
+  <!-- Class definition -->
+  <class name="EdFi.Ods.Entities.NHibernate.CommunityProviderLocationAggregate.Edfixcrdc.CommunityProviderLocation" table="CommunityProviderLocation" lazy="false" schema="edfixcrdc" discriminator-value="NULL">
+    <!-- Composite primary key -->
+    <composite-id>
+      <key-property name="CommunityProviderId" column="CommunityProviderId" type="int" />
+      <key-property name="CommunityProviderLocationId" column="CommunityProviderLocationId" type="int" />
+    </composite-id>
+
+    <!-- Discriminator -->
+    <discriminator column="Discriminator" type="string" />
+
+    <!-- Optimistic locking for aggregate root -->
+    <version name="LastModifiedDate" column="LastModifiedDate" type="UtcDateTime" />
+
+    <!-- Transient state detection -->
+    <property name="CreateDate" column="CreateDate" type="UtcDateTime" not-null="true" />
+
+    <!-- Unique Guid-based identifier for aggregate root -->
+    <property name="Id" column="Id" type="guid" not-null="true" />
+
+    <!-- Properties -->
+    <property name="AddressTypeDescriptorId" column="AddressTypeDescriptorId" type="int" />
+    <property name="AgeRangeDescription" column="AgeRangeDescription" type="string" length="75" />
+    <property name="ApartmentRoomSuiteNumber" column="ApartmentRoomSuiteNumber" type="string" length="50" />
+    <property name="BuildingSiteNumber" column="BuildingSiteNumber" type="string" length="20" />
+    <property name="Capacity" column="Capacity" type="int" />
+    <property name="City" column="City" type="string" length="30" />
+    <property name="CountyFIPSCode" column="CountyFIPSCode" type="string" length="5" />
+    <property name="NameOfCounty" column="NameOfCounty" type="string" length="30" />
+    <property name="OldestAgeAccepted" column="OldestAgeAccepted" type="int" />
+    <property name="PostalCode" column="PostalCode" type="string" length="17" />
+    <property name="SpecialNeedsProvidedIndicator" column="SpecialNeedsProvidedIndicator" type="bool" />
+    <property name="StateAbbreviationDescriptorId" column="StateAbbreviationDescriptorId" type="int" />
+    <property name="StreetNumberName" column="StreetNumberName" type="string" length="150" />
+    <property name="TimeClose" column="TimeClose" type="TimeAsTimeSpan" />
+    <property name="TimeOpen" column="TimeOpen" type="TimeAsTimeSpan" />
+    <property name="YoungestAgeAccepted" column="YoungestAgeAccepted" type="int" />
+
+    <!-- One-to-one child mappings -->
+    <set name="CommunityProviderLocationInstructionalCalendar" access="EdFi.Ods.Common.Infrastructure.Accessors.EmbeddedObjectPropertyAccessor, EdFi.Ods.Common" cascade="all-delete-orphan" inverse="true" lazy="true">
+      <key>
+        <column name="CommunityProviderId" />
+        <column name="CommunityProviderLocationId" />
+      </key>
+      <one-to-many class="EdFi.Ods.Entities.NHibernate.CommunityProviderLocationAggregate.Edfixcrdc.CommunityProviderLocationInstructionalCalendar" />
+    </set>
+
+    <!-- Aggregate references -->
+    <many-to-one name="CommunityProviderReferenceData" class="EdFi.Ods.Entities.NHibernate.EducationOrganizationAggregate.EdFi.EducationOrganizationReferenceData" fetch="join" insert="false" update="false" cascade="none" lazy="proxy">
+      <column name="CommunityProviderId" />
+    </many-to-one>
+
+    <!-- Back references -->
+
+    <!-- Collections -->
+</class>
+
+
+
+  <!-- Class definition -->
+  <class name="EdFi.Ods.Entities.NHibernate.CommunityProviderLocationAggregate.Edfixcrdc.CommunityProviderLocationInstructionalCalendar" table="CommunityProviderLocationInstructionalCalendar" lazy="false" schema="edfixcrdc">
+    <!-- Composite primary key -->
+    <composite-id>
+      <key-many-to-one name="CommunityProviderLocation">
+        <column name="CommunityProviderId" />
+        <column name="CommunityProviderLocationId" />
+      </key-many-to-one>
+    </composite-id>
+    <!-- Transient state detection -->
+    <property name="CreateDate" column="CreateDate" type="UtcDateTime" not-null="true" />
+
+
+    <!-- Properties -->
+    <property name="BeginDate" column="BeginDate" type="date" not-null="true" />
+    <property name="EndDate" column="EndDate" type="date" not-null="true" />
+    <property name="SchoolYear" column="SchoolYear" type="short" not-null="true" />
+    <property name="TotalInstructionalDaysPerYear" column="TotalInstructionalDaysPerYear" type="int" not-null="true" />
+
+    <!-- Aggregate references -->
+    <many-to-one name="SchoolYearTypeReferenceData" class="EdFi.Ods.Entities.NHibernate.SchoolYearTypeAggregate.EdFi.SchoolYearTypeReferenceData" fetch="join" insert="false" update="false" cascade="none" lazy="proxy">
+      <column name="SchoolYear" />
+    </many-to-one>
+
+    <!-- Back references -->
+
+    <!-- Collections -->
+</class>
+
+
+
+  <!-- Class definition -->
+  <class name="EdFi.Ods.Entities.NHibernate.ProgramAggregate.Edfixcrdc.ProgramExtension" table="ProgramExtension" lazy="false" schema="edfixcrdc">
+    <!-- Composite primary key -->
+    <composite-id>
+      <key-many-to-one name="Program">
+        <column name="EducationOrganizationId" />
+        <column name="ProgramName" />
+        <column name="ProgramTypeDescriptorId" />
+      </key-many-to-one>
+    </composite-id>
+    <!-- Transient state detection -->
+    <property name="CreateDate" column="CreateDate" type="UtcDateTime" not-null="true" />
+
+
+    <!-- Properties -->
+    <property name="ProgramCostDescriptorId" column="ProgramCostDescriptorId" type="int" />
+
+    <!-- Aggregate references -->
+
+    <!-- Back references -->
+
+    <!-- Collections -->
+</class>
+
+
+
+  <!-- Class definition -->
+  <class name="EdFi.Ods.Entities.NHibernate.RestraintEventAggregate.Edfixcrdc.RestraintEventRestraintCategory" table="RestraintEventRestraintCategory" lazy="false" schema="edfixcrdc">
+    <!-- Composite primary key -->
+    <composite-id>
+      <key-property name="RestraintCategoryDescriptorId" column="RestraintCategoryDescriptorId" type="int" />
+      <key-many-to-one name="RestraintEvent">
+        <column name="RestraintEventIdentifier" />
+        <column name="SchoolId" />
+        <column name="StudentUSI" />
+      </key-many-to-one>
+    </composite-id>
+    <!-- Transient state detection -->
+    <property name="CreateDate" column="CreateDate" type="UtcDateTime" not-null="true" />
+
+
+    <!-- Properties -->
+
+    <!-- Aggregate references -->
+
+    <!-- Back references -->
+
+    <!-- Collections -->
+</class>
+
+
+
+  <!-- Class definition -->
+  <class name="EdFi.Ods.Entities.NHibernate.SchoolAggregate.Edfixcrdc.SchoolTechnology" table="SchoolTechnology" lazy="false" schema="edfixcrdc">
+    <!-- Composite primary key -->
+    <composite-id>
+      <key-many-to-one name="School">
+        <column name="SchoolId" />
+      </key-many-to-one>
+    </composite-id>
+    <!-- Transient state detection -->
+    <property name="CreateDate" column="CreateDate" type="UtcDateTime" not-null="true" />
+
+
+    <!-- Properties -->
+    <property name="AllClassroomsHaveWiFi" column="AllClassroomsHaveWiFi" type="bool" not-null="true" />
+    <property name="FiberOpticConnection" column="FiberOpticConnection" type="bool" not-null="true" />
+    <property name="StudentsBringOwnDevice" column="StudentsBringOwnDevice" type="bool" not-null="true" />
+    <property name="StudentsTakeHomeDevice" column="StudentsTakeHomeDevice" type="bool" not-null="true" />
+    <property name="WiFiDeviceCount" column="WiFiDeviceCount" type="int" not-null="true" />
+
+    <!-- Aggregate references -->
+
+    <!-- Back references -->
+
+    <!-- Collections -->
+</class>
+
+
+
+  <!-- Class definition -->
+  <class name="EdFi.Ods.Entities.NHibernate.SchoolAggregate.Edfixcrdc.SchoolExtension" table="SchoolExtension" lazy="false" schema="edfixcrdc">
+    <!-- Composite primary key -->
+    <composite-id>
+      <key-many-to-one name="School">
+        <column name="SchoolId" />
+      </key-many-to-one>
+    </composite-id>
+    <!-- Transient state detection -->
+    <property name="CreateDate" column="CreateDate" type="UtcDateTime" not-null="true" />
+
+
+    <!-- Properties -->
+    <property name="AlternativeStatusDescriptorId" column="AlternativeStatusDescriptorId" type="int" />
+    <property name="UngradedDetailDescriptorId" column="UngradedDetailDescriptorId" type="int" />
+
+    <!-- Aggregate references -->
+
+    <!-- Back references -->
+
+    <!-- Collections -->
+</class>
+
+
+    <!-- Aggregate reference data class mapping -->
+    <class name="EdFi.Ods.Entities.NHibernate.StudentClassGroupAssociationAggregate.Edfixcrdc.StudentClassGroupAssociationReferenceData" table="StudentClassGroupAssociation" lazy="true"  schema="edfixcrdc" >
+        <!-- Composite primary key -->
+        <composite-id>
+            <key-property name="BeginDate" column="BeginDate" type="date"  />
+            <key-property name="ClassGroupName" column="ClassGroupName" type="string"  length="75"  />
+            <key-property name="CommunityProviderId" column="CommunityProviderId" type="int"  />
+            <key-property name="CommunityProviderLocationId" column="CommunityProviderLocationId" type="int"  />
+            <key-property name="SpecialNeedsProvidedIndicator" column="SpecialNeedsProvidedIndicator" type="bool"  />
+            <key-property name="StudentUSI" column="StudentUSI" type="int"  />
+        </composite-id>
+
+        <property name="Id" column="Id" type="guid" insert="false" update="false" />
+
+        <!-- Readonly property to surface the discriminator value -->
+        <property name="Discriminator" column="Discriminator" type="string" insert="false" update="false" />
+    </class>
+
+  <!-- Class definition -->
+  <class name="EdFi.Ods.Entities.NHibernate.StudentClassGroupAssociationAggregate.Edfixcrdc.StudentClassGroupAssociation" table="StudentClassGroupAssociation" lazy="false" schema="edfixcrdc" discriminator-value="NULL">
+    <!-- Composite primary key -->
+    <composite-id>
+      <key-property name="BeginDate" column="BeginDate" type="date" />
+      <key-property name="ClassGroupName" column="ClassGroupName" type="string" length="75" />
+      <key-property name="CommunityProviderId" column="CommunityProviderId" type="int" />
+      <key-property name="CommunityProviderLocationId" column="CommunityProviderLocationId" type="int" />
+      <key-property name="SpecialNeedsProvidedIndicator" column="SpecialNeedsProvidedIndicator" type="bool" />
+      <key-property name="StudentUSI" column="StudentUSI" type="int" />
+    </composite-id>
+
+    <!-- Discriminator -->
+    <discriminator column="Discriminator" type="string" />
+
+    <!-- Optimistic locking for aggregate root -->
+    <version name="LastModifiedDate" column="LastModifiedDate" type="UtcDateTime" />
+
+    <!-- Transient state detection -->
+    <property name="CreateDate" column="CreateDate" type="UtcDateTime" not-null="true" />
+
+    <!-- Unique Guid-based identifier for aggregate root -->
+    <property name="Id" column="Id" type="guid" not-null="true" />
+
+    <!-- Properties -->
+    <property name="EndDate" column="EndDate" type="date" />
+    <property name="ReasonExitedDescriptorId" column="ReasonExitedDescriptorId" type="int" />
+
+    <!-- Aggregate references -->
+    <many-to-one name="ClassGroupReferenceData" class="EdFi.Ods.Entities.NHibernate.ClassGroupAggregate.Edfixcrdc.ClassGroupReferenceData" fetch="join" insert="false" update="false" cascade="none" lazy="proxy">
+      <column name="ClassGroupName" />
+      <column name="CommunityProviderId" />
+      <column name="CommunityProviderLocationId" />
+      <column name="SpecialNeedsProvidedIndicator" />
+    </many-to-one>
+    <many-to-one name="StudentReferenceData" class="EdFi.Ods.Entities.NHibernate.StudentAggregate.EdFi.StudentReferenceData" fetch="join" insert="false" update="false" cascade="none" lazy="proxy">
+      <column name="StudentUSI" />
+    </many-to-one>
+
+    <!-- Back references -->
+
+    <!-- Collections -->
+</class>
+
+
+    <!-- Aggregate reference data class mapping -->
+    <class name="EdFi.Ods.Entities.NHibernate.StudentCommunityProviderLocationAssociationAggregate.Edfixcrdc.StudentCommunityProviderLocationAssociationReferenceData" table="StudentCommunityProviderLocationAssociation" lazy="true"  schema="edfixcrdc" >
+        <!-- Composite primary key -->
+        <composite-id>
+            <key-property name="BeginDate" column="BeginDate" type="date"  />
+            <key-property name="CommunityProviderId" column="CommunityProviderId" type="int"  />
+            <key-property name="CommunityProviderLocationId" column="CommunityProviderLocationId" type="int"  />
+            <key-property name="StudentUSI" column="StudentUSI" type="int"  />
+        </composite-id>
+
+        <property name="Id" column="Id" type="guid" insert="false" update="false" />
+
+        <!-- Readonly property to surface the discriminator value -->
+        <property name="Discriminator" column="Discriminator" type="string" insert="false" update="false" />
+    </class>
+
+  <!-- Class definition -->
+  <class name="EdFi.Ods.Entities.NHibernate.StudentCommunityProviderLocationAssociationAggregate.Edfixcrdc.StudentCommunityProviderLocationAssociation" table="StudentCommunityProviderLocationAssociation" lazy="false" schema="edfixcrdc" discriminator-value="NULL">
+    <!-- Composite primary key -->
+    <composite-id>
+      <key-property name="BeginDate" column="BeginDate" type="date" />
+      <key-property name="CommunityProviderId" column="CommunityProviderId" type="int" />
+      <key-property name="CommunityProviderLocationId" column="CommunityProviderLocationId" type="int" />
+      <key-property name="StudentUSI" column="StudentUSI" type="int" />
+    </composite-id>
+
+    <!-- Discriminator -->
+    <discriminator column="Discriminator" type="string" />
+
+    <!-- Optimistic locking for aggregate root -->
+    <version name="LastModifiedDate" column="LastModifiedDate" type="UtcDateTime" />
+
+    <!-- Transient state detection -->
+    <property name="CreateDate" column="CreateDate" type="UtcDateTime" not-null="true" />
+
+    <!-- Unique Guid-based identifier for aggregate root -->
+    <property name="Id" column="Id" type="guid" not-null="true" />
+
+    <!-- Properties -->
+    <property name="EndDate" column="EndDate" type="date" />
+    <property name="EnrollmentStatus" column="EnrollmentStatus" type="string" length="30" />
+    <property name="ReasonExitedDescriptorId" column="ReasonExitedDescriptorId" type="int" />
+
+    <!-- Aggregate references -->
+    <many-to-one name="CommunityProviderLocationReferenceData" class="EdFi.Ods.Entities.NHibernate.CommunityProviderLocationAggregate.Edfixcrdc.CommunityProviderLocationReferenceData" fetch="join" insert="false" update="false" cascade="none" lazy="proxy">
+      <column name="CommunityProviderId" />
+      <column name="CommunityProviderLocationId" />
+    </many-to-one>
+    <many-to-one name="StudentReferenceData" class="EdFi.Ods.Entities.NHibernate.StudentAggregate.EdFi.StudentReferenceData" fetch="join" insert="false" update="false" cascade="none" lazy="proxy">
+      <column name="StudentUSI" />
+    </many-to-one>
+
+    <!-- Back references -->
+
+    <!-- Collections -->
+</class>
+
+
+</hibernate-mapping>
+

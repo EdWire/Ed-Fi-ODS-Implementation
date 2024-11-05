@@ -1,0 +1,32 @@
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="EdFi.Ods.Extensions.EdFiXLearningModality" namespace="EdFi.Ods.Entities.NHibernate" default-access="property" auto-import="false">
+
+
+  <!-- Class definition -->
+  <class name="EdFi.Ods.Entities.NHibernate.ProgramAggregate.EdFiXLearningModality.ProgramLearningModality" table="ProgramLearningModality" lazy="false" schema="edfixlearningmodality">
+    <!-- Composite primary key -->
+    <composite-id>
+      <key-property name="ModalityTypeDescriptorId" column="ModalityTypeDescriptorId" type="int" />
+      <key-many-to-one name="Program">
+        <column name="EducationOrganizationId" />
+        <column name="ProgramName" />
+        <column name="ProgramTypeDescriptorId" />
+      </key-many-to-one>
+    </composite-id>
+    <!-- Transient state detection -->
+    <property name="CreateDate" column="CreateDate" type="UtcDateTime" not-null="true" />
+
+
+    <!-- Properties -->
+    <property name="ModalityTime" column="ModalityTime" type="decimal" not-null="true" />
+    <property name="ModalityTimeTypeDescriptorId" column="ModalityTimeTypeDescriptorId" type="int" not-null="true" />
+
+    <!-- Aggregate references -->
+
+    <!-- Back references -->
+
+    <!-- Collections -->
+</class>
+
+
+</hibernate-mapping>
+
