@@ -6,6 +6,7 @@
     <TreatErrorsAsWarning>true</TreatErrorsAsWarning>
     <RestorePackages>true</RestorePackages>
     <UserSecretsId>f1506d66-289c-44cb-a2e2-80411cc690ec</UserSecretsId>
+    <ThreadPoolMinThreads>250</ThreadPoolMinThreads>
   </PropertyGroup>
   <ItemGroup>
     <None Include="log4net.config" CopyToPublishDirectory="Always" CopyToOutputDirectory="Always" />
@@ -37,6 +38,12 @@
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="9.0.0" />
     <PackageReference Include="Npgsql" Version="8.0.3" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="8.0.2" />
+    <!--<Manual security fix>-->
+    <PackageReference Include="Azure.Identity" Version="1.12.0" />
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
+    <PackageReference Include="System.Text.RegularExpressions" Version="4.3.1" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.1.2" />
+    <PackageReference Include="Microsoft.IdentityModel.JsonWebTokens" Version="8.1.2" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Ed-Fi-ODS\Application\EdFi.Ods.Api\EdFi.Ods.Api.csproj" />

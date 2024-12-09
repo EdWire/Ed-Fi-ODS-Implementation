@@ -5,7 +5,10 @@
       "commandName": "Project",
       "launchBrowser": true,
       "commandLineArgs": "--environment Development",
-      "applicationUrl": "http://localhost:54746"
+      "applicationUrl": "http://localhost:54746",
+      "environmentVariables": {
+        "ApiSettings:Services:AzureAppConfiguration:ConnectionString": "Endpoint=https://eg-ac-dev-scus.azconfig.io;Id=vj0M;Secret=VXmmSuZNLi2oQRH8LlQ5Rb5R4FOICEMoPugf3bLdBAU="
+      }
     },
     "Reverse Proxy": {
       "commandName": "Project",
