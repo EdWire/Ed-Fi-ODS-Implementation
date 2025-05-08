@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 	<PropertyGroup>
-		<StandardVersion Condition="'$(StandardVersion)' == '' ">6.0.0</StandardVersion>
+		<StandardVersion Condition="'$(StandardVersion)' == '' ">5.2.0</StandardVersion>
 	</PropertyGroup>
 	<PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
@@ -9,6 +9,7 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <RestorePackages>true</RestorePackages>
     <UserSecretsId>f1506d66-289c-44cb-a2e2-80411cc690ec</UserSecretsId>
+    <ThreadPoolMinThreads>250</ThreadPoolMinThreads>
   </PropertyGroup>
   <ItemGroup>
     <None Include="log4net.config" CopyToPublishDirectory="Always" CopyToOutputDirectory="Always" />

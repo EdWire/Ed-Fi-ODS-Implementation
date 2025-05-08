@@ -36,7 +36,24 @@ namespace EdFi.Ods.WebApi
             var hostBuilder = Host.CreateDefaultBuilder(args)
                 .ConfigureLogging(ConfigureLogging)
                 .UseServiceProviderFactory(new AutofacServiceProviderFactory())
-                .ConfigureWebHostDefaults(
+                .ConfigureAppConfiguration(c =>
+                {
+                    // Make configuration values accessible now
+                    var configuration = c.Build();
+                    string appConfigurationConnectionString = configuration["ApiSettings:Services:AzureAppConfiguration:ConnectionString"];
+                    string appConfigurationMultiTenantKey = configuration["ApiSettings:Services:AzureAppConfiguration:MultiTenantKey"];
+                    string appConfigurationSentinelKey = configuration["ApiSettings:Services:AzureAppConfiguration:SentinelKey"];
+
+                    c.AddAzureAppConfiguration(options =>
+                    {
+                        options.Connect(appConfigurationConnectionString)
+                            .Select(appConfigurationMultiTenantKey)
+                            .ConfigureRefresh(refresh => refresh.Register(appConfigurationSentinelKey, refreshAll: true)
+                            );
+                    });
+                });
+
+            hostBuilder.ConfigureWebHostDefaults(
                     webBuilder =>
                     {
                         webBuilder.ConfigureKestrel(
