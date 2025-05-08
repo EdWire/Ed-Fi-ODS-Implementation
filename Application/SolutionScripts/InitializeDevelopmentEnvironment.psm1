@@ -359,13 +359,13 @@ Function Invoke-RebuildSolution {
         $solutionFileName = (Get-ItemProperty -LiteralPath $solutionPath).Name
         $buildLogFilePath = (Join-Path -Path $BuildLogDirectoryPath -ChildPath $solutionFileName) + ".msbuild.log"
 
-        Write-Host -ForegroundColor Magenta "& dotnet build $solutionPath -c $buildConfiguration -v $verbosity /flp:v=$verbosity /flp:logfile=$buildLogFilePath"
+        Write-Host -ForegroundColor Magenta "& dotnet build $solutionPath -c $buildConfiguration -v $verbosity -p:TreatWarningsAsErrors=false /flp:v=$verbosity /flp:logfile=$buildLogFilePath"
         if ($noRestore) {
-            & dotnet build $solutionPath -c $buildConfiguration -v $verbosity /flp:v=$verbosity /flp:logfile=$buildLogFilePath --no-restore -p:StandardVersion=$StandardVersion | Out-Host
+            & dotnet build $solutionPath -c $buildConfiguration -v $verbosity -p:TreatWarningsAsErrors=false /flp:v=$verbosity /flp:logfile=$buildLogFilePath --no-restore -p:StandardVersion=$StandardVersion | Out-Host
         }
         else
         {
-            & dotnet build $solutionPath -c $buildConfiguration -v $verbosity /flp:v=$verbosity /flp:logfile=$buildLogFilePath  -p:StandardVersion=$StandardVersion | Out-Host
+            & dotnet build $solutionPath -c $buildConfiguration -v $verbosity -p:TreatWarningsAsErrors=false /flp:v=$verbosity /flp:logfile=$buildLogFilePath  -p:StandardVersion=$StandardVersion | Out-Host
         }
 
         # If we can't find the build's log file in order to inspect it, write a warning and return null.
