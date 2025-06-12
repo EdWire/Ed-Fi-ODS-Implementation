@@ -100,7 +100,7 @@ namespace EdFi.Ods.WebApi
                 {
                     try
                     {
-                        var plugin = (IHostConfigurationActivity) Activator.CreateInstance(hostConfigurationActivity);
+                        var plugin = (IHostConfigurationActivity)Activator.CreateInstance(hostConfigurationActivity);
                         plugin!.ConfigureHost(hostBuilder);
                     }
                     catch (Exception ex)

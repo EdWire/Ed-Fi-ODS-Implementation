@@ -1,0 +1,16 @@
+
+DROP INDEX IF EXISTS IX_ClassGroup_CommunityProviderId;
+CREATE INDEX IF NOT EXISTS IX_ClassGroup_CommunityProviderId ON edfixcrdc.ClassGroup(CommunityProviderId) INCLUDE (AggregateId);
+
+DROP INDEX IF EXISTS IX_CommunityProviderLocation_CommunityProviderId;
+CREATE INDEX IF NOT EXISTS IX_CommunityProviderLocation_CommunityProviderId ON edfixcrdc.CommunityProviderLocation(CommunityProviderId) INCLUDE (AggregateId);
+
+DROP INDEX IF EXISTS IX_StudentClassGroupAssociation_CommunityProviderId;
+CREATE INDEX IF NOT EXISTS IX_StudentClassGroupAssociation_CommunityProviderId ON edfixcrdc.StudentClassGroupAssociation(CommunityProviderId) INCLUDE (AggregateId);
+
+CREATE INDEX IF NOT EXISTS IX_StudentClassGroupAssociation_StudentUSI ON edfixcrdc.StudentClassGroupAssociation(StudentUSI) INCLUDE (AggregateId);
+
+DROP INDEX IF EXISTS IX_StudentCommunityProviderLocationAssociation_CommunityProviderId;
+CREATE INDEX IF NOT EXISTS IX_StudentCommunityProviderLocationAssociation_CommunityProviderId ON edfixcrdc.StudentCommunityProviderLocationAssociation(CommunityProviderId) INCLUDE (AggregateId);
+
+CREATE INDEX IF NOT EXISTS IX_StudentCommunityProviderLocationAssociation_StudentUSI ON edfixcrdc.StudentCommunityProviderLocationAssociation(StudentUSI) INCLUDE (AggregateId);

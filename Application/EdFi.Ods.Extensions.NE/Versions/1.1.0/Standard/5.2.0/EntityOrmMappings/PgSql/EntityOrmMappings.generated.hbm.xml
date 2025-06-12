@@ -1,0 +1,358 @@
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="EdFi.Ods.Extensions.NE" namespace="EdFi.Ods.Entities.NHibernate" default-access="property" auto-import="false">
+
+
+  <!-- Class definition -->
+  <class name="EdFi.Ods.Entities.NHibernate.CalendarDateAggregate.NE.CalendarDateExtension" table="CalendarDateExtension" lazy="false" schema="ne">
+    <!-- Composite primary key -->
+    <composite-id>
+      <key-many-to-one name="CalendarDate">
+        <column name="CalendarCode" />
+        <column name="Date" />
+        <column name="SchoolId" />
+        <column name="SchoolYear" />
+      </key-many-to-one>
+    </composite-id>
+    <!-- Transient state detection -->
+    <property name="CreateDate" column="CreateDate" type="UtcDateTime" not-null="true" />
+
+
+    <!-- Properties -->
+    <property name="InstructionalDuration" column="InstructionalDuration" type="decimal" not-null="true" />
+
+    <!-- Aggregate references -->
+
+    <!-- Back references -->
+
+    <!-- Collections -->
+</class>
+
+
+
+  <!-- Class definition -->
+  <class name="EdFi.Ods.Entities.NHibernate.DisciplineActionAggregate.NE.DisciplineActionExtension" table="DisciplineActionExtension" lazy="false" schema="ne">
+    <!-- Composite primary key -->
+    <composite-id>
+      <key-many-to-one name="DisciplineAction">
+        <column name="DisciplineActionIdentifier" />
+        <column name="DisciplineDate" />
+        <column name="StudentUSI" />
+      </key-many-to-one>
+    </composite-id>
+    <!-- Transient state detection -->
+    <property name="CreateDate" column="CreateDate" type="UtcDateTime" not-null="true" />
+
+
+    <!-- Properties -->
+    <property name="GFSAExpulsionModifiedToLessThanOneYear" column="GFSAExpulsionModifiedToLessThanOneYear" type="bool" />
+    <property name="UnilateralRemovalDescriptorId" column="UnilateralRemovalDescriptorId" type="int" />
+
+    <!-- Aggregate references -->
+
+    <!-- Back references -->
+
+    <!-- Collections -->
+</class>
+
+
+
+  <!-- Class definition -->
+  <class name="EdFi.Ods.Entities.NHibernate.DisciplineIncidentAggregate.NE.DisciplineIncidentExtension" table="DisciplineIncidentExtension" lazy="false" schema="ne">
+    <!-- Composite primary key -->
+    <composite-id>
+      <key-many-to-one name="DisciplineIncident">
+        <column name="IncidentIdentifier" />
+        <column name="SchoolId" />
+      </key-many-to-one>
+    </composite-id>
+    <!-- Transient state detection -->
+    <property name="CreateDate" column="CreateDate" type="UtcDateTime" not-null="true" />
+
+
+    <!-- Properties -->
+    <property name="HomicideIndicator" column="HomicideIndicator" type="bool" />
+    <property name="ShootingIndicator" column="ShootingIndicator" type="bool" />
+
+    <!-- Aggregate references -->
+
+    <!-- Back references -->
+
+    <!-- Collections -->
+</class>
+
+
+    <!-- Aggregate reference data class mapping -->
+    <class name="EdFi.Ods.Entities.NHibernate.PostGraduateActivityAggregate.NE.PostGraduateActivityReferenceData" table="PostGraduateActivity" lazy="true"  schema="ne" >
+        <!-- Composite primary key -->
+        <composite-id>
+            <key-property name="LocalEducationAgencyId" column="LocalEducationAgencyId" type="long"  />
+            <key-property name="SchoolYear" column="SchoolYear" type="short"  />
+            <key-property name="StudentUSI" column="StudentUSI" type="int"  />
+        </composite-id>
+
+        <property name="Id" column="Id" type="guid" insert="false" update="false" />
+
+        <!-- Readonly property to surface the discriminator value -->
+        <property name="Discriminator" column="Discriminator" type="string" insert="false" update="false" />
+    </class>
+
+  <!-- Class definition -->
+  <class name="EdFi.Ods.Entities.NHibernate.PostGraduateActivityAggregate.NE.PostGraduateActivity" table="PostGraduateActivity" lazy="false" schema="ne" discriminator-value="null">
+    <!-- Composite primary key -->
+    <composite-id>
+      <key-property name="LocalEducationAgencyId" column="LocalEducationAgencyId" type="long" />
+      <key-property name="SchoolYear" column="SchoolYear" type="short" />
+      <key-property name="StudentUSI" column="StudentUSI" type="int" />
+    </composite-id>
+
+    <!-- Discriminator -->
+    <discriminator column="Discriminator" type="string" />
+
+    <!-- Optimistic locking for aggregate root -->
+    <version name="LastModifiedDate" column="LastModifiedDate" type="UtcDateTime" />
+
+    <!-- Transient state detection -->
+    <property name="CreateDate" column="CreateDate" type="UtcDateTime" not-null="true" />
+
+    <!-- Unique Guid-based identifier for aggregate root -->
+    <property name="Id" column="Id" type="guid" not-null="true" />
+    <property name="AggregateId" column="AggregateId" type="int" not-null="true" insert="false" update="false" />
+
+    <!-- Properties -->
+    <property name="PostGraduateActivityDescriptorId" column="PostGraduateActivityDescriptorId" type="int" not-null="true" />
+    <property name="PostGraduateActivityDeterminationDescriptorId" column="PostGraduateActivityDeterminationDescriptorId" type="int" not-null="true" />
+
+    <!-- Aggregate references -->
+    <many-to-one name="LocalEducationAgencyReferenceData" class="EdFi.Ods.Entities.NHibernate.EducationOrganizationAggregate.EdFi.EducationOrganizationReferenceData" fetch="join" insert="false" update="false" cascade="none" lazy="proxy">
+      <column name="LocalEducationAgencyId" />
+    </many-to-one>
+    <many-to-one name="SchoolYearTypeReferenceData" class="EdFi.Ods.Entities.NHibernate.SchoolYearTypeAggregate.EdFi.SchoolYearTypeReferenceData" fetch="join" insert="false" update="false" cascade="none" lazy="proxy">
+      <column name="SchoolYear" />
+    </many-to-one>
+    <many-to-one name="StudentReferenceData" class="EdFi.Ods.Entities.NHibernate.StudentAggregate.EdFi.StudentReferenceData" fetch="join" insert="false" update="false" cascade="none" lazy="proxy">
+      <column name="StudentUSI" />
+    </many-to-one>
+
+    <!-- Back references -->
+
+    <!-- Collections -->
+</class>
+
+
+
+  <!-- Class definition -->
+  <class name="EdFi.Ods.Entities.NHibernate.SectionAggregate.NE.SectionDelivery" table="SectionDelivery" lazy="false" schema="ne">
+    <!-- Composite primary key -->
+    <composite-id>
+      <key-property name="SectionDeliveryDescriptorId" column="SectionDeliveryDescriptorId" type="int" />
+      <key-many-to-one name="Section">
+        <column name="LocalCourseCode" />
+        <column name="SchoolId" />
+        <column name="SchoolYear" />
+        <column name="SectionIdentifier" />
+        <column name="SessionName" />
+      </key-many-to-one>
+    </composite-id>
+    <!-- Transient state detection -->
+    <property name="CreateDate" column="CreateDate" type="UtcDateTime" not-null="true" />
+
+
+    <!-- Properties -->
+
+    <!-- Aggregate references -->
+
+    <!-- Back references -->
+
+    <!-- Collections -->
+</class>
+
+
+
+  <!-- Class definition -->
+  <class name="EdFi.Ods.Entities.NHibernate.SectionAggregate.NE.SectionExtension" table="SectionExtension" lazy="false" schema="ne">
+    <!-- Composite primary key -->
+    <composite-id>
+      <key-many-to-one name="Section">
+        <column name="LocalCourseCode" />
+        <column name="SchoolId" />
+        <column name="SchoolYear" />
+        <column name="SectionIdentifier" />
+        <column name="SessionName" />
+      </key-many-to-one>
+    </composite-id>
+    <!-- Transient state detection -->
+    <property name="CreateDate" column="CreateDate" type="UtcDateTime" not-null="true" />
+
+
+    <!-- Properties -->
+    <property name="CourseStaffIdOverride" column="CourseStaffIdOverride" type="string" length="10" />
+
+    <!-- Aggregate references -->
+
+    <!-- Back references -->
+
+    <!-- Collections -->
+</class>
+
+
+
+  <!-- Class definition -->
+  <class name="EdFi.Ods.Entities.NHibernate.StudentDisciplineIncidentBehaviorAssociationAggregate.NE.StudentDisciplineIncidentBehaviorAssociationExtension" table="StudentDisciplineIncidentBehaviorAssociationExtension" lazy="false" schema="ne">
+    <!-- Composite primary key -->
+    <composite-id>
+      <key-many-to-one name="StudentDisciplineIncidentBehaviorAssociation">
+        <column name="BehaviorDescriptorId" />
+        <column name="IncidentIdentifier" />
+        <column name="SchoolId" />
+        <column name="StudentUSI" />
+      </key-many-to-one>
+    </composite-id>
+    <!-- Transient state detection -->
+    <property name="CreateDate" column="CreateDate" type="UtcDateTime" not-null="true" />
+
+
+    <!-- Properties -->
+    <property name="GunFreeSchoolViolation" column="GunFreeSchoolViolation" type="bool" />
+    <property name="ReferralToLawEnforcement" column="ReferralToLawEnforcement" type="bool" />
+    <property name="SchoolRelatedArrestIndicator" column="SchoolRelatedArrestIndicator" type="bool" />
+    <property name="SeriousBodilyInjury" column="SeriousBodilyInjury" type="bool" />
+
+    <!-- Aggregate references -->
+
+    <!-- Back references -->
+
+    <!-- Collections -->
+</class>
+
+
+
+  <!-- Class definition -->
+  <class name="EdFi.Ods.Entities.NHibernate.StudentEducationOrganizationAssociationAggregate.NE.StudentEducationOrganizationAssociationExtension" table="StudentEducationOrganizationAssociationExtension" lazy="false" schema="ne">
+    <!-- Composite primary key -->
+    <composite-id>
+      <key-many-to-one name="StudentEducationOrganizationAssociation">
+        <column name="EducationOrganizationId" />
+        <column name="StudentUSI" />
+      </key-many-to-one>
+    </composite-id>
+    <!-- Transient state detection -->
+    <property name="CreateDate" column="CreateDate" type="UtcDateTime" not-null="true" />
+
+
+    <!-- Properties -->
+    <property name="ImmigrantIndicatorDescriptorId" column="ImmigrantIndicatorDescriptorId" type="int" />
+
+    <!-- Aggregate references -->
+
+    <!-- Back references -->
+
+    <!-- Collections -->
+</class>
+
+
+
+  <!-- Class definition -->
+  <class name="EdFi.Ods.Entities.NHibernate.StudentLanguageInstructionProgramAssociationAggregate.NE.StudentLanguageInstructionProgramAssociationExtension" table="StudentLanguageInstructionProgramAssociationExtension" lazy="false" schema="ne">
+    <!-- Composite primary key -->
+    <composite-id>
+      <key-many-to-one name="StudentLanguageInstructionProgramAssociation">
+        <column name="BeginDate" />
+        <column name="EducationOrganizationId" />
+        <column name="ProgramEducationOrganizationId" />
+        <column name="ProgramName" />
+        <column name="ProgramTypeDescriptorId" />
+        <column name="StudentUSI" />
+      </key-many-to-one>
+    </composite-id>
+    <!-- Transient state detection -->
+    <property name="CreateDate" column="CreateDate" type="UtcDateTime" not-null="true" />
+
+
+    <!-- Properties -->
+    <property name="DismissedViaIEPReview" column="DismissedViaIEPReview" type="bool" />
+    <property name="RedesignatedEnglishFluent" column="RedesignatedEnglishFluent" type="bool" />
+
+    <!-- Aggregate references -->
+
+    <!-- Back references -->
+
+    <!-- Collections -->
+</class>
+
+
+
+  <!-- Class definition -->
+  <class name="EdFi.Ods.Entities.NHibernate.StudentSchoolAssociationAggregate.NE.StudentSchoolAssociationExtension" table="StudentSchoolAssociationExtension" lazy="false" schema="ne">
+    <!-- Composite primary key -->
+    <composite-id>
+      <key-many-to-one name="StudentSchoolAssociation">
+        <column name="EntryDate" />
+        <column name="SchoolId" />
+        <column name="StudentUSI" />
+      </key-many-to-one>
+    </composite-id>
+    <!-- Transient state detection -->
+    <property name="CreateDate" column="CreateDate" type="UtcDateTime" not-null="true" />
+
+
+    <!-- Properties -->
+    <property name="ExpectedHighSchoolOfGraduationSchoolId" column="ExpectedHighSchoolOfGraduationSchoolId" type="long" />
+    <property name="ReportingSchoolId" column="ReportingSchoolId" type="long" not-null="true" />
+    <property name="ResidentLocalEducationAgencyId" column="ResidentLocalEducationAgencyId" type="long" not-null="true" />
+    <property name="ResidentSchoolId" column="ResidentSchoolId" type="long" />
+    <property name="StudentDaysEnrolled" column="StudentDaysEnrolled" type="decimal" />
+
+    <!-- Aggregate references -->
+    <many-to-one name="ExpectedHighSchoolOfGraduationSchoolReferenceData" class="EdFi.Ods.Entities.NHibernate.EducationOrganizationAggregate.EdFi.EducationOrganizationReferenceData" fetch="join" insert="false" update="false" cascade="none" lazy="proxy">
+      <column name="ExpectedHighSchoolOfGraduationSchoolId" />
+    </many-to-one>
+    <many-to-one name="ReportingSchoolReferenceData" class="EdFi.Ods.Entities.NHibernate.EducationOrganizationAggregate.EdFi.EducationOrganizationReferenceData" fetch="join" insert="false" update="false" cascade="none" lazy="proxy">
+      <column name="ReportingSchoolId" />
+    </many-to-one>
+    <many-to-one name="ResidentLocalEducationAgencyReferenceData" class="EdFi.Ods.Entities.NHibernate.EducationOrganizationAggregate.EdFi.EducationOrganizationReferenceData" fetch="join" insert="false" update="false" cascade="none" lazy="proxy">
+      <column name="ResidentLocalEducationAgencyId" />
+    </many-to-one>
+    <many-to-one name="ResidentSchoolReferenceData" class="EdFi.Ods.Entities.NHibernate.EducationOrganizationAggregate.EdFi.EducationOrganizationReferenceData" fetch="join" insert="false" update="false" cascade="none" lazy="proxy">
+      <column name="ResidentSchoolId" />
+    </many-to-one>
+
+    <!-- Back references -->
+
+    <!-- Collections -->
+</class>
+
+
+
+  <!-- Class definition -->
+  <class name="EdFi.Ods.Entities.NHibernate.StudentSpecialEducationProgramAssociationAggregate.NE.StudentSpecialEducationProgramAssociationExtension" table="StudentSpecialEducationProgramAssociationExtension" lazy="false" schema="ne">
+    <!-- Composite primary key -->
+    <composite-id>
+      <key-many-to-one name="StudentSpecialEducationProgramAssociation">
+        <column name="BeginDate" />
+        <column name="EducationOrganizationId" />
+        <column name="ProgramEducationOrganizationId" />
+        <column name="ProgramName" />
+        <column name="ProgramTypeDescriptorId" />
+        <column name="StudentUSI" />
+      </key-many-to-one>
+    </composite-id>
+    <!-- Transient state detection -->
+    <property name="CreateDate" column="CreateDate" type="UtcDateTime" not-null="true" />
+
+
+    <!-- Properties -->
+    <property name="InitialSpecialEducationEntryDate" column="InitialSpecialEducationEntryDate" type="date" />
+    <property name="PartCTransitionDelayReasonDescriptorId" column="PartCTransitionDelayReasonDescriptorId" type="int" />
+    <property name="PlacementTypeDescriptorId" column="PlacementTypeDescriptorId" type="int" />
+    <property name="SpecialEducationProgramDescriptorId" column="SpecialEducationProgramDescriptorId" type="int" />
+    <property name="ToTakeAlternateAssessment" column="ToTakeAlternateAssessment" type="bool" />
+
+    <!-- Aggregate references -->
+
+    <!-- Back references -->
+
+    <!-- Collections -->
+</class>
+
+
+</hibernate-mapping>
+
