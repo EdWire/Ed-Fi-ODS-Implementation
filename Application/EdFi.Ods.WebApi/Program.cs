@@ -27,7 +27,7 @@ namespace EdFi.Ods.WebApi
                     AssemblyLoaderHelper.GetPluginFolder(
                         config?.GetValue<string>("Plugin:Folder") ?? string.Empty));
             }
-            
+
             var hostBuilder = Host.CreateDefaultBuilder(args)
                 .ConfigureLogging(ConfigureLogging)
                 .UseServiceProviderFactory(new AutofacServiceProviderFactory())
@@ -87,7 +87,7 @@ namespace EdFi.Ods.WebApi
                 {
                     try
                     {
-                        var plugin = (IHostConfigurationActivity) Activator.CreateInstance(hostConfigurationActivity);
+                        var plugin = (IHostConfigurationActivity)Activator.CreateInstance(hostConfigurationActivity);
                         plugin!.ConfigureHost(hostBuilder);
                     }
                     catch (Exception ex)
