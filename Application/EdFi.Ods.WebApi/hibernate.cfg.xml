@@ -4,7 +4,8 @@
     <property name="connection.isolation">ReadCommitted</property>
     <property name="default_schema">edfi</property>
     <property name="current_session_context_class">async_local</property>
-    <property name="adonet.batch_size">100</property>
+    <property name="adonet.batch_size">50</property>
+    <property name="command_timeout">300</property>
     <!--
         Disable the hbm2ddl keywords feature.
          - The keywords feature causes the database to be hit as soon as the session factory is created.
