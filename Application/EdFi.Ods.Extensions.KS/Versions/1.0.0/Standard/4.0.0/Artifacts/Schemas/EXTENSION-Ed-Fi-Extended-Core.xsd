@@ -1,0 +1,1460 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://ed-fi.org/4.0.0" xmlns:ann="http://ed-fi.org/annotation" targetNamespace="http://ed-fi.org/4.0.0" elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <xs:include schemaLocation="Ed-Fi-Core.xsd" />
+  <xs:annotation>
+    <xs:documentation>===== Ed-Fi 4.0.0 Extensions =====</xs:documentation>
+  </xs:annotation>
+  <xs:annotation>
+    <xs:documentation>===== Domain Entities =====</xs:documentation>
+  </xs:annotation>
+  <xs:complexType name="EXTENSION-CourseOfferingExtension">
+    <xs:annotation>
+      <xs:documentation></xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Domain Entity</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="CourseOffering">
+        <xs:sequence>
+          <xs:element name="CourseCredits" type="EXTENSION-CourseCredits" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Credits required to complete the course.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="CourseSequence" type="xs:int" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Sequence related to course pathways.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="CourseTotalSequence" type="xs:int" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Total sequence related to this course.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="CourseDeliveryType" type="EXTENSION-CourseDeliveryTypeDescriptorReferenceType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Delivery type of this course.</xs:documentation>
+              <xs:appinfo>
+                <ann:Descriptor>EXTENSION-CourseDeliveryTypeDescriptor</ann:Descriptor>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="CourseProgramType" type="EXTENSION-CourseProgramTypeDescriptorReferenceType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Associated program type for this course.</xs:documentation>
+              <xs:appinfo>
+                <ann:Descriptor>EXTENSION-CourseProgramTypeDescriptor</ann:Descriptor>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="CollegeCareerType" type="EXTENSION-CollegeCareerTypeDescriptorReferenceType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Associated college career type for this course.</xs:documentation>
+              <xs:appinfo>
+                <ann:Descriptor>EXTENSION-CollegeCareerTypeDescriptor</ann:Descriptor>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-GradeExtension">
+    <xs:annotation>
+      <xs:documentation></xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Domain Entity</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="Grade">
+        <xs:sequence>
+          <xs:element name="CollegeCreditEarned" type="EXTENSION-CollegeCreditEarned" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The number of college credits earned for the dual credit courses and concurrent enrollments.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="FirstInstructionalDate" type="xs:date" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The first day of migrant student instruction or services for the current term (F18).</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="LastInstructionalDate" type="xs:date" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The last day of migrant student instruction for the current term (F18).</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="InstructionalMinutesCompleted" type="EXTENSION-InstructionalMinutesCompleted" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The number of college credits earned for the dual credit courses and concurrent enrollments.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="WorkBasedLearning" type="EXTENSION-WorkBasedLearningDescriptorReferenceType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>This field indicates a Work-based Learning course when the KCC ID (F19) is present.</xs:documentation>
+              <xs:appinfo>
+                <ann:Descriptor>EXTENSION-WorkBasedLearningDescriptor</ann:Descriptor>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-SchoolExtension">
+    <xs:annotation>
+      <xs:documentation></xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Domain Entity</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="School">
+        <xs:sequence>
+          <xs:element name="DateClosed" type="xs:date" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The closing date related to School.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="DateOpened" type="xs:date" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The date when the school opened in the directory application.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-SectionEducator">
+    <xs:annotation>
+      <xs:documentation>This entity represents the section's educator.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Domain Entity</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ComplexObjectType">
+        <xs:sequence>
+          <xs:element name="SectionReference" type="SectionReferenceType">
+            <xs:annotation>
+              <xs:documentation>The section related to the educator.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="EducatorElectronicMailAddress" type="ElectronicMailAddress">
+            <xs:annotation>
+              <xs:documentation>The educator's email.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="EducatorFirstName" type="FirstName" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The educator's first name.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="EducatorMiddleName" type="MiddleName" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The educator's middle name.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="EducatorLastSurname" type="LastSurname" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The educator's last name.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-SnackPack">
+    <xs:annotation>
+      <xs:documentation>SnackPack</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Domain Entity</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ComplexObjectType">
+        <xs:sequence>
+          <xs:element name="StateStudentId" type="EXTENSION-StateStudentId">
+            <xs:annotation>
+              <xs:documentation>Student's unique Id</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="MostRecentSchool" type="EXTENSION-MostRecentSchool" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Most recent school</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="AccountabilitySchool" type="EXTENSION-AccountabilitySchool" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Accountability School</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="SchoolEntryDate" type="xs:date" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>School Entry Date</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="SchoolExitWithdrawalDate" type="xs:date" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>School Exit/Withdrawal Date</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="GradeLevel" type="EXTENSION-GradeLevel" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Grade Level</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="CumulativeDaysAttended" type="EXTENSION-CumulativeDaysAttended" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Cumulative Days Attended</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="Homeless" type="EXTENSION-Homeless" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Student's Homeless Status</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="Immigrant" type="EXTENSION-Immigrant" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Student's Immigrant Status</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="KansasAtRiskProgramParticipation" type="EXTENSION-KansasAtRiskProgramParticipation" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Kansas At Risk Program Participation</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="ESOLBilingualProgramEntryDate" type="EXTENSION-ESOLBilingualProgramEntryDate" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>ESOL Bilingual Program Entry Date</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="FirstLanguage" type="EXTENSION-FirstLanguage" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Student's First Language</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="ESOLBilingualProgramParticipationCode" type="EXTENSION-ESOLBilingualProgramParticipationCode" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>ESOL Bilingual Program Participation Code</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="NeglectedDelinquentStudent" type="EXTENSION-NeglectedDelinquentStudent" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Student's NeglectedDelinquent-Student Status</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="TitleIParticipation" type="EXTENSION-TitleIParticipation" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Title I Participation</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="LunchProgramEligibilityAtRiskFunding" type="EXTENSION-LunchProgramEligibilityAtRiskFunding" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Lunch Program Eligibility At Risk Funding</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="ResidenceDistrict" type="EXTENSION-ResidenceDistrict" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Residence District</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="Qualifiedfor504" type="EXTENSION-Qualifiedfor504" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Qualified for 504</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="PrimaryDisabilityIndicator" type="EXTENSION-PrimaryDisabilityIndicator" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Student's Primary Disability Indicator</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="GiftedStudentIndicator" type="EXTENSION-GiftedStudentIndicator" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Student's Gifted Status Indicator</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-StudentAssessmentExtension">
+    <xs:annotation>
+      <xs:documentation></xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Domain Entity</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="StudentAssessment">
+        <xs:sequence>
+          <xs:element name="ProctorStaffReference" type="StaffReferenceType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>he staff responsible for proctoring the assessment.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="AssessmentRequest" type="EXTENSION-AssessmentRequestDescriptorReferenceType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The type of assessment requested  for the student.</xs:documentation>
+              <xs:appinfo>
+                <ann:Descriptor>EXTENSION-AssessmentRequestDescriptor</ann:Descriptor>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:annotation>
+    <xs:documentation>===== Descriptors =====</xs:documentation>
+  </xs:annotation>
+  <xs:complexType name="EXTENSION-AssessmentRequestDescriptor">
+    <xs:annotation>
+      <xs:documentation>The type of request for the student assessment.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Descriptor</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DescriptorType" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-CollegeCareerTypeDescriptor">
+    <xs:annotation>
+      <xs:documentation>The type of career path a student is planning to take when in college.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Descriptor</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DescriptorType" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-CourseDeliveryTypeDescriptor">
+    <xs:annotation>
+      <xs:documentation>The method or format through which the educational course is delivered to students.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Descriptor</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DescriptorType" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-CourseProgramTypeDescriptor">
+    <xs:annotation>
+      <xs:documentation>The type of program a course is in.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Descriptor</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DescriptorType" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-CourseStatusDescriptor">
+    <xs:annotation>
+      <xs:documentation>This is documentation for CourseStatus descriptor.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Descriptor</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DescriptorType" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-CTECertificationEarnedDescriptor">
+    <xs:annotation>
+      <xs:documentation>The certification code associated with the CTE certification earned by the student during the current school year.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Descriptor</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DescriptorType" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-FundingSourceDescriptor">
+    <xs:annotation>
+      <xs:documentation>enumeration for type of ESOL/Bilingual Program in which the student participates.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Descriptor</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DescriptorType" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-ImmigrantStudentDescriptor">
+    <xs:annotation>
+      <xs:documentation>This descriptor describes the student's immigrant status.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Descriptor</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DescriptorType" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-LanguageInstructionProgramTypeDescriptor">
+    <xs:annotation>
+      <xs:documentation>The language instruction program type the student participates in.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Descriptor</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DescriptorType" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-MilitaryConnectedStudentDescriptor">
+    <xs:annotation>
+      <xs:documentation>This descriptor describes the student's military connection.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Descriptor</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DescriptorType" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-NeglectedDelinquentStudentDescriptor">
+    <xs:annotation>
+      <xs:documentation>Describes whether the student is a neglected or delinquent student.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Descriptor</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DescriptorType" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-PostGraduationPlansDescriptor">
+    <xs:annotation>
+      <xs:documentation>The intended post-secondary direction of graduates.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Descriptor</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DescriptorType" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-QualifiedFor504Descriptor">
+    <xs:annotation>
+      <xs:documentation>Indicates the type of 504 qualification of the student.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Descriptor</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DescriptorType" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-WorkBasedLearningDescriptor">
+    <xs:annotation>
+      <xs:documentation>This field indicates a Work-based Learning course when the KCC ID (F19) is present.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Descriptor</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DescriptorType" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:annotation>
+    <xs:documentation>===== Associations =====</xs:documentation>
+  </xs:annotation>
+  <xs:complexType name="EXTENSION-StudentEducationOrganizationAssociationExtension">
+    <xs:annotation>
+      <xs:documentation></xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Association</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="StudentEducationOrganizationAssociation">
+        <xs:sequence>
+          <xs:element name="CTE" type="EXTENSION-CTE" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation>The Career Technical Education associated with the student.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="DistrictOfResidence" type="EXTENSION-DistrictOfResidence" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The district of residence of the student.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="ImmigrantStudent" type="EXTENSION-ImmigrantStudentDescriptorReferenceType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Describes the student's immigrant status.</xs:documentation>
+              <xs:appinfo>
+                <ann:Descriptor>EXTENSION-ImmigrantStudentDescriptor</ann:Descriptor>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="NeglectedDelinquentStudent" type="EXTENSION-NeglectedDelinquentStudentDescriptorReferenceType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Describes whether the student is a neglected or delinquent student.</xs:documentation>
+              <xs:appinfo>
+                <ann:Descriptor>EXTENSION-NeglectedDelinquentStudentDescriptor</ann:Descriptor>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="MilitaryConnectedStudent" type="EXTENSION-MilitaryConnectedStudentDescriptorReferenceType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Describes the student's military connection.</xs:documentation>
+              <xs:appinfo>
+                <ann:Descriptor>EXTENSION-MilitaryConnectedStudentDescriptor</ann:Descriptor>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="Transportation" type="EXTENSION-Transportation" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Contains elements relating to student's transportation.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-StudentKPATProgramAssociation">
+    <xs:annotation>
+      <xs:documentation>This association represents the Kansas Parents As Teachers Program(s) that a student participates in or receive services from.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Association</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="GeneralStudentProgramAssociation" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-StudentKPPProgramAssociation">
+    <xs:annotation>
+      <xs:documentation>This association represents the Kansas Preschool Pilot Program(s) that a student participates in or receive services from.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Association</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="GeneralStudentProgramAssociation" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-StudentLanguageInstructionProgramAssociationExtension">
+    <xs:annotation>
+      <xs:documentation></xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Association</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="StudentLanguageInstructionProgramAssociation">
+        <xs:sequence>
+          <xs:element name="USInitialSchoolEntryDate" type="xs:date" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>First Entry Date into a School in the United States</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="FundingSource" type="EXTENSION-FundingSourceDescriptorReferenceType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The source of funding for ESOL/bilingual program in which the student participates in.</xs:documentation>
+              <xs:appinfo>
+                <ann:Descriptor>EXTENSION-FundingSourceDescriptor</ann:Descriptor>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="EndDate" type="xs:date" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The date when student is no longer in the language instruction program.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="LanguageInstructionProgramType" type="EXTENSION-LanguageInstructionProgramTypeDescriptorReferenceType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The language instruction program type the student participates in.</xs:documentation>
+              <xs:appinfo>
+                <ann:Descriptor>EXTENSION-LanguageInstructionProgramTypeDescriptor</ann:Descriptor>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-StudentSchoolAssociationExtension">
+    <xs:annotation>
+      <xs:documentation></xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Association</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="StudentSchoolAssociation">
+        <xs:sequence>
+          <xs:element name="LocalEducationAgencyEntryDate" type="xs:date">
+            <xs:annotation>
+              <xs:documentation>The month, day, year on which the student enrolls and begins to receive instructional services in a school district.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="StateEntryDate" type="xs:date">
+            <xs:annotation>
+              <xs:documentation>The month, day, year on which the student enrolls and begins to receive instructional services in Kansas.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="FirstInstructionalDate" type="xs:date" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The month, day, year on which the student first receives instructional services during the current school year.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="MembershipDays" type="EXTENSION-MembershipDays" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The number of days the student has been enrolled and receiving instruction</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="AttendanceDays" type="EXTENSION-AttendanceDays" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The number of days the student has been present in this school/program when school was in session during the current school year.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="MinutesEnrolled" type="xs:int" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The number of minutes per day that the student was enrolled in this district on September 20.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="UnweightedGradePointAverage" type="EXTENSION-UnweightedGradePointAverage" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The student's unweighted cumulative GPA upon graduating from high school with a regular high school diploma.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="CreditsEarned" type="EXTENSION-CreditsEarned" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The total amount of completed credits earned towards graduation.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="CreditsRequiredToGraduate" type="EXTENSION-CreditsRequiredToGraduate" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The total amount of completed credits required for graduation.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="PostGraduationPlans" type="EXTENSION-PostGraduationPlansDescriptorReferenceType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The intended post-secondary direction of graduates.</xs:documentation>
+              <xs:appinfo>
+                <ann:Descriptor>EXTENSION-PostGraduationPlansDescriptor</ann:Descriptor>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="CTEContactMinutes" type="EXTENSION-CTEContactMinutes" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The number of minutes a high school student received instruction in an Approved for funding career and technical education course on September 20</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="IndividualPlanOfStudy" type="xs:boolean" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>An indication of whether or not the student has an individual plan of study.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="QualifiedFor504" type="EXTENSION-QualifiedFor504DescriptorReferenceType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Indicates the type of 504 qualification of the student.</xs:documentation>
+              <xs:appinfo>
+                <ann:Descriptor>EXTENSION-QualifiedFor504Descriptor</ann:Descriptor>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-StudentSectionAssociationExtension">
+    <xs:annotation>
+      <xs:documentation></xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Association</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="StudentSectionAssociation">
+        <xs:sequence>
+          <xs:element name="CourseStatus" type="EXTENSION-CourseStatusDescriptorReferenceType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Indication of the student's status in the course.</xs:documentation>
+              <xs:appinfo>
+                <ann:Descriptor>EXTENSION-CourseStatusDescriptor</ann:Descriptor>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:annotation>
+    <xs:documentation>===== Extended Reference Types =====</xs:documentation>
+  </xs:annotation>
+  <xs:complexType name="EXTENSION-SectionEducatorIdentityType">
+    <xs:annotation>
+      <xs:documentation>Identity of a SectionEducator.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Identity</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="SectionReference" type="SectionReferenceType">
+        <xs:annotation>
+          <xs:documentation>The section related to the educator.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="EducatorElectronicMailAddress" type="ElectronicMailAddress">
+        <xs:annotation>
+          <xs:documentation>The educator's email.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-SectionEducatorReferenceType">
+    <xs:annotation>
+      <xs:documentation>Provides alternative references for a SectionEducator. Use XML IDREF to reference a record that is included in the interchange. Use the identity type to look up a record that was loaded previously.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ReferenceType">
+        <xs:sequence>
+          <xs:element name="SectionEducatorIdentity" type="EXTENSION-SectionEducatorIdentityType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Identity of a SectionEducator.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-SnackPackIdentityType">
+    <xs:annotation>
+      <xs:documentation>Identity of a SnackPack.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Identity</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="StateStudentId" type="EXTENSION-StateStudentId">
+        <xs:annotation>
+          <xs:documentation>Student's unique Id</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-SnackPackReferenceType">
+    <xs:annotation>
+      <xs:documentation>Provides alternative references for a SnackPack. Use XML IDREF to reference a record that is included in the interchange. Use the identity type to look up a record that was loaded previously.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ReferenceType">
+        <xs:sequence>
+          <xs:element name="SnackPackIdentity" type="EXTENSION-SnackPackIdentityType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Identity of a SnackPack.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-StudentKPATProgramAssociationIdentityType">
+    <xs:annotation>
+      <xs:documentation>Encapsulates primary attributes that can be used to look up the identity of a StudentKPATProgramAssociation.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Identity</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="StudentReference" type="StudentReferenceType">
+        <xs:annotation>
+          <xs:documentation>The student associated with the program.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ProgramReference" type="ProgramReferenceType">
+        <xs:annotation>
+          <xs:documentation>The program associated with the student.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="BeginDate" type="xs:date">
+        <xs:annotation>
+          <xs:documentation>The earliest date the student is involved with the program. Typically, this is the date the student becomes eligible for the program.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="EducationOrganizationReference" type="EducationOrganizationReferenceType">
+        <xs:annotation>
+          <xs:documentation>The education organization where the student is participating in or receiving the program services.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-StudentKPATProgramAssociationReferenceType">
+    <xs:annotation>
+      <xs:documentation>Provides alternative references for a StudentKPATProgramAssociation. Use XML IDREF to reference a record that is included in the interchange. Use the identity type to look up a record that was loaded previously.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ReferenceType">
+        <xs:sequence>
+          <xs:element name="StudentKPATProgramAssociationIdentity" type="EXTENSION-StudentKPATProgramAssociationIdentityType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Encapsulates primary attributes that can be used to look up the identity of a StudentKPATProgramAssociation.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-StudentKPPProgramAssociationIdentityType">
+    <xs:annotation>
+      <xs:documentation>Encapsulates primary attributes that can be used to look up the identity of a StudentKPPProgramAssociation.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Identity</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="StudentReference" type="StudentReferenceType">
+        <xs:annotation>
+          <xs:documentation>The student associated with the program.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ProgramReference" type="ProgramReferenceType">
+        <xs:annotation>
+          <xs:documentation>The program associated with the student.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="BeginDate" type="xs:date">
+        <xs:annotation>
+          <xs:documentation>The earliest date the student is involved with the program. Typically, this is the date the student becomes eligible for the program.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="EducationOrganizationReference" type="EducationOrganizationReferenceType">
+        <xs:annotation>
+          <xs:documentation>The education organization where the student is participating in or receiving the program services.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-StudentKPPProgramAssociationReferenceType">
+    <xs:annotation>
+      <xs:documentation>Provides alternative references for a StudentKPPProgramAssociation. Use XML IDREF to reference a record that is included in the interchange. Use the identity type to look up a record that was loaded previously.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ReferenceType">
+        <xs:sequence>
+          <xs:element name="StudentKPPProgramAssociationIdentity" type="EXTENSION-StudentKPPProgramAssociationIdentityType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Encapsulates primary attributes that can be used to look up the identity of a StudentKPPProgramAssociation.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:annotation>
+    <xs:documentation>===== Extended Descriptor Reference Types =====</xs:documentation>
+  </xs:annotation>
+  <xs:simpleType name="EXTENSION-AssessmentRequestDescriptorReferenceType">
+    <xs:annotation>
+      <xs:documentation>The type of request for the student assessment.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="DescriptorReferenceType" />
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-CollegeCareerTypeDescriptorReferenceType">
+    <xs:annotation>
+      <xs:documentation>The type of career path a student is planning to take when in college.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="DescriptorReferenceType" />
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-CourseDeliveryTypeDescriptorReferenceType">
+    <xs:annotation>
+      <xs:documentation>The method or format through which the educational course is delivered to students.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="DescriptorReferenceType" />
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-CourseProgramTypeDescriptorReferenceType">
+    <xs:annotation>
+      <xs:documentation>The type of program a course is in.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="DescriptorReferenceType" />
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-CourseStatusDescriptorReferenceType">
+    <xs:annotation>
+      <xs:documentation>This is documentation for CourseStatus descriptor.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="DescriptorReferenceType" />
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-CTECertificationEarnedDescriptorReferenceType">
+    <xs:annotation>
+      <xs:documentation>The certification code associated with the CTE certification earned by the student during the current school year.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="DescriptorReferenceType" />
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-FundingSourceDescriptorReferenceType">
+    <xs:annotation>
+      <xs:documentation>enumeration for type of ESOL/Bilingual Program in which the student participates.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="DescriptorReferenceType" />
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-ImmigrantStudentDescriptorReferenceType">
+    <xs:annotation>
+      <xs:documentation>This descriptor describes the student's immigrant status.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="DescriptorReferenceType" />
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-LanguageInstructionProgramTypeDescriptorReferenceType">
+    <xs:annotation>
+      <xs:documentation>The language instruction program type the student participates in.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="DescriptorReferenceType" />
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-MilitaryConnectedStudentDescriptorReferenceType">
+    <xs:annotation>
+      <xs:documentation>This descriptor describes the student's military connection.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="DescriptorReferenceType" />
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-NeglectedDelinquentStudentDescriptorReferenceType">
+    <xs:annotation>
+      <xs:documentation>Describes whether the student is a neglected or delinquent student.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="DescriptorReferenceType" />
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-PostGraduationPlansDescriptorReferenceType">
+    <xs:annotation>
+      <xs:documentation>The intended post-secondary direction of graduates.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="DescriptorReferenceType" />
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-QualifiedFor504DescriptorReferenceType">
+    <xs:annotation>
+      <xs:documentation>Indicates the type of 504 qualification of the student.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="DescriptorReferenceType" />
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-WorkBasedLearningDescriptorReferenceType">
+    <xs:annotation>
+      <xs:documentation>This field indicates a Work-based Learning course when the KCC ID (F19) is present.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="DescriptorReferenceType" />
+  </xs:simpleType>
+  <xs:annotation>
+    <xs:documentation>===== Common Types =====</xs:documentation>
+  </xs:annotation>
+  <xs:complexType name="EXTENSION-CTE">
+    <xs:annotation>
+      <xs:documentation>The Career Technical Education associated with the student.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Common</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="CTECertificationEarned" type="EXTENSION-CTECertificationEarnedDescriptorReferenceType">
+        <xs:annotation>
+          <xs:documentation>The type of certification given to a student.</xs:documentation>
+          <xs:appinfo>
+            <ann:Descriptor>EXTENSION-CTECertificationEarnedDescriptor</ann:Descriptor>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CertificationTerm" type="TermDescriptorReferenceType">
+        <xs:annotation>
+          <xs:documentation>This descriptor defines the term of a session during the school year.</xs:documentation>
+          <xs:appinfo>
+            <ann:Descriptor>TermDescriptor</ann:Descriptor>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CTECertificationDateEarned" type="xs:date">
+        <xs:annotation>
+          <xs:documentation>The date that the CTE certificate has been awarded.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="GraduationYear" type="xs:int">
+        <xs:annotation>
+          <xs:documentation>The year that the student graduated from CTE.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-LanguageInstructionProgramServiceExtension">
+    <xs:annotation>
+      <xs:documentation></xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Common</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="LanguageInstructionProgramService">
+        <xs:sequence>
+          <xs:element name="FundingSource" type="EXTENSION-FundingSourceDescriptorReferenceType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The type of ESOL/Bilingual Program in which the student participates.</xs:documentation>
+              <xs:appinfo>
+                <ann:Descriptor>EXTENSION-FundingSourceDescriptor</ann:Descriptor>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-Transportation">
+    <xs:annotation>
+      <xs:documentation>Contains elements relating to student's transportation.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Common</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="MilesTransported" type="EXTENSION-MilesTransported" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>The number of miles a student is transported one way at the school or district's
+              expense, as measured from the front door of the student's residence to the
+              front door of the school where the student attends the majority of his/her
+              classes. The amount should be to nearest tenth without rounding. For
+              example, 2.48 would be 2.4 and not 2.5. Mileage over 3.0 miles is counted as
+              3.0 for “miles transported” purposes. Because of this, you may enter 3.0 or the
+              exact miles when a student is transported 3.0 miles or further. Use zero for
+              students not transported. Do not include transportation of special education
+              students claimed on the Special Education Transportation Expense Form 308.
+              Do not include transpportation of students to and from a technical school or
+              community college.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="TransportationFTE" type="EXTENSION-TransportationFTE" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>The student's round-trip transportation to school, to the nearest tenth. When
+              the student is transported to and from school, the portion is 1.0. When a
+              student is transported one way; the portion is .5. Does not include
+              transportation of special education students claimed on the Special
+              Education Transportation Expense Form 308.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="NonResidentTransportation" type="xs:boolean" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>An indication that the student is attending the district under an agreement by
+              the district under KSA 72-3124.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:annotation>
+    <xs:documentation>===== Enumerations and Enumerated Collections =====</xs:documentation>
+  </xs:annotation>
+  <xs:annotation>
+    <xs:documentation>===== String Simple Types =====</xs:documentation>
+  </xs:annotation>
+  <xs:simpleType name="EXTENSION-AccountabilitySchool">
+    <xs:annotation>
+      <xs:documentation>Accountability School</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="75" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-DistrictOfResidence">
+    <xs:annotation>
+      <xs:documentation>The district of residence of the student.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="10" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-ESOLBilingualProgramEntryDate">
+    <xs:annotation>
+      <xs:documentation>ESOL Bilingual Program Entry Date</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="10" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-ESOLBilingualProgramParticipationCode">
+    <xs:annotation>
+      <xs:documentation>ESOL Bilingual Program Participation Code</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="75" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-FirstLanguage">
+    <xs:annotation>
+      <xs:documentation>Student's First Language</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="75" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-GiftedStudentIndicator">
+    <xs:annotation>
+      <xs:documentation>Student's Gifted Status Indicator</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="10" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-GradeLevel">
+    <xs:annotation>
+      <xs:documentation>Grade Level</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="75" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-Homeless">
+    <xs:annotation>
+      <xs:documentation>Student's Homeless Status</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="10" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-Immigrant">
+    <xs:annotation>
+      <xs:documentation>Student's Immigrant Status</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="10" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-KansasAtRiskProgramParticipation">
+    <xs:annotation>
+      <xs:documentation>Kansas At Risk Program Participation</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="10" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-LunchProgramEligibilityAtRiskFunding">
+    <xs:annotation>
+      <xs:documentation>Lunch Program Eligibility At Risk Funding</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="75" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-MostRecentSchool">
+    <xs:annotation>
+      <xs:documentation>Most recent school</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="75" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-NeglectedDelinquentStudent">
+    <xs:annotation>
+      <xs:documentation>Student's NeglectedDelinquent-Student Status</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="10" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-PrimaryDisabilityIndicator">
+    <xs:annotation>
+      <xs:documentation>Student's Primary Disability Indicator</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="10" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-Qualifiedfor504">
+    <xs:annotation>
+      <xs:documentation>Qualified for 504</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="10" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-ResidenceDistrict">
+    <xs:annotation>
+      <xs:documentation>Residence District</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="75" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-StateStudentId">
+    <xs:annotation>
+      <xs:documentation>Student's unique Id</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="32" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-TitleIParticipation">
+    <xs:annotation>
+      <xs:documentation>Title I Participation</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="10" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:annotation>
+    <xs:documentation>===== Numeric Simple Types =====</xs:documentation>
+  </xs:annotation>
+  <xs:simpleType name="EXTENSION-AttendanceDays">
+    <xs:annotation>
+      <xs:documentation>The number of days the student has been present in this school/program when school was in session during the current school year.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:decimal">
+      <xs:totalDigits value="4" />
+      <xs:fractionDigits value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-CollegeCreditEarned">
+    <xs:annotation>
+      <xs:documentation>The number of college credits earned for the dual credit courses and concurrent enrollments.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:decimal">
+      <xs:totalDigits value="4" />
+      <xs:fractionDigits value="2" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-CourseCredits">
+    <xs:annotation>
+      <xs:documentation>Credits required to complete the course.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:decimal">
+      <xs:totalDigits value="5" />
+      <xs:fractionDigits value="2" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-CreditsEarned">
+    <xs:annotation>
+      <xs:documentation>The total amount of completed credits earned towards graduation.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:decimal">
+      <xs:totalDigits value="9" />
+      <xs:fractionDigits value="3" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-CreditsRequiredToGraduate">
+    <xs:annotation>
+      <xs:documentation>The total amount of completed credits required for graduation.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:decimal">
+      <xs:totalDigits value="9" />
+      <xs:fractionDigits value="3" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-CTEContactMinutes">
+    <xs:annotation>
+      <xs:documentation>The number of minutes a high school student received instruction in an Approved for funding career and technical education course on September 20</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:decimal">
+      <xs:totalDigits value="3" />
+      <xs:fractionDigits value="0" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-CumulativeDaysAttended">
+    <xs:annotation>
+      <xs:documentation>Cumulative Days Attended</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:decimal">
+      <xs:totalDigits value="4" />
+      <xs:fractionDigits value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-InstructionalMinutesCompleted">
+    <xs:annotation>
+      <xs:documentation>The number of college credits earned for the dual credit courses and concurrent enrollments.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:decimal">
+      <xs:totalDigits value="7" />
+      <xs:fractionDigits value="2" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-MembershipDays">
+    <xs:annotation>
+      <xs:documentation>The number of days the student has been enrolled and receiving instruction</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:decimal">
+      <xs:totalDigits value="4" />
+      <xs:fractionDigits value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-MilesTransported">
+    <xs:annotation>
+      <xs:documentation>The number of miles a student is transported one way at the school or district's
+        expense, as measured from the front door of the student's residence to the
+        front door of the school where the student attends the majority of his/her
+        classes. The amount should be to nearest tenth without rounding. For
+        example, 2.48 would be 2.4 and not 2.5. Mileage over 3.0 miles is counted as
+        3.0 for “miles transported” purposes. Because of this, you may enter 3.0 or the
+        exact miles when a student is transported 3.0 miles or further. Use zero for
+        students not transported. Do not include transportation of special education
+        students claimed on the Special Education Transportation Expense Form 308.
+        Do not include transpportation of students to and from a technical school or
+        community college.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:decimal">
+      <xs:totalDigits value="3" />
+      <xs:fractionDigits value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-TransportationFTE">
+    <xs:annotation>
+      <xs:documentation>The student's round-trip transportation to school, to the nearest tenth. When
+        the student is transported to and from school, the portion is 1.0. When a
+        student is transported one way; the portion is .5. Does not include
+        transportation of special education students claimed on the Special
+        Education Transportation Expense Form 308.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:decimal">
+      <xs:totalDigits value="2" />
+      <xs:fractionDigits value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-UnweightedGradePointAverage">
+    <xs:annotation>
+      <xs:documentation>The student's unweighted cumulative GPA upon graduating from high school with a regular high school diploma.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:decimal">
+      <xs:totalDigits value="3" />
+      <xs:fractionDigits value="2" />
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

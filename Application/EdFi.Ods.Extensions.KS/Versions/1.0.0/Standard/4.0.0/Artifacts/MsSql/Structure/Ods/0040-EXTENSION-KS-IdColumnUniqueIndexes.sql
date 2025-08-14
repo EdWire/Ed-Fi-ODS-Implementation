@@ -1,0 +1,14 @@
+BEGIN TRANSACTION
+    IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'ks.SectionEducator') AND name = N'UX_SectionEducator_Id')
+    CREATE UNIQUE NONCLUSTERED INDEX UX_SectionEducator_Id ON [ks].[SectionEducator]
+    (Id) WITH (PAD_INDEX = ON, FILLFACTOR = 75, STATISTICS_NORECOMPUTE = OFF) ON [PRIMARY]
+    GO
+COMMIT
+
+BEGIN TRANSACTION
+    IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'ks.SnackPack') AND name = N'UX_SnackPack_Id')
+    CREATE UNIQUE NONCLUSTERED INDEX UX_SnackPack_Id ON [ks].[SnackPack]
+    (Id) WITH (PAD_INDEX = ON, FILLFACTOR = 75, STATISTICS_NORECOMPUTE = OFF) ON [PRIMARY]
+    GO
+COMMIT
+
