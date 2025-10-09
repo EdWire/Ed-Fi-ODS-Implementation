@@ -1275,6 +1275,23 @@ CREATE TRIGGER TrackDeletes AFTER DELETE ON tx.frequencyofservicesdescriptor
     FOR EACH ROW EXECUTE PROCEDURE tracked_changes_tx.frequencyofservicesdescriptor_deleted();
 END IF;
 
+CREATE OR REPLACE FUNCTION tracked_changes_tx.fulltimehybridvirtualprogramparticipationdescriptor_deleted()
+    RETURNS trigger AS
+$BODY$
+BEGIN
+    INSERT INTO tracked_changes_edfi.descriptor(olddescriptorid, oldcodevalue, oldnamespace, id, discriminator, changeversion)
+    SELECT OLD.FullTimeHybridVirtualProgramParticipationDescriptorId, b.codevalue, b.namespace, b.id, 'tx.FullTimeHybridVirtualProgramParticipationDescriptor', nextval('changes.ChangeVersionSequence')
+    FROM edfi.descriptor b WHERE old.FullTimeHybridVirtualProgramParticipationDescriptorId = b.descriptorid ;
+
+    RETURN NULL;
+END;
+$BODY$ LANGUAGE plpgsql;
+
+IF NOT EXISTS(SELECT 1 FROM information_schema.triggers WHERE trigger_name = 'trackdeletes' AND event_object_schema = 'tx' AND event_object_table = 'fulltimehybridvirtualprogramparticipationdescriptor') THEN
+CREATE TRIGGER TrackDeletes AFTER DELETE ON tx.fulltimehybridvirtualprogramparticipationdescriptor 
+    FOR EACH ROW EXECUTE PROCEDURE tracked_changes_tx.fulltimehybridvirtualprogramparticipationdescriptor_deleted();
+END IF;
+
 CREATE OR REPLACE FUNCTION tracked_changes_tx.generationcodedescriptor_deleted()
     RETURNS trigger AS
 $BODY$

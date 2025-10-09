@@ -646,6 +646,11 @@ REFERENCES edfi.Descriptor (DescriptorId)
 ON DELETE CASCADE
 ;
 
+ALTER TABLE tx.FullTimeHybridVirtualProgramParticipationDescriptor ADD CONSTRAINT FK_002eca_Descriptor FOREIGN KEY (FullTimeHybridVirtualProgramParticipationDescriptorId)
+REFERENCES edfi.Descriptor (DescriptorId)
+ON DELETE CASCADE
+;
+
 ALTER TABLE tx.GenerationCodeDescriptor ADD CONSTRAINT FK_de43bd_Descriptor FOREIGN KEY (GenerationCodeDescriptorId)
 REFERENCES edfi.Descriptor (DescriptorId)
 ON DELETE CASCADE
@@ -2059,6 +2064,18 @@ CREATE INDEX FK_284815_FosterCareTypeDescriptor
 ON tx.StudentEducationOrganizationAssociationFosterCareTypeSet (FosterCareTypeDescriptorId ASC);
 
 ALTER TABLE tx.StudentEducationOrganizationAssociationFosterCareTypeSet ADD CONSTRAINT FK_284815_StudentEducationOrganizationAssociation FOREIGN KEY (EducationOrganizationId, StudentUSI)
+REFERENCES edfi.StudentEducationOrganizationAssociation (EducationOrganizationId, StudentUSI)
+ON DELETE CASCADE
+;
+
+ALTER TABLE tx.StudentEducationOrganizationAssociationFullTimeHybridVir_af4759 ADD CONSTRAINT FK_af4759_FullTimeHybridVirtualProgramParticipationDescriptor FOREIGN KEY (FullTimeHybridVirtualProgramParticipationDescriptorId)
+REFERENCES tx.FullTimeHybridVirtualProgramParticipationDescriptor (FullTimeHybridVirtualProgramParticipationDescriptorId)
+;
+
+CREATE INDEX FK_af4759_FullTimeHybridVirtualProgramParticipationDescriptor
+ON tx.StudentEducationOrganizationAssociationFullTimeHybridVir_af4759 (FullTimeHybridVirtualProgramParticipationDescriptorId ASC);
+
+ALTER TABLE tx.StudentEducationOrganizationAssociationFullTimeHybridVir_af4759 ADD CONSTRAINT FK_af4759_StudentEducationOrganizationAssociation FOREIGN KEY (EducationOrganizationId, StudentUSI)
 REFERENCES edfi.StudentEducationOrganizationAssociation (EducationOrganizationId, StudentUSI)
 ON DELETE CASCADE
 ;

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
 		<StandardVersion Condition="'$(StandardVersion)' == '' ">4.0.0</StandardVersion>
 		<ExtensionVersion Condition="'$(ExtensionVersion)' == '' ">1.1.0</ExtensionVersion>

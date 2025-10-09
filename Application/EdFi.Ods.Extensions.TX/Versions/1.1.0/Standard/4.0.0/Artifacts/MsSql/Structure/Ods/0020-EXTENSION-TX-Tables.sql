@@ -420,6 +420,7 @@ CREATE TABLE [tx].[CourseTranscriptExt] (
     [DropoutRecoveryCourseCompletionDescriptorId] [INT] NULL,
     [DualCreditIndicator] [BIT] NULL,
     [EarnedCredits] [DECIMAL](9, 3) NOT NULL,
+    [OnRampsDualEnrollmentIndicator] [BIT] NULL,
     [SummerSchoolIndicator] [BIT] NULL,
     [Discriminator] [NVARCHAR](128) NULL,
     [CreateDate] [DATETIME2] NOT NULL,
@@ -928,6 +929,15 @@ CREATE TABLE [tx].[FrequencyOfServicesDescriptor] (
 ) ON [PRIMARY]
 GO
 
+-- Table [tx].[FullTimeHybridVirtualProgramParticipationDescriptor] --
+CREATE TABLE [tx].[FullTimeHybridVirtualProgramParticipationDescriptor] (
+    [FullTimeHybridVirtualProgramParticipationDescriptorId] [INT] NOT NULL,
+    CONSTRAINT [FullTimeHybridVirtualProgramParticipationDescriptor_PK] PRIMARY KEY CLUSTERED (
+        [FullTimeHybridVirtualProgramParticipationDescriptorId] ASC
+    ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
 -- Table [tx].[GenerationCodeDescriptor] --
 CREATE TABLE [tx].[GenerationCodeDescriptor] (
     [GenerationCodeDescriptorId] [INT] NOT NULL,
@@ -1033,6 +1043,7 @@ CREATE TABLE [tx].[LocalEducationAgencyExtension] (
     [ArmedServicesVocAptBatteryDescriptorId] [INT] NULL,
     [EarlyChildhoodTransitionReporting] [BIT] NULL,
     [FamilyEngagementPlanLink] [NVARCHAR](200) NULL,
+    [LEAGrievanceLink] [NVARCHAR](200) NULL,
     [PKProgramEvaluationTypeDescriptorId] [INT] NULL,
     [PreschoolOutcomesReporting] [BIT] NULL,
     [SecondaryTransitionReporting] [BIT] NULL,
@@ -1495,7 +1506,8 @@ CREATE TABLE [tx].[PriorYearLeaverIndustryBasedCertificationSet] (
     [IBCVendorDescriptorId] [INT] NOT NULL,
     [PostSecondaryCertificationLicensureDescriptorId] [INT] NOT NULL,
     [PostSecondaryCertLicensureResultDescriptorId] [INT] NOT NULL,
-    [IBCExamFeeAmount] [DECIMAL](5, 2) NULL,
+    [IBCBackgroundCheckCost] [DECIMAL](6, 2) NULL,
+    [IBCExamFeeAmount] [DECIMAL](6, 2) NULL,
     [CreateDate] [DATETIME2] NOT NULL,
     CONSTRAINT [PriorYearLeaverIndustryBasedCertificationSet_PK] PRIMARY KEY CLUSTERED (
         [SchoolId] ASC,
@@ -2266,12 +2278,14 @@ CREATE TABLE [tx].[StaffExtension] (
     [StaffUSI] [INT] NOT NULL,
     [CreditableYearOfService] [BIT] NULL,
     [GenerationCodeDescriptorId] [INT] NULL,
+    [LEADeterminedTRAEligibility] [BIT] NULL,
     [PKTeacherRequirementDescriptorId] [INT] NULL,
     [StaffDoNotReportTSDS] [BIT] NULL,
     [StaffId] [NVARCHAR](9) NOT NULL,
     [TotalYearsPriorTeachingExperience] [INT] NULL,
     [TotalYearsProfExperience] [INT] NULL,
     [YearsExperienceInDistrict] [INT] NULL,
+    [YearsTRATeachingExperience] [INT] NULL,
     [CreateDate] [DATETIME2] NOT NULL,
     CONSTRAINT [StaffExtension_PK] PRIMARY KEY CLUSTERED (
         [StaffUSI] ASC
@@ -2495,7 +2509,7 @@ CREATE TABLE [tx].[StudentAcademicRecordIndividualGraduationCommitteeReviewSet] 
     [SchoolYear] [SMALLINT] NOT NULL,
     [StudentUSI] [INT] NOT NULL,
     [TermDescriptorId] [INT] NOT NULL,
-    [EstablishedDate] [DATE] NOT NULL,
+    [EstablishedDate] [DATE] NULL,
     [IndividualGraduationCommitteeReview] [BIT] NOT NULL,
     [CreateDate] [DATETIME2] NOT NULL,
     CONSTRAINT [StudentAcademicRecordIndividualGraduationCommitteeReviewSet_PK] PRIMARY KEY CLUSTERED (
@@ -2519,7 +2533,8 @@ CREATE TABLE [tx].[StudentAcademicRecordIndustryBasedCertificationSet] (
     [IBCVendorDescriptorId] [INT] NOT NULL,
     [PostSecondaryCertificationLicensureDescriptorId] [INT] NOT NULL,
     [PostSecondaryCertLicensureResultDescriptorId] [INT] NOT NULL,
-    [IBCExamFeeAmount] [DECIMAL](5, 2) NULL,
+    [IBCBackgroundCheckCost] [DECIMAL](6, 2) NULL,
+    [IBCExamFeeAmount] [DECIMAL](6, 2) NULL,
     [CreateDate] [DATETIME2] NOT NULL,
     CONSTRAINT [StudentAcademicRecordIndustryBasedCertificationSet_PK] PRIMARY KEY CLUSTERED (
         [EducationOrganizationId] ASC,
@@ -2564,6 +2579,7 @@ CREATE TABLE [tx].[StudentApplication] (
     [GenerationCodeDescriptorId] [INT] NULL,
     [GenerationCodeSuffix] [NVARCHAR](10) NULL,
     [LastSurname] [NVARCHAR](75) NOT NULL,
+    [LocalStudentId] [NVARCHAR](9) NULL,
     [MaidenName] [NVARCHAR](75) NULL,
     [MiddleName] [NVARCHAR](75) NULL,
     [MultipleBirthStatus] [BIT] NULL,
@@ -2864,6 +2880,25 @@ CREATE TABLE [tx].[StudentEducationOrganizationAssociationFosterCareTypeSet] (
 ) ON [PRIMARY]
 GO
 ALTER TABLE [tx].[StudentEducationOrganizationAssociationFosterCareTypeSet] ADD CONSTRAINT [StudentEducationOrganizationAssociationFosterCareTypeSet_DF_CreateDate] DEFAULT (getutcdate()) FOR [CreateDate]
+GO
+
+-- Table [tx].[StudentEducationOrganizationAssociationFullTimeHybridVirtualProgramParticipationSet] --
+CREATE TABLE [tx].[StudentEducationOrganizationAssociationFullTimeHybridVirtualProgramParticipationSet] (
+    [EducationOrganizationId] [INT] NOT NULL,
+    [StudentUSI] [INT] NOT NULL,
+    [BeginDate] [DATE] NOT NULL,
+    [FullTimeHybridVirtualProgramParticipationDescriptorId] [INT] NOT NULL,
+    [EndDate] [DATE] NULL,
+    [CreateDate] [DATETIME2] NOT NULL,
+    CONSTRAINT [StudentEducationOrganizationAssociationFullTimeHybridVirtualProgramParticipationSet_PK] PRIMARY KEY CLUSTERED (
+        [EducationOrganizationId] ASC,
+        [StudentUSI] ASC,
+        [BeginDate] ASC,
+        [FullTimeHybridVirtualProgramParticipationDescriptorId] ASC
+    ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+ALTER TABLE [tx].[StudentEducationOrganizationAssociationFullTimeHybridVirtualProgramParticipationSet] ADD CONSTRAINT [StudentEducationOrganizationAssociationFullTimeHybridVirtualProgramParticipationSet_DF_CreateDate] DEFAULT (getutcdate()) FOR [CreateDate]
 GO
 
 -- Table [tx].[StudentEducationOrganizationAssociationHomelessStatusSet] --

@@ -687,6 +687,11 @@ REFERENCES [edfi].[Descriptor] ([DescriptorId])
 ON DELETE CASCADE
 GO
 
+ALTER TABLE [tx].[FullTimeHybridVirtualProgramParticipationDescriptor] WITH CHECK ADD CONSTRAINT [FK_FullTimeHybridVirtualProgramParticipationDescriptor_Descriptor] FOREIGN KEY ([FullTimeHybridVirtualProgramParticipationDescriptorId])
+REFERENCES [edfi].[Descriptor] ([DescriptorId])
+ON DELETE CASCADE
+GO
+
 ALTER TABLE [tx].[GenerationCodeDescriptor] WITH CHECK ADD CONSTRAINT [FK_GenerationCodeDescriptor_Descriptor] FOREIGN KEY ([GenerationCodeDescriptorId])
 REFERENCES [edfi].[Descriptor] ([DescriptorId])
 ON DELETE CASCADE
@@ -2221,6 +2226,19 @@ ON [tx].[StudentEducationOrganizationAssociationFosterCareTypeSet] ([FosterCareT
 GO
 
 ALTER TABLE [tx].[StudentEducationOrganizationAssociationFosterCareTypeSet] WITH CHECK ADD CONSTRAINT [FK_StudentEducationOrganizationAssociationFosterCareTypeSet_StudentEducationOrganizationAssociation] FOREIGN KEY ([EducationOrganizationId], [StudentUSI])
+REFERENCES [edfi].[StudentEducationOrganizationAssociation] ([EducationOrganizationId], [StudentUSI])
+ON DELETE CASCADE
+GO
+
+ALTER TABLE [tx].[StudentEducationOrganizationAssociationFullTimeHybridVirtualProgramParticipationSet] WITH CHECK ADD CONSTRAINT [FK_StudentEducationOrganizationAssociationFullTimeHybridVirtualProgramParticipationSet_FullTimeHybridVirtualProgramParticipation] FOREIGN KEY ([FullTimeHybridVirtualProgramParticipationDescriptorId])
+REFERENCES [tx].[FullTimeHybridVirtualProgramParticipationDescriptor] ([FullTimeHybridVirtualProgramParticipationDescriptorId])
+GO
+
+CREATE NONCLUSTERED INDEX [FK_StudentEducationOrganizationAssociationFullTimeHybridVirtualProgramParticipationSet_FullTimeHybridVirtualProgramParticipation]
+ON [tx].[StudentEducationOrganizationAssociationFullTimeHybridVirtualProgramParticipationSet] ([FullTimeHybridVirtualProgramParticipationDescriptorId] ASC)
+GO
+
+ALTER TABLE [tx].[StudentEducationOrganizationAssociationFullTimeHybridVirtualProgramParticipationSet] WITH CHECK ADD CONSTRAINT [FK_StudentEducationOrganizationAssociationFullTimeHybridVirtualProgramParticipationSet_StudentEducationOrganizationAssociation] FOREIGN KEY ([EducationOrganizationId], [StudentUSI])
 REFERENCES [edfi].[StudentEducationOrganizationAssociation] ([EducationOrganizationId], [StudentUSI])
 ON DELETE CASCADE
 GO

@@ -139,7 +139,7 @@ GO
 -- Extended Properties [tx].[BilingualESLProgramReportingPeriodAttendance] --
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'This extended entity represents the bilingual/ESL program attendance of a student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'BilingualESLProgramReportingPeriodAttendance'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1651, C225. BilingualESLFunding indicates the language program in which the student participates during the reporting period.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'BilingualESLProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'BilingualESLFundingDescriptorId'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1651, C225. BilingualESLFunding indicates the language program in which the student participates during the reporting period that generates funding under TEC 48.105.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'BilingualESLProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'BilingualESLFundingDescriptorId'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0975. CalendarCode indicates a unique campus calendar of school days for a particular group of students on a campus. Students with the same instructional track have the same number of days taught in a particular reporting period at a campus.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'BilingualESLProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'CalendarCode'
 GO
@@ -308,6 +308,8 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1011. DualCreditIndicator indicates whether the student was eligible to receive both high school and college credit for a college course.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'CourseTranscriptExt', @level2type=N'COLUMN', @level2name=N'DualCreditIndicator'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The value of credits or units of value awarded for the completion of a course.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'CourseTranscriptExt', @level2type=N'COLUMN', @level2name=N'EarnedCredits'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E3120. OnRampsDualEnrollmentIndicator indicates that the student has completed an OnRamps dual enrollment course.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'CourseTranscriptExt', @level2type=N'COLUMN', @level2name=N'OnRampsDualEnrollmentIndicator'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E3091. SummerSchoolIndicator indicates the course completed by a student was completed during the summer (between school years).', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'CourseTranscriptExt', @level2type=N'COLUMN', @level2name=N'SummerSchoolIndicator'
 GO
@@ -543,7 +545,7 @@ GO
 -- Extended Properties [tx].[FlexibleBilingualESLProgramReportingPeriodAttendance] --
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'This extended entity represents the bilingual/ESL program attendance for the students who are served through a flexible attendance program.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'FlexibleBilingualESLProgramReportingPeriodAttendance'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1651, C225. BilingualESLFunding indicates the language program in which the student participates during the reporting period.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'FlexibleBilingualESLProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'BilingualESLFundingDescriptorId'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1651, C225. BilingualESLFunding indicates the language program in which the student participates during the reporting period that generates funding under TEC 48.105.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'FlexibleBilingualESLProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'BilingualESLFundingDescriptorId'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0975. CalendarCode indicates a unique campus calendar of school days for a particular group of students on a campus. Students with the same instructional track have the same number of days taught in a particular reporting period at a campus.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'FlexibleBilingualESLProgramReportingPeriodAttendance', @level2type=N'COLUMN', @level2name=N'CalendarCode'
 GO
@@ -646,6 +648,12 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'FrequencyOfServicesDescriptor', @level2type=N'COLUMN', @level2name=N'FrequencyOfServicesDescriptorId'
 GO
 
+-- Extended Properties [tx].[FullTimeHybridVirtualProgramParticipationDescriptor] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E3131. FullTimeHybridVirtualProgramParticipation indicates the type (hybrid or virtual) of program participation for a student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'FullTimeHybridVirtualProgramParticipationDescriptor'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'FullTimeHybridVirtualProgramParticipationDescriptor', @level2type=N'COLUMN', @level2name=N'FullTimeHybridVirtualProgramParticipationDescriptorId'
+GO
+
 -- Extended Properties [tx].[GenerationCodeDescriptor] --
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Descriptor GenerationCode is based on Code Table C012', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'GenerationCodeDescriptor'
 GO
@@ -729,6 +737,8 @@ EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E3127. EarlyCh
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1583. FamilyEngagementPlanLink indicates the internet website address that connects directly to the Local Education Agency''s high-quality prekindergarten Family Engagement Plan document.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'LocalEducationAgencyExtension', @level2type=N'COLUMN', @level2name=N'FamilyEngagementPlanLink'
 GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E3132. LEAGrievanceLink indicates the internet website address that connects directly to the Local Education Agency''s grievance policy.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'LocalEducationAgencyExtension', @level2type=N'COLUMN', @level2name=N'LEAGrievanceLink'
+GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1626, C216. PKProgramEvaluationType indicates the type of program evaluation tool LEAs use to report the progress of students participating in a High-Quality prekindergarten program.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'LocalEducationAgencyExtension', @level2type=N'COLUMN', @level2name=N'PKProgramEvaluationTypeDescriptorId'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E3098. PreschoolOutcomesReporting indicates a local education agency does not have any eligible students in an early childhood special education (ECSE) program that meet the criteria for reporting SPP Indicator 7 Preschool Outcomes.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'LocalEducationAgencyExtension', @level2type=N'COLUMN', @level2name=N'PreschoolOutcomesReporting'
@@ -783,7 +793,7 @@ EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique ident
 GO
 
 -- Extended Properties [tx].[ParentalPermissionDescriptor] --
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Descriptor ParentalPermission indicates whether the student''s parent or legal guardian has approved placement of the student in the required bilingual or English as a Second Language (ESL) program. (See 19 TAC §89.1240.) (C093)', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'ParentalPermissionDescriptor'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Descriptor ParentalPermission indicates whether the student''s parent or legal guardian has approved placement of the student in the required bilingual or English as a Second Language (ESL) program or if the parent of a non-EB student has requested placement in a program. (See 19 TAC §89.1240.) (C093)', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'ParentalPermissionDescriptor'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'ParentalPermissionDescriptor', @level2type=N'COLUMN', @level2name=N'ParentalPermissionDescriptorId'
 GO
@@ -1101,6 +1111,8 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1640, C214. PostSecondaryCertificationLicensure indicates a nationally or internationally recognized business or industry certification or license earned by a student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'PriorYearLeaverIndustryBasedCertificationSet', @level2type=N'COLUMN', @level2name=N'PostSecondaryCertificationLicensureDescriptorId'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1733, C232. PostSecondaryCertLicensureResult indicates the result of a state, nationally, or internationally recognized industry-based certification exam taken by a student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'PriorYearLeaverIndustryBasedCertificationSet', @level2type=N'COLUMN', @level2name=N'PostSecondaryCertLicensureResultDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E3133. IBCBackgroundCheckCost identifies the amount of money that was paid for the background check (fingerprinting or criminal history record information reveiw) associated to an Industry-Based Certification passed/earned by a student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'PriorYearLeaverIndustryBasedCertificationSet', @level2type=N'COLUMN', @level2name=N'IBCBackgroundCheckCost'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1654. IBCExamFeeAmount identifies the amount of money that was paid for a student''s industry certification exam by the local education agency.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'PriorYearLeaverIndustryBasedCertificationSet', @level2type=N'COLUMN', @level2name=N'IBCExamFeeAmount'
 GO
@@ -1437,7 +1449,7 @@ EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'', @level0type
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to a school.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SchoolExtension', @level2type=N'COLUMN', @level2name=N'SchoolId'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1671. AdditionalDaysProgram indicates whether the campus implemented an Additional Days School Year program for any students in prekindergarten through fifth grades as described in TEC §48.0051.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SchoolExtension', @level2type=N'COLUMN', @level2name=N'AdditionalDaysProgram'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1671. AdditionalDaysProgram indicates whether the campus implemented an Additional Days School Year (ADSY) program for any students in prekindergarten through eighth grades as described in TEC §48.0051.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SchoolExtension', @level2type=N'COLUMN', @level2name=N'AdditionalDaysProgram'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1613. ExpandedLearningOpportunity indicates if the campus offers any expanded learning opportunity (ELO) as listed in TEC 33.252.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'SchoolExtension', @level2type=N'COLUMN', @level2name=N'ExpandedLearningOpportunity'
 GO
@@ -1691,6 +1703,8 @@ EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1721. Credita
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0706, E1303, C012, DC148. GenerationCode identifies the generation suffix, if any, which the person attaches to his name.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StaffExtension', @level2type=N'COLUMN', @level2name=N'GenerationCodeDescriptorId'
 GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E3130. LEADeterminedTRAEligibility indicates the local education agency (LEA) has determined the teacher (StaffClassification is 087) is employed by a school system and teaches not less than an average of four hours each day, in an academic instructional setting or a career and technology educational setting.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StaffExtension', @level2type=N'COLUMN', @level2name=N'LEADeterminedTRAEligibility'
+GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1581, C207. Each teacher of record for a prekindergarten program class serving eligible four-year-old students must be certified under Subchapter B, Chapter 21; and have one of the additional qualifications found in the C207 code table.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StaffExtension', @level2type=N'COLUMN', @level2name=N'PKTeacherRequirementDescriptorId'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E3069. StaffDoNotReportTSDS indicates the staff should not be reported for TSDS state or federal data collections.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StaffExtension', @level2type=N'COLUMN', @level2name=N'StaffDoNotReportTSDS'
@@ -1702,6 +1716,8 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0130. TotalYearsProfExperience indicates the number of verifiable years of creditable experience as specified in 19 TAC, Chapter 153.1021.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StaffExtension', @level2type=N'COLUMN', @level2name=N'TotalYearsProfExperience'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0161. YearsExperienceInDistrict indicates the number of completed years that a person has been employed in any professional position in the current district or education service center, whether or not there has been any interruption in service.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StaffExtension', @level2type=N'COLUMN', @level2name=N'YearsExperienceInDistrict'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E3129. YearsTRATeachingExperience indicates the number of verifiable years of teaching experience as a classroom teacher as described in TEC §48.158.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StaffExtension', @level2type=N'COLUMN', @level2name=N'YearsTRATeachingExperience'
 GO
 
 -- Extended Properties [tx].[StaffParaprofessionalCertificationSet] --
@@ -1771,7 +1787,7 @@ EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1722, C322. T
 GO
 
 -- Extended Properties [tx].[StaffTypeDescriptor] --
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'StaffType indicates whether the staff person is on the district payroll, is a contracted professional staff person (instructional and non-instructional), or a teacher (ROLE-ID 087) employed at the in-district charter campus by an organization that has been granted a campus charter under TEC, Chapter 12, Subchapter C and is eligible for benefits under TEC, §11.174 and 11.147(b). (C181)', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StaffTypeDescriptor'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'StaffType indicates whether the staff person is on the local education agency payroll, is a contracted professional staff person (instructional and non-instructional), including staff of a charter management organization, or is a teacher (StaffClassification 087) employed at an in-district charter campus by an organization that has been granted a campus charter under TEC, Chapter 12, Subchapter C.(C181)', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StaffTypeDescriptor'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StaffTypeDescriptor', @level2type=N'COLUMN', @level2name=N'StaffTypeDescriptorId'
 GO
@@ -1785,7 +1801,7 @@ EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Begin date of 
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'EndDate is the first day after the last day a staff was assigned to the StaffType descriptor.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StaffTypeSet', @level2type=N'COLUMN', @level2name=N'EndDate'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1073, C181. StaffType indicates whether the staff person is on the district payroll or is a contracted professional staff person (instructional and non-instructional)', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StaffTypeSet', @level2type=N'COLUMN', @level2name=N'StaffTypeDescriptorId'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1073, C181. StaffType indicates whether the staff person is on the local education agency payroll, is a contracted professional staff person (instructional and non-instructional), including staff of a charter management organization, or is a teacher (StaffClassification 087) employed at an in-district charter campus by an organization that has been granted a campus charter under TEC, Chapter 12, Subchapter C.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StaffTypeSet', @level2type=N'COLUMN', @level2name=N'StaffTypeDescriptorId'
 GO
 
 -- Extended Properties [tx].[StudentAcademicRecordAssociateDegreeIndicatorSet] --
@@ -1909,6 +1925,8 @@ EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1640, C214. P
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1733, C232. PostSecondaryCertLicensureResult indicates the result of a state, nationally, or internationally recognized industry-based certification exam taken by a student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentAcademicRecordIndustryBasedCertificationSet', @level2type=N'COLUMN', @level2name=N'PostSecondaryCertLicensureResultDescriptorId'
 GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E3133. IBCBackgroundCheckCost identifies the amount of money that was paid for the background check (fingerprinting or criminal history record information reveiw) associated to an Industry-Based Certification passed/earned by a student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentAcademicRecordIndustryBasedCertificationSet', @level2type=N'COLUMN', @level2name=N'IBCBackgroundCheckCost'
+GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1654. IBCExamFeeAmount identifies the amount of money that was paid for a student''s industry certification exam by the local education agency.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentAcademicRecordIndustryBasedCertificationSet', @level2type=N'COLUMN', @level2name=N'IBCExamFeeAmount'
 GO
 
@@ -1954,6 +1972,8 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'An appendage, if any, used to denote an individual''s generation in his family (e.g., Jr., Sr., III).', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentApplication', @level2type=N'COLUMN', @level2name=N'GenerationCodeSuffix'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The name borne in common by members of a family.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentApplication', @level2type=N'COLUMN', @level2name=N'LastSurname'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0923. LocalStudentId is the student''s local identification number as assigned by the local education agency.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentApplication', @level2type=N'COLUMN', @level2name=N'LocalStudentId'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The individual''s maiden name.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentApplication', @level2type=N'COLUMN', @level2name=N'MaidenName'
 GO
@@ -2190,6 +2210,20 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E1528, C196. FosterCareType indicates whether a student is in the conservatorship of the Department of Family and Protective Services (DFPS) currently, or for a prekindergarten student that was previously in the conservatorship of DFPS, or for a prekindergarten student that is or ever has been in foster care in another state or territory, if the student resides in this state (Texas).', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationFosterCareTypeSet', @level2type=N'COLUMN', @level2name=N'FosterCareTypeDescriptorId'
 GO
 
+-- Extended Properties [tx].[StudentEducationOrganizationAssociationFullTimeHybridVirtualProgramParticipationSet] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The FullTimeHybridVirtualProgramParticipationSet common type indicates the type (hybrid or virtual) of program participation for a student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationFullTimeHybridVirtualProgramParticipationSet'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to an education organization.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationFullTimeHybridVirtualProgramParticipationSet', @level2type=N'COLUMN', @level2name=N'EducationOrganizationId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique alphanumeric code assigned to a student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationFullTimeHybridVirtualProgramParticipationSet', @level2type=N'COLUMN', @level2name=N'StudentUSI'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E3010. BeginDate is the first instructional day a student is assigned to the FullTimeHybridVirtualProgramParticipation descriptor.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationFullTimeHybridVirtualProgramParticipationSet', @level2type=N'COLUMN', @level2name=N'BeginDate'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E3131, C363. FullTimeHybridVirtualProgramParticipation indicates the type (hybrid or virtual) of program participation for a student.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationFullTimeHybridVirtualProgramParticipationSet', @level2type=N'COLUMN', @level2name=N'FullTimeHybridVirtualProgramParticipationDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E3020. EndDate is the first day after the last instructional day a student was assigned to the FullTimeHybridVirtualProgramParticpation descriptor.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationFullTimeHybridVirtualProgramParticipationSet', @level2type=N'COLUMN', @level2name=N'EndDate'
+GO
+
 -- Extended Properties [tx].[StudentEducationOrganizationAssociationHomelessStatusSet] --
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'HomelessStatus  with effective dates.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentEducationOrganizationAssociationHomelessStatusSet'
 GO
@@ -2354,7 +2388,7 @@ EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique alpha
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E3042. ParentalPermissionSetBeginDate indicates the month, day, and year when the student''s parent or legal guardian has approved placement of the student in the required bilingual or English as a Second Language (ESL) program. (See 19 TAC §89.1240.)', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentLanguageInstructionProgramAssociationParentalPermissionSet', @level2type=N'COLUMN', @level2name=N'ParentalPermissionSetBeginDate'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0896, C093. ParentalPermission indicates whether the student''s parent or legal guardian has approved placement of the student in the required bilingual or English as a Second Language (ESL) program. (See 19 TAC §89.1240.)', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentLanguageInstructionProgramAssociationParentalPermissionSet', @level2type=N'COLUMN', @level2name=N'ParentalPermissionDescriptorId'
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E0896, C093. ParentalPermission indicates whether the student''s parent or legal guardian has approved placement of the student in the required bilingual or English as a Second Language (ESL) program or if the parent of a non-EB student has requested placement in a program. (See 19 TAC §89.1240.)', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentLanguageInstructionProgramAssociationParentalPermissionSet', @level2type=N'COLUMN', @level2name=N'ParentalPermissionDescriptorId'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'E3043. ParentalPermissionSetEndDate is the first day after the last instructional day a student was assigned to the ParentalPermission descriptor.', @level0type=N'SCHEMA', @level0name=N'tx', @level1type=N'TABLE', @level1name=N'StudentLanguageInstructionProgramAssociationParentalPermissionSet', @level2type=N'COLUMN', @level2name=N'ParentalPermissionSetEndDate'
 GO

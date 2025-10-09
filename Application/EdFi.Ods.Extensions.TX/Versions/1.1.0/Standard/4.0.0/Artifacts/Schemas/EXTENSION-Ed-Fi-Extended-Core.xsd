@@ -147,7 +147,7 @@
           </xs:element>
           <xs:element name="BilingualESLFunding" type="EXTENSION-BilingualESLFundingDescriptorReferenceType">
             <xs:annotation>
-              <xs:documentation>E1651, C225. BilingualESLFunding indicates the language program in which the student participates during the reporting period.</xs:documentation>
+              <xs:documentation>E1651, C225. BilingualESLFunding indicates the language program in which the student participates during the reporting period that generates funding under TEC 48.105.</xs:documentation>
               <xs:appinfo>
                 <ann:Descriptor>EXTENSION-BilingualESLFundingDescriptor</ann:Descriptor>
               </xs:appinfo>
@@ -392,6 +392,11 @@
               <xs:appinfo>
                 <ann:Descriptor>EXTENSION-DropoutRecoveryCourseCompletionDescriptor</ann:Descriptor>
               </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="OnRampsDualEnrollmentIndicator" type="xs:boolean" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>E3120. OnRampsDualEnrollmentIndicator indicates that the student has completed an OnRamps dual enrollment course.</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -678,7 +683,7 @@
           </xs:element>
           <xs:element name="BilingualESLFunding" type="EXTENSION-BilingualESLFundingDescriptorReferenceType">
             <xs:annotation>
-              <xs:documentation>E1651, C225. BilingualESLFunding indicates the language program in which the student participates during the reporting period.</xs:documentation>
+              <xs:documentation>E1651, C225. BilingualESLFunding indicates the language program in which the student participates during the reporting period that generates funding under TEC 48.105.</xs:documentation>
               <xs:appinfo>
                 <ann:Descriptor>EXTENSION-BilingualESLFundingDescriptor</ann:Descriptor>
               </xs:appinfo>
@@ -998,6 +1003,11 @@
           <xs:element name="SecondaryTransitionReporting" type="xs:boolean" minOccurs="0">
             <xs:annotation>
               <xs:documentation>E3128. SecondaryTransitionReporting indicates a local educational agency does not have any students who meet the criteria for reporting SPP Indicator 13 Secondary Transition.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="LEAGrievanceLink" type="EXTENSION-LEAGrievanceLink" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>E3132. LEAGrievanceLink indicates the internet website address that connects directly to the Local Education Agency's grievance policy.</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -1502,7 +1512,7 @@
           </xs:element>
           <xs:element name="AdditionalDaysProgram" type="xs:boolean" minOccurs="0">
             <xs:annotation>
-              <xs:documentation>E1671. AdditionalDaysProgram indicates whether the campus implemented an Additional Days School Year program for any students in prekindergarten through fifth grades as described in TEC §48.0051.</xs:documentation>
+              <xs:documentation>E1671. AdditionalDaysProgram indicates whether the campus implemented an Additional Days School Year (ADSY) program for any students in prekindergarten through eighth grades as described in TEC §48.0051.</xs:documentation>
             </xs:annotation>
           </xs:element>
           <xs:element name="NumberOfBullyingIncidents" type="EXTENSION-NumberOfBullyingIncidents" minOccurs="0">
@@ -1865,6 +1875,16 @@
               <xs:documentation>E3069. StaffDoNotReportTSDS indicates the staff should not be reported for TSDS state or federal data collections.</xs:documentation>
             </xs:annotation>
           </xs:element>
+          <xs:element name="YearsTRATeachingExperience" type="EXTENSION-YearsTRATeachingExperience" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>E3129. YearsTRATeachingExperience indicates the number of verifiable years of teaching experience as a classroom teacher as described in TEC §48.158.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="LEADeterminedTRAEligibility" type="xs:boolean" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>E3130. LEADeterminedTRAEligibility indicates the local education agency (LEA) has determined the teacher (StaffClassification is 087) is employed by a school system and teaches not less than an average of four hours each day, in an academic instructional setting or a career and technology educational setting.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -2050,6 +2070,11 @@
           <xs:element name="StudentUId" type="EXTENSION-StudentUId" minOccurs="0">
             <xs:annotation>
               <xs:documentation>E1523. StudentUId (StudentUniqueId) is a unique number assigned to a student by the Texas Education Agency.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="LocalStudentId" type="EXTENSION-LocalStudentId" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>E0923. LocalStudentId is the student's local identification number as assigned by the local education agency.</xs:documentation>
             </xs:annotation>
           </xs:element>
           <xs:element name="Sex" type="SexDescriptorReferenceType">
@@ -2787,6 +2812,17 @@
       <xs:extension base="DescriptorType" />
     </xs:complexContent>
   </xs:complexType>
+  <xs:complexType name="EXTENSION-FullTimeHybridVirtualProgramParticipationDescriptor">
+    <xs:annotation>
+      <xs:documentation>E3131. FullTimeHybridVirtualProgramParticipation indicates the type (hybrid or virtual) of program participation for a student.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Descriptor</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DescriptorType" />
+    </xs:complexContent>
+  </xs:complexType>
   <xs:complexType name="EXTENSION-GenerationCodeDescriptor">
     <xs:annotation>
       <xs:documentation>Descriptor GenerationCode is based on Code Table C012</xs:documentation>
@@ -2960,7 +2996,7 @@
   </xs:complexType>
   <xs:complexType name="EXTENSION-ParentalPermissionDescriptor">
     <xs:annotation>
-      <xs:documentation>Descriptor ParentalPermission indicates whether the student's parent or legal guardian has approved placement of the student in the required bilingual or English as a Second Language (ESL) program. (See 19 TAC §89.1240.) (C093)</xs:documentation>
+      <xs:documentation>Descriptor ParentalPermission indicates whether the student's parent or legal guardian has approved placement of the student in the required bilingual or English as a Second Language (ESL) program or if the parent of a non-EB student has requested placement in a program. (See 19 TAC §89.1240.) (C093)</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Descriptor</ann:TypeGroup>
       </xs:appinfo>
@@ -3268,7 +3304,7 @@
   </xs:complexType>
   <xs:complexType name="EXTENSION-StaffTypeDescriptor">
     <xs:annotation>
-      <xs:documentation>StaffType indicates whether the staff person is on the district payroll, is a contracted professional staff person (instructional and non-instructional), or a teacher (ROLE-ID 087) employed at the in-district charter campus by an organization that has been granted a campus charter under TEC, Chapter 12, Subchapter C and is eligible for benefits under TEC, §11.174 and 11.147(b). (C181)</xs:documentation>
+      <xs:documentation>StaffType indicates whether the staff person is on the local education agency payroll, is a contracted professional staff person (instructional and non-instructional), including staff of a charter management organization, or is a teacher (StaffClassification 087) employed at an in-district charter campus by an organization that has been granted a campus charter under TEC, Chapter 12, Subchapter C.(C181)</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Descriptor</ann:TypeGroup>
       </xs:appinfo>
@@ -3670,6 +3706,11 @@
           <xs:element name="AdultPreviousAttendanceSet" type="EXTENSION-AdultPreviousAttendanceSet" minOccurs="0">
             <xs:annotation>
               <xs:documentation>The AdultPreviousAttendanceSet common type includes the set of data elements to identify if a student who is currently enrolled in a high school equivalency program, dropout recovery school, or other adult education program (under TEC §29.259), has or has not attended school in the previous nine months prior to enrolling.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="FullTimeHybridVirtualProgramParticipationSet" type="EXTENSION-FullTimeHybridVirtualProgramParticipationSet" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation>The FullTimeHybridVirtualProgramParticipationSet common type indicates the type (hybrid or virtual) of program participation for a student.</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -4178,7 +4219,7 @@
       </xs:element>
       <xs:element name="BilingualESLFunding" type="EXTENSION-BilingualESLFundingDescriptorReferenceType">
         <xs:annotation>
-          <xs:documentation>E1651, C225. BilingualESLFunding indicates the language program in which the student participates during the reporting period.</xs:documentation>
+          <xs:documentation>E1651, C225. BilingualESLFunding indicates the language program in which the student participates during the reporting period that generates funding under TEC 48.105.</xs:documentation>
           <xs:appinfo>
             <ann:Descriptor>EXTENSION-BilingualESLFundingDescriptor</ann:Descriptor>
           </xs:appinfo>
@@ -4619,7 +4660,7 @@
       </xs:element>
       <xs:element name="BilingualESLFunding" type="EXTENSION-BilingualESLFundingDescriptorReferenceType">
         <xs:annotation>
-          <xs:documentation>E1651, C225. BilingualESLFunding indicates the language program in which the student participates during the reporting period.</xs:documentation>
+          <xs:documentation>E1651, C225. BilingualESLFunding indicates the language program in which the student participates during the reporting period that generates funding under TEC 48.105.</xs:documentation>
           <xs:appinfo>
             <ann:Descriptor>EXTENSION-BilingualESLFundingDescriptor</ann:Descriptor>
           </xs:appinfo>
@@ -6048,6 +6089,15 @@
     </xs:annotation>
     <xs:restriction base="DescriptorReferenceType" />
   </xs:simpleType>
+  <xs:simpleType name="EXTENSION-FullTimeHybridVirtualProgramParticipationDescriptorReferenceType">
+    <xs:annotation>
+      <xs:documentation>E3131. FullTimeHybridVirtualProgramParticipation indicates the type (hybrid or virtual) of program participation for a student.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="DescriptorReferenceType" />
+  </xs:simpleType>
   <xs:simpleType name="EXTENSION-GenerationCodeDescriptorReferenceType">
     <xs:annotation>
       <xs:documentation>Descriptor GenerationCode is based on Code Table C012</xs:documentation>
@@ -6191,7 +6241,7 @@
   </xs:simpleType>
   <xs:simpleType name="EXTENSION-ParentalPermissionDescriptorReferenceType">
     <xs:annotation>
-      <xs:documentation>Descriptor ParentalPermission indicates whether the student's parent or legal guardian has approved placement of the student in the required bilingual or English as a Second Language (ESL) program. (See 19 TAC §89.1240.) (C093)</xs:documentation>
+      <xs:documentation>Descriptor ParentalPermission indicates whether the student's parent or legal guardian has approved placement of the student in the required bilingual or English as a Second Language (ESL) program or if the parent of a non-EB student has requested placement in a program. (See 19 TAC §89.1240.) (C093)</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
       </xs:appinfo>
@@ -6443,7 +6493,7 @@
   </xs:simpleType>
   <xs:simpleType name="EXTENSION-StaffTypeDescriptorReferenceType">
     <xs:annotation>
-      <xs:documentation>StaffType indicates whether the staff person is on the district payroll, is a contracted professional staff person (instructional and non-instructional), or a teacher (ROLE-ID 087) employed at the in-district charter campus by an organization that has been granted a campus charter under TEC, Chapter 12, Subchapter C and is eligible for benefits under TEC, §11.174 and 11.147(b). (C181)</xs:documentation>
+      <xs:documentation>StaffType indicates whether the staff person is on the local education agency payroll, is a contracted professional staff person (instructional and non-instructional), including staff of a charter management organization, or is a teacher (StaffClassification 087) employed at an in-district charter campus by an organization that has been granted a campus charter under TEC, Chapter 12, Subchapter C.(C181)</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
       </xs:appinfo>
@@ -7166,6 +7216,34 @@
       </xs:element>
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="EXTENSION-FullTimeHybridVirtualProgramParticipationSet">
+    <xs:annotation>
+      <xs:documentation>The FullTimeHybridVirtualProgramParticipationSet common type indicates the type (hybrid or virtual) of program participation for a student.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Common</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="FullTimeHybridVirtualProgramParticipation" type="EXTENSION-FullTimeHybridVirtualProgramParticipationDescriptorReferenceType">
+        <xs:annotation>
+          <xs:documentation>E3131, C363. FullTimeHybridVirtualProgramParticipation indicates the type (hybrid or virtual) of program participation for a student.</xs:documentation>
+          <xs:appinfo>
+            <ann:Descriptor>EXTENSION-FullTimeHybridVirtualProgramParticipationDescriptor</ann:Descriptor>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="BeginDate" type="xs:date">
+        <xs:annotation>
+          <xs:documentation>E3010. BeginDate is the first instructional day a student is assigned to the FullTimeHybridVirtualProgramParticipation descriptor.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="EndDate" type="xs:date" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>E3020. EndDate is the first day after the last instructional day a student was assigned to the FullTimeHybridVirtualProgramParticpation descriptor.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="EXTENSION-GraduationProgramParticipationSet">
     <xs:annotation>
       <xs:documentation>The GraduationProgramParticipationSet common type represents a students graduation program participation.</xs:documentation>
@@ -7324,7 +7402,7 @@
           <xs:documentation>E1563. IndividualGraduationCommitteeReview indicates whether an Individual Graduation Committee (IGC) has been established for a student regardless of which graduation program type is being pursued. This is collected for students in grades 11 and 12.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="EstablishedDate" type="xs:date">
+      <xs:element name="EstablishedDate" type="xs:date" minOccurs="0">
         <xs:annotation>
           <xs:documentation>E3122. EstablishedDate is the first instructional day an Individual Graduation Committee (IGC) has been established for a student.</xs:documentation>
         </xs:annotation>
@@ -7371,6 +7449,11 @@
       <xs:element name="IBCExamFeeAmount" type="EXTENSION-IBCExamFeeAmount" minOccurs="0">
         <xs:annotation>
           <xs:documentation>E1654. IBCExamFeeAmount identifies the amount of money that was paid for a student's industry certification exam by the local education agency.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="IBCBackgroundCheckCost" type="EXTENSION-IBCBackgroundCheckCost" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>E3133. IBCBackgroundCheckCost identifies the amount of money that was paid for the background check (fingerprinting or criminal history record information reveiw) associated to an Industry-Based Certification passed/earned by a student.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -7556,7 +7639,7 @@
     <xs:sequence>
       <xs:element name="ParentalPermission" type="EXTENSION-ParentalPermissionDescriptorReferenceType">
         <xs:annotation>
-          <xs:documentation>E0896, C093. ParentalPermission indicates whether the student's parent or legal guardian has approved placement of the student in the required bilingual or English as a Second Language (ESL) program. (See 19 TAC §89.1240.)</xs:documentation>
+          <xs:documentation>E0896, C093. ParentalPermission indicates whether the student's parent or legal guardian has approved placement of the student in the required bilingual or English as a Second Language (ESL) program or if the parent of a non-EB student has requested placement in a program. (See 19 TAC §89.1240.)</xs:documentation>
           <xs:appinfo>
             <ann:Descriptor>EXTENSION-ParentalPermissionDescriptor</ann:Descriptor>
           </xs:appinfo>
@@ -7826,7 +7909,7 @@
     <xs:sequence>
       <xs:element name="StaffType" type="EXTENSION-StaffTypeDescriptorReferenceType">
         <xs:annotation>
-          <xs:documentation>E1073, C181. StaffType indicates whether the staff person is on the district payroll or is a contracted professional staff person (instructional and non-instructional)</xs:documentation>
+          <xs:documentation>E1073, C181. StaffType indicates whether the staff person is on the local education agency payroll, is a contracted professional staff person (instructional and non-instructional), including staff of a charter management organization, or is a teacher (StaffClassification 087) employed at an in-district charter campus by an organization that has been granted a campus charter under TEC, Chapter 12, Subchapter C.</xs:documentation>
           <xs:appinfo>
             <ann:Descriptor>EXTENSION-StaffTypeDescriptor</ann:Descriptor>
           </xs:appinfo>
@@ -8330,6 +8413,17 @@
       <xs:maxLength value="200" />
     </xs:restriction>
   </xs:simpleType>
+  <xs:simpleType name="EXTENSION-LEAGrievanceLink">
+    <xs:annotation>
+      <xs:documentation>E3132. LEAGrievanceLink indicates the internet website address that connects directly to the Local Education Agency's grievance policy.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="200" />
+    </xs:restriction>
+  </xs:simpleType>
   <xs:simpleType name="EXTENSION-LocalStudentId">
     <xs:annotation>
       <xs:documentation>E0923. LocalStudentId is the student's local identification number as assigned by the local education agency.</xs:documentation>
@@ -8540,7 +8634,7 @@
     </xs:annotation>
     <xs:restriction base="xs:int">
       <xs:minInclusive value="0" />
-      <xs:maxInclusive value="9" />
+      <xs:maxInclusive value="12" />
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="EXTENSION-CompletedHoursAcceleratedInstruction">
@@ -8829,6 +8923,20 @@
       <xs:fractionDigits value="1" />
     </xs:restriction>
   </xs:simpleType>
+  <xs:simpleType name="EXTENSION-IBCBackgroundCheckCost">
+    <xs:annotation>
+      <xs:documentation>E3133. IBCBackgroundCheckCost identifies the amount of money that was paid for the background check (fingerprinting or criminal history record information reveiw) associated to an Industry-Based Certification passed/earned by a student.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:decimal">
+      <xs:minInclusive value="0.00" />
+      <xs:maxInclusive value="700.00" />
+      <xs:totalDigits value="6" />
+      <xs:fractionDigits value="2" />
+    </xs:restriction>
+  </xs:simpleType>
   <xs:simpleType name="EXTENSION-IBCExamFeeAmount">
     <xs:annotation>
       <xs:documentation>E1654. IBCExamFeeAmount identifies the amount of money that was paid for a student's industry certification exam by the local education agency.</xs:documentation>
@@ -8839,7 +8947,7 @@
     <xs:restriction base="xs:decimal">
       <xs:minInclusive value="0.00" />
       <xs:maxInclusive value="700.00" />
-      <xs:totalDigits value="5" />
+      <xs:totalDigits value="6" />
       <xs:fractionDigits value="2" />
     </xs:restriction>
   </xs:simpleType>
@@ -9396,6 +9504,18 @@
   <xs:simpleType name="EXTENSION-YearsExperienceInDistrict">
     <xs:annotation>
       <xs:documentation>E0161. YearsExperienceInDistrict indicates the number of completed years that a person has been employed in any professional position in the current district or education service center, whether or not there has been any interruption in service.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:int">
+      <xs:minInclusive value="0" />
+      <xs:maxInclusive value="99" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-YearsTRATeachingExperience">
+    <xs:annotation>
+      <xs:documentation>E3129. YearsTRATeachingExperience indicates the number of verifiable years of teaching experience as a classroom teacher as described in TEC §48.158.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Simple</ann:TypeGroup>
       </xs:appinfo>

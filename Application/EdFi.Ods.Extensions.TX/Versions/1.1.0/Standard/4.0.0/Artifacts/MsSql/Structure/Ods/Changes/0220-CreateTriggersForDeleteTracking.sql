@@ -1433,6 +1433,27 @@ ALTER TABLE [tx].[FrequencyOfServicesDescriptor] ENABLE TRIGGER [tx_FrequencyOfS
 GO
 
 
+DROP TRIGGER IF EXISTS [tx].[tx_FullTimeHybridVirtualProgramParticipationDescriptor_TR_DeleteTracking]
+GO
+
+CREATE TRIGGER [tx].[tx_FullTimeHybridVirtualProgramParticipationDescriptor_TR_DeleteTracking] ON [tx].[FullTimeHybridVirtualProgramParticipationDescriptor] AFTER DELETE AS
+BEGIN
+    IF @@rowcount = 0 
+        RETURN
+
+    SET NOCOUNT ON
+
+    INSERT INTO [tracked_changes_edfi].[Descriptor](OldDescriptorId, OldCodeValue, OldNamespace, Id, Discriminator, ChangeVersion)
+    SELECT  d.FullTimeHybridVirtualProgramParticipationDescriptorId, b.CodeValue, b.Namespace, b.Id, 'tx.FullTimeHybridVirtualProgramParticipationDescriptor', (NEXT VALUE FOR [changes].[ChangeVersionSequence])
+    FROM    deleted d
+            INNER JOIN edfi.Descriptor b ON d.FullTimeHybridVirtualProgramParticipationDescriptorId = b.DescriptorId
+END
+GO
+
+ALTER TABLE [tx].[FullTimeHybridVirtualProgramParticipationDescriptor] ENABLE TRIGGER [tx_FullTimeHybridVirtualProgramParticipationDescriptor_TR_DeleteTracking]
+GO
+
+
 DROP TRIGGER IF EXISTS [tx].[tx_GenerationCodeDescriptor_TR_DeleteTracking]
 GO
 

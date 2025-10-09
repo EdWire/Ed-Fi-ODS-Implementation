@@ -253,6 +253,7 @@ The Descriptor interchange is used to describe metadata about the descriptors an
         <xs:element name="FlexAttendanceProgramDescriptor" type="EXTENSION-FlexAttendanceProgramDescriptor" />
         <xs:element name="FosterCareTypeDescriptor" type="EXTENSION-FosterCareTypeDescriptor" />
         <xs:element name="FrequencyOfServicesDescriptor" type="EXTENSION-FrequencyOfServicesDescriptor" />
+        <xs:element name="FullTimeHybridVirtualProgramParticipationDescriptor" type="EXTENSION-FullTimeHybridVirtualProgramParticipationDescriptor" />
         <xs:element name="GenerationCodeDescriptor" type="EXTENSION-GenerationCodeDescriptor" />
         <xs:element name="GiftedTalentedProgramDescriptor" type="EXTENSION-GiftedTalentedProgramDescriptor" />
         <xs:element name="HearingAmplificationAccessDescriptor" type="EXTENSION-HearingAmplificationAccessDescriptor" />

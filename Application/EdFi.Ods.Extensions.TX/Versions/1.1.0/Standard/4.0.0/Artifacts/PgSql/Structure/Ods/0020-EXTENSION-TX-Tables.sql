@@ -285,6 +285,7 @@ CREATE TABLE tx.CourseTranscriptExt (
     DropoutRecoveryCourseCompletionDescriptorId INT NULL,
     DualCreditIndicator BOOLEAN NULL,
     EarnedCredits DECIMAL(9, 3) NOT NULL,
+    OnRampsDualEnrollmentIndicator BOOLEAN NULL,
     SummerSchoolIndicator BOOLEAN NULL,
     Discriminator VARCHAR(128) NULL,
     CreateDate TIMESTAMP NOT NULL,
@@ -616,6 +617,12 @@ CREATE TABLE tx.FrequencyOfServicesDescriptor (
     CONSTRAINT FrequencyOfServicesDescriptor_PK PRIMARY KEY (FrequencyOfServicesDescriptorId)
 );
 
+-- Table tx.FullTimeHybridVirtualProgramParticipationDescriptor --
+CREATE TABLE tx.FullTimeHybridVirtualProgramParticipationDescriptor (
+    FullTimeHybridVirtualProgramParticipationDescriptorId INT NOT NULL,
+    CONSTRAINT FullTimeHybridVirtualProgramParticipationDescriptor_PK PRIMARY KEY (FullTimeHybridVirtualProgramParticipationDescriptorId)
+);
+
 -- Table tx.GenerationCodeDescriptor --
 CREATE TABLE tx.GenerationCodeDescriptor (
     GenerationCodeDescriptorId INT NOT NULL,
@@ -688,6 +695,7 @@ CREATE TABLE tx.LocalEducationAgencyExtension (
     ArmedServicesVocAptBatteryDescriptorId INT NULL,
     EarlyChildhoodTransitionReporting BOOLEAN NULL,
     FamilyEngagementPlanLink VARCHAR(200) NULL,
+    LEAGrievanceLink VARCHAR(200) NULL,
     PKProgramEvaluationTypeDescriptorId INT NULL,
     PreschoolOutcomesReporting BOOLEAN NULL,
     SecondaryTransitionReporting BOOLEAN NULL,
@@ -1009,7 +1017,8 @@ CREATE TABLE tx.PriorYearLeaverIndustryBasedCertificationSet (
     IBCVendorDescriptorId INT NOT NULL,
     PostSecondaryCertificationLicensureDescriptorId INT NOT NULL,
     PostSecondaryCertLicensureResultDescriptorId INT NOT NULL,
-    IBCExamFeeAmount DECIMAL(5, 2) NULL,
+    IBCBackgroundCheckCost DECIMAL(6, 2) NULL,
+    IBCExamFeeAmount DECIMAL(6, 2) NULL,
     CreateDate TIMESTAMP NOT NULL,
     CONSTRAINT PriorYearLeaverIndustryBasedCertificationSet_PK PRIMARY KEY (SchoolId, StudentUId, DateCertTaken, IBCVendorDescriptorId, PostSecondaryCertificationLicensureDescriptorId, PostSecondaryCertLicensureResultDescriptorId)
 );
@@ -1531,12 +1540,14 @@ CREATE TABLE tx.StaffExtension (
     StaffUSI INT NOT NULL,
     CreditableYearOfService BOOLEAN NULL,
     GenerationCodeDescriptorId INT NULL,
+    LEADeterminedTRAEligibility BOOLEAN NULL,
     PKTeacherRequirementDescriptorId INT NULL,
     StaffDoNotReportTSDS BOOLEAN NULL,
     StaffId VARCHAR(9) NOT NULL,
     TotalYearsPriorTeachingExperience INT NULL,
     TotalYearsProfExperience INT NULL,
     YearsExperienceInDistrict INT NULL,
+    YearsTRATeachingExperience INT NULL,
     CreateDate TIMESTAMP NOT NULL,
     CONSTRAINT StaffExtension_PK PRIMARY KEY (StaffUSI)
 );
@@ -1684,7 +1695,7 @@ CREATE TABLE tx.StudentAcademicRecordIndividualGraduationCommitteeReviewSet (
     SchoolYear SMALLINT NOT NULL,
     StudentUSI INT NOT NULL,
     TermDescriptorId INT NOT NULL,
-    EstablishedDate DATE NOT NULL,
+    EstablishedDate DATE NULL,
     IndividualGraduationCommitteeReview BOOLEAN NOT NULL,
     CreateDate TIMESTAMP NOT NULL,
     CONSTRAINT StudentAcademicRecordIndividualGraduationCommitteeReviewSet_PK PRIMARY KEY (EducationOrganizationId, SchoolYear, StudentUSI, TermDescriptorId)
@@ -1701,7 +1712,8 @@ CREATE TABLE tx.StudentAcademicRecordIndustryBasedCertificationSet (
     IBCVendorDescriptorId INT NOT NULL,
     PostSecondaryCertificationLicensureDescriptorId INT NOT NULL,
     PostSecondaryCertLicensureResultDescriptorId INT NOT NULL,
-    IBCExamFeeAmount DECIMAL(5, 2) NULL,
+    IBCBackgroundCheckCost DECIMAL(6, 2) NULL,
+    IBCExamFeeAmount DECIMAL(6, 2) NULL,
     CreateDate TIMESTAMP NOT NULL,
     CONSTRAINT StudentAcademicRecordIndustryBasedCertificationSet_PK PRIMARY KEY (EducationOrganizationId, SchoolYear, StudentUSI, TermDescriptorId, DateCertTaken, IBCVendorDescriptorId, PostSecondaryCertificationLicensureDescriptorId, PostSecondaryCertLicensureResultDescriptorId)
 );
@@ -1732,6 +1744,7 @@ CREATE TABLE tx.StudentApplication (
     GenerationCodeDescriptorId INT NULL,
     GenerationCodeSuffix VARCHAR(10) NULL,
     LastSurname VARCHAR(75) NOT NULL,
+    LocalStudentId VARCHAR(9) NULL,
     MaidenName VARCHAR(75) NULL,
     MiddleName VARCHAR(75) NULL,
     MultipleBirthStatus BOOLEAN NULL,
@@ -1931,6 +1944,18 @@ CREATE TABLE tx.StudentEducationOrganizationAssociationFosterCareTypeSet (
     CONSTRAINT StudentEducationOrganizationAssociationFosterCareTypeSet_PK PRIMARY KEY (EducationOrganizationId, StudentUSI, BeginDate)
 );
 ALTER TABLE tx.StudentEducationOrganizationAssociationFosterCareTypeSet ALTER COLUMN CreateDate SET DEFAULT current_timestamp AT TIME ZONE 'UTC';
+
+-- Table tx.StudentEducationOrganizationAssociationFullTimeHybridVir_af4759 --
+CREATE TABLE tx.StudentEducationOrganizationAssociationFullTimeHybridVir_af4759 (
+    EducationOrganizationId INT NOT NULL,
+    StudentUSI INT NOT NULL,
+    BeginDate DATE NOT NULL,
+    FullTimeHybridVirtualProgramParticipationDescriptorId INT NOT NULL,
+    EndDate DATE NULL,
+    CreateDate TIMESTAMP NOT NULL,
+    CONSTRAINT StudentEducationOrganizationAssociationFullTimeHyb_af4759_PK PRIMARY KEY (EducationOrganizationId, StudentUSI, BeginDate, FullTimeHybridVirtualProgramParticipationDescriptorId)
+);
+ALTER TABLE tx.StudentEducationOrganizationAssociationFullTimeHybridVir_af4759 ALTER COLUMN CreateDate SET DEFAULT current_timestamp AT TIME ZONE 'UTC';
 
 -- Table tx.StudentEducationOrganizationAssociationHomelessStatusSet --
 CREATE TABLE tx.StudentEducationOrganizationAssociationHomelessStatusSet (

@@ -4,7 +4,7 @@
     "logicalName": "TX",
     "physicalName": "tx",
     "description": "",
-    "version": "2026.2.0"
+    "version": "2026.2.1"
   },
   "aggregateDefinitions": [
     {
@@ -784,6 +784,18 @@
         {
           "schema": "tx",
           "name": "FrequencyOfServicesDescriptor"
+        }
+      ]
+    },
+    {
+      "aggregateRootEntityName": {
+        "schema": "tx",
+        "name": "FullTimeHybridVirtualProgramParticipationDescriptor"
+      },
+      "aggregateEntityNames": [
+        {
+          "schema": "tx",
+          "name": "FullTimeHybridVirtualProgramParticipationDescriptor"
         }
       ]
     },
@@ -1854,6 +1866,10 @@
         {
           "schema": "tx",
           "name": "StudentEducationOrganizationAssociationFosterCareTypeSet"
+        },
+        {
+          "schema": "tx",
+          "name": "StudentEducationOrganizationAssociationFullTimeHybridVirtualProgramParticipationSet"
         },
         {
           "schema": "tx",
@@ -3478,7 +3494,7 @@
             "scale": 0,
             "isNullable": true,
             "minValue": 0,
-            "maxValue": 9
+            "maxValue": 12
           },
           "description": "E1081. CollegeCreditHours indicate the number of college hours a student earned for the completion of a dual credit course.",
           "isIdentifying": false,
@@ -3573,6 +3589,24 @@
           "columnNames": {
             "sqlServer": "LastModifiedDate",
             "postgreSql": "LastModifiedDate"
+          }
+        },
+        {
+          "propertyName": "OnRampsDualEnrollmentIndicator",
+          "propertyType": {
+            "dbType": "Boolean",
+            "minLength": 0,
+            "maxLength": 0,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": true
+          },
+          "description": "E3120. OnRampsDualEnrollmentIndicator indicates that the student has completed an OnRamps dual enrollment course.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "OnRampsDualEnrollmentIndicator",
+            "postgreSql": "OnRampsDualEnrollmentIndicator"
           }
         },
         {
@@ -5643,6 +5677,31 @@
     },
     {
       "schema": "tx",
+      "name": "FullTimeHybridVirtualProgramParticipationDescriptor",
+      "locallyDefinedProperties": [],
+      "identifiers": [
+        {
+          "identifierName": "FullTimeHybridVirtualProgramParticipationDescriptor_PK",
+          "identifyingPropertyNames": [
+            "FullTimeHybridVirtualProgramParticipationDescriptorId"
+          ],
+          "isPrimary": true,
+          "isUpdatable": false,
+          "constraintNames": {
+            "sqlServer": "FullTimeHybridVirtualProgramParticipationDescriptor_PK",
+            "postgreSql": "FullTimeHybridVirtualProgramParticipationDescriptor_PK"
+          }
+        }
+      ],
+      "isAbstract": false,
+      "description": "E3131. FullTimeHybridVirtualProgramParticipation indicates the type (hybrid or virtual) of program participation for a student.",
+      "tableNames": {
+        "sqlServer": "FullTimeHybridVirtualProgramParticipationDescriptor",
+        "postgreSql": "FullTimeHybridVirtualProgramParticipationDescriptor"
+      }
+    },
+    {
+      "schema": "tx",
       "name": "GenerationCodeDescriptor",
       "locallyDefinedProperties": [],
       "identifiers": [
@@ -5974,6 +6033,24 @@
           }
         },
         {
+          "propertyName": "LEAGrievanceLink",
+          "propertyType": {
+            "dbType": "String",
+            "minLength": 0,
+            "maxLength": 200,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": true
+          },
+          "description": "E3132. LEAGrievanceLink indicates the internet website address that connects directly to the Local Education Agency's grievance policy.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "LEAGrievanceLink",
+            "postgreSql": "LEAGrievanceLink"
+          }
+        },
+        {
           "propertyName": "PreschoolOutcomesReporting",
           "propertyType": {
             "dbType": "Boolean",
@@ -6294,7 +6371,7 @@
         }
       ],
       "isAbstract": false,
-      "description": "Descriptor ParentalPermission indicates whether the student's parent or legal guardian has approved placement of the student in the required bilingual or English as a Second Language (ESL) program. (See 19 TAC §89.1240.) (C093)",
+      "description": "Descriptor ParentalPermission indicates whether the student's parent or legal guardian has approved placement of the student in the required bilingual or English as a Second Language (ESL) program or if the parent of a non-EB student has requested placement in a program. (See 19 TAC §89.1240.) (C093)",
       "tableNames": {
         "sqlServer": "ParentalPermissionDescriptor",
         "postgreSql": "ParentalPermissionDescriptor"
@@ -8044,11 +8121,30 @@
           }
         },
         {
+          "propertyName": "IBCBackgroundCheckCost",
+          "propertyType": {
+            "dbType": "Decimal",
+            "maxLength": 0,
+            "precision": 6,
+            "scale": 2,
+            "isNullable": true,
+            "minValue": 0,
+            "maxValue": 700
+          },
+          "description": "E3133. IBCBackgroundCheckCost identifies the amount of money that was paid for the background check (fingerprinting or criminal history record information reveiw) associated to an Industry-Based Certification passed/earned by a student.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "IBCBackgroundCheckCost",
+            "postgreSql": "IBCBackgroundCheckCost"
+          }
+        },
+        {
           "propertyName": "IBCExamFeeAmount",
           "propertyType": {
             "dbType": "Decimal",
             "maxLength": 0,
-            "precision": 5,
+            "precision": 6,
             "scale": 2,
             "isNullable": true,
             "minValue": 0,
@@ -10227,7 +10323,7 @@
             "scale": 0,
             "isNullable": true
           },
-          "description": "E1671. AdditionalDaysProgram indicates whether the campus implemented an Additional Days School Year program for any students in prekindergarten through fifth grades as described in TEC §48.0051.",
+          "description": "E1671. AdditionalDaysProgram indicates whether the campus implemented an Additional Days School Year (ADSY) program for any students in prekindergarten through eighth grades as described in TEC §48.0051.",
           "isIdentifying": false,
           "isServerAssigned": false,
           "columnNames": {
@@ -11742,6 +11838,24 @@
           }
         },
         {
+          "propertyName": "LEADeterminedTRAEligibility",
+          "propertyType": {
+            "dbType": "Boolean",
+            "minLength": 0,
+            "maxLength": 0,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": true
+          },
+          "description": "E3130. LEADeterminedTRAEligibility indicates the local education agency (LEA) has determined the teacher (StaffClassification is 087) is employed by a school system and teaches not less than an average of four hours each day, in an academic instructional setting or a career and technology educational setting.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "LEADeterminedTRAEligibility",
+            "postgreSql": "LEADeterminedTRAEligibility"
+          }
+        },
+        {
           "propertyName": "StaffDoNotReportTSDS",
           "propertyType": {
             "dbType": "Boolean",
@@ -11832,6 +11946,25 @@
           "columnNames": {
             "sqlServer": "YearsExperienceInDistrict",
             "postgreSql": "YearsExperienceInDistrict"
+          }
+        },
+        {
+          "propertyName": "YearsTRATeachingExperience",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": true,
+            "minValue": 0,
+            "maxValue": 99
+          },
+          "description": "E3129. YearsTRATeachingExperience indicates the number of verifiable years of teaching experience as a classroom teacher as described in TEC §48.158.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "YearsTRATeachingExperience",
+            "postgreSql": "YearsTRATeachingExperience"
           }
         }
       ],
@@ -12298,7 +12431,7 @@
         }
       ],
       "isAbstract": false,
-      "description": "StaffType indicates whether the staff person is on the district payroll, is a contracted professional staff person (instructional and non-instructional), or a teacher (ROLE-ID 087) employed at the in-district charter campus by an organization that has been granted a campus charter under TEC, Chapter 12, Subchapter C and is eligible for benefits under TEC, §11.174 and 11.147(b). (C181)",
+      "description": "StaffType indicates whether the staff person is on the local education agency payroll, is a contracted professional staff person (instructional and non-instructional), including staff of a charter management organization, or is a teacher (StaffClassification 087) employed at an in-district charter campus by an organization that has been granted a campus charter under TEC, Chapter 12, Subchapter C.(C181)",
       "tableNames": {
         "sqlServer": "StaffTypeDescriptor",
         "postgreSql": "StaffTypeDescriptor"
@@ -12758,7 +12891,7 @@
             "maxLength": 0,
             "precision": 0,
             "scale": 0,
-            "isNullable": false
+            "isNullable": true
           },
           "description": "E3122. EstablishedDate is the first instructional day an Individual Graduation Committee (IGC) has been established for a student.",
           "isIdentifying": false,
@@ -12851,11 +12984,30 @@
           }
         },
         {
+          "propertyName": "IBCBackgroundCheckCost",
+          "propertyType": {
+            "dbType": "Decimal",
+            "maxLength": 0,
+            "precision": 6,
+            "scale": 2,
+            "isNullable": true,
+            "minValue": 0,
+            "maxValue": 700
+          },
+          "description": "E3133. IBCBackgroundCheckCost identifies the amount of money that was paid for the background check (fingerprinting or criminal history record information reveiw) associated to an Industry-Based Certification passed/earned by a student.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "IBCBackgroundCheckCost",
+            "postgreSql": "IBCBackgroundCheckCost"
+          }
+        },
+        {
           "propertyName": "IBCExamFeeAmount",
           "propertyType": {
             "dbType": "Decimal",
             "maxLength": 0,
-            "precision": 5,
+            "precision": 6,
             "scale": 2,
             "isNullable": true,
             "minValue": 0,
@@ -13138,6 +13290,24 @@
           "columnNames": {
             "sqlServer": "LastSurname",
             "postgreSql": "LastSurname"
+          }
+        },
+        {
+          "propertyName": "LocalStudentId",
+          "propertyType": {
+            "dbType": "String",
+            "minLength": 0,
+            "maxLength": 9,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": true
+          },
+          "description": "E0923. LocalStudentId is the student's local identification number as assigned by the local education agency.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "LocalStudentId",
+            "postgreSql": "LocalStudentId"
           }
         },
         {
@@ -14486,6 +14656,88 @@
       "tableNames": {
         "sqlServer": "StudentEducationOrganizationAssociationFosterCareTypeSet",
         "postgreSql": "StudentEducationOrganizationAssociationFosterCareTypeSet"
+      }
+    },
+    {
+      "schema": "tx",
+      "name": "StudentEducationOrganizationAssociationFullTimeHybridVirtualProgramParticipationSet",
+      "locallyDefinedProperties": [
+        {
+          "propertyName": "BeginDate",
+          "propertyType": {
+            "dbType": "Date",
+            "minLength": 0,
+            "maxLength": 0,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "E3010. BeginDate is the first instructional day a student is assigned to the FullTimeHybridVirtualProgramParticipation descriptor.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "BeginDate",
+            "postgreSql": "BeginDate"
+          }
+        },
+        {
+          "propertyName": "CreateDate",
+          "propertyType": {
+            "dbType": "DateTime2",
+            "maxLength": 0,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "CreateDate",
+            "postgreSql": "CreateDate"
+          }
+        },
+        {
+          "propertyName": "EndDate",
+          "propertyType": {
+            "dbType": "Date",
+            "minLength": 0,
+            "maxLength": 0,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": true
+          },
+          "description": "E3020. EndDate is the first day after the last instructional day a student was assigned to the FullTimeHybridVirtualProgramParticpation descriptor.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "EndDate",
+            "postgreSql": "EndDate"
+          }
+        }
+      ],
+      "identifiers": [
+        {
+          "identifierName": "StudentEducationOrganizationAssociationFullTimeHybridVirtualProgramParticipationSet_PK",
+          "identifyingPropertyNames": [
+            "EducationOrganizationId",
+            "StudentUSI",
+            "BeginDate",
+            "FullTimeHybridVirtualProgramParticipationDescriptorId"
+          ],
+          "isPrimary": true,
+          "isUpdatable": false,
+          "constraintNames": {
+            "sqlServer": "StudentEducationOrganizationAssociationFullTimeHybridVirtualProgramParticipationSet_PK",
+            "postgreSql": "StudentEducationOrganizationAssociationFullTimeHyb_af4759_PK"
+          }
+        }
+      ],
+      "isAbstract": false,
+      "description": "The FullTimeHybridVirtualProgramParticipationSet common type indicates the type (hybrid or virtual) of program participation for a student.",
+      "tableNames": {
+        "sqlServer": "StudentEducationOrganizationAssociationFullTimeHybridVirtualProgramParticipationSet",
+        "postgreSql": "StudentEducationOrganizationAssociationFullTimeHybridVir_af4759"
       }
     },
     {
@@ -18882,7 +19134,7 @@
             "scale": 0,
             "isNullable": false
           },
-          "description": "E1651, C225. BilingualESLFunding indicates the language program in which the student participates during the reporting period.",
+          "description": "E1651, C225. BilingualESLFunding indicates the language program in which the student participates during the reporting period that generates funding under TEC 48.105.",
           "isIdentifying": true,
           "isServerAssigned": false,
           "columnNames": {
@@ -23478,7 +23730,7 @@
             "scale": 0,
             "isNullable": false
           },
-          "description": "E1651, C225. BilingualESLFunding indicates the language program in which the student participates during the reporting period.",
+          "description": "E1651, C225. BilingualESLFunding indicates the language program in which the student participates during the reporting period that generates funding under TEC 48.105.",
           "isIdentifying": true,
           "isServerAssigned": false,
           "columnNames": {
@@ -24872,6 +25124,66 @@
       "constraintNames": {
         "sqlServer": "FK_FrequencyOfServicesDescriptor_Descriptor",
         "postgreSql": "FK_5bb1c4_Descriptor"
+      },
+      "potentiallyLogical": false
+    },
+    {
+      "fullName": {
+        "schema": "tx",
+        "name": "FK_FullTimeHybridVirtualProgramParticipationDescriptor_Descriptor"
+      },
+      "cardinality": "OneToOneInheritance",
+      "primaryEntityFullName": {
+        "schema": "edfi",
+        "name": "Descriptor"
+      },
+      "primaryEntityProperties": [
+        {
+          "propertyName": "DescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.",
+          "isIdentifying": true,
+          "isServerAssigned": true,
+          "columnNames": {
+            "sqlServer": "DescriptorId",
+            "postgreSql": "DescriptorId"
+          }
+        }
+      ],
+      "secondaryEntityFullName": {
+        "schema": "tx",
+        "name": "FullTimeHybridVirtualProgramParticipationDescriptor"
+      },
+      "secondaryEntityProperties": [
+        {
+          "propertyName": "FullTimeHybridVirtualProgramParticipationDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.",
+          "isIdentifying": true,
+          "isServerAssigned": true,
+          "columnNames": {
+            "sqlServer": "FullTimeHybridVirtualProgramParticipationDescriptorId",
+            "postgreSql": "FullTimeHybridVirtualProgramParticipationDescriptorId"
+          }
+        }
+      ],
+      "isIdentifying": true,
+      "isRequired": true,
+      "constraintNames": {
+        "sqlServer": "FK_FullTimeHybridVirtualProgramParticipationDescriptor_Descriptor",
+        "postgreSql": "FK_002eca_Descriptor"
       },
       "potentiallyLogical": false
     },
@@ -37133,7 +37445,7 @@
             "scale": 0,
             "isNullable": false
           },
-          "description": "E1073, C181. StaffType indicates whether the staff person is on the district payroll or is a contracted professional staff person (instructional and non-instructional)",
+          "description": "E1073, C181. StaffType indicates whether the staff person is on the local education agency payroll, is a contracted professional staff person (instructional and non-instructional), including staff of a charter management organization, or is a teacher (StaffClassification 087) employed at an in-district charter campus by an organization that has been granted a campus charter under TEC, Chapter 12, Subchapter C.",
           "isIdentifying": false,
           "isServerAssigned": false,
           "columnNames": {
@@ -41949,6 +42261,160 @@
     {
       "fullName": {
         "schema": "tx",
+        "name": "FK_StudentEducationOrganizationAssociationFullTimeHybridVirtualProgramParticipationSet_FullTimeHybridVirtualProgramParticipation"
+      },
+      "cardinality": "OneToZeroOrMore",
+      "primaryEntityFullName": {
+        "schema": "tx",
+        "name": "FullTimeHybridVirtualProgramParticipationDescriptor"
+      },
+      "primaryEntityProperties": [
+        {
+          "propertyName": "FullTimeHybridVirtualProgramParticipationDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "FullTimeHybridVirtualProgramParticipationDescriptorId",
+            "postgreSql": "FullTimeHybridVirtualProgramParticipationDescriptorId"
+          }
+        }
+      ],
+      "secondaryEntityFullName": {
+        "schema": "tx",
+        "name": "StudentEducationOrganizationAssociationFullTimeHybridVirtualProgramParticipationSet"
+      },
+      "secondaryEntityProperties": [
+        {
+          "propertyName": "FullTimeHybridVirtualProgramParticipationDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "E3131, C363. FullTimeHybridVirtualProgramParticipation indicates the type (hybrid or virtual) of program participation for a student.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "FullTimeHybridVirtualProgramParticipationDescriptorId",
+            "postgreSql": "FullTimeHybridVirtualProgramParticipationDescriptorId"
+          }
+        }
+      ],
+      "isIdentifying": true,
+      "isRequired": true,
+      "constraintNames": {
+        "sqlServer": "FK_StudentEducationOrganizationAssociationFullTimeHybridVirtualProgramParticipationSet_FullTimeHybridVirtualProgramParticipation",
+        "postgreSql": "FK_af4759_FullTimeHybridVirtualProgramParticipationDescriptor"
+      },
+      "potentiallyLogical": false
+    },
+    {
+      "fullName": {
+        "schema": "tx",
+        "name": "FK_StudentEducationOrganizationAssociationFullTimeHybridVirtualProgramParticipationSet_StudentEducationOrganizationAssociation"
+      },
+      "cardinality": "OneToZeroOrMore",
+      "primaryEntityFullName": {
+        "schema": "edfi",
+        "name": "StudentEducationOrganizationAssociation"
+      },
+      "primaryEntityProperties": [
+        {
+          "propertyName": "EducationOrganizationId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The identifier assigned to an education organization.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "EducationOrganizationId",
+            "postgreSql": "EducationOrganizationId"
+          }
+        },
+        {
+          "propertyName": "StudentUSI",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique alphanumeric code assigned to a student.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "StudentUSI",
+            "postgreSql": "StudentUSI"
+          }
+        }
+      ],
+      "secondaryEntityFullName": {
+        "schema": "tx",
+        "name": "StudentEducationOrganizationAssociationFullTimeHybridVirtualProgramParticipationSet"
+      },
+      "secondaryEntityProperties": [
+        {
+          "propertyName": "EducationOrganizationId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The identifier assigned to an education organization.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "EducationOrganizationId",
+            "postgreSql": "EducationOrganizationId"
+          }
+        },
+        {
+          "propertyName": "StudentUSI",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique alphanumeric code assigned to a student.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "StudentUSI",
+            "postgreSql": "StudentUSI"
+          }
+        }
+      ],
+      "isIdentifying": true,
+      "isRequired": true,
+      "constraintNames": {
+        "sqlServer": "FK_StudentEducationOrganizationAssociationFullTimeHybridVirtualProgramParticipationSet_StudentEducationOrganizationAssociation",
+        "postgreSql": "FK_af4759_StudentEducationOrganizationAssociation"
+      },
+      "potentiallyLogical": false
+    },
+    {
+      "fullName": {
+        "schema": "tx",
         "name": "FK_StudentEducationOrganizationAssociationHomelessStatusSet_HomelessStatusDescriptor"
       },
       "cardinality": "OneToZeroOrMore",
@@ -43600,7 +44066,7 @@
             "scale": 0,
             "isNullable": false
           },
-          "description": "E0896, C093. ParentalPermission indicates whether the student's parent or legal guardian has approved placement of the student in the required bilingual or English as a Second Language (ESL) program. (See 19 TAC §89.1240.)",
+          "description": "E0896, C093. ParentalPermission indicates whether the student's parent or legal guardian has approved placement of the student in the required bilingual or English as a Second Language (ESL) program or if the parent of a non-EB student has requested placement in a program. (See 19 TAC §89.1240.)",
           "isIdentifying": false,
           "isServerAssigned": false,
           "columnNames": {
