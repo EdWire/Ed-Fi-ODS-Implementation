@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.3.32825.248
+# Visual Studio Version 18
+VisualStudioVersion = 18.0.11205.157 d18.0
 MinimumVisualStudioVersion = 15.0.28307.852
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EdFi.Ods.Common", "..\..\Ed-Fi-ODS\Application\EdFi.Ods.Common\EdFi.Ods.Common.csproj", "{8D7CB143-8818-47A8-89E8-702D485E8DA0}"
 EndProject
@@ -112,6 +112,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EdFi.Ods.Extensions.EdFiXLearningModality", "EdFi.Ods.Extensions.EdFiXLearningModality\EdFi.Ods.Extensions.EdFiXLearningModality.csproj", "{46E599FC-0B15-4379-A9CA-126B5B814945}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EdFi.Ods.Extensions.Edfixcrdc", "EdFi.Ods.Extensions.Edfixcrdc\EdFi.Ods.Extensions.Edfixcrdc.csproj", "{7CD1FF0D-BAA2-48AC-BD2A-A621F9CCCA86}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EdFi.Ods.Extensions.TPDM", "EdFi.Ods.Extensions.TPDM\EdFi.Ods.Extensions.TPDM.csproj", "{9C86F4C6-5FE2-9AFE-FCB1-9990106F0F22}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -259,6 +261,10 @@ Global
 		{7CD1FF0D-BAA2-48AC-BD2A-A621F9CCCA86}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7CD1FF0D-BAA2-48AC-BD2A-A621F9CCCA86}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7CD1FF0D-BAA2-48AC-BD2A-A621F9CCCA86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C86F4C6-5FE2-9AFE-FCB1-9990106F0F22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C86F4C6-5FE2-9AFE-FCB1-9990106F0F22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C86F4C6-5FE2-9AFE-FCB1-9990106F0F22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C86F4C6-5FE2-9AFE-FCB1-9990106F0F22}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -301,6 +307,7 @@ Global
 		{1882BB0A-CC41-48FA-B0DC-5CCFAA41FE75} = {F25ED154-FB97-4F39-933B-808D1B3B6D3E}
 		{46E599FC-0B15-4379-A9CA-126B5B814945} = {F25ED154-FB97-4F39-933B-808D1B3B6D3E}
 		{7CD1FF0D-BAA2-48AC-BD2A-A621F9CCCA86} = {F25ED154-FB97-4F39-933B-808D1B3B6D3E}
+		{9C86F4C6-5FE2-9AFE-FCB1-9990106F0F22} = {F25ED154-FB97-4F39-933B-808D1B3B6D3E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {91F27EA2-CFF0-4054-A019-B8AA23AF9319}
