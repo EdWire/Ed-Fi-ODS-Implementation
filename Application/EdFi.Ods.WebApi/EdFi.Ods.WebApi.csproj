@@ -14,11 +14,9 @@
   <ItemGroup>
     <None Include="log4net.config" CopyToPublishDirectory="Always" CopyToOutputDirectory="Always" />
     <None Update="hibernate.cfg.xml" CopyToPublishDirectory="Always" CopyToOutputDirectory="Always" />
-    <Content Include="..\..\Plugin\**" LinkBase="Plugin\" Exclude="..\..\Plugin\*.ps1;..\..\Plugin\**\*.nupkg" CopyToPublishDirectory="Always" CopyToOutputDirectory="Never" />
     <Content Include="EdFi.Ods.WebApi*.nuspec" CopyToPublishDirectory="Always" CopyToOutputDirectory="Never" />
     <Content Include="../../LICENSE.txt" Link="LICENSE.txt" CopyToPublishDirectory="Always" />
     <Content Include="../../NOTICES.md" Link="NOTICES.md" CopyToPublishDirectory="Always" />
-    <Content Update="appsettings.Development.json" CopyToPublishDirectory="Never" CopyToOutputDirectory="Always" />
     <Content Update="log4net.development.config" CopyToPublishDirectory="Never" CopyToOutputDirectory="Always" />
   </ItemGroup>
   <Choose>
@@ -56,6 +54,7 @@
     <ProjectReference Include="..\..\..\Ed-Fi-ODS\Application\EdFi.Ods.Standard\EdFi.Ods.Standard.csproj" />
     <ProjectReference Include="..\..\..\Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Features.OwnershipBasedAuthorization\EdFi.Ods.Features.OwnershipBasedAuthorization.csproj" />
     <ProjectReference Include="..\..\..\Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.TX\EdFi.Ods.Extensions.TX.csproj" />
+    <ProjectReference Include="..\..\..\Ed-Fi-ODS-Implementation\Application\EdFi.Ods.Extensions.TPDM\EdFi.Ods.Extensions.TPDM.csproj" />
   </ItemGroup>
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.Extensions.SecretManager.Tools" Version="2.0.0" />
