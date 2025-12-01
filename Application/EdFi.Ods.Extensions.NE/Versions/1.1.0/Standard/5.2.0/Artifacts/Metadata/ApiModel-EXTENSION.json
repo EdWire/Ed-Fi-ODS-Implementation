@@ -1,7 +1,7 @@
 {
   "odsApiVersion": "7.3",
   "schemaDefinition": {
-    "logicalName": "Ne",
+    "logicalName": "NE",
     "physicalName": "ne",
     "description": "",
     "version": "1.0.0"

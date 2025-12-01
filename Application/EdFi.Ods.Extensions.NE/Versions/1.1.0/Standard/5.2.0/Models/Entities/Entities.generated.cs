@@ -2569,8 +2569,8 @@ namespace EdFi.Ods.Entities.NHibernate.SectionAggregate.NE
 
         Entities.Common.NE.ISectionExtension ISectionDelivery.SectionExtension
         {
-            get { return (ISectionExtension) Section.Extensions["Ne"]; }
-            set { Section.Extensions["Ne"] = value; }
+            get { return (ISectionExtension) Section.Extensions["NE"]; }
+            set { Section.Extensions["NE"] = value; }
         }
 
         [DomainSignature]
@@ -2806,7 +2806,7 @@ namespace EdFi.Ods.Entities.NHibernate.SectionAggregate.NE
         {
             get
             {
-                var sourceList =  new ContravariantCollectionAdapter<object, SectionDelivery>((IList<object>) Section.AggregateExtensions["Ne_SectionDeliveries"]);
+                var sourceList =  new ContravariantCollectionAdapter<object, SectionDelivery>((IList<object>) Section.AggregateExtensions["NE_SectionDeliveries"]);
 
                 // -------------------------------------------------------------
                 // Back-reference is required by NHibernate for persistence.
@@ -2823,7 +2823,7 @@ namespace EdFi.Ods.Entities.NHibernate.SectionAggregate.NE
             }
             set
             {
-                Section.AggregateExtensions["Ne_SectionDeliveries"] = value;
+                Section.AggregateExtensions["NE_SectionDeliveries"] = value;
             }
         }
         // -------------------------------------------------------------

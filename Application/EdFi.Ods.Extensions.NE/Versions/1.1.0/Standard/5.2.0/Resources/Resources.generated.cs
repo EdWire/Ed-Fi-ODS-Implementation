@@ -33,7 +33,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CalendarDate.EdFi.Extensions.NE
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    [Display(Name="Ne")]
+    [Display(Name="NE")]
     [NoUnsuppliedRequiredMembersWithMeaningfulDefaults]
     public class CalendarDateExtension : Entities.Common.NE.ICalendarDateExtension, IHasRequiredMembersWithMeaningfulDefaultValues, IChildEntity
     {
@@ -279,7 +279,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineAction.EdFi.Extensions.
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    [Display(Name="Ne")]
+    [Display(Name="NE")]
     public class DisciplineActionExtension : Entities.Common.NE.IDisciplineActionExtension, IChildEntity
     {
         private static FullName _fullName = new FullName("ne", "DisciplineActionExtension");
@@ -511,7 +511,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineIncident.EdFi.Extension
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    [Display(Name="Ne")]
+    [Display(Name="NE")]
     public class DisciplineIncidentExtension : Entities.Common.NE.IDisciplineIncidentExtension, IChildEntity
     {
         private static FullName _fullName = new FullName("ne", "DisciplineIncidentExtension");
@@ -2180,7 +2180,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.PostGraduateActivity.NE
             var link = new Link
             {
                 Rel = "PostGraduateActivity",
-                Href = $"/ne/postGraduateActivities/{ResourceId:n}"
+                Href = $"/NE/postGraduateActivities/{ResourceId:n}"
             };
 
             if (string.IsNullOrEmpty(Discriminator))
@@ -3423,7 +3423,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Section.EdFi.Extensions.NE
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    [Display(Name="Ne")]
+    [Display(Name="NE")]
     public class SectionExtension : Entities.Common.NE.ISectionExtension, IChildEntity, IValidatableObject
     {
         private static FullName _fullName = new FullName("ne", "SectionExtension");
@@ -4319,7 +4319,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentDisciplineIncidentBehavior
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    [Display(Name="Ne")]
+    [Display(Name="NE")]
     public class StudentDisciplineIncidentBehaviorAssociationExtension : Entities.Common.NE.IStudentDisciplineIncidentBehaviorAssociationExtension, IChildEntity
     {
         private static FullName _fullName = new FullName("ne", "StudentDisciplineIncidentBehaviorAssociationExtension");
@@ -4665,7 +4665,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEarlyLearningProgramAssoci
             var link = new Link
             {
                 Rel = "StudentEarlyLearningProgramAssociation",
-                Href = $"/ne/studentEarlyLearningProgramAssociations/{ResourceId:n}"
+                Href = $"/NE/studentEarlyLearningProgramAssociations/{ResourceId:n}"
             };
 
             return link;
@@ -5350,7 +5350,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    [Display(Name="Ne")]
+    [Display(Name="NE")]
     public class StudentEducationOrganizationAssociationExtension : Entities.Common.NE.IStudentEducationOrganizationAssociationExtension, IChildEntity
     {
         private static FullName _fullName = new FullName("ne", "StudentEducationOrganizationAssociationExtension");
@@ -5575,7 +5575,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentLanguageInstructionProgram
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    [Display(Name="Ne")]
+    [Display(Name="NE")]
     public class StudentLanguageInstructionProgramAssociationExtension : Entities.Common.NE.IStudentLanguageInstructionProgramAssociationExtension, IChildEntity
     {
         private static FullName _fullName = new FullName("ne", "StudentLanguageInstructionProgramAssociationExtension");
@@ -5806,7 +5806,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSchoolAssociation.EdFi.Ext
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    [Display(Name="Ne")]
+    [Display(Name="NE")]
     public class StudentSchoolAssociationExtension : Entities.Common.NE.IStudentSchoolAssociationExtension, IChildEntity
     {
         private static FullName _fullName = new FullName("ne", "StudentSchoolAssociationExtension");
@@ -6300,7 +6300,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSpecialEducationProgramAss
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    [Display(Name="Ne")]
+    [Display(Name="NE")]
     public class StudentSpecialEducationProgramAssociationExtension : Entities.Common.NE.IStudentSpecialEducationProgramAssociationExtension, IChildEntity
     {
         private static FullName _fullName = new FullName("ne", "StudentSpecialEducationProgramAssociationExtension");
