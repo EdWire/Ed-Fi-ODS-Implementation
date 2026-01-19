@@ -1,5 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
+		<StandardVersion Condition="'$(StandardVersion)' == '' ">4.0.0</StandardVersion>
+		<ExtensionVersion Condition="'$(ExtensionVersion)' == '' ">1.1.0</ExtensionVersion>
+  </PropertyGroup>	
+  <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <AssemblyName>EdFi.Ods.Extensions.KS</AssemblyName>
     <RootNamespace>EdFi.Ods.Extensions.KS</RootNamespace>
@@ -11,28 +15,28 @@
     <DebugType>full</DebugType>
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
-  <ItemGroup>
+  <ItemGroup Condition=" '$(TargetFramework)' == 'net8.0' ">
     <FrameworkReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="9.0.0" />
-    <PackageReference Include="NHibernate" Version="5.5.2" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Artifacts\**\Metadata\*.xml">
+    <Compile Remove="Versions\*\Standard\**" />
+    <EmbeddedResource Remove="Versions\*\Standard\**" />
+    <None Remove="Versions\*\Standard\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Versions\$(ExtensionVersion)\Standard\$(StandardVersion)\Artifacts\**\Metadata\*.xml">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Content>
-    <Content Include="Artifacts\**\MsSql\*.sql">
+    <Content Include="Versions\$(ExtensionVersion)\Standard\$(StandardVersion)\Artifacts\**\*.sql">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Content>
-	<Content Include="Artifacts\**\PgSql\*.sql">
-	  <AutoGen>True</AutoGen>
-	  <DesignTime>True</DesignTime>
-	</Content>
-    <EmbeddedResource Include="Artifacts\**\Schemas\*.xsd">
+    <EmbeddedResource Include="Versions\$(ExtensionVersion)\Standard\$(StandardVersion)\Artifacts\Schemas\*.xsd">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <SubType>Designer</SubType>
+      <LogicalName>$(RootNamespace).Artifacts.Schemas.%(Filename)%(Extension)</LogicalName>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -44,19 +48,22 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
     </Content>
+    <EmbeddedResource Include="assemblyMetadata.json" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Artifacts\Metadata\**\ApiModel-EXTENSION.json">
+    <Compile Include="Versions\$(ExtensionVersion)\Standard\$(StandardVersion)\**\*.cs" />
+    <EmbeddedResource Include="Versions\$(ExtensionVersion)\Standard\$(StandardVersion)\Artifacts\Metadata\ApiModel-EXTENSION.json">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <SubType>Designer</SubType>
+      <LogicalName>$(RootNamespace).Artifacts.Metadata.%(Filename)%(Extension)</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="**\*.generated.hbm.xml">
+    <EmbeddedResource Include="Versions\$(ExtensionVersion)\Standard\$(StandardVersion)\**\*.generated.hbm.xml">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <SubType>Designer</SubType>
+      <LogicalName>$(RootNamespace).$([System.String]::Copy('%(RecursiveDir)').Replace('/', '.').Replace('\', '.'))%(Filename)%(Extension)</LogicalName>
     </EmbeddedResource>
-    <EmbeddedResource Include="assemblyMetadata.json" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Ed-Fi-ODS\Application\EdFi.Ods.Api\EdFi.Ods.Api.csproj" />
