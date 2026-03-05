@@ -1,0 +1,4 @@
+Shared String ActionStepTitle
+    documentation "The discriptive name of the action step."
+    min length 1
+    max length 255

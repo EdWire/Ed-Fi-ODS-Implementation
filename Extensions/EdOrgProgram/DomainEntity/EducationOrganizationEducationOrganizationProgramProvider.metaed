@@ -1,0 +1,26 @@
+// SPDX-License-Identifier: Apache-2.0
+// Licensed to the Ed-Fi Alliance under one or more agreements.
+// The Ed-Fi Alliance licenses this file to you under the Apache License, Version 2.0.
+// See the LICENSE and NOTICES files in the project root for more information.
+
+Domain Entity EducationOrganizationEducationOrganizationProgram
+    documentation "This entiy tracks what education organizations are getting edOrgPrograms."
+    domain entity EdFi.EducationOrganization
+        documentation "The education organization where the program is implmented."
+        is part of identity
+        is queryable field
+    descriptor EducationOrganizationProgramType
+        documentation "The type of ed org program."
+        is part of identity
+        is queryable field
+   date BeginDate
+        documentation "Start date for the ed org program."
+        is part of identity
+        is queryable field
+    domain entity EducationOrganizationProgramProvider
+        documentation "The entity administering the ed org program."
+        is required
+        is queryable field
+     date EndDate
+        documentation "End date for the program."
+        is optional    

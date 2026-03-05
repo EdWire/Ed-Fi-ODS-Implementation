@@ -1,0 +1,14 @@
+Domain Entity EvaluationOjectiveActionStep
+  documentation "This association shows what action steps are applicable for evaluation Objectives at what times."
+  domain entity EvaluationObjective
+    documentation "Reference to the evaluation objective."
+    is part of identity
+  descriptor ActionStep
+    documentation "Reference to the action step."
+    is part of identity
+  date BeginDate
+    documentation "start date of association"
+    is part of identity
+  date EndDate
+    documentation "end date of association"
+    is optional

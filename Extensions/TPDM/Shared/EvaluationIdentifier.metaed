@@ -1,0 +1,4 @@
+Shared String EvaluationIdentifier
+    documentation "Evaluation identifier."
+    min length 1
+    max length 24

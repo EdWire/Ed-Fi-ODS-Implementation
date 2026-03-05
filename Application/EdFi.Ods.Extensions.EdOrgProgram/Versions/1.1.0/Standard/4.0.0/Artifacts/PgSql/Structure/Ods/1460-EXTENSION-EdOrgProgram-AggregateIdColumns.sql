@@ -1,0 +1,15 @@
+
+CREATE SEQUENCE edorgprogram.EducationOrganizationEducationOrganizationProgram_aggseq START WITH -2147483648 INCREMENT BY 1 MINVALUE -2147483648;
+ALTER TABLE edorgprogram.EducationOrganizationEducationOrganizationProgram ADD COLUMN AggregateId int NOT NULL DEFAULT nextval('edorgprogram.EducationOrganizationEducationOrganizationProgram_aggseq'), ADD COLUMN AggregateData bytea;
+CREATE INDEX ix_EducationOrganizationEducationOrganizationProgram_aggid ON edorgprogram.EducationOrganizationEducationOrganizationProgram (AggregateId);
+
+
+CREATE SEQUENCE edorgprogram.EducationOrganizationProgramAuthorizedProvider_aggseq START WITH -2147483648 INCREMENT BY 1 MINVALUE -2147483648;
+ALTER TABLE edorgprogram.EducationOrganizationProgramAuthorizedProvider ADD COLUMN AggregateId int NOT NULL DEFAULT nextval('edorgprogram.EducationOrganizationProgramAuthorizedProvider_aggseq'), ADD COLUMN AggregateData bytea;
+CREATE INDEX ix_EducationOrganizationProgramAuthorizedProvider_aggid ON edorgprogram.EducationOrganizationProgramAuthorizedProvider (AggregateId);
+
+
+CREATE SEQUENCE edorgprogram.EducationOrganizationProgramProvider_aggseq START WITH -2147483648 INCREMENT BY 1 MINVALUE -2147483648;
+ALTER TABLE edorgprogram.EducationOrganizationProgramProvider ADD COLUMN AggregateId int NOT NULL DEFAULT nextval('edorgprogram.EducationOrganizationProgramProvider_aggseq'), ADD COLUMN AggregateData bytea;
+CREATE INDEX ix_EducationOrganizationProgramProvider_aggid ON edorgprogram.EducationOrganizationProgramProvider (AggregateId);
+
