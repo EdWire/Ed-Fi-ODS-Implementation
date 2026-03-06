@@ -3,8 +3,6 @@
 // The Ed-Fi Alliance licenses this file to you under the Apache License, Version 2.0.
 // See the LICENSE and NOTICES files in the project root for more information.
 
-using System;
-using System.Threading.Tasks;
 using Autofac.Extensions.DependencyInjection;
 using EdFi.Common.Extensions;
 using EdFi.Ods.Api.Helpers;
@@ -14,6 +12,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using System;
+using System.Threading.Tasks;
 
 namespace EdFi.Ods.WebApi
 {
@@ -56,8 +56,6 @@ namespace EdFi.Ods.WebApi
             await ConfigureHostUsingPlugins();
 
             var host = hostBuilder.Build();
-
-            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
 
             await host.RunAsync();
 

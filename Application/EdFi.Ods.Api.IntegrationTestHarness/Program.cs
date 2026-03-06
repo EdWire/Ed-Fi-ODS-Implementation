@@ -13,6 +13,8 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
 using Autofac.Extensions.DependencyInjection;
 using Microsoft.AspNetCore.Hosting;
+using Npgsql;
+using EdFi.Ods.Common.Infrastructure.Configuration;
 
 namespace EdFi.Ods.Api.IntegrationTestHarness
 {
@@ -34,8 +36,6 @@ namespace EdFi.Ods.Api.IntegrationTestHarness
                 .UseServiceProviderFactory(new AutofacServiceProviderFactory())
                 .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); }).Build();
 
-            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
-            
             await host.RunAsync();
 
             static void ConfigureLogging()
