@@ -4,12 +4,12 @@
 # See the LICENSE and NOTICES files in the project root for more information.
 
 # Base image with additional packages
-FROM postgres:16.13-alpine3.23@sha256:60b180625695e90b6e450405d5f0bcb74bc8c52c65d1cd11aeb3da46cac06dd8 AS base
+FROM postgres:16.13-alpine3.23@sha256:20edbde7749f822887a1a022ad526fde0a47d6b2be9a8364433605cf65099416 AS base
 RUN apk --upgrade --no-cache add unzip=~6 dos2unix=~7 nodejs=~24 npm=~11 && \
     npm install -g semver@7
 
 # Workaround to fix false positive CVEs using gosu
-FROM golang:1.24 AS gosubuilder
+FROM golang:1.26.1 AS gosubuilder
 ENV GOSU_VERSION=1.17
 WORKDIR /go/src/github.com/tianon
 RUN git clone https://github.com/tianon/gosu.git --branch $GOSU_VERSION
@@ -38,7 +38,7 @@ ENV POSTGRES_USER=${POSTGRES_USER}
 ENV POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
 ENV TPDM_ENABLED=true
 
-# Override provided gosu with the one built from source with updated go version
+# Override provided gosu with the one built FROM source with updated go version
 COPY --from=gosubuilder /go/src/github.com/tianon/gosu/gosu /usr/local/bin/gosu
 
 COPY init-database.sh /docker-entrypoint-initdb.d/init-database.sh
