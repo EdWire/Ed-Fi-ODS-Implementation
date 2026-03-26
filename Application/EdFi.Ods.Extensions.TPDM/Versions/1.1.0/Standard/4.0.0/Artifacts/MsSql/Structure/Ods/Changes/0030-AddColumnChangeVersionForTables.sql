@@ -120,19 +120,19 @@ ALTER TABLE [tpdm].[EvaluationObjective] ADD CONSTRAINT EvaluationObjective_DF_C
 END
 
 
+IF NOT EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID(N'[tpdm].[EvaluationObjectiveActionStep]') AND name = 'ChangeVersion')
+BEGIN
+ALTER TABLE [tpdm].[EvaluationObjectiveActionStep] ADD [ChangeVersion] [BIGINT] CONSTRAINT EvaluationObjectiveActionStep_DF_ChangeVersion DEFAULT (0) NOT NULL;
+ALTER TABLE [tpdm].[EvaluationObjectiveActionStep] DROP CONSTRAINT EvaluationObjectiveActionStep_DF_ChangeVersion;
+ALTER TABLE [tpdm].[EvaluationObjectiveActionStep] ADD CONSTRAINT EvaluationObjectiveActionStep_DF_ChangeVersion DEFAULT (NEXT VALUE FOR [changes].[ChangeVersionSequence]) For [ChangeVersion];
+END
+
+
 IF NOT EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID(N'[tpdm].[EvaluationObjectiveRating]') AND name = 'ChangeVersion')
 BEGIN
 ALTER TABLE [tpdm].[EvaluationObjectiveRating] ADD [ChangeVersion] [BIGINT] CONSTRAINT EvaluationObjectiveRating_DF_ChangeVersion DEFAULT (0) NOT NULL;
 ALTER TABLE [tpdm].[EvaluationObjectiveRating] DROP CONSTRAINT EvaluationObjectiveRating_DF_ChangeVersion;
 ALTER TABLE [tpdm].[EvaluationObjectiveRating] ADD CONSTRAINT EvaluationObjectiveRating_DF_ChangeVersion DEFAULT (NEXT VALUE FOR [changes].[ChangeVersionSequence]) For [ChangeVersion];
-END
-
-
-IF NOT EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID(N'[tpdm].[EvaluationOjectiveActionStep]') AND name = 'ChangeVersion')
-BEGIN
-ALTER TABLE [tpdm].[EvaluationOjectiveActionStep] ADD [ChangeVersion] [BIGINT] CONSTRAINT EvaluationOjectiveActionStep_DF_ChangeVersion DEFAULT (0) NOT NULL;
-ALTER TABLE [tpdm].[EvaluationOjectiveActionStep] DROP CONSTRAINT EvaluationOjectiveActionStep_DF_ChangeVersion;
-ALTER TABLE [tpdm].[EvaluationOjectiveActionStep] ADD CONSTRAINT EvaluationOjectiveActionStep_DF_ChangeVersion DEFAULT (NEXT VALUE FOR [changes].[ChangeVersionSequence]) For [ChangeVersion];
 END
 
 

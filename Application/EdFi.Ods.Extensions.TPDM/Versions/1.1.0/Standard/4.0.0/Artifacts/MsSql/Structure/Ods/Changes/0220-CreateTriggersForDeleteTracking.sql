@@ -884,6 +884,34 @@ ALTER TABLE [tpdm].[EvaluationObjective] ENABLE TRIGGER [tpdm_EvaluationObjectiv
 GO
 
 
+DROP TRIGGER IF EXISTS [tpdm].[tpdm_EvaluationObjectiveActionStep_TR_DeleteTracking]
+GO
+
+CREATE TRIGGER [tpdm].[tpdm_EvaluationObjectiveActionStep_TR_DeleteTracking] ON [tpdm].[EvaluationObjectiveActionStep] AFTER DELETE AS
+BEGIN
+    IF @@rowcount = 0 
+        RETURN
+
+    SET NOCOUNT ON
+
+    INSERT INTO [tracked_changes_tpdm].[EvaluationObjectiveActionStep](OldActionStepDescriptorId, OldActionStepDescriptorNamespace, OldActionStepDescriptorCodeValue, OldBeginDate, OldEducationOrganizationId, OldEvaluationObjectiveTitle, OldEvaluationPeriodDescriptorId, OldEvaluationPeriodDescriptorNamespace, OldEvaluationPeriodDescriptorCodeValue, OldEvaluationTitle, OldPerformanceEvaluationTitle, OldPerformanceEvaluationTypeDescriptorId, OldPerformanceEvaluationTypeDescriptorNamespace, OldPerformanceEvaluationTypeDescriptorCodeValue, OldSchoolYear, OldTermDescriptorId, OldTermDescriptorNamespace, OldTermDescriptorCodeValue, Id, Discriminator, ChangeVersion)
+    SELECT d.ActionStepDescriptorId, j0.Namespace, j0.CodeValue, d.BeginDate, d.EducationOrganizationId, d.EvaluationObjectiveTitle, d.EvaluationPeriodDescriptorId, j1.Namespace, j1.CodeValue, d.EvaluationTitle, d.PerformanceEvaluationTitle, d.PerformanceEvaluationTypeDescriptorId, j2.Namespace, j2.CodeValue, d.SchoolYear, d.TermDescriptorId, j3.Namespace, j3.CodeValue, d.Id, d.Discriminator, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
+    FROM    deleted d
+        INNER JOIN edfi.Descriptor j0
+            ON d.ActionStepDescriptorId = j0.DescriptorId
+        INNER JOIN edfi.Descriptor j1
+            ON d.EvaluationPeriodDescriptorId = j1.DescriptorId
+        INNER JOIN edfi.Descriptor j2
+            ON d.PerformanceEvaluationTypeDescriptorId = j2.DescriptorId
+        INNER JOIN edfi.Descriptor j3
+            ON d.TermDescriptorId = j3.DescriptorId
+END
+GO
+
+ALTER TABLE [tpdm].[EvaluationObjectiveActionStep] ENABLE TRIGGER [tpdm_EvaluationObjectiveActionStep_TR_DeleteTracking]
+GO
+
+
 DROP TRIGGER IF EXISTS [tpdm].[tpdm_EvaluationObjectiveRating_TR_DeleteTracking]
 GO
 
@@ -909,34 +937,6 @@ END
 GO
 
 ALTER TABLE [tpdm].[EvaluationObjectiveRating] ENABLE TRIGGER [tpdm_EvaluationObjectiveRating_TR_DeleteTracking]
-GO
-
-
-DROP TRIGGER IF EXISTS [tpdm].[tpdm_EvaluationOjectiveActionStep_TR_DeleteTracking]
-GO
-
-CREATE TRIGGER [tpdm].[tpdm_EvaluationOjectiveActionStep_TR_DeleteTracking] ON [tpdm].[EvaluationOjectiveActionStep] AFTER DELETE AS
-BEGIN
-    IF @@rowcount = 0 
-        RETURN
-
-    SET NOCOUNT ON
-
-    INSERT INTO [tracked_changes_tpdm].[EvaluationOjectiveActionStep](OldActionStepDescriptorId, OldActionStepDescriptorNamespace, OldActionStepDescriptorCodeValue, OldBeginDate, OldEducationOrganizationId, OldEvaluationObjectiveTitle, OldEvaluationPeriodDescriptorId, OldEvaluationPeriodDescriptorNamespace, OldEvaluationPeriodDescriptorCodeValue, OldEvaluationTitle, OldPerformanceEvaluationTitle, OldPerformanceEvaluationTypeDescriptorId, OldPerformanceEvaluationTypeDescriptorNamespace, OldPerformanceEvaluationTypeDescriptorCodeValue, OldSchoolYear, OldTermDescriptorId, OldTermDescriptorNamespace, OldTermDescriptorCodeValue, Id, Discriminator, ChangeVersion)
-    SELECT d.ActionStepDescriptorId, j0.Namespace, j0.CodeValue, d.BeginDate, d.EducationOrganizationId, d.EvaluationObjectiveTitle, d.EvaluationPeriodDescriptorId, j1.Namespace, j1.CodeValue, d.EvaluationTitle, d.PerformanceEvaluationTitle, d.PerformanceEvaluationTypeDescriptorId, j2.Namespace, j2.CodeValue, d.SchoolYear, d.TermDescriptorId, j3.Namespace, j3.CodeValue, d.Id, d.Discriminator, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
-    FROM    deleted d
-        INNER JOIN edfi.Descriptor j0
-            ON d.ActionStepDescriptorId = j0.DescriptorId
-        INNER JOIN edfi.Descriptor j1
-            ON d.EvaluationPeriodDescriptorId = j1.DescriptorId
-        INNER JOIN edfi.Descriptor j2
-            ON d.PerformanceEvaluationTypeDescriptorId = j2.DescriptorId
-        INNER JOIN edfi.Descriptor j3
-            ON d.TermDescriptorId = j3.DescriptorId
-END
-GO
-
-ALTER TABLE [tpdm].[EvaluationOjectiveActionStep] ENABLE TRIGGER [tpdm_EvaluationOjectiveActionStep_TR_DeleteTracking]
 GO
 
 

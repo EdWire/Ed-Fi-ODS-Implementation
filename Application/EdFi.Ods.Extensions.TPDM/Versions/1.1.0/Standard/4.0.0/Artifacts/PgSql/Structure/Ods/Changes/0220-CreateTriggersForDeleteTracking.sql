@@ -812,6 +812,39 @@ CREATE TRIGGER TrackDeletes AFTER DELETE ON tpdm.evaluationobjective
     FOR EACH ROW EXECUTE PROCEDURE tracked_changes_tpdm.evaluationobjective_deleted();
 END IF;
 
+CREATE OR REPLACE FUNCTION tracked_changes_tpdm.evaluationobjectiveactionstep_deleted()
+    RETURNS trigger AS
+$BODY$
+DECLARE
+    dj0 edfi.descriptor%ROWTYPE;
+    dj1 edfi.descriptor%ROWTYPE;
+    dj2 edfi.descriptor%ROWTYPE;
+    dj3 edfi.descriptor%ROWTYPE;
+BEGIN
+    SELECT INTO dj0 * FROM edfi.descriptor j0 WHERE descriptorid = old.actionstepdescriptorid;
+
+    SELECT INTO dj1 * FROM edfi.descriptor j1 WHERE descriptorid = old.evaluationperioddescriptorid;
+
+    SELECT INTO dj2 * FROM edfi.descriptor j2 WHERE descriptorid = old.performanceevaluationtypedescriptorid;
+
+    SELECT INTO dj3 * FROM edfi.descriptor j3 WHERE descriptorid = old.termdescriptorid;
+
+    INSERT INTO tracked_changes_tpdm.evaluationobjectiveactionstep(
+        oldactionstepdescriptorid, oldactionstepdescriptornamespace, oldactionstepdescriptorcodevalue, oldbegindate, oldeducationorganizationid, oldevaluationobjectivetitle, oldevaluationperioddescriptorid, oldevaluationperioddescriptornamespace, oldevaluationperioddescriptorcodevalue, oldevaluationtitle, oldperformanceevaluationtitle, oldperformanceevaluationtypedescriptorid, oldperformanceevaluationtypedescriptornamespace, oldperformanceevaluationtypedescriptorcodevalue, oldschoolyear, oldtermdescriptorid, oldtermdescriptornamespace, oldtermdescriptorcodevalue,
+        id, discriminator, changeversion)
+    VALUES (
+        OLD.actionstepdescriptorid, dj0.namespace, dj0.codevalue, OLD.begindate, OLD.educationorganizationid, OLD.evaluationobjectivetitle, OLD.evaluationperioddescriptorid, dj1.namespace, dj1.codevalue, OLD.evaluationtitle, OLD.performanceevaluationtitle, OLD.performanceevaluationtypedescriptorid, dj2.namespace, dj2.codevalue, OLD.schoolyear, OLD.termdescriptorid, dj3.namespace, dj3.codevalue, 
+        OLD.id, OLD.discriminator, nextval('changes.changeversionsequence'));
+
+    RETURN NULL;
+END;
+$BODY$ LANGUAGE plpgsql;
+
+IF NOT EXISTS(SELECT 1 FROM information_schema.triggers WHERE trigger_name = 'trackdeletes' AND event_object_schema = 'tpdm' AND event_object_table = 'evaluationobjectiveactionstep') THEN
+CREATE TRIGGER TrackDeletes AFTER DELETE ON tpdm.evaluationobjectiveactionstep 
+    FOR EACH ROW EXECUTE PROCEDURE tracked_changes_tpdm.evaluationobjectiveactionstep_deleted();
+END IF;
+
 CREATE OR REPLACE FUNCTION tracked_changes_tpdm.evaluationobjectiverating_deleted()
     RETURNS trigger AS
 $BODY$
@@ -843,39 +876,6 @@ $BODY$ LANGUAGE plpgsql;
 IF NOT EXISTS(SELECT 1 FROM information_schema.triggers WHERE trigger_name = 'trackdeletes' AND event_object_schema = 'tpdm' AND event_object_table = 'evaluationobjectiverating') THEN
 CREATE TRIGGER TrackDeletes AFTER DELETE ON tpdm.evaluationobjectiverating 
     FOR EACH ROW EXECUTE PROCEDURE tracked_changes_tpdm.evaluationobjectiverating_deleted();
-END IF;
-
-CREATE OR REPLACE FUNCTION tracked_changes_tpdm.evaluationojectiveactionstep_deleted()
-    RETURNS trigger AS
-$BODY$
-DECLARE
-    dj0 edfi.descriptor%ROWTYPE;
-    dj1 edfi.descriptor%ROWTYPE;
-    dj2 edfi.descriptor%ROWTYPE;
-    dj3 edfi.descriptor%ROWTYPE;
-BEGIN
-    SELECT INTO dj0 * FROM edfi.descriptor j0 WHERE descriptorid = old.actionstepdescriptorid;
-
-    SELECT INTO dj1 * FROM edfi.descriptor j1 WHERE descriptorid = old.evaluationperioddescriptorid;
-
-    SELECT INTO dj2 * FROM edfi.descriptor j2 WHERE descriptorid = old.performanceevaluationtypedescriptorid;
-
-    SELECT INTO dj3 * FROM edfi.descriptor j3 WHERE descriptorid = old.termdescriptorid;
-
-    INSERT INTO tracked_changes_tpdm.evaluationojectiveactionstep(
-        oldactionstepdescriptorid, oldactionstepdescriptornamespace, oldactionstepdescriptorcodevalue, oldbegindate, oldeducationorganizationid, oldevaluationobjectivetitle, oldevaluationperioddescriptorid, oldevaluationperioddescriptornamespace, oldevaluationperioddescriptorcodevalue, oldevaluationtitle, oldperformanceevaluationtitle, oldperformanceevaluationtypedescriptorid, oldperformanceevaluationtypedescriptornamespace, oldperformanceevaluationtypedescriptorcodevalue, oldschoolyear, oldtermdescriptorid, oldtermdescriptornamespace, oldtermdescriptorcodevalue,
-        id, discriminator, changeversion)
-    VALUES (
-        OLD.actionstepdescriptorid, dj0.namespace, dj0.codevalue, OLD.begindate, OLD.educationorganizationid, OLD.evaluationobjectivetitle, OLD.evaluationperioddescriptorid, dj1.namespace, dj1.codevalue, OLD.evaluationtitle, OLD.performanceevaluationtitle, OLD.performanceevaluationtypedescriptorid, dj2.namespace, dj2.codevalue, OLD.schoolyear, OLD.termdescriptorid, dj3.namespace, dj3.codevalue, 
-        OLD.id, OLD.discriminator, nextval('changes.changeversionsequence'));
-
-    RETURN NULL;
-END;
-$BODY$ LANGUAGE plpgsql;
-
-IF NOT EXISTS(SELECT 1 FROM information_schema.triggers WHERE trigger_name = 'trackdeletes' AND event_object_schema = 'tpdm' AND event_object_table = 'evaluationojectiveactionstep') THEN
-CREATE TRIGGER TrackDeletes AFTER DELETE ON tpdm.evaluationojectiveactionstep 
-    FOR EACH ROW EXECUTE PROCEDURE tracked_changes_tpdm.evaluationojectiveactionstep_deleted();
 END IF;
 
 CREATE OR REPLACE FUNCTION tracked_changes_tpdm.evaluationperioddescriptor_deleted()

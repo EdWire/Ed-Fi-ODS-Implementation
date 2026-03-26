@@ -89,14 +89,14 @@ BEGIN TRANSACTION
 COMMIT
 
 BEGIN TRANSACTION
-    IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'tpdm.EvaluationObjectiveRating') AND name = N'UX_EvaluationObjectiveRating_ChangeVersion')
-    CREATE INDEX [UX_EvaluationObjectiveRating_ChangeVersion] ON [tpdm].[EvaluationObjectiveRating] ([ChangeVersion] ASC)
+    IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'tpdm.EvaluationObjectiveActionStep') AND name = N'UX_EvaluationObjectiveActionStep_ChangeVersion')
+    CREATE INDEX [UX_EvaluationObjectiveActionStep_ChangeVersion] ON [tpdm].[EvaluationObjectiveActionStep] ([ChangeVersion] ASC)
     GO
 COMMIT
 
 BEGIN TRANSACTION
-    IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'tpdm.EvaluationOjectiveActionStep') AND name = N'UX_EvaluationOjectiveActionStep_ChangeVersion')
-    CREATE INDEX [UX_EvaluationOjectiveActionStep_ChangeVersion] ON [tpdm].[EvaluationOjectiveActionStep] ([ChangeVersion] ASC)
+    IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'tpdm.EvaluationObjectiveRating') AND name = N'UX_EvaluationObjectiveRating_ChangeVersion')
+    CREATE INDEX [UX_EvaluationObjectiveRating_ChangeVersion] ON [tpdm].[EvaluationObjectiveRating] ([ChangeVersion] ASC)
     GO
 COMMIT
 

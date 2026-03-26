@@ -75,13 +75,13 @@ CREATE TRIGGER UpdateChangeVersion BEFORE UPDATE ON tpdm.evaluationobjective
     FOR EACH ROW EXECUTE PROCEDURE changes.UpdateChangeVersion();
 END IF;
 
-IF NOT EXISTS(SELECT 1 FROM information_schema.triggers WHERE trigger_name = 'updatechangeversion' AND event_object_schema = 'tpdm' AND event_object_table = 'evaluationobjectiverating') THEN
-CREATE TRIGGER UpdateChangeVersion BEFORE UPDATE ON tpdm.evaluationobjectiverating
+IF NOT EXISTS(SELECT 1 FROM information_schema.triggers WHERE trigger_name = 'updatechangeversion' AND event_object_schema = 'tpdm' AND event_object_table = 'evaluationobjectiveactionstep') THEN
+CREATE TRIGGER UpdateChangeVersion BEFORE UPDATE ON tpdm.evaluationobjectiveactionstep
     FOR EACH ROW EXECUTE PROCEDURE changes.UpdateChangeVersion();
 END IF;
 
-IF NOT EXISTS(SELECT 1 FROM information_schema.triggers WHERE trigger_name = 'updatechangeversion' AND event_object_schema = 'tpdm' AND event_object_table = 'evaluationojectiveactionstep') THEN
-CREATE TRIGGER UpdateChangeVersion BEFORE UPDATE ON tpdm.evaluationojectiveactionstep
+IF NOT EXISTS(SELECT 1 FROM information_schema.triggers WHERE trigger_name = 'updatechangeversion' AND event_object_schema = 'tpdm' AND event_object_table = 'evaluationobjectiverating') THEN
+CREATE TRIGGER UpdateChangeVersion BEFORE UPDATE ON tpdm.evaluationobjectiverating
     FOR EACH ROW EXECUTE PROCEDURE changes.UpdateChangeVersion();
 END IF;
 

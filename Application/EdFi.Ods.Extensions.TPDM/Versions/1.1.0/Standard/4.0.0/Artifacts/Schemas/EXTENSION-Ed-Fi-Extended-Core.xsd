@@ -1106,6 +1106,11 @@
               <xs:documentation>Identifier that allows evaluation elements to be cross-walked across different versions.</xs:documentation>
             </xs:annotation>
           </xs:element>
+          <xs:element name="EvaluationElementDescription" type="EXTENSION-EvaluationDescription" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The long description of the Evaluation Element.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -1229,6 +1234,43 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+  <xs:complexType name="EXTENSION-EvaluationObjectiveActionStep">
+    <xs:annotation>
+      <xs:documentation>This association shows what action steps are applicable for evaluation Objectives at what times.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Domain Entity</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ComplexObjectType">
+        <xs:sequence>
+          <xs:element name="EvaluationObjectiveReference" type="EXTENSION-EvaluationObjectiveReferenceType">
+            <xs:annotation>
+              <xs:documentation>Reference to the evaluation objective.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="ActionStep" type="EXTENSION-ActionStepDescriptorReferenceType">
+            <xs:annotation>
+              <xs:documentation>Reference to the action step.</xs:documentation>
+              <xs:appinfo>
+                <ann:Descriptor>EXTENSION-ActionStepDescriptor</ann:Descriptor>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="BeginDate" type="xs:date">
+            <xs:annotation>
+              <xs:documentation>start date of association</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="EndDate" type="xs:date" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>end date of association</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
   <xs:complexType name="EXTENSION-EvaluationObjectiveRating">
     <xs:annotation>
       <xs:documentation>The rating for the component Evaluation Objective for an individual educator.</xs:documentation>
@@ -1281,43 +1323,6 @@
               <xs:appinfo>
                 <ann:Descriptor>EXTENSION-ActionStepDescriptor</ann:Descriptor>
               </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="EXTENSION-EvaluationOjectiveActionStep">
-    <xs:annotation>
-      <xs:documentation>This association shows what action steps are applicable for evaluation Objectives at what times.</xs:documentation>
-      <xs:appinfo>
-        <ann:TypeGroup>Domain Entity</ann:TypeGroup>
-      </xs:appinfo>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:extension base="ComplexObjectType">
-        <xs:sequence>
-          <xs:element name="EvaluationObjectiveReference" type="EXTENSION-EvaluationObjectiveReferenceType">
-            <xs:annotation>
-              <xs:documentation>Reference to the evaluation objective.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="ActionStep" type="EXTENSION-ActionStepDescriptorReferenceType">
-            <xs:annotation>
-              <xs:documentation>Reference to the action step.</xs:documentation>
-              <xs:appinfo>
-                <ann:Descriptor>EXTENSION-ActionStepDescriptor</ann:Descriptor>
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="BeginDate" type="xs:date">
-            <xs:annotation>
-              <xs:documentation>start date of association</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="EndDate" type="xs:date" minOccurs="0">
-            <xs:annotation>
-              <xs:documentation>end date of association</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -1905,6 +1910,14 @@
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
+          <xs:element name="AcademicSubject" type="AcademicSubjectDescriptorReferenceType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The description of the content or subject area of a performance evaluation rating.</xs:documentation>
+              <xs:appinfo>
+                <ann:Descriptor>AcademicSubjectDescriptor</ann:Descriptor>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
           <xs:element name="Reviewer" type="EXTENSION-Reviewer" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation>
               <xs:documentation>The person(s) that conducted the performance evaluation.</xs:documentation>
@@ -1925,14 +1938,6 @@
               <xs:documentation>Differentiate between Standard and calibration evaluations</xs:documentation>
               <xs:appinfo>
                 <ann:Descriptor>EXTENSION-PerformanceEvaluationRatingTypeDescriptor</ann:Descriptor>
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="GradeLevel" type="GradeLevelDescriptorReferenceType" minOccurs="0" maxOccurs="unbounded">
-            <xs:annotation>
-              <xs:documentation>Grade Level(s) associated with the performance evaluation.</xs:documentation>
-              <xs:appinfo>
-                <ann:Descriptor>GradeLevelDescriptor</ann:Descriptor>
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
@@ -4058,6 +4063,53 @@
       </xs:element>
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="EXTENSION-EvaluationObjectiveActionStepIdentityType">
+    <xs:annotation>
+      <xs:documentation>Identity of an EvaluationObjectiveActionStep.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Identity</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="EvaluationObjectiveReference" type="EXTENSION-EvaluationObjectiveReferenceType">
+        <xs:annotation>
+          <xs:documentation>Reference to the evaluation objective.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ActionStep" type="EXTENSION-ActionStepDescriptorReferenceType">
+        <xs:annotation>
+          <xs:documentation>Reference to the action step.</xs:documentation>
+          <xs:appinfo>
+            <ann:Descriptor>EXTENSION-ActionStepDescriptor</ann:Descriptor>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="BeginDate" type="xs:date">
+        <xs:annotation>
+          <xs:documentation>start date of association</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-EvaluationObjectiveActionStepReferenceType">
+    <xs:annotation>
+      <xs:documentation>Provides alternative references for an EvaluationObjectiveActionStep. Use XML IDREF to reference a record that is included in the interchange. Use the identity type to look up a record that was loaded previously.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ReferenceType">
+        <xs:sequence>
+          <xs:element name="EvaluationObjectiveActionStepIdentity" type="EXTENSION-EvaluationObjectiveActionStepIdentityType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Identity of an EvaluationObjectiveActionStep.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
   <xs:complexType name="EXTENSION-EvaluationObjectiveIdentityType">
     <xs:annotation>
       <xs:documentation>Identity of an EvaluationObjective.</xs:documentation>
@@ -4130,53 +4182,6 @@
           <xs:element name="EvaluationObjectiveIdentity" type="EXTENSION-EvaluationObjectiveIdentityType" minOccurs="0">
             <xs:annotation>
               <xs:documentation>Identity of an EvaluationObjective.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="EXTENSION-EvaluationOjectiveActionStepIdentityType">
-    <xs:annotation>
-      <xs:documentation>Identity of an EvaluationOjectiveActionStep.</xs:documentation>
-      <xs:appinfo>
-        <ann:TypeGroup>Identity</ann:TypeGroup>
-      </xs:appinfo>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element name="EvaluationObjectiveReference" type="EXTENSION-EvaluationObjectiveReferenceType">
-        <xs:annotation>
-          <xs:documentation>Reference to the evaluation objective.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="ActionStep" type="EXTENSION-ActionStepDescriptorReferenceType">
-        <xs:annotation>
-          <xs:documentation>Reference to the action step.</xs:documentation>
-          <xs:appinfo>
-            <ann:Descriptor>EXTENSION-ActionStepDescriptor</ann:Descriptor>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="BeginDate" type="xs:date">
-        <xs:annotation>
-          <xs:documentation>start date of association</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="EXTENSION-EvaluationOjectiveActionStepReferenceType">
-    <xs:annotation>
-      <xs:documentation>Provides alternative references for an EvaluationOjectiveActionStep. Use XML IDREF to reference a record that is included in the interchange. Use the identity type to look up a record that was loaded previously.</xs:documentation>
-      <xs:appinfo>
-        <ann:TypeGroup>Extended Reference</ann:TypeGroup>
-      </xs:appinfo>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:extension base="ReferenceType">
-        <xs:sequence>
-          <xs:element name="EvaluationOjectiveActionStepIdentity" type="EXTENSION-EvaluationOjectiveActionStepIdentityType" minOccurs="0">
-            <xs:annotation>
-              <xs:documentation>Identity of an EvaluationOjectiveActionStep.</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -6351,7 +6356,7 @@
     </xs:annotation>
     <xs:restriction base="xs:string">
       <xs:minLength value="1" />
-      <xs:maxLength value="365" />
+      <xs:maxLength value="255" />
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="EXTENSION-EvaluationIdentifier">

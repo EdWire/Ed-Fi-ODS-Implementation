@@ -1667,7 +1667,7 @@ GO
 -- Table [tpdm].[EvaluationElement] --
 CREATE TABLE [tpdm].[EvaluationElement] (
     [EducationOrganizationId] [INT] NOT NULL,
-    [EvaluationElementTitle] [NVARCHAR](365) NOT NULL,
+    [EvaluationElementTitle] [NVARCHAR](255) NOT NULL,
     [EvaluationObjectiveTitle] [NVARCHAR](75) NOT NULL,
     [EvaluationPeriodDescriptorId] [INT] NOT NULL,
     [EvaluationTitle] [NVARCHAR](50) NOT NULL,
@@ -1675,6 +1675,7 @@ CREATE TABLE [tpdm].[EvaluationElement] (
     [PerformanceEvaluationTypeDescriptorId] [INT] NOT NULL,
     [SchoolYear] [SMALLINT] NOT NULL,
     [TermDescriptorId] [INT] NOT NULL,
+    [EvaluationElementDescription] [NVARCHAR](300) NULL,
     [EvaluationIdentifier] [NVARCHAR](24) NULL,
     [EvaluationTypeDescriptorId] [INT] NULL,
     [MaxRating] [DECIMAL](6, 3) NULL,
@@ -1708,7 +1709,7 @@ GO
 CREATE TABLE [tpdm].[EvaluationElementRating] (
     [EducationOrganizationId] [INT] NOT NULL,
     [EvaluationDate] [DATETIME2](7) NOT NULL,
-    [EvaluationElementTitle] [NVARCHAR](365) NOT NULL,
+    [EvaluationElementTitle] [NVARCHAR](255) NOT NULL,
     [EvaluationObjectiveTitle] [NVARCHAR](75) NOT NULL,
     [EvaluationPeriodDescriptorId] [INT] NOT NULL,
     [EvaluationTitle] [NVARCHAR](50) NOT NULL,
@@ -1753,7 +1754,7 @@ GO
 -- Table [tpdm].[EvaluationElementRatingLevel] --
 CREATE TABLE [tpdm].[EvaluationElementRatingLevel] (
     [EducationOrganizationId] [INT] NOT NULL,
-    [EvaluationElementTitle] [NVARCHAR](365) NOT NULL,
+    [EvaluationElementTitle] [NVARCHAR](255) NOT NULL,
     [EvaluationObjectiveTitle] [NVARCHAR](75) NOT NULL,
     [EvaluationPeriodDescriptorId] [INT] NOT NULL,
     [EvaluationTitle] [NVARCHAR](50) NOT NULL,
@@ -1795,7 +1796,7 @@ GO
 CREATE TABLE [tpdm].[EvaluationElementRatingResult] (
     [EducationOrganizationId] [INT] NOT NULL,
     [EvaluationDate] [DATETIME2](7) NOT NULL,
-    [EvaluationElementTitle] [NVARCHAR](365) NOT NULL,
+    [EvaluationElementTitle] [NVARCHAR](255) NOT NULL,
     [EvaluationObjectiveTitle] [NVARCHAR](75) NOT NULL,
     [EvaluationPeriodDescriptorId] [INT] NOT NULL,
     [EvaluationTitle] [NVARCHAR](50) NOT NULL,
@@ -1867,6 +1868,44 @@ GO
 ALTER TABLE [tpdm].[EvaluationObjective] ADD CONSTRAINT [EvaluationObjective_DF_Id] DEFAULT (newid()) FOR [Id]
 GO
 ALTER TABLE [tpdm].[EvaluationObjective] ADD CONSTRAINT [EvaluationObjective_DF_LastModifiedDate] DEFAULT (getutcdate()) FOR [LastModifiedDate]
+GO
+
+-- Table [tpdm].[EvaluationObjectiveActionStep] --
+CREATE TABLE [tpdm].[EvaluationObjectiveActionStep] (
+    [ActionStepDescriptorId] [INT] NOT NULL,
+    [BeginDate] [DATE] NOT NULL,
+    [EducationOrganizationId] [INT] NOT NULL,
+    [EvaluationObjectiveTitle] [NVARCHAR](75) NOT NULL,
+    [EvaluationPeriodDescriptorId] [INT] NOT NULL,
+    [EvaluationTitle] [NVARCHAR](50) NOT NULL,
+    [PerformanceEvaluationTitle] [NVARCHAR](50) NOT NULL,
+    [PerformanceEvaluationTypeDescriptorId] [INT] NOT NULL,
+    [SchoolYear] [SMALLINT] NOT NULL,
+    [TermDescriptorId] [INT] NOT NULL,
+    [EndDate] [DATE] NULL,
+    [Discriminator] [NVARCHAR](128) NULL,
+    [CreateDate] [DATETIME2] NOT NULL,
+    [LastModifiedDate] [DATETIME2] NOT NULL,
+    [Id] [UNIQUEIDENTIFIER] NOT NULL,
+    CONSTRAINT [EvaluationObjectiveActionStep_PK] PRIMARY KEY CLUSTERED (
+        [ActionStepDescriptorId] ASC,
+        [BeginDate] ASC,
+        [EducationOrganizationId] ASC,
+        [EvaluationObjectiveTitle] ASC,
+        [EvaluationPeriodDescriptorId] ASC,
+        [EvaluationTitle] ASC,
+        [PerformanceEvaluationTitle] ASC,
+        [PerformanceEvaluationTypeDescriptorId] ASC,
+        [SchoolYear] ASC,
+        [TermDescriptorId] ASC
+    ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+ALTER TABLE [tpdm].[EvaluationObjectiveActionStep] ADD CONSTRAINT [EvaluationObjectiveActionStep_DF_CreateDate] DEFAULT (getutcdate()) FOR [CreateDate]
+GO
+ALTER TABLE [tpdm].[EvaluationObjectiveActionStep] ADD CONSTRAINT [EvaluationObjectiveActionStep_DF_Id] DEFAULT (newid()) FOR [Id]
+GO
+ALTER TABLE [tpdm].[EvaluationObjectiveActionStep] ADD CONSTRAINT [EvaluationObjectiveActionStep_DF_LastModifiedDate] DEFAULT (getutcdate()) FOR [LastModifiedDate]
 GO
 
 -- Table [tpdm].[EvaluationObjectiveRating] --
@@ -1977,44 +2016,6 @@ CREATE TABLE [tpdm].[EvaluationObjectiveRatingResult] (
 ) ON [PRIMARY]
 GO
 ALTER TABLE [tpdm].[EvaluationObjectiveRatingResult] ADD CONSTRAINT [EvaluationObjectiveRatingResult_DF_CreateDate] DEFAULT (getutcdate()) FOR [CreateDate]
-GO
-
--- Table [tpdm].[EvaluationOjectiveActionStep] --
-CREATE TABLE [tpdm].[EvaluationOjectiveActionStep] (
-    [ActionStepDescriptorId] [INT] NOT NULL,
-    [BeginDate] [DATE] NOT NULL,
-    [EducationOrganizationId] [INT] NOT NULL,
-    [EvaluationObjectiveTitle] [NVARCHAR](75) NOT NULL,
-    [EvaluationPeriodDescriptorId] [INT] NOT NULL,
-    [EvaluationTitle] [NVARCHAR](50) NOT NULL,
-    [PerformanceEvaluationTitle] [NVARCHAR](50) NOT NULL,
-    [PerformanceEvaluationTypeDescriptorId] [INT] NOT NULL,
-    [SchoolYear] [SMALLINT] NOT NULL,
-    [TermDescriptorId] [INT] NOT NULL,
-    [EndDate] [DATE] NULL,
-    [Discriminator] [NVARCHAR](128) NULL,
-    [CreateDate] [DATETIME2] NOT NULL,
-    [LastModifiedDate] [DATETIME2] NOT NULL,
-    [Id] [UNIQUEIDENTIFIER] NOT NULL,
-    CONSTRAINT [EvaluationOjectiveActionStep_PK] PRIMARY KEY CLUSTERED (
-        [ActionStepDescriptorId] ASC,
-        [BeginDate] ASC,
-        [EducationOrganizationId] ASC,
-        [EvaluationObjectiveTitle] ASC,
-        [EvaluationPeriodDescriptorId] ASC,
-        [EvaluationTitle] ASC,
-        [PerformanceEvaluationTitle] ASC,
-        [PerformanceEvaluationTypeDescriptorId] ASC,
-        [SchoolYear] ASC,
-        [TermDescriptorId] ASC
-    ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-ALTER TABLE [tpdm].[EvaluationOjectiveActionStep] ADD CONSTRAINT [EvaluationOjectiveActionStep_DF_CreateDate] DEFAULT (getutcdate()) FOR [CreateDate]
-GO
-ALTER TABLE [tpdm].[EvaluationOjectiveActionStep] ADD CONSTRAINT [EvaluationOjectiveActionStep_DF_Id] DEFAULT (newid()) FOR [Id]
-GO
-ALTER TABLE [tpdm].[EvaluationOjectiveActionStep] ADD CONSTRAINT [EvaluationOjectiveActionStep_DF_LastModifiedDate] DEFAULT (getutcdate()) FOR [LastModifiedDate]
 GO
 
 -- Table [tpdm].[EvaluationPeriodDescriptor] --
@@ -2387,7 +2388,7 @@ CREATE TABLE [tpdm].[Goal] (
     [CompletedIndicator] [BIT] NULL,
     [DueDate] [DATE] NULL,
     [EducationOrganizationId] [INT] NULL,
-    [EvaluationElementTitle] [NVARCHAR](365) NULL,
+    [EvaluationElementTitle] [NVARCHAR](255) NULL,
     [EvaluationObjectiveTitle] [NVARCHAR](75) NULL,
     [EvaluationPeriodDescriptorId] [INT] NULL,
     [EvaluationTitle] [NVARCHAR](50) NULL,
@@ -2676,6 +2677,7 @@ CREATE TABLE [tpdm].[PerformanceEvaluationRating] (
     [SchoolYear] [SMALLINT] NOT NULL,
     [SourceSystemDescriptorId] [INT] NOT NULL,
     [TermDescriptorId] [INT] NOT NULL,
+    [AcademicSubjectDescriptorId] [INT] NULL,
     [ActualDate] [DATE] NOT NULL,
     [ActualDuration] [INT] NULL,
     [ActualTime] [TIME](7) NULL,
@@ -2708,34 +2710,6 @@ GO
 ALTER TABLE [tpdm].[PerformanceEvaluationRating] ADD CONSTRAINT [PerformanceEvaluationRating_DF_Id] DEFAULT (newid()) FOR [Id]
 GO
 ALTER TABLE [tpdm].[PerformanceEvaluationRating] ADD CONSTRAINT [PerformanceEvaluationRating_DF_LastModifiedDate] DEFAULT (getutcdate()) FOR [LastModifiedDate]
-GO
-
--- Table [tpdm].[PerformanceEvaluationRatingGradeLevel] --
-CREATE TABLE [tpdm].[PerformanceEvaluationRatingGradeLevel] (
-    [EducationOrganizationId] [INT] NOT NULL,
-    [EvaluationPeriodDescriptorId] [INT] NOT NULL,
-    [PerformanceEvaluationTitle] [NVARCHAR](50) NOT NULL,
-    [PerformanceEvaluationTypeDescriptorId] [INT] NOT NULL,
-    [PersonId] [NVARCHAR](32) NOT NULL,
-    [SchoolYear] [SMALLINT] NOT NULL,
-    [SourceSystemDescriptorId] [INT] NOT NULL,
-    [TermDescriptorId] [INT] NOT NULL,
-    [GradeLevelDescriptorId] [INT] NOT NULL,
-    [CreateDate] [DATETIME2] NOT NULL,
-    CONSTRAINT [PerformanceEvaluationRatingGradeLevel_PK] PRIMARY KEY CLUSTERED (
-        [EducationOrganizationId] ASC,
-        [EvaluationPeriodDescriptorId] ASC,
-        [PerformanceEvaluationTitle] ASC,
-        [PerformanceEvaluationTypeDescriptorId] ASC,
-        [PersonId] ASC,
-        [SchoolYear] ASC,
-        [SourceSystemDescriptorId] ASC,
-        [TermDescriptorId] ASC,
-        [GradeLevelDescriptorId] ASC
-    ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-ALTER TABLE [tpdm].[PerformanceEvaluationRatingGradeLevel] ADD CONSTRAINT [PerformanceEvaluationRatingGradeLevel_DF_CreateDate] DEFAULT (getutcdate()) FOR [CreateDate]
 GO
 
 -- Table [tpdm].[PerformanceEvaluationRatingLevel] --
@@ -2984,7 +2958,7 @@ GO
 -- Table [tpdm].[QuantitativeMeasure] --
 CREATE TABLE [tpdm].[QuantitativeMeasure] (
     [EducationOrganizationId] [INT] NOT NULL,
-    [EvaluationElementTitle] [NVARCHAR](365) NOT NULL,
+    [EvaluationElementTitle] [NVARCHAR](255) NOT NULL,
     [EvaluationObjectiveTitle] [NVARCHAR](75) NOT NULL,
     [EvaluationPeriodDescriptorId] [INT] NOT NULL,
     [EvaluationTitle] [NVARCHAR](50) NOT NULL,
@@ -3033,7 +3007,7 @@ GO
 CREATE TABLE [tpdm].[QuantitativeMeasureScore] (
     [EducationOrganizationId] [INT] NOT NULL,
     [EvaluationDate] [DATETIME2](7) NOT NULL,
-    [EvaluationElementTitle] [NVARCHAR](365) NOT NULL,
+    [EvaluationElementTitle] [NVARCHAR](255) NOT NULL,
     [EvaluationObjectiveTitle] [NVARCHAR](75) NOT NULL,
     [EvaluationPeriodDescriptorId] [INT] NOT NULL,
     [EvaluationTitle] [NVARCHAR](50) NOT NULL,
@@ -3377,7 +3351,7 @@ GO
 -- Table [tpdm].[RubricDimension] --
 CREATE TABLE [tpdm].[RubricDimension] (
     [EducationOrganizationId] [INT] NOT NULL,
-    [EvaluationElementTitle] [NVARCHAR](365) NOT NULL,
+    [EvaluationElementTitle] [NVARCHAR](255) NOT NULL,
     [EvaluationObjectiveTitle] [NVARCHAR](75) NOT NULL,
     [EvaluationPeriodDescriptorId] [INT] NOT NULL,
     [EvaluationTitle] [NVARCHAR](50) NOT NULL,
@@ -3737,7 +3711,7 @@ GO
 CREATE TABLE [tpdm].[SurveySectionAggregateResponse] (
     [EducationOrganizationId] [INT] NOT NULL,
     [EvaluationDate] [DATETIME2](7) NOT NULL,
-    [EvaluationElementTitle] [NVARCHAR](365) NOT NULL,
+    [EvaluationElementTitle] [NVARCHAR](255) NOT NULL,
     [EvaluationObjectiveTitle] [NVARCHAR](75) NOT NULL,
     [EvaluationPeriodDescriptorId] [INT] NOT NULL,
     [EvaluationTitle] [NVARCHAR](50) NOT NULL,
@@ -3787,7 +3761,7 @@ CREATE TABLE [tpdm].[SurveySectionExtension] (
     [SurveyIdentifier] [NVARCHAR](60) NOT NULL,
     [SurveySectionTitle] [NVARCHAR](255) NOT NULL,
     [EducationOrganizationId] [INT] NULL,
-    [EvaluationElementTitle] [NVARCHAR](365) NULL,
+    [EvaluationElementTitle] [NVARCHAR](255) NULL,
     [EvaluationObjectiveTitle] [NVARCHAR](75) NULL,
     [EvaluationPeriodDescriptorId] [INT] NULL,
     [EvaluationTitle] [NVARCHAR](50) NULL,

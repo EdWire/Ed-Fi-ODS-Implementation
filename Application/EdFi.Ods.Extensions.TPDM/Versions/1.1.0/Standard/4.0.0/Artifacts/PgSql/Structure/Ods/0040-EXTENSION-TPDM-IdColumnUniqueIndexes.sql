@@ -28,9 +28,9 @@ CREATE UNIQUE INDEX IF NOT EXISTS UX_4479ea_Id ON tpdm.EvaluationElementRating(I
 
 CREATE UNIQUE INDEX IF NOT EXISTS UX_d4565d_Id ON tpdm.EvaluationObjective(Id);
 
-CREATE UNIQUE INDEX IF NOT EXISTS UX_7ae19d_Id ON tpdm.EvaluationObjectiveRating(Id);
+CREATE UNIQUE INDEX IF NOT EXISTS UX_cc2d35_Id ON tpdm.EvaluationObjectiveActionStep(Id);
 
-CREATE UNIQUE INDEX IF NOT EXISTS UX_3049e8_Id ON tpdm.EvaluationOjectiveActionStep(Id);
+CREATE UNIQUE INDEX IF NOT EXISTS UX_7ae19d_Id ON tpdm.EvaluationObjectiveRating(Id);
 
 CREATE UNIQUE INDEX IF NOT EXISTS UX_bfaa20_Id ON tpdm.EvaluationRating(Id);
 

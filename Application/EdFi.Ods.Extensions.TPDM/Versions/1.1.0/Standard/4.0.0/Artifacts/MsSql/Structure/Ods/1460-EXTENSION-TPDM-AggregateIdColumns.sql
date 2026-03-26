@@ -58,13 +58,13 @@ CREATE SEQUENCE [tpdm].[EvaluationObjective_AggSeq] START WITH -2147483648 INCRE
 ALTER TABLE [tpdm].[EvaluationObjective] ADD AggregateId int NOT NULL DEFAULT NEXT VALUE FOR [tpdm].[EvaluationObjective_AggSeq], AggregateData varbinary(8000);
 CREATE INDEX [IX_EvaluationObjective_AggregateId] ON [tpdm].[EvaluationObjective] (AggregateId);
 
+CREATE SEQUENCE [tpdm].[EvaluationObjectiveActionStep_AggSeq] START WITH -2147483648 INCREMENT BY 1;
+ALTER TABLE [tpdm].[EvaluationObjectiveActionStep] ADD AggregateId int NOT NULL DEFAULT NEXT VALUE FOR [tpdm].[EvaluationObjectiveActionStep_AggSeq], AggregateData varbinary(8000);
+CREATE INDEX [IX_EvaluationObjectiveActionStep_AggregateId] ON [tpdm].[EvaluationObjectiveActionStep] (AggregateId);
+
 CREATE SEQUENCE [tpdm].[EvaluationObjectiveRating_AggSeq] START WITH -2147483648 INCREMENT BY 1;
 ALTER TABLE [tpdm].[EvaluationObjectiveRating] ADD AggregateId int NOT NULL DEFAULT NEXT VALUE FOR [tpdm].[EvaluationObjectiveRating_AggSeq], AggregateData varbinary(8000);
 CREATE INDEX [IX_EvaluationObjectiveRating_AggregateId] ON [tpdm].[EvaluationObjectiveRating] (AggregateId);
-
-CREATE SEQUENCE [tpdm].[EvaluationOjectiveActionStep_AggSeq] START WITH -2147483648 INCREMENT BY 1;
-ALTER TABLE [tpdm].[EvaluationOjectiveActionStep] ADD AggregateId int NOT NULL DEFAULT NEXT VALUE FOR [tpdm].[EvaluationOjectiveActionStep_AggSeq], AggregateData varbinary(8000);
-CREATE INDEX [IX_EvaluationOjectiveActionStep_AggregateId] ON [tpdm].[EvaluationOjectiveActionStep] (AggregateId);
 
 CREATE SEQUENCE [tpdm].[EvaluationRating_AggSeq] START WITH -2147483648 INCREMENT BY 1;
 ALTER TABLE [tpdm].[EvaluationRating] ADD AggregateId int NOT NULL DEFAULT NEXT VALUE FOR [tpdm].[EvaluationRating_AggSeq], AggregateData varbinary(8000);

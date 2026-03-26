@@ -104,15 +104,15 @@ BEGIN TRANSACTION
 COMMIT
 
 BEGIN TRANSACTION
-    IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'tpdm.EvaluationObjectiveRating') AND name = N'UX_EvaluationObjectiveRating_Id')
-    CREATE UNIQUE NONCLUSTERED INDEX UX_EvaluationObjectiveRating_Id ON [tpdm].[EvaluationObjectiveRating]
+    IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'tpdm.EvaluationObjectiveActionStep') AND name = N'UX_EvaluationObjectiveActionStep_Id')
+    CREATE UNIQUE NONCLUSTERED INDEX UX_EvaluationObjectiveActionStep_Id ON [tpdm].[EvaluationObjectiveActionStep]
     (Id) WITH (PAD_INDEX = ON, FILLFACTOR = 75, STATISTICS_NORECOMPUTE = OFF) ON [PRIMARY]
     GO
 COMMIT
 
 BEGIN TRANSACTION
-    IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'tpdm.EvaluationOjectiveActionStep') AND name = N'UX_EvaluationOjectiveActionStep_Id')
-    CREATE UNIQUE NONCLUSTERED INDEX UX_EvaluationOjectiveActionStep_Id ON [tpdm].[EvaluationOjectiveActionStep]
+    IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'tpdm.EvaluationObjectiveRating') AND name = N'UX_EvaluationObjectiveRating_Id')
+    CREATE UNIQUE NONCLUSTERED INDEX UX_EvaluationObjectiveRating_Id ON [tpdm].[EvaluationObjectiveRating]
     (Id) WITH (PAD_INDEX = ON, FILLFACTOR = 75, STATISTICS_NORECOMPUTE = OFF) ON [PRIMARY]
     GO
 COMMIT

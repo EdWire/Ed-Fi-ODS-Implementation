@@ -76,14 +76,14 @@ ALTER TABLE tpdm.EvaluationObjective ADD ChangeVersion BIGINT DEFAULT (0) NOT NU
 ALTER TABLE tpdm.EvaluationObjective ALTER ChangeVersion SET DEFAULT nextval('changes.ChangeVersionSequence');
 END IF;
 
+IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='tpdm' AND table_name='evaluationobjectiveactionstep' AND column_name='changeversion') THEN
+ALTER TABLE tpdm.EvaluationObjectiveActionStep ADD ChangeVersion BIGINT DEFAULT (0) NOT NULL;
+ALTER TABLE tpdm.EvaluationObjectiveActionStep ALTER ChangeVersion SET DEFAULT nextval('changes.ChangeVersionSequence');
+END IF;
+
 IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='tpdm' AND table_name='evaluationobjectiverating' AND column_name='changeversion') THEN
 ALTER TABLE tpdm.EvaluationObjectiveRating ADD ChangeVersion BIGINT DEFAULT (0) NOT NULL;
 ALTER TABLE tpdm.EvaluationObjectiveRating ALTER ChangeVersion SET DEFAULT nextval('changes.ChangeVersionSequence');
-END IF;
-
-IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='tpdm' AND table_name='evaluationojectiveactionstep' AND column_name='changeversion') THEN
-ALTER TABLE tpdm.EvaluationOjectiveActionStep ADD ChangeVersion BIGINT DEFAULT (0) NOT NULL;
-ALTER TABLE tpdm.EvaluationOjectiveActionStep ALTER ChangeVersion SET DEFAULT nextval('changes.ChangeVersionSequence');
 END IF;
 
 IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='tpdm' AND table_name='evaluationrating' AND column_name='changeversion') THEN

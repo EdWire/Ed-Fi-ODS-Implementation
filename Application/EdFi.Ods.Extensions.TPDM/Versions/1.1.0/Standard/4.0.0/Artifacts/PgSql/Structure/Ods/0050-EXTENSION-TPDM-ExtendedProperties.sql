@@ -776,6 +776,7 @@ COMMENT ON COLUMN tpdm.EvaluationElement.PerformanceEvaluationTitle IS 'An assig
 COMMENT ON COLUMN tpdm.EvaluationElement.PerformanceEvaluationTypeDescriptorId IS 'The type of performance evaluation conducted.';
 COMMENT ON COLUMN tpdm.EvaluationElement.SchoolYear IS 'The identifier for the school year.';
 COMMENT ON COLUMN tpdm.EvaluationElement.TermDescriptorId IS 'The term for the session during the school year.';
+COMMENT ON COLUMN tpdm.EvaluationElement.EvaluationElementDescription IS 'The long description of the Evaluation Element.';
 COMMENT ON COLUMN tpdm.EvaluationElement.EvaluationIdentifier IS 'Identifier that allows evaluation elements to be cross-walked across different versions.';
 COMMENT ON COLUMN tpdm.EvaluationElement.EvaluationTypeDescriptorId IS 'The type of the evaluation (e.g., observation, principal, peer, student survey, student growth).';
 COMMENT ON COLUMN tpdm.EvaluationElement.MaxRating IS 'The maximum summary numerical rating or score for the evaluation element.';
@@ -856,6 +857,20 @@ COMMENT ON COLUMN tpdm.EvaluationObjective.MaxRating IS 'The maximum summary num
 COMMENT ON COLUMN tpdm.EvaluationObjective.MinRating IS 'The minimum summary numerical rating or score for the evaluation Objective. If omitted, assumed to be 0.0.';
 COMMENT ON COLUMN tpdm.EvaluationObjective.SortOrder IS 'The sort order of this Evaluation Objective.';
 
+-- Extended Properties [tpdm].[EvaluationObjectiveActionStep] --
+COMMENT ON TABLE tpdm.EvaluationObjectiveActionStep IS 'This association shows what action steps are applicable for evaluation Objectives at what times.';
+COMMENT ON COLUMN tpdm.EvaluationObjectiveActionStep.ActionStepDescriptorId IS 'Reference to the action step.';
+COMMENT ON COLUMN tpdm.EvaluationObjectiveActionStep.BeginDate IS 'start date of association';
+COMMENT ON COLUMN tpdm.EvaluationObjectiveActionStep.EducationOrganizationId IS 'The identifier assigned to an education organization.';
+COMMENT ON COLUMN tpdm.EvaluationObjectiveActionStep.EvaluationObjectiveTitle IS 'The name or title of the evaluation Objective.';
+COMMENT ON COLUMN tpdm.EvaluationObjectiveActionStep.EvaluationPeriodDescriptorId IS 'The period for the evaluation.';
+COMMENT ON COLUMN tpdm.EvaluationObjectiveActionStep.EvaluationTitle IS 'The name or title of the evaluation.';
+COMMENT ON COLUMN tpdm.EvaluationObjectiveActionStep.PerformanceEvaluationTitle IS 'An assigned unique identifier for the performance evaluation.';
+COMMENT ON COLUMN tpdm.EvaluationObjectiveActionStep.PerformanceEvaluationTypeDescriptorId IS 'The type of performance evaluation conducted.';
+COMMENT ON COLUMN tpdm.EvaluationObjectiveActionStep.SchoolYear IS 'The identifier for the school year.';
+COMMENT ON COLUMN tpdm.EvaluationObjectiveActionStep.TermDescriptorId IS 'The term for the session during the school year.';
+COMMENT ON COLUMN tpdm.EvaluationObjectiveActionStep.EndDate IS 'end date of association';
+
 -- Extended Properties [tpdm].[EvaluationObjectiveRating] --
 COMMENT ON TABLE tpdm.EvaluationObjectiveRating IS 'The rating for the component Evaluation Objective for an individual educator.';
 COMMENT ON COLUMN tpdm.EvaluationObjectiveRating.EducationOrganizationId IS 'The identifier assigned to an education organization.';
@@ -904,20 +919,6 @@ COMMENT ON COLUMN tpdm.EvaluationObjectiveRatingResult.TermDescriptorId IS 'The 
 COMMENT ON COLUMN tpdm.EvaluationObjectiveRatingResult.Rating IS 'The numerical summary rating or score for the evaluation.';
 COMMENT ON COLUMN tpdm.EvaluationObjectiveRatingResult.RatingResultTitle IS 'The title of Rating Result.';
 COMMENT ON COLUMN tpdm.EvaluationObjectiveRatingResult.ResultDatatypeTypeDescriptorId IS 'The datatype of the result.';
-
--- Extended Properties [tpdm].[EvaluationOjectiveActionStep] --
-COMMENT ON TABLE tpdm.EvaluationOjectiveActionStep IS 'This association shows what action steps are applicable for evaluation Objectives at what times.';
-COMMENT ON COLUMN tpdm.EvaluationOjectiveActionStep.ActionStepDescriptorId IS 'Reference to the action step.';
-COMMENT ON COLUMN tpdm.EvaluationOjectiveActionStep.BeginDate IS 'start date of association';
-COMMENT ON COLUMN tpdm.EvaluationOjectiveActionStep.EducationOrganizationId IS 'The identifier assigned to an education organization.';
-COMMENT ON COLUMN tpdm.EvaluationOjectiveActionStep.EvaluationObjectiveTitle IS 'The name or title of the evaluation Objective.';
-COMMENT ON COLUMN tpdm.EvaluationOjectiveActionStep.EvaluationPeriodDescriptorId IS 'The period for the evaluation.';
-COMMENT ON COLUMN tpdm.EvaluationOjectiveActionStep.EvaluationTitle IS 'The name or title of the evaluation.';
-COMMENT ON COLUMN tpdm.EvaluationOjectiveActionStep.PerformanceEvaluationTitle IS 'An assigned unique identifier for the performance evaluation.';
-COMMENT ON COLUMN tpdm.EvaluationOjectiveActionStep.PerformanceEvaluationTypeDescriptorId IS 'The type of performance evaluation conducted.';
-COMMENT ON COLUMN tpdm.EvaluationOjectiveActionStep.SchoolYear IS 'The identifier for the school year.';
-COMMENT ON COLUMN tpdm.EvaluationOjectiveActionStep.TermDescriptorId IS 'The term for the session during the school year.';
-COMMENT ON COLUMN tpdm.EvaluationOjectiveActionStep.EndDate IS 'end date of association';
 
 -- Extended Properties [tpdm].[EvaluationPeriodDescriptor] --
 COMMENT ON TABLE tpdm.EvaluationPeriodDescriptor IS 'The period for the evaluation.';
@@ -1219,6 +1220,7 @@ COMMENT ON COLUMN tpdm.PerformanceEvaluationRating.PersonId IS 'A unique alphanu
 COMMENT ON COLUMN tpdm.PerformanceEvaluationRating.SchoolYear IS 'The identifier for the school year.';
 COMMENT ON COLUMN tpdm.PerformanceEvaluationRating.SourceSystemDescriptorId IS 'This descriptor defines the originating record source system for the person.';
 COMMENT ON COLUMN tpdm.PerformanceEvaluationRating.TermDescriptorId IS 'The term for the session during the school year.';
+COMMENT ON COLUMN tpdm.PerformanceEvaluationRating.AcademicSubjectDescriptorId IS 'The description of the content or subject area of a performance evaluation rating.';
 COMMENT ON COLUMN tpdm.PerformanceEvaluationRating.ActualDate IS 'The month, day, and year on which the performance evaluation was conducted.';
 COMMENT ON COLUMN tpdm.PerformanceEvaluationRating.ActualDuration IS 'The actual or estimated number of clock minutes during which the performance evaluation was conducted.';
 COMMENT ON COLUMN tpdm.PerformanceEvaluationRating.ActualTime IS 'An indication of the the time at which the performance evaluation was conducted.';
@@ -1230,18 +1232,6 @@ COMMENT ON COLUMN tpdm.PerformanceEvaluationRating.CoteachingStyleObservedDescri
 COMMENT ON COLUMN tpdm.PerformanceEvaluationRating.PerformanceEvaluationRatingLevelDescriptorId IS 'The rating level achieved based upon the rating or score.';
 COMMENT ON COLUMN tpdm.PerformanceEvaluationRating.PerformanceEvaluationRatingTypeDescriptorId IS 'Differentiate between Standard and calibration evaluations';
 COMMENT ON COLUMN tpdm.PerformanceEvaluationRating.ScheduleDate IS 'The month, day, and year on which the performance evaluation was scheduled.';
-
--- Extended Properties [tpdm].[PerformanceEvaluationRatingGradeLevel] --
-COMMENT ON TABLE tpdm.PerformanceEvaluationRatingGradeLevel IS 'Grade Level(s) associated with the performance evaluation.';
-COMMENT ON COLUMN tpdm.PerformanceEvaluationRatingGradeLevel.EducationOrganizationId IS 'The identifier assigned to an education organization.';
-COMMENT ON COLUMN tpdm.PerformanceEvaluationRatingGradeLevel.EvaluationPeriodDescriptorId IS 'The period for the evaluation.';
-COMMENT ON COLUMN tpdm.PerformanceEvaluationRatingGradeLevel.PerformanceEvaluationTitle IS 'An assigned unique identifier for the performance evaluation.';
-COMMENT ON COLUMN tpdm.PerformanceEvaluationRatingGradeLevel.PerformanceEvaluationTypeDescriptorId IS 'The type of performance evaluation conducted.';
-COMMENT ON COLUMN tpdm.PerformanceEvaluationRatingGradeLevel.PersonId IS 'A unique alphanumeric code assigned to a person.';
-COMMENT ON COLUMN tpdm.PerformanceEvaluationRatingGradeLevel.SchoolYear IS 'The identifier for the school year.';
-COMMENT ON COLUMN tpdm.PerformanceEvaluationRatingGradeLevel.SourceSystemDescriptorId IS 'This descriptor defines the originating record source system for the person.';
-COMMENT ON COLUMN tpdm.PerformanceEvaluationRatingGradeLevel.TermDescriptorId IS 'The term for the session during the school year.';
-COMMENT ON COLUMN tpdm.PerformanceEvaluationRatingGradeLevel.GradeLevelDescriptorId IS 'Grade Level(s) associated with the performance evaluation.';
 
 -- Extended Properties [tpdm].[PerformanceEvaluationRatingLevel] --
 COMMENT ON TABLE tpdm.PerformanceEvaluationRatingLevel IS 'The descriptive level(s) of ratings (cut scores) for the evaluation.';

@@ -193,6 +193,19 @@ BEGIN
 END	
 GO
 
+DROP TRIGGER IF EXISTS [tpdm].[tpdm_EvaluationObjectiveActionStep_TR_UpdateChangeVersion]
+GO
+
+CREATE TRIGGER [tpdm].[tpdm_EvaluationObjectiveActionStep_TR_UpdateChangeVersion] ON [tpdm].[EvaluationObjectiveActionStep] AFTER UPDATE AS
+BEGIN
+    SET NOCOUNT ON;
+    UPDATE [tpdm].[EvaluationObjectiveActionStep]
+    SET ChangeVersion = (NEXT VALUE FOR [changes].[ChangeVersionSequence])
+    FROM [tpdm].[EvaluationObjectiveActionStep] u
+    WHERE EXISTS (SELECT 1 FROM inserted i WHERE i.id = u.id);
+END	
+GO
+
 DROP TRIGGER IF EXISTS [tpdm].[tpdm_EvaluationObjectiveRating_TR_UpdateChangeVersion]
 GO
 
@@ -202,19 +215,6 @@ BEGIN
     UPDATE [tpdm].[EvaluationObjectiveRating]
     SET ChangeVersion = (NEXT VALUE FOR [changes].[ChangeVersionSequence])
     FROM [tpdm].[EvaluationObjectiveRating] u
-    WHERE EXISTS (SELECT 1 FROM inserted i WHERE i.id = u.id);
-END	
-GO
-
-DROP TRIGGER IF EXISTS [tpdm].[tpdm_EvaluationOjectiveActionStep_TR_UpdateChangeVersion]
-GO
-
-CREATE TRIGGER [tpdm].[tpdm_EvaluationOjectiveActionStep_TR_UpdateChangeVersion] ON [tpdm].[EvaluationOjectiveActionStep] AFTER UPDATE AS
-BEGIN
-    SET NOCOUNT ON;
-    UPDATE [tpdm].[EvaluationOjectiveActionStep]
-    SET ChangeVersion = (NEXT VALUE FOR [changes].[ChangeVersionSequence])
-    FROM [tpdm].[EvaluationOjectiveActionStep] u
     WHERE EXISTS (SELECT 1 FROM inserted i WHERE i.id = u.id);
 END	
 GO

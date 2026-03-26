@@ -1406,6 +1406,20 @@ REFERENCES tpdm.EvaluationTypeDescriptor (EvaluationTypeDescriptorId)
 CREATE INDEX FK_d4565d_EvaluationTypeDescriptor
 ON tpdm.EvaluationObjective (EvaluationTypeDescriptorId ASC);
 
+ALTER TABLE tpdm.EvaluationObjectiveActionStep ADD CONSTRAINT FK_cc2d35_ActionStepDescriptor FOREIGN KEY (ActionStepDescriptorId)
+REFERENCES tpdm.ActionStepDescriptor (ActionStepDescriptorId)
+;
+
+CREATE INDEX FK_cc2d35_ActionStepDescriptor
+ON tpdm.EvaluationObjectiveActionStep (ActionStepDescriptorId ASC);
+
+ALTER TABLE tpdm.EvaluationObjectiveActionStep ADD CONSTRAINT FK_cc2d35_EvaluationObjective FOREIGN KEY (EducationOrganizationId, EvaluationObjectiveTitle, EvaluationPeriodDescriptorId, EvaluationTitle, PerformanceEvaluationTitle, PerformanceEvaluationTypeDescriptorId, SchoolYear, TermDescriptorId)
+REFERENCES tpdm.EvaluationObjective (EducationOrganizationId, EvaluationObjectiveTitle, EvaluationPeriodDescriptorId, EvaluationTitle, PerformanceEvaluationTitle, PerformanceEvaluationTypeDescriptorId, SchoolYear, TermDescriptorId)
+;
+
+CREATE INDEX FK_cc2d35_EvaluationObjective
+ON tpdm.EvaluationObjectiveActionStep (EducationOrganizationId ASC, EvaluationObjectiveTitle ASC, EvaluationPeriodDescriptorId ASC, EvaluationTitle ASC, PerformanceEvaluationTitle ASC, PerformanceEvaluationTypeDescriptorId ASC, SchoolYear ASC, TermDescriptorId ASC);
+
 ALTER TABLE tpdm.EvaluationObjectiveRating ADD CONSTRAINT FK_7ae19d_ActionStepDescriptor FOREIGN KEY (CompletedActionStepDescriptorId)
 REFERENCES tpdm.ActionStepDescriptor (ActionStepDescriptorId)
 ;
@@ -1464,20 +1478,6 @@ REFERENCES edfi.ResultDatatypeTypeDescriptor (ResultDatatypeTypeDescriptorId)
 
 CREATE INDEX FK_beeccb_ResultDatatypeTypeDescriptor
 ON tpdm.EvaluationObjectiveRatingResult (ResultDatatypeTypeDescriptorId ASC);
-
-ALTER TABLE tpdm.EvaluationOjectiveActionStep ADD CONSTRAINT FK_3049e8_ActionStepDescriptor FOREIGN KEY (ActionStepDescriptorId)
-REFERENCES tpdm.ActionStepDescriptor (ActionStepDescriptorId)
-;
-
-CREATE INDEX FK_3049e8_ActionStepDescriptor
-ON tpdm.EvaluationOjectiveActionStep (ActionStepDescriptorId ASC);
-
-ALTER TABLE tpdm.EvaluationOjectiveActionStep ADD CONSTRAINT FK_3049e8_EvaluationObjective FOREIGN KEY (EducationOrganizationId, EvaluationObjectiveTitle, EvaluationPeriodDescriptorId, EvaluationTitle, PerformanceEvaluationTitle, PerformanceEvaluationTypeDescriptorId, SchoolYear, TermDescriptorId)
-REFERENCES tpdm.EvaluationObjective (EducationOrganizationId, EvaluationObjectiveTitle, EvaluationPeriodDescriptorId, EvaluationTitle, PerformanceEvaluationTitle, PerformanceEvaluationTypeDescriptorId, SchoolYear, TermDescriptorId)
-;
-
-CREATE INDEX FK_3049e8_EvaluationObjective
-ON tpdm.EvaluationOjectiveActionStep (EducationOrganizationId ASC, EvaluationObjectiveTitle ASC, EvaluationPeriodDescriptorId ASC, EvaluationTitle ASC, PerformanceEvaluationTitle ASC, PerformanceEvaluationTypeDescriptorId ASC, SchoolYear ASC, TermDescriptorId ASC);
 
 ALTER TABLE tpdm.EvaluationPeriodDescriptor ADD CONSTRAINT FK_83ff2a_Descriptor FOREIGN KEY (EvaluationPeriodDescriptorId)
 REFERENCES edfi.Descriptor (DescriptorId)
@@ -1884,6 +1884,13 @@ REFERENCES tpdm.ProgramGatewayDescriptor (ProgramGatewayDescriptorId)
 CREATE INDEX FK_611be2_ProgramGatewayDescriptor
 ON tpdm.PerformanceEvaluationProgramGateway (ProgramGatewayDescriptorId ASC);
 
+ALTER TABLE tpdm.PerformanceEvaluationRating ADD CONSTRAINT FK_759abe_AcademicSubjectDescriptor FOREIGN KEY (AcademicSubjectDescriptorId)
+REFERENCES edfi.AcademicSubjectDescriptor (AcademicSubjectDescriptorId)
+;
+
+CREATE INDEX FK_759abe_AcademicSubjectDescriptor
+ON tpdm.PerformanceEvaluationRating (AcademicSubjectDescriptorId ASC);
+
 ALTER TABLE tpdm.PerformanceEvaluationRating ADD CONSTRAINT FK_759abe_CoteachingStyleObservedDescriptor FOREIGN KEY (CoteachingStyleObservedDescriptorId)
 REFERENCES tpdm.CoteachingStyleObservedDescriptor (CoteachingStyleObservedDescriptorId)
 ;
@@ -1918,18 +1925,6 @@ REFERENCES edfi.Person (PersonId, SourceSystemDescriptorId)
 
 CREATE INDEX FK_759abe_Person
 ON tpdm.PerformanceEvaluationRating (PersonId ASC, SourceSystemDescriptorId ASC);
-
-ALTER TABLE tpdm.PerformanceEvaluationRatingGradeLevel ADD CONSTRAINT FK_9c6d58_GradeLevelDescriptor FOREIGN KEY (GradeLevelDescriptorId)
-REFERENCES edfi.GradeLevelDescriptor (GradeLevelDescriptorId)
-;
-
-CREATE INDEX FK_9c6d58_GradeLevelDescriptor
-ON tpdm.PerformanceEvaluationRatingGradeLevel (GradeLevelDescriptorId ASC);
-
-ALTER TABLE tpdm.PerformanceEvaluationRatingGradeLevel ADD CONSTRAINT FK_9c6d58_PerformanceEvaluationRating FOREIGN KEY (EducationOrganizationId, EvaluationPeriodDescriptorId, PerformanceEvaluationTitle, PerformanceEvaluationTypeDescriptorId, PersonId, SchoolYear, SourceSystemDescriptorId, TermDescriptorId)
-REFERENCES tpdm.PerformanceEvaluationRating (EducationOrganizationId, EvaluationPeriodDescriptorId, PerformanceEvaluationTitle, PerformanceEvaluationTypeDescriptorId, PersonId, SchoolYear, SourceSystemDescriptorId, TermDescriptorId)
-ON DELETE CASCADE
-;
 
 ALTER TABLE tpdm.PerformanceEvaluationRatingLevel ADD CONSTRAINT FK_90ed3d_EvaluationRatingLevelDescriptor FOREIGN KEY (EvaluationRatingLevelDescriptorId)
 REFERENCES tpdm.EvaluationRatingLevelDescriptor (EvaluationRatingLevelDescriptorId)

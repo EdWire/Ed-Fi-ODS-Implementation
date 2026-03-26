@@ -37,11 +37,11 @@ CREATE INDEX IX_EvaluationElementRating_EducationOrganizationId ON [tpdm].[Evalu
 DROP INDEX IF EXISTS IX_EvaluationObjective_EducationOrganizationId ON [tpdm].[EvaluationObjective];
 CREATE INDEX IX_EvaluationObjective_EducationOrganizationId ON [tpdm].[EvaluationObjective](EducationOrganizationId) INCLUDE (AggregateId);
 
+DROP INDEX IF EXISTS IX_EvaluationObjectiveActionStep_EducationOrganizationId ON [tpdm].[EvaluationObjectiveActionStep];
+CREATE INDEX IX_EvaluationObjectiveActionStep_EducationOrganizationId ON [tpdm].[EvaluationObjectiveActionStep](EducationOrganizationId) INCLUDE (AggregateId);
+
 DROP INDEX IF EXISTS IX_EvaluationObjectiveRating_EducationOrganizationId ON [tpdm].[EvaluationObjectiveRating];
 CREATE INDEX IX_EvaluationObjectiveRating_EducationOrganizationId ON [tpdm].[EvaluationObjectiveRating](EducationOrganizationId) INCLUDE (AggregateId);
-
-DROP INDEX IF EXISTS IX_EvaluationOjectiveActionStep_EducationOrganizationId ON [tpdm].[EvaluationOjectiveActionStep];
-CREATE INDEX IX_EvaluationOjectiveActionStep_EducationOrganizationId ON [tpdm].[EvaluationOjectiveActionStep](EducationOrganizationId) INCLUDE (AggregateId);
 
 DROP INDEX IF EXISTS IX_EvaluationRating_EducationOrganizationId ON [tpdm].[EvaluationRating];
 CREATE INDEX IX_EvaluationRating_EducationOrganizationId ON [tpdm].[EvaluationRating](EducationOrganizationId) INCLUDE (AggregateId);

@@ -21,9 +21,9 @@ CREATE INDEX IF NOT EXISTS IX_EvaluationElementRating_EducationOrganizationId ON
 
 CREATE INDEX IF NOT EXISTS IX_EvaluationObjective_EducationOrganizationId ON tpdm.EvaluationObjective(EducationOrganizationId) INCLUDE (Id);
 
-CREATE INDEX IF NOT EXISTS IX_EvaluationObjectiveRating_EducationOrganizationId ON tpdm.EvaluationObjectiveRating(EducationOrganizationId) INCLUDE (Id);
+CREATE INDEX IF NOT EXISTS IX_EvaluationObjectiveActionStep_EducationOrganizationId ON tpdm.EvaluationObjectiveActionStep(EducationOrganizationId) INCLUDE (Id);
 
-CREATE INDEX IF NOT EXISTS IX_EvaluationOjectiveActionStep_EducationOrganizationId ON tpdm.EvaluationOjectiveActionStep(EducationOrganizationId) INCLUDE (Id);
+CREATE INDEX IF NOT EXISTS IX_EvaluationObjectiveRating_EducationOrganizationId ON tpdm.EvaluationObjectiveRating(EducationOrganizationId) INCLUDE (Id);
 
 CREATE INDEX IF NOT EXISTS IX_EvaluationRating_EducationOrganizationId ON tpdm.EvaluationRating(EducationOrganizationId) INCLUDE (Id);
 

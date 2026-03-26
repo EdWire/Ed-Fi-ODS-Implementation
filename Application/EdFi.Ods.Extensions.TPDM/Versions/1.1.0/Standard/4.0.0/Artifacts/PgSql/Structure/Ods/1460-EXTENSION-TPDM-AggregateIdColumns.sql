@@ -74,14 +74,14 @@ ALTER TABLE tpdm.EvaluationObjective ADD COLUMN AggregateId int NOT NULL DEFAULT
 CREATE INDEX ix_EvaluationObjective_aggid ON tpdm.EvaluationObjective (AggregateId);
 
 
+CREATE SEQUENCE tpdm.EvaluationObjectiveActionStep_aggseq START WITH -2147483648 INCREMENT BY 1 MINVALUE -2147483648;
+ALTER TABLE tpdm.EvaluationObjectiveActionStep ADD COLUMN AggregateId int NOT NULL DEFAULT nextval('tpdm.EvaluationObjectiveActionStep_aggseq'), ADD COLUMN AggregateData bytea;
+CREATE INDEX ix_EvaluationObjectiveActionStep_aggid ON tpdm.EvaluationObjectiveActionStep (AggregateId);
+
+
 CREATE SEQUENCE tpdm.EvaluationObjectiveRating_aggseq START WITH -2147483648 INCREMENT BY 1 MINVALUE -2147483648;
 ALTER TABLE tpdm.EvaluationObjectiveRating ADD COLUMN AggregateId int NOT NULL DEFAULT nextval('tpdm.EvaluationObjectiveRating_aggseq'), ADD COLUMN AggregateData bytea;
 CREATE INDEX ix_EvaluationObjectiveRating_aggid ON tpdm.EvaluationObjectiveRating (AggregateId);
-
-
-CREATE SEQUENCE tpdm.EvaluationOjectiveActionStep_aggseq START WITH -2147483648 INCREMENT BY 1 MINVALUE -2147483648;
-ALTER TABLE tpdm.EvaluationOjectiveActionStep ADD COLUMN AggregateId int NOT NULL DEFAULT nextval('tpdm.EvaluationOjectiveActionStep_aggseq'), ADD COLUMN AggregateData bytea;
-CREATE INDEX ix_EvaluationOjectiveActionStep_aggid ON tpdm.EvaluationOjectiveActionStep (AggregateId);
 
 
 CREATE SEQUENCE tpdm.EvaluationRating_aggseq START WITH -2147483648 INCREMENT BY 1 MINVALUE -2147483648;

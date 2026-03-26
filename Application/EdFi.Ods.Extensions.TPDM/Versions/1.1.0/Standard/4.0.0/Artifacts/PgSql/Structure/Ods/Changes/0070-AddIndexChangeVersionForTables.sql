@@ -28,9 +28,9 @@ CREATE INDEX IF NOT EXISTS UX_4479ea_ChangeVersion ON tpdm.EvaluationElementRati
 
 CREATE INDEX IF NOT EXISTS UX_d4565d_ChangeVersion ON tpdm.EvaluationObjective(ChangeVersion);
 
-CREATE INDEX IF NOT EXISTS UX_7ae19d_ChangeVersion ON tpdm.EvaluationObjectiveRating(ChangeVersion);
+CREATE INDEX IF NOT EXISTS UX_cc2d35_ChangeVersion ON tpdm.EvaluationObjectiveActionStep(ChangeVersion);
 
-CREATE INDEX IF NOT EXISTS UX_3049e8_ChangeVersion ON tpdm.EvaluationOjectiveActionStep(ChangeVersion);
+CREATE INDEX IF NOT EXISTS UX_7ae19d_ChangeVersion ON tpdm.EvaluationObjectiveRating(ChangeVersion);
 
 CREATE INDEX IF NOT EXISTS UX_bfaa20_ChangeVersion ON tpdm.EvaluationRating(ChangeVersion);
 
