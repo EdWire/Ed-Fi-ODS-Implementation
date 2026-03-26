@@ -216,12 +216,32 @@ namespace EdFi.Ods.Entities.NHibernate.ClassGroupAggregate.Edfixcrdc
     public class ClassGroupReferenceData : IEntityReferenceData
     {
         private bool _trackLookupContext;
-    
+        private Action<ClassGroupReferenceData> _contextualValuesInitializer;
+        private bool _contextualValuesInitialized;
+
         // Default constructor (used by NHibernate)
         public ClassGroupReferenceData() { }
 
-        // Constructor (used for link support with Serialized Data feature)
-        public ClassGroupReferenceData(bool trackLookupContext) { _trackLookupContext = trackLookupContext; }
+        // Constructor used for deferred initialization when the parent reference hasn't yet been initialized because we're falling back from stale serialized data to NHibernate hydration
+        public ClassGroupReferenceData(Action<ClassGroupReferenceData> contextualValuesInitializer)
+        {
+            _trackLookupContext = true;
+            _contextualValuesInitializer = contextualValuesInitializer;
+        }
+
+        // Constructor used for link support with Serialized Data feature
+        public ClassGroupReferenceData(string contextualClassGroupName = default, long contextualCommunityProviderId = default, int contextualCommunityProviderLocationId = default, bool contextualSpecialNeedsProvidedIndicator = default, bool trackLookupContext = true)
+        {
+            _trackLookupContext = trackLookupContext;
+    
+            // Assign supplied contextual values (values pre-determined from parent context)
+            _classGroupName = contextualClassGroupName;
+            _communityProviderId = contextualCommunityProviderId;
+            _communityProviderLocationId = contextualCommunityProviderLocationId;
+            _specialNeedsProvidedIndicator = contextualSpecialNeedsProvidedIndicator;
+
+            _contextualValuesInitialized = true;
+        }
 
         // =============================================================
         //                         Primary Key
@@ -255,7 +275,7 @@ namespace EdFi.Ods.Entities.NHibernate.ClassGroupAggregate.Edfixcrdc
         [Key(1)]
         public virtual string ClassGroupName
         {
-            get => _classGroupName;
+            get { EnsureContextualValuesInitialized(); return _classGroupName; }
             set
             {
                 var originalValue = _classGroupName;
@@ -268,14 +288,15 @@ namespace EdFi.Ods.Entities.NHibernate.ClassGroupAggregate.Edfixcrdc
                     {
                         GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
                     }
-                    // If key value is changing (i.e. only via Synchronize)
-                    else if (originalValue != default && value != originalValue) 
-                    {
-                        // Clear the values
-                        Id = default;
-                        Discriminator = null;
-                        GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
-                    }
+                }
+                
+                // If reference's key value is changing from a non-default value (i.e. only via Synchronize) it needs resolution
+                if (originalValue != default && value != originalValue) 
+                {
+                    // Clear the values
+                    Id = default;
+                    Discriminator = null;
+                    GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
                 }
             }
         }
@@ -284,7 +305,7 @@ namespace EdFi.Ods.Entities.NHibernate.ClassGroupAggregate.Edfixcrdc
         [Key(2)]
         public virtual long CommunityProviderId
         {
-            get => _communityProviderId;
+            get { EnsureContextualValuesInitialized(); return _communityProviderId; }
             set
             {
                 var originalValue = _communityProviderId;
@@ -297,14 +318,15 @@ namespace EdFi.Ods.Entities.NHibernate.ClassGroupAggregate.Edfixcrdc
                     {
                         GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
                     }
-                    // If key value is changing (i.e. only via Synchronize)
-                    else if (originalValue != default && value != originalValue) 
-                    {
-                        // Clear the values
-                        Id = default;
-                        Discriminator = null;
-                        GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
-                    }
+                }
+                
+                // If reference's key value is changing from a non-default value (i.e. only via Synchronize) it needs resolution
+                if (originalValue != default && value != originalValue) 
+                {
+                    // Clear the values
+                    Id = default;
+                    Discriminator = null;
+                    GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
                 }
             }
         }
@@ -313,7 +335,7 @@ namespace EdFi.Ods.Entities.NHibernate.ClassGroupAggregate.Edfixcrdc
         [Key(3)]
         public virtual int CommunityProviderLocationId
         {
-            get => _communityProviderLocationId;
+            get { EnsureContextualValuesInitialized(); return _communityProviderLocationId; }
             set
             {
                 var originalValue = _communityProviderLocationId;
@@ -326,14 +348,15 @@ namespace EdFi.Ods.Entities.NHibernate.ClassGroupAggregate.Edfixcrdc
                     {
                         GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
                     }
-                    // If key value is changing (i.e. only via Synchronize)
-                    else if (originalValue != default && value != originalValue) 
-                    {
-                        // Clear the values
-                        Id = default;
-                        Discriminator = null;
-                        GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
-                    }
+                }
+                
+                // If reference's key value is changing from a non-default value (i.e. only via Synchronize) it needs resolution
+                if (originalValue != default && value != originalValue) 
+                {
+                    // Clear the values
+                    Id = default;
+                    Discriminator = null;
+                    GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
                 }
             }
         }
@@ -342,7 +365,7 @@ namespace EdFi.Ods.Entities.NHibernate.ClassGroupAggregate.Edfixcrdc
         [Key(4)]
         public virtual bool SpecialNeedsProvidedIndicator
         {
-            get => _specialNeedsProvidedIndicator;
+            get { EnsureContextualValuesInitialized(); return _specialNeedsProvidedIndicator; }
             set
             {
                 var originalValue = _specialNeedsProvidedIndicator;
@@ -355,15 +378,25 @@ namespace EdFi.Ods.Entities.NHibernate.ClassGroupAggregate.Edfixcrdc
                     {
                         GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
                     }
-                    // If key value is changing (i.e. only via Synchronize)
-                    else if (originalValue != default && value != originalValue) 
-                    {
-                        // Clear the values
-                        Id = default;
-                        Discriminator = null;
-                        GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
-                    }
                 }
+                
+                // If reference's key value is changing from a non-default value (i.e. only via Synchronize) it needs resolution
+                if (originalValue != default && value != originalValue) 
+                {
+                    // Clear the values
+                    Id = default;
+                    Discriminator = null;
+                    GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
+                }
+            }
+        }
+
+        private void EnsureContextualValuesInitialized()
+        {
+            if (!_contextualValuesInitialized && _contextualValuesInitializer != null)
+            {
+                _contextualValuesInitializer(this);
+                _contextualValuesInitialized = true;
             }
         }
 
@@ -535,7 +568,8 @@ namespace EdFi.Ods.Entities.NHibernate.ClassGroupAggregate.Edfixcrdc
         // -------------------------------------------------------------
         [DomainSignature]
         [Key(7)]
-        public virtual string ClassGroupName  { get; set; }
+        public virtual string ClassGroupName { get => _classGroupName; set { _classGroupName = value; } }
+        private string _classGroupName;
 
         [DomainSignature]
         [Key(8)]
@@ -548,7 +582,7 @@ namespace EdFi.Ods.Entities.NHibernate.ClassGroupAggregate.Edfixcrdc
 
                 if (GeneratedArtifactStaticDependencies.SerializedDataEnabled && GeneratedArtifactStaticDependencies.ResourceLinksEnabled)
                 {
-                    CommunityProviderLocationSerializedReferenceData ??= new NHibernate.CommunityProviderLocationAggregate.Edfixcrdc.CommunityProviderLocationReferenceData(true);
+                    CommunityProviderLocationSerializedReferenceData ??= new NHibernate.CommunityProviderLocationAggregate.Edfixcrdc.CommunityProviderLocationReferenceData(trackLookupContext: true);
                     CommunityProviderLocationSerializedReferenceData.CommunityProviderId = value;
                 }
             }
@@ -567,7 +601,7 @@ namespace EdFi.Ods.Entities.NHibernate.ClassGroupAggregate.Edfixcrdc
 
                 if (GeneratedArtifactStaticDependencies.SerializedDataEnabled && GeneratedArtifactStaticDependencies.ResourceLinksEnabled)
                 {
-                    CommunityProviderLocationSerializedReferenceData ??= new NHibernate.CommunityProviderLocationAggregate.Edfixcrdc.CommunityProviderLocationReferenceData(true);
+                    CommunityProviderLocationSerializedReferenceData ??= new NHibernate.CommunityProviderLocationAggregate.Edfixcrdc.CommunityProviderLocationReferenceData(trackLookupContext: true);
                     CommunityProviderLocationSerializedReferenceData.CommunityProviderLocationId = value;
                 }
             }
@@ -577,7 +611,8 @@ namespace EdFi.Ods.Entities.NHibernate.ClassGroupAggregate.Edfixcrdc
 
         [DomainSignature]
         [Key(10)]
-        public virtual bool SpecialNeedsProvidedIndicator  { get; set; }
+        public virtual bool SpecialNeedsProvidedIndicator { get => _specialNeedsProvidedIndicator; set { _specialNeedsProvidedIndicator = value; } }
+        private bool _specialNeedsProvidedIndicator;
 
         // -------------------------------------------------------------
 
@@ -590,13 +625,16 @@ namespace EdFi.Ods.Entities.NHibernate.ClassGroupAggregate.Edfixcrdc
         //                          Properties
         // -------------------------------------------------------------
         [Key(11)]
-        public virtual int? Capacity  { get; set; }
+        public virtual int? Capacity { get => _capacity; set { _capacity = value; } }
+        private int? _capacity;
 
         [Key(12)]
-        public virtual int? DaysAvailablePerWeek  { get; set; }
+        public virtual int? DaysAvailablePerWeek { get => _daysAvailablePerWeek; set { _daysAvailablePerWeek = value; } }
+        private int? _daysAvailablePerWeek;
 
         [Key(13)]
-        public virtual decimal? HoursAvailablePerDay  { get; set; }
+        public virtual decimal? HoursAvailablePerDay { get => _hoursAvailablePerDay; set { _hoursAvailablePerDay = value; } }
+        private decimal? _hoursAvailablePerDay;
 
         [Key(14)]
         public virtual int? ServiceDescriptorId 
@@ -963,7 +1001,7 @@ namespace EdFi.Ods.Entities.NHibernate.ClassGroupAggregate.Edfixcrdc
 
                 if (GeneratedArtifactStaticDependencies.SerializedDataEnabled && GeneratedArtifactStaticDependencies.ResourceLinksEnabled)
                 {
-                    CourseSerializedReferenceData ??= new NHibernate.CourseAggregate.EdFi.CourseReferenceData(true);
+                    CourseSerializedReferenceData ??= new NHibernate.CourseAggregate.EdFi.CourseReferenceData(trackLookupContext: true);
                     CourseSerializedReferenceData.CourseCode = value;
                 }
             }
@@ -982,7 +1020,7 @@ namespace EdFi.Ods.Entities.NHibernate.ClassGroupAggregate.Edfixcrdc
 
                 if (GeneratedArtifactStaticDependencies.SerializedDataEnabled && GeneratedArtifactStaticDependencies.ResourceLinksEnabled)
                 {
-                    CourseSerializedReferenceData ??= new NHibernate.CourseAggregate.EdFi.CourseReferenceData(true);
+                    CourseSerializedReferenceData ??= new NHibernate.CourseAggregate.EdFi.CourseReferenceData(trackLookupContext: true);
                     CourseSerializedReferenceData.EducationOrganizationId = value;
                 }
             }
@@ -1191,11 +1229,13 @@ namespace EdFi.Ods.Entities.NHibernate.ClassGroupAggregate.Edfixcrdc
 
         [DomainSignature]
         [Key(2)]
-        public virtual TimeSpan StartTime  { get; set; }
+        public virtual TimeSpan StartTime { get => _startTime; set { _startTime = value; } }
+        private TimeSpan _startTime;
 
         [DomainSignature]
         [Key(3)]
-        public virtual TimeSpan StopTime  { get; set; }
+        public virtual TimeSpan StopTime { get => _stopTime; set { _stopTime = value; } }
+        private TimeSpan _stopTime;
 
         // -------------------------------------------------------------
 
@@ -1333,12 +1373,30 @@ namespace EdFi.Ods.Entities.NHibernate.CommunityProviderLocationAggregate.Edfixc
     public class CommunityProviderLocationReferenceData : IEntityReferenceData
     {
         private bool _trackLookupContext;
-    
+        private Action<CommunityProviderLocationReferenceData> _contextualValuesInitializer;
+        private bool _contextualValuesInitialized;
+
         // Default constructor (used by NHibernate)
         public CommunityProviderLocationReferenceData() { }
 
-        // Constructor (used for link support with Serialized Data feature)
-        public CommunityProviderLocationReferenceData(bool trackLookupContext) { _trackLookupContext = trackLookupContext; }
+        // Constructor used for deferred initialization when the parent reference hasn't yet been initialized because we're falling back from stale serialized data to NHibernate hydration
+        public CommunityProviderLocationReferenceData(Action<CommunityProviderLocationReferenceData> contextualValuesInitializer)
+        {
+            _trackLookupContext = true;
+            _contextualValuesInitializer = contextualValuesInitializer;
+        }
+
+        // Constructor used for link support with Serialized Data feature
+        public CommunityProviderLocationReferenceData(long contextualCommunityProviderId = default, int contextualCommunityProviderLocationId = default, bool trackLookupContext = true)
+        {
+            _trackLookupContext = trackLookupContext;
+    
+            // Assign supplied contextual values (values pre-determined from parent context)
+            _communityProviderId = contextualCommunityProviderId;
+            _communityProviderLocationId = contextualCommunityProviderLocationId;
+
+            _contextualValuesInitialized = true;
+        }
 
         // =============================================================
         //                         Primary Key
@@ -1372,7 +1430,7 @@ namespace EdFi.Ods.Entities.NHibernate.CommunityProviderLocationAggregate.Edfixc
         [Key(1)]
         public virtual long CommunityProviderId
         {
-            get => _communityProviderId;
+            get { EnsureContextualValuesInitialized(); return _communityProviderId; }
             set
             {
                 var originalValue = _communityProviderId;
@@ -1385,14 +1443,15 @@ namespace EdFi.Ods.Entities.NHibernate.CommunityProviderLocationAggregate.Edfixc
                     {
                         GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
                     }
-                    // If key value is changing (i.e. only via Synchronize)
-                    else if (originalValue != default && value != originalValue) 
-                    {
-                        // Clear the values
-                        Id = default;
-                        Discriminator = null;
-                        GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
-                    }
+                }
+                
+                // If reference's key value is changing from a non-default value (i.e. only via Synchronize) it needs resolution
+                if (originalValue != default && value != originalValue) 
+                {
+                    // Clear the values
+                    Id = default;
+                    Discriminator = null;
+                    GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
                 }
             }
         }
@@ -1401,7 +1460,7 @@ namespace EdFi.Ods.Entities.NHibernate.CommunityProviderLocationAggregate.Edfixc
         [Key(2)]
         public virtual int CommunityProviderLocationId
         {
-            get => _communityProviderLocationId;
+            get { EnsureContextualValuesInitialized(); return _communityProviderLocationId; }
             set
             {
                 var originalValue = _communityProviderLocationId;
@@ -1414,15 +1473,25 @@ namespace EdFi.Ods.Entities.NHibernate.CommunityProviderLocationAggregate.Edfixc
                     {
                         GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
                     }
-                    // If key value is changing (i.e. only via Synchronize)
-                    else if (originalValue != default && value != originalValue) 
-                    {
-                        // Clear the values
-                        Id = default;
-                        Discriminator = null;
-                        GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
-                    }
                 }
+                
+                // If reference's key value is changing from a non-default value (i.e. only via Synchronize) it needs resolution
+                if (originalValue != default && value != originalValue) 
+                {
+                    // Clear the values
+                    Id = default;
+                    Discriminator = null;
+                    GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
+                }
+            }
+        }
+
+        private void EnsureContextualValuesInitialized()
+        {
+            if (!_contextualValuesInitialized && _contextualValuesInitializer != null)
+            {
+                _contextualValuesInitializer(this);
+                _contextualValuesInitialized = true;
             }
         }
 
@@ -1584,7 +1653,7 @@ namespace EdFi.Ods.Entities.NHibernate.CommunityProviderLocationAggregate.Edfixc
 
                 if (GeneratedArtifactStaticDependencies.SerializedDataEnabled && GeneratedArtifactStaticDependencies.ResourceLinksEnabled)
                 {
-                    CommunityProviderSerializedReferenceData ??= new NHibernate.EducationOrganizationAggregate.EdFi.EducationOrganizationReferenceData(true);
+                    CommunityProviderSerializedReferenceData ??= new NHibernate.EducationOrganizationAggregate.EdFi.EducationOrganizationReferenceData(trackLookupContext: true);
                     CommunityProviderSerializedReferenceData.EducationOrganizationId = value;
                 }
             }
@@ -1594,7 +1663,8 @@ namespace EdFi.Ods.Entities.NHibernate.CommunityProviderLocationAggregate.Edfixc
 
         [DomainSignature]
         [Key(8)]
-        public virtual int CommunityProviderLocationId  { get; set; }
+        public virtual int CommunityProviderLocationId { get => _communityProviderLocationId; set { _communityProviderLocationId = value; } }
+        private int _communityProviderLocationId;
 
         // -------------------------------------------------------------
 
@@ -1646,34 +1716,44 @@ namespace EdFi.Ods.Entities.NHibernate.CommunityProviderLocationAggregate.Edfixc
         }
 
         [Key(10)]
-        public virtual string AgeRangeDescription  { get; set; }
+        public virtual string AgeRangeDescription { get => _ageRangeDescription; set { _ageRangeDescription = value; } }
+        private string _ageRangeDescription;
 
         [Key(11)]
-        public virtual string ApartmentRoomSuiteNumber  { get; set; }
+        public virtual string ApartmentRoomSuiteNumber { get => _apartmentRoomSuiteNumber; set { _apartmentRoomSuiteNumber = value; } }
+        private string _apartmentRoomSuiteNumber;
 
         [Key(12)]
-        public virtual string BuildingSiteNumber  { get; set; }
+        public virtual string BuildingSiteNumber { get => _buildingSiteNumber; set { _buildingSiteNumber = value; } }
+        private string _buildingSiteNumber;
 
         [Key(13)]
-        public virtual int? Capacity  { get; set; }
+        public virtual int? Capacity { get => _capacity; set { _capacity = value; } }
+        private int? _capacity;
 
         [Key(14)]
-        public virtual string City  { get; set; }
+        public virtual string City { get => _city; set { _city = value; } }
+        private string _city;
 
         [Key(15)]
-        public virtual string CountyFIPSCode  { get; set; }
+        public virtual string CountyFIPSCode { get => _countyFIPSCode; set { _countyFIPSCode = value; } }
+        private string _countyFIPSCode;
 
         [Key(16)]
-        public virtual string NameOfCounty  { get; set; }
+        public virtual string NameOfCounty { get => _nameOfCounty; set { _nameOfCounty = value; } }
+        private string _nameOfCounty;
 
         [Key(17)]
-        public virtual int? OldestAgeAccepted  { get; set; }
+        public virtual int? OldestAgeAccepted { get => _oldestAgeAccepted; set { _oldestAgeAccepted = value; } }
+        private int? _oldestAgeAccepted;
 
         [Key(18)]
-        public virtual string PostalCode  { get; set; }
+        public virtual string PostalCode { get => _postalCode; set { _postalCode = value; } }
+        private string _postalCode;
 
         [Key(19)]
-        public virtual bool? SpecialNeedsProvidedIndicator  { get; set; }
+        public virtual bool? SpecialNeedsProvidedIndicator { get => _specialNeedsProvidedIndicator; set { _specialNeedsProvidedIndicator = value; } }
+        private bool? _specialNeedsProvidedIndicator;
 
         [Key(20)]
         public virtual int? StateAbbreviationDescriptorId 
@@ -1715,16 +1795,20 @@ namespace EdFi.Ods.Entities.NHibernate.CommunityProviderLocationAggregate.Edfixc
         }
 
         [Key(21)]
-        public virtual string StreetNumberName  { get; set; }
+        public virtual string StreetNumberName { get => _streetNumberName; set { _streetNumberName = value; } }
+        private string _streetNumberName;
 
         [Key(22)]
-        public virtual TimeSpan? TimeClose  { get; set; }
+        public virtual TimeSpan? TimeClose { get => _timeClose; set { _timeClose = value; } }
+        private TimeSpan? _timeClose;
 
         [Key(23)]
-        public virtual TimeSpan? TimeOpen  { get; set; }
+        public virtual TimeSpan? TimeOpen { get => _timeOpen; set { _timeOpen = value; } }
+        private TimeSpan? _timeOpen;
 
         [Key(24)]
-        public virtual int? YoungestAgeAccepted  { get; set; }
+        public virtual int? YoungestAgeAccepted { get => _youngestAgeAccepted; set { _youngestAgeAccepted = value; } }
+        private int? _youngestAgeAccepted;
 
         // -------------------------------------------------------------
 
@@ -2024,7 +2108,7 @@ namespace EdFi.Ods.Entities.NHibernate.CommunityProviderLocationAggregate.Edfixc
 
                 if (GeneratedArtifactStaticDependencies.SerializedDataEnabled && GeneratedArtifactStaticDependencies.ResourceLinksEnabled)
                 {
-                    SchoolYearTypeSerializedReferenceData ??= new NHibernate.SchoolYearTypeAggregate.EdFi.SchoolYearTypeReferenceData(true);
+                    SchoolYearTypeSerializedReferenceData ??= new NHibernate.SchoolYearTypeAggregate.EdFi.SchoolYearTypeReferenceData(trackLookupContext: true);
                     SchoolYearTypeSerializedReferenceData.SchoolYear = value;
                 }
             }
@@ -2033,7 +2117,8 @@ namespace EdFi.Ods.Entities.NHibernate.CommunityProviderLocationAggregate.Edfixc
         private short _schoolYear;
 
         [Key(5)]
-        public virtual int TotalInstructionalDaysPerYear  { get; set; }
+        public virtual int TotalInstructionalDaysPerYear { get => _totalInstructionalDaysPerYear; set { _totalInstructionalDaysPerYear = value; } }
+        private int _totalInstructionalDaysPerYear;
 
         // -------------------------------------------------------------
 
@@ -3235,19 +3320,24 @@ namespace EdFi.Ods.Entities.NHibernate.SchoolAggregate.Edfixcrdc
         //                          Properties
         // -------------------------------------------------------------
         [Key(1)]
-        public virtual bool AllClassroomsHaveWiFi  { get; set; }
+        public virtual bool AllClassroomsHaveWiFi { get => _allClassroomsHaveWiFi; set { _allClassroomsHaveWiFi = value; } }
+        private bool _allClassroomsHaveWiFi;
 
         [Key(2)]
-        public virtual bool FiberOpticConnection  { get; set; }
+        public virtual bool FiberOpticConnection { get => _fiberOpticConnection; set { _fiberOpticConnection = value; } }
+        private bool _fiberOpticConnection;
 
         [Key(3)]
-        public virtual bool StudentsBringOwnDevice  { get; set; }
+        public virtual bool StudentsBringOwnDevice { get => _studentsBringOwnDevice; set { _studentsBringOwnDevice = value; } }
+        private bool _studentsBringOwnDevice;
 
         [Key(4)]
-        public virtual bool StudentsTakeHomeDevice  { get; set; }
+        public virtual bool StudentsTakeHomeDevice { get => _studentsTakeHomeDevice; set { _studentsTakeHomeDevice = value; } }
+        private bool _studentsTakeHomeDevice;
 
         [Key(5)]
-        public virtual int WiFiDeviceCount  { get; set; }
+        public virtual int WiFiDeviceCount { get => _wiFiDeviceCount; set { _wiFiDeviceCount = value; } }
+        private int _wiFiDeviceCount;
 
         // -------------------------------------------------------------
 
@@ -3644,12 +3734,34 @@ namespace EdFi.Ods.Entities.NHibernate.StudentClassGroupAssociationAggregate.Edf
     public class StudentClassGroupAssociationReferenceData : IEntityReferenceData
     {
         private bool _trackLookupContext;
-    
+        private Action<StudentClassGroupAssociationReferenceData> _contextualValuesInitializer;
+        private bool _contextualValuesInitialized;
+
         // Default constructor (used by NHibernate)
         public StudentClassGroupAssociationReferenceData() { }
 
-        // Constructor (used for link support with Serialized Data feature)
-        public StudentClassGroupAssociationReferenceData(bool trackLookupContext) { _trackLookupContext = trackLookupContext; }
+        // Constructor used for deferred initialization when the parent reference hasn't yet been initialized because we're falling back from stale serialized data to NHibernate hydration
+        public StudentClassGroupAssociationReferenceData(Action<StudentClassGroupAssociationReferenceData> contextualValuesInitializer)
+        {
+            _trackLookupContext = true;
+            _contextualValuesInitializer = contextualValuesInitializer;
+        }
+
+        // Constructor used for link support with Serialized Data feature
+        public StudentClassGroupAssociationReferenceData(DateTime contextualBeginDate = default, string contextualClassGroupName = default, long contextualCommunityProviderId = default, int contextualCommunityProviderLocationId = default, bool contextualSpecialNeedsProvidedIndicator = default, int contextualStudentUSI = default, bool trackLookupContext = true)
+        {
+            _trackLookupContext = trackLookupContext;
+    
+            // Assign supplied contextual values (values pre-determined from parent context)
+            _beginDate = contextualBeginDate;
+            _classGroupName = contextualClassGroupName;
+            _communityProviderId = contextualCommunityProviderId;
+            _communityProviderLocationId = contextualCommunityProviderLocationId;
+            _specialNeedsProvidedIndicator = contextualSpecialNeedsProvidedIndicator;
+            _studentUSI = contextualStudentUSI;
+
+            _contextualValuesInitialized = true;
+        }
 
         // =============================================================
         //                         Primary Key
@@ -3683,7 +3795,7 @@ namespace EdFi.Ods.Entities.NHibernate.StudentClassGroupAssociationAggregate.Edf
         [Key(1)]
         public virtual DateTime BeginDate
         {
-            get => _beginDate;
+            get { EnsureContextualValuesInitialized(); return _beginDate; }
             set
             {
                 var originalValue = _beginDate;
@@ -3696,14 +3808,15 @@ namespace EdFi.Ods.Entities.NHibernate.StudentClassGroupAssociationAggregate.Edf
                     {
                         GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
                     }
-                    // If key value is changing (i.e. only via Synchronize)
-                    else if (originalValue != default && value != originalValue) 
-                    {
-                        // Clear the values
-                        Id = default;
-                        Discriminator = null;
-                        GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
-                    }
+                }
+                
+                // If reference's key value is changing from a non-default value (i.e. only via Synchronize) it needs resolution
+                if (originalValue != default && value != originalValue) 
+                {
+                    // Clear the values
+                    Id = default;
+                    Discriminator = null;
+                    GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
                 }
             }
         }
@@ -3712,7 +3825,7 @@ namespace EdFi.Ods.Entities.NHibernate.StudentClassGroupAssociationAggregate.Edf
         [Key(2)]
         public virtual string ClassGroupName
         {
-            get => _classGroupName;
+            get { EnsureContextualValuesInitialized(); return _classGroupName; }
             set
             {
                 var originalValue = _classGroupName;
@@ -3725,14 +3838,15 @@ namespace EdFi.Ods.Entities.NHibernate.StudentClassGroupAssociationAggregate.Edf
                     {
                         GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
                     }
-                    // If key value is changing (i.e. only via Synchronize)
-                    else if (originalValue != default && value != originalValue) 
-                    {
-                        // Clear the values
-                        Id = default;
-                        Discriminator = null;
-                        GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
-                    }
+                }
+                
+                // If reference's key value is changing from a non-default value (i.e. only via Synchronize) it needs resolution
+                if (originalValue != default && value != originalValue) 
+                {
+                    // Clear the values
+                    Id = default;
+                    Discriminator = null;
+                    GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
                 }
             }
         }
@@ -3741,7 +3855,7 @@ namespace EdFi.Ods.Entities.NHibernate.StudentClassGroupAssociationAggregate.Edf
         [Key(3)]
         public virtual long CommunityProviderId
         {
-            get => _communityProviderId;
+            get { EnsureContextualValuesInitialized(); return _communityProviderId; }
             set
             {
                 var originalValue = _communityProviderId;
@@ -3754,14 +3868,15 @@ namespace EdFi.Ods.Entities.NHibernate.StudentClassGroupAssociationAggregate.Edf
                     {
                         GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
                     }
-                    // If key value is changing (i.e. only via Synchronize)
-                    else if (originalValue != default && value != originalValue) 
-                    {
-                        // Clear the values
-                        Id = default;
-                        Discriminator = null;
-                        GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
-                    }
+                }
+                
+                // If reference's key value is changing from a non-default value (i.e. only via Synchronize) it needs resolution
+                if (originalValue != default && value != originalValue) 
+                {
+                    // Clear the values
+                    Id = default;
+                    Discriminator = null;
+                    GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
                 }
             }
         }
@@ -3770,7 +3885,7 @@ namespace EdFi.Ods.Entities.NHibernate.StudentClassGroupAssociationAggregate.Edf
         [Key(4)]
         public virtual int CommunityProviderLocationId
         {
-            get => _communityProviderLocationId;
+            get { EnsureContextualValuesInitialized(); return _communityProviderLocationId; }
             set
             {
                 var originalValue = _communityProviderLocationId;
@@ -3783,14 +3898,15 @@ namespace EdFi.Ods.Entities.NHibernate.StudentClassGroupAssociationAggregate.Edf
                     {
                         GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
                     }
-                    // If key value is changing (i.e. only via Synchronize)
-                    else if (originalValue != default && value != originalValue) 
-                    {
-                        // Clear the values
-                        Id = default;
-                        Discriminator = null;
-                        GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
-                    }
+                }
+                
+                // If reference's key value is changing from a non-default value (i.e. only via Synchronize) it needs resolution
+                if (originalValue != default && value != originalValue) 
+                {
+                    // Clear the values
+                    Id = default;
+                    Discriminator = null;
+                    GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
                 }
             }
         }
@@ -3799,7 +3915,7 @@ namespace EdFi.Ods.Entities.NHibernate.StudentClassGroupAssociationAggregate.Edf
         [Key(5)]
         public virtual bool SpecialNeedsProvidedIndicator
         {
-            get => _specialNeedsProvidedIndicator;
+            get { EnsureContextualValuesInitialized(); return _specialNeedsProvidedIndicator; }
             set
             {
                 var originalValue = _specialNeedsProvidedIndicator;
@@ -3812,14 +3928,15 @@ namespace EdFi.Ods.Entities.NHibernate.StudentClassGroupAssociationAggregate.Edf
                     {
                         GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
                     }
-                    // If key value is changing (i.e. only via Synchronize)
-                    else if (originalValue != default && value != originalValue) 
-                    {
-                        // Clear the values
-                        Id = default;
-                        Discriminator = null;
-                        GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
-                    }
+                }
+                
+                // If reference's key value is changing from a non-default value (i.e. only via Synchronize) it needs resolution
+                if (originalValue != default && value != originalValue) 
+                {
+                    // Clear the values
+                    Id = default;
+                    Discriminator = null;
+                    GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
                 }
             }
         }
@@ -3828,7 +3945,7 @@ namespace EdFi.Ods.Entities.NHibernate.StudentClassGroupAssociationAggregate.Edf
         [Key(6)]
         public virtual int StudentUSI
         {
-            get => _studentUSI;
+            get { EnsureContextualValuesInitialized(); return _studentUSI; }
             set
             {
                 var originalValue = _studentUSI;
@@ -3841,15 +3958,25 @@ namespace EdFi.Ods.Entities.NHibernate.StudentClassGroupAssociationAggregate.Edf
                     {
                         GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
                     }
-                    // If key value is changing (i.e. only via Synchronize)
-                    else if (originalValue != default && value != originalValue) 
-                    {
-                        // Clear the values
-                        Id = default;
-                        Discriminator = null;
-                        GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
-                    }
                 }
+                
+                // If reference's key value is changing from a non-default value (i.e. only via Synchronize) it needs resolution
+                if (originalValue != default && value != originalValue) 
+                {
+                    // Clear the values
+                    Id = default;
+                    Discriminator = null;
+                    GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
+                }
+            }
+        }
+
+        private void EnsureContextualValuesInitialized()
+        {
+            if (!_contextualValuesInitialized && _contextualValuesInitializer != null)
+            {
+                _contextualValuesInitializer(this);
+                _contextualValuesInitialized = true;
             }
         }
 
@@ -4102,7 +4229,7 @@ namespace EdFi.Ods.Entities.NHibernate.StudentClassGroupAssociationAggregate.Edf
 
                 if (GeneratedArtifactStaticDependencies.SerializedDataEnabled && GeneratedArtifactStaticDependencies.ResourceLinksEnabled)
                 {
-                    ClassGroupSerializedReferenceData ??= new NHibernate.ClassGroupAggregate.Edfixcrdc.ClassGroupReferenceData(true);
+                    ClassGroupSerializedReferenceData ??= new NHibernate.ClassGroupAggregate.Edfixcrdc.ClassGroupReferenceData(trackLookupContext: true);
                     ClassGroupSerializedReferenceData.ClassGroupName = value;
                 }
             }
@@ -4121,7 +4248,7 @@ namespace EdFi.Ods.Entities.NHibernate.StudentClassGroupAssociationAggregate.Edf
 
                 if (GeneratedArtifactStaticDependencies.SerializedDataEnabled && GeneratedArtifactStaticDependencies.ResourceLinksEnabled)
                 {
-                    ClassGroupSerializedReferenceData ??= new NHibernate.ClassGroupAggregate.Edfixcrdc.ClassGroupReferenceData(true);
+                    ClassGroupSerializedReferenceData ??= new NHibernate.ClassGroupAggregate.Edfixcrdc.ClassGroupReferenceData(trackLookupContext: true);
                     ClassGroupSerializedReferenceData.CommunityProviderId = value;
                 }
             }
@@ -4140,7 +4267,7 @@ namespace EdFi.Ods.Entities.NHibernate.StudentClassGroupAssociationAggregate.Edf
 
                 if (GeneratedArtifactStaticDependencies.SerializedDataEnabled && GeneratedArtifactStaticDependencies.ResourceLinksEnabled)
                 {
-                    ClassGroupSerializedReferenceData ??= new NHibernate.ClassGroupAggregate.Edfixcrdc.ClassGroupReferenceData(true);
+                    ClassGroupSerializedReferenceData ??= new NHibernate.ClassGroupAggregate.Edfixcrdc.ClassGroupReferenceData(trackLookupContext: true);
                     ClassGroupSerializedReferenceData.CommunityProviderLocationId = value;
                 }
             }
@@ -4159,7 +4286,7 @@ namespace EdFi.Ods.Entities.NHibernate.StudentClassGroupAssociationAggregate.Edf
 
                 if (GeneratedArtifactStaticDependencies.SerializedDataEnabled && GeneratedArtifactStaticDependencies.ResourceLinksEnabled)
                 {
-                    ClassGroupSerializedReferenceData ??= new NHibernate.ClassGroupAggregate.Edfixcrdc.ClassGroupReferenceData(true);
+                    ClassGroupSerializedReferenceData ??= new NHibernate.ClassGroupAggregate.Edfixcrdc.ClassGroupReferenceData(trackLookupContext: true);
                     ClassGroupSerializedReferenceData.SpecialNeedsProvidedIndicator = value;
                 }
             }
@@ -4182,7 +4309,7 @@ namespace EdFi.Ods.Entities.NHibernate.StudentClassGroupAssociationAggregate.Edf
 
                         if (GeneratedArtifactStaticDependencies.SerializedDataEnabled && GeneratedArtifactStaticDependencies.ResourceLinksEnabled)
                         {
-                            StudentSerializedReferenceData ??= new NHibernate.StudentAggregate.EdFi.StudentReferenceData(true);
+                            StudentSerializedReferenceData ??= new NHibernate.StudentAggregate.EdFi.StudentReferenceData(trackLookupContext: true);
                             StudentSerializedReferenceData.StudentUSI = _studentUSI;
                         }
                     }
@@ -4197,7 +4324,7 @@ namespace EdFi.Ods.Entities.NHibernate.StudentClassGroupAssociationAggregate.Edf
 
                 if (GeneratedArtifactStaticDependencies.SerializedDataEnabled && GeneratedArtifactStaticDependencies.ResourceLinksEnabled)
                 {
-                    StudentSerializedReferenceData ??= new NHibernate.StudentAggregate.EdFi.StudentReferenceData(true);
+                    StudentSerializedReferenceData ??= new NHibernate.StudentAggregate.EdFi.StudentReferenceData(trackLookupContext: true);
                     StudentSerializedReferenceData.StudentUSI = value;
                 }
             }
@@ -4234,7 +4361,7 @@ namespace EdFi.Ods.Entities.NHibernate.StudentClassGroupAssociationAggregate.Edf
                     if (GeneratedArtifactStaticDependencies.UsiLookupsByUniqueIdContextProvider.Get().UsiByUniqueIdByPersonType.TryGetValue("Student", out var usiByUniqueId)
                         && usiByUniqueId.TryGetValue(_studentUniqueId, out var usi))
                     {
-                        StudentSerializedReferenceData ??= new NHibernate.StudentAggregate.EdFi.StudentReferenceData(true);
+                        StudentSerializedReferenceData ??= new NHibernate.StudentAggregate.EdFi.StudentReferenceData(trackLookupContext: true);
                         StudentSerializedReferenceData.StudentUSI = usi;
                     }
                 }
@@ -4435,12 +4562,32 @@ namespace EdFi.Ods.Entities.NHibernate.StudentCommunityProviderLocationAssociati
     public class StudentCommunityProviderLocationAssociationReferenceData : IEntityReferenceData
     {
         private bool _trackLookupContext;
-    
+        private Action<StudentCommunityProviderLocationAssociationReferenceData> _contextualValuesInitializer;
+        private bool _contextualValuesInitialized;
+
         // Default constructor (used by NHibernate)
         public StudentCommunityProviderLocationAssociationReferenceData() { }
 
-        // Constructor (used for link support with Serialized Data feature)
-        public StudentCommunityProviderLocationAssociationReferenceData(bool trackLookupContext) { _trackLookupContext = trackLookupContext; }
+        // Constructor used for deferred initialization when the parent reference hasn't yet been initialized because we're falling back from stale serialized data to NHibernate hydration
+        public StudentCommunityProviderLocationAssociationReferenceData(Action<StudentCommunityProviderLocationAssociationReferenceData> contextualValuesInitializer)
+        {
+            _trackLookupContext = true;
+            _contextualValuesInitializer = contextualValuesInitializer;
+        }
+
+        // Constructor used for link support with Serialized Data feature
+        public StudentCommunityProviderLocationAssociationReferenceData(DateTime contextualBeginDate = default, long contextualCommunityProviderId = default, int contextualCommunityProviderLocationId = default, int contextualStudentUSI = default, bool trackLookupContext = true)
+        {
+            _trackLookupContext = trackLookupContext;
+    
+            // Assign supplied contextual values (values pre-determined from parent context)
+            _beginDate = contextualBeginDate;
+            _communityProviderId = contextualCommunityProviderId;
+            _communityProviderLocationId = contextualCommunityProviderLocationId;
+            _studentUSI = contextualStudentUSI;
+
+            _contextualValuesInitialized = true;
+        }
 
         // =============================================================
         //                         Primary Key
@@ -4474,7 +4621,7 @@ namespace EdFi.Ods.Entities.NHibernate.StudentCommunityProviderLocationAssociati
         [Key(1)]
         public virtual DateTime BeginDate
         {
-            get => _beginDate;
+            get { EnsureContextualValuesInitialized(); return _beginDate; }
             set
             {
                 var originalValue = _beginDate;
@@ -4487,14 +4634,15 @@ namespace EdFi.Ods.Entities.NHibernate.StudentCommunityProviderLocationAssociati
                     {
                         GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
                     }
-                    // If key value is changing (i.e. only via Synchronize)
-                    else if (originalValue != default && value != originalValue) 
-                    {
-                        // Clear the values
-                        Id = default;
-                        Discriminator = null;
-                        GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
-                    }
+                }
+                
+                // If reference's key value is changing from a non-default value (i.e. only via Synchronize) it needs resolution
+                if (originalValue != default && value != originalValue) 
+                {
+                    // Clear the values
+                    Id = default;
+                    Discriminator = null;
+                    GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
                 }
             }
         }
@@ -4503,7 +4651,7 @@ namespace EdFi.Ods.Entities.NHibernate.StudentCommunityProviderLocationAssociati
         [Key(2)]
         public virtual long CommunityProviderId
         {
-            get => _communityProviderId;
+            get { EnsureContextualValuesInitialized(); return _communityProviderId; }
             set
             {
                 var originalValue = _communityProviderId;
@@ -4516,14 +4664,15 @@ namespace EdFi.Ods.Entities.NHibernate.StudentCommunityProviderLocationAssociati
                     {
                         GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
                     }
-                    // If key value is changing (i.e. only via Synchronize)
-                    else if (originalValue != default && value != originalValue) 
-                    {
-                        // Clear the values
-                        Id = default;
-                        Discriminator = null;
-                        GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
-                    }
+                }
+                
+                // If reference's key value is changing from a non-default value (i.e. only via Synchronize) it needs resolution
+                if (originalValue != default && value != originalValue) 
+                {
+                    // Clear the values
+                    Id = default;
+                    Discriminator = null;
+                    GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
                 }
             }
         }
@@ -4532,7 +4681,7 @@ namespace EdFi.Ods.Entities.NHibernate.StudentCommunityProviderLocationAssociati
         [Key(3)]
         public virtual int CommunityProviderLocationId
         {
-            get => _communityProviderLocationId;
+            get { EnsureContextualValuesInitialized(); return _communityProviderLocationId; }
             set
             {
                 var originalValue = _communityProviderLocationId;
@@ -4545,14 +4694,15 @@ namespace EdFi.Ods.Entities.NHibernate.StudentCommunityProviderLocationAssociati
                     {
                         GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
                     }
-                    // If key value is changing (i.e. only via Synchronize)
-                    else if (originalValue != default && value != originalValue) 
-                    {
-                        // Clear the values
-                        Id = default;
-                        Discriminator = null;
-                        GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
-                    }
+                }
+                
+                // If reference's key value is changing from a non-default value (i.e. only via Synchronize) it needs resolution
+                if (originalValue != default && value != originalValue) 
+                {
+                    // Clear the values
+                    Id = default;
+                    Discriminator = null;
+                    GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
                 }
             }
         }
@@ -4561,7 +4711,7 @@ namespace EdFi.Ods.Entities.NHibernate.StudentCommunityProviderLocationAssociati
         [Key(4)]
         public virtual int StudentUSI
         {
-            get => _studentUSI;
+            get { EnsureContextualValuesInitialized(); return _studentUSI; }
             set
             {
                 var originalValue = _studentUSI;
@@ -4574,15 +4724,25 @@ namespace EdFi.Ods.Entities.NHibernate.StudentCommunityProviderLocationAssociati
                     {
                         GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
                     }
-                    // If key value is changing (i.e. only via Synchronize)
-                    else if (originalValue != default && value != originalValue) 
-                    {
-                        // Clear the values
-                        Id = default;
-                        Discriminator = null;
-                        GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
-                    }
                 }
+                
+                // If reference's key value is changing from a non-default value (i.e. only via Synchronize) it needs resolution
+                if (originalValue != default && value != originalValue) 
+                {
+                    // Clear the values
+                    Id = default;
+                    Discriminator = null;
+                    GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
+                }
+            }
+        }
+
+        private void EnsureContextualValuesInitialized()
+        {
+            if (!_contextualValuesInitialized && _contextualValuesInitializer != null)
+            {
+                _contextualValuesInitializer(this);
+                _contextualValuesInitialized = true;
             }
         }
 
@@ -4831,7 +4991,7 @@ namespace EdFi.Ods.Entities.NHibernate.StudentCommunityProviderLocationAssociati
 
                 if (GeneratedArtifactStaticDependencies.SerializedDataEnabled && GeneratedArtifactStaticDependencies.ResourceLinksEnabled)
                 {
-                    CommunityProviderLocationSerializedReferenceData ??= new NHibernate.CommunityProviderLocationAggregate.Edfixcrdc.CommunityProviderLocationReferenceData(true);
+                    CommunityProviderLocationSerializedReferenceData ??= new NHibernate.CommunityProviderLocationAggregate.Edfixcrdc.CommunityProviderLocationReferenceData(trackLookupContext: true);
                     CommunityProviderLocationSerializedReferenceData.CommunityProviderId = value;
                 }
             }
@@ -4850,7 +5010,7 @@ namespace EdFi.Ods.Entities.NHibernate.StudentCommunityProviderLocationAssociati
 
                 if (GeneratedArtifactStaticDependencies.SerializedDataEnabled && GeneratedArtifactStaticDependencies.ResourceLinksEnabled)
                 {
-                    CommunityProviderLocationSerializedReferenceData ??= new NHibernate.CommunityProviderLocationAggregate.Edfixcrdc.CommunityProviderLocationReferenceData(true);
+                    CommunityProviderLocationSerializedReferenceData ??= new NHibernate.CommunityProviderLocationAggregate.Edfixcrdc.CommunityProviderLocationReferenceData(trackLookupContext: true);
                     CommunityProviderLocationSerializedReferenceData.CommunityProviderLocationId = value;
                 }
             }
@@ -4873,7 +5033,7 @@ namespace EdFi.Ods.Entities.NHibernate.StudentCommunityProviderLocationAssociati
 
                         if (GeneratedArtifactStaticDependencies.SerializedDataEnabled && GeneratedArtifactStaticDependencies.ResourceLinksEnabled)
                         {
-                            StudentSerializedReferenceData ??= new NHibernate.StudentAggregate.EdFi.StudentReferenceData(true);
+                            StudentSerializedReferenceData ??= new NHibernate.StudentAggregate.EdFi.StudentReferenceData(trackLookupContext: true);
                             StudentSerializedReferenceData.StudentUSI = _studentUSI;
                         }
                     }
@@ -4888,7 +5048,7 @@ namespace EdFi.Ods.Entities.NHibernate.StudentCommunityProviderLocationAssociati
 
                 if (GeneratedArtifactStaticDependencies.SerializedDataEnabled && GeneratedArtifactStaticDependencies.ResourceLinksEnabled)
                 {
-                    StudentSerializedReferenceData ??= new NHibernate.StudentAggregate.EdFi.StudentReferenceData(true);
+                    StudentSerializedReferenceData ??= new NHibernate.StudentAggregate.EdFi.StudentReferenceData(trackLookupContext: true);
                     StudentSerializedReferenceData.StudentUSI = value;
                 }
             }
@@ -4925,7 +5085,7 @@ namespace EdFi.Ods.Entities.NHibernate.StudentCommunityProviderLocationAssociati
                     if (GeneratedArtifactStaticDependencies.UsiLookupsByUniqueIdContextProvider.Get().UsiByUniqueIdByPersonType.TryGetValue("Student", out var usiByUniqueId)
                         && usiByUniqueId.TryGetValue(_studentUniqueId, out var usi))
                     {
-                        StudentSerializedReferenceData ??= new NHibernate.StudentAggregate.EdFi.StudentReferenceData(true);
+                        StudentSerializedReferenceData ??= new NHibernate.StudentAggregate.EdFi.StudentReferenceData(trackLookupContext: true);
                         StudentSerializedReferenceData.StudentUSI = usi;
                     }
                 }
@@ -4963,7 +5123,8 @@ namespace EdFi.Ods.Entities.NHibernate.StudentCommunityProviderLocationAssociati
         private DateTime? _endDate;
 
         [Key(13)]
-        public virtual string EnrollmentStatus  { get; set; }
+        public virtual string EnrollmentStatus { get => _enrollmentStatus; set { _enrollmentStatus = value; } }
+        private string _enrollmentStatus;
 
         [Key(14)]
         public virtual int? ReasonExitedDescriptorId 

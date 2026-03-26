@@ -227,6 +227,7 @@
       ],
       "isAbstract": false,
       "description": "",
+      "domains": [],
       "tableNames": {
         "sqlServer": "CalendarDateExtension",
         "postgreSql": "CalendarDateExtension"
@@ -290,6 +291,7 @@
       ],
       "isAbstract": false,
       "description": "",
+      "domains": [],
       "tableNames": {
         "sqlServer": "DisciplineActionExtension",
         "postgreSql": "DisciplineActionExtension"
@@ -370,6 +372,7 @@
       ],
       "isAbstract": false,
       "description": "",
+      "domains": [],
       "tableNames": {
         "sqlServer": "DisciplineIncidentExtension",
         "postgreSql": "DisciplineIncidentExtension"
@@ -395,6 +398,7 @@
       ],
       "isAbstract": false,
       "description": "To indicate the classroom setting of the student's program participation.",
+      "domains": [],
       "tableNames": {
         "sqlServer": "EarlyLearningSettingDescriptor",
         "postgreSql": "EarlyLearningSettingDescriptor"
@@ -420,6 +424,7 @@
       ],
       "isAbstract": false,
       "description": "Description that best reflects the student's immigrant status.",
+      "domains": [],
       "tableNames": {
         "sqlServer": "ImmigrantIndicatorDescriptor",
         "postgreSql": "ImmigrantIndicatorDescriptor"
@@ -445,6 +450,7 @@
       ],
       "isAbstract": false,
       "description": "The reason the Part C IDEA child was delayed in transitioning to Part B.",
+      "domains": [],
       "tableNames": {
         "sqlServer": "PartCTransitionDelayReasonDescriptor",
         "postgreSql": "PartCTransitionDelayReasonDescriptor"
@@ -470,6 +476,7 @@
       ],
       "isAbstract": false,
       "description": "Indicates placement type of the student.",
+      "domains": [],
       "tableNames": {
         "sqlServer": "PlacementTypeDescriptor",
         "postgreSql": "PlacementTypeDescriptor"
@@ -495,6 +502,7 @@
       ],
       "isAbstract": false,
       "description": "Description of the default position titles for the dashboard claimset mapping.",
+      "domains": [],
       "tableNames": {
         "sqlServer": "PositionTitleDescriptor",
         "postgreSql": "PositionTitleDescriptor"
@@ -586,6 +594,7 @@
       ],
       "isAbstract": false,
       "description": "NDE new Domain for capturing the CTE post graduation activity details. The Post School Survey template is provided for all 12th grade Career Education Concentrators identified as a [School-Year] completer with diploma and is submitted ONE-YEAR AFTER high school graduation.",
+      "domains": [],
       "tableNames": {
         "sqlServer": "PostGraduateActivity",
         "postgreSql": "PostGraduateActivity"
@@ -611,6 +620,7 @@
       ],
       "isAbstract": false,
       "description": "Description of the student�s activity after completion.",
+      "domains": [],
       "tableNames": {
         "sqlServer": "PostGraduateActivityDescriptor",
         "postgreSql": "PostGraduateActivityDescriptor"
@@ -636,6 +646,7 @@
       ],
       "isAbstract": false,
       "description": "Description of the method of determining the Post Graduate Activity Code value for the student.",
+      "domains": [],
       "tableNames": {
         "sqlServer": "PostGraduateActivityDeterminationDescriptor",
         "postgreSql": "PostGraduateActivityDeterminationDescriptor"
@@ -684,6 +695,7 @@
       ],
       "isAbstract": false,
       "description": "Description of the delivery method for a section of a course.",
+      "domains": [],
       "tableNames": {
         "sqlServer": "SectionDelivery",
         "postgreSql": "SectionDelivery"
@@ -709,6 +721,7 @@
       ],
       "isAbstract": false,
       "description": "Description of the delivery method for a section of a course.",
+      "domains": [],
       "tableNames": {
         "sqlServer": "SectionDeliveryDescriptor",
         "postgreSql": "SectionDeliveryDescriptor"
@@ -774,6 +787,7 @@
       ],
       "isAbstract": false,
       "description": "",
+      "domains": [],
       "tableNames": {
         "sqlServer": "SectionExtension",
         "postgreSql": "SectionExtension"
@@ -799,6 +813,7 @@
       ],
       "isAbstract": false,
       "description": "Type of program a Special Education student is in - Part B or Part C.",
+      "domains": [],
       "tableNames": {
         "sqlServer": "SpecialEducationProgramDescriptor",
         "postgreSql": "SpecialEducationProgramDescriptor"
@@ -917,6 +932,7 @@
       ],
       "isAbstract": false,
       "description": "",
+      "domains": [],
       "tableNames": {
         "sqlServer": "StudentDisciplineIncidentBehaviorAssociationExtension",
         "postgreSql": "StudentDisciplineIncidentBehaviorAssociationExtension"
@@ -947,6 +963,7 @@
       ],
       "isAbstract": false,
       "description": "NDE specific StudentEarlyLearningProgramAssociation.",
+      "domains": [],
       "tableNames": {
         "sqlServer": "StudentEarlyLearningProgramAssociation",
         "postgreSql": "StudentEarlyLearningProgramAssociation"
@@ -991,6 +1008,7 @@
       ],
       "isAbstract": false,
       "description": "",
+      "domains": [],
       "tableNames": {
         "sqlServer": "StudentEducationOrganizationAssociationExtension",
         "postgreSql": "StudentEducationOrganizationAssociationExtension"
@@ -1075,6 +1093,7 @@
       ],
       "isAbstract": false,
       "description": "",
+      "domains": [],
       "tableNames": {
         "sqlServer": "StudentLanguageInstructionProgramAssociationExtension",
         "postgreSql": "StudentLanguageInstructionProgramAssociationExtension"
@@ -1137,6 +1156,7 @@
       ],
       "isAbstract": false,
       "description": "",
+      "domains": [],
       "tableNames": {
         "sqlServer": "StudentSchoolAssociationExtension",
         "postgreSql": "StudentSchoolAssociationExtension"
@@ -1221,6 +1241,7 @@
       ],
       "isAbstract": false,
       "description": "",
+      "domains": [],
       "tableNames": {
         "sqlServer": "StudentSpecialEducationProgramAssociationExtension",
         "postgreSql": "StudentSpecialEducationProgramAssociationExtension"
@@ -1246,6 +1267,7 @@
       ],
       "isAbstract": false,
       "description": "Description of the unilateral removal type for a special education student.",
+      "domains": [],
       "tableNames": {
         "sqlServer": "UnilateralRemovalDescriptor",
         "postgreSql": "UnilateralRemovalDescriptor"

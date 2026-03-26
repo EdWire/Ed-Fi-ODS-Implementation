@@ -389,7 +389,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineAction.EdFi.Extensions.
         /// True = Student expelled under GFSA had expulsion modified to less than one year.
         /// </summary>
         // NOT in a reference, NOT a lookup column 
-        [DataMember(Name="gfsaExpulsionModifiedToLessThanOneYear")]
+        [DataMember(Name="gfsaExpulsionModifiedToLessThanOneYear")][JsonConverter(typeof(StrictBooleanConverter))]
         public bool? GFSAExpulsionModifiedToLessThanOneYear { get; set; }
 
         /// <summary>
@@ -621,14 +621,14 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineIncident.EdFi.Extension
         /// Indicates if this discipline incident involved homicide.
         /// </summary>
         // NOT in a reference, NOT a lookup column 
-        [DataMember(Name="homicideIndicator")]
+        [DataMember(Name="homicideIndicator")][JsonConverter(typeof(StrictBooleanConverter))]
         public bool? HomicideIndicator { get; set; }
 
         /// <summary>
         /// Indicates if the discipline incident involved a shooting.
         /// </summary>
         // NOT in a reference, NOT a lookup column 
-        [DataMember(Name="shootingIndicator")]
+        [DataMember(Name="shootingIndicator")][JsonConverter(typeof(StrictBooleanConverter))]
         public bool? ShootingIndicator { get; set; }
         // -------------------------------------------------------------
 
@@ -4429,28 +4429,28 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentDisciplineIncidentBehavior
         /// True = Student was charged with a Gun-Free Schools Violation.
         /// </summary>
         // NOT in a reference, NOT a lookup column 
-        [DataMember(Name="gunFreeSchoolViolation")]
+        [DataMember(Name="gunFreeSchoolViolation")][JsonConverter(typeof(StrictBooleanConverter))]
         public bool? GunFreeSchoolViolation { get; set; }
 
         /// <summary>
         /// Indicates if a student was referred to law enforcement.
         /// </summary>
         // NOT in a reference, NOT a lookup column 
-        [DataMember(Name="referralToLawEnforcement")]
+        [DataMember(Name="referralToLawEnforcement")][JsonConverter(typeof(StrictBooleanConverter))]
         public bool? ReferralToLawEnforcement { get; set; }
 
         /// <summary>
         /// Indicates if student was involved in a disciplinary incident that resulted in an arrest.
         /// </summary>
         // NOT in a reference, NOT a lookup column 
-        [DataMember(Name="schoolRelatedArrestIndicator")]
+        [DataMember(Name="schoolRelatedArrestIndicator")][JsonConverter(typeof(StrictBooleanConverter))]
         public bool? SchoolRelatedArrestIndicator { get; set; }
 
         /// <summary>
         /// Indicates if an incident resulted in serious bodily injury as defined by 18 U.S.C. Section 1365(3)(h).
         /// </summary>
         // NOT in a reference, NOT a lookup column 
-        [DataMember(Name="seriousBodilyInjury")]
+        [DataMember(Name="seriousBodilyInjury")][JsonConverter(typeof(StrictBooleanConverter))]
         public bool? SeriousBodilyInjury { get; set; }
         // -------------------------------------------------------------
 
@@ -5064,7 +5064,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEarlyLearningProgramAssoci
         /// Indicates whether the student received services during the summer session or between sessions.
         /// </summary>
         // NOT in a reference, NOT a lookup column 
-        [DataMember(Name="servedOutsideOfRegularSession")]
+        [DataMember(Name="servedOutsideOfRegularSession")][JsonConverter(typeof(StrictBooleanConverter))]
         public bool? ServedOutsideOfRegularSession { get; set; }
         // -------------------------------------------------------------
 
@@ -5685,14 +5685,14 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentLanguageInstructionProgram
         /// A special education student that is no longer considered an English Learner due to a decision by the IEP review team to dismiss the ELPA testing requirement.
         /// </summary>
         // NOT in a reference, NOT a lookup column 
-        [DataMember(Name="dismissedViaIEPReview")]
+        [DataMember(Name="dismissedViaIEPReview")][JsonConverter(typeof(StrictBooleanConverter))]
         public bool? DismissedViaIEPReview { get; set; }
 
         /// <summary>
         /// students that have been redesignated as English Fluent.
         /// </summary>
         // NOT in a reference, NOT a lookup column 
-        [DataMember(Name="redesignatedEnglishFluent")]
+        [DataMember(Name="redesignatedEnglishFluent")][JsonConverter(typeof(StrictBooleanConverter))]
         public bool? RedesignatedEnglishFluent { get; set; }
         // -------------------------------------------------------------
 
@@ -6441,7 +6441,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSpecialEducationProgramAss
         /// True = Indicates the student needs alternate assessment.
         /// </summary>
         // NOT in a reference, NOT a lookup column 
-        [DataMember(Name="toTakeAlternateAssessment")]
+        [DataMember(Name="toTakeAlternateAssessment")][JsonConverter(typeof(StrictBooleanConverter))]
         public bool? ToTakeAlternateAssessment { get; set; }
         // -------------------------------------------------------------
 

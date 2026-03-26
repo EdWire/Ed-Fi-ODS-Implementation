@@ -479,7 +479,8 @@ namespace EdFi.Ods.Entities.NHibernate.ProgramAggregate.EdFiXLearningModality
         //                          Properties
         // -------------------------------------------------------------
         [Key(2)]
-        public virtual decimal ModalityTime  { get; set; }
+        public virtual decimal ModalityTime { get => _modalityTime; set { _modalityTime = value; } }
+        private decimal _modalityTime;
 
         [Key(3)]
         public virtual int ModalityTimeTypeDescriptorId 

@@ -75,7 +75,8 @@ namespace EdFi.Ods.Entities.NHibernate.CalendarDateAggregate.NE
         //                          Properties
         // -------------------------------------------------------------
         [Key(1)]
-        public virtual decimal InstructionalDuration  { get; set; }
+        public virtual decimal InstructionalDuration { get => _instructionalDuration; set { _instructionalDuration = value; } }
+        private decimal _instructionalDuration;
 
         // -------------------------------------------------------------
 
@@ -240,7 +241,8 @@ namespace EdFi.Ods.Entities.NHibernate.DisciplineActionAggregate.NE
         //                          Properties
         // -------------------------------------------------------------
         [Key(1)]
-        public virtual bool? GFSAExpulsionModifiedToLessThanOneYear  { get; set; }
+        public virtual bool? GFSAExpulsionModifiedToLessThanOneYear { get => _gfsaExpulsionModifiedToLessThanOneYear; set { _gfsaExpulsionModifiedToLessThanOneYear = value; } }
+        private bool? _gfsaExpulsionModifiedToLessThanOneYear;
 
         [Key(2)]
         public virtual int? UnilateralRemovalDescriptorId 
@@ -445,10 +447,12 @@ namespace EdFi.Ods.Entities.NHibernate.DisciplineIncidentAggregate.NE
         //                          Properties
         // -------------------------------------------------------------
         [Key(1)]
-        public virtual bool? HomicideIndicator  { get; set; }
+        public virtual bool? HomicideIndicator { get => _homicideIndicator; set { _homicideIndicator = value; } }
+        private bool? _homicideIndicator;
 
         [Key(2)]
-        public virtual bool? ShootingIndicator  { get; set; }
+        public virtual bool? ShootingIndicator { get => _shootingIndicator; set { _shootingIndicator = value; } }
+        private bool? _shootingIndicator;
 
         // -------------------------------------------------------------
 
@@ -1482,12 +1486,31 @@ namespace EdFi.Ods.Entities.NHibernate.PostGraduateActivityAggregate.NE
     public class PostGraduateActivityReferenceData : IEntityReferenceData
     {
         private bool _trackLookupContext;
-    
+        private Action<PostGraduateActivityReferenceData> _contextualValuesInitializer;
+        private bool _contextualValuesInitialized;
+
         // Default constructor (used by NHibernate)
         public PostGraduateActivityReferenceData() { }
 
-        // Constructor (used for link support with Serialized Data feature)
-        public PostGraduateActivityReferenceData(bool trackLookupContext) { _trackLookupContext = trackLookupContext; }
+        // Constructor used for deferred initialization when the parent reference hasn't yet been initialized because we're falling back from stale serialized data to NHibernate hydration
+        public PostGraduateActivityReferenceData(Action<PostGraduateActivityReferenceData> contextualValuesInitializer)
+        {
+            _trackLookupContext = true;
+            _contextualValuesInitializer = contextualValuesInitializer;
+        }
+
+        // Constructor used for link support with Serialized Data feature
+        public PostGraduateActivityReferenceData(long contextualLocalEducationAgencyId = default, short contextualSchoolYear = default, int contextualStudentUSI = default, bool trackLookupContext = true)
+        {
+            _trackLookupContext = trackLookupContext;
+    
+            // Assign supplied contextual values (values pre-determined from parent context)
+            _localEducationAgencyId = contextualLocalEducationAgencyId;
+            _schoolYear = contextualSchoolYear;
+            _studentUSI = contextualStudentUSI;
+
+            _contextualValuesInitialized = true;
+        }
 
         // =============================================================
         //                         Primary Key
@@ -1521,7 +1544,7 @@ namespace EdFi.Ods.Entities.NHibernate.PostGraduateActivityAggregate.NE
         [Key(1)]
         public virtual long LocalEducationAgencyId
         {
-            get => _localEducationAgencyId;
+            get { EnsureContextualValuesInitialized(); return _localEducationAgencyId; }
             set
             {
                 var originalValue = _localEducationAgencyId;
@@ -1534,14 +1557,15 @@ namespace EdFi.Ods.Entities.NHibernate.PostGraduateActivityAggregate.NE
                     {
                         GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
                     }
-                    // If key value is changing (i.e. only via Synchronize)
-                    else if (originalValue != default && value != originalValue) 
-                    {
-                        // Clear the values
-                        Id = default;
-                        Discriminator = null;
-                        GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
-                    }
+                }
+                
+                // If reference's key value is changing from a non-default value (i.e. only via Synchronize) it needs resolution
+                if (originalValue != default && value != originalValue) 
+                {
+                    // Clear the values
+                    Id = default;
+                    Discriminator = null;
+                    GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
                 }
             }
         }
@@ -1550,7 +1574,7 @@ namespace EdFi.Ods.Entities.NHibernate.PostGraduateActivityAggregate.NE
         [Key(2)]
         public virtual short SchoolYear
         {
-            get => _schoolYear;
+            get { EnsureContextualValuesInitialized(); return _schoolYear; }
             set
             {
                 var originalValue = _schoolYear;
@@ -1563,14 +1587,15 @@ namespace EdFi.Ods.Entities.NHibernate.PostGraduateActivityAggregate.NE
                     {
                         GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
                     }
-                    // If key value is changing (i.e. only via Synchronize)
-                    else if (originalValue != default && value != originalValue) 
-                    {
-                        // Clear the values
-                        Id = default;
-                        Discriminator = null;
-                        GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
-                    }
+                }
+                
+                // If reference's key value is changing from a non-default value (i.e. only via Synchronize) it needs resolution
+                if (originalValue != default && value != originalValue) 
+                {
+                    // Clear the values
+                    Id = default;
+                    Discriminator = null;
+                    GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
                 }
             }
         }
@@ -1579,7 +1604,7 @@ namespace EdFi.Ods.Entities.NHibernate.PostGraduateActivityAggregate.NE
         [Key(3)]
         public virtual int StudentUSI
         {
-            get => _studentUSI;
+            get { EnsureContextualValuesInitialized(); return _studentUSI; }
             set
             {
                 var originalValue = _studentUSI;
@@ -1592,15 +1617,25 @@ namespace EdFi.Ods.Entities.NHibernate.PostGraduateActivityAggregate.NE
                     {
                         GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
                     }
-                    // If key value is changing (i.e. only via Synchronize)
-                    else if (originalValue != default && value != originalValue) 
-                    {
-                        // Clear the values
-                        Id = default;
-                        Discriminator = null;
-                        GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
-                    }
                 }
+                
+                // If reference's key value is changing from a non-default value (i.e. only via Synchronize) it needs resolution
+                if (originalValue != default && value != originalValue) 
+                {
+                    // Clear the values
+                    Id = default;
+                    Discriminator = null;
+                    GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
+                }
+            }
+        }
+
+        private void EnsureContextualValuesInitialized()
+        {
+            if (!_contextualValuesInitialized && _contextualValuesInitializer != null)
+            {
+                _contextualValuesInitializer(this);
+                _contextualValuesInitialized = true;
             }
         }
 
@@ -1867,7 +1902,7 @@ namespace EdFi.Ods.Entities.NHibernate.PostGraduateActivityAggregate.NE
 
                 if (GeneratedArtifactStaticDependencies.SerializedDataEnabled && GeneratedArtifactStaticDependencies.ResourceLinksEnabled)
                 {
-                    LocalEducationAgencySerializedReferenceData ??= new NHibernate.EducationOrganizationAggregate.EdFi.EducationOrganizationReferenceData(true);
+                    LocalEducationAgencySerializedReferenceData ??= new NHibernate.EducationOrganizationAggregate.EdFi.EducationOrganizationReferenceData(trackLookupContext: true);
                     LocalEducationAgencySerializedReferenceData.EducationOrganizationId = value;
                 }
             }
@@ -1886,7 +1921,7 @@ namespace EdFi.Ods.Entities.NHibernate.PostGraduateActivityAggregate.NE
 
                 if (GeneratedArtifactStaticDependencies.SerializedDataEnabled && GeneratedArtifactStaticDependencies.ResourceLinksEnabled)
                 {
-                    SchoolYearTypeSerializedReferenceData ??= new NHibernate.SchoolYearTypeAggregate.EdFi.SchoolYearTypeReferenceData(true);
+                    SchoolYearTypeSerializedReferenceData ??= new NHibernate.SchoolYearTypeAggregate.EdFi.SchoolYearTypeReferenceData(trackLookupContext: true);
                     SchoolYearTypeSerializedReferenceData.SchoolYear = value;
                 }
             }
@@ -1909,7 +1944,7 @@ namespace EdFi.Ods.Entities.NHibernate.PostGraduateActivityAggregate.NE
 
                         if (GeneratedArtifactStaticDependencies.SerializedDataEnabled && GeneratedArtifactStaticDependencies.ResourceLinksEnabled)
                         {
-                            StudentSerializedReferenceData ??= new NHibernate.StudentAggregate.EdFi.StudentReferenceData(true);
+                            StudentSerializedReferenceData ??= new NHibernate.StudentAggregate.EdFi.StudentReferenceData(trackLookupContext: true);
                             StudentSerializedReferenceData.StudentUSI = _studentUSI;
                         }
                     }
@@ -1924,7 +1959,7 @@ namespace EdFi.Ods.Entities.NHibernate.PostGraduateActivityAggregate.NE
 
                 if (GeneratedArtifactStaticDependencies.SerializedDataEnabled && GeneratedArtifactStaticDependencies.ResourceLinksEnabled)
                 {
-                    StudentSerializedReferenceData ??= new NHibernate.StudentAggregate.EdFi.StudentReferenceData(true);
+                    StudentSerializedReferenceData ??= new NHibernate.StudentAggregate.EdFi.StudentReferenceData(trackLookupContext: true);
                     StudentSerializedReferenceData.StudentUSI = value;
                 }
             }
@@ -1961,7 +1996,7 @@ namespace EdFi.Ods.Entities.NHibernate.PostGraduateActivityAggregate.NE
                     if (GeneratedArtifactStaticDependencies.UsiLookupsByUniqueIdContextProvider.Get().UsiByUniqueIdByPersonType.TryGetValue("Student", out var usiByUniqueId)
                         && usiByUniqueId.TryGetValue(_studentUniqueId, out var usi))
                     {
-                        StudentSerializedReferenceData ??= new NHibernate.StudentAggregate.EdFi.StudentReferenceData(true);
+                        StudentSerializedReferenceData ??= new NHibernate.StudentAggregate.EdFi.StudentReferenceData(trackLookupContext: true);
                         StudentSerializedReferenceData.StudentUSI = usi;
                     }
                 }
@@ -2783,7 +2818,8 @@ namespace EdFi.Ods.Entities.NHibernate.SectionAggregate.NE
         //                          Properties
         // -------------------------------------------------------------
         [Key(1)]
-        public virtual string CourseStaffIdOverride  { get; set; }
+        public virtual string CourseStaffIdOverride { get => _courseStaffIdOverride; set { _courseStaffIdOverride = value; } }
+        private string _courseStaffIdOverride;
 
         // -------------------------------------------------------------
 
@@ -3338,16 +3374,20 @@ namespace EdFi.Ods.Entities.NHibernate.StudentDisciplineIncidentBehaviorAssociat
         //                          Properties
         // -------------------------------------------------------------
         [Key(1)]
-        public virtual bool? GunFreeSchoolViolation  { get; set; }
+        public virtual bool? GunFreeSchoolViolation { get => _gunFreeSchoolViolation; set { _gunFreeSchoolViolation = value; } }
+        private bool? _gunFreeSchoolViolation;
 
         [Key(2)]
-        public virtual bool? ReferralToLawEnforcement  { get; set; }
+        public virtual bool? ReferralToLawEnforcement { get => _referralToLawEnforcement; set { _referralToLawEnforcement = value; } }
+        private bool? _referralToLawEnforcement;
 
         [Key(3)]
-        public virtual bool? SchoolRelatedArrestIndicator  { get; set; }
+        public virtual bool? SchoolRelatedArrestIndicator { get => _schoolRelatedArrestIndicator; set { _schoolRelatedArrestIndicator = value; } }
+        private bool? _schoolRelatedArrestIndicator;
 
         [Key(4)]
-        public virtual bool? SeriousBodilyInjury  { get; set; }
+        public virtual bool? SeriousBodilyInjury { get => _seriousBodilyInjury; set { _seriousBodilyInjury = value; } }
+        private bool? _seriousBodilyInjury;
 
         // -------------------------------------------------------------
 
@@ -3492,111 +3532,27 @@ namespace EdFi.Ods.Entities.NHibernate.StudentEarlyLearningProgramAssociationAgg
         // -------------------------------------------------------------
         [DomainSignature]
         [IgnoreMember]
-        public override DateTime BeginDate  { get; set; }
+        public override DateTime BeginDate { get => base.BeginDate; set => base.BeginDate = value; }
 
         [DomainSignature]
         [IgnoreMember]
-        public override long EducationOrganizationId  { get; set; }
+        public override long EducationOrganizationId { get => base.EducationOrganizationId; set => base.EducationOrganizationId = value; }
 
         [DomainSignature]
         [IgnoreMember]
-        public override long ProgramEducationOrganizationId  { get; set; }
+        public override long ProgramEducationOrganizationId { get => base.ProgramEducationOrganizationId; set => base.ProgramEducationOrganizationId = value; }
 
         [DomainSignature]
         [IgnoreMember]
-        public override string ProgramName  { get; set; }
+        public override string ProgramName { get => base.ProgramName; set => base.ProgramName = value; }
 
         [DomainSignature]
         [IgnoreMember]
-        public override int ProgramTypeDescriptorId 
-        {
-            get
-            {
-                if (_programTypeDescriptorId == default(int))
-                {
-                    _programTypeDescriptorId = GeneratedArtifactStaticDependencies.DescriptorResolver.GetDescriptorId("ProgramTypeDescriptor", _programTypeDescriptor);
-                }
-
-                return _programTypeDescriptorId;
-            } 
-            set
-            {
-                _programTypeDescriptorId = value;
-                _programTypeDescriptor = null;
-            }
-        }
-
-        private int _programTypeDescriptorId;
-        private string _programTypeDescriptor;
-
-        [IgnoreMember]
-        public override string ProgramTypeDescriptor
-        {
-            get
-            {
-                if (_programTypeDescriptor == null)
-                    _programTypeDescriptor = GeneratedArtifactStaticDependencies.DescriptorResolver.GetUri("ProgramTypeDescriptor", _programTypeDescriptorId);
-                    
-                return _programTypeDescriptor;
-            }
-            set
-            {
-                _programTypeDescriptor = value;
-                _programTypeDescriptorId = default(int);
-            }
-        }
+        public override int ProgramTypeDescriptorId { get => base.ProgramTypeDescriptorId; set => base.ProgramTypeDescriptorId = value; }
 
         [Display(Name="StudentUniqueId")][DomainSignature]
         [IgnoreMember]
-        public override int StudentUSI 
-        {
-            get
-            {
-                if (_studentUSI == default(int) && _studentUniqueId != null)
-                {
-                    if (GeneratedArtifactStaticDependencies.UsiLookupsByUniqueIdContextProvider.Get().UsiByUniqueIdByPersonType.TryGetValue("Student", out var usiByUniqueId)
-                        && usiByUniqueId.TryGetValue(_studentUniqueId, out var usi))
-                    {
-                        _studentUSI = usi;
-                    }
-                }
-
-                return _studentUSI;
-            } 
-            set
-            {
-                _studentUSI = value;
-                GeneratedArtifactStaticDependencies.UniqueIdLookupsByUsiContextProvider.Get().AddLookup("Student", value);
-            }
-        }
-
-        private int _studentUSI;
-        private string _studentUniqueId;
-
-        [IgnoreMember]
-        public override string StudentUniqueId
-        {
-            get
-            {
-                if (_studentUniqueId == null)
-                {
-                    if (GeneratedArtifactStaticDependencies.UniqueIdLookupsByUsiContextProvider.Get().UniqueIdByUsiByPersonType.TryGetValue("Student", out var uniqueIdByUsi)
-                        && uniqueIdByUsi.TryGetValue(_studentUSI, out var uniqueId))
-                    {
-                        _studentUniqueId = uniqueId;
-                    }
-                }
-
-                return _studentUniqueId;
-            }
-            set
-            {
-                if (_studentUniqueId != value)
-                        _studentUSI = default(int);
-
-                _studentUniqueId = value;
-            }
-        }
+        public override int StudentUSI { get => base.StudentUSI; set => base.StudentUSI = value; }
 
         // -------------------------------------------------------------
 
@@ -4032,10 +3988,12 @@ namespace EdFi.Ods.Entities.NHibernate.StudentLanguageInstructionProgramAssociat
         //                          Properties
         // -------------------------------------------------------------
         [Key(1)]
-        public virtual bool? DismissedViaIEPReview  { get; set; }
+        public virtual bool? DismissedViaIEPReview { get => _dismissedViaIEPReview; set { _dismissedViaIEPReview = value; } }
+        private bool? _dismissedViaIEPReview;
 
         [Key(2)]
-        public virtual bool? RedesignatedEnglishFluent  { get; set; }
+        public virtual bool? RedesignatedEnglishFluent { get => _redesignatedEnglishFluent; set { _redesignatedEnglishFluent = value; } }
+        private bool? _redesignatedEnglishFluent;
 
         // -------------------------------------------------------------
 
@@ -4389,7 +4347,7 @@ namespace EdFi.Ods.Entities.NHibernate.StudentSchoolAssociationAggregate.NE
 
                 if (GeneratedArtifactStaticDependencies.SerializedDataEnabled && GeneratedArtifactStaticDependencies.ResourceLinksEnabled)
                 {
-                    ExpectedHighSchoolOfGraduationSchoolSerializedReferenceData ??= new NHibernate.EducationOrganizationAggregate.EdFi.EducationOrganizationReferenceData(true);
+                    ExpectedHighSchoolOfGraduationSchoolSerializedReferenceData ??= new NHibernate.EducationOrganizationAggregate.EdFi.EducationOrganizationReferenceData(trackLookupContext: true);
                     ExpectedHighSchoolOfGraduationSchoolSerializedReferenceData.EducationOrganizationId = value ?? default;
                 }
             }
@@ -4407,7 +4365,7 @@ namespace EdFi.Ods.Entities.NHibernate.StudentSchoolAssociationAggregate.NE
 
                 if (GeneratedArtifactStaticDependencies.SerializedDataEnabled && GeneratedArtifactStaticDependencies.ResourceLinksEnabled)
                 {
-                    ReportingSchoolSerializedReferenceData ??= new NHibernate.EducationOrganizationAggregate.EdFi.EducationOrganizationReferenceData(true);
+                    ReportingSchoolSerializedReferenceData ??= new NHibernate.EducationOrganizationAggregate.EdFi.EducationOrganizationReferenceData(trackLookupContext: true);
                     ReportingSchoolSerializedReferenceData.EducationOrganizationId = value;
                 }
             }
@@ -4425,7 +4383,7 @@ namespace EdFi.Ods.Entities.NHibernate.StudentSchoolAssociationAggregate.NE
 
                 if (GeneratedArtifactStaticDependencies.SerializedDataEnabled && GeneratedArtifactStaticDependencies.ResourceLinksEnabled)
                 {
-                    ResidentLocalEducationAgencySerializedReferenceData ??= new NHibernate.EducationOrganizationAggregate.EdFi.EducationOrganizationReferenceData(true);
+                    ResidentLocalEducationAgencySerializedReferenceData ??= new NHibernate.EducationOrganizationAggregate.EdFi.EducationOrganizationReferenceData(trackLookupContext: true);
                     ResidentLocalEducationAgencySerializedReferenceData.EducationOrganizationId = value;
                 }
             }
@@ -4443,7 +4401,7 @@ namespace EdFi.Ods.Entities.NHibernate.StudentSchoolAssociationAggregate.NE
 
                 if (GeneratedArtifactStaticDependencies.SerializedDataEnabled && GeneratedArtifactStaticDependencies.ResourceLinksEnabled)
                 {
-                    ResidentSchoolSerializedReferenceData ??= new NHibernate.EducationOrganizationAggregate.EdFi.EducationOrganizationReferenceData(true);
+                    ResidentSchoolSerializedReferenceData ??= new NHibernate.EducationOrganizationAggregate.EdFi.EducationOrganizationReferenceData(trackLookupContext: true);
                     ResidentSchoolSerializedReferenceData.EducationOrganizationId = value ?? default;
                 }
             }
@@ -4452,7 +4410,8 @@ namespace EdFi.Ods.Entities.NHibernate.StudentSchoolAssociationAggregate.NE
         private long? _residentSchoolId;
 
         [Key(9)]
-        public virtual decimal? StudentDaysEnrolled  { get; set; }
+        public virtual decimal? StudentDaysEnrolled { get => _studentDaysEnrolled; set { _studentDaysEnrolled = value; } }
+        private decimal? _studentDaysEnrolled;
 
         // -------------------------------------------------------------
 
@@ -4754,7 +4713,8 @@ namespace EdFi.Ods.Entities.NHibernate.StudentSpecialEducationProgramAssociation
         }
 
         [Key(5)]
-        public virtual bool? ToTakeAlternateAssessment  { get; set; }
+        public virtual bool? ToTakeAlternateAssessment { get => _toTakeAlternateAssessment; set { _toTakeAlternateAssessment = value; } }
+        private bool? _toTakeAlternateAssessment;
 
         // -------------------------------------------------------------
 

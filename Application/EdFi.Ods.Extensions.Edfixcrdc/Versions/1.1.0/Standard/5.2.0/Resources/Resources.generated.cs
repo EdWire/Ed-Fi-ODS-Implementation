@@ -315,7 +315,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ClassGroup.Edfixcrdc
         [DataMember(Name="communityProviderLocationId")]
         public int CommunityProviderLocationId { get; set; }
 
-        [DataMember(Name="specialNeedsProvidedIndicator")]
+        [DataMember(Name="specialNeedsProvidedIndicator")][JsonConverter(typeof(StrictBooleanConverter))]
         public bool SpecialNeedsProvidedIndicator { get; set; }
 
         /// <summary>
@@ -563,7 +563,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.ClassGroup.Edfixcrdc
         /// An indication of whether a class or group serves children with special needs.
         /// </summary>
         // NOT in a reference, NOT a lookup column 
-        [DataMember(Name="specialNeedsProvidedIndicator")]
+        [DataMember(Name="specialNeedsProvidedIndicator")][JsonConverter(typeof(StrictBooleanConverter))]
         public bool SpecialNeedsProvidedIndicator 
         { 
             get => _specialNeedsProvidedIndicator;
@@ -1954,7 +1954,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CommunityProviderLocation.Edfixcr
         /// An indication of whether a provider location serves children with special needs.
         /// </summary>
         // NOT in a reference, NOT a lookup column 
-        [DataMember(Name="specialNeedsProvidedIndicator")]
+        [DataMember(Name="specialNeedsProvidedIndicator")][JsonConverter(typeof(StrictBooleanConverter))]
         public bool? SpecialNeedsProvidedIndicator { get; set; }
 
         /// <summary>
@@ -4522,7 +4522,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.School.EdFi.Extensions.Edfixcrdc
         /// Does the school have Wi-Fi access in every classroom?
         /// </summary>
         // NOT in a reference, NOT a lookup column 
-        [DataMember(Name="allClassroomsHaveWiFi")]
+        [DataMember(Name="allClassroomsHaveWiFi")][JsonConverter(typeof(StrictBooleanConverter))]
         public bool AllClassroomsHaveWiFi 
         { 
             get => _allClassroomsHaveWiFi;
@@ -4541,7 +4541,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.School.EdFi.Extensions.Edfixcrdc
         /// Is the school connected to the internet through fiber-optic connection?
         /// </summary>
         // NOT in a reference, NOT a lookup column 
-        [DataMember(Name="fiberOpticConnection")]
+        [DataMember(Name="fiberOpticConnection")][JsonConverter(typeof(StrictBooleanConverter))]
         public bool FiberOpticConnection 
         { 
             get => _fiberOpticConnection;
@@ -4560,7 +4560,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.School.EdFi.Extensions.Edfixcrdc
         /// Does the school allow students to bring to the school student-owned devices that can be used to access the internet for student learning?
         /// </summary>
         // NOT in a reference, NOT a lookup column 
-        [DataMember(Name="studentsBringOwnDevice")]
+        [DataMember(Name="studentsBringOwnDevice")][JsonConverter(typeof(StrictBooleanConverter))]
         public bool StudentsBringOwnDevice 
         { 
             get => _studentsBringOwnDevice;
@@ -4579,7 +4579,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.School.EdFi.Extensions.Edfixcrdc
         /// Does the school allow students to take home school-issued devices that can be used to access the internet for student learning?
         /// </summary>
         // NOT in a reference, NOT a lookup column 
-        [DataMember(Name="studentsTakeHomeDevice")]
+        [DataMember(Name="studentsTakeHomeDevice")][JsonConverter(typeof(StrictBooleanConverter))]
         public bool StudentsTakeHomeDevice 
         { 
             get => _studentsTakeHomeDevice;
@@ -4754,7 +4754,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentClassGroupAssociation.Edfi
         [DataMember(Name="communityProviderLocationId")]
         public int CommunityProviderLocationId { get; set; }
 
-        [DataMember(Name="specialNeedsProvidedIndicator")]
+        [DataMember(Name="specialNeedsProvidedIndicator")][JsonConverter(typeof(StrictBooleanConverter))]
         public bool SpecialNeedsProvidedIndicator { get; set; }
 
         [DataMember(Name="studentUniqueId")]

@@ -95,7 +95,7 @@ namespace EdFi.Ods.Entities.Common.NE //.CalendarDateAggregate
 }
 // Aggregate: DisciplineAction
 
-namespace EdFi.Ods.Entities.Common.NE//.DisciplineActionAggregate
+namespace EdFi.Ods.Entities.Common.NE //.DisciplineActionAggregate
 {
     [ExcludeFromCodeCoverage]
     public static class DisciplineActionExtensionMapper
@@ -186,7 +186,7 @@ namespace EdFi.Ods.Entities.Common.NE//.DisciplineActionAggregate
 }
 // Aggregate: DisciplineIncident
 
-namespace EdFi.Ods.Entities.Common.NE//.DisciplineIncidentAggregate
+namespace EdFi.Ods.Entities.Common.NE //.DisciplineIncidentAggregate
 {
     [ExcludeFromCodeCoverage]
     public static class DisciplineIncidentExtensionMapper
@@ -277,7 +277,7 @@ namespace EdFi.Ods.Entities.Common.NE//.DisciplineIncidentAggregate
 }
 // Aggregate: EarlyLearningSettingDescriptor
 
-namespace EdFi.Ods.Entities.Common.NE//.EarlyLearningSettingDescriptorAggregate
+namespace EdFi.Ods.Entities.Common.NE //.EarlyLearningSettingDescriptorAggregate
 {
     [ExcludeFromCodeCoverage]
     public static class EarlyLearningSettingDescriptorMapper
@@ -430,7 +430,7 @@ namespace EdFi.Ods.Entities.Common.NE//.EarlyLearningSettingDescriptorAggregate
 }
 // Aggregate: ImmigrantIndicatorDescriptor
 
-namespace EdFi.Ods.Entities.Common.NE//.ImmigrantIndicatorDescriptorAggregate
+namespace EdFi.Ods.Entities.Common.NE //.ImmigrantIndicatorDescriptorAggregate
 {
     [ExcludeFromCodeCoverage]
     public static class ImmigrantIndicatorDescriptorMapper
@@ -583,7 +583,7 @@ namespace EdFi.Ods.Entities.Common.NE//.ImmigrantIndicatorDescriptorAggregate
 }
 // Aggregate: PartCTransitionDelayReasonDescriptor
 
-namespace EdFi.Ods.Entities.Common.NE//.PartCTransitionDelayReasonDescriptorAggregate
+namespace EdFi.Ods.Entities.Common.NE //.PartCTransitionDelayReasonDescriptorAggregate
 {
     [ExcludeFromCodeCoverage]
     public static class PartCTransitionDelayReasonDescriptorMapper
@@ -736,7 +736,7 @@ namespace EdFi.Ods.Entities.Common.NE//.PartCTransitionDelayReasonDescriptorAggr
 }
 // Aggregate: PlacementTypeDescriptor
 
-namespace EdFi.Ods.Entities.Common.NE//.PlacementTypeDescriptorAggregate
+namespace EdFi.Ods.Entities.Common.NE //.PlacementTypeDescriptorAggregate
 {
     [ExcludeFromCodeCoverage]
     public static class PlacementTypeDescriptorMapper
@@ -889,7 +889,7 @@ namespace EdFi.Ods.Entities.Common.NE//.PlacementTypeDescriptorAggregate
 }
 // Aggregate: PositionTitleDescriptor
 
-namespace EdFi.Ods.Entities.Common.NE//.PositionTitleDescriptorAggregate
+namespace EdFi.Ods.Entities.Common.NE //.PositionTitleDescriptorAggregate
 {
     [ExcludeFromCodeCoverage]
     public static class PositionTitleDescriptorMapper
@@ -1042,7 +1042,7 @@ namespace EdFi.Ods.Entities.Common.NE//.PositionTitleDescriptorAggregate
 }
 // Aggregate: PostGraduateActivity
 
-namespace EdFi.Ods.Entities.Common.NE//.PostGraduateActivityAggregate
+namespace EdFi.Ods.Entities.Common.NE //.PostGraduateActivityAggregate
 {
     [ExcludeFromCodeCoverage]
     public static class PostGraduateActivityMapper
@@ -1181,7 +1181,7 @@ namespace EdFi.Ods.Entities.Common.NE//.PostGraduateActivityAggregate
 }
 // Aggregate: PostGraduateActivityDescriptor
 
-namespace EdFi.Ods.Entities.Common.NE//.PostGraduateActivityDescriptorAggregate
+namespace EdFi.Ods.Entities.Common.NE //.PostGraduateActivityDescriptorAggregate
 {
     [ExcludeFromCodeCoverage]
     public static class PostGraduateActivityDescriptorMapper
@@ -1334,7 +1334,7 @@ namespace EdFi.Ods.Entities.Common.NE//.PostGraduateActivityDescriptorAggregate
 }
 // Aggregate: PostGraduateActivityDeterminationDescriptor
 
-namespace EdFi.Ods.Entities.Common.NE//.PostGraduateActivityDeterminationDescriptorAggregate
+namespace EdFi.Ods.Entities.Common.NE //.PostGraduateActivityDeterminationDescriptorAggregate
 {
     [ExcludeFromCodeCoverage]
     public static class PostGraduateActivityDeterminationDescriptorMapper
@@ -1487,7 +1487,7 @@ namespace EdFi.Ods.Entities.Common.NE//.PostGraduateActivityDeterminationDescrip
 }
 // Aggregate: Section
 
-namespace EdFi.Ods.Entities.Common.NE//.SectionAggregate
+namespace EdFi.Ods.Entities.Common.NE //.SectionAggregate
 {
     [ExcludeFromCodeCoverage]
     public static class SectionDeliveryMapper
@@ -1656,7 +1656,7 @@ namespace EdFi.Ods.Entities.Common.NE//.SectionAggregate
 }
 // Aggregate: SectionDeliveryDescriptor
 
-namespace EdFi.Ods.Entities.Common.NE//.SectionDeliveryDescriptorAggregate
+namespace EdFi.Ods.Entities.Common.NE //.SectionDeliveryDescriptorAggregate
 {
     [ExcludeFromCodeCoverage]
     public static class SectionDeliveryDescriptorMapper
@@ -1809,7 +1809,7 @@ namespace EdFi.Ods.Entities.Common.NE//.SectionDeliveryDescriptorAggregate
 }
 // Aggregate: SpecialEducationProgramDescriptor
 
-namespace EdFi.Ods.Entities.Common.NE//.SpecialEducationProgramDescriptorAggregate
+namespace EdFi.Ods.Entities.Common.NE //.SpecialEducationProgramDescriptorAggregate
 {
     [ExcludeFromCodeCoverage]
     public static class SpecialEducationProgramDescriptorMapper
@@ -1962,7 +1962,7 @@ namespace EdFi.Ods.Entities.Common.NE//.SpecialEducationProgramDescriptorAggrega
 }
 // Aggregate: StudentDisciplineIncidentBehaviorAssociation
 
-namespace EdFi.Ods.Entities.Common.NE//.StudentDisciplineIncidentBehaviorAssociationAggregate
+namespace EdFi.Ods.Entities.Common.NE //.StudentDisciplineIncidentBehaviorAssociationAggregate
 {
     [ExcludeFromCodeCoverage]
     public static class StudentDisciplineIncidentBehaviorAssociationExtensionMapper
@@ -2073,7 +2073,7 @@ namespace EdFi.Ods.Entities.Common.NE//.StudentDisciplineIncidentBehaviorAssocia
 }
 // Aggregate: StudentEarlyLearningProgramAssociation
 
-namespace EdFi.Ods.Entities.Common.NE//.StudentEarlyLearningProgramAssociationAggregate
+namespace EdFi.Ods.Entities.Common.NE //.StudentEarlyLearningProgramAssociationAggregate
 {
     [ExcludeFromCodeCoverage]
     public static class StudentEarlyLearningProgramAssociationMapper
@@ -2266,7 +2266,7 @@ namespace EdFi.Ods.Entities.Common.NE//.StudentEarlyLearningProgramAssociationAg
 }
 // Aggregate: StudentEducationOrganizationAssociation
 
-namespace EdFi.Ods.Entities.Common.NE//.StudentEducationOrganizationAssociationAggregate
+namespace EdFi.Ods.Entities.Common.NE //.StudentEducationOrganizationAssociationAggregate
 {
     [ExcludeFromCodeCoverage]
     public static class StudentEducationOrganizationAssociationExtensionMapper
@@ -2347,7 +2347,7 @@ namespace EdFi.Ods.Entities.Common.NE//.StudentEducationOrganizationAssociationA
 }
 // Aggregate: StudentLanguageInstructionProgramAssociation
 
-namespace EdFi.Ods.Entities.Common.NE//.StudentLanguageInstructionProgramAssociationAggregate
+namespace EdFi.Ods.Entities.Common.NE //.StudentLanguageInstructionProgramAssociationAggregate
 {
     [ExcludeFromCodeCoverage]
     public static class StudentLanguageInstructionProgramAssociationExtensionMapper
@@ -2438,7 +2438,7 @@ namespace EdFi.Ods.Entities.Common.NE//.StudentLanguageInstructionProgramAssocia
 }
 // Aggregate: StudentSchoolAssociation
 
-namespace EdFi.Ods.Entities.Common.NE//.StudentSchoolAssociationAggregate
+namespace EdFi.Ods.Entities.Common.NE //.StudentSchoolAssociationAggregate
 {
     [ExcludeFromCodeCoverage]
     public static class StudentSchoolAssociationExtensionMapper
@@ -2596,7 +2596,7 @@ namespace EdFi.Ods.Entities.Common.NE//.StudentSchoolAssociationAggregate
 }
 // Aggregate: StudentSpecialEducationProgramAssociation
 
-namespace EdFi.Ods.Entities.Common.NE//.StudentSpecialEducationProgramAssociationAggregate
+namespace EdFi.Ods.Entities.Common.NE //.StudentSpecialEducationProgramAssociationAggregate
 {
     [ExcludeFromCodeCoverage]
     public static class StudentSpecialEducationProgramAssociationExtensionMapper
@@ -2717,7 +2717,7 @@ namespace EdFi.Ods.Entities.Common.NE//.StudentSpecialEducationProgramAssociatio
 }
 // Aggregate: UnilateralRemovalDescriptor
 
-namespace EdFi.Ods.Entities.Common.NE//.UnilateralRemovalDescriptorAggregate
+namespace EdFi.Ods.Entities.Common.NE //.UnilateralRemovalDescriptorAggregate
 {
     [ExcludeFromCodeCoverage]
     public static class UnilateralRemovalDescriptorMapper
