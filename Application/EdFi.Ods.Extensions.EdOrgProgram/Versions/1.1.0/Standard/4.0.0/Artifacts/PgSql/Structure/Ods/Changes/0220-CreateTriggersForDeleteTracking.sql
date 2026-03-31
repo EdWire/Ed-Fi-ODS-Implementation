@@ -33,10 +33,10 @@ BEGIN
     SELECT INTO dj0 * FROM edfi.descriptor j0 WHERE descriptorid = old.educationorganizationprogramtypedescriptorid;
 
     INSERT INTO tracked_changes_edorgprogram.educationorganizationprogramauthorizedprovider(
-        oldbegindate, oldeducationorganizationprogramproviderid, oldeducationorganizationprogramtypedescriptorid, oldeducationorganizationprogramtypedescriptornamespace, oldeducationorganizationprogramtypedescriptorcodevalue,
+        oldbegindate, oldeducationorganizationprogramtypedescriptorid, oldeducationorganizationprogramtypedescriptornamespace, oldeducationorganizationprogramtypedescriptorcodevalue, oldnameofinstitution,
         id, discriminator, changeversion)
     VALUES (
-        OLD.begindate, OLD.educationorganizationprogramproviderid, OLD.educationorganizationprogramtypedescriptorid, dj0.namespace, dj0.codevalue, 
+        OLD.begindate, OLD.educationorganizationprogramtypedescriptorid, dj0.namespace, dj0.codevalue, OLD.nameofinstitution, 
         OLD.id, OLD.discriminator, nextval('changes.changeversionsequence'));
 
     RETURN NULL;
@@ -53,10 +53,10 @@ CREATE OR REPLACE FUNCTION tracked_changes_edorgprogram.educationorganizationpro
 $BODY$
 BEGIN
     INSERT INTO tracked_changes_edorgprogram.educationorganizationprogramprovider(
-        oldeducationorganizationprogramproviderid,
+        oldnameofinstitution,
         id, discriminator, changeversion)
     VALUES (
-        OLD.educationorganizationprogramproviderid, 
+        OLD.nameofinstitution, 
         OLD.id, OLD.discriminator, nextval('changes.changeversionsequence'));
 
     RETURN NULL;

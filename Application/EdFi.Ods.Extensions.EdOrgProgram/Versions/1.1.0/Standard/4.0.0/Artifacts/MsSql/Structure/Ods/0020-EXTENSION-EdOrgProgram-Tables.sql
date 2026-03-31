@@ -3,8 +3,8 @@ CREATE TABLE [edorgprogram].[EducationOrganizationEducationOrganizationProgram] 
     [BeginDate] [DATE] NOT NULL,
     [EducationOrganizationId] [INT] NOT NULL,
     [EducationOrganizationProgramTypeDescriptorId] [INT] NOT NULL,
-    [EducationOrganizationProgramProviderId] [INT] NOT NULL,
     [EndDate] [DATE] NULL,
+    [NameOfInstitution] [NVARCHAR](75) NOT NULL,
     [Discriminator] [NVARCHAR](128) NULL,
     [CreateDate] [DATETIME2] NOT NULL,
     [LastModifiedDate] [DATETIME2] NOT NULL,
@@ -26,8 +26,8 @@ GO
 -- Table [edorgprogram].[EducationOrganizationProgramAuthorizedProvider] --
 CREATE TABLE [edorgprogram].[EducationOrganizationProgramAuthorizedProvider] (
     [BeginDate] [DATE] NOT NULL,
-    [EducationOrganizationProgramProviderId] [INT] NOT NULL,
     [EducationOrganizationProgramTypeDescriptorId] [INT] NOT NULL,
+    [NameOfInstitution] [NVARCHAR](75) NOT NULL,
     [EndDate] [DATE] NULL,
     [Discriminator] [NVARCHAR](128) NULL,
     [CreateDate] [DATETIME2] NOT NULL,
@@ -35,8 +35,8 @@ CREATE TABLE [edorgprogram].[EducationOrganizationProgramAuthorizedProvider] (
     [Id] [UNIQUEIDENTIFIER] NOT NULL,
     CONSTRAINT [EducationOrganizationProgramAuthorizedProvider_PK] PRIMARY KEY CLUSTERED (
         [BeginDate] ASC,
-        [EducationOrganizationProgramProviderId] ASC,
-        [EducationOrganizationProgramTypeDescriptorId] ASC
+        [EducationOrganizationProgramTypeDescriptorId] ASC,
+        [NameOfInstitution] ASC
     ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
@@ -49,15 +49,14 @@ GO
 
 -- Table [edorgprogram].[EducationOrganizationProgramProvider] --
 CREATE TABLE [edorgprogram].[EducationOrganizationProgramProvider] (
-    [EducationOrganizationProgramProviderId] [INT] NOT NULL,
-    [EducationOrganizationId] [INT] NULL,
     [NameOfInstitution] [NVARCHAR](75) NOT NULL,
+    [EducationServiceCenterId] [INT] NULL,
     [Discriminator] [NVARCHAR](128) NULL,
     [CreateDate] [DATETIME2] NOT NULL,
     [LastModifiedDate] [DATETIME2] NOT NULL,
     [Id] [UNIQUEIDENTIFIER] NOT NULL,
     CONSTRAINT [EducationOrganizationProgramProvider_PK] PRIMARY KEY CLUSTERED (
-        [EducationOrganizationProgramProviderId] ASC
+        [NameOfInstitution] ASC
     ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO

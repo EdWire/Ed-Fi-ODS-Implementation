@@ -30,15 +30,15 @@ IF NOT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_schema = 'tra
 CREATE TABLE tracked_changes_edorgprogram.educationorganizationprogramauthorizedprovider
 (
        oldbegindate DATE NOT NULL,
-       oldeducationorganizationprogramproviderid INT NOT NULL,
        oldeducationorganizationprogramtypedescriptorid INT NOT NULL,
        oldeducationorganizationprogramtypedescriptornamespace VARCHAR(255) NOT NULL,
        oldeducationorganizationprogramtypedescriptorcodevalue VARCHAR(50) NOT NULL,
+       oldnameofinstitution VARCHAR(75) NOT NULL,
        newbegindate DATE NULL,
-       neweducationorganizationprogramproviderid INT NULL,
        neweducationorganizationprogramtypedescriptorid INT NULL,
        neweducationorganizationprogramtypedescriptornamespace VARCHAR(255) NULL,
        neweducationorganizationprogramtypedescriptorcodevalue VARCHAR(50) NULL,
+       newnameofinstitution VARCHAR(75) NULL,
        id uuid NOT NULL,
        changeversion bigint NOT NULL,
        discriminator varchar(128) NULL,
@@ -50,8 +50,8 @@ END IF;
 IF NOT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_schema = 'tracked_changes_edorgprogram' AND table_name = 'educationorganizationprogramprovider') THEN
 CREATE TABLE tracked_changes_edorgprogram.educationorganizationprogramprovider
 (
-       oldeducationorganizationprogramproviderid INT NOT NULL,
-       neweducationorganizationprogramproviderid INT NULL,
+       oldnameofinstitution VARCHAR(75) NOT NULL,
+       newnameofinstitution VARCHAR(75) NULL,
        id uuid NOT NULL,
        changeversion bigint NOT NULL,
        discriminator varchar(128) NULL,

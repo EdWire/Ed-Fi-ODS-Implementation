@@ -25,15 +25,15 @@ IF NOT EXISTS (SELECT * FROM sys.tables WHERE object_id = OBJECT_ID(N'[tracked_c
 CREATE TABLE [tracked_changes_edorgprogram].[EducationOrganizationProgramAuthorizedProvider]
 (
        OldBeginDate [DATE] NOT NULL,
-       OldEducationOrganizationProgramProviderId [INT] NOT NULL,
        OldEducationOrganizationProgramTypeDescriptorId [INT] NOT NULL,
        OldEducationOrganizationProgramTypeDescriptorNamespace [NVARCHAR](255) NOT NULL,
        OldEducationOrganizationProgramTypeDescriptorCodeValue [NVARCHAR](50) NOT NULL,
+       OldNameOfInstitution [NVARCHAR](75) NOT NULL,
        NewBeginDate [DATE] NULL,
-       NewEducationOrganizationProgramProviderId [INT] NULL,
        NewEducationOrganizationProgramTypeDescriptorId [INT] NULL,
        NewEducationOrganizationProgramTypeDescriptorNamespace [NVARCHAR](255) NULL,
        NewEducationOrganizationProgramTypeDescriptorCodeValue [NVARCHAR](50) NULL,
+       NewNameOfInstitution [NVARCHAR](75) NULL,
        Id uniqueidentifier NOT NULL,
        ChangeVersion bigint NOT NULL,
        Discriminator [NVARCHAR](128) NULL,
@@ -43,8 +43,8 @@ CREATE TABLE [tracked_changes_edorgprogram].[EducationOrganizationProgramAuthori
 IF NOT EXISTS (SELECT * FROM sys.tables WHERE object_id = OBJECT_ID(N'[tracked_changes_edorgprogram].[EducationOrganizationProgramProvider]'))
 CREATE TABLE [tracked_changes_edorgprogram].[EducationOrganizationProgramProvider]
 (
-       OldEducationOrganizationProgramProviderId [INT] NOT NULL,
-       NewEducationOrganizationProgramProviderId [INT] NULL,
+       OldNameOfInstitution [NVARCHAR](75) NOT NULL,
+       NewNameOfInstitution [NVARCHAR](75) NULL,
        Id uniqueidentifier NOT NULL,
        ChangeVersion bigint NOT NULL,
        Discriminator [NVARCHAR](128) NULL,

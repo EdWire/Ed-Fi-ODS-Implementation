@@ -3,8 +3,8 @@ CREATE TABLE edorgprogram.EducationOrganizationEducationOrganizationProgram (
     BeginDate DATE NOT NULL,
     EducationOrganizationId INT NOT NULL,
     EducationOrganizationProgramTypeDescriptorId INT NOT NULL,
-    EducationOrganizationProgramProviderId INT NOT NULL,
     EndDate DATE NULL,
+    NameOfInstitution VARCHAR(75) NOT NULL,
     Discriminator VARCHAR(128) NULL,
     CreateDate TIMESTAMP NOT NULL,
     LastModifiedDate TIMESTAMP NOT NULL,
@@ -18,14 +18,14 @@ ALTER TABLE edorgprogram.EducationOrganizationEducationOrganizationProgram ALTER
 -- Table edorgprogram.EducationOrganizationProgramAuthorizedProvider --
 CREATE TABLE edorgprogram.EducationOrganizationProgramAuthorizedProvider (
     BeginDate DATE NOT NULL,
-    EducationOrganizationProgramProviderId INT NOT NULL,
     EducationOrganizationProgramTypeDescriptorId INT NOT NULL,
+    NameOfInstitution VARCHAR(75) NOT NULL,
     EndDate DATE NULL,
     Discriminator VARCHAR(128) NULL,
     CreateDate TIMESTAMP NOT NULL,
     LastModifiedDate TIMESTAMP NOT NULL,
     Id UUID NOT NULL,
-    CONSTRAINT EducationOrganizationProgramAuthorizedProvider_PK PRIMARY KEY (BeginDate, EducationOrganizationProgramProviderId, EducationOrganizationProgramTypeDescriptorId)
+    CONSTRAINT EducationOrganizationProgramAuthorizedProvider_PK PRIMARY KEY (BeginDate, EducationOrganizationProgramTypeDescriptorId, NameOfInstitution)
 );
 ALTER TABLE edorgprogram.EducationOrganizationProgramAuthorizedProvider ALTER COLUMN CreateDate SET DEFAULT current_timestamp AT TIME ZONE 'UTC';
 ALTER TABLE edorgprogram.EducationOrganizationProgramAuthorizedProvider ALTER COLUMN Id SET DEFAULT gen_random_uuid();
@@ -33,14 +33,13 @@ ALTER TABLE edorgprogram.EducationOrganizationProgramAuthorizedProvider ALTER CO
 
 -- Table edorgprogram.EducationOrganizationProgramProvider --
 CREATE TABLE edorgprogram.EducationOrganizationProgramProvider (
-    EducationOrganizationProgramProviderId INT NOT NULL,
-    EducationOrganizationId INT NULL,
     NameOfInstitution VARCHAR(75) NOT NULL,
+    EducationServiceCenterId INT NULL,
     Discriminator VARCHAR(128) NULL,
     CreateDate TIMESTAMP NOT NULL,
     LastModifiedDate TIMESTAMP NOT NULL,
     Id UUID NOT NULL,
-    CONSTRAINT EducationOrganizationProgramProvider_PK PRIMARY KEY (EducationOrganizationProgramProviderId)
+    CONSTRAINT EducationOrganizationProgramProvider_PK PRIMARY KEY (NameOfInstitution)
 );
 ALTER TABLE edorgprogram.EducationOrganizationProgramProvider ALTER COLUMN CreateDate SET DEFAULT current_timestamp AT TIME ZONE 'UTC';
 ALTER TABLE edorgprogram.EducationOrganizationProgramProvider ALTER COLUMN Id SET DEFAULT gen_random_uuid();

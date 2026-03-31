@@ -30,8 +30,8 @@ BEGIN
 
     SET NOCOUNT ON
 
-    INSERT INTO [tracked_changes_edorgprogram].[EducationOrganizationProgramAuthorizedProvider](OldBeginDate, OldEducationOrganizationProgramProviderId, OldEducationOrganizationProgramTypeDescriptorId, OldEducationOrganizationProgramTypeDescriptorNamespace, OldEducationOrganizationProgramTypeDescriptorCodeValue, Id, Discriminator, ChangeVersion)
-    SELECT d.BeginDate, d.EducationOrganizationProgramProviderId, d.EducationOrganizationProgramTypeDescriptorId, j0.Namespace, j0.CodeValue, d.Id, d.Discriminator, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
+    INSERT INTO [tracked_changes_edorgprogram].[EducationOrganizationProgramAuthorizedProvider](OldBeginDate, OldEducationOrganizationProgramTypeDescriptorId, OldEducationOrganizationProgramTypeDescriptorNamespace, OldEducationOrganizationProgramTypeDescriptorCodeValue, OldNameOfInstitution, Id, Discriminator, ChangeVersion)
+    SELECT d.BeginDate, d.EducationOrganizationProgramTypeDescriptorId, j0.Namespace, j0.CodeValue, d.NameOfInstitution, d.Id, d.Discriminator, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
     FROM    deleted d
         INNER JOIN edfi.Descriptor j0
             ON d.EducationOrganizationProgramTypeDescriptorId = j0.DescriptorId
@@ -52,8 +52,8 @@ BEGIN
 
     SET NOCOUNT ON
 
-    INSERT INTO [tracked_changes_edorgprogram].[EducationOrganizationProgramProvider](OldEducationOrganizationProgramProviderId, Id, Discriminator, ChangeVersion)
-    SELECT d.EducationOrganizationProgramProviderId, d.Id, d.Discriminator, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
+    INSERT INTO [tracked_changes_edorgprogram].[EducationOrganizationProgramProvider](OldNameOfInstitution, Id, Discriminator, ChangeVersion)
+    SELECT d.NameOfInstitution, d.Id, d.Discriminator, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
     FROM    deleted d
 END
 GO

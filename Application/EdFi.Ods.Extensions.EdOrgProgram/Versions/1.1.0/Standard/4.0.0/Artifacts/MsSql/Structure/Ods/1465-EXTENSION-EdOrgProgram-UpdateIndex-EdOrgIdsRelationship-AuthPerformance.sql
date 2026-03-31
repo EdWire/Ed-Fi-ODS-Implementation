@@ -2,5 +2,5 @@
 DROP INDEX IF EXISTS IX_EducationOrganizationEducationOrganizationProgram_EducationOrganizationId ON [edorgprogram].[EducationOrganizationEducationOrganizationProgram];
 CREATE INDEX IX_EducationOrganizationEducationOrganizationProgram_EducationOrganizationId ON [edorgprogram].[EducationOrganizationEducationOrganizationProgram](EducationOrganizationId) INCLUDE (AggregateId);
 
-DROP INDEX IF EXISTS IX_EducationOrganizationProgramProvider_EducationOrganizationId ON [edorgprogram].[EducationOrganizationProgramProvider];
-CREATE INDEX IX_EducationOrganizationProgramProvider_EducationOrganizationId ON [edorgprogram].[EducationOrganizationProgramProvider](EducationOrganizationId) INCLUDE (AggregateId);
+DROP INDEX IF EXISTS IX_EducationOrganizationProgramProvider_EducationServiceCenterId ON [edorgprogram].[EducationOrganizationProgramProvider];
+CREATE INDEX IX_EducationOrganizationProgramProvider_EducationServiceCenterId ON [edorgprogram].[EducationOrganizationProgramProvider](EducationServiceCenterId) INCLUDE (AggregateId);

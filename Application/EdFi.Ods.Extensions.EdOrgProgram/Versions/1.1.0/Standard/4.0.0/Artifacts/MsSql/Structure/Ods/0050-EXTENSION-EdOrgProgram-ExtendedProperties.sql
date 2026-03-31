@@ -7,9 +7,9 @@ EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The type of ed org program.', @level0type=N'SCHEMA', @level0name=N'edorgprogram', @level1type=N'TABLE', @level1name=N'EducationOrganizationEducationOrganizationProgram', @level2type=N'COLUMN', @level2name=N'EducationOrganizationProgramTypeDescriptorId'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Id for an entity that is administering edOrg level programs', @level0type=N'SCHEMA', @level0name=N'edorgprogram', @level1type=N'TABLE', @level1name=N'EducationOrganizationEducationOrganizationProgram', @level2type=N'COLUMN', @level2name=N'EducationOrganizationProgramProviderId'
-GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'End date for the program.', @level0type=N'SCHEMA', @level0name=N'edorgprogram', @level1type=N'TABLE', @level1name=N'EducationOrganizationEducationOrganizationProgram', @level2type=N'COLUMN', @level2name=N'EndDate'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The full, legally accepted name of the institution.', @level0type=N'SCHEMA', @level0name=N'edorgprogram', @level1type=N'TABLE', @level1name=N'EducationOrganizationEducationOrganizationProgram', @level2type=N'COLUMN', @level2name=N'NameOfInstitution'
 GO
 
 -- Extended Properties [edorgprogram].[EducationOrganizationProgramAuthorizedProvider] --
@@ -17,9 +17,9 @@ EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'This entiy tra
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Start date for the ed org program.', @level0type=N'SCHEMA', @level0name=N'edorgprogram', @level1type=N'TABLE', @level1name=N'EducationOrganizationProgramAuthorizedProvider', @level2type=N'COLUMN', @level2name=N'BeginDate'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Id for an entity that is administering edOrg level programs', @level0type=N'SCHEMA', @level0name=N'edorgprogram', @level1type=N'TABLE', @level1name=N'EducationOrganizationProgramAuthorizedProvider', @level2type=N'COLUMN', @level2name=N'EducationOrganizationProgramProviderId'
-GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The type of ed org program that can be administered.', @level0type=N'SCHEMA', @level0name=N'edorgprogram', @level1type=N'TABLE', @level1name=N'EducationOrganizationProgramAuthorizedProvider', @level2type=N'COLUMN', @level2name=N'EducationOrganizationProgramTypeDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The full, legally accepted name of the institution.', @level0type=N'SCHEMA', @level0name=N'edorgprogram', @level1type=N'TABLE', @level1name=N'EducationOrganizationProgramAuthorizedProvider', @level2type=N'COLUMN', @level2name=N'NameOfInstitution'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'End date for the program.', @level0type=N'SCHEMA', @level0name=N'edorgprogram', @level1type=N'TABLE', @level1name=N'EducationOrganizationProgramAuthorizedProvider', @level2type=N'COLUMN', @level2name=N'EndDate'
 GO
@@ -27,11 +27,9 @@ GO
 -- Extended Properties [edorgprogram].[EducationOrganizationProgramProvider] --
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'List of providers of programs that are at the education organization level.', @level0type=N'SCHEMA', @level0name=N'edorgprogram', @level1type=N'TABLE', @level1name=N'EducationOrganizationProgramProvider'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Id for an entity that is administering edOrg level programs', @level0type=N'SCHEMA', @level0name=N'edorgprogram', @level1type=N'TABLE', @level1name=N'EducationOrganizationProgramProvider', @level2type=N'COLUMN', @level2name=N'EducationOrganizationProgramProviderId'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to an education organization.', @level0type=N'SCHEMA', @level0name=N'edorgprogram', @level1type=N'TABLE', @level1name=N'EducationOrganizationProgramProvider', @level2type=N'COLUMN', @level2name=N'EducationOrganizationId'
-GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The full, legally accepted name of the institution.', @level0type=N'SCHEMA', @level0name=N'edorgprogram', @level1type=N'TABLE', @level1name=N'EducationOrganizationProgramProvider', @level2type=N'COLUMN', @level2name=N'NameOfInstitution'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to an education service center.', @level0type=N'SCHEMA', @level0name=N'edorgprogram', @level1type=N'TABLE', @level1name=N'EducationOrganizationProgramProvider', @level2type=N'COLUMN', @level2name=N'EducationServiceCenterId'
 GO
 
 -- Extended Properties [edorgprogram].[EducationOrganizationProgramTypeDescriptor] --

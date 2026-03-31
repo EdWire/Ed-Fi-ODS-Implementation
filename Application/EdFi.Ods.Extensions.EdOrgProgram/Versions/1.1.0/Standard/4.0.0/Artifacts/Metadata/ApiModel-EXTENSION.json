@@ -283,8 +283,8 @@
           "identifierName": "EducationOrganizationProgramAuthorizedProvider_PK",
           "identifyingPropertyNames": [
             "BeginDate",
-            "EducationOrganizationProgramProviderId",
-            "EducationOrganizationProgramTypeDescriptorId"
+            "EducationOrganizationProgramTypeDescriptorId",
+            "NameOfInstitution"
           ],
           "isPrimary": true,
           "isUpdatable": false,
@@ -336,23 +336,6 @@
           }
         },
         {
-          "propertyName": "EducationOrganizationProgramProviderId",
-          "propertyType": {
-            "dbType": "Int32",
-            "maxLength": 0,
-            "precision": 10,
-            "scale": 0,
-            "isNullable": false
-          },
-          "description": "Id for an entity that is administering edOrg level programs",
-          "isIdentifying": true,
-          "isServerAssigned": false,
-          "columnNames": {
-            "sqlServer": "EducationOrganizationProgramProviderId",
-            "postgreSql": "EducationOrganizationProgramProviderId"
-          }
-        },
-        {
           "propertyName": "Id",
           "propertyType": {
             "dbType": "Guid",
@@ -397,7 +380,7 @@
             "isNullable": false
           },
           "description": "The full, legally accepted name of the institution.",
-          "isIdentifying": false,
+          "isIdentifying": true,
           "isServerAssigned": false,
           "columnNames": {
             "sqlServer": "NameOfInstitution",
@@ -409,7 +392,7 @@
         {
           "identifierName": "EducationOrganizationProgramProvider_PK",
           "identifyingPropertyNames": [
-            "EducationOrganizationProgramProviderId"
+            "NameOfInstitution"
           ],
           "isPrimary": true,
           "isUpdatable": false,
@@ -539,20 +522,21 @@
       },
       "primaryEntityProperties": [
         {
-          "propertyName": "EducationOrganizationProgramProviderId",
+          "propertyName": "NameOfInstitution",
           "propertyType": {
-            "dbType": "Int32",
-            "maxLength": 0,
-            "precision": 10,
+            "dbType": "String",
+            "minLength": 1,
+            "maxLength": 75,
+            "precision": 0,
             "scale": 0,
             "isNullable": false
           },
-          "description": "Id for an entity that is administering edOrg level programs",
+          "description": "The full, legally accepted name of the institution.",
           "isIdentifying": false,
           "isServerAssigned": false,
           "columnNames": {
-            "sqlServer": "EducationOrganizationProgramProviderId",
-            "postgreSql": "EducationOrganizationProgramProviderId"
+            "sqlServer": "NameOfInstitution",
+            "postgreSql": "NameOfInstitution"
           }
         }
       ],
@@ -562,20 +546,21 @@
       },
       "secondaryEntityProperties": [
         {
-          "propertyName": "EducationOrganizationProgramProviderId",
+          "propertyName": "NameOfInstitution",
           "propertyType": {
-            "dbType": "Int32",
-            "maxLength": 0,
-            "precision": 10,
+            "dbType": "String",
+            "minLength": 1,
+            "maxLength": 75,
+            "precision": 0,
             "scale": 0,
             "isNullable": false
           },
-          "description": "Id for an entity that is administering edOrg level programs",
+          "description": "The full, legally accepted name of the institution.",
           "isIdentifying": false,
           "isServerAssigned": false,
           "columnNames": {
-            "sqlServer": "EducationOrganizationProgramProviderId",
-            "postgreSql": "EducationOrganizationProgramProviderId"
+            "sqlServer": "NameOfInstitution",
+            "postgreSql": "NameOfInstitution"
           }
         }
       ],
@@ -659,20 +644,21 @@
       },
       "primaryEntityProperties": [
         {
-          "propertyName": "EducationOrganizationProgramProviderId",
+          "propertyName": "NameOfInstitution",
           "propertyType": {
-            "dbType": "Int32",
-            "maxLength": 0,
-            "precision": 10,
+            "dbType": "String",
+            "minLength": 1,
+            "maxLength": 75,
+            "precision": 0,
             "scale": 0,
             "isNullable": false
           },
-          "description": "Id for an entity that is administering edOrg level programs",
+          "description": "The full, legally accepted name of the institution.",
           "isIdentifying": true,
           "isServerAssigned": false,
           "columnNames": {
-            "sqlServer": "EducationOrganizationProgramProviderId",
-            "postgreSql": "EducationOrganizationProgramProviderId"
+            "sqlServer": "NameOfInstitution",
+            "postgreSql": "NameOfInstitution"
           }
         }
       ],
@@ -682,20 +668,21 @@
       },
       "secondaryEntityProperties": [
         {
-          "propertyName": "EducationOrganizationProgramProviderId",
+          "propertyName": "NameOfInstitution",
           "propertyType": {
-            "dbType": "Int32",
-            "maxLength": 0,
-            "precision": 10,
+            "dbType": "String",
+            "minLength": 1,
+            "maxLength": 75,
+            "precision": 0,
             "scale": 0,
             "isNullable": false
           },
-          "description": "Id for an entity that is administering edOrg level programs",
+          "description": "The full, legally accepted name of the institution.",
           "isIdentifying": true,
           "isServerAssigned": false,
           "columnNames": {
-            "sqlServer": "EducationOrganizationProgramProviderId",
-            "postgreSql": "EducationOrganizationProgramProviderId"
+            "sqlServer": "NameOfInstitution",
+            "postgreSql": "NameOfInstitution"
           }
         }
       ],
@@ -770,16 +757,16 @@
     {
       "fullName": {
         "schema": "edorgprogram",
-        "name": "FK_EducationOrganizationProgramProvider_EducationOrganization"
+        "name": "FK_EducationOrganizationProgramProvider_EducationServiceCenter"
       },
       "cardinality": "OneToZeroOrMore",
       "primaryEntityFullName": {
         "schema": "edfi",
-        "name": "EducationOrganization"
+        "name": "EducationServiceCenter"
       },
       "primaryEntityProperties": [
         {
-          "propertyName": "EducationOrganizationId",
+          "propertyName": "EducationServiceCenterId",
           "propertyType": {
             "dbType": "Int32",
             "maxLength": 0,
@@ -787,12 +774,12 @@
             "scale": 0,
             "isNullable": false
           },
-          "description": "The identifier assigned to an education organization.",
+          "description": "The identifier assigned to an education service center.",
           "isIdentifying": false,
           "isServerAssigned": false,
           "columnNames": {
-            "sqlServer": "EducationOrganizationId",
-            "postgreSql": "EducationOrganizationId"
+            "sqlServer": "EducationServiceCenterId",
+            "postgreSql": "EducationServiceCenterId"
           }
         }
       ],
@@ -802,7 +789,7 @@
       },
       "secondaryEntityProperties": [
         {
-          "propertyName": "EducationOrganizationId",
+          "propertyName": "EducationServiceCenterId",
           "propertyType": {
             "dbType": "Int32",
             "maxLength": 0,
@@ -810,20 +797,20 @@
             "scale": 0,
             "isNullable": true
           },
-          "description": "The identifier assigned to an education organization.",
+          "description": "The identifier assigned to an education service center.",
           "isIdentifying": false,
           "isServerAssigned": false,
           "columnNames": {
-            "sqlServer": "EducationOrganizationId",
-            "postgreSql": "EducationOrganizationId"
+            "sqlServer": "EducationServiceCenterId",
+            "postgreSql": "EducationServiceCenterId"
           }
         }
       ],
       "isIdentifying": false,
       "isRequired": false,
       "constraintNames": {
-        "sqlServer": "FK_EducationOrganizationProgramProvider_EducationOrganization",
-        "postgreSql": "FK_5934c5_EducationOrganization"
+        "sqlServer": "FK_EducationOrganizationProgramProvider_EducationServiceCenter",
+        "postgreSql": "FK_5934c5_EducationServiceCenter"
       },
       "potentiallyLogical": false
     },

@@ -96,19 +96,14 @@
     <xs:complexContent>
       <xs:extension base="ComplexObjectType">
         <xs:sequence>
-          <xs:element name="EducationOrganizationProgramProviderId" type="xs:int">
-            <xs:annotation>
-              <xs:documentation>Id for an entity that is administering edOrg level programs</xs:documentation>
-            </xs:annotation>
-          </xs:element>
           <xs:element name="NameOfInstitution" type="NameOfInstitution">
             <xs:annotation>
               <xs:documentation>The full, legally accepted name of the institution.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="EducationOrganizationReference" type="EducationOrganizationReferenceType" minOccurs="0">
+          <xs:element name="EducationServiceCenterReference" type="EducationServiceCenterReferenceType" minOccurs="0">
             <xs:annotation>
-              <xs:documentation>reference to existing education organization, when applicable.</xs:documentation>
+              <xs:documentation>reference to an existing educationServiceCenter, when applicable.</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -237,9 +232,9 @@
       </xs:appinfo>
     </xs:annotation>
     <xs:sequence>
-      <xs:element name="EducationOrganizationProgramProviderId" type="xs:int">
+      <xs:element name="NameOfInstitution" type="NameOfInstitution">
         <xs:annotation>
-          <xs:documentation>Id for an entity that is administering edOrg level programs</xs:documentation>
+          <xs:documentation>The full, legally accepted name of the institution.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>

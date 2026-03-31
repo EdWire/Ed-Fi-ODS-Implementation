@@ -2,12 +2,12 @@ ALTER TABLE [edorgprogram].[EducationOrganizationEducationOrganizationProgram] W
 REFERENCES [edfi].[EducationOrganization] ([EducationOrganizationId])
 GO
 
-ALTER TABLE [edorgprogram].[EducationOrganizationEducationOrganizationProgram] WITH CHECK ADD CONSTRAINT [FK_EducationOrganizationEducationOrganizationProgram_EducationOrganizationProgramProvider] FOREIGN KEY ([EducationOrganizationProgramProviderId])
-REFERENCES [edorgprogram].[EducationOrganizationProgramProvider] ([EducationOrganizationProgramProviderId])
+ALTER TABLE [edorgprogram].[EducationOrganizationEducationOrganizationProgram] WITH CHECK ADD CONSTRAINT [FK_EducationOrganizationEducationOrganizationProgram_EducationOrganizationProgramProvider] FOREIGN KEY ([NameOfInstitution])
+REFERENCES [edorgprogram].[EducationOrganizationProgramProvider] ([NameOfInstitution])
 GO
 
 CREATE NONCLUSTERED INDEX [FK_EducationOrganizationEducationOrganizationProgram_EducationOrganizationProgramProvider]
-ON [edorgprogram].[EducationOrganizationEducationOrganizationProgram] ([EducationOrganizationProgramProviderId] ASC)
+ON [edorgprogram].[EducationOrganizationEducationOrganizationProgram] ([NameOfInstitution] ASC)
 GO
 
 ALTER TABLE [edorgprogram].[EducationOrganizationEducationOrganizationProgram] WITH CHECK ADD CONSTRAINT [FK_EducationOrganizationEducationOrganizationProgram_EducationOrganizationProgramTypeDescriptor] FOREIGN KEY ([EducationOrganizationProgramTypeDescriptorId])
@@ -18,12 +18,12 @@ CREATE NONCLUSTERED INDEX [FK_EducationOrganizationEducationOrganizationProgram_
 ON [edorgprogram].[EducationOrganizationEducationOrganizationProgram] ([EducationOrganizationProgramTypeDescriptorId] ASC)
 GO
 
-ALTER TABLE [edorgprogram].[EducationOrganizationProgramAuthorizedProvider] WITH CHECK ADD CONSTRAINT [FK_EducationOrganizationProgramAuthorizedProvider_EducationOrganizationProgramProvider] FOREIGN KEY ([EducationOrganizationProgramProviderId])
-REFERENCES [edorgprogram].[EducationOrganizationProgramProvider] ([EducationOrganizationProgramProviderId])
+ALTER TABLE [edorgprogram].[EducationOrganizationProgramAuthorizedProvider] WITH CHECK ADD CONSTRAINT [FK_EducationOrganizationProgramAuthorizedProvider_EducationOrganizationProgramProvider] FOREIGN KEY ([NameOfInstitution])
+REFERENCES [edorgprogram].[EducationOrganizationProgramProvider] ([NameOfInstitution])
 GO
 
 CREATE NONCLUSTERED INDEX [FK_EducationOrganizationProgramAuthorizedProvider_EducationOrganizationProgramProvider]
-ON [edorgprogram].[EducationOrganizationProgramAuthorizedProvider] ([EducationOrganizationProgramProviderId] ASC)
+ON [edorgprogram].[EducationOrganizationProgramAuthorizedProvider] ([NameOfInstitution] ASC)
 GO
 
 ALTER TABLE [edorgprogram].[EducationOrganizationProgramAuthorizedProvider] WITH CHECK ADD CONSTRAINT [FK_EducationOrganizationProgramAuthorizedProvider_EducationOrganizationProgramTypeDescriptor] FOREIGN KEY ([EducationOrganizationProgramTypeDescriptorId])
@@ -34,8 +34,8 @@ CREATE NONCLUSTERED INDEX [FK_EducationOrganizationProgramAuthorizedProvider_Edu
 ON [edorgprogram].[EducationOrganizationProgramAuthorizedProvider] ([EducationOrganizationProgramTypeDescriptorId] ASC)
 GO
 
-ALTER TABLE [edorgprogram].[EducationOrganizationProgramProvider] WITH CHECK ADD CONSTRAINT [FK_EducationOrganizationProgramProvider_EducationOrganization] FOREIGN KEY ([EducationOrganizationId])
-REFERENCES [edfi].[EducationOrganization] ([EducationOrganizationId])
+ALTER TABLE [edorgprogram].[EducationOrganizationProgramProvider] WITH CHECK ADD CONSTRAINT [FK_EducationOrganizationProgramProvider_EducationServiceCenter] FOREIGN KEY ([EducationServiceCenterId])
+REFERENCES [edfi].[EducationServiceCenter] ([EducationServiceCenterId])
 GO
 
 ALTER TABLE [edorgprogram].[EducationOrganizationProgramTypeDescriptor] WITH CHECK ADD CONSTRAINT [FK_EducationOrganizationProgramTypeDescriptor_Descriptor] FOREIGN KEY ([EducationOrganizationProgramTypeDescriptorId])
