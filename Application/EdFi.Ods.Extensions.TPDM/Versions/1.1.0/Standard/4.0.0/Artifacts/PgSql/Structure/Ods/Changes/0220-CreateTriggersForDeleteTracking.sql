@@ -1197,23 +1197,6 @@ CREATE TRIGGER TrackDeletes AFTER DELETE ON tpdm.hiringsourcedescriptor
     FOR EACH ROW EXECUTE PROCEDURE tracked_changes_tpdm.hiringsourcedescriptor_deleted();
 END IF;
 
-CREATE OR REPLACE FUNCTION tracked_changes_tpdm.instructionalsettingdescriptor_deleted()
-    RETURNS trigger AS
-$BODY$
-BEGIN
-    INSERT INTO tracked_changes_edfi.descriptor(olddescriptorid, oldcodevalue, oldnamespace, id, discriminator, changeversion)
-    SELECT OLD.InstructionalSettingDescriptorId, b.codevalue, b.namespace, b.id, 'tpdm.InstructionalSettingDescriptor', nextval('changes.ChangeVersionSequence')
-    FROM edfi.descriptor b WHERE old.InstructionalSettingDescriptorId = b.descriptorid ;
-
-    RETURN NULL;
-END;
-$BODY$ LANGUAGE plpgsql;
-
-IF NOT EXISTS(SELECT 1 FROM information_schema.triggers WHERE trigger_name = 'trackdeletes' AND event_object_schema = 'tpdm' AND event_object_table = 'instructionalsettingdescriptor') THEN
-CREATE TRIGGER TrackDeletes AFTER DELETE ON tpdm.instructionalsettingdescriptor 
-    FOR EACH ROW EXECUTE PROCEDURE tracked_changes_tpdm.instructionalsettingdescriptor_deleted();
-END IF;
-
 CREATE OR REPLACE FUNCTION tracked_changes_tpdm.lengthofcontractdescriptor_deleted()
     RETURNS trigger AS
 $BODY$

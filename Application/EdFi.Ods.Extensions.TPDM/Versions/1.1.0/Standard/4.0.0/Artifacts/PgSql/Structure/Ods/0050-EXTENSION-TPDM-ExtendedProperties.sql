@@ -596,7 +596,6 @@ COMMENT ON COLUMN tpdm.Certification.EducationOrganizationId IS 'The identifier 
 COMMENT ON COLUMN tpdm.Certification.EducatorRoleDescriptorId IS 'The role authorized by the Certification (e.g., Principal, Reading Specialist), typically associated with service and administrative certifications.';
 COMMENT ON COLUMN tpdm.Certification.EffectiveDate IS 'The year, month and day on which the Certification is offered.';
 COMMENT ON COLUMN tpdm.Certification.EndDate IS 'The month, day, and year on which the Certification offering is expected to end.';
-COMMENT ON COLUMN tpdm.Certification.InstructionalSettingDescriptorId IS 'The setting authorized by the Certification in which a child receives education and related services; for example: Classroom, Virtual, Vocational.';
 COMMENT ON COLUMN tpdm.Certification.MinimumDegreeDescriptorId IS 'The minimum level of degree, if any, required for Certification.';
 COMMENT ON COLUMN tpdm.Certification.PopulationServedDescriptorId IS 'The type of students the Section is offered and tailored to; for example: Bilingual students, Remedial education students, Gifted and talented students, Career and Technical Education students, Special education students.';
 
@@ -1124,10 +1123,6 @@ COMMENT ON COLUMN tpdm.HireStatusDescriptor.HireStatusDescriptorId IS 'A unique 
 -- Extended Properties [tpdm].[HiringSourceDescriptor] --
 COMMENT ON TABLE tpdm.HiringSourceDescriptor IS 'The descriptor holds the source for the application (e.g.,job fair, website, referral, etc.).';
 COMMENT ON COLUMN tpdm.HiringSourceDescriptor.HiringSourceDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
-
--- Extended Properties [tpdm].[InstructionalSettingDescriptor] --
-COMMENT ON TABLE tpdm.InstructionalSettingDescriptor IS 'The setting authorized by the Certification in which a child receives education and related services; for example: Classroom, Virtual, Vocational.';
-COMMENT ON COLUMN tpdm.InstructionalSettingDescriptor.InstructionalSettingDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
 
 -- Extended Properties [tpdm].[LengthOfContractDescriptor] --
 COMMENT ON TABLE tpdm.LengthOfContractDescriptor IS 'The length of contract (e.g., 12 month, 9 month, summer).';

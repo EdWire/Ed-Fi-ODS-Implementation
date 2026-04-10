@@ -1054,13 +1054,6 @@ REFERENCES tpdm.EducatorRoleDescriptor (EducatorRoleDescriptorId)
 CREATE INDEX FK_86846f_EducatorRoleDescriptor
 ON tpdm.Certification (EducatorRoleDescriptorId ASC);
 
-ALTER TABLE tpdm.Certification ADD CONSTRAINT FK_86846f_InstructionalSettingDescriptor FOREIGN KEY (InstructionalSettingDescriptorId)
-REFERENCES tpdm.InstructionalSettingDescriptor (InstructionalSettingDescriptorId)
-;
-
-CREATE INDEX FK_86846f_InstructionalSettingDescriptor
-ON tpdm.Certification (InstructionalSettingDescriptorId ASC);
-
 ALTER TABLE tpdm.Certification ADD CONSTRAINT FK_86846f_PopulationServedDescriptor FOREIGN KEY (PopulationServedDescriptorId)
 REFERENCES edfi.PopulationServedDescriptor (PopulationServedDescriptorId)
 ;
@@ -1721,11 +1714,6 @@ ON DELETE CASCADE
 ;
 
 ALTER TABLE tpdm.HiringSourceDescriptor ADD CONSTRAINT FK_7d10e3_Descriptor FOREIGN KEY (HiringSourceDescriptorId)
-REFERENCES edfi.Descriptor (DescriptorId)
-ON DELETE CASCADE
-;
-
-ALTER TABLE tpdm.InstructionalSettingDescriptor ADD CONSTRAINT FK_d9876b_Descriptor FOREIGN KEY (InstructionalSettingDescriptorId)
 REFERENCES edfi.Descriptor (DescriptorId)
 ON DELETE CASCADE
 ;

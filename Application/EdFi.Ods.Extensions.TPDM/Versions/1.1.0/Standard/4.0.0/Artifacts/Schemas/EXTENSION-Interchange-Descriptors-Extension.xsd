@@ -237,7 +237,6 @@ The Descriptor interchange is used to describe metadata about the descriptors an
         <xs:element name="GoalTypeDescriptor" type="EXTENSION-GoalTypeDescriptor" />
         <xs:element name="HireStatusDescriptor" type="EXTENSION-HireStatusDescriptor" />
         <xs:element name="HiringSourceDescriptor" type="EXTENSION-HiringSourceDescriptor" />
-        <xs:element name="InstructionalSettingDescriptor" type="EXTENSION-InstructionalSettingDescriptor" />
         <xs:element name="LengthOfContractDescriptor" type="EXTENSION-LengthOfContractDescriptor" />
         <xs:element name="ObjectiveRatingLevelDescriptor" type="EXTENSION-ObjectiveRatingLevelDescriptor" />
         <xs:element name="OpenStaffPositionEventStatusDescriptor" type="EXTENSION-OpenStaffPositionEventStatusDescriptor" />

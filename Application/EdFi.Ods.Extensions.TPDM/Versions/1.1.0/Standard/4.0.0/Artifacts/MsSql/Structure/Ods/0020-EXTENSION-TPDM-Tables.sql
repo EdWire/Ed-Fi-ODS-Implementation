@@ -1249,7 +1249,6 @@ CREATE TABLE [tpdm].[Certification] (
     [EducatorRoleDescriptorId] [INT] NULL,
     [EffectiveDate] [DATE] NULL,
     [EndDate] [DATE] NULL,
-    [InstructionalSettingDescriptorId] [INT] NULL,
     [MinimumDegreeDescriptorId] [INT] NULL,
     [PopulationServedDescriptorId] [INT] NULL,
     [Discriminator] [NVARCHAR](128) NULL,
@@ -2465,15 +2464,6 @@ CREATE TABLE [tpdm].[HiringSourceDescriptor] (
     [HiringSourceDescriptorId] [INT] NOT NULL,
     CONSTRAINT [HiringSourceDescriptor_PK] PRIMARY KEY CLUSTERED (
         [HiringSourceDescriptorId] ASC
-    ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
-GO
-
--- Table [tpdm].[InstructionalSettingDescriptor] --
-CREATE TABLE [tpdm].[InstructionalSettingDescriptor] (
-    [InstructionalSettingDescriptorId] [INT] NOT NULL,
-    CONSTRAINT [InstructionalSettingDescriptor_PK] PRIMARY KEY CLUSTERED (
-        [InstructionalSettingDescriptorId] ASC
     ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO

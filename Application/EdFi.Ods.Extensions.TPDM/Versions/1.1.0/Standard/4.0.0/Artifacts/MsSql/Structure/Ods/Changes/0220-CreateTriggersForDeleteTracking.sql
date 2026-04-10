@@ -1289,27 +1289,6 @@ ALTER TABLE [tpdm].[HiringSourceDescriptor] ENABLE TRIGGER [tpdm_HiringSourceDes
 GO
 
 
-DROP TRIGGER IF EXISTS [tpdm].[tpdm_InstructionalSettingDescriptor_TR_DeleteTracking]
-GO
-
-CREATE TRIGGER [tpdm].[tpdm_InstructionalSettingDescriptor_TR_DeleteTracking] ON [tpdm].[InstructionalSettingDescriptor] AFTER DELETE AS
-BEGIN
-    IF @@rowcount = 0 
-        RETURN
-
-    SET NOCOUNT ON
-
-    INSERT INTO [tracked_changes_edfi].[Descriptor](OldDescriptorId, OldCodeValue, OldNamespace, Id, Discriminator, ChangeVersion)
-    SELECT  d.InstructionalSettingDescriptorId, b.CodeValue, b.Namespace, b.Id, 'tpdm.InstructionalSettingDescriptor', (NEXT VALUE FOR [changes].[ChangeVersionSequence])
-    FROM    deleted d
-            INNER JOIN edfi.Descriptor b ON d.InstructionalSettingDescriptorId = b.DescriptorId
-END
-GO
-
-ALTER TABLE [tpdm].[InstructionalSettingDescriptor] ENABLE TRIGGER [tpdm_InstructionalSettingDescriptor_TR_DeleteTracking]
-GO
-
-
 DROP TRIGGER IF EXISTS [tpdm].[tpdm_LengthOfContractDescriptor_TR_DeleteTracking]
 GO
 

@@ -694,14 +694,6 @@
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
-          <xs:element name="InstructionalSetting" type="EXTENSION-InstructionalSettingDescriptorReferenceType" minOccurs="0">
-            <xs:annotation>
-              <xs:documentation>The setting authorized by the Certification in which a child receives education and related services; for example: Classroom, Virtual, Vocational.</xs:documentation>
-              <xs:appinfo>
-                <ann:Descriptor>EXTENSION-InstructionalSettingDescriptor</ann:Descriptor>
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
           <xs:element name="CertificationExamReference" type="EXTENSION-CertificationExamReferenceType" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation>
               <xs:documentation>The Certification Eams required for the Certification.</xs:documentation>
@@ -2964,17 +2956,6 @@
   <xs:complexType name="EXTENSION-HiringSourceDescriptor">
     <xs:annotation>
       <xs:documentation>The descriptor holds the source for the application (e.g.,job fair, website, referral, etc.).</xs:documentation>
-      <xs:appinfo>
-        <ann:TypeGroup>Descriptor</ann:TypeGroup>
-      </xs:appinfo>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:extension base="DescriptorType" />
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="EXTENSION-InstructionalSettingDescriptor">
-    <xs:annotation>
-      <xs:documentation>The setting authorized by the Certification in which a child receives education and related services; for example: Classroom, Virtual, Vocational.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Descriptor</ann:TypeGroup>
       </xs:appinfo>
@@ -5348,15 +5329,6 @@
   <xs:simpleType name="EXTENSION-HiringSourceDescriptorReferenceType">
     <xs:annotation>
       <xs:documentation>The descriptor holds the source for the application (e.g.,job fair, website, referral, etc.).</xs:documentation>
-      <xs:appinfo>
-        <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
-      </xs:appinfo>
-    </xs:annotation>
-    <xs:restriction base="DescriptorReferenceType" />
-  </xs:simpleType>
-  <xs:simpleType name="EXTENSION-InstructionalSettingDescriptorReferenceType">
-    <xs:annotation>
-      <xs:documentation>The setting authorized by the Certification in which a child receives education and related services; for example: Classroom, Virtual, Vocational.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
       </xs:appinfo>

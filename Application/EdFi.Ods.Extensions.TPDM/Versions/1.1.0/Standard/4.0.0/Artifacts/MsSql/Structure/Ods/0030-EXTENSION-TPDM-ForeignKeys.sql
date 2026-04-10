@@ -1161,14 +1161,6 @@ CREATE NONCLUSTERED INDEX [FK_Certification_EducatorRoleDescriptor]
 ON [tpdm].[Certification] ([EducatorRoleDescriptorId] ASC)
 GO
 
-ALTER TABLE [tpdm].[Certification] WITH CHECK ADD CONSTRAINT [FK_Certification_InstructionalSettingDescriptor] FOREIGN KEY ([InstructionalSettingDescriptorId])
-REFERENCES [tpdm].[InstructionalSettingDescriptor] ([InstructionalSettingDescriptorId])
-GO
-
-CREATE NONCLUSTERED INDEX [FK_Certification_InstructionalSettingDescriptor]
-ON [tpdm].[Certification] ([InstructionalSettingDescriptorId] ASC)
-GO
-
 ALTER TABLE [tpdm].[Certification] WITH CHECK ADD CONSTRAINT [FK_Certification_PopulationServedDescriptor] FOREIGN KEY ([PopulationServedDescriptorId])
 REFERENCES [edfi].[PopulationServedDescriptor] ([PopulationServedDescriptorId])
 GO
@@ -1890,11 +1882,6 @@ ON DELETE CASCADE
 GO
 
 ALTER TABLE [tpdm].[HiringSourceDescriptor] WITH CHECK ADD CONSTRAINT [FK_HiringSourceDescriptor_Descriptor] FOREIGN KEY ([HiringSourceDescriptorId])
-REFERENCES [edfi].[Descriptor] ([DescriptorId])
-ON DELETE CASCADE
-GO
-
-ALTER TABLE [tpdm].[InstructionalSettingDescriptor] WITH CHECK ADD CONSTRAINT [FK_InstructionalSettingDescriptor_Descriptor] FOREIGN KEY ([InstructionalSettingDescriptorId])
 REFERENCES [edfi].[Descriptor] ([DescriptorId])
 ON DELETE CASCADE
 GO

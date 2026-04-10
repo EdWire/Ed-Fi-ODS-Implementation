@@ -863,7 +863,6 @@ CREATE TABLE tpdm.Certification (
     EducatorRoleDescriptorId INT NULL,
     EffectiveDate DATE NULL,
     EndDate DATE NULL,
-    InstructionalSettingDescriptorId INT NULL,
     MinimumDegreeDescriptorId INT NULL,
     PopulationServedDescriptorId INT NULL,
     Discriminator VARCHAR(128) NULL,
@@ -1652,12 +1651,6 @@ CREATE TABLE tpdm.HireStatusDescriptor (
 CREATE TABLE tpdm.HiringSourceDescriptor (
     HiringSourceDescriptorId INT NOT NULL,
     CONSTRAINT HiringSourceDescriptor_PK PRIMARY KEY (HiringSourceDescriptorId)
-);
-
--- Table tpdm.InstructionalSettingDescriptor --
-CREATE TABLE tpdm.InstructionalSettingDescriptor (
-    InstructionalSettingDescriptorId INT NOT NULL,
-    CONSTRAINT InstructionalSettingDescriptor_PK PRIMARY KEY (InstructionalSettingDescriptorId)
 );
 
 -- Table tpdm.LengthOfContractDescriptor --

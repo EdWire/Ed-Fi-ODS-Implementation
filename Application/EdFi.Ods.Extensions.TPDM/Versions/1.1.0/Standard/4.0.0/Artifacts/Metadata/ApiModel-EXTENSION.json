@@ -962,18 +962,6 @@
     {
       "aggregateRootEntityName": {
         "schema": "tpdm",
-        "name": "InstructionalSettingDescriptor"
-      },
-      "aggregateEntityNames": [
-        {
-          "schema": "tpdm",
-          "name": "InstructionalSettingDescriptor"
-        }
-      ]
-    },
-    {
-      "aggregateRootEntityName": {
-        "schema": "tpdm",
         "name": "LengthOfContractDescriptor"
       },
       "aggregateEntityNames": [
@@ -12362,32 +12350,6 @@
       "tableNames": {
         "sqlServer": "HiringSourceDescriptor",
         "postgreSql": "HiringSourceDescriptor"
-      }
-    },
-    {
-      "schema": "tpdm",
-      "name": "InstructionalSettingDescriptor",
-      "locallyDefinedProperties": [],
-      "identifiers": [
-        {
-          "identifierName": "InstructionalSettingDescriptor_PK",
-          "identifyingPropertyNames": [
-            "InstructionalSettingDescriptorId"
-          ],
-          "isPrimary": true,
-          "isUpdatable": false,
-          "constraintNames": {
-            "sqlServer": "InstructionalSettingDescriptor_PK",
-            "postgreSql": "InstructionalSettingDescriptor_PK"
-          }
-        }
-      ],
-      "isAbstract": false,
-      "description": "The setting authorized by the Certification in which a child receives education and related services; for example: Classroom, Virtual, Vocational.",
-      "domains": [],
-      "tableNames": {
-        "sqlServer": "InstructionalSettingDescriptor",
-        "postgreSql": "InstructionalSettingDescriptor"
       }
     },
     {
@@ -29759,66 +29721,6 @@
     {
       "fullName": {
         "schema": "tpdm",
-        "name": "FK_Certification_InstructionalSettingDescriptor"
-      },
-      "cardinality": "OneToZeroOrMore",
-      "primaryEntityFullName": {
-        "schema": "tpdm",
-        "name": "InstructionalSettingDescriptor"
-      },
-      "primaryEntityProperties": [
-        {
-          "propertyName": "InstructionalSettingDescriptorId",
-          "propertyType": {
-            "dbType": "Int32",
-            "maxLength": 0,
-            "precision": 10,
-            "scale": 0,
-            "isNullable": false
-          },
-          "description": "A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.",
-          "isIdentifying": false,
-          "isServerAssigned": false,
-          "columnNames": {
-            "sqlServer": "InstructionalSettingDescriptorId",
-            "postgreSql": "InstructionalSettingDescriptorId"
-          }
-        }
-      ],
-      "secondaryEntityFullName": {
-        "schema": "tpdm",
-        "name": "Certification"
-      },
-      "secondaryEntityProperties": [
-        {
-          "propertyName": "InstructionalSettingDescriptorId",
-          "propertyType": {
-            "dbType": "Int32",
-            "maxLength": 0,
-            "precision": 10,
-            "scale": 0,
-            "isNullable": true
-          },
-          "description": "The setting authorized by the Certification in which a child receives education and related services; for example: Classroom, Virtual, Vocational.",
-          "isIdentifying": false,
-          "isServerAssigned": false,
-          "columnNames": {
-            "sqlServer": "InstructionalSettingDescriptorId",
-            "postgreSql": "InstructionalSettingDescriptorId"
-          }
-        }
-      ],
-      "isIdentifying": false,
-      "isRequired": false,
-      "constraintNames": {
-        "sqlServer": "FK_Certification_InstructionalSettingDescriptor",
-        "postgreSql": "FK_86846f_InstructionalSettingDescriptor"
-      },
-      "potentiallyLogical": false
-    },
-    {
-      "fullName": {
-        "schema": "tpdm",
         "name": "FK_Certification_PopulationServedDescriptor"
       },
       "cardinality": "OneToZeroOrMore",
@@ -43232,66 +43134,6 @@
       "constraintNames": {
         "sqlServer": "FK_HiringSourceDescriptor_Descriptor",
         "postgreSql": "FK_7d10e3_Descriptor"
-      },
-      "potentiallyLogical": false
-    },
-    {
-      "fullName": {
-        "schema": "tpdm",
-        "name": "FK_InstructionalSettingDescriptor_Descriptor"
-      },
-      "cardinality": "OneToOneInheritance",
-      "primaryEntityFullName": {
-        "schema": "edfi",
-        "name": "Descriptor"
-      },
-      "primaryEntityProperties": [
-        {
-          "propertyName": "DescriptorId",
-          "propertyType": {
-            "dbType": "Int32",
-            "maxLength": 0,
-            "precision": 10,
-            "scale": 0,
-            "isNullable": false
-          },
-          "description": "A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.",
-          "isIdentifying": true,
-          "isServerAssigned": true,
-          "columnNames": {
-            "sqlServer": "DescriptorId",
-            "postgreSql": "DescriptorId"
-          }
-        }
-      ],
-      "secondaryEntityFullName": {
-        "schema": "tpdm",
-        "name": "InstructionalSettingDescriptor"
-      },
-      "secondaryEntityProperties": [
-        {
-          "propertyName": "InstructionalSettingDescriptorId",
-          "propertyType": {
-            "dbType": "Int32",
-            "maxLength": 0,
-            "precision": 10,
-            "scale": 0,
-            "isNullable": false
-          },
-          "description": "A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.",
-          "isIdentifying": true,
-          "isServerAssigned": true,
-          "columnNames": {
-            "sqlServer": "InstructionalSettingDescriptorId",
-            "postgreSql": "InstructionalSettingDescriptorId"
-          }
-        }
-      ],
-      "isIdentifying": true,
-      "isRequired": true,
-      "constraintNames": {
-        "sqlServer": "FK_InstructionalSettingDescriptor_Descriptor",
-        "postgreSql": "FK_d9876b_Descriptor"
       },
       "potentiallyLogical": false
     },
