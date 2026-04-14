@@ -2038,8 +2038,12 @@ CREATE TABLE [tpdm].[EvaluationRating] (
     [SchoolYear] [SMALLINT] NOT NULL,
     [SourceSystemDescriptorId] [INT] NOT NULL,
     [TermDescriptorId] [INT] NOT NULL,
+    [AcademicSubjectDescriptorId] [INT] NULL,
+    [AreaOfRefinement] [NVARCHAR](1024) NULL,
+    [AreaOfReinforcement] [NVARCHAR](1024) NULL,
     [EvaluationRatingLevelDescriptorId] [INT] NULL,
     [EvaluationRatingStatusDescriptorId] [INT] NULL,
+    [EvaluationRatingTypeDescriptorId] [INT] NULL,
     [LocalCourseCode] [NVARCHAR](60) NULL,
     [SchoolId] [INT] NULL,
     [SectionIdentifier] [NVARCHAR](255) NULL,
@@ -2218,6 +2222,15 @@ CREATE TABLE [tpdm].[EvaluationRatingStatusDescriptor] (
     [EvaluationRatingStatusDescriptorId] [INT] NOT NULL,
     CONSTRAINT [EvaluationRatingStatusDescriptor_PK] PRIMARY KEY CLUSTERED (
         [EvaluationRatingStatusDescriptorId] ASC
+    ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+-- Table [tpdm].[EvaluationRatingTypeDescriptor] --
+CREATE TABLE [tpdm].[EvaluationRatingTypeDescriptor] (
+    [EvaluationRatingTypeDescriptorId] [INT] NOT NULL,
+    CONSTRAINT [EvaluationRatingTypeDescriptor_PK] PRIMARY KEY CLUSTERED (
+        [EvaluationRatingTypeDescriptorId] ASC
     ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
@@ -2667,17 +2680,13 @@ CREATE TABLE [tpdm].[PerformanceEvaluationRating] (
     [SchoolYear] [SMALLINT] NOT NULL,
     [SourceSystemDescriptorId] [INT] NOT NULL,
     [TermDescriptorId] [INT] NOT NULL,
-    [AcademicSubjectDescriptorId] [INT] NULL,
     [ActualDate] [DATE] NOT NULL,
     [ActualDuration] [INT] NULL,
     [ActualTime] [TIME](7) NULL,
     [Announced] [BIT] NULL,
-    [AreaOfRefinement] [NVARCHAR](1024) NULL,
-    [AreaOfReinforcement] [NVARCHAR](1024) NULL,
     [Comments] [NVARCHAR](1024) NULL,
     [CoteachingStyleObservedDescriptorId] [INT] NULL,
     [PerformanceEvaluationRatingLevelDescriptorId] [INT] NULL,
-    [PerformanceEvaluationRatingTypeDescriptorId] [INT] NULL,
     [ScheduleDate] [DATE] NULL,
     [Discriminator] [NVARCHAR](128) NULL,
     [CreateDate] [DATETIME2] NOT NULL,
@@ -2830,15 +2839,6 @@ CREATE TABLE [tpdm].[PerformanceEvaluationRatingReviewerReceivedTraining] (
 ) ON [PRIMARY]
 GO
 ALTER TABLE [tpdm].[PerformanceEvaluationRatingReviewerReceivedTraining] ADD CONSTRAINT [PerformanceEvaluationRatingReviewerReceivedTraining_DF_CreateDate] DEFAULT (getutcdate()) FOR [CreateDate]
-GO
-
--- Table [tpdm].[PerformanceEvaluationRatingTypeDescriptor] --
-CREATE TABLE [tpdm].[PerformanceEvaluationRatingTypeDescriptor] (
-    [PerformanceEvaluationRatingTypeDescriptorId] [INT] NOT NULL,
-    CONSTRAINT [PerformanceEvaluationRatingTypeDescriptor_PK] PRIMARY KEY CLUSTERED (
-        [PerformanceEvaluationRatingTypeDescriptorId] ASC
-    ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
-) ON [PRIMARY]
 GO
 
 -- Table [tpdm].[PerformanceEvaluationTypeDescriptor] --

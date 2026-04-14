@@ -1369,6 +1369,32 @@
               <xs:documentation>The section associated with a classroom evaluation.</xs:documentation>
             </xs:annotation>
           </xs:element>
+          <xs:element name="AreaOfRefinement" type="EXTENSION-Comments" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Area identified for person to refine or improve as part of the evaluation.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="AreaOfReinforcement" type="EXTENSION-Comments" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Area identified for reinforcement or positive feedback as part of the evaluation.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="AcademicSubject" type="AcademicSubjectDescriptorReferenceType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The description of the content or subject area of a performance evaluation rating.</xs:documentation>
+              <xs:appinfo>
+                <ann:Descriptor>AcademicSubjectDescriptor</ann:Descriptor>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="EvaluationRatingType" type="EXTENSION-EvaluationRatingTypeDescriptorReferenceType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Differentiate between Standard and calibration evaluations</xs:documentation>
+              <xs:appinfo>
+                <ann:Descriptor>EXTENSION-EvaluationRatingTypeDescriptor</ann:Descriptor>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
           <xs:element name="EvaluationRatingStatus" type="EXTENSION-EvaluationRatingStatusDescriptorReferenceType" minOccurs="0">
             <xs:annotation>
               <xs:documentation>The Status of the poerformance evaluation.</xs:documentation>
@@ -1861,16 +1887,6 @@
               <xs:documentation>An indicator of whether the performance evaluation was announced or not.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="AreaOfRefinement" type="EXTENSION-Comments" minOccurs="0">
-            <xs:annotation>
-              <xs:documentation>Area identified for person to refine or improve as part of the evaluation.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="AreaOfReinforcement" type="EXTENSION-Comments" minOccurs="0">
-            <xs:annotation>
-              <xs:documentation>Area identified for reinforcement or positive feedback as part of the evaluation.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
           <xs:element name="Comments" type="EXTENSION-Comments" minOccurs="0">
             <xs:annotation>
               <xs:documentation>Any comments about the performance evaluation to be captured.</xs:documentation>
@@ -1902,14 +1918,6 @@
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
-          <xs:element name="AcademicSubject" type="AcademicSubjectDescriptorReferenceType" minOccurs="0">
-            <xs:annotation>
-              <xs:documentation>The description of the content or subject area of a performance evaluation rating.</xs:documentation>
-              <xs:appinfo>
-                <ann:Descriptor>AcademicSubjectDescriptor</ann:Descriptor>
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
           <xs:element name="Reviewer" type="EXTENSION-Reviewer" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation>
               <xs:documentation>The person(s) that conducted the performance evaluation.</xs:documentation>
@@ -1923,14 +1931,6 @@
           <xs:element name="ActualTime" type="xs:time" minOccurs="0">
             <xs:annotation>
               <xs:documentation>An indication of the the time at which the performance evaluation was conducted.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="PerformanceEvaluationRatingType" type="EXTENSION-PerformanceEvaluationRatingTypeDescriptorReferenceType" minOccurs="0">
-            <xs:annotation>
-              <xs:documentation>Differentiate between Standard and calibration evaluations</xs:documentation>
-              <xs:appinfo>
-                <ann:Descriptor>EXTENSION-PerformanceEvaluationRatingTypeDescriptor</ann:Descriptor>
-              </xs:appinfo>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -2876,6 +2876,17 @@
       <xs:extension base="DescriptorType" />
     </xs:complexContent>
   </xs:complexType>
+  <xs:complexType name="EXTENSION-EvaluationRatingTypeDescriptor">
+    <xs:annotation>
+      <xs:documentation>Differentiate between Standard and calibration evaluations</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Descriptor</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DescriptorType" />
+    </xs:complexContent>
+  </xs:complexType>
   <xs:complexType name="EXTENSION-EvaluationTypeDescriptor">
     <xs:annotation>
       <xs:documentation>The type of the evaluation (e.g., observation, principal, peer, student survey, student growth).</xs:documentation>
@@ -3022,17 +3033,6 @@
   <xs:complexType name="EXTENSION-PerformanceEvaluationRatingLevelDescriptor">
     <xs:annotation>
       <xs:documentation>Rating levels for Performance Evaluations.</xs:documentation>
-      <xs:appinfo>
-        <ann:TypeGroup>Descriptor</ann:TypeGroup>
-      </xs:appinfo>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:extension base="DescriptorType" />
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="EXTENSION-PerformanceEvaluationRatingTypeDescriptor">
-    <xs:annotation>
-      <xs:documentation>Differentiate between Standard and calibration evaluations</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Descriptor</ann:TypeGroup>
       </xs:appinfo>
@@ -5263,6 +5263,15 @@
     </xs:annotation>
     <xs:restriction base="DescriptorReferenceType" />
   </xs:simpleType>
+  <xs:simpleType name="EXTENSION-EvaluationRatingTypeDescriptorReferenceType">
+    <xs:annotation>
+      <xs:documentation>Differentiate between Standard and calibration evaluations</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="DescriptorReferenceType" />
+  </xs:simpleType>
   <xs:simpleType name="EXTENSION-EvaluationTypeDescriptorReferenceType">
     <xs:annotation>
       <xs:documentation>The type of the evaluation (e.g., observation, principal, peer, student survey, student growth).</xs:documentation>
@@ -5383,15 +5392,6 @@
   <xs:simpleType name="EXTENSION-PerformanceEvaluationRatingLevelDescriptorReferenceType">
     <xs:annotation>
       <xs:documentation>Rating levels for Performance Evaluations.</xs:documentation>
-      <xs:appinfo>
-        <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
-      </xs:appinfo>
-    </xs:annotation>
-    <xs:restriction base="DescriptorReferenceType" />
-  </xs:simpleType>
-  <xs:simpleType name="EXTENSION-PerformanceEvaluationRatingTypeDescriptorReferenceType">
-    <xs:annotation>
-      <xs:documentation>Differentiate between Standard and calibration evaluations</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
       </xs:appinfo>

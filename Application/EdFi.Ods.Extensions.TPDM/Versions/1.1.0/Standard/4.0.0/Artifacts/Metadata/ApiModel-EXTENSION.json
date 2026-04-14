@@ -814,6 +814,18 @@
     {
       "aggregateRootEntityName": {
         "schema": "tpdm",
+        "name": "EvaluationRatingTypeDescriptor"
+      },
+      "aggregateEntityNames": [
+        {
+          "schema": "tpdm",
+          "name": "EvaluationRatingTypeDescriptor"
+        }
+      ]
+    },
+    {
+      "aggregateRootEntityName": {
+        "schema": "tpdm",
         "name": "EvaluationTypeDescriptor"
       },
       "aggregateEntityNames": [
@@ -1088,18 +1100,6 @@
         {
           "schema": "tpdm",
           "name": "PerformanceEvaluationRatingLevelDescriptor"
-        }
-      ]
-    },
-    {
-      "aggregateRootEntityName": {
-        "schema": "tpdm",
-        "name": "PerformanceEvaluationRatingTypeDescriptor"
-      },
-      "aggregateEntityNames": [
-        {
-          "schema": "tpdm",
-          "name": "PerformanceEvaluationRatingTypeDescriptor"
         }
       ]
     },
@@ -10805,6 +10805,42 @@
       "name": "EvaluationRating",
       "locallyDefinedProperties": [
         {
+          "propertyName": "AreaOfRefinement",
+          "propertyType": {
+            "dbType": "String",
+            "minLength": 1,
+            "maxLength": 1024,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": true
+          },
+          "description": "Area identified for person to refine or improve as part of the evaluation.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "AreaOfRefinement",
+            "postgreSql": "AreaOfRefinement"
+          }
+        },
+        {
+          "propertyName": "AreaOfReinforcement",
+          "propertyType": {
+            "dbType": "String",
+            "minLength": 1,
+            "maxLength": 1024,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": true
+          },
+          "description": "Area identified for reinforcement or positive feedback as part of the evaluation.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "AreaOfReinforcement",
+            "postgreSql": "AreaOfReinforcement"
+          }
+        },
+        {
           "propertyName": "CreateDate",
           "propertyType": {
             "dbType": "DateTime2",
@@ -11325,6 +11361,32 @@
       "tableNames": {
         "sqlServer": "EvaluationRatingStatusDescriptor",
         "postgreSql": "EvaluationRatingStatusDescriptor"
+      }
+    },
+    {
+      "schema": "tpdm",
+      "name": "EvaluationRatingTypeDescriptor",
+      "locallyDefinedProperties": [],
+      "identifiers": [
+        {
+          "identifierName": "EvaluationRatingTypeDescriptor_PK",
+          "identifyingPropertyNames": [
+            "EvaluationRatingTypeDescriptorId"
+          ],
+          "isPrimary": true,
+          "isUpdatable": false,
+          "constraintNames": {
+            "sqlServer": "EvaluationRatingTypeDescriptor_PK",
+            "postgreSql": "EvaluationRatingTypeDescriptor_PK"
+          }
+        }
+      ],
+      "isAbstract": false,
+      "description": "Differentiate between Standard and calibration evaluations",
+      "domains": [],
+      "tableNames": {
+        "sqlServer": "EvaluationRatingTypeDescriptor",
+        "postgreSql": "EvaluationRatingTypeDescriptor"
       }
     },
     {
@@ -13139,42 +13201,6 @@
           }
         },
         {
-          "propertyName": "AreaOfRefinement",
-          "propertyType": {
-            "dbType": "String",
-            "minLength": 1,
-            "maxLength": 1024,
-            "precision": 0,
-            "scale": 0,
-            "isNullable": true
-          },
-          "description": "Area identified for person to refine or improve as part of the evaluation.",
-          "isIdentifying": false,
-          "isServerAssigned": false,
-          "columnNames": {
-            "sqlServer": "AreaOfRefinement",
-            "postgreSql": "AreaOfRefinement"
-          }
-        },
-        {
-          "propertyName": "AreaOfReinforcement",
-          "propertyType": {
-            "dbType": "String",
-            "minLength": 1,
-            "maxLength": 1024,
-            "precision": 0,
-            "scale": 0,
-            "isNullable": true
-          },
-          "description": "Area identified for reinforcement or positive feedback as part of the evaluation.",
-          "isIdentifying": false,
-          "isServerAssigned": false,
-          "columnNames": {
-            "sqlServer": "AreaOfReinforcement",
-            "postgreSql": "AreaOfReinforcement"
-          }
-        },
-        {
           "propertyName": "Comments",
           "propertyType": {
             "dbType": "String",
@@ -13684,32 +13710,6 @@
       "tableNames": {
         "sqlServer": "PerformanceEvaluationRatingReviewerReceivedTraining",
         "postgreSql": "PerformanceEvaluationRatingReviewerReceivedTraining"
-      }
-    },
-    {
-      "schema": "tpdm",
-      "name": "PerformanceEvaluationRatingTypeDescriptor",
-      "locallyDefinedProperties": [],
-      "identifiers": [
-        {
-          "identifierName": "PerformanceEvaluationRatingTypeDescriptor_PK",
-          "identifyingPropertyNames": [
-            "PerformanceEvaluationRatingTypeDescriptorId"
-          ],
-          "isPrimary": true,
-          "isUpdatable": false,
-          "constraintNames": {
-            "sqlServer": "PerformanceEvaluationRatingTypeDescriptor_PK",
-            "postgreSql": "PerformanceEvaluationRatingTypeDescriptor_PK"
-          }
-        }
-      ],
-      "isAbstract": false,
-      "description": "Differentiate between Standard and calibration evaluations",
-      "domains": [],
-      "tableNames": {
-        "sqlServer": "PerformanceEvaluationRatingTypeDescriptor",
-        "postgreSql": "PerformanceEvaluationRatingTypeDescriptor"
       }
     },
     {
@@ -37760,6 +37760,66 @@
     {
       "fullName": {
         "schema": "tpdm",
+        "name": "FK_EvaluationRating_AcademicSubjectDescriptor"
+      },
+      "cardinality": "OneToZeroOrMore",
+      "primaryEntityFullName": {
+        "schema": "edfi",
+        "name": "AcademicSubjectDescriptor"
+      },
+      "primaryEntityProperties": [
+        {
+          "propertyName": "AcademicSubjectDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "AcademicSubjectDescriptorId",
+            "postgreSql": "AcademicSubjectDescriptorId"
+          }
+        }
+      ],
+      "secondaryEntityFullName": {
+        "schema": "tpdm",
+        "name": "EvaluationRating"
+      },
+      "secondaryEntityProperties": [
+        {
+          "propertyName": "AcademicSubjectDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": true
+          },
+          "description": "The description of the content or subject area of a performance evaluation rating.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "AcademicSubjectDescriptorId",
+            "postgreSql": "AcademicSubjectDescriptorId"
+          }
+        }
+      ],
+      "isIdentifying": false,
+      "isRequired": false,
+      "constraintNames": {
+        "sqlServer": "FK_EvaluationRating_AcademicSubjectDescriptor",
+        "postgreSql": "FK_bfaa20_AcademicSubjectDescriptor"
+      },
+      "potentiallyLogical": false
+    },
+    {
+      "fullName": {
+        "schema": "tpdm",
         "name": "FK_EvaluationRating_Evaluation"
       },
       "cardinality": "OneToZeroOrMore",
@@ -38142,6 +38202,66 @@
       "constraintNames": {
         "sqlServer": "FK_EvaluationRating_EvaluationRatingStatusDescriptor",
         "postgreSql": "FK_bfaa20_EvaluationRatingStatusDescriptor"
+      },
+      "potentiallyLogical": false
+    },
+    {
+      "fullName": {
+        "schema": "tpdm",
+        "name": "FK_EvaluationRating_EvaluationRatingTypeDescriptor"
+      },
+      "cardinality": "OneToZeroOrMore",
+      "primaryEntityFullName": {
+        "schema": "tpdm",
+        "name": "EvaluationRatingTypeDescriptor"
+      },
+      "primaryEntityProperties": [
+        {
+          "propertyName": "EvaluationRatingTypeDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "EvaluationRatingTypeDescriptorId",
+            "postgreSql": "EvaluationRatingTypeDescriptorId"
+          }
+        }
+      ],
+      "secondaryEntityFullName": {
+        "schema": "tpdm",
+        "name": "EvaluationRating"
+      },
+      "secondaryEntityProperties": [
+        {
+          "propertyName": "EvaluationRatingTypeDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": true
+          },
+          "description": "Differentiate between Standard and calibration evaluations",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "EvaluationRatingTypeDescriptorId",
+            "postgreSql": "EvaluationRatingTypeDescriptorId"
+          }
+        }
+      ],
+      "isIdentifying": false,
+      "isRequired": false,
+      "constraintNames": {
+        "sqlServer": "FK_EvaluationRating_EvaluationRatingTypeDescriptor",
+        "postgreSql": "FK_bfaa20_EvaluationRatingTypeDescriptor"
       },
       "potentiallyLogical": false
     },
@@ -40444,6 +40564,66 @@
       "constraintNames": {
         "sqlServer": "FK_EvaluationRatingStatusDescriptor_Descriptor",
         "postgreSql": "FK_4b53ea_Descriptor"
+      },
+      "potentiallyLogical": false
+    },
+    {
+      "fullName": {
+        "schema": "tpdm",
+        "name": "FK_EvaluationRatingTypeDescriptor_Descriptor"
+      },
+      "cardinality": "OneToOneInheritance",
+      "primaryEntityFullName": {
+        "schema": "edfi",
+        "name": "Descriptor"
+      },
+      "primaryEntityProperties": [
+        {
+          "propertyName": "DescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.",
+          "isIdentifying": true,
+          "isServerAssigned": true,
+          "columnNames": {
+            "sqlServer": "DescriptorId",
+            "postgreSql": "DescriptorId"
+          }
+        }
+      ],
+      "secondaryEntityFullName": {
+        "schema": "tpdm",
+        "name": "EvaluationRatingTypeDescriptor"
+      },
+      "secondaryEntityProperties": [
+        {
+          "propertyName": "EvaluationRatingTypeDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.",
+          "isIdentifying": true,
+          "isServerAssigned": true,
+          "columnNames": {
+            "sqlServer": "EvaluationRatingTypeDescriptorId",
+            "postgreSql": "EvaluationRatingTypeDescriptorId"
+          }
+        }
+      ],
+      "isIdentifying": true,
+      "isRequired": true,
+      "constraintNames": {
+        "sqlServer": "FK_EvaluationRatingTypeDescriptor_Descriptor",
+        "postgreSql": "FK_d46950_Descriptor"
       },
       "potentiallyLogical": false
     },
@@ -45054,66 +45234,6 @@
     {
       "fullName": {
         "schema": "tpdm",
-        "name": "FK_PerformanceEvaluationRating_AcademicSubjectDescriptor"
-      },
-      "cardinality": "OneToZeroOrMore",
-      "primaryEntityFullName": {
-        "schema": "edfi",
-        "name": "AcademicSubjectDescriptor"
-      },
-      "primaryEntityProperties": [
-        {
-          "propertyName": "AcademicSubjectDescriptorId",
-          "propertyType": {
-            "dbType": "Int32",
-            "maxLength": 0,
-            "precision": 10,
-            "scale": 0,
-            "isNullable": false
-          },
-          "description": "A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.",
-          "isIdentifying": false,
-          "isServerAssigned": false,
-          "columnNames": {
-            "sqlServer": "AcademicSubjectDescriptorId",
-            "postgreSql": "AcademicSubjectDescriptorId"
-          }
-        }
-      ],
-      "secondaryEntityFullName": {
-        "schema": "tpdm",
-        "name": "PerformanceEvaluationRating"
-      },
-      "secondaryEntityProperties": [
-        {
-          "propertyName": "AcademicSubjectDescriptorId",
-          "propertyType": {
-            "dbType": "Int32",
-            "maxLength": 0,
-            "precision": 10,
-            "scale": 0,
-            "isNullable": true
-          },
-          "description": "The description of the content or subject area of a performance evaluation rating.",
-          "isIdentifying": false,
-          "isServerAssigned": false,
-          "columnNames": {
-            "sqlServer": "AcademicSubjectDescriptorId",
-            "postgreSql": "AcademicSubjectDescriptorId"
-          }
-        }
-      ],
-      "isIdentifying": false,
-      "isRequired": false,
-      "constraintNames": {
-        "sqlServer": "FK_PerformanceEvaluationRating_AcademicSubjectDescriptor",
-        "postgreSql": "FK_759abe_AcademicSubjectDescriptor"
-      },
-      "potentiallyLogical": false
-    },
-    {
-      "fullName": {
-        "schema": "tpdm",
         "name": "FK_PerformanceEvaluationRating_CoteachingStyleObservedDescriptor"
       },
       "cardinality": "OneToZeroOrMore",
@@ -45460,66 +45580,6 @@
       "constraintNames": {
         "sqlServer": "FK_PerformanceEvaluationRating_PerformanceEvaluationRatingLevelDescriptor",
         "postgreSql": "FK_759abe_PerformanceEvaluationRatingLevelDescriptor"
-      },
-      "potentiallyLogical": false
-    },
-    {
-      "fullName": {
-        "schema": "tpdm",
-        "name": "FK_PerformanceEvaluationRating_PerformanceEvaluationRatingTypeDescriptor"
-      },
-      "cardinality": "OneToZeroOrMore",
-      "primaryEntityFullName": {
-        "schema": "tpdm",
-        "name": "PerformanceEvaluationRatingTypeDescriptor"
-      },
-      "primaryEntityProperties": [
-        {
-          "propertyName": "PerformanceEvaluationRatingTypeDescriptorId",
-          "propertyType": {
-            "dbType": "Int32",
-            "maxLength": 0,
-            "precision": 10,
-            "scale": 0,
-            "isNullable": false
-          },
-          "description": "A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.",
-          "isIdentifying": false,
-          "isServerAssigned": false,
-          "columnNames": {
-            "sqlServer": "PerformanceEvaluationRatingTypeDescriptorId",
-            "postgreSql": "PerformanceEvaluationRatingTypeDescriptorId"
-          }
-        }
-      ],
-      "secondaryEntityFullName": {
-        "schema": "tpdm",
-        "name": "PerformanceEvaluationRating"
-      },
-      "secondaryEntityProperties": [
-        {
-          "propertyName": "PerformanceEvaluationRatingTypeDescriptorId",
-          "propertyType": {
-            "dbType": "Int32",
-            "maxLength": 0,
-            "precision": 10,
-            "scale": 0,
-            "isNullable": true
-          },
-          "description": "Differentiate between Standard and calibration evaluations",
-          "isIdentifying": false,
-          "isServerAssigned": false,
-          "columnNames": {
-            "sqlServer": "PerformanceEvaluationRatingTypeDescriptorId",
-            "postgreSql": "PerformanceEvaluationRatingTypeDescriptorId"
-          }
-        }
-      ],
-      "isIdentifying": false,
-      "isRequired": false,
-      "constraintNames": {
-        "sqlServer": "FK_PerformanceEvaluationRating_PerformanceEvaluationRatingTypeDescriptor",
-        "postgreSql": "FK_759abe_PerformanceEvaluationRatingTypeDescriptor"
       },
       "potentiallyLogical": false
     },
@@ -47102,66 +47162,6 @@
       "constraintNames": {
         "sqlServer": "FK_PerformanceEvaluationRatingReviewerReceivedTraining_PerformanceEvaluationRatingReviewer",
         "postgreSql": "FK_6e6517_PerformanceEvaluationRatingReviewer"
-      },
-      "potentiallyLogical": false
-    },
-    {
-      "fullName": {
-        "schema": "tpdm",
-        "name": "FK_PerformanceEvaluationRatingTypeDescriptor_Descriptor"
-      },
-      "cardinality": "OneToOneInheritance",
-      "primaryEntityFullName": {
-        "schema": "edfi",
-        "name": "Descriptor"
-      },
-      "primaryEntityProperties": [
-        {
-          "propertyName": "DescriptorId",
-          "propertyType": {
-            "dbType": "Int32",
-            "maxLength": 0,
-            "precision": 10,
-            "scale": 0,
-            "isNullable": false
-          },
-          "description": "A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.",
-          "isIdentifying": true,
-          "isServerAssigned": true,
-          "columnNames": {
-            "sqlServer": "DescriptorId",
-            "postgreSql": "DescriptorId"
-          }
-        }
-      ],
-      "secondaryEntityFullName": {
-        "schema": "tpdm",
-        "name": "PerformanceEvaluationRatingTypeDescriptor"
-      },
-      "secondaryEntityProperties": [
-        {
-          "propertyName": "PerformanceEvaluationRatingTypeDescriptorId",
-          "propertyType": {
-            "dbType": "Int32",
-            "maxLength": 0,
-            "precision": 10,
-            "scale": 0,
-            "isNullable": false
-          },
-          "description": "A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.",
-          "isIdentifying": true,
-          "isServerAssigned": true,
-          "columnNames": {
-            "sqlServer": "PerformanceEvaluationRatingTypeDescriptorId",
-            "postgreSql": "PerformanceEvaluationRatingTypeDescriptorId"
-          }
-        }
-      ],
-      "isIdentifying": true,
-      "isRequired": true,
-      "constraintNames": {
-        "sqlServer": "FK_PerformanceEvaluationRatingTypeDescriptor_Descriptor",
-        "postgreSql": "FK_0c99ae_Descriptor"
       },
       "potentiallyLogical": false
     },

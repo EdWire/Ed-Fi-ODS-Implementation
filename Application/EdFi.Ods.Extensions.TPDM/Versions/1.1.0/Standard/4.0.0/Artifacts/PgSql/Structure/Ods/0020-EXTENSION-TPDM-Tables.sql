@@ -1375,8 +1375,12 @@ CREATE TABLE tpdm.EvaluationRating (
     SchoolYear SMALLINT NOT NULL,
     SourceSystemDescriptorId INT NOT NULL,
     TermDescriptorId INT NOT NULL,
+    AcademicSubjectDescriptorId INT NULL,
+    AreaOfRefinement VARCHAR(1024) NULL,
+    AreaOfReinforcement VARCHAR(1024) NULL,
     EvaluationRatingLevelDescriptorId INT NULL,
     EvaluationRatingStatusDescriptorId INT NULL,
+    EvaluationRatingTypeDescriptorId INT NULL,
     LocalCourseCode VARCHAR(60) NULL,
     SchoolId INT NULL,
     SectionIdentifier VARCHAR(255) NULL,
@@ -1480,6 +1484,12 @@ ALTER TABLE tpdm.EvaluationRatingReviewerReceivedTraining ALTER COLUMN CreateDat
 CREATE TABLE tpdm.EvaluationRatingStatusDescriptor (
     EvaluationRatingStatusDescriptorId INT NOT NULL,
     CONSTRAINT EvaluationRatingStatusDescriptor_PK PRIMARY KEY (EvaluationRatingStatusDescriptorId)
+);
+
+-- Table tpdm.EvaluationRatingTypeDescriptor --
+CREATE TABLE tpdm.EvaluationRatingTypeDescriptor (
+    EvaluationRatingTypeDescriptorId INT NOT NULL,
+    CONSTRAINT EvaluationRatingTypeDescriptor_PK PRIMARY KEY (EvaluationRatingTypeDescriptorId)
 );
 
 -- Table tpdm.EvaluationTypeDescriptor --
@@ -1788,17 +1798,13 @@ CREATE TABLE tpdm.PerformanceEvaluationRating (
     SchoolYear SMALLINT NOT NULL,
     SourceSystemDescriptorId INT NOT NULL,
     TermDescriptorId INT NOT NULL,
-    AcademicSubjectDescriptorId INT NULL,
     ActualDate DATE NOT NULL,
     ActualDuration INT NULL,
     ActualTime TIME NULL,
     Announced BOOLEAN NULL,
-    AreaOfRefinement VARCHAR(1024) NULL,
-    AreaOfReinforcement VARCHAR(1024) NULL,
     Comments VARCHAR(1024) NULL,
     CoteachingStyleObservedDescriptorId INT NULL,
     PerformanceEvaluationRatingLevelDescriptorId INT NULL,
-    PerformanceEvaluationRatingTypeDescriptorId INT NULL,
     ScheduleDate DATE NULL,
     Discriminator VARCHAR(128) NULL,
     CreateDate TIMESTAMP NOT NULL,
@@ -1887,12 +1893,6 @@ CREATE TABLE tpdm.PerformanceEvaluationRatingReviewerReceivedTraining (
     CONSTRAINT PerformanceEvaluationRatingReviewerReceivedTraining_PK PRIMARY KEY (EducationOrganizationId, EvaluationPeriodDescriptorId, PerformanceEvaluationTitle, PerformanceEvaluationTypeDescriptorId, PersonId, SchoolYear, SourceSystemDescriptorId, TermDescriptorId, FirstName, LastSurname)
 );
 ALTER TABLE tpdm.PerformanceEvaluationRatingReviewerReceivedTraining ALTER COLUMN CreateDate SET DEFAULT current_timestamp AT TIME ZONE 'UTC';
-
--- Table tpdm.PerformanceEvaluationRatingTypeDescriptor --
-CREATE TABLE tpdm.PerformanceEvaluationRatingTypeDescriptor (
-    PerformanceEvaluationRatingTypeDescriptorId INT NOT NULL,
-    CONSTRAINT PerformanceEvaluationRatingTypeDescriptor_PK PRIMARY KEY (PerformanceEvaluationRatingTypeDescriptorId)
-);
 
 -- Table tpdm.PerformanceEvaluationTypeDescriptor --
 CREATE TABLE tpdm.PerformanceEvaluationTypeDescriptor (

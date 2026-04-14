@@ -962,6 +962,23 @@ CREATE TRIGGER TrackDeletes AFTER DELETE ON tpdm.evaluationratingstatusdescripto
     FOR EACH ROW EXECUTE PROCEDURE tracked_changes_tpdm.evaluationratingstatusdescriptor_deleted();
 END IF;
 
+CREATE OR REPLACE FUNCTION tracked_changes_tpdm.evaluationratingtypedescriptor_deleted()
+    RETURNS trigger AS
+$BODY$
+BEGIN
+    INSERT INTO tracked_changes_edfi.descriptor(olddescriptorid, oldcodevalue, oldnamespace, id, discriminator, changeversion)
+    SELECT OLD.EvaluationRatingTypeDescriptorId, b.codevalue, b.namespace, b.id, 'tpdm.EvaluationRatingTypeDescriptor', nextval('changes.ChangeVersionSequence')
+    FROM edfi.descriptor b WHERE old.EvaluationRatingTypeDescriptorId = b.descriptorid ;
+
+    RETURN NULL;
+END;
+$BODY$ LANGUAGE plpgsql;
+
+IF NOT EXISTS(SELECT 1 FROM information_schema.triggers WHERE trigger_name = 'trackdeletes' AND event_object_schema = 'tpdm' AND event_object_table = 'evaluationratingtypedescriptor') THEN
+CREATE TRIGGER TrackDeletes AFTER DELETE ON tpdm.evaluationratingtypedescriptor 
+    FOR EACH ROW EXECUTE PROCEDURE tracked_changes_tpdm.evaluationratingtypedescriptor_deleted();
+END IF;
+
 CREATE OR REPLACE FUNCTION tracked_changes_tpdm.evaluationtypedescriptor_deleted()
     RETURNS trigger AS
 $BODY$
@@ -1384,23 +1401,6 @@ $BODY$ LANGUAGE plpgsql;
 IF NOT EXISTS(SELECT 1 FROM information_schema.triggers WHERE trigger_name = 'trackdeletes' AND event_object_schema = 'tpdm' AND event_object_table = 'performanceevaluationratingleveldescriptor') THEN
 CREATE TRIGGER TrackDeletes AFTER DELETE ON tpdm.performanceevaluationratingleveldescriptor 
     FOR EACH ROW EXECUTE PROCEDURE tracked_changes_tpdm.performanceevaluationratingleveldescriptor_deleted();
-END IF;
-
-CREATE OR REPLACE FUNCTION tracked_changes_tpdm.performanceevaluationratingtypedescriptor_deleted()
-    RETURNS trigger AS
-$BODY$
-BEGIN
-    INSERT INTO tracked_changes_edfi.descriptor(olddescriptorid, oldcodevalue, oldnamespace, id, discriminator, changeversion)
-    SELECT OLD.PerformanceEvaluationRatingTypeDescriptorId, b.codevalue, b.namespace, b.id, 'tpdm.PerformanceEvaluationRatingTypeDescriptor', nextval('changes.ChangeVersionSequence')
-    FROM edfi.descriptor b WHERE old.PerformanceEvaluationRatingTypeDescriptorId = b.descriptorid ;
-
-    RETURN NULL;
-END;
-$BODY$ LANGUAGE plpgsql;
-
-IF NOT EXISTS(SELECT 1 FROM information_schema.triggers WHERE trigger_name = 'trackdeletes' AND event_object_schema = 'tpdm' AND event_object_table = 'performanceevaluationratingtypedescriptor') THEN
-CREATE TRIGGER TrackDeletes AFTER DELETE ON tpdm.performanceevaluationratingtypedescriptor 
-    FOR EACH ROW EXECUTE PROCEDURE tracked_changes_tpdm.performanceevaluationratingtypedescriptor_deleted();
 END IF;
 
 CREATE OR REPLACE FUNCTION tracked_changes_tpdm.performanceevaluationtypedescriptor_deleted()

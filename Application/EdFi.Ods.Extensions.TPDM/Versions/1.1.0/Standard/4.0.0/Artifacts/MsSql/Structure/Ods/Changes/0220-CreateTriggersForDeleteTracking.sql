@@ -1031,6 +1031,27 @@ ALTER TABLE [tpdm].[EvaluationRatingStatusDescriptor] ENABLE TRIGGER [tpdm_Evalu
 GO
 
 
+DROP TRIGGER IF EXISTS [tpdm].[tpdm_EvaluationRatingTypeDescriptor_TR_DeleteTracking]
+GO
+
+CREATE TRIGGER [tpdm].[tpdm_EvaluationRatingTypeDescriptor_TR_DeleteTracking] ON [tpdm].[EvaluationRatingTypeDescriptor] AFTER DELETE AS
+BEGIN
+    IF @@rowcount = 0 
+        RETURN
+
+    SET NOCOUNT ON
+
+    INSERT INTO [tracked_changes_edfi].[Descriptor](OldDescriptorId, OldCodeValue, OldNamespace, Id, Discriminator, ChangeVersion)
+    SELECT  d.EvaluationRatingTypeDescriptorId, b.CodeValue, b.Namespace, b.Id, 'tpdm.EvaluationRatingTypeDescriptor', (NEXT VALUE FOR [changes].[ChangeVersionSequence])
+    FROM    deleted d
+            INNER JOIN edfi.Descriptor b ON d.EvaluationRatingTypeDescriptorId = b.DescriptorId
+END
+GO
+
+ALTER TABLE [tpdm].[EvaluationRatingTypeDescriptor] ENABLE TRIGGER [tpdm_EvaluationRatingTypeDescriptor_TR_DeleteTracking]
+GO
+
+
 DROP TRIGGER IF EXISTS [tpdm].[tpdm_EvaluationTypeDescriptor_TR_DeleteTracking]
 GO
 
@@ -1488,27 +1509,6 @@ END
 GO
 
 ALTER TABLE [tpdm].[PerformanceEvaluationRatingLevelDescriptor] ENABLE TRIGGER [tpdm_PerformanceEvaluationRatingLevelDescriptor_TR_DeleteTracking]
-GO
-
-
-DROP TRIGGER IF EXISTS [tpdm].[tpdm_PerformanceEvaluationRatingTypeDescriptor_TR_DeleteTracking]
-GO
-
-CREATE TRIGGER [tpdm].[tpdm_PerformanceEvaluationRatingTypeDescriptor_TR_DeleteTracking] ON [tpdm].[PerformanceEvaluationRatingTypeDescriptor] AFTER DELETE AS
-BEGIN
-    IF @@rowcount = 0 
-        RETURN
-
-    SET NOCOUNT ON
-
-    INSERT INTO [tracked_changes_edfi].[Descriptor](OldDescriptorId, OldCodeValue, OldNamespace, Id, Discriminator, ChangeVersion)
-    SELECT  d.PerformanceEvaluationRatingTypeDescriptorId, b.CodeValue, b.Namespace, b.Id, 'tpdm.PerformanceEvaluationRatingTypeDescriptor', (NEXT VALUE FOR [changes].[ChangeVersionSequence])
-    FROM    deleted d
-            INNER JOIN edfi.Descriptor b ON d.PerformanceEvaluationRatingTypeDescriptorId = b.DescriptorId
-END
-GO
-
-ALTER TABLE [tpdm].[PerformanceEvaluationRatingTypeDescriptor] ENABLE TRIGGER [tpdm_PerformanceEvaluationRatingTypeDescriptor_TR_DeleteTracking]
 GO
 
 

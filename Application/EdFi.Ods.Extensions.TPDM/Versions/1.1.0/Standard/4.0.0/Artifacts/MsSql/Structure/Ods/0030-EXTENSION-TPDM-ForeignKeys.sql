@@ -1624,6 +1624,14 @@ REFERENCES [edfi].[Descriptor] ([DescriptorId])
 ON DELETE CASCADE
 GO
 
+ALTER TABLE [tpdm].[EvaluationRating] WITH CHECK ADD CONSTRAINT [FK_EvaluationRating_AcademicSubjectDescriptor] FOREIGN KEY ([AcademicSubjectDescriptorId])
+REFERENCES [edfi].[AcademicSubjectDescriptor] ([AcademicSubjectDescriptorId])
+GO
+
+CREATE NONCLUSTERED INDEX [FK_EvaluationRating_AcademicSubjectDescriptor]
+ON [tpdm].[EvaluationRating] ([AcademicSubjectDescriptorId] ASC)
+GO
+
 ALTER TABLE [tpdm].[EvaluationRating] WITH CHECK ADD CONSTRAINT [FK_EvaluationRating_Evaluation] FOREIGN KEY ([EducationOrganizationId], [EvaluationPeriodDescriptorId], [EvaluationTitle], [PerformanceEvaluationTitle], [PerformanceEvaluationTypeDescriptorId], [SchoolYear], [TermDescriptorId])
 REFERENCES [tpdm].[Evaluation] ([EducationOrganizationId], [EvaluationPeriodDescriptorId], [EvaluationTitle], [PerformanceEvaluationTitle], [PerformanceEvaluationTypeDescriptorId], [SchoolYear], [TermDescriptorId])
 GO
@@ -1646,6 +1654,14 @@ GO
 
 CREATE NONCLUSTERED INDEX [FK_EvaluationRating_EvaluationRatingStatusDescriptor]
 ON [tpdm].[EvaluationRating] ([EvaluationRatingStatusDescriptorId] ASC)
+GO
+
+ALTER TABLE [tpdm].[EvaluationRating] WITH CHECK ADD CONSTRAINT [FK_EvaluationRating_EvaluationRatingTypeDescriptor] FOREIGN KEY ([EvaluationRatingTypeDescriptorId])
+REFERENCES [tpdm].[EvaluationRatingTypeDescriptor] ([EvaluationRatingTypeDescriptorId])
+GO
+
+CREATE NONCLUSTERED INDEX [FK_EvaluationRating_EvaluationRatingTypeDescriptor]
+ON [tpdm].[EvaluationRating] ([EvaluationRatingTypeDescriptorId] ASC)
 GO
 
 ALTER TABLE [tpdm].[EvaluationRating] WITH CHECK ADD CONSTRAINT [FK_EvaluationRating_PerformanceEvaluationRating] FOREIGN KEY ([EducationOrganizationId], [EvaluationPeriodDescriptorId], [PerformanceEvaluationTitle], [PerformanceEvaluationTypeDescriptorId], [PersonId], [SchoolYear], [SourceSystemDescriptorId], [TermDescriptorId])
@@ -1715,6 +1731,11 @@ ON DELETE CASCADE
 GO
 
 ALTER TABLE [tpdm].[EvaluationRatingStatusDescriptor] WITH CHECK ADD CONSTRAINT [FK_EvaluationRatingStatusDescriptor_Descriptor] FOREIGN KEY ([EvaluationRatingStatusDescriptorId])
+REFERENCES [edfi].[Descriptor] ([DescriptorId])
+ON DELETE CASCADE
+GO
+
+ALTER TABLE [tpdm].[EvaluationRatingTypeDescriptor] WITH CHECK ADD CONSTRAINT [FK_EvaluationRatingTypeDescriptor_Descriptor] FOREIGN KEY ([EvaluationRatingTypeDescriptorId])
 REFERENCES [edfi].[Descriptor] ([DescriptorId])
 ON DELETE CASCADE
 GO
@@ -2055,14 +2076,6 @@ CREATE NONCLUSTERED INDEX [FK_PerformanceEvaluationProgramGateway_ProgramGateway
 ON [tpdm].[PerformanceEvaluationProgramGateway] ([ProgramGatewayDescriptorId] ASC)
 GO
 
-ALTER TABLE [tpdm].[PerformanceEvaluationRating] WITH CHECK ADD CONSTRAINT [FK_PerformanceEvaluationRating_AcademicSubjectDescriptor] FOREIGN KEY ([AcademicSubjectDescriptorId])
-REFERENCES [edfi].[AcademicSubjectDescriptor] ([AcademicSubjectDescriptorId])
-GO
-
-CREATE NONCLUSTERED INDEX [FK_PerformanceEvaluationRating_AcademicSubjectDescriptor]
-ON [tpdm].[PerformanceEvaluationRating] ([AcademicSubjectDescriptorId] ASC)
-GO
-
 ALTER TABLE [tpdm].[PerformanceEvaluationRating] WITH CHECK ADD CONSTRAINT [FK_PerformanceEvaluationRating_CoteachingStyleObservedDescriptor] FOREIGN KEY ([CoteachingStyleObservedDescriptorId])
 REFERENCES [tpdm].[CoteachingStyleObservedDescriptor] ([CoteachingStyleObservedDescriptorId])
 GO
@@ -2085,14 +2098,6 @@ GO
 
 CREATE NONCLUSTERED INDEX [FK_PerformanceEvaluationRating_PerformanceEvaluationRatingLevelDescriptor]
 ON [tpdm].[PerformanceEvaluationRating] ([PerformanceEvaluationRatingLevelDescriptorId] ASC)
-GO
-
-ALTER TABLE [tpdm].[PerformanceEvaluationRating] WITH CHECK ADD CONSTRAINT [FK_PerformanceEvaluationRating_PerformanceEvaluationRatingTypeDescriptor] FOREIGN KEY ([PerformanceEvaluationRatingTypeDescriptorId])
-REFERENCES [tpdm].[PerformanceEvaluationRatingTypeDescriptor] ([PerformanceEvaluationRatingTypeDescriptorId])
-GO
-
-CREATE NONCLUSTERED INDEX [FK_PerformanceEvaluationRating_PerformanceEvaluationRatingTypeDescriptor]
-ON [tpdm].[PerformanceEvaluationRating] ([PerformanceEvaluationRatingTypeDescriptorId] ASC)
 GO
 
 ALTER TABLE [tpdm].[PerformanceEvaluationRating] WITH CHECK ADD CONSTRAINT [FK_PerformanceEvaluationRating_Person] FOREIGN KEY ([PersonId], [SourceSystemDescriptorId])
@@ -2149,11 +2154,6 @@ GO
 
 ALTER TABLE [tpdm].[PerformanceEvaluationRatingReviewerReceivedTraining] WITH CHECK ADD CONSTRAINT [FK_PerformanceEvaluationRatingReviewerReceivedTraining_PerformanceEvaluationRatingReviewer] FOREIGN KEY ([EducationOrganizationId], [EvaluationPeriodDescriptorId], [PerformanceEvaluationTitle], [PerformanceEvaluationTypeDescriptorId], [PersonId], [SchoolYear], [SourceSystemDescriptorId], [TermDescriptorId], [FirstName], [LastSurname])
 REFERENCES [tpdm].[PerformanceEvaluationRatingReviewer] ([EducationOrganizationId], [EvaluationPeriodDescriptorId], [PerformanceEvaluationTitle], [PerformanceEvaluationTypeDescriptorId], [PersonId], [SchoolYear], [SourceSystemDescriptorId], [TermDescriptorId], [FirstName], [LastSurname])
-ON DELETE CASCADE
-GO
-
-ALTER TABLE [tpdm].[PerformanceEvaluationRatingTypeDescriptor] WITH CHECK ADD CONSTRAINT [FK_PerformanceEvaluationRatingTypeDescriptor_Descriptor] FOREIGN KEY ([PerformanceEvaluationRatingTypeDescriptorId])
-REFERENCES [edfi].[Descriptor] ([DescriptorId])
 ON DELETE CASCADE
 GO
 

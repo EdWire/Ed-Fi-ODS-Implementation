@@ -935,8 +935,12 @@ COMMENT ON COLUMN tpdm.EvaluationRating.PersonId IS 'A unique alphanumeric code 
 COMMENT ON COLUMN tpdm.EvaluationRating.SchoolYear IS 'The identifier for the school year.';
 COMMENT ON COLUMN tpdm.EvaluationRating.SourceSystemDescriptorId IS 'This descriptor defines the originating record source system for the person.';
 COMMENT ON COLUMN tpdm.EvaluationRating.TermDescriptorId IS 'The term for the session during the school year.';
+COMMENT ON COLUMN tpdm.EvaluationRating.AcademicSubjectDescriptorId IS 'The description of the content or subject area of a performance evaluation rating.';
+COMMENT ON COLUMN tpdm.EvaluationRating.AreaOfRefinement IS 'Area identified for person to refine or improve as part of the evaluation.';
+COMMENT ON COLUMN tpdm.EvaluationRating.AreaOfReinforcement IS 'Area identified for reinforcement or positive feedback as part of the evaluation.';
 COMMENT ON COLUMN tpdm.EvaluationRating.EvaluationRatingLevelDescriptorId IS 'The rating level achieved based upon the rating or score.';
 COMMENT ON COLUMN tpdm.EvaluationRating.EvaluationRatingStatusDescriptorId IS 'The Status of the poerformance evaluation.';
+COMMENT ON COLUMN tpdm.EvaluationRating.EvaluationRatingTypeDescriptorId IS 'Differentiate between Standard and calibration evaluations';
 COMMENT ON COLUMN tpdm.EvaluationRating.LocalCourseCode IS 'The local code assigned by the School that identifies the course offering provided for the instruction of students.';
 COMMENT ON COLUMN tpdm.EvaluationRating.SchoolId IS 'The identifier assigned to a school.';
 COMMENT ON COLUMN tpdm.EvaluationRating.SectionIdentifier IS 'The local identifier assigned to a section.';
@@ -1012,6 +1016,10 @@ COMMENT ON COLUMN tpdm.EvaluationRatingReviewerReceivedTraining.ReceivedTraining
 -- Extended Properties [tpdm].[EvaluationRatingStatusDescriptor] --
 COMMENT ON TABLE tpdm.EvaluationRatingStatusDescriptor IS 'Represents the status of a Evaluation Rating.';
 COMMENT ON COLUMN tpdm.EvaluationRatingStatusDescriptor.EvaluationRatingStatusDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
+
+-- Extended Properties [tpdm].[EvaluationRatingTypeDescriptor] --
+COMMENT ON TABLE tpdm.EvaluationRatingTypeDescriptor IS 'Differentiate between Standard and calibration evaluations';
+COMMENT ON COLUMN tpdm.EvaluationRatingTypeDescriptor.EvaluationRatingTypeDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
 
 -- Extended Properties [tpdm].[EvaluationTypeDescriptor] --
 COMMENT ON TABLE tpdm.EvaluationTypeDescriptor IS 'The type of the evaluation (e.g., observation, principal, peer, student survey, student growth).';
@@ -1215,17 +1223,13 @@ COMMENT ON COLUMN tpdm.PerformanceEvaluationRating.PersonId IS 'A unique alphanu
 COMMENT ON COLUMN tpdm.PerformanceEvaluationRating.SchoolYear IS 'The identifier for the school year.';
 COMMENT ON COLUMN tpdm.PerformanceEvaluationRating.SourceSystemDescriptorId IS 'This descriptor defines the originating record source system for the person.';
 COMMENT ON COLUMN tpdm.PerformanceEvaluationRating.TermDescriptorId IS 'The term for the session during the school year.';
-COMMENT ON COLUMN tpdm.PerformanceEvaluationRating.AcademicSubjectDescriptorId IS 'The description of the content or subject area of a performance evaluation rating.';
 COMMENT ON COLUMN tpdm.PerformanceEvaluationRating.ActualDate IS 'The month, day, and year on which the performance evaluation was conducted.';
 COMMENT ON COLUMN tpdm.PerformanceEvaluationRating.ActualDuration IS 'The actual or estimated number of clock minutes during which the performance evaluation was conducted.';
 COMMENT ON COLUMN tpdm.PerformanceEvaluationRating.ActualTime IS 'An indication of the the time at which the performance evaluation was conducted.';
 COMMENT ON COLUMN tpdm.PerformanceEvaluationRating.Announced IS 'An indicator of whether the performance evaluation was announced or not.';
-COMMENT ON COLUMN tpdm.PerformanceEvaluationRating.AreaOfRefinement IS 'Area identified for person to refine or improve as part of the evaluation.';
-COMMENT ON COLUMN tpdm.PerformanceEvaluationRating.AreaOfReinforcement IS 'Area identified for reinforcement or positive feedback as part of the evaluation.';
 COMMENT ON COLUMN tpdm.PerformanceEvaluationRating.Comments IS 'Any comments about the performance evaluation to be captured.';
 COMMENT ON COLUMN tpdm.PerformanceEvaluationRating.CoteachingStyleObservedDescriptorId IS 'A type of co-teaching observed as part of the performance evaluation.';
 COMMENT ON COLUMN tpdm.PerformanceEvaluationRating.PerformanceEvaluationRatingLevelDescriptorId IS 'The rating level achieved based upon the rating or score.';
-COMMENT ON COLUMN tpdm.PerformanceEvaluationRating.PerformanceEvaluationRatingTypeDescriptorId IS 'Differentiate between Standard and calibration evaluations';
 COMMENT ON COLUMN tpdm.PerformanceEvaluationRating.ScheduleDate IS 'The month, day, and year on which the performance evaluation was scheduled.';
 
 -- Extended Properties [tpdm].[PerformanceEvaluationRatingLevel] --
@@ -1287,10 +1291,6 @@ COMMENT ON COLUMN tpdm.PerformanceEvaluationRatingReviewerReceivedTraining.First
 COMMENT ON COLUMN tpdm.PerformanceEvaluationRatingReviewerReceivedTraining.LastSurname IS 'The name borne in common by members of a family.';
 COMMENT ON COLUMN tpdm.PerformanceEvaluationRatingReviewerReceivedTraining.InterRaterReliabilityScore IS 'A score indicating how much homogeneity, or consensus, there is in the ratings given by judges. Most commonly a percentage scale (1-100)';
 COMMENT ON COLUMN tpdm.PerformanceEvaluationRatingReviewerReceivedTraining.ReceivedTrainingDate IS 'The date on which the person administering the performance meausre received training on how to conduct performance measures.';
-
--- Extended Properties [tpdm].[PerformanceEvaluationRatingTypeDescriptor] --
-COMMENT ON TABLE tpdm.PerformanceEvaluationRatingTypeDescriptor IS 'Differentiate between Standard and calibration evaluations';
-COMMENT ON COLUMN tpdm.PerformanceEvaluationRatingTypeDescriptor.PerformanceEvaluationRatingTypeDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
 
 -- Extended Properties [tpdm].[PerformanceEvaluationTypeDescriptor] --
 COMMENT ON TABLE tpdm.PerformanceEvaluationTypeDescriptor IS 'The type of performance evaluation conducted (e.g., walkthrough, summative).';
