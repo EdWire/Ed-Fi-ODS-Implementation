@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 18
-VisualStudioVersion = 18.3.11520.95 d18.3
+VisualStudioVersion = 18.3.11520.95
 MinimumVisualStudioVersion = 15.0.28307.852
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EdFi.Ods.Common", "..\..\Ed-Fi-ODS\Application\EdFi.Ods.Common\EdFi.Ods.Common.csproj", "{8D7CB143-8818-47A8-89E8-702D485E8DA0}"
 EndProject
@@ -111,7 +111,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EdFi.Ods.Extensions.TX", "E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EdFi.Ods.Extensions.TPDM", "EdFi.Ods.Extensions.TPDM\EdFi.Ods.Extensions.TPDM.csproj", "{9C86F4C6-5FE2-9AFE-FCB1-9990106F0F22}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EdFi.Ods.Extensions.EdOrgProgram", "EdFi.Ods.Extensions.EdOrgProgram\EdFi.Ods.Extensions.EdOrgProgram.csproj", "{3F0817E4-7841-930F-8941-D058EBF45AE3}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EdFi.Ods.Extensions.EOP", "EdFi.Ods.Extensions.EOP\EdFi.Ods.Extensions.EOP.csproj", "{3F0817E4-7841-930F-8941-D058EBF45AE3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

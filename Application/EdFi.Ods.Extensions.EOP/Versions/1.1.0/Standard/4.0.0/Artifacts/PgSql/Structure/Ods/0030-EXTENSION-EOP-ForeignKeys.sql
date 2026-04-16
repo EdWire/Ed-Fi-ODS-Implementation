@@ -1,0 +1,41 @@
+ALTER TABLE eop.EducationOrganizationEducationOrganizationProgram ADD CONSTRAINT FK_5395cd_EducationOrganization FOREIGN KEY (EducationOrganizationId)
+REFERENCES edfi.EducationOrganization (EducationOrganizationId)
+;
+
+ALTER TABLE eop.EducationOrganizationEducationOrganizationProgram ADD CONSTRAINT FK_5395cd_EducationOrganizationProgramProvider FOREIGN KEY (NameOfInstitution)
+REFERENCES eop.EducationOrganizationProgramProvider (NameOfInstitution)
+;
+
+CREATE INDEX FK_5395cd_EducationOrganizationProgramProvider
+ON eop.EducationOrganizationEducationOrganizationProgram (NameOfInstitution ASC);
+
+ALTER TABLE eop.EducationOrganizationEducationOrganizationProgram ADD CONSTRAINT FK_5395cd_EducationOrganizationProgramTypeDescriptor FOREIGN KEY (EducationOrganizationProgramTypeDescriptorId)
+REFERENCES eop.EducationOrganizationProgramTypeDescriptor (EducationOrganizationProgramTypeDescriptorId)
+;
+
+CREATE INDEX FK_5395cd_EducationOrganizationProgramTypeDescriptor
+ON eop.EducationOrganizationEducationOrganizationProgram (EducationOrganizationProgramTypeDescriptorId ASC);
+
+ALTER TABLE eop.EducationOrganizationProgramAuthorizedProvider ADD CONSTRAINT FK_2af181_EducationOrganizationProgramProvider FOREIGN KEY (NameOfInstitution)
+REFERENCES eop.EducationOrganizationProgramProvider (NameOfInstitution)
+;
+
+CREATE INDEX FK_2af181_EducationOrganizationProgramProvider
+ON eop.EducationOrganizationProgramAuthorizedProvider (NameOfInstitution ASC);
+
+ALTER TABLE eop.EducationOrganizationProgramAuthorizedProvider ADD CONSTRAINT FK_2af181_EducationOrganizationProgramTypeDescriptor FOREIGN KEY (EducationOrganizationProgramTypeDescriptorId)
+REFERENCES eop.EducationOrganizationProgramTypeDescriptor (EducationOrganizationProgramTypeDescriptorId)
+;
+
+CREATE INDEX FK_2af181_EducationOrganizationProgramTypeDescriptor
+ON eop.EducationOrganizationProgramAuthorizedProvider (EducationOrganizationProgramTypeDescriptorId ASC);
+
+ALTER TABLE eop.EducationOrganizationProgramProvider ADD CONSTRAINT FK_5934c5_EducationServiceCenter FOREIGN KEY (EducationServiceCenterId)
+REFERENCES edfi.EducationServiceCenter (EducationServiceCenterId)
+;
+
+ALTER TABLE eop.EducationOrganizationProgramTypeDescriptor ADD CONSTRAINT FK_cf7f75_Descriptor FOREIGN KEY (EducationOrganizationProgramTypeDescriptorId)
+REFERENCES edfi.Descriptor (DescriptorId)
+ON DELETE CASCADE
+;
+
