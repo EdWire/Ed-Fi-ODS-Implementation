@@ -126,3 +126,5 @@ environment.json
 
 #Nunit Test Reports (Pester)
 reportsNUnit/
+
+*.csproj.lscache
