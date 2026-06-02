@@ -1155,7 +1155,7 @@
               <xs:documentation>Any comments about the performance evaluation to be captured.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="Feedback" type="EXTENSION-Feedback" minOccurs="0">
+          <xs:element name="Feedback" type="EXTENSION-Feedback" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation>
               <xs:documentation>Feedback provided to the evaluated person.</xs:documentation>
             </xs:annotation>
@@ -1226,43 +1226,6 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="EXTENSION-EvaluationObjectiveActionStep">
-    <xs:annotation>
-      <xs:documentation>This association shows what action steps are applicable for evaluation Objectives at what times.</xs:documentation>
-      <xs:appinfo>
-        <ann:TypeGroup>Domain Entity</ann:TypeGroup>
-      </xs:appinfo>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:extension base="ComplexObjectType">
-        <xs:sequence>
-          <xs:element name="EvaluationObjectiveReference" type="EXTENSION-EvaluationObjectiveReferenceType">
-            <xs:annotation>
-              <xs:documentation>Reference to the evaluation objective.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="ActionStep" type="EXTENSION-ActionStepDescriptorReferenceType">
-            <xs:annotation>
-              <xs:documentation>Reference to the action step.</xs:documentation>
-              <xs:appinfo>
-                <ann:Descriptor>EXTENSION-ActionStepDescriptor</ann:Descriptor>
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="BeginDate" type="xs:date">
-            <xs:annotation>
-              <xs:documentation>start date of association</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="EndDate" type="xs:date" minOccurs="0">
-            <xs:annotation>
-              <xs:documentation>end date of association</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
   <xs:complexType name="EXTENSION-EvaluationObjectiveRating">
     <xs:annotation>
       <xs:documentation>The rating for the component Evaluation Objective for an individual educator.</xs:documentation>
@@ -1299,22 +1262,6 @@
           <xs:element name="Comments" type="EXTENSION-Comments" minOccurs="0">
             <xs:annotation>
               <xs:documentation>Any comments about the performance evaluation to be captured.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="CompletedActionStep" type="EXTENSION-ActionStepDescriptorReferenceType" minOccurs="0">
-            <xs:annotation>
-              <xs:documentation>Action step assigned during evaluation</xs:documentation>
-              <xs:appinfo>
-                <ann:Descriptor>EXTENSION-ActionStepDescriptor</ann:Descriptor>
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="NewActionStep" type="EXTENSION-ActionStepDescriptorReferenceType" minOccurs="0">
-            <xs:annotation>
-              <xs:documentation>Action step assigned during during previous evaluation</xs:documentation>
-              <xs:appinfo>
-                <ann:Descriptor>EXTENSION-ActionStepDescriptor</ann:Descriptor>
-              </xs:appinfo>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -1369,16 +1316,6 @@
               <xs:documentation>The section associated with a classroom evaluation.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="AreaOfRefinement" type="EXTENSION-Comments" minOccurs="0">
-            <xs:annotation>
-              <xs:documentation>Area identified for person to refine or improve as part of the evaluation.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="AreaOfReinforcement" type="EXTENSION-Comments" minOccurs="0">
-            <xs:annotation>
-              <xs:documentation>Area identified for reinforcement or positive feedback as part of the evaluation.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
           <xs:element name="AcademicSubject" type="AcademicSubjectDescriptorReferenceType" minOccurs="0">
             <xs:annotation>
               <xs:documentation>The description of the content or subject area of a performance evaluation rating.</xs:documentation>
@@ -1401,6 +1338,19 @@
               <xs:appinfo>
                 <ann:Descriptor>EXTENSION-EvaluationRatingStatusDescriptor</ann:Descriptor>
               </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="GradeLevel" type="GradeLevelDescriptorReferenceType" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation>The grade level(s) associated with the observation.</xs:documentation>
+              <xs:appinfo>
+                <ann:Descriptor>GradeLevelDescriptor</ann:Descriptor>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="Feedback" type="EXTENSION-Feedback" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation>various types of verbose feedback given during the evaluation.</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -1554,14 +1504,14 @@
               <xs:documentation>The month, day, and year on which the goal was assigned.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="EvaluationElementReference" type="EXTENSION-EvaluationElementReferenceType" minOccurs="0">
+          <xs:element name="EvaluationElementRatingReference" type="EXTENSION-EvaluationElementRatingReferenceType" minOccurs="0">
             <xs:annotation>
-              <xs:documentation>The Evaluation Element associated with the goal.</xs:documentation>
+              <xs:documentation>The Evaluation Element Rating associated with the goal.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="EvaluationObjectiveReference" type="EXTENSION-EvaluationObjectiveReferenceType" minOccurs="0">
+          <xs:element name="EvaluationObjectiveRatingReference" type="EXTENSION-EvaluationObjectiveRatingReferenceType" minOccurs="0">
             <xs:annotation>
-              <xs:documentation>The Evaluation Objective associated with the goal.</xs:documentation>
+              <xs:documentation>The Evaluation Objective Rating associated with the goal.</xs:documentation>
             </xs:annotation>
           </xs:element>
           <xs:element name="GoalType" type="EXTENSION-GoalTypeDescriptorReferenceType" minOccurs="0">
@@ -2568,17 +2518,6 @@
       <xs:extension base="DescriptorType" />
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="EXTENSION-ActionStepDescriptor">
-    <xs:annotation>
-      <xs:documentation>Specific action step that is assigned during preformance evaluations.</xs:documentation>
-      <xs:appinfo>
-        <ann:TypeGroup>Descriptor</ann:TypeGroup>
-      </xs:appinfo>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:extension base="DescriptorType" />
-    </xs:complexContent>
-  </xs:complexType>
   <xs:complexType name="EXTENSION-AidTypeDescriptor">
     <xs:annotation>
       <xs:documentation>This descriptor defines the classification of financial aid awarded to a person for the academic term/year.</xs:documentation>
@@ -2901,6 +2840,17 @@
   <xs:complexType name="EXTENSION-FederalLocaleCodeDescriptor">
     <xs:annotation>
       <xs:documentation>The descriptor holds the federal locale code applicable to an education organization.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Descriptor</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DescriptorType" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-FeedbackTypeDescriptor">
+    <xs:annotation>
+      <xs:documentation>The type of feedback</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Descriptor</ann:TypeGroup>
       </xs:appinfo>
@@ -4044,53 +3994,6 @@
       </xs:element>
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="EXTENSION-EvaluationObjectiveActionStepIdentityType">
-    <xs:annotation>
-      <xs:documentation>Identity of an EvaluationObjectiveActionStep.</xs:documentation>
-      <xs:appinfo>
-        <ann:TypeGroup>Identity</ann:TypeGroup>
-      </xs:appinfo>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element name="EvaluationObjectiveReference" type="EXTENSION-EvaluationObjectiveReferenceType">
-        <xs:annotation>
-          <xs:documentation>Reference to the evaluation objective.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="ActionStep" type="EXTENSION-ActionStepDescriptorReferenceType">
-        <xs:annotation>
-          <xs:documentation>Reference to the action step.</xs:documentation>
-          <xs:appinfo>
-            <ann:Descriptor>EXTENSION-ActionStepDescriptor</ann:Descriptor>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="BeginDate" type="xs:date">
-        <xs:annotation>
-          <xs:documentation>start date of association</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="EXTENSION-EvaluationObjectiveActionStepReferenceType">
-    <xs:annotation>
-      <xs:documentation>Provides alternative references for an EvaluationObjectiveActionStep. Use XML IDREF to reference a record that is included in the interchange. Use the identity type to look up a record that was loaded previously.</xs:documentation>
-      <xs:appinfo>
-        <ann:TypeGroup>Extended Reference</ann:TypeGroup>
-      </xs:appinfo>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:extension base="ReferenceType">
-        <xs:sequence>
-          <xs:element name="EvaluationObjectiveActionStepIdentity" type="EXTENSION-EvaluationObjectiveActionStepIdentityType" minOccurs="0">
-            <xs:annotation>
-              <xs:documentation>Identity of an EvaluationObjectiveActionStep.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
   <xs:complexType name="EXTENSION-EvaluationObjectiveIdentityType">
     <xs:annotation>
       <xs:documentation>Identity of an EvaluationObjective.</xs:documentation>
@@ -5011,15 +4914,6 @@
     </xs:annotation>
     <xs:restriction base="DescriptorReferenceType" />
   </xs:simpleType>
-  <xs:simpleType name="EXTENSION-ActionStepDescriptorReferenceType">
-    <xs:annotation>
-      <xs:documentation>Specific action step that is assigned during preformance evaluations.</xs:documentation>
-      <xs:appinfo>
-        <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
-      </xs:appinfo>
-    </xs:annotation>
-    <xs:restriction base="DescriptorReferenceType" />
-  </xs:simpleType>
   <xs:simpleType name="EXTENSION-AidTypeDescriptorReferenceType">
     <xs:annotation>
       <xs:documentation>This descriptor defines the classification of financial aid awarded to a person for the academic term/year.</xs:documentation>
@@ -5284,6 +5178,15 @@
   <xs:simpleType name="EXTENSION-FederalLocaleCodeDescriptorReferenceType">
     <xs:annotation>
       <xs:documentation>The descriptor holds the federal locale code applicable to an education organization.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="DescriptorReferenceType" />
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-FeedbackTypeDescriptorReferenceType">
+    <xs:annotation>
+      <xs:documentation>The type of feedback</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
       </xs:appinfo>
@@ -5912,6 +5815,29 @@
       </xs:element>
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="EXTENSION-Feedback">
+    <xs:annotation>
+      <xs:documentation>specific verbose feedback given during an evaluation.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Common</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="FeedbackType" type="EXTENSION-FeedbackTypeDescriptorReferenceType">
+        <xs:annotation>
+          <xs:documentation>The type of feedback given.</xs:documentation>
+          <xs:appinfo>
+            <ann:Descriptor>EXTENSION-FeedbackTypeDescriptor</ann:Descriptor>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="Comment" type="Comment">
+        <xs:annotation>
+          <xs:documentation>The specific comment text.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="EXTENSION-RatingLevel">
     <xs:annotation>
       <xs:documentation>The descriptive level(s) of ratings (cut scores) for evaluation.</xs:documentation>
@@ -6398,18 +6324,6 @@
     </xs:annotation>
     <xs:restriction base="xs:string">
       <xs:maxLength value="50" />
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:simpleType name="EXTENSION-Feedback">
-    <xs:annotation>
-      <xs:documentation>Any feedback to be captured.</xs:documentation>
-      <xs:appinfo>
-        <ann:TypeGroup>Simple</ann:TypeGroup>
-      </xs:appinfo>
-    </xs:annotation>
-    <xs:restriction base="xs:string">
-      <xs:minLength value="1" />
-      <xs:maxLength value="2048" />
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="EXTENSION-FieldworkIdentifier">

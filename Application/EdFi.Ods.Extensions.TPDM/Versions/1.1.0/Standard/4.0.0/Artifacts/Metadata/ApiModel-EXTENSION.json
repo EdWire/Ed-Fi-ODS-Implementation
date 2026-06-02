@@ -22,18 +22,6 @@
     {
       "aggregateRootEntityName": {
         "schema": "tpdm",
-        "name": "ActionStepDescriptor"
-      },
-      "aggregateEntityNames": [
-        {
-          "schema": "tpdm",
-          "name": "ActionStepDescriptor"
-        }
-      ]
-    },
-    {
-      "aggregateRootEntityName": {
-        "schema": "tpdm",
         "name": "AidTypeDescriptor"
       },
       "aggregateEntityNames": [
@@ -691,6 +679,10 @@
         },
         {
           "schema": "tpdm",
+          "name": "EvaluationElementRatingFeedback"
+        },
+        {
+          "schema": "tpdm",
           "name": "EvaluationElementRatingResult"
         }
       ]
@@ -720,18 +712,6 @@
         {
           "schema": "tpdm",
           "name": "EvaluationObjectiveRatingLevel"
-        }
-      ]
-    },
-    {
-      "aggregateRootEntityName": {
-        "schema": "tpdm",
-        "name": "EvaluationObjectiveActionStep"
-      },
-      "aggregateEntityNames": [
-        {
-          "schema": "tpdm",
-          "name": "EvaluationObjectiveActionStep"
         }
       ]
     },
@@ -772,6 +752,14 @@
         {
           "schema": "tpdm",
           "name": "EvaluationRating"
+        },
+        {
+          "schema": "tpdm",
+          "name": "EvaluationRatingFeedback"
+        },
+        {
+          "schema": "tpdm",
+          "name": "EvaluationRatingGradeLevel"
         },
         {
           "schema": "tpdm",
@@ -844,6 +832,18 @@
         {
           "schema": "tpdm",
           "name": "FederalLocaleCodeDescriptor"
+        }
+      ]
+    },
+    {
+      "aggregateRootEntityName": {
+        "schema": "tpdm",
+        "name": "FeedbackTypeDescriptor"
+      },
+      "aggregateEntityNames": [
+        {
+          "schema": "tpdm",
+          "name": "FeedbackTypeDescriptor"
         }
       ]
     },
@@ -1507,32 +1507,6 @@
       "tableNames": {
         "sqlServer": "AccreditationStatusDescriptor",
         "postgreSql": "AccreditationStatusDescriptor"
-      }
-    },
-    {
-      "schema": "tpdm",
-      "name": "ActionStepDescriptor",
-      "locallyDefinedProperties": [],
-      "identifiers": [
-        {
-          "identifierName": "ActionStepDescriptor_PK",
-          "identifyingPropertyNames": [
-            "ActionStepDescriptorId"
-          ],
-          "isPrimary": true,
-          "isUpdatable": false,
-          "constraintNames": {
-            "sqlServer": "ActionStepDescriptor_PK",
-            "postgreSql": "ActionStepDescriptor_PK"
-          }
-        }
-      ],
-      "isAbstract": false,
-      "description": "Specific action step that is assigned during preformance evaluations.",
-      "domains": [],
-      "tableNames": {
-        "sqlServer": "ActionStepDescriptor",
-        "postgreSql": "ActionStepDescriptor"
       }
     },
     {
@@ -9826,24 +9800,6 @@
           }
         },
         {
-          "propertyName": "Feedback",
-          "propertyType": {
-            "dbType": "String",
-            "minLength": 1,
-            "maxLength": 2048,
-            "precision": 0,
-            "scale": 0,
-            "isNullable": true
-          },
-          "description": "Feedback provided to the evaluated person.",
-          "isIdentifying": false,
-          "isServerAssigned": false,
-          "columnNames": {
-            "sqlServer": "Feedback",
-            "postgreSql": "Feedback"
-          }
-        },
-        {
           "propertyName": "Id",
           "propertyType": {
             "dbType": "Guid",
@@ -9923,6 +9879,82 @@
       "tableNames": {
         "sqlServer": "EvaluationElementRating",
         "postgreSql": "EvaluationElementRating"
+      }
+    },
+    {
+      "schema": "tpdm",
+      "name": "EvaluationElementRatingFeedback",
+      "locallyDefinedProperties": [
+        {
+          "propertyName": "Comment",
+          "propertyType": {
+            "dbType": "String",
+            "minLength": 1,
+            "maxLength": 1024,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The specific comment text.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "Comment",
+            "postgreSql": "Comment"
+          }
+        },
+        {
+          "propertyName": "CreateDate",
+          "propertyType": {
+            "dbType": "DateTime2",
+            "maxLength": 0,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "CreateDate",
+            "postgreSql": "CreateDate"
+          }
+        }
+      ],
+      "identifiers": [
+        {
+          "identifierName": "EvaluationElementRatingFeedback_PK",
+          "identifyingPropertyNames": [
+            "EducationOrganizationId",
+            "EvaluationDate",
+            "EvaluationElementTitle",
+            "EvaluationObjectiveTitle",
+            "EvaluationPeriodDescriptorId",
+            "EvaluationTitle",
+            "PerformanceEvaluationTitle",
+            "PerformanceEvaluationTypeDescriptorId",
+            "PersonId",
+            "SchoolYear",
+            "SourceSystemDescriptorId",
+            "TermDescriptorId",
+            "FeedbackTypeDescriptorId"
+          ],
+          "isPrimary": true,
+          "isUpdatable": false,
+          "constraintNames": {
+            "sqlServer": "EvaluationElementRatingFeedback_PK",
+            "postgreSql": "EvaluationElementRatingFeedback_PK"
+          }
+        }
+      ],
+      "isAbstract": false,
+      "description": "Feedback provided to the evaluated person.",
+      "domains": [
+        "TeacherPreparation"
+      ],
+      "tableNames": {
+        "sqlServer": "EvaluationElementRatingFeedback",
+        "postgreSql": "EvaluationElementRatingFeedback"
       }
     },
     {
@@ -10340,141 +10372,6 @@
     },
     {
       "schema": "tpdm",
-      "name": "EvaluationObjectiveActionStep",
-      "locallyDefinedProperties": [
-        {
-          "propertyName": "BeginDate",
-          "propertyType": {
-            "dbType": "Date",
-            "minLength": 0,
-            "maxLength": 0,
-            "precision": 0,
-            "scale": 0,
-            "isNullable": false
-          },
-          "description": "start date of association",
-          "isIdentifying": true,
-          "isServerAssigned": false,
-          "columnNames": {
-            "sqlServer": "BeginDate",
-            "postgreSql": "BeginDate"
-          }
-        },
-        {
-          "propertyName": "CreateDate",
-          "propertyType": {
-            "dbType": "DateTime2",
-            "maxLength": 0,
-            "precision": 0,
-            "scale": 0,
-            "isNullable": false
-          },
-          "description": "",
-          "isIdentifying": false,
-          "isServerAssigned": false,
-          "columnNames": {
-            "sqlServer": "CreateDate",
-            "postgreSql": "CreateDate"
-          }
-        },
-        {
-          "propertyName": "EndDate",
-          "propertyType": {
-            "dbType": "Date",
-            "minLength": 0,
-            "maxLength": 0,
-            "precision": 0,
-            "scale": 0,
-            "isNullable": true
-          },
-          "description": "end date of association",
-          "isIdentifying": false,
-          "isServerAssigned": false,
-          "columnNames": {
-            "sqlServer": "EndDate",
-            "postgreSql": "EndDate"
-          }
-        },
-        {
-          "propertyName": "Id",
-          "propertyType": {
-            "dbType": "Guid",
-            "maxLength": 0,
-            "precision": 0,
-            "scale": 0,
-            "isNullable": false
-          },
-          "description": "",
-          "isIdentifying": false,
-          "isServerAssigned": false,
-          "columnNames": {
-            "sqlServer": "Id",
-            "postgreSql": "Id"
-          }
-        },
-        {
-          "propertyName": "LastModifiedDate",
-          "propertyType": {
-            "dbType": "DateTime2",
-            "maxLength": 0,
-            "precision": 0,
-            "scale": 0,
-            "isNullable": false
-          },
-          "description": "",
-          "isIdentifying": false,
-          "isServerAssigned": false,
-          "columnNames": {
-            "sqlServer": "LastModifiedDate",
-            "postgreSql": "LastModifiedDate"
-          }
-        }
-      ],
-      "identifiers": [
-        {
-          "identifierName": "EvaluationObjectiveActionStep_PK",
-          "identifyingPropertyNames": [
-            "ActionStepDescriptorId",
-            "BeginDate",
-            "EducationOrganizationId",
-            "EvaluationObjectiveTitle",
-            "EvaluationPeriodDescriptorId",
-            "EvaluationTitle",
-            "PerformanceEvaluationTitle",
-            "PerformanceEvaluationTypeDescriptorId",
-            "SchoolYear",
-            "TermDescriptorId"
-          ],
-          "isPrimary": true,
-          "isUpdatable": false,
-          "constraintNames": {
-            "sqlServer": "EvaluationObjectiveActionStep_PK",
-            "postgreSql": "EvaluationObjectiveActionStep_PK"
-          }
-        },
-        {
-          "identifierName": "UX_EvaluationObjectiveActionStep_Id",
-          "identifyingPropertyNames": [
-            "Id"
-          ],
-          "isPrimary": false,
-          "isUpdatable": false,
-          "constraintNames": {
-            "sqlServer": "UX_EvaluationObjectiveActionStep_Id",
-            "postgreSql": "UX_cc2d35_Id"
-          }
-        }
-      ],
-      "isAbstract": false,
-      "description": "This association shows what action steps are applicable for evaluation Objectives at what times.",
-      "domains": [],
-      "tableNames": {
-        "sqlServer": "EvaluationObjectiveActionStep",
-        "postgreSql": "EvaluationObjectiveActionStep"
-      }
-    },
-    {
-      "schema": "tpdm",
       "name": "EvaluationObjectiveRating",
       "locallyDefinedProperties": [
         {
@@ -10805,42 +10702,6 @@
       "name": "EvaluationRating",
       "locallyDefinedProperties": [
         {
-          "propertyName": "AreaOfRefinement",
-          "propertyType": {
-            "dbType": "String",
-            "minLength": 1,
-            "maxLength": 1024,
-            "precision": 0,
-            "scale": 0,
-            "isNullable": true
-          },
-          "description": "Area identified for person to refine or improve as part of the evaluation.",
-          "isIdentifying": false,
-          "isServerAssigned": false,
-          "columnNames": {
-            "sqlServer": "AreaOfRefinement",
-            "postgreSql": "AreaOfRefinement"
-          }
-        },
-        {
-          "propertyName": "AreaOfReinforcement",
-          "propertyType": {
-            "dbType": "String",
-            "minLength": 1,
-            "maxLength": 1024,
-            "precision": 0,
-            "scale": 0,
-            "isNullable": true
-          },
-          "description": "Area identified for reinforcement or positive feedback as part of the evaluation.",
-          "isIdentifying": false,
-          "isServerAssigned": false,
-          "columnNames": {
-            "sqlServer": "AreaOfReinforcement",
-            "postgreSql": "AreaOfReinforcement"
-          }
-        },
-        {
           "propertyName": "CreateDate",
           "propertyType": {
             "dbType": "DateTime2",
@@ -10951,6 +10812,132 @@
       "tableNames": {
         "sqlServer": "EvaluationRating",
         "postgreSql": "EvaluationRating"
+      }
+    },
+    {
+      "schema": "tpdm",
+      "name": "EvaluationRatingFeedback",
+      "locallyDefinedProperties": [
+        {
+          "propertyName": "Comment",
+          "propertyType": {
+            "dbType": "String",
+            "minLength": 1,
+            "maxLength": 1024,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The specific comment text.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "Comment",
+            "postgreSql": "Comment"
+          }
+        },
+        {
+          "propertyName": "CreateDate",
+          "propertyType": {
+            "dbType": "DateTime2",
+            "maxLength": 0,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "CreateDate",
+            "postgreSql": "CreateDate"
+          }
+        }
+      ],
+      "identifiers": [
+        {
+          "identifierName": "EvaluationRatingFeedback_PK",
+          "identifyingPropertyNames": [
+            "EducationOrganizationId",
+            "EvaluationDate",
+            "EvaluationPeriodDescriptorId",
+            "EvaluationTitle",
+            "PerformanceEvaluationTitle",
+            "PerformanceEvaluationTypeDescriptorId",
+            "PersonId",
+            "SchoolYear",
+            "SourceSystemDescriptorId",
+            "TermDescriptorId",
+            "FeedbackTypeDescriptorId"
+          ],
+          "isPrimary": true,
+          "isUpdatable": false,
+          "constraintNames": {
+            "sqlServer": "EvaluationRatingFeedback_PK",
+            "postgreSql": "EvaluationRatingFeedback_PK"
+          }
+        }
+      ],
+      "isAbstract": false,
+      "description": "various types of verbose feedback given during the evaluation.",
+      "domains": [],
+      "tableNames": {
+        "sqlServer": "EvaluationRatingFeedback",
+        "postgreSql": "EvaluationRatingFeedback"
+      }
+    },
+    {
+      "schema": "tpdm",
+      "name": "EvaluationRatingGradeLevel",
+      "locallyDefinedProperties": [
+        {
+          "propertyName": "CreateDate",
+          "propertyType": {
+            "dbType": "DateTime2",
+            "maxLength": 0,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "CreateDate",
+            "postgreSql": "CreateDate"
+          }
+        }
+      ],
+      "identifiers": [
+        {
+          "identifierName": "EvaluationRatingGradeLevel_PK",
+          "identifyingPropertyNames": [
+            "EducationOrganizationId",
+            "EvaluationDate",
+            "EvaluationPeriodDescriptorId",
+            "EvaluationTitle",
+            "PerformanceEvaluationTitle",
+            "PerformanceEvaluationTypeDescriptorId",
+            "PersonId",
+            "SchoolYear",
+            "SourceSystemDescriptorId",
+            "TermDescriptorId",
+            "GradeLevelDescriptorId"
+          ],
+          "isPrimary": true,
+          "isUpdatable": false,
+          "constraintNames": {
+            "sqlServer": "EvaluationRatingGradeLevel_PK",
+            "postgreSql": "EvaluationRatingGradeLevel_PK"
+          }
+        }
+      ],
+      "isAbstract": false,
+      "description": "The grade level(s) associated with the observation.",
+      "domains": [],
+      "tableNames": {
+        "sqlServer": "EvaluationRatingGradeLevel",
+        "postgreSql": "EvaluationRatingGradeLevel"
       }
     },
     {
@@ -11439,6 +11426,32 @@
       "tableNames": {
         "sqlServer": "FederalLocaleCodeDescriptor",
         "postgreSql": "FederalLocaleCodeDescriptor"
+      }
+    },
+    {
+      "schema": "tpdm",
+      "name": "FeedbackTypeDescriptor",
+      "locallyDefinedProperties": [],
+      "identifiers": [
+        {
+          "identifierName": "FeedbackTypeDescriptor_PK",
+          "identifyingPropertyNames": [
+            "FeedbackTypeDescriptorId"
+          ],
+          "isPrimary": true,
+          "isUpdatable": false,
+          "constraintNames": {
+            "sqlServer": "FeedbackTypeDescriptor_PK",
+            "postgreSql": "FeedbackTypeDescriptor_PK"
+          }
+        }
+      ],
+      "isAbstract": false,
+      "description": "The type of feedback",
+      "domains": [],
+      "tableNames": {
+        "sqlServer": "FeedbackTypeDescriptor",
+        "postgreSql": "FeedbackTypeDescriptor"
       }
     },
     {
@@ -17652,66 +17665,6 @@
       "constraintNames": {
         "sqlServer": "FK_AccreditationStatusDescriptor_Descriptor",
         "postgreSql": "FK_69de81_Descriptor"
-      },
-      "potentiallyLogical": false
-    },
-    {
-      "fullName": {
-        "schema": "tpdm",
-        "name": "FK_ActionStepDescriptor_Descriptor"
-      },
-      "cardinality": "OneToOneInheritance",
-      "primaryEntityFullName": {
-        "schema": "edfi",
-        "name": "Descriptor"
-      },
-      "primaryEntityProperties": [
-        {
-          "propertyName": "DescriptorId",
-          "propertyType": {
-            "dbType": "Int32",
-            "maxLength": 0,
-            "precision": 10,
-            "scale": 0,
-            "isNullable": false
-          },
-          "description": "A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.",
-          "isIdentifying": true,
-          "isServerAssigned": true,
-          "columnNames": {
-            "sqlServer": "DescriptorId",
-            "postgreSql": "DescriptorId"
-          }
-        }
-      ],
-      "secondaryEntityFullName": {
-        "schema": "tpdm",
-        "name": "ActionStepDescriptor"
-      },
-      "secondaryEntityProperties": [
-        {
-          "propertyName": "ActionStepDescriptorId",
-          "propertyType": {
-            "dbType": "Int32",
-            "maxLength": 0,
-            "precision": 10,
-            "scale": 0,
-            "isNullable": false
-          },
-          "description": "A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.",
-          "isIdentifying": true,
-          "isServerAssigned": true,
-          "columnNames": {
-            "sqlServer": "ActionStepDescriptorId",
-            "postgreSql": "ActionStepDescriptorId"
-          }
-        }
-      ],
-      "isIdentifying": true,
-      "isRequired": true,
-      "constraintNames": {
-        "sqlServer": "FK_ActionStepDescriptor_Descriptor",
-        "postgreSql": "FK_790891_Descriptor"
       },
       "potentiallyLogical": false
     },
@@ -34350,6 +34303,512 @@
     {
       "fullName": {
         "schema": "tpdm",
+        "name": "FK_EvaluationElementRatingFeedback_EvaluationElementRating"
+      },
+      "cardinality": "OneToZeroOrMore",
+      "primaryEntityFullName": {
+        "schema": "tpdm",
+        "name": "EvaluationElementRating"
+      },
+      "primaryEntityProperties": [
+        {
+          "propertyName": "EducationOrganizationId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The identifier assigned to an education organization.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "EducationOrganizationId",
+            "postgreSql": "EducationOrganizationId"
+          }
+        },
+        {
+          "propertyName": "EvaluationDate",
+          "propertyType": {
+            "dbType": "DateTime2",
+            "minLength": 0,
+            "maxLength": 0,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The date for the person's evaluation.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "EvaluationDate",
+            "postgreSql": "EvaluationDate"
+          }
+        },
+        {
+          "propertyName": "EvaluationElementTitle",
+          "propertyType": {
+            "dbType": "String",
+            "minLength": 1,
+            "maxLength": 255,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The name or title of the evaluation element.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "EvaluationElementTitle",
+            "postgreSql": "EvaluationElementTitle"
+          }
+        },
+        {
+          "propertyName": "EvaluationObjectiveTitle",
+          "propertyType": {
+            "dbType": "String",
+            "minLength": 1,
+            "maxLength": 75,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The name or title of the evaluation Objective.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "EvaluationObjectiveTitle",
+            "postgreSql": "EvaluationObjectiveTitle"
+          }
+        },
+        {
+          "propertyName": "EvaluationPeriodDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The period for the evaluation.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "EvaluationPeriodDescriptorId",
+            "postgreSql": "EvaluationPeriodDescriptorId"
+          }
+        },
+        {
+          "propertyName": "EvaluationTitle",
+          "propertyType": {
+            "dbType": "String",
+            "minLength": 1,
+            "maxLength": 50,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The name or title of the evaluation.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "EvaluationTitle",
+            "postgreSql": "EvaluationTitle"
+          }
+        },
+        {
+          "propertyName": "PerformanceEvaluationTitle",
+          "propertyType": {
+            "dbType": "String",
+            "minLength": 1,
+            "maxLength": 50,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "An assigned unique identifier for the performance evaluation.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "PerformanceEvaluationTitle",
+            "postgreSql": "PerformanceEvaluationTitle"
+          }
+        },
+        {
+          "propertyName": "PerformanceEvaluationTypeDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The type of performance evaluation conducted.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "PerformanceEvaluationTypeDescriptorId",
+            "postgreSql": "PerformanceEvaluationTypeDescriptorId"
+          }
+        },
+        {
+          "propertyName": "PersonId",
+          "propertyType": {
+            "dbType": "String",
+            "minLength": 1,
+            "maxLength": 32,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique alphanumeric code assigned to a person.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "PersonId",
+            "postgreSql": "PersonId"
+          }
+        },
+        {
+          "propertyName": "SchoolYear",
+          "propertyType": {
+            "dbType": "Int16",
+            "maxLength": 0,
+            "precision": 5,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The identifier for the school year.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "SchoolYear",
+            "postgreSql": "SchoolYear"
+          }
+        },
+        {
+          "propertyName": "SourceSystemDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "This descriptor defines the originating record source system for the person.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "SourceSystemDescriptorId",
+            "postgreSql": "SourceSystemDescriptorId"
+          }
+        },
+        {
+          "propertyName": "TermDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The term for the session during the school year.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "TermDescriptorId",
+            "postgreSql": "TermDescriptorId"
+          }
+        }
+      ],
+      "secondaryEntityFullName": {
+        "schema": "tpdm",
+        "name": "EvaluationElementRatingFeedback"
+      },
+      "secondaryEntityProperties": [
+        {
+          "propertyName": "EducationOrganizationId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The identifier assigned to an education organization.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "EducationOrganizationId",
+            "postgreSql": "EducationOrganizationId"
+          }
+        },
+        {
+          "propertyName": "EvaluationDate",
+          "propertyType": {
+            "dbType": "DateTime2",
+            "minLength": 0,
+            "maxLength": 0,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The date for the person's evaluation.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "EvaluationDate",
+            "postgreSql": "EvaluationDate"
+          }
+        },
+        {
+          "propertyName": "EvaluationElementTitle",
+          "propertyType": {
+            "dbType": "String",
+            "minLength": 1,
+            "maxLength": 255,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The name or title of the evaluation element.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "EvaluationElementTitle",
+            "postgreSql": "EvaluationElementTitle"
+          }
+        },
+        {
+          "propertyName": "EvaluationObjectiveTitle",
+          "propertyType": {
+            "dbType": "String",
+            "minLength": 1,
+            "maxLength": 75,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The name or title of the evaluation Objective.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "EvaluationObjectiveTitle",
+            "postgreSql": "EvaluationObjectiveTitle"
+          }
+        },
+        {
+          "propertyName": "EvaluationPeriodDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The period for the evaluation.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "EvaluationPeriodDescriptorId",
+            "postgreSql": "EvaluationPeriodDescriptorId"
+          }
+        },
+        {
+          "propertyName": "EvaluationTitle",
+          "propertyType": {
+            "dbType": "String",
+            "minLength": 1,
+            "maxLength": 50,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The name or title of the evaluation.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "EvaluationTitle",
+            "postgreSql": "EvaluationTitle"
+          }
+        },
+        {
+          "propertyName": "PerformanceEvaluationTitle",
+          "propertyType": {
+            "dbType": "String",
+            "minLength": 1,
+            "maxLength": 50,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "An assigned unique identifier for the performance evaluation.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "PerformanceEvaluationTitle",
+            "postgreSql": "PerformanceEvaluationTitle"
+          }
+        },
+        {
+          "propertyName": "PerformanceEvaluationTypeDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The type of performance evaluation conducted.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "PerformanceEvaluationTypeDescriptorId",
+            "postgreSql": "PerformanceEvaluationTypeDescriptorId"
+          }
+        },
+        {
+          "propertyName": "PersonId",
+          "propertyType": {
+            "dbType": "String",
+            "minLength": 1,
+            "maxLength": 32,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique alphanumeric code assigned to a person.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "PersonId",
+            "postgreSql": "PersonId"
+          }
+        },
+        {
+          "propertyName": "SchoolYear",
+          "propertyType": {
+            "dbType": "Int16",
+            "maxLength": 0,
+            "precision": 5,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The identifier for the school year.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "SchoolYear",
+            "postgreSql": "SchoolYear"
+          }
+        },
+        {
+          "propertyName": "SourceSystemDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "This descriptor defines the originating record source system for the person.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "SourceSystemDescriptorId",
+            "postgreSql": "SourceSystemDescriptorId"
+          }
+        },
+        {
+          "propertyName": "TermDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The term for the session during the school year.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "TermDescriptorId",
+            "postgreSql": "TermDescriptorId"
+          }
+        }
+      ],
+      "isIdentifying": true,
+      "isRequired": true,
+      "constraintNames": {
+        "sqlServer": "FK_EvaluationElementRatingFeedback_EvaluationElementRating",
+        "postgreSql": "FK_423aa8_EvaluationElementRating"
+      },
+      "potentiallyLogical": false
+    },
+    {
+      "fullName": {
+        "schema": "tpdm",
+        "name": "FK_EvaluationElementRatingFeedback_FeedbackTypeDescriptor"
+      },
+      "cardinality": "OneToZeroOrMore",
+      "primaryEntityFullName": {
+        "schema": "tpdm",
+        "name": "FeedbackTypeDescriptor"
+      },
+      "primaryEntityProperties": [
+        {
+          "propertyName": "FeedbackTypeDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "FeedbackTypeDescriptorId",
+            "postgreSql": "FeedbackTypeDescriptorId"
+          }
+        }
+      ],
+      "secondaryEntityFullName": {
+        "schema": "tpdm",
+        "name": "EvaluationElementRatingFeedback"
+      },
+      "secondaryEntityProperties": [
+        {
+          "propertyName": "FeedbackTypeDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The type of feedback given.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "FeedbackTypeDescriptorId",
+            "postgreSql": "FeedbackTypeDescriptorId"
+          }
+        }
+      ],
+      "isIdentifying": true,
+      "isRequired": true,
+      "constraintNames": {
+        "sqlServer": "FK_EvaluationElementRatingFeedback_FeedbackTypeDescriptor",
+        "postgreSql": "FK_423aa8_FeedbackTypeDescriptor"
+      },
+      "potentiallyLogical": false
+    },
+    {
+      "fullName": {
+        "schema": "tpdm",
         "name": "FK_EvaluationElementRatingLevel_EvaluationElement"
       },
       "cardinality": "OneToZeroOrMore",
@@ -35638,490 +36097,6 @@
       "constraintNames": {
         "sqlServer": "FK_EvaluationObjective_EvaluationTypeDescriptor",
         "postgreSql": "FK_d4565d_EvaluationTypeDescriptor"
-      },
-      "potentiallyLogical": false
-    },
-    {
-      "fullName": {
-        "schema": "tpdm",
-        "name": "FK_EvaluationObjectiveActionStep_ActionStepDescriptor"
-      },
-      "cardinality": "OneToZeroOrMore",
-      "primaryEntityFullName": {
-        "schema": "tpdm",
-        "name": "ActionStepDescriptor"
-      },
-      "primaryEntityProperties": [
-        {
-          "propertyName": "ActionStepDescriptorId",
-          "propertyType": {
-            "dbType": "Int32",
-            "maxLength": 0,
-            "precision": 10,
-            "scale": 0,
-            "isNullable": false
-          },
-          "description": "A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.",
-          "isIdentifying": true,
-          "isServerAssigned": false,
-          "columnNames": {
-            "sqlServer": "ActionStepDescriptorId",
-            "postgreSql": "ActionStepDescriptorId"
-          }
-        }
-      ],
-      "secondaryEntityFullName": {
-        "schema": "tpdm",
-        "name": "EvaluationObjectiveActionStep"
-      },
-      "secondaryEntityProperties": [
-        {
-          "propertyName": "ActionStepDescriptorId",
-          "propertyType": {
-            "dbType": "Int32",
-            "maxLength": 0,
-            "precision": 10,
-            "scale": 0,
-            "isNullable": false
-          },
-          "description": "Reference to the action step.",
-          "isIdentifying": true,
-          "isServerAssigned": false,
-          "columnNames": {
-            "sqlServer": "ActionStepDescriptorId",
-            "postgreSql": "ActionStepDescriptorId"
-          }
-        }
-      ],
-      "isIdentifying": true,
-      "isRequired": true,
-      "constraintNames": {
-        "sqlServer": "FK_EvaluationObjectiveActionStep_ActionStepDescriptor",
-        "postgreSql": "FK_cc2d35_ActionStepDescriptor"
-      },
-      "potentiallyLogical": false
-    },
-    {
-      "fullName": {
-        "schema": "tpdm",
-        "name": "FK_EvaluationObjectiveActionStep_EvaluationObjective"
-      },
-      "cardinality": "OneToZeroOrMore",
-      "primaryEntityFullName": {
-        "schema": "tpdm",
-        "name": "EvaluationObjective"
-      },
-      "primaryEntityProperties": [
-        {
-          "propertyName": "EducationOrganizationId",
-          "propertyType": {
-            "dbType": "Int32",
-            "maxLength": 0,
-            "precision": 10,
-            "scale": 0,
-            "isNullable": false
-          },
-          "description": "The identifier assigned to an education organization.",
-          "isIdentifying": true,
-          "isServerAssigned": false,
-          "columnNames": {
-            "sqlServer": "EducationOrganizationId",
-            "postgreSql": "EducationOrganizationId"
-          }
-        },
-        {
-          "propertyName": "EvaluationObjectiveTitle",
-          "propertyType": {
-            "dbType": "String",
-            "minLength": 1,
-            "maxLength": 75,
-            "precision": 0,
-            "scale": 0,
-            "isNullable": false
-          },
-          "description": "The name or title of the evaluation Objective.",
-          "isIdentifying": true,
-          "isServerAssigned": false,
-          "columnNames": {
-            "sqlServer": "EvaluationObjectiveTitle",
-            "postgreSql": "EvaluationObjectiveTitle"
-          }
-        },
-        {
-          "propertyName": "EvaluationPeriodDescriptorId",
-          "propertyType": {
-            "dbType": "Int32",
-            "maxLength": 0,
-            "precision": 10,
-            "scale": 0,
-            "isNullable": false
-          },
-          "description": "The period for the evaluation.",
-          "isIdentifying": true,
-          "isServerAssigned": false,
-          "columnNames": {
-            "sqlServer": "EvaluationPeriodDescriptorId",
-            "postgreSql": "EvaluationPeriodDescriptorId"
-          }
-        },
-        {
-          "propertyName": "EvaluationTitle",
-          "propertyType": {
-            "dbType": "String",
-            "minLength": 1,
-            "maxLength": 50,
-            "precision": 0,
-            "scale": 0,
-            "isNullable": false
-          },
-          "description": "The name or title of the evaluation.",
-          "isIdentifying": true,
-          "isServerAssigned": false,
-          "columnNames": {
-            "sqlServer": "EvaluationTitle",
-            "postgreSql": "EvaluationTitle"
-          }
-        },
-        {
-          "propertyName": "PerformanceEvaluationTitle",
-          "propertyType": {
-            "dbType": "String",
-            "minLength": 1,
-            "maxLength": 50,
-            "precision": 0,
-            "scale": 0,
-            "isNullable": false
-          },
-          "description": "An assigned unique identifier for the performance evaluation.",
-          "isIdentifying": true,
-          "isServerAssigned": false,
-          "columnNames": {
-            "sqlServer": "PerformanceEvaluationTitle",
-            "postgreSql": "PerformanceEvaluationTitle"
-          }
-        },
-        {
-          "propertyName": "PerformanceEvaluationTypeDescriptorId",
-          "propertyType": {
-            "dbType": "Int32",
-            "maxLength": 0,
-            "precision": 10,
-            "scale": 0,
-            "isNullable": false
-          },
-          "description": "The type of performance evaluation conducted.",
-          "isIdentifying": true,
-          "isServerAssigned": false,
-          "columnNames": {
-            "sqlServer": "PerformanceEvaluationTypeDescriptorId",
-            "postgreSql": "PerformanceEvaluationTypeDescriptorId"
-          }
-        },
-        {
-          "propertyName": "SchoolYear",
-          "propertyType": {
-            "dbType": "Int16",
-            "maxLength": 0,
-            "precision": 5,
-            "scale": 0,
-            "isNullable": false
-          },
-          "description": "The identifier for the school year.",
-          "isIdentifying": true,
-          "isServerAssigned": false,
-          "columnNames": {
-            "sqlServer": "SchoolYear",
-            "postgreSql": "SchoolYear"
-          }
-        },
-        {
-          "propertyName": "TermDescriptorId",
-          "propertyType": {
-            "dbType": "Int32",
-            "maxLength": 0,
-            "precision": 10,
-            "scale": 0,
-            "isNullable": false
-          },
-          "description": "The term for the session during the school year.",
-          "isIdentifying": true,
-          "isServerAssigned": false,
-          "columnNames": {
-            "sqlServer": "TermDescriptorId",
-            "postgreSql": "TermDescriptorId"
-          }
-        }
-      ],
-      "secondaryEntityFullName": {
-        "schema": "tpdm",
-        "name": "EvaluationObjectiveActionStep"
-      },
-      "secondaryEntityProperties": [
-        {
-          "propertyName": "EducationOrganizationId",
-          "propertyType": {
-            "dbType": "Int32",
-            "maxLength": 0,
-            "precision": 10,
-            "scale": 0,
-            "isNullable": false
-          },
-          "description": "The identifier assigned to an education organization.",
-          "isIdentifying": true,
-          "isServerAssigned": false,
-          "columnNames": {
-            "sqlServer": "EducationOrganizationId",
-            "postgreSql": "EducationOrganizationId"
-          }
-        },
-        {
-          "propertyName": "EvaluationObjectiveTitle",
-          "propertyType": {
-            "dbType": "String",
-            "minLength": 1,
-            "maxLength": 75,
-            "precision": 0,
-            "scale": 0,
-            "isNullable": false
-          },
-          "description": "The name or title of the evaluation Objective.",
-          "isIdentifying": true,
-          "isServerAssigned": false,
-          "columnNames": {
-            "sqlServer": "EvaluationObjectiveTitle",
-            "postgreSql": "EvaluationObjectiveTitle"
-          }
-        },
-        {
-          "propertyName": "EvaluationPeriodDescriptorId",
-          "propertyType": {
-            "dbType": "Int32",
-            "maxLength": 0,
-            "precision": 10,
-            "scale": 0,
-            "isNullable": false
-          },
-          "description": "The period for the evaluation.",
-          "isIdentifying": true,
-          "isServerAssigned": false,
-          "columnNames": {
-            "sqlServer": "EvaluationPeriodDescriptorId",
-            "postgreSql": "EvaluationPeriodDescriptorId"
-          }
-        },
-        {
-          "propertyName": "EvaluationTitle",
-          "propertyType": {
-            "dbType": "String",
-            "minLength": 1,
-            "maxLength": 50,
-            "precision": 0,
-            "scale": 0,
-            "isNullable": false
-          },
-          "description": "The name or title of the evaluation.",
-          "isIdentifying": true,
-          "isServerAssigned": false,
-          "columnNames": {
-            "sqlServer": "EvaluationTitle",
-            "postgreSql": "EvaluationTitle"
-          }
-        },
-        {
-          "propertyName": "PerformanceEvaluationTitle",
-          "propertyType": {
-            "dbType": "String",
-            "minLength": 1,
-            "maxLength": 50,
-            "precision": 0,
-            "scale": 0,
-            "isNullable": false
-          },
-          "description": "An assigned unique identifier for the performance evaluation.",
-          "isIdentifying": true,
-          "isServerAssigned": false,
-          "columnNames": {
-            "sqlServer": "PerformanceEvaluationTitle",
-            "postgreSql": "PerformanceEvaluationTitle"
-          }
-        },
-        {
-          "propertyName": "PerformanceEvaluationTypeDescriptorId",
-          "propertyType": {
-            "dbType": "Int32",
-            "maxLength": 0,
-            "precision": 10,
-            "scale": 0,
-            "isNullable": false
-          },
-          "description": "The type of performance evaluation conducted.",
-          "isIdentifying": true,
-          "isServerAssigned": false,
-          "columnNames": {
-            "sqlServer": "PerformanceEvaluationTypeDescriptorId",
-            "postgreSql": "PerformanceEvaluationTypeDescriptorId"
-          }
-        },
-        {
-          "propertyName": "SchoolYear",
-          "propertyType": {
-            "dbType": "Int16",
-            "maxLength": 0,
-            "precision": 5,
-            "scale": 0,
-            "isNullable": false
-          },
-          "description": "The identifier for the school year.",
-          "isIdentifying": true,
-          "isServerAssigned": false,
-          "columnNames": {
-            "sqlServer": "SchoolYear",
-            "postgreSql": "SchoolYear"
-          }
-        },
-        {
-          "propertyName": "TermDescriptorId",
-          "propertyType": {
-            "dbType": "Int32",
-            "maxLength": 0,
-            "precision": 10,
-            "scale": 0,
-            "isNullable": false
-          },
-          "description": "The term for the session during the school year.",
-          "isIdentifying": true,
-          "isServerAssigned": false,
-          "columnNames": {
-            "sqlServer": "TermDescriptorId",
-            "postgreSql": "TermDescriptorId"
-          }
-        }
-      ],
-      "isIdentifying": true,
-      "isRequired": true,
-      "constraintNames": {
-        "sqlServer": "FK_EvaluationObjectiveActionStep_EvaluationObjective",
-        "postgreSql": "FK_cc2d35_EvaluationObjective"
-      },
-      "potentiallyLogical": false
-    },
-    {
-      "fullName": {
-        "schema": "tpdm",
-        "name": "FK_EvaluationObjectiveRating_ActionStepDescriptor"
-      },
-      "cardinality": "OneToZeroOrMore",
-      "primaryEntityFullName": {
-        "schema": "tpdm",
-        "name": "ActionStepDescriptor"
-      },
-      "primaryEntityProperties": [
-        {
-          "propertyName": "ActionStepDescriptorId",
-          "propertyType": {
-            "dbType": "Int32",
-            "maxLength": 0,
-            "precision": 10,
-            "scale": 0,
-            "isNullable": false
-          },
-          "description": "A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.",
-          "isIdentifying": false,
-          "isServerAssigned": false,
-          "columnNames": {
-            "sqlServer": "ActionStepDescriptorId",
-            "postgreSql": "ActionStepDescriptorId"
-          }
-        }
-      ],
-      "secondaryEntityFullName": {
-        "schema": "tpdm",
-        "name": "EvaluationObjectiveRating"
-      },
-      "secondaryEntityProperties": [
-        {
-          "propertyName": "CompletedActionStepDescriptorId",
-          "propertyType": {
-            "dbType": "Int32",
-            "maxLength": 0,
-            "precision": 10,
-            "scale": 0,
-            "isNullable": true
-          },
-          "description": "Action step assigned during evaluation",
-          "isIdentifying": false,
-          "isServerAssigned": false,
-          "columnNames": {
-            "sqlServer": "CompletedActionStepDescriptorId",
-            "postgreSql": "CompletedActionStepDescriptorId"
-          }
-        }
-      ],
-      "isIdentifying": false,
-      "isRequired": false,
-      "constraintNames": {
-        "sqlServer": "FK_EvaluationObjectiveRating_ActionStepDescriptor",
-        "postgreSql": "FK_7ae19d_ActionStepDescriptor"
-      },
-      "potentiallyLogical": false
-    },
-    {
-      "fullName": {
-        "schema": "tpdm",
-        "name": "FK_EvaluationObjectiveRating_ActionStepDescriptor1"
-      },
-      "cardinality": "OneToZeroOrMore",
-      "primaryEntityFullName": {
-        "schema": "tpdm",
-        "name": "ActionStepDescriptor"
-      },
-      "primaryEntityProperties": [
-        {
-          "propertyName": "ActionStepDescriptorId",
-          "propertyType": {
-            "dbType": "Int32",
-            "maxLength": 0,
-            "precision": 10,
-            "scale": 0,
-            "isNullable": false
-          },
-          "description": "A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.",
-          "isIdentifying": false,
-          "isServerAssigned": false,
-          "columnNames": {
-            "sqlServer": "ActionStepDescriptorId",
-            "postgreSql": "ActionStepDescriptorId"
-          }
-        }
-      ],
-      "secondaryEntityFullName": {
-        "schema": "tpdm",
-        "name": "EvaluationObjectiveRating"
-      },
-      "secondaryEntityProperties": [
-        {
-          "propertyName": "NewActionStepDescriptorId",
-          "propertyType": {
-            "dbType": "Int32",
-            "maxLength": 0,
-            "precision": 10,
-            "scale": 0,
-            "isNullable": true
-          },
-          "description": "Action step assigned during during previous evaluation",
-          "isIdentifying": false,
-          "isServerAssigned": false,
-          "columnNames": {
-            "sqlServer": "NewActionStepDescriptorId",
-            "postgreSql": "NewActionStepDescriptorId"
-          }
-        }
-      ],
-      "isIdentifying": false,
-      "isRequired": false,
-      "constraintNames": {
-        "sqlServer": "FK_EvaluationObjectiveRating_ActionStepDescriptor1",
-        "postgreSql": "FK_7ae19d_ActionStepDescriptor1"
       },
       "potentiallyLogical": false
     },
@@ -38772,6 +38747,874 @@
     {
       "fullName": {
         "schema": "tpdm",
+        "name": "FK_EvaluationRatingFeedback_EvaluationRating"
+      },
+      "cardinality": "OneToZeroOrMore",
+      "primaryEntityFullName": {
+        "schema": "tpdm",
+        "name": "EvaluationRating"
+      },
+      "primaryEntityProperties": [
+        {
+          "propertyName": "EducationOrganizationId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The identifier assigned to an education organization.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "EducationOrganizationId",
+            "postgreSql": "EducationOrganizationId"
+          }
+        },
+        {
+          "propertyName": "EvaluationDate",
+          "propertyType": {
+            "dbType": "DateTime2",
+            "minLength": 0,
+            "maxLength": 0,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The date for the person's evaluation.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "EvaluationDate",
+            "postgreSql": "EvaluationDate"
+          }
+        },
+        {
+          "propertyName": "EvaluationPeriodDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The period for the evaluation.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "EvaluationPeriodDescriptorId",
+            "postgreSql": "EvaluationPeriodDescriptorId"
+          }
+        },
+        {
+          "propertyName": "EvaluationTitle",
+          "propertyType": {
+            "dbType": "String",
+            "minLength": 1,
+            "maxLength": 50,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The name or title of the evaluation.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "EvaluationTitle",
+            "postgreSql": "EvaluationTitle"
+          }
+        },
+        {
+          "propertyName": "PerformanceEvaluationTitle",
+          "propertyType": {
+            "dbType": "String",
+            "minLength": 1,
+            "maxLength": 50,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "An assigned unique identifier for the performance evaluation.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "PerformanceEvaluationTitle",
+            "postgreSql": "PerformanceEvaluationTitle"
+          }
+        },
+        {
+          "propertyName": "PerformanceEvaluationTypeDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The type of performance evaluation conducted.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "PerformanceEvaluationTypeDescriptorId",
+            "postgreSql": "PerformanceEvaluationTypeDescriptorId"
+          }
+        },
+        {
+          "propertyName": "PersonId",
+          "propertyType": {
+            "dbType": "String",
+            "minLength": 1,
+            "maxLength": 32,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique alphanumeric code assigned to a person.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "PersonId",
+            "postgreSql": "PersonId"
+          }
+        },
+        {
+          "propertyName": "SchoolYear",
+          "propertyType": {
+            "dbType": "Int16",
+            "maxLength": 0,
+            "precision": 5,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The identifier for the school year.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "SchoolYear",
+            "postgreSql": "SchoolYear"
+          }
+        },
+        {
+          "propertyName": "SourceSystemDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "This descriptor defines the originating record source system for the person.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "SourceSystemDescriptorId",
+            "postgreSql": "SourceSystemDescriptorId"
+          }
+        },
+        {
+          "propertyName": "TermDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The term for the session during the school year.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "TermDescriptorId",
+            "postgreSql": "TermDescriptorId"
+          }
+        }
+      ],
+      "secondaryEntityFullName": {
+        "schema": "tpdm",
+        "name": "EvaluationRatingFeedback"
+      },
+      "secondaryEntityProperties": [
+        {
+          "propertyName": "EducationOrganizationId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The identifier assigned to an education organization.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "EducationOrganizationId",
+            "postgreSql": "EducationOrganizationId"
+          }
+        },
+        {
+          "propertyName": "EvaluationDate",
+          "propertyType": {
+            "dbType": "DateTime2",
+            "minLength": 0,
+            "maxLength": 0,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The date for the person's evaluation.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "EvaluationDate",
+            "postgreSql": "EvaluationDate"
+          }
+        },
+        {
+          "propertyName": "EvaluationPeriodDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The period for the evaluation.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "EvaluationPeriodDescriptorId",
+            "postgreSql": "EvaluationPeriodDescriptorId"
+          }
+        },
+        {
+          "propertyName": "EvaluationTitle",
+          "propertyType": {
+            "dbType": "String",
+            "minLength": 1,
+            "maxLength": 50,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The name or title of the evaluation.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "EvaluationTitle",
+            "postgreSql": "EvaluationTitle"
+          }
+        },
+        {
+          "propertyName": "PerformanceEvaluationTitle",
+          "propertyType": {
+            "dbType": "String",
+            "minLength": 1,
+            "maxLength": 50,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "An assigned unique identifier for the performance evaluation.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "PerformanceEvaluationTitle",
+            "postgreSql": "PerformanceEvaluationTitle"
+          }
+        },
+        {
+          "propertyName": "PerformanceEvaluationTypeDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The type of performance evaluation conducted.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "PerformanceEvaluationTypeDescriptorId",
+            "postgreSql": "PerformanceEvaluationTypeDescriptorId"
+          }
+        },
+        {
+          "propertyName": "PersonId",
+          "propertyType": {
+            "dbType": "String",
+            "minLength": 1,
+            "maxLength": 32,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique alphanumeric code assigned to a person.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "PersonId",
+            "postgreSql": "PersonId"
+          }
+        },
+        {
+          "propertyName": "SchoolYear",
+          "propertyType": {
+            "dbType": "Int16",
+            "maxLength": 0,
+            "precision": 5,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The identifier for the school year.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "SchoolYear",
+            "postgreSql": "SchoolYear"
+          }
+        },
+        {
+          "propertyName": "SourceSystemDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "This descriptor defines the originating record source system for the person.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "SourceSystemDescriptorId",
+            "postgreSql": "SourceSystemDescriptorId"
+          }
+        },
+        {
+          "propertyName": "TermDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The term for the session during the school year.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "TermDescriptorId",
+            "postgreSql": "TermDescriptorId"
+          }
+        }
+      ],
+      "isIdentifying": true,
+      "isRequired": true,
+      "constraintNames": {
+        "sqlServer": "FK_EvaluationRatingFeedback_EvaluationRating",
+        "postgreSql": "FK_eb1dd6_EvaluationRating"
+      },
+      "potentiallyLogical": false
+    },
+    {
+      "fullName": {
+        "schema": "tpdm",
+        "name": "FK_EvaluationRatingFeedback_FeedbackTypeDescriptor"
+      },
+      "cardinality": "OneToZeroOrMore",
+      "primaryEntityFullName": {
+        "schema": "tpdm",
+        "name": "FeedbackTypeDescriptor"
+      },
+      "primaryEntityProperties": [
+        {
+          "propertyName": "FeedbackTypeDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "FeedbackTypeDescriptorId",
+            "postgreSql": "FeedbackTypeDescriptorId"
+          }
+        }
+      ],
+      "secondaryEntityFullName": {
+        "schema": "tpdm",
+        "name": "EvaluationRatingFeedback"
+      },
+      "secondaryEntityProperties": [
+        {
+          "propertyName": "FeedbackTypeDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The type of feedback given.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "FeedbackTypeDescriptorId",
+            "postgreSql": "FeedbackTypeDescriptorId"
+          }
+        }
+      ],
+      "isIdentifying": true,
+      "isRequired": true,
+      "constraintNames": {
+        "sqlServer": "FK_EvaluationRatingFeedback_FeedbackTypeDescriptor",
+        "postgreSql": "FK_eb1dd6_FeedbackTypeDescriptor"
+      },
+      "potentiallyLogical": false
+    },
+    {
+      "fullName": {
+        "schema": "tpdm",
+        "name": "FK_EvaluationRatingGradeLevel_EvaluationRating"
+      },
+      "cardinality": "OneToZeroOrMore",
+      "primaryEntityFullName": {
+        "schema": "tpdm",
+        "name": "EvaluationRating"
+      },
+      "primaryEntityProperties": [
+        {
+          "propertyName": "EducationOrganizationId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The identifier assigned to an education organization.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "EducationOrganizationId",
+            "postgreSql": "EducationOrganizationId"
+          }
+        },
+        {
+          "propertyName": "EvaluationDate",
+          "propertyType": {
+            "dbType": "DateTime2",
+            "minLength": 0,
+            "maxLength": 0,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The date for the person's evaluation.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "EvaluationDate",
+            "postgreSql": "EvaluationDate"
+          }
+        },
+        {
+          "propertyName": "EvaluationPeriodDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The period for the evaluation.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "EvaluationPeriodDescriptorId",
+            "postgreSql": "EvaluationPeriodDescriptorId"
+          }
+        },
+        {
+          "propertyName": "EvaluationTitle",
+          "propertyType": {
+            "dbType": "String",
+            "minLength": 1,
+            "maxLength": 50,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The name or title of the evaluation.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "EvaluationTitle",
+            "postgreSql": "EvaluationTitle"
+          }
+        },
+        {
+          "propertyName": "PerformanceEvaluationTitle",
+          "propertyType": {
+            "dbType": "String",
+            "minLength": 1,
+            "maxLength": 50,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "An assigned unique identifier for the performance evaluation.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "PerformanceEvaluationTitle",
+            "postgreSql": "PerformanceEvaluationTitle"
+          }
+        },
+        {
+          "propertyName": "PerformanceEvaluationTypeDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The type of performance evaluation conducted.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "PerformanceEvaluationTypeDescriptorId",
+            "postgreSql": "PerformanceEvaluationTypeDescriptorId"
+          }
+        },
+        {
+          "propertyName": "PersonId",
+          "propertyType": {
+            "dbType": "String",
+            "minLength": 1,
+            "maxLength": 32,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique alphanumeric code assigned to a person.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "PersonId",
+            "postgreSql": "PersonId"
+          }
+        },
+        {
+          "propertyName": "SchoolYear",
+          "propertyType": {
+            "dbType": "Int16",
+            "maxLength": 0,
+            "precision": 5,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The identifier for the school year.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "SchoolYear",
+            "postgreSql": "SchoolYear"
+          }
+        },
+        {
+          "propertyName": "SourceSystemDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "This descriptor defines the originating record source system for the person.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "SourceSystemDescriptorId",
+            "postgreSql": "SourceSystemDescriptorId"
+          }
+        },
+        {
+          "propertyName": "TermDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The term for the session during the school year.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "TermDescriptorId",
+            "postgreSql": "TermDescriptorId"
+          }
+        }
+      ],
+      "secondaryEntityFullName": {
+        "schema": "tpdm",
+        "name": "EvaluationRatingGradeLevel"
+      },
+      "secondaryEntityProperties": [
+        {
+          "propertyName": "EducationOrganizationId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The identifier assigned to an education organization.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "EducationOrganizationId",
+            "postgreSql": "EducationOrganizationId"
+          }
+        },
+        {
+          "propertyName": "EvaluationDate",
+          "propertyType": {
+            "dbType": "DateTime2",
+            "minLength": 0,
+            "maxLength": 0,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The date for the person's evaluation.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "EvaluationDate",
+            "postgreSql": "EvaluationDate"
+          }
+        },
+        {
+          "propertyName": "EvaluationPeriodDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The period for the evaluation.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "EvaluationPeriodDescriptorId",
+            "postgreSql": "EvaluationPeriodDescriptorId"
+          }
+        },
+        {
+          "propertyName": "EvaluationTitle",
+          "propertyType": {
+            "dbType": "String",
+            "minLength": 1,
+            "maxLength": 50,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The name or title of the evaluation.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "EvaluationTitle",
+            "postgreSql": "EvaluationTitle"
+          }
+        },
+        {
+          "propertyName": "PerformanceEvaluationTitle",
+          "propertyType": {
+            "dbType": "String",
+            "minLength": 1,
+            "maxLength": 50,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "An assigned unique identifier for the performance evaluation.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "PerformanceEvaluationTitle",
+            "postgreSql": "PerformanceEvaluationTitle"
+          }
+        },
+        {
+          "propertyName": "PerformanceEvaluationTypeDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The type of performance evaluation conducted.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "PerformanceEvaluationTypeDescriptorId",
+            "postgreSql": "PerformanceEvaluationTypeDescriptorId"
+          }
+        },
+        {
+          "propertyName": "PersonId",
+          "propertyType": {
+            "dbType": "String",
+            "minLength": 1,
+            "maxLength": 32,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique alphanumeric code assigned to a person.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "PersonId",
+            "postgreSql": "PersonId"
+          }
+        },
+        {
+          "propertyName": "SchoolYear",
+          "propertyType": {
+            "dbType": "Int16",
+            "maxLength": 0,
+            "precision": 5,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The identifier for the school year.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "SchoolYear",
+            "postgreSql": "SchoolYear"
+          }
+        },
+        {
+          "propertyName": "SourceSystemDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "This descriptor defines the originating record source system for the person.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "SourceSystemDescriptorId",
+            "postgreSql": "SourceSystemDescriptorId"
+          }
+        },
+        {
+          "propertyName": "TermDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The term for the session during the school year.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "TermDescriptorId",
+            "postgreSql": "TermDescriptorId"
+          }
+        }
+      ],
+      "isIdentifying": true,
+      "isRequired": true,
+      "constraintNames": {
+        "sqlServer": "FK_EvaluationRatingGradeLevel_EvaluationRating",
+        "postgreSql": "FK_b58edc_EvaluationRating"
+      },
+      "potentiallyLogical": false
+    },
+    {
+      "fullName": {
+        "schema": "tpdm",
+        "name": "FK_EvaluationRatingGradeLevel_GradeLevelDescriptor"
+      },
+      "cardinality": "OneToZeroOrMore",
+      "primaryEntityFullName": {
+        "schema": "edfi",
+        "name": "GradeLevelDescriptor"
+      },
+      "primaryEntityProperties": [
+        {
+          "propertyName": "GradeLevelDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "GradeLevelDescriptorId",
+            "postgreSql": "GradeLevelDescriptorId"
+          }
+        }
+      ],
+      "secondaryEntityFullName": {
+        "schema": "tpdm",
+        "name": "EvaluationRatingGradeLevel"
+      },
+      "secondaryEntityProperties": [
+        {
+          "propertyName": "GradeLevelDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The grade level(s) associated with the observation.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "GradeLevelDescriptorId",
+            "postgreSql": "GradeLevelDescriptorId"
+          }
+        }
+      ],
+      "isIdentifying": true,
+      "isRequired": true,
+      "constraintNames": {
+        "sqlServer": "FK_EvaluationRatingGradeLevel_GradeLevelDescriptor",
+        "postgreSql": "FK_b58edc_GradeLevelDescriptor"
+      },
+      "potentiallyLogical": false
+    },
+    {
+      "fullName": {
+        "schema": "tpdm",
         "name": "FK_EvaluationRatingLevel_Evaluation"
       },
       "cardinality": "OneToZeroOrMore",
@@ -40750,6 +41593,66 @@
     {
       "fullName": {
         "schema": "tpdm",
+        "name": "FK_FeedbackTypeDescriptor_Descriptor"
+      },
+      "cardinality": "OneToOneInheritance",
+      "primaryEntityFullName": {
+        "schema": "edfi",
+        "name": "Descriptor"
+      },
+      "primaryEntityProperties": [
+        {
+          "propertyName": "DescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.",
+          "isIdentifying": true,
+          "isServerAssigned": true,
+          "columnNames": {
+            "sqlServer": "DescriptorId",
+            "postgreSql": "DescriptorId"
+          }
+        }
+      ],
+      "secondaryEntityFullName": {
+        "schema": "tpdm",
+        "name": "FeedbackTypeDescriptor"
+      },
+      "secondaryEntityProperties": [
+        {
+          "propertyName": "FeedbackTypeDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.",
+          "isIdentifying": true,
+          "isServerAssigned": true,
+          "columnNames": {
+            "sqlServer": "FeedbackTypeDescriptorId",
+            "postgreSql": "FeedbackTypeDescriptorId"
+          }
+        }
+      ],
+      "isIdentifying": true,
+      "isRequired": true,
+      "constraintNames": {
+        "sqlServer": "FK_FeedbackTypeDescriptor_Descriptor",
+        "postgreSql": "FK_8d7c32_Descriptor"
+      },
+      "potentiallyLogical": false
+    },
+    {
+      "fullName": {
+        "schema": "tpdm",
         "name": "FK_FieldworkExperience_EducatorPreparationProgram"
       },
       "cardinality": "OneToZeroOrMore",
@@ -41886,12 +42789,12 @@
     {
       "fullName": {
         "schema": "tpdm",
-        "name": "FK_Goal_EvaluationElement"
+        "name": "FK_Goal_EvaluationElementRating"
       },
       "cardinality": "OneToZeroOrMore",
       "primaryEntityFullName": {
         "schema": "tpdm",
-        "name": "EvaluationElement"
+        "name": "EvaluationElementRating"
       },
       "primaryEntityProperties": [
         {
@@ -41909,6 +42812,24 @@
           "columnNames": {
             "sqlServer": "EducationOrganizationId",
             "postgreSql": "EducationOrganizationId"
+          }
+        },
+        {
+          "propertyName": "EvaluationDate",
+          "propertyType": {
+            "dbType": "DateTime2",
+            "minLength": 0,
+            "maxLength": 0,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The date for the person's evaluation.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "EvaluationDate",
+            "postgreSql": "EvaluationDate"
           }
         },
         {
@@ -42018,6 +42939,24 @@
           }
         },
         {
+          "propertyName": "PersonId",
+          "propertyType": {
+            "dbType": "String",
+            "minLength": 1,
+            "maxLength": 32,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique alphanumeric code assigned to a person.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "PersonId",
+            "postgreSql": "PersonId"
+          }
+        },
+        {
           "propertyName": "SchoolYear",
           "propertyType": {
             "dbType": "Int16",
@@ -42032,6 +42971,23 @@
           "columnNames": {
             "sqlServer": "SchoolYear",
             "postgreSql": "SchoolYear"
+          }
+        },
+        {
+          "propertyName": "SourceSystemDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "This descriptor defines the originating record source system for the person.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "SourceSystemDescriptorId",
+            "postgreSql": "SourceSystemDescriptorId"
           }
         },
         {
@@ -42075,6 +43031,24 @@
           }
         },
         {
+          "propertyName": "EvaluationDate",
+          "propertyType": {
+            "dbType": "DateTime2",
+            "minLength": 0,
+            "maxLength": 0,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": true
+          },
+          "description": "The date for the person's evaluation.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "EvaluationDate",
+            "postgreSql": "EvaluationDate"
+          }
+        },
+        {
           "propertyName": "EvaluationElementTitle",
           "propertyType": {
             "dbType": "String",
@@ -42181,6 +43155,24 @@
           }
         },
         {
+          "propertyName": "PersonId",
+          "propertyType": {
+            "dbType": "String",
+            "minLength": 1,
+            "maxLength": 32,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique alphanumeric code assigned to a person.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "PersonId",
+            "postgreSql": "PersonId"
+          }
+        },
+        {
           "propertyName": "SchoolYear",
           "propertyType": {
             "dbType": "Int16",
@@ -42195,6 +43187,23 @@
           "columnNames": {
             "sqlServer": "SchoolYear",
             "postgreSql": "SchoolYear"
+          }
+        },
+        {
+          "propertyName": "SourceSystemDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "This descriptor defines the originating record source system for the person.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "SourceSystemDescriptorId",
+            "postgreSql": "SourceSystemDescriptorId"
           }
         },
         {
@@ -42218,20 +43227,20 @@
       "isIdentifying": false,
       "isRequired": false,
       "constraintNames": {
-        "sqlServer": "FK_Goal_EvaluationElement",
-        "postgreSql": "FK_cdbf69_EvaluationElement"
+        "sqlServer": "FK_Goal_EvaluationElementRating",
+        "postgreSql": "FK_cdbf69_EvaluationElementRating"
       },
       "potentiallyLogical": false
     },
     {
       "fullName": {
         "schema": "tpdm",
-        "name": "FK_Goal_EvaluationObjective"
+        "name": "FK_Goal_EvaluationObjectiveRating"
       },
       "cardinality": "OneToZeroOrMore",
       "primaryEntityFullName": {
         "schema": "tpdm",
-        "name": "EvaluationObjective"
+        "name": "EvaluationObjectiveRating"
       },
       "primaryEntityProperties": [
         {
@@ -42249,6 +43258,24 @@
           "columnNames": {
             "sqlServer": "EducationOrganizationId",
             "postgreSql": "EducationOrganizationId"
+          }
+        },
+        {
+          "propertyName": "EvaluationDate",
+          "propertyType": {
+            "dbType": "DateTime2",
+            "minLength": 0,
+            "maxLength": 0,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The date for the person's evaluation.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "EvaluationDate",
+            "postgreSql": "EvaluationDate"
           }
         },
         {
@@ -42340,6 +43367,24 @@
           }
         },
         {
+          "propertyName": "PersonId",
+          "propertyType": {
+            "dbType": "String",
+            "minLength": 1,
+            "maxLength": 32,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique alphanumeric code assigned to a person.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "PersonId",
+            "postgreSql": "PersonId"
+          }
+        },
+        {
           "propertyName": "SchoolYear",
           "propertyType": {
             "dbType": "Int16",
@@ -42354,6 +43399,23 @@
           "columnNames": {
             "sqlServer": "SchoolYear",
             "postgreSql": "SchoolYear"
+          }
+        },
+        {
+          "propertyName": "SourceSystemDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "This descriptor defines the originating record source system for the person.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "SourceSystemDescriptorId",
+            "postgreSql": "SourceSystemDescriptorId"
           }
         },
         {
@@ -42397,6 +43459,24 @@
           }
         },
         {
+          "propertyName": "EvaluationDate",
+          "propertyType": {
+            "dbType": "DateTime2",
+            "minLength": 0,
+            "maxLength": 0,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": true
+          },
+          "description": "The date for the person's evaluation.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "EvaluationDate",
+            "postgreSql": "EvaluationDate"
+          }
+        },
+        {
           "propertyName": "EvaluationObjectiveTitle",
           "propertyType": {
             "dbType": "String",
@@ -42485,6 +43565,24 @@
           }
         },
         {
+          "propertyName": "PersonId",
+          "propertyType": {
+            "dbType": "String",
+            "minLength": 1,
+            "maxLength": 32,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique alphanumeric code assigned to a person.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "PersonId",
+            "postgreSql": "PersonId"
+          }
+        },
+        {
           "propertyName": "SchoolYear",
           "propertyType": {
             "dbType": "Int16",
@@ -42499,6 +43597,23 @@
           "columnNames": {
             "sqlServer": "SchoolYear",
             "postgreSql": "SchoolYear"
+          }
+        },
+        {
+          "propertyName": "SourceSystemDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "This descriptor defines the originating record source system for the person.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "SourceSystemDescriptorId",
+            "postgreSql": "SourceSystemDescriptorId"
           }
         },
         {
@@ -42522,8 +43637,8 @@
       "isIdentifying": false,
       "isRequired": false,
       "constraintNames": {
-        "sqlServer": "FK_Goal_EvaluationObjective",
-        "postgreSql": "FK_cdbf69_EvaluationObjective"
+        "sqlServer": "FK_Goal_EvaluationObjectiveRating",
+        "postgreSql": "FK_cdbf69_EvaluationObjectiveRating"
       },
       "potentiallyLogical": false
     },

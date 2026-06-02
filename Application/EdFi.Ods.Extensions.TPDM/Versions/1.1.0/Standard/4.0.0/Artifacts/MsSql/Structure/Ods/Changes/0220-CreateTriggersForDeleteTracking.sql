@@ -19,27 +19,6 @@ ALTER TABLE [tpdm].[AccreditationStatusDescriptor] ENABLE TRIGGER [tpdm_Accredit
 GO
 
 
-DROP TRIGGER IF EXISTS [tpdm].[tpdm_ActionStepDescriptor_TR_DeleteTracking]
-GO
-
-CREATE TRIGGER [tpdm].[tpdm_ActionStepDescriptor_TR_DeleteTracking] ON [tpdm].[ActionStepDescriptor] AFTER DELETE AS
-BEGIN
-    IF @@rowcount = 0 
-        RETURN
-
-    SET NOCOUNT ON
-
-    INSERT INTO [tracked_changes_edfi].[Descriptor](OldDescriptorId, OldCodeValue, OldNamespace, Id, Discriminator, ChangeVersion)
-    SELECT  d.ActionStepDescriptorId, b.CodeValue, b.Namespace, b.Id, 'tpdm.ActionStepDescriptor', (NEXT VALUE FOR [changes].[ChangeVersionSequence])
-    FROM    deleted d
-            INNER JOIN edfi.Descriptor b ON d.ActionStepDescriptorId = b.DescriptorId
-END
-GO
-
-ALTER TABLE [tpdm].[ActionStepDescriptor] ENABLE TRIGGER [tpdm_ActionStepDescriptor_TR_DeleteTracking]
-GO
-
-
 DROP TRIGGER IF EXISTS [tpdm].[tpdm_AidTypeDescriptor_TR_DeleteTracking]
 GO
 
@@ -884,34 +863,6 @@ ALTER TABLE [tpdm].[EvaluationObjective] ENABLE TRIGGER [tpdm_EvaluationObjectiv
 GO
 
 
-DROP TRIGGER IF EXISTS [tpdm].[tpdm_EvaluationObjectiveActionStep_TR_DeleteTracking]
-GO
-
-CREATE TRIGGER [tpdm].[tpdm_EvaluationObjectiveActionStep_TR_DeleteTracking] ON [tpdm].[EvaluationObjectiveActionStep] AFTER DELETE AS
-BEGIN
-    IF @@rowcount = 0 
-        RETURN
-
-    SET NOCOUNT ON
-
-    INSERT INTO [tracked_changes_tpdm].[EvaluationObjectiveActionStep](OldActionStepDescriptorId, OldActionStepDescriptorNamespace, OldActionStepDescriptorCodeValue, OldBeginDate, OldEducationOrganizationId, OldEvaluationObjectiveTitle, OldEvaluationPeriodDescriptorId, OldEvaluationPeriodDescriptorNamespace, OldEvaluationPeriodDescriptorCodeValue, OldEvaluationTitle, OldPerformanceEvaluationTitle, OldPerformanceEvaluationTypeDescriptorId, OldPerformanceEvaluationTypeDescriptorNamespace, OldPerformanceEvaluationTypeDescriptorCodeValue, OldSchoolYear, OldTermDescriptorId, OldTermDescriptorNamespace, OldTermDescriptorCodeValue, Id, Discriminator, ChangeVersion)
-    SELECT d.ActionStepDescriptorId, j0.Namespace, j0.CodeValue, d.BeginDate, d.EducationOrganizationId, d.EvaluationObjectiveTitle, d.EvaluationPeriodDescriptorId, j1.Namespace, j1.CodeValue, d.EvaluationTitle, d.PerformanceEvaluationTitle, d.PerformanceEvaluationTypeDescriptorId, j2.Namespace, j2.CodeValue, d.SchoolYear, d.TermDescriptorId, j3.Namespace, j3.CodeValue, d.Id, d.Discriminator, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
-    FROM    deleted d
-        INNER JOIN edfi.Descriptor j0
-            ON d.ActionStepDescriptorId = j0.DescriptorId
-        INNER JOIN edfi.Descriptor j1
-            ON d.EvaluationPeriodDescriptorId = j1.DescriptorId
-        INNER JOIN edfi.Descriptor j2
-            ON d.PerformanceEvaluationTypeDescriptorId = j2.DescriptorId
-        INNER JOIN edfi.Descriptor j3
-            ON d.TermDescriptorId = j3.DescriptorId
-END
-GO
-
-ALTER TABLE [tpdm].[EvaluationObjectiveActionStep] ENABLE TRIGGER [tpdm_EvaluationObjectiveActionStep_TR_DeleteTracking]
-GO
-
-
 DROP TRIGGER IF EXISTS [tpdm].[tpdm_EvaluationObjectiveRating_TR_DeleteTracking]
 GO
 
@@ -1091,6 +1042,27 @@ END
 GO
 
 ALTER TABLE [tpdm].[FederalLocaleCodeDescriptor] ENABLE TRIGGER [tpdm_FederalLocaleCodeDescriptor_TR_DeleteTracking]
+GO
+
+
+DROP TRIGGER IF EXISTS [tpdm].[tpdm_FeedbackTypeDescriptor_TR_DeleteTracking]
+GO
+
+CREATE TRIGGER [tpdm].[tpdm_FeedbackTypeDescriptor_TR_DeleteTracking] ON [tpdm].[FeedbackTypeDescriptor] AFTER DELETE AS
+BEGIN
+    IF @@rowcount = 0 
+        RETURN
+
+    SET NOCOUNT ON
+
+    INSERT INTO [tracked_changes_edfi].[Descriptor](OldDescriptorId, OldCodeValue, OldNamespace, Id, Discriminator, ChangeVersion)
+    SELECT  d.FeedbackTypeDescriptorId, b.CodeValue, b.Namespace, b.Id, 'tpdm.FeedbackTypeDescriptor', (NEXT VALUE FOR [changes].[ChangeVersionSequence])
+    FROM    deleted d
+            INNER JOIN edfi.Descriptor b ON d.FeedbackTypeDescriptorId = b.DescriptorId
+END
+GO
+
+ALTER TABLE [tpdm].[FeedbackTypeDescriptor] ENABLE TRIGGER [tpdm_FeedbackTypeDescriptor_TR_DeleteTracking]
 GO
 
 

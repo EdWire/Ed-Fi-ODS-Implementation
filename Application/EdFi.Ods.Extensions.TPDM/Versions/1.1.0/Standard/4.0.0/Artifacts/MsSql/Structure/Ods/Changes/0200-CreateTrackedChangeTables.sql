@@ -355,51 +355,6 @@ CREATE TABLE [tracked_changes_tpdm].[EvaluationObjective]
        CreateDate DateTime2 NOT NULL DEFAULT (getutcdate()),
        CONSTRAINT PK_EvaluationObjective PRIMARY KEY CLUSTERED (ChangeVersion)
 )
-IF NOT EXISTS (SELECT * FROM sys.tables WHERE object_id = OBJECT_ID(N'[tracked_changes_tpdm].[EvaluationObjectiveActionStep]'))
-CREATE TABLE [tracked_changes_tpdm].[EvaluationObjectiveActionStep]
-(
-       OldActionStepDescriptorId [INT] NOT NULL,
-       OldActionStepDescriptorNamespace [NVARCHAR](255) NOT NULL,
-       OldActionStepDescriptorCodeValue [NVARCHAR](50) NOT NULL,
-       OldBeginDate [DATE] NOT NULL,
-       OldEducationOrganizationId [INT] NOT NULL,
-       OldEvaluationObjectiveTitle [NVARCHAR](75) NOT NULL,
-       OldEvaluationPeriodDescriptorId [INT] NOT NULL,
-       OldEvaluationPeriodDescriptorNamespace [NVARCHAR](255) NOT NULL,
-       OldEvaluationPeriodDescriptorCodeValue [NVARCHAR](50) NOT NULL,
-       OldEvaluationTitle [NVARCHAR](50) NOT NULL,
-       OldPerformanceEvaluationTitle [NVARCHAR](50) NOT NULL,
-       OldPerformanceEvaluationTypeDescriptorId [INT] NOT NULL,
-       OldPerformanceEvaluationTypeDescriptorNamespace [NVARCHAR](255) NOT NULL,
-       OldPerformanceEvaluationTypeDescriptorCodeValue [NVARCHAR](50) NOT NULL,
-       OldSchoolYear [SMALLINT] NOT NULL,
-       OldTermDescriptorId [INT] NOT NULL,
-       OldTermDescriptorNamespace [NVARCHAR](255) NOT NULL,
-       OldTermDescriptorCodeValue [NVARCHAR](50) NOT NULL,
-       NewActionStepDescriptorId [INT] NULL,
-       NewActionStepDescriptorNamespace [NVARCHAR](255) NULL,
-       NewActionStepDescriptorCodeValue [NVARCHAR](50) NULL,
-       NewBeginDate [DATE] NULL,
-       NewEducationOrganizationId [INT] NULL,
-       NewEvaluationObjectiveTitle [NVARCHAR](75) NULL,
-       NewEvaluationPeriodDescriptorId [INT] NULL,
-       NewEvaluationPeriodDescriptorNamespace [NVARCHAR](255) NULL,
-       NewEvaluationPeriodDescriptorCodeValue [NVARCHAR](50) NULL,
-       NewEvaluationTitle [NVARCHAR](50) NULL,
-       NewPerformanceEvaluationTitle [NVARCHAR](50) NULL,
-       NewPerformanceEvaluationTypeDescriptorId [INT] NULL,
-       NewPerformanceEvaluationTypeDescriptorNamespace [NVARCHAR](255) NULL,
-       NewPerformanceEvaluationTypeDescriptorCodeValue [NVARCHAR](50) NULL,
-       NewSchoolYear [SMALLINT] NULL,
-       NewTermDescriptorId [INT] NULL,
-       NewTermDescriptorNamespace [NVARCHAR](255) NULL,
-       NewTermDescriptorCodeValue [NVARCHAR](50) NULL,
-       Id uniqueidentifier NOT NULL,
-       ChangeVersion bigint NOT NULL,
-       Discriminator [NVARCHAR](128) NULL,
-       CreateDate DateTime2 NOT NULL DEFAULT (getutcdate()),
-       CONSTRAINT PK_EvaluationObjectiveActionStep PRIMARY KEY CLUSTERED (ChangeVersion)
-)
 IF NOT EXISTS (SELECT * FROM sys.tables WHERE object_id = OBJECT_ID(N'[tracked_changes_tpdm].[EvaluationObjectiveRating]'))
 CREATE TABLE [tracked_changes_tpdm].[EvaluationObjectiveRating]
 (

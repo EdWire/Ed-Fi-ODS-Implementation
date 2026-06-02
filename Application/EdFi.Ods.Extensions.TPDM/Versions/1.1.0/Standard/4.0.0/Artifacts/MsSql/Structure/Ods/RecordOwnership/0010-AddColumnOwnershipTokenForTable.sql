@@ -28,8 +28,6 @@ ALTER TABLE [tpdm].[EvaluationElementRating] ADD [CreatedByOwnershipTokenId] SMA
 
 ALTER TABLE [tpdm].[EvaluationObjective] ADD [CreatedByOwnershipTokenId] SMALLINT NULL;
 
-ALTER TABLE [tpdm].[EvaluationObjectiveActionStep] ADD [CreatedByOwnershipTokenId] SMALLINT NULL;
-
 ALTER TABLE [tpdm].[EvaluationObjectiveRating] ADD [CreatedByOwnershipTokenId] SMALLINT NULL;
 
 ALTER TABLE [tpdm].[EvaluationRating] ADD [CreatedByOwnershipTokenId] SMALLINT NULL;

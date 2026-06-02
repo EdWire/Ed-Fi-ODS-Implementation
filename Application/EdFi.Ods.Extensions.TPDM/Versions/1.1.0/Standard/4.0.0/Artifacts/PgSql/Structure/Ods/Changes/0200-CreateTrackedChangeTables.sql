@@ -388,53 +388,6 @@ CREATE TABLE tracked_changes_tpdm.evaluationobjective
 );
 END IF;
 
-IF NOT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_schema = 'tracked_changes_tpdm' AND table_name = 'evaluationobjectiveactionstep') THEN
-CREATE TABLE tracked_changes_tpdm.evaluationobjectiveactionstep
-(
-       oldactionstepdescriptorid INT NOT NULL,
-       oldactionstepdescriptornamespace VARCHAR(255) NOT NULL,
-       oldactionstepdescriptorcodevalue VARCHAR(50) NOT NULL,
-       oldbegindate DATE NOT NULL,
-       oldeducationorganizationid INT NOT NULL,
-       oldevaluationobjectivetitle VARCHAR(75) NOT NULL,
-       oldevaluationperioddescriptorid INT NOT NULL,
-       oldevaluationperioddescriptornamespace VARCHAR(255) NOT NULL,
-       oldevaluationperioddescriptorcodevalue VARCHAR(50) NOT NULL,
-       oldevaluationtitle VARCHAR(50) NOT NULL,
-       oldperformanceevaluationtitle VARCHAR(50) NOT NULL,
-       oldperformanceevaluationtypedescriptorid INT NOT NULL,
-       oldperformanceevaluationtypedescriptornamespace VARCHAR(255) NOT NULL,
-       oldperformanceevaluationtypedescriptorcodevalue VARCHAR(50) NOT NULL,
-       oldschoolyear SMALLINT NOT NULL,
-       oldtermdescriptorid INT NOT NULL,
-       oldtermdescriptornamespace VARCHAR(255) NOT NULL,
-       oldtermdescriptorcodevalue VARCHAR(50) NOT NULL,
-       newactionstepdescriptorid INT NULL,
-       newactionstepdescriptornamespace VARCHAR(255) NULL,
-       newactionstepdescriptorcodevalue VARCHAR(50) NULL,
-       newbegindate DATE NULL,
-       neweducationorganizationid INT NULL,
-       newevaluationobjectivetitle VARCHAR(75) NULL,
-       newevaluationperioddescriptorid INT NULL,
-       newevaluationperioddescriptornamespace VARCHAR(255) NULL,
-       newevaluationperioddescriptorcodevalue VARCHAR(50) NULL,
-       newevaluationtitle VARCHAR(50) NULL,
-       newperformanceevaluationtitle VARCHAR(50) NULL,
-       newperformanceevaluationtypedescriptorid INT NULL,
-       newperformanceevaluationtypedescriptornamespace VARCHAR(255) NULL,
-       newperformanceevaluationtypedescriptorcodevalue VARCHAR(50) NULL,
-       newschoolyear SMALLINT NULL,
-       newtermdescriptorid INT NULL,
-       newtermdescriptornamespace VARCHAR(255) NULL,
-       newtermdescriptorcodevalue VARCHAR(50) NULL,
-       id uuid NOT NULL,
-       changeversion bigint NOT NULL,
-       discriminator varchar(128) NULL,
-       createdate timestamp NOT NULL DEFAULT (now()),
-       CONSTRAINT evaluationobjectiveactionstep_pk PRIMARY KEY (ChangeVersion)
-);
-END IF;
-
 IF NOT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_schema = 'tracked_changes_tpdm' AND table_name = 'evaluationobjectiverating') THEN
 CREATE TABLE tracked_changes_tpdm.evaluationobjectiverating
 (

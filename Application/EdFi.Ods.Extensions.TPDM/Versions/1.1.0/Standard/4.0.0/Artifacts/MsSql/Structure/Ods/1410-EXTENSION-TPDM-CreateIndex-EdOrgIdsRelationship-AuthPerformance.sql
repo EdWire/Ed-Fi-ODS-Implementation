@@ -54,11 +54,6 @@ BEGIN
     CREATE INDEX IX_EvaluationObjective_EducationOrganizationId ON [tpdm].[EvaluationObjective](EducationOrganizationId) INCLUDE (Id)
 END;
 
-IF NOT EXISTS(SELECT * FROM sys.indexes WHERE name='IX_EvaluationObjectiveActionStep_EducationOrganizationId' AND object_id = OBJECT_ID('tpdm.EvaluationObjectiveActionStep')) 
-BEGIN
-    CREATE INDEX IX_EvaluationObjectiveActionStep_EducationOrganizationId ON [tpdm].[EvaluationObjectiveActionStep](EducationOrganizationId) INCLUDE (Id)
-END;
-
 IF NOT EXISTS(SELECT * FROM sys.indexes WHERE name='IX_EvaluationObjectiveRating_EducationOrganizationId' AND object_id = OBJECT_ID('tpdm.EvaluationObjectiveRating')) 
 BEGIN
     CREATE INDEX IX_EvaluationObjectiveRating_EducationOrganizationId ON [tpdm].[EvaluationObjectiveRating](EducationOrganizationId) INCLUDE (Id)
