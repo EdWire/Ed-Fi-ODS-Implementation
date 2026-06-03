@@ -1,6 +1,0 @@
-
-DROP INDEX IF EXISTS IX_EducationOrganizationEducationOrganizationProgram_EducationOrganizationId;
-CREATE INDEX IF NOT EXISTS IX_EducationOrganizationEducationOrganizationProgram_EducationOrganizationId ON eop.EducationOrganizationEducationOrganizationProgram(EducationOrganizationId) INCLUDE (AggregateId);
-
-DROP INDEX IF EXISTS IX_EducationOrganizationProgramProvider_EducationServiceCenterId;
-CREATE INDEX IF NOT EXISTS IX_EducationOrganizationProgramProvider_EducationServiceCenterId ON eop.EducationOrganizationProgramProvider(EducationServiceCenterId) INCLUDE (AggregateId);

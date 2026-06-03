@@ -1,4 +1,0 @@
-
-CREATE INDEX IF NOT EXISTS IX_EducationOrganizationEducationOrganizationProgram_EducationOrganizationId ON eop.EducationOrganizationEducationOrganizationProgram(EducationOrganizationId) INCLUDE (Id);
-
-CREATE INDEX IF NOT EXISTS IX_EducationOrganizationProgramProvider_EducationServiceCenterId ON eop.EducationOrganizationProgramProvider(EducationServiceCenterId) INCLUDE (Id);

@@ -1,1 +1,0 @@
-CREATE SCHEMA eop AUTHORIZATION postgres;
