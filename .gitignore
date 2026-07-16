@@ -126,3 +126,4 @@ environment.json
 
 #Nunit Test Reports (Pester)
 reportsNUnit/
+/.vscode/settings.json

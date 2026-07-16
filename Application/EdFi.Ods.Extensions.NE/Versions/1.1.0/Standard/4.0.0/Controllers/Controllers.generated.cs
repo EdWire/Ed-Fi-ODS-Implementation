@@ -27,7 +27,7 @@ namespace EdFi.Ods.Api.Services.Controllers.NE.CrisisDetails
     [ExcludeFromCodeCoverage]
     [ApiController]
     [Authorize]
-    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/ne/crisisDetails")]
+    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/NE/crisisDetails")]
     public partial class CrisisDetailsController : DataManagementControllerBase<
         Api.Common.Models.Resources.CrisisDetails.NE.CrisisDetails,
         Entities.Common.NE.ICrisisDetails,
@@ -61,7 +61,7 @@ namespace EdFi.Ods.Api.Services.Controllers.NE.CrisisEventDescriptors
     [ExcludeFromCodeCoverage]
     [ApiController]
     [Authorize]
-    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/ne/crisisEventDescriptors")]
+    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/NE/crisisEventDescriptors")]
     public partial class CrisisEventDescriptorsController : DataManagementControllerBase<
         Api.Common.Models.Resources.CrisisEventDescriptor.NE.CrisisEventDescriptor,
         Entities.Common.NE.ICrisisEventDescriptor,
@@ -94,7 +94,7 @@ namespace EdFi.Ods.Api.Services.Controllers.NE.CrisisTypeDescriptors
     [ExcludeFromCodeCoverage]
     [ApiController]
     [Authorize]
-    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/ne/crisisTypeDescriptors")]
+    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/NE/crisisTypeDescriptors")]
     public partial class CrisisTypeDescriptorsController : DataManagementControllerBase<
         Api.Common.Models.Resources.CrisisTypeDescriptor.NE.CrisisTypeDescriptor,
         Entities.Common.NE.ICrisisTypeDescriptor,
@@ -127,7 +127,7 @@ namespace EdFi.Ods.Api.Services.Controllers.NE.DualCreditDescriptors
     [ExcludeFromCodeCoverage]
     [ApiController]
     [Authorize]
-    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/ne/dualCreditDescriptors")]
+    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/NE/dualCreditDescriptors")]
     public partial class DualCreditDescriptorsController : DataManagementControllerBase<
         Api.Common.Models.Resources.DualCreditDescriptor.NE.DualCreditDescriptor,
         Entities.Common.NE.IDualCreditDescriptor,
@@ -160,7 +160,7 @@ namespace EdFi.Ods.Api.Services.Controllers.NE.EarlyLearningSettingDescriptors
     [ExcludeFromCodeCoverage]
     [ApiController]
     [Authorize]
-    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/ne/earlyLearningSettingDescriptors")]
+    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/NE/earlyLearningSettingDescriptors")]
     public partial class EarlyLearningSettingDescriptorsController : DataManagementControllerBase<
         Api.Common.Models.Resources.EarlyLearningSettingDescriptor.NE.EarlyLearningSettingDescriptor,
         Entities.Common.NE.IEarlyLearningSettingDescriptor,
@@ -193,7 +193,7 @@ namespace EdFi.Ods.Api.Services.Controllers.NE.ImmigrantIndicatorDescriptors
     [ExcludeFromCodeCoverage]
     [ApiController]
     [Authorize]
-    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/ne/immigrantIndicatorDescriptors")]
+    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/NE/immigrantIndicatorDescriptors")]
     public partial class ImmigrantIndicatorDescriptorsController : DataManagementControllerBase<
         Api.Common.Models.Resources.ImmigrantIndicatorDescriptor.NE.ImmigrantIndicatorDescriptor,
         Entities.Common.NE.IImmigrantIndicatorDescriptor,
@@ -226,7 +226,7 @@ namespace EdFi.Ods.Api.Services.Controllers.NE.PartCTransitionDelayReasonDescrip
     [ExcludeFromCodeCoverage]
     [ApiController]
     [Authorize]
-    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/ne/partCTransitionDelayReasonDescriptors")]
+    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/NE/partCTransitionDelayReasonDescriptors")]
     public partial class PartCTransitionDelayReasonDescriptorsController : DataManagementControllerBase<
         Api.Common.Models.Resources.PartCTransitionDelayReasonDescriptor.NE.PartCTransitionDelayReasonDescriptor,
         Entities.Common.NE.IPartCTransitionDelayReasonDescriptor,
@@ -259,7 +259,7 @@ namespace EdFi.Ods.Api.Services.Controllers.NE.PlacementTypeDescriptors
     [ExcludeFromCodeCoverage]
     [ApiController]
     [Authorize]
-    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/ne/placementTypeDescriptors")]
+    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/NE/placementTypeDescriptors")]
     public partial class PlacementTypeDescriptorsController : DataManagementControllerBase<
         Api.Common.Models.Resources.PlacementTypeDescriptor.NE.PlacementTypeDescriptor,
         Entities.Common.NE.IPlacementTypeDescriptor,
@@ -292,7 +292,7 @@ namespace EdFi.Ods.Api.Services.Controllers.NE.PositionTitleDescriptors
     [ExcludeFromCodeCoverage]
     [ApiController]
     [Authorize]
-    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/ne/positionTitleDescriptors")]
+    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/NE/positionTitleDescriptors")]
     public partial class PositionTitleDescriptorsController : DataManagementControllerBase<
         Api.Common.Models.Resources.PositionTitleDescriptor.NE.PositionTitleDescriptor,
         Entities.Common.NE.IPositionTitleDescriptor,
@@ -325,7 +325,7 @@ namespace EdFi.Ods.Api.Services.Controllers.NE.PostGraduateActivities
     [ExcludeFromCodeCoverage]
     [ApiController]
     [Authorize]
-    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/ne/postGraduateActivities")]
+    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/NE/postGraduateActivities")]
     public partial class PostGraduateActivitiesController : DataManagementControllerBase<
         Api.Common.Models.Resources.PostGraduateActivity.NE.PostGraduateActivity,
         Entities.Common.NE.IPostGraduateActivity,
@@ -360,7 +360,7 @@ namespace EdFi.Ods.Api.Services.Controllers.NE.PostGraduateActivityDescriptors
     [ExcludeFromCodeCoverage]
     [ApiController]
     [Authorize]
-    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/ne/postGraduateActivityDescriptors")]
+    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/NE/postGraduateActivityDescriptors")]
     public partial class PostGraduateActivityDescriptorsController : DataManagementControllerBase<
         Api.Common.Models.Resources.PostGraduateActivityDescriptor.NE.PostGraduateActivityDescriptor,
         Entities.Common.NE.IPostGraduateActivityDescriptor,
@@ -393,7 +393,7 @@ namespace EdFi.Ods.Api.Services.Controllers.NE.PostGraduateActivityDetermination
     [ExcludeFromCodeCoverage]
     [ApiController]
     [Authorize]
-    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/ne/postGraduateActivityDeterminationDescriptors")]
+    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/NE/postGraduateActivityDeterminationDescriptors")]
     public partial class PostGraduateActivityDeterminationDescriptorsController : DataManagementControllerBase<
         Api.Common.Models.Resources.PostGraduateActivityDeterminationDescriptor.NE.PostGraduateActivityDeterminationDescriptor,
         Entities.Common.NE.IPostGraduateActivityDeterminationDescriptor,
@@ -426,7 +426,7 @@ namespace EdFi.Ods.Api.Services.Controllers.NE.SectionDeliveryDescriptors
     [ExcludeFromCodeCoverage]
     [ApiController]
     [Authorize]
-    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/ne/sectionDeliveryDescriptors")]
+    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/NE/sectionDeliveryDescriptors")]
     public partial class SectionDeliveryDescriptorsController : DataManagementControllerBase<
         Api.Common.Models.Resources.SectionDeliveryDescriptor.NE.SectionDeliveryDescriptor,
         Entities.Common.NE.ISectionDeliveryDescriptor,
@@ -459,7 +459,7 @@ namespace EdFi.Ods.Api.Services.Controllers.NE.SpecialEducationProgramDescriptor
     [ExcludeFromCodeCoverage]
     [ApiController]
     [Authorize]
-    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/ne/specialEducationProgramDescriptors")]
+    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/NE/specialEducationProgramDescriptors")]
     public partial class SpecialEducationProgramDescriptorsController : DataManagementControllerBase<
         Api.Common.Models.Resources.SpecialEducationProgramDescriptor.NE.SpecialEducationProgramDescriptor,
         Entities.Common.NE.ISpecialEducationProgramDescriptor,
@@ -492,7 +492,7 @@ namespace EdFi.Ods.Api.Services.Controllers.NE.StudentEarlyLearningProgramAssoci
     [ExcludeFromCodeCoverage]
     [ApiController]
     [Authorize]
-    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/ne/studentEarlyLearningProgramAssociations")]
+    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/NE/studentEarlyLearningProgramAssociations")]
     public partial class StudentEarlyLearningProgramAssociationsController : DataManagementControllerBase<
         Api.Common.Models.Resources.StudentEarlyLearningProgramAssociation.NE.StudentEarlyLearningProgramAssociation,
         Entities.Common.NE.IStudentEarlyLearningProgramAssociation,
@@ -529,7 +529,7 @@ namespace EdFi.Ods.Api.Services.Controllers.NE.UnilateralRemovalDescriptors
     [ExcludeFromCodeCoverage]
     [ApiController]
     [Authorize]
-    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/ne/unilateralRemovalDescriptors")]
+    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/NE/unilateralRemovalDescriptors")]
     public partial class UnilateralRemovalDescriptorsController : DataManagementControllerBase<
         Api.Common.Models.Resources.UnilateralRemovalDescriptor.NE.UnilateralRemovalDescriptor,
         Entities.Common.NE.IUnilateralRemovalDescriptor,

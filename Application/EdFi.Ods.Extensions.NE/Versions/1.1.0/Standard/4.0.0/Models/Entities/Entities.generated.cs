@@ -3065,8 +3065,8 @@ namespace EdFi.Ods.Entities.NHibernate.SectionAggregate.NE
 
         Entities.Common.NE.ISectionExtension ISectionDelivery.SectionExtension
         {
-            get { return (ISectionExtension) Section.Extensions["Ne"]; }
-            set { Section.Extensions["Ne"] = value; }
+            get { return (ISectionExtension) Section.Extensions["NE"]; }
+            set { Section.Extensions["NE"] = value; }
         }
 
         [DomainSignature]
@@ -3299,7 +3299,7 @@ namespace EdFi.Ods.Entities.NHibernate.SectionAggregate.NE
         {
             get
             {
-                var sourceList =  new ContravariantCollectionAdapter<object, SectionDelivery>((IList<object>) Section.AggregateExtensions["Ne_SectionDeliveries"]);
+                var sourceList =  new ContravariantCollectionAdapter<object, SectionDelivery>((IList<object>) Section.AggregateExtensions["NE_SectionDeliveries"]);
 
                 // -------------------------------------------------------------
                 // Back-reference is required by NHibernate for persistence.
@@ -3316,7 +3316,7 @@ namespace EdFi.Ods.Entities.NHibernate.SectionAggregate.NE
             }
             set
             {
-                Section.AggregateExtensions["Ne_SectionDeliveries"] = value;
+                Section.AggregateExtensions["NE_SectionDeliveries"] = value;
             }
         }
         // -------------------------------------------------------------
@@ -3804,8 +3804,8 @@ namespace EdFi.Ods.Entities.NHibernate.StudentDisciplineIncidentBehaviorAssociat
 
         Entities.Common.NE.IStudentDisciplineIncidentBehaviorAssociationExtension IStudentDisciplineIncidentBehaviorAssociationWeapon.StudentDisciplineIncidentBehaviorAssociationExtension
         {
-            get { return (IStudentDisciplineIncidentBehaviorAssociationExtension) StudentDisciplineIncidentBehaviorAssociation.Extensions["Ne"]; }
-            set { StudentDisciplineIncidentBehaviorAssociation.Extensions["Ne"] = value; }
+            get { return (IStudentDisciplineIncidentBehaviorAssociationExtension) StudentDisciplineIncidentBehaviorAssociation.Extensions["NE"]; }
+            set { StudentDisciplineIncidentBehaviorAssociation.Extensions["NE"] = value; }
         }
 
         [DomainSignature]
@@ -4042,7 +4042,7 @@ namespace EdFi.Ods.Entities.NHibernate.StudentDisciplineIncidentBehaviorAssociat
         {
             get
             {
-                var sourceList =  new ContravariantCollectionAdapter<object, StudentDisciplineIncidentBehaviorAssociationWeapon>((IList<object>) StudentDisciplineIncidentBehaviorAssociation.AggregateExtensions["Ne_StudentDisciplineIncidentBehaviorAssociationWeapons"]);
+                var sourceList =  new ContravariantCollectionAdapter<object, StudentDisciplineIncidentBehaviorAssociationWeapon>((IList<object>) StudentDisciplineIncidentBehaviorAssociation.AggregateExtensions["NE_StudentDisciplineIncidentBehaviorAssociationWeapons"]);
 
                 // -------------------------------------------------------------
                 // Back-reference is required by NHibernate for persistence.
@@ -4059,7 +4059,7 @@ namespace EdFi.Ods.Entities.NHibernate.StudentDisciplineIncidentBehaviorAssociat
             }
             set
             {
-                StudentDisciplineIncidentBehaviorAssociation.AggregateExtensions["Ne_StudentDisciplineIncidentBehaviorAssociationWeapons"] = value;
+                StudentDisciplineIncidentBehaviorAssociation.AggregateExtensions["NE_StudentDisciplineIncidentBehaviorAssociationWeapons"] = value;
             }
         }
         // -------------------------------------------------------------
@@ -4484,8 +4484,8 @@ namespace EdFi.Ods.Entities.NHibernate.StudentEducationOrganizationAssociationAg
 
         Entities.Common.NE.IStudentEducationOrganizationAssociationExtension IStudentEducationOrganizationAssociationStudentCrisisEvent.StudentEducationOrganizationAssociationExtension
         {
-            get { return (IStudentEducationOrganizationAssociationExtension) StudentEducationOrganizationAssociation.Extensions["Ne"]; }
-            set { StudentEducationOrganizationAssociation.Extensions["Ne"] = value; }
+            get { return (IStudentEducationOrganizationAssociationExtension) StudentEducationOrganizationAssociation.Extensions["NE"]; }
+            set { StudentEducationOrganizationAssociation.Extensions["NE"] = value; }
         }
 
         [DomainSignature]
@@ -4752,7 +4752,7 @@ namespace EdFi.Ods.Entities.NHibernate.StudentEducationOrganizationAssociationAg
         {
             get
             {
-                var sourceList =  new ContravariantCollectionAdapter<object, StudentEducationOrganizationAssociationStudentCrisisEvent>((IList<object>) StudentEducationOrganizationAssociation.AggregateExtensions["Ne_StudentEducationOrganizationAssociationStudentCrisisEvents"]);
+                var sourceList =  new ContravariantCollectionAdapter<object, StudentEducationOrganizationAssociationStudentCrisisEvent>((IList<object>) StudentEducationOrganizationAssociation.AggregateExtensions["NE_StudentEducationOrganizationAssociationStudentCrisisEvents"]);
 
                 // -------------------------------------------------------------
                 // Back-reference is required by NHibernate for persistence.
@@ -4769,7 +4769,7 @@ namespace EdFi.Ods.Entities.NHibernate.StudentEducationOrganizationAssociationAg
             }
             set
             {
-                StudentEducationOrganizationAssociation.AggregateExtensions["Ne_StudentEducationOrganizationAssociationStudentCrisisEvents"] = value;
+                StudentEducationOrganizationAssociation.AggregateExtensions["NE_StudentEducationOrganizationAssociationStudentCrisisEvents"] = value;
             }
         }
         // -------------------------------------------------------------
