@@ -34,10 +34,10 @@ CREATE INDEX IF NOT EXISTS IX_CTEProgramReportingPeriodAttendance_StudentUSI ON 
 DROP INDEX IF EXISTS IX_DescriptorMappingHistory_EducationOrganizationId;
 CREATE INDEX IF NOT EXISTS IX_DescriptorMappingHistory_EducationOrganizationId ON tx.DescriptorMappingHistory(EducationOrganizationId) INCLUDE (AggregateId);
 
-DROP INDEX IF EXISTS IX_ExtendedSchoolYearServicesAttendance_SchoolId;
-CREATE INDEX IF NOT EXISTS IX_ExtendedSchoolYearServicesAttendance_SchoolId ON tx.ExtendedSchoolYearServicesAttendance(SchoolId) INCLUDE (AggregateId);
+DROP INDEX IF EXISTS IX_ESYTierOfIntensityAttendance_SchoolId;
+CREATE INDEX IF NOT EXISTS IX_ESYTierOfIntensityAttendance_SchoolId ON tx.ESYTierOfIntensityAttendance(SchoolId) INCLUDE (AggregateId);
 
-CREATE INDEX IF NOT EXISTS IX_ExtendedSchoolYearServicesAttendance_StudentUSI ON tx.ExtendedSchoolYearServicesAttendance(StudentUSI) INCLUDE (AggregateId);
+CREATE INDEX IF NOT EXISTS IX_ESYTierOfIntensityAttendance_StudentUSI ON tx.ESYTierOfIntensityAttendance(StudentUSI) INCLUDE (AggregateId);
 
 DROP INDEX IF EXISTS IX_FlexibleBilingualESLProgramReportingPeriodAttendance_SchoolId;
 CREATE INDEX IF NOT EXISTS IX_FlexibleBilingualESLProgramReportingPeriodAttendance_SchoolId ON tx.FlexibleBilingualESLProgramReportingPeriodAttendance(SchoolId) INCLUDE (AggregateId);
@@ -59,6 +59,17 @@ CREATE INDEX IF NOT EXISTS IX_FlexibleSpecialEducationProgramReportingPeriodAtte
 
 CREATE INDEX IF NOT EXISTS IX_FlexibleSpecialEducationProgramReportingPeriodAttendance_StudentUSI ON tx.FlexibleSpecialEducationProgramReportingPeriodAttendance(StudentUSI) INCLUDE (AggregateId);
 
+DROP INDEX IF EXISTS IX_FlexibleSpecialEducationTierOfIntensityAttendance_SchoolId;
+CREATE INDEX IF NOT EXISTS IX_FlexibleSpecialEducationTierOfIntensityAttendance_SchoolId ON tx.FlexibleSpecialEducationTierOfIntensityAttendance(SchoolId) INCLUDE (AggregateId);
+
+CREATE INDEX IF NOT EXISTS IX_FlexibleSpecialEducationTierOfIntensityAttendance_StudentUSI ON tx.FlexibleSpecialEducationTierOfIntensityAttendance(StudentUSI) INCLUDE (AggregateId);
+
+DROP INDEX IF EXISTS IX_GrievanceExt_EducationOrganizationId;
+CREATE INDEX IF NOT EXISTS IX_GrievanceExt_EducationOrganizationId ON tx.GrievanceExt(EducationOrganizationId) INCLUDE (AggregateId);
+
+DROP INDEX IF EXISTS IX_OpenStaffPositionExt_EducationOrganizationId;
+CREATE INDEX IF NOT EXISTS IX_OpenStaffPositionExt_EducationOrganizationId ON tx.OpenStaffPositionExt(EducationOrganizationId) INCLUDE (AggregateId);
+
 DROP INDEX IF EXISTS IX_PayrollExt_EducationOrganizationId;
 CREATE INDEX IF NOT EXISTS IX_PayrollExt_EducationOrganizationId ON tx.PayrollExt(EducationOrganizationId) INCLUDE (AggregateId);
 
@@ -67,17 +78,14 @@ CREATE INDEX IF NOT EXISTS IX_PayrollExt_StaffUSI ON tx.PayrollExt(StaffUSI) INC
 DROP INDEX IF EXISTS IX_PriorYearActualExt_EducationOrganizationId;
 CREATE INDEX IF NOT EXISTS IX_PriorYearActualExt_EducationOrganizationId ON tx.PriorYearActualExt(EducationOrganizationId) INCLUDE (AggregateId);
 
-DROP INDEX IF EXISTS IX_PriorYearLeaver_SchoolId;
-CREATE INDEX IF NOT EXISTS IX_PriorYearLeaver_SchoolId ON tx.PriorYearLeaver(SchoolId) INCLUDE (AggregateId);
-
-DROP INDEX IF EXISTS IX_PriorYearLeaverStudentParentAssociation_SchoolId;
-CREATE INDEX IF NOT EXISTS IX_PriorYearLeaverStudentParentAssociation_SchoolId ON tx.PriorYearLeaverStudentParentAssociation(SchoolId) INCLUDE (AggregateId);
-
 DROP INDEX IF EXISTS IX_PriorYearSSAOrgAssociationExt_EducationOrganizationId;
 CREATE INDEX IF NOT EXISTS IX_PriorYearSSAOrgAssociationExt_EducationOrganizationId ON tx.PriorYearSSAOrgAssociationExt(EducationOrganizationId) INCLUDE (AggregateId);
 
 DROP INDEX IF EXISTS IX_ReportingPeriodExt_SchoolId;
 CREATE INDEX IF NOT EXISTS IX_ReportingPeriodExt_SchoolId ON tx.ReportingPeriodExt(SchoolId) INCLUDE (AggregateId);
+
+DROP INDEX IF EXISTS IX_RequisitionExt_EducationOrganizationId;
+CREATE INDEX IF NOT EXISTS IX_RequisitionExt_EducationOrganizationId ON tx.RequisitionExt(EducationOrganizationId) INCLUDE (AggregateId);
 
 DROP INDEX IF EXISTS IX_SharedServiceArrangementExt_EducationOrganizationId;
 CREATE INDEX IF NOT EXISTS IX_SharedServiceArrangementExt_EducationOrganizationId ON tx.SharedServiceArrangementExt(EducationOrganizationId) INCLUDE (AggregateId);
@@ -87,10 +95,18 @@ CREATE INDEX IF NOT EXISTS IX_SpecialEducationProgramReportingPeriodAttendance_S
 
 CREATE INDEX IF NOT EXISTS IX_SpecialEducationProgramReportingPeriodAttendance_StudentUSI ON tx.SpecialEducationProgramReportingPeriodAttendance(StudentUSI) INCLUDE (AggregateId);
 
+DROP INDEX IF EXISTS IX_SpecialEducationTierOfIntensityAttendance_SchoolId;
+CREATE INDEX IF NOT EXISTS IX_SpecialEducationTierOfIntensityAttendance_SchoolId ON tx.SpecialEducationTierOfIntensityAttendance(SchoolId) INCLUDE (AggregateId);
+
+CREATE INDEX IF NOT EXISTS IX_SpecialEducationTierOfIntensityAttendance_StudentUSI ON tx.SpecialEducationTierOfIntensityAttendance(StudentUSI) INCLUDE (AggregateId);
+
 DROP INDEX IF EXISTS IX_SpecialProgramsReportingPeriodAttendance_SchoolId;
 CREATE INDEX IF NOT EXISTS IX_SpecialProgramsReportingPeriodAttendance_SchoolId ON tx.SpecialProgramsReportingPeriodAttendance(SchoolId) INCLUDE (AggregateId);
 
 CREATE INDEX IF NOT EXISTS IX_SpecialProgramsReportingPeriodAttendance_StudentUSI ON tx.SpecialProgramsReportingPeriodAttendance(StudentUSI) INCLUDE (AggregateId);
+
+DROP INDEX IF EXISTS IX_SPEDVideoCameraRequestExt_SchoolId;
+CREATE INDEX IF NOT EXISTS IX_SPEDVideoCameraRequestExt_SchoolId ON tx.SPEDVideoCameraRequestExt(SchoolId) INCLUDE (AggregateId);
 
 DROP INDEX IF EXISTS IX_SSAOrgAssociationExt_EducationOrganizationId;
 CREATE INDEX IF NOT EXISTS IX_SSAOrgAssociationExt_EducationOrganizationId ON tx.SSAOrgAssociationExt(EducationOrganizationId) INCLUDE (AggregateId);

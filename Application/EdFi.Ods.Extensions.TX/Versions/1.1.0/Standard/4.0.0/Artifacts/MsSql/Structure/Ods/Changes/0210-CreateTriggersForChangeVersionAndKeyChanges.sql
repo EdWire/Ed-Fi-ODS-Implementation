@@ -126,15 +126,15 @@ BEGIN
 END	
 GO
 
-DROP TRIGGER IF EXISTS [tx].[tx_ExtendedSchoolYearServicesAttendance_TR_UpdateChangeVersion]
+DROP TRIGGER IF EXISTS [tx].[tx_ESYTierOfIntensityAttendance_TR_UpdateChangeVersion]
 GO
 
-CREATE TRIGGER [tx].[tx_ExtendedSchoolYearServicesAttendance_TR_UpdateChangeVersion] ON [tx].[ExtendedSchoolYearServicesAttendance] AFTER UPDATE AS
+CREATE TRIGGER [tx].[tx_ESYTierOfIntensityAttendance_TR_UpdateChangeVersion] ON [tx].[ESYTierOfIntensityAttendance] AFTER UPDATE AS
 BEGIN
     SET NOCOUNT ON;
-    UPDATE [tx].[ExtendedSchoolYearServicesAttendance]
+    UPDATE [tx].[ESYTierOfIntensityAttendance]
     SET ChangeVersion = (NEXT VALUE FOR [changes].[ChangeVersionSequence])
-    FROM [tx].[ExtendedSchoolYearServicesAttendance] u
+    FROM [tx].[ESYTierOfIntensityAttendance] u
     WHERE EXISTS (SELECT 1 FROM inserted i WHERE i.id = u.id);
 END	
 GO
@@ -191,6 +191,45 @@ BEGIN
 END	
 GO
 
+DROP TRIGGER IF EXISTS [tx].[tx_FlexibleSpecialEducationTierOfIntensityAttendance_TR_UpdateChangeVersion]
+GO
+
+CREATE TRIGGER [tx].[tx_FlexibleSpecialEducationTierOfIntensityAttendance_TR_UpdateChangeVersion] ON [tx].[FlexibleSpecialEducationTierOfIntensityAttendance] AFTER UPDATE AS
+BEGIN
+    SET NOCOUNT ON;
+    UPDATE [tx].[FlexibleSpecialEducationTierOfIntensityAttendance]
+    SET ChangeVersion = (NEXT VALUE FOR [changes].[ChangeVersionSequence])
+    FROM [tx].[FlexibleSpecialEducationTierOfIntensityAttendance] u
+    WHERE EXISTS (SELECT 1 FROM inserted i WHERE i.id = u.id);
+END	
+GO
+
+DROP TRIGGER IF EXISTS [tx].[tx_GrievanceExt_TR_UpdateChangeVersion]
+GO
+
+CREATE TRIGGER [tx].[tx_GrievanceExt_TR_UpdateChangeVersion] ON [tx].[GrievanceExt] AFTER UPDATE AS
+BEGIN
+    SET NOCOUNT ON;
+    UPDATE [tx].[GrievanceExt]
+    SET ChangeVersion = (NEXT VALUE FOR [changes].[ChangeVersionSequence])
+    FROM [tx].[GrievanceExt] u
+    WHERE EXISTS (SELECT 1 FROM inserted i WHERE i.id = u.id);
+END	
+GO
+
+DROP TRIGGER IF EXISTS [tx].[tx_OpenStaffPositionExt_TR_UpdateChangeVersion]
+GO
+
+CREATE TRIGGER [tx].[tx_OpenStaffPositionExt_TR_UpdateChangeVersion] ON [tx].[OpenStaffPositionExt] AFTER UPDATE AS
+BEGIN
+    SET NOCOUNT ON;
+    UPDATE [tx].[OpenStaffPositionExt]
+    SET ChangeVersion = (NEXT VALUE FOR [changes].[ChangeVersionSequence])
+    FROM [tx].[OpenStaffPositionExt] u
+    WHERE EXISTS (SELECT 1 FROM inserted i WHERE i.id = u.id);
+END	
+GO
+
 DROP TRIGGER IF EXISTS [tx].[tx_PayrollExt_TR_UpdateChangeVersion]
 GO
 
@@ -213,45 +252,6 @@ BEGIN
     UPDATE [tx].[PriorYearActualExt]
     SET ChangeVersion = (NEXT VALUE FOR [changes].[ChangeVersionSequence])
     FROM [tx].[PriorYearActualExt] u
-    WHERE EXISTS (SELECT 1 FROM inserted i WHERE i.id = u.id);
-END	
-GO
-
-DROP TRIGGER IF EXISTS [tx].[tx_PriorYearLeaver_TR_UpdateChangeVersion]
-GO
-
-CREATE TRIGGER [tx].[tx_PriorYearLeaver_TR_UpdateChangeVersion] ON [tx].[PriorYearLeaver] AFTER UPDATE AS
-BEGIN
-    SET NOCOUNT ON;
-    UPDATE [tx].[PriorYearLeaver]
-    SET ChangeVersion = (NEXT VALUE FOR [changes].[ChangeVersionSequence])
-    FROM [tx].[PriorYearLeaver] u
-    WHERE EXISTS (SELECT 1 FROM inserted i WHERE i.id = u.id);
-END	
-GO
-
-DROP TRIGGER IF EXISTS [tx].[tx_PriorYearLeaverParent_TR_UpdateChangeVersion]
-GO
-
-CREATE TRIGGER [tx].[tx_PriorYearLeaverParent_TR_UpdateChangeVersion] ON [tx].[PriorYearLeaverParent] AFTER UPDATE AS
-BEGIN
-    SET NOCOUNT ON;
-    UPDATE [tx].[PriorYearLeaverParent]
-    SET ChangeVersion = (NEXT VALUE FOR [changes].[ChangeVersionSequence])
-    FROM [tx].[PriorYearLeaverParent] u
-    WHERE EXISTS (SELECT 1 FROM inserted i WHERE i.id = u.id);
-END	
-GO
-
-DROP TRIGGER IF EXISTS [tx].[tx_PriorYearLeaverStudentParentAssociation_TR_UpdateChangeVersion]
-GO
-
-CREATE TRIGGER [tx].[tx_PriorYearLeaverStudentParentAssociation_TR_UpdateChangeVersion] ON [tx].[PriorYearLeaverStudentParentAssociation] AFTER UPDATE AS
-BEGIN
-    SET NOCOUNT ON;
-    UPDATE [tx].[PriorYearLeaverStudentParentAssociation]
-    SET ChangeVersion = (NEXT VALUE FOR [changes].[ChangeVersionSequence])
-    FROM [tx].[PriorYearLeaverStudentParentAssociation] u
     WHERE EXISTS (SELECT 1 FROM inserted i WHERE i.id = u.id);
 END	
 GO
@@ -300,6 +300,19 @@ BEGIN
 END	
 GO
 
+DROP TRIGGER IF EXISTS [tx].[tx_RequisitionExt_TR_UpdateChangeVersion]
+GO
+
+CREATE TRIGGER [tx].[tx_RequisitionExt_TR_UpdateChangeVersion] ON [tx].[RequisitionExt] AFTER UPDATE AS
+BEGIN
+    SET NOCOUNT ON;
+    UPDATE [tx].[RequisitionExt]
+    SET ChangeVersion = (NEXT VALUE FOR [changes].[ChangeVersionSequence])
+    FROM [tx].[RequisitionExt] u
+    WHERE EXISTS (SELECT 1 FROM inserted i WHERE i.id = u.id);
+END	
+GO
+
 DROP TRIGGER IF EXISTS [tx].[tx_SharedServiceArrangementExt_TR_UpdateChangeVersion]
 GO
 
@@ -326,6 +339,19 @@ BEGIN
 END	
 GO
 
+DROP TRIGGER IF EXISTS [tx].[tx_SpecialEducationTierOfIntensityAttendance_TR_UpdateChangeVersion]
+GO
+
+CREATE TRIGGER [tx].[tx_SpecialEducationTierOfIntensityAttendance_TR_UpdateChangeVersion] ON [tx].[SpecialEducationTierOfIntensityAttendance] AFTER UPDATE AS
+BEGIN
+    SET NOCOUNT ON;
+    UPDATE [tx].[SpecialEducationTierOfIntensityAttendance]
+    SET ChangeVersion = (NEXT VALUE FOR [changes].[ChangeVersionSequence])
+    FROM [tx].[SpecialEducationTierOfIntensityAttendance] u
+    WHERE EXISTS (SELECT 1 FROM inserted i WHERE i.id = u.id);
+END	
+GO
+
 DROP TRIGGER IF EXISTS [tx].[tx_SpecialProgramsReportingPeriodAttendance_TR_UpdateChangeVersion]
 GO
 
@@ -335,6 +361,19 @@ BEGIN
     UPDATE [tx].[SpecialProgramsReportingPeriodAttendance]
     SET ChangeVersion = (NEXT VALUE FOR [changes].[ChangeVersionSequence])
     FROM [tx].[SpecialProgramsReportingPeriodAttendance] u
+    WHERE EXISTS (SELECT 1 FROM inserted i WHERE i.id = u.id);
+END	
+GO
+
+DROP TRIGGER IF EXISTS [tx].[tx_SPEDVideoCameraRequestExt_TR_UpdateChangeVersion]
+GO
+
+CREATE TRIGGER [tx].[tx_SPEDVideoCameraRequestExt_TR_UpdateChangeVersion] ON [tx].[SPEDVideoCameraRequestExt] AFTER UPDATE AS
+BEGIN
+    SET NOCOUNT ON;
+    UPDATE [tx].[SPEDVideoCameraRequestExt]
+    SET ChangeVersion = (NEXT VALUE FOR [changes].[ChangeVersionSequence])
+    FROM [tx].[SPEDVideoCameraRequestExt] u
     WHERE EXISTS (SELECT 1 FROM inserted i WHERE i.id = u.id);
 END	
 GO

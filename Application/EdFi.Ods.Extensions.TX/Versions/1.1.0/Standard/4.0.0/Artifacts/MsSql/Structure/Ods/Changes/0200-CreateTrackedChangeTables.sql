@@ -227,32 +227,32 @@ CREATE TABLE [tracked_changes_tx].[DescriptorMappingHistory]
        CreateDate DateTime2 NOT NULL DEFAULT (getutcdate()),
        CONSTRAINT PK_DescriptorMappingHistory PRIMARY KEY CLUSTERED (ChangeVersion)
 )
-IF NOT EXISTS (SELECT * FROM sys.tables WHERE object_id = OBJECT_ID(N'[tracked_changes_tx].[ExtendedSchoolYearServicesAttendance]'))
-CREATE TABLE [tracked_changes_tx].[ExtendedSchoolYearServicesAttendance]
+IF NOT EXISTS (SELECT * FROM sys.tables WHERE object_id = OBJECT_ID(N'[tracked_changes_tx].[ESYTierOfIntensityAttendance]'))
+CREATE TABLE [tracked_changes_tx].[ESYTierOfIntensityAttendance]
 (
-       OldFirstInstructionalSettingDescriptorId [INT] NOT NULL,
-       OldFirstInstructionalSettingDescriptorNamespace [NVARCHAR](255) NOT NULL,
-       OldFirstInstructionalSettingDescriptorCodeValue [NVARCHAR](50) NOT NULL,
        OldGradeLevelDescriptorId [INT] NOT NULL,
        OldGradeLevelDescriptorNamespace [NVARCHAR](255) NOT NULL,
        OldGradeLevelDescriptorCodeValue [NVARCHAR](50) NOT NULL,
        OldSchoolId [INT] NOT NULL,
        OldStudentUSI [INT] NOT NULL,
        OldStudentUniqueId [NVARCHAR](32) NOT NULL,
-       NewFirstInstructionalSettingDescriptorId [INT] NULL,
-       NewFirstInstructionalSettingDescriptorNamespace [NVARCHAR](255) NULL,
-       NewFirstInstructionalSettingDescriptorCodeValue [NVARCHAR](50) NULL,
+       OldTierOfIntensityDescriptorId [INT] NOT NULL,
+       OldTierOfIntensityDescriptorNamespace [NVARCHAR](255) NOT NULL,
+       OldTierOfIntensityDescriptorCodeValue [NVARCHAR](50) NOT NULL,
        NewGradeLevelDescriptorId [INT] NULL,
        NewGradeLevelDescriptorNamespace [NVARCHAR](255) NULL,
        NewGradeLevelDescriptorCodeValue [NVARCHAR](50) NULL,
        NewSchoolId [INT] NULL,
        NewStudentUSI [INT] NULL,
        NewStudentUniqueId [NVARCHAR](32) NULL,
+       NewTierOfIntensityDescriptorId [INT] NULL,
+       NewTierOfIntensityDescriptorNamespace [NVARCHAR](255) NULL,
+       NewTierOfIntensityDescriptorCodeValue [NVARCHAR](50) NULL,
        Id uniqueidentifier NOT NULL,
        ChangeVersion bigint NOT NULL,
        Discriminator [NVARCHAR](128) NULL,
        CreateDate DateTime2 NOT NULL DEFAULT (getutcdate()),
-       CONSTRAINT PK_ExtendedSchoolYearServicesAttendance PRIMARY KEY CLUSTERED (ChangeVersion)
+       CONSTRAINT PK_ESYTierOfIntensityAttendance PRIMARY KEY CLUSTERED (ChangeVersion)
 )
 IF NOT EXISTS (SELECT * FROM sys.tables WHERE object_id = OBJECT_ID(N'[tracked_changes_tx].[FlexibleBilingualESLProgramReportingPeriodAttendance]'))
 CREATE TABLE [tracked_changes_tx].[FlexibleBilingualESLProgramReportingPeriodAttendance]
@@ -406,6 +406,73 @@ CREATE TABLE [tracked_changes_tx].[FlexibleSpecialEducationProgramReportingPerio
        CreateDate DateTime2 NOT NULL DEFAULT (getutcdate()),
        CONSTRAINT PK_FlexibleSpecialEducationProgramReportingPeriodAttendance PRIMARY KEY CLUSTERED (ChangeVersion)
 )
+IF NOT EXISTS (SELECT * FROM sys.tables WHERE object_id = OBJECT_ID(N'[tracked_changes_tx].[FlexibleSpecialEducationTierOfIntensityAttendance]'))
+CREATE TABLE [tracked_changes_tx].[FlexibleSpecialEducationTierOfIntensityAttendance]
+(
+       OldCalendarCode [NVARCHAR](60) NOT NULL,
+       OldFlexAttendanceProgramDescriptorId [INT] NOT NULL,
+       OldFlexAttendanceProgramDescriptorNamespace [NVARCHAR](255) NOT NULL,
+       OldFlexAttendanceProgramDescriptorCodeValue [NVARCHAR](50) NOT NULL,
+       OldGradeLevelDescriptorId [INT] NOT NULL,
+       OldGradeLevelDescriptorNamespace [NVARCHAR](255) NOT NULL,
+       OldGradeLevelDescriptorCodeValue [NVARCHAR](50) NOT NULL,
+       OldReportingPeriodDescriptorId [INT] NOT NULL,
+       OldReportingPeriodDescriptorNamespace [NVARCHAR](255) NOT NULL,
+       OldReportingPeriodDescriptorCodeValue [NVARCHAR](50) NOT NULL,
+       OldSchoolId [INT] NOT NULL,
+       OldStudentUSI [INT] NOT NULL,
+       OldStudentUniqueId [NVARCHAR](32) NOT NULL,
+       OldTierOfIntensityDescriptorId [INT] NOT NULL,
+       OldTierOfIntensityDescriptorNamespace [NVARCHAR](255) NOT NULL,
+       OldTierOfIntensityDescriptorCodeValue [NVARCHAR](50) NOT NULL,
+       NewCalendarCode [NVARCHAR](60) NULL,
+       NewFlexAttendanceProgramDescriptorId [INT] NULL,
+       NewFlexAttendanceProgramDescriptorNamespace [NVARCHAR](255) NULL,
+       NewFlexAttendanceProgramDescriptorCodeValue [NVARCHAR](50) NULL,
+       NewGradeLevelDescriptorId [INT] NULL,
+       NewGradeLevelDescriptorNamespace [NVARCHAR](255) NULL,
+       NewGradeLevelDescriptorCodeValue [NVARCHAR](50) NULL,
+       NewReportingPeriodDescriptorId [INT] NULL,
+       NewReportingPeriodDescriptorNamespace [NVARCHAR](255) NULL,
+       NewReportingPeriodDescriptorCodeValue [NVARCHAR](50) NULL,
+       NewSchoolId [INT] NULL,
+       NewStudentUSI [INT] NULL,
+       NewStudentUniqueId [NVARCHAR](32) NULL,
+       NewTierOfIntensityDescriptorId [INT] NULL,
+       NewTierOfIntensityDescriptorNamespace [NVARCHAR](255) NULL,
+       NewTierOfIntensityDescriptorCodeValue [NVARCHAR](50) NULL,
+       Id uniqueidentifier NOT NULL,
+       ChangeVersion bigint NOT NULL,
+       Discriminator [NVARCHAR](128) NULL,
+       CreateDate DateTime2 NOT NULL DEFAULT (getutcdate()),
+       CONSTRAINT PK_FlexibleSpecialEducationTierOfIntensityAttendance PRIMARY KEY CLUSTERED (ChangeVersion)
+)
+IF NOT EXISTS (SELECT * FROM sys.tables WHERE object_id = OBJECT_ID(N'[tracked_changes_tx].[GrievanceExt]'))
+CREATE TABLE [tracked_changes_tx].[GrievanceExt]
+(
+       OldEducationOrganizationId [INT] NOT NULL,
+       OldGrievanceIdentifier [INT] NOT NULL,
+       NewEducationOrganizationId [INT] NULL,
+       NewGrievanceIdentifier [INT] NULL,
+       Id uniqueidentifier NOT NULL,
+       ChangeVersion bigint NOT NULL,
+       Discriminator [NVARCHAR](128) NULL,
+       CreateDate DateTime2 NOT NULL DEFAULT (getutcdate()),
+       CONSTRAINT PK_GrievanceExt PRIMARY KEY CLUSTERED (ChangeVersion)
+)
+IF NOT EXISTS (SELECT * FROM sys.tables WHERE object_id = OBJECT_ID(N'[tracked_changes_tx].[OpenStaffPositionExt]'))
+CREATE TABLE [tracked_changes_tx].[OpenStaffPositionExt]
+(
+       OldEducationOrganizationId [INT] NOT NULL,
+       OldPositionNumber [NVARCHAR](20) NOT NULL,
+       NewEducationOrganizationId [INT] NULL,
+       NewPositionNumber [NVARCHAR](20) NULL,
+       Id uniqueidentifier NOT NULL,
+       ChangeVersion bigint NOT NULL,
+       Discriminator [NVARCHAR](128) NULL,
+       CreateDate DateTime2 NOT NULL DEFAULT (getutcdate()),
+       CONSTRAINT PK_OpenStaffPositionExt PRIMARY KEY CLUSTERED (ChangeVersion)
+)
 IF NOT EXISTS (SELECT * FROM sys.tables WHERE object_id = OBJECT_ID(N'[tracked_changes_tx].[PayrollExt]'))
 CREATE TABLE [tracked_changes_tx].[PayrollExt]
 (
@@ -496,45 +563,6 @@ CREATE TABLE [tracked_changes_tx].[PriorYearActualExt]
        CreateDate DateTime2 NOT NULL DEFAULT (getutcdate()),
        CONSTRAINT PK_PriorYearActualExt PRIMARY KEY CLUSTERED (ChangeVersion)
 )
-IF NOT EXISTS (SELECT * FROM sys.tables WHERE object_id = OBJECT_ID(N'[tracked_changes_tx].[PriorYearLeaver]'))
-CREATE TABLE [tracked_changes_tx].[PriorYearLeaver]
-(
-       OldSchoolId [INT] NOT NULL,
-       OldStudentUId [NVARCHAR](32) NOT NULL,
-       NewSchoolId [INT] NULL,
-       NewStudentUId [NVARCHAR](32) NULL,
-       Id uniqueidentifier NOT NULL,
-       ChangeVersion bigint NOT NULL,
-       Discriminator [NVARCHAR](128) NULL,
-       CreateDate DateTime2 NOT NULL DEFAULT (getutcdate()),
-       CONSTRAINT PK_PriorYearLeaver PRIMARY KEY CLUSTERED (ChangeVersion)
-)
-IF NOT EXISTS (SELECT * FROM sys.tables WHERE object_id = OBJECT_ID(N'[tracked_changes_tx].[PriorYearLeaverParent]'))
-CREATE TABLE [tracked_changes_tx].[PriorYearLeaverParent]
-(
-       OldParentUId [NVARCHAR](32) NOT NULL,
-       NewParentUId [NVARCHAR](32) NULL,
-       Id uniqueidentifier NOT NULL,
-       ChangeVersion bigint NOT NULL,
-       Discriminator [NVARCHAR](128) NULL,
-       CreateDate DateTime2 NOT NULL DEFAULT (getutcdate()),
-       CONSTRAINT PK_PriorYearLeaverParent PRIMARY KEY CLUSTERED (ChangeVersion)
-)
-IF NOT EXISTS (SELECT * FROM sys.tables WHERE object_id = OBJECT_ID(N'[tracked_changes_tx].[PriorYearLeaverStudentParentAssociation]'))
-CREATE TABLE [tracked_changes_tx].[PriorYearLeaverStudentParentAssociation]
-(
-       OldParentUId [NVARCHAR](32) NOT NULL,
-       OldSchoolId [INT] NOT NULL,
-       OldStudentUId [NVARCHAR](32) NOT NULL,
-       NewParentUId [NVARCHAR](32) NULL,
-       NewSchoolId [INT] NULL,
-       NewStudentUId [NVARCHAR](32) NULL,
-       Id uniqueidentifier NOT NULL,
-       ChangeVersion bigint NOT NULL,
-       Discriminator [NVARCHAR](128) NULL,
-       CreateDate DateTime2 NOT NULL DEFAULT (getutcdate()),
-       CONSTRAINT PK_PriorYearLeaverStudentParentAssociation PRIMARY KEY CLUSTERED (ChangeVersion)
-)
 IF NOT EXISTS (SELECT * FROM sys.tables WHERE object_id = OBJECT_ID(N'[tracked_changes_tx].[PriorYearSSAOrgAssociationExt]'))
 CREATE TABLE [tracked_changes_tx].[PriorYearSSAOrgAssociationExt]
 (
@@ -576,6 +604,21 @@ CREATE TABLE [tracked_changes_tx].[ReportingPeriodExt]
        Discriminator [NVARCHAR](128) NULL,
        CreateDate DateTime2 NOT NULL DEFAULT (getutcdate()),
        CONSTRAINT PK_ReportingPeriodExt PRIMARY KEY CLUSTERED (ChangeVersion)
+)
+IF NOT EXISTS (SELECT * FROM sys.tables WHERE object_id = OBJECT_ID(N'[tracked_changes_tx].[RequisitionExt]'))
+CREATE TABLE [tracked_changes_tx].[RequisitionExt]
+(
+       OldEducationOrganizationId [INT] NOT NULL,
+       OldPositionNumber [NVARCHAR](20) NOT NULL,
+       OldRequisitionNumber [NVARCHAR](20) NOT NULL,
+       NewEducationOrganizationId [INT] NULL,
+       NewPositionNumber [NVARCHAR](20) NULL,
+       NewRequisitionNumber [NVARCHAR](20) NULL,
+       Id uniqueidentifier NOT NULL,
+       ChangeVersion bigint NOT NULL,
+       Discriminator [NVARCHAR](128) NULL,
+       CreateDate DateTime2 NOT NULL DEFAULT (getutcdate()),
+       CONSTRAINT PK_RequisitionExt PRIMARY KEY CLUSTERED (ChangeVersion)
 )
 IF NOT EXISTS (SELECT * FROM sys.tables WHERE object_id = OBJECT_ID(N'[tracked_changes_tx].[SharedServiceArrangementExt]'))
 CREATE TABLE [tracked_changes_tx].[SharedServiceArrangementExt]
@@ -645,6 +688,47 @@ CREATE TABLE [tracked_changes_tx].[SpecialEducationProgramReportingPeriodAttenda
        CreateDate DateTime2 NOT NULL DEFAULT (getutcdate()),
        CONSTRAINT PK_SpecialEducationProgramReportingPeriodAttendance PRIMARY KEY CLUSTERED (ChangeVersion)
 )
+IF NOT EXISTS (SELECT * FROM sys.tables WHERE object_id = OBJECT_ID(N'[tracked_changes_tx].[SpecialEducationTierOfIntensityAttendance]'))
+CREATE TABLE [tracked_changes_tx].[SpecialEducationTierOfIntensityAttendance]
+(
+       OldCalendarCode [NVARCHAR](60) NOT NULL,
+       OldGradeLevelDescriptorId [INT] NOT NULL,
+       OldGradeLevelDescriptorNamespace [NVARCHAR](255) NOT NULL,
+       OldGradeLevelDescriptorCodeValue [NVARCHAR](50) NOT NULL,
+       OldRegionalDaySchoolProgramForDeafDescriptorId [INT] NOT NULL,
+       OldRegionalDaySchoolProgramForDeafDescriptorNamespace [NVARCHAR](255) NOT NULL,
+       OldRegionalDaySchoolProgramForDeafDescriptorCodeValue [NVARCHAR](50) NOT NULL,
+       OldReportingPeriodDescriptorId [INT] NOT NULL,
+       OldReportingPeriodDescriptorNamespace [NVARCHAR](255) NOT NULL,
+       OldReportingPeriodDescriptorCodeValue [NVARCHAR](50) NOT NULL,
+       OldSchoolId [INT] NOT NULL,
+       OldStudentUSI [INT] NOT NULL,
+       OldStudentUniqueId [NVARCHAR](32) NOT NULL,
+       OldTierOfIntensityDescriptorId [INT] NOT NULL,
+       OldTierOfIntensityDescriptorNamespace [NVARCHAR](255) NOT NULL,
+       OldTierOfIntensityDescriptorCodeValue [NVARCHAR](50) NOT NULL,
+       NewCalendarCode [NVARCHAR](60) NULL,
+       NewGradeLevelDescriptorId [INT] NULL,
+       NewGradeLevelDescriptorNamespace [NVARCHAR](255) NULL,
+       NewGradeLevelDescriptorCodeValue [NVARCHAR](50) NULL,
+       NewRegionalDaySchoolProgramForDeafDescriptorId [INT] NULL,
+       NewRegionalDaySchoolProgramForDeafDescriptorNamespace [NVARCHAR](255) NULL,
+       NewRegionalDaySchoolProgramForDeafDescriptorCodeValue [NVARCHAR](50) NULL,
+       NewReportingPeriodDescriptorId [INT] NULL,
+       NewReportingPeriodDescriptorNamespace [NVARCHAR](255) NULL,
+       NewReportingPeriodDescriptorCodeValue [NVARCHAR](50) NULL,
+       NewSchoolId [INT] NULL,
+       NewStudentUSI [INT] NULL,
+       NewStudentUniqueId [NVARCHAR](32) NULL,
+       NewTierOfIntensityDescriptorId [INT] NULL,
+       NewTierOfIntensityDescriptorNamespace [NVARCHAR](255) NULL,
+       NewTierOfIntensityDescriptorCodeValue [NVARCHAR](50) NULL,
+       Id uniqueidentifier NOT NULL,
+       ChangeVersion bigint NOT NULL,
+       Discriminator [NVARCHAR](128) NULL,
+       CreateDate DateTime2 NOT NULL DEFAULT (getutcdate()),
+       CONSTRAINT PK_SpecialEducationTierOfIntensityAttendance PRIMARY KEY CLUSTERED (ChangeVersion)
+)
 IF NOT EXISTS (SELECT * FROM sys.tables WHERE object_id = OBJECT_ID(N'[tracked_changes_tx].[SpecialProgramsReportingPeriodAttendance]'))
 CREATE TABLE [tracked_changes_tx].[SpecialProgramsReportingPeriodAttendance]
 (
@@ -673,6 +757,19 @@ CREATE TABLE [tracked_changes_tx].[SpecialProgramsReportingPeriodAttendance]
        Discriminator [NVARCHAR](128) NULL,
        CreateDate DateTime2 NOT NULL DEFAULT (getutcdate()),
        CONSTRAINT PK_SpecialProgramsReportingPeriodAttendance PRIMARY KEY CLUSTERED (ChangeVersion)
+)
+IF NOT EXISTS (SELECT * FROM sys.tables WHERE object_id = OBJECT_ID(N'[tracked_changes_tx].[SPEDVideoCameraRequestExt]'))
+CREATE TABLE [tracked_changes_tx].[SPEDVideoCameraRequestExt]
+(
+       OldRequestId [NVARCHAR](20) NOT NULL,
+       OldSchoolId [INT] NOT NULL,
+       NewRequestId [NVARCHAR](20) NULL,
+       NewSchoolId [INT] NULL,
+       Id uniqueidentifier NOT NULL,
+       ChangeVersion bigint NOT NULL,
+       Discriminator [NVARCHAR](128) NULL,
+       CreateDate DateTime2 NOT NULL DEFAULT (getutcdate()),
+       CONSTRAINT PK_SPEDVideoCameraRequestExt PRIMARY KEY CLUSTERED (ChangeVersion)
 )
 IF NOT EXISTS (SELECT * FROM sys.tables WHERE object_id = OBJECT_ID(N'[tracked_changes_tx].[SSAOrgAssociationExt]'))
 CREATE TABLE [tracked_changes_tx].[SSAOrgAssociationExt]

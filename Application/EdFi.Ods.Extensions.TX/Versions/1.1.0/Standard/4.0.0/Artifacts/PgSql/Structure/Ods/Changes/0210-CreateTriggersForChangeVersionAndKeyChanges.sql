@@ -76,8 +76,8 @@ CREATE TRIGGER UpdateChangeVersion BEFORE UPDATE ON tx.descriptormappinghistory
     FOR EACH ROW EXECUTE PROCEDURE changes.UpdateChangeVersion();
 END IF;
 
-IF NOT EXISTS(SELECT 1 FROM information_schema.triggers WHERE trigger_name = 'updatechangeversion' AND event_object_schema = 'tx' AND event_object_table = 'extendedschoolyearservicesattendance') THEN
-CREATE TRIGGER UpdateChangeVersion BEFORE UPDATE ON tx.extendedschoolyearservicesattendance
+IF NOT EXISTS(SELECT 1 FROM information_schema.triggers WHERE trigger_name = 'updatechangeversion' AND event_object_schema = 'tx' AND event_object_table = 'esytierofintensityattendance') THEN
+CREATE TRIGGER UpdateChangeVersion BEFORE UPDATE ON tx.esytierofintensityattendance
     FOR EACH ROW EXECUTE PROCEDURE changes.UpdateChangeVersion();
 END IF;
 
@@ -101,6 +101,21 @@ CREATE TRIGGER UpdateChangeVersion BEFORE UPDATE ON tx.flexiblespecialeducationp
     FOR EACH ROW EXECUTE PROCEDURE changes.UpdateChangeVersion();
 END IF;
 
+IF NOT EXISTS(SELECT 1 FROM information_schema.triggers WHERE trigger_name = 'updatechangeversion' AND event_object_schema = 'tx' AND event_object_table = 'flexiblespecialeducationtierofintensityattendance') THEN
+CREATE TRIGGER UpdateChangeVersion BEFORE UPDATE ON tx.flexiblespecialeducationtierofintensityattendance
+    FOR EACH ROW EXECUTE PROCEDURE changes.UpdateChangeVersion();
+END IF;
+
+IF NOT EXISTS(SELECT 1 FROM information_schema.triggers WHERE trigger_name = 'updatechangeversion' AND event_object_schema = 'tx' AND event_object_table = 'grievanceext') THEN
+CREATE TRIGGER UpdateChangeVersion BEFORE UPDATE ON tx.grievanceext
+    FOR EACH ROW EXECUTE PROCEDURE changes.UpdateChangeVersion();
+END IF;
+
+IF NOT EXISTS(SELECT 1 FROM information_schema.triggers WHERE trigger_name = 'updatechangeversion' AND event_object_schema = 'tx' AND event_object_table = 'openstaffpositionext') THEN
+CREATE TRIGGER UpdateChangeVersion BEFORE UPDATE ON tx.openstaffpositionext
+    FOR EACH ROW EXECUTE PROCEDURE changes.UpdateChangeVersion();
+END IF;
+
 IF NOT EXISTS(SELECT 1 FROM information_schema.triggers WHERE trigger_name = 'updatechangeversion' AND event_object_schema = 'tx' AND event_object_table = 'payrollext') THEN
 CREATE TRIGGER UpdateChangeVersion BEFORE UPDATE ON tx.payrollext
     FOR EACH ROW EXECUTE PROCEDURE changes.UpdateChangeVersion();
@@ -108,21 +123,6 @@ END IF;
 
 IF NOT EXISTS(SELECT 1 FROM information_schema.triggers WHERE trigger_name = 'updatechangeversion' AND event_object_schema = 'tx' AND event_object_table = 'prioryearactualext') THEN
 CREATE TRIGGER UpdateChangeVersion BEFORE UPDATE ON tx.prioryearactualext
-    FOR EACH ROW EXECUTE PROCEDURE changes.UpdateChangeVersion();
-END IF;
-
-IF NOT EXISTS(SELECT 1 FROM information_schema.triggers WHERE trigger_name = 'updatechangeversion' AND event_object_schema = 'tx' AND event_object_table = 'prioryearleaver') THEN
-CREATE TRIGGER UpdateChangeVersion BEFORE UPDATE ON tx.prioryearleaver
-    FOR EACH ROW EXECUTE PROCEDURE changes.UpdateChangeVersion();
-END IF;
-
-IF NOT EXISTS(SELECT 1 FROM information_schema.triggers WHERE trigger_name = 'updatechangeversion' AND event_object_schema = 'tx' AND event_object_table = 'prioryearleaverparent') THEN
-CREATE TRIGGER UpdateChangeVersion BEFORE UPDATE ON tx.prioryearleaverparent
-    FOR EACH ROW EXECUTE PROCEDURE changes.UpdateChangeVersion();
-END IF;
-
-IF NOT EXISTS(SELECT 1 FROM information_schema.triggers WHERE trigger_name = 'updatechangeversion' AND event_object_schema = 'tx' AND event_object_table = 'prioryearleaverstudentparentassociation') THEN
-CREATE TRIGGER UpdateChangeVersion BEFORE UPDATE ON tx.prioryearleaverstudentparentassociation
     FOR EACH ROW EXECUTE PROCEDURE changes.UpdateChangeVersion();
 END IF;
 
@@ -165,6 +165,11 @@ IF NOT EXISTS(SELECT 1 FROM information_schema.triggers WHERE trigger_name = 'ha
         FOR EACH ROW EXECUTE PROCEDURE tracked_changes_tx.reportingperiodext_keychg();
 END IF;
 
+IF NOT EXISTS(SELECT 1 FROM information_schema.triggers WHERE trigger_name = 'updatechangeversion' AND event_object_schema = 'tx' AND event_object_table = 'requisitionext') THEN
+CREATE TRIGGER UpdateChangeVersion BEFORE UPDATE ON tx.requisitionext
+    FOR EACH ROW EXECUTE PROCEDURE changes.UpdateChangeVersion();
+END IF;
+
 IF NOT EXISTS(SELECT 1 FROM information_schema.triggers WHERE trigger_name = 'updatechangeversion' AND event_object_schema = 'tx' AND event_object_table = 'sharedservicearrangementext') THEN
 CREATE TRIGGER UpdateChangeVersion BEFORE UPDATE ON tx.sharedservicearrangementext
     FOR EACH ROW EXECUTE PROCEDURE changes.UpdateChangeVersion();
@@ -175,8 +180,18 @@ CREATE TRIGGER UpdateChangeVersion BEFORE UPDATE ON tx.specialeducationprogramre
     FOR EACH ROW EXECUTE PROCEDURE changes.UpdateChangeVersion();
 END IF;
 
+IF NOT EXISTS(SELECT 1 FROM information_schema.triggers WHERE trigger_name = 'updatechangeversion' AND event_object_schema = 'tx' AND event_object_table = 'specialeducationtierofintensityattendance') THEN
+CREATE TRIGGER UpdateChangeVersion BEFORE UPDATE ON tx.specialeducationtierofintensityattendance
+    FOR EACH ROW EXECUTE PROCEDURE changes.UpdateChangeVersion();
+END IF;
+
 IF NOT EXISTS(SELECT 1 FROM information_schema.triggers WHERE trigger_name = 'updatechangeversion' AND event_object_schema = 'tx' AND event_object_table = 'specialprogramsreportingperiodattendance') THEN
 CREATE TRIGGER UpdateChangeVersion BEFORE UPDATE ON tx.specialprogramsreportingperiodattendance
+    FOR EACH ROW EXECUTE PROCEDURE changes.UpdateChangeVersion();
+END IF;
+
+IF NOT EXISTS(SELECT 1 FROM information_schema.triggers WHERE trigger_name = 'updatechangeversion' AND event_object_schema = 'tx' AND event_object_table = 'spedvideocamerarequestext') THEN
+CREATE TRIGGER UpdateChangeVersion BEFORE UPDATE ON tx.spedvideocamerarequestext
     FOR EACH ROW EXECUTE PROCEDURE changes.UpdateChangeVersion();
 END IF;
 

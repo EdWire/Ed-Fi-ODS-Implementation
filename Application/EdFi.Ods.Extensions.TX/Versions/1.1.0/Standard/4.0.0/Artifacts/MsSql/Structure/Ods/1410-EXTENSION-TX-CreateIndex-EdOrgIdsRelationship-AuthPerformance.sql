@@ -44,9 +44,9 @@ BEGIN
     CREATE INDEX IX_DescriptorMappingHistory_EducationOrganizationId ON [tx].[DescriptorMappingHistory](EducationOrganizationId) INCLUDE (Id)
 END;
 
-IF NOT EXISTS(SELECT * FROM sys.indexes WHERE name='IX_ExtendedSchoolYearServicesAttendance_SchoolId' AND object_id = OBJECT_ID('tx.ExtendedSchoolYearServicesAttendance')) 
+IF NOT EXISTS(SELECT * FROM sys.indexes WHERE name='IX_ESYTierOfIntensityAttendance_SchoolId' AND object_id = OBJECT_ID('tx.ESYTierOfIntensityAttendance')) 
 BEGIN
-    CREATE INDEX IX_ExtendedSchoolYearServicesAttendance_SchoolId ON [tx].[ExtendedSchoolYearServicesAttendance](SchoolId) INCLUDE (Id)
+    CREATE INDEX IX_ESYTierOfIntensityAttendance_SchoolId ON [tx].[ESYTierOfIntensityAttendance](SchoolId) INCLUDE (Id)
 END;
 
 IF NOT EXISTS(SELECT * FROM sys.indexes WHERE name='IX_FlexibleBilingualESLProgramReportingPeriodAttendance_SchoolId' AND object_id = OBJECT_ID('tx.FlexibleBilingualESLProgramReportingPeriodAttendance')) 
@@ -69,6 +69,21 @@ BEGIN
     CREATE INDEX IX_FlexibleSpecialEducationProgramReportingPeriodAttendance_SchoolId ON [tx].[FlexibleSpecialEducationProgramReportingPeriodAttendance](SchoolId) INCLUDE (Id)
 END;
 
+IF NOT EXISTS(SELECT * FROM sys.indexes WHERE name='IX_FlexibleSpecialEducationTierOfIntensityAttendance_SchoolId' AND object_id = OBJECT_ID('tx.FlexibleSpecialEducationTierOfIntensityAttendance')) 
+BEGIN
+    CREATE INDEX IX_FlexibleSpecialEducationTierOfIntensityAttendance_SchoolId ON [tx].[FlexibleSpecialEducationTierOfIntensityAttendance](SchoolId) INCLUDE (Id)
+END;
+
+IF NOT EXISTS(SELECT * FROM sys.indexes WHERE name='IX_GrievanceExt_EducationOrganizationId' AND object_id = OBJECT_ID('tx.GrievanceExt')) 
+BEGIN
+    CREATE INDEX IX_GrievanceExt_EducationOrganizationId ON [tx].[GrievanceExt](EducationOrganizationId) INCLUDE (Id)
+END;
+
+IF NOT EXISTS(SELECT * FROM sys.indexes WHERE name='IX_OpenStaffPositionExt_EducationOrganizationId' AND object_id = OBJECT_ID('tx.OpenStaffPositionExt')) 
+BEGIN
+    CREATE INDEX IX_OpenStaffPositionExt_EducationOrganizationId ON [tx].[OpenStaffPositionExt](EducationOrganizationId) INCLUDE (Id)
+END;
+
 IF NOT EXISTS(SELECT * FROM sys.indexes WHERE name='IX_PayrollExt_EducationOrganizationId' AND object_id = OBJECT_ID('tx.PayrollExt')) 
 BEGIN
     CREATE INDEX IX_PayrollExt_EducationOrganizationId ON [tx].[PayrollExt](EducationOrganizationId) INCLUDE (Id)
@@ -77,16 +92,6 @@ END;
 IF NOT EXISTS(SELECT * FROM sys.indexes WHERE name='IX_PriorYearActualExt_EducationOrganizationId' AND object_id = OBJECT_ID('tx.PriorYearActualExt')) 
 BEGIN
     CREATE INDEX IX_PriorYearActualExt_EducationOrganizationId ON [tx].[PriorYearActualExt](EducationOrganizationId) INCLUDE (Id)
-END;
-
-IF NOT EXISTS(SELECT * FROM sys.indexes WHERE name='IX_PriorYearLeaver_SchoolId' AND object_id = OBJECT_ID('tx.PriorYearLeaver')) 
-BEGIN
-    CREATE INDEX IX_PriorYearLeaver_SchoolId ON [tx].[PriorYearLeaver](SchoolId) INCLUDE (Id)
-END;
-
-IF NOT EXISTS(SELECT * FROM sys.indexes WHERE name='IX_PriorYearLeaverStudentParentAssociation_SchoolId' AND object_id = OBJECT_ID('tx.PriorYearLeaverStudentParentAssociation')) 
-BEGIN
-    CREATE INDEX IX_PriorYearLeaverStudentParentAssociation_SchoolId ON [tx].[PriorYearLeaverStudentParentAssociation](SchoolId) INCLUDE (Id)
 END;
 
 IF NOT EXISTS(SELECT * FROM sys.indexes WHERE name='IX_PriorYearSSAOrgAssociationExt_EducationOrganizationId' AND object_id = OBJECT_ID('tx.PriorYearSSAOrgAssociationExt')) 
@@ -99,6 +104,11 @@ BEGIN
     CREATE INDEX IX_ReportingPeriodExt_SchoolId ON [tx].[ReportingPeriodExt](SchoolId) INCLUDE (Id)
 END;
 
+IF NOT EXISTS(SELECT * FROM sys.indexes WHERE name='IX_RequisitionExt_EducationOrganizationId' AND object_id = OBJECT_ID('tx.RequisitionExt')) 
+BEGIN
+    CREATE INDEX IX_RequisitionExt_EducationOrganizationId ON [tx].[RequisitionExt](EducationOrganizationId) INCLUDE (Id)
+END;
+
 IF NOT EXISTS(SELECT * FROM sys.indexes WHERE name='IX_SharedServiceArrangementExt_EducationOrganizationId' AND object_id = OBJECT_ID('tx.SharedServiceArrangementExt')) 
 BEGIN
     CREATE INDEX IX_SharedServiceArrangementExt_EducationOrganizationId ON [tx].[SharedServiceArrangementExt](EducationOrganizationId) INCLUDE (Id)
@@ -109,9 +119,19 @@ BEGIN
     CREATE INDEX IX_SpecialEducationProgramReportingPeriodAttendance_SchoolId ON [tx].[SpecialEducationProgramReportingPeriodAttendance](SchoolId) INCLUDE (Id)
 END;
 
+IF NOT EXISTS(SELECT * FROM sys.indexes WHERE name='IX_SpecialEducationTierOfIntensityAttendance_SchoolId' AND object_id = OBJECT_ID('tx.SpecialEducationTierOfIntensityAttendance')) 
+BEGIN
+    CREATE INDEX IX_SpecialEducationTierOfIntensityAttendance_SchoolId ON [tx].[SpecialEducationTierOfIntensityAttendance](SchoolId) INCLUDE (Id)
+END;
+
 IF NOT EXISTS(SELECT * FROM sys.indexes WHERE name='IX_SpecialProgramsReportingPeriodAttendance_SchoolId' AND object_id = OBJECT_ID('tx.SpecialProgramsReportingPeriodAttendance')) 
 BEGIN
     CREATE INDEX IX_SpecialProgramsReportingPeriodAttendance_SchoolId ON [tx].[SpecialProgramsReportingPeriodAttendance](SchoolId) INCLUDE (Id)
+END;
+
+IF NOT EXISTS(SELECT * FROM sys.indexes WHERE name='IX_SPEDVideoCameraRequestExt_SchoolId' AND object_id = OBJECT_ID('tx.SPEDVideoCameraRequestExt')) 
+BEGIN
+    CREATE INDEX IX_SPEDVideoCameraRequestExt_SchoolId ON [tx].[SPEDVideoCameraRequestExt](SchoolId) INCLUDE (Id)
 END;
 
 IF NOT EXISTS(SELECT * FROM sys.indexes WHERE name='IX_SSAOrgAssociationExt_EducationOrganizationId' AND object_id = OBJECT_ID('tx.SSAOrgAssociationExt')) 

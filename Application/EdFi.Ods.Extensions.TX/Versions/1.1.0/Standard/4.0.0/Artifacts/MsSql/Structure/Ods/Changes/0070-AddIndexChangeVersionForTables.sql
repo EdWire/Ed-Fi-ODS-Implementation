@@ -41,8 +41,8 @@ BEGIN TRANSACTION
 COMMIT
 
 BEGIN TRANSACTION
-    IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'tx.ExtendedSchoolYearServicesAttendance') AND name = N'UX_ExtendedSchoolYearServicesAttendance_ChangeVersion')
-    CREATE INDEX [UX_ExtendedSchoolYearServicesAttendance_ChangeVersion] ON [tx].[ExtendedSchoolYearServicesAttendance] ([ChangeVersion] ASC)
+    IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'tx.ESYTierOfIntensityAttendance') AND name = N'UX_ESYTierOfIntensityAttendance_ChangeVersion')
+    CREATE INDEX [UX_ESYTierOfIntensityAttendance_ChangeVersion] ON [tx].[ESYTierOfIntensityAttendance] ([ChangeVersion] ASC)
     GO
 COMMIT
 
@@ -71,6 +71,24 @@ BEGIN TRANSACTION
 COMMIT
 
 BEGIN TRANSACTION
+    IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'tx.FlexibleSpecialEducationTierOfIntensityAttendance') AND name = N'UX_FlexibleSpecialEducationTierOfIntensityAttendance_ChangeVersion')
+    CREATE INDEX [UX_FlexibleSpecialEducationTierOfIntensityAttendance_ChangeVersion] ON [tx].[FlexibleSpecialEducationTierOfIntensityAttendance] ([ChangeVersion] ASC)
+    GO
+COMMIT
+
+BEGIN TRANSACTION
+    IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'tx.GrievanceExt') AND name = N'UX_GrievanceExt_ChangeVersion')
+    CREATE INDEX [UX_GrievanceExt_ChangeVersion] ON [tx].[GrievanceExt] ([ChangeVersion] ASC)
+    GO
+COMMIT
+
+BEGIN TRANSACTION
+    IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'tx.OpenStaffPositionExt') AND name = N'UX_OpenStaffPositionExt_ChangeVersion')
+    CREATE INDEX [UX_OpenStaffPositionExt_ChangeVersion] ON [tx].[OpenStaffPositionExt] ([ChangeVersion] ASC)
+    GO
+COMMIT
+
+BEGIN TRANSACTION
     IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'tx.PayrollExt') AND name = N'UX_PayrollExt_ChangeVersion')
     CREATE INDEX [UX_PayrollExt_ChangeVersion] ON [tx].[PayrollExt] ([ChangeVersion] ASC)
     GO
@@ -83,24 +101,6 @@ BEGIN TRANSACTION
 COMMIT
 
 BEGIN TRANSACTION
-    IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'tx.PriorYearLeaver') AND name = N'UX_PriorYearLeaver_ChangeVersion')
-    CREATE INDEX [UX_PriorYearLeaver_ChangeVersion] ON [tx].[PriorYearLeaver] ([ChangeVersion] ASC)
-    GO
-COMMIT
-
-BEGIN TRANSACTION
-    IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'tx.PriorYearLeaverParent') AND name = N'UX_PriorYearLeaverParent_ChangeVersion')
-    CREATE INDEX [UX_PriorYearLeaverParent_ChangeVersion] ON [tx].[PriorYearLeaverParent] ([ChangeVersion] ASC)
-    GO
-COMMIT
-
-BEGIN TRANSACTION
-    IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'tx.PriorYearLeaverStudentParentAssociation') AND name = N'UX_PriorYearLeaverStudentParentAssociation_ChangeVersion')
-    CREATE INDEX [UX_PriorYearLeaverStudentParentAssociation_ChangeVersion] ON [tx].[PriorYearLeaverStudentParentAssociation] ([ChangeVersion] ASC)
-    GO
-COMMIT
-
-BEGIN TRANSACTION
     IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'tx.PriorYearSSAOrgAssociationExt') AND name = N'UX_PriorYearSSAOrgAssociationExt_ChangeVersion')
     CREATE INDEX [UX_PriorYearSSAOrgAssociationExt_ChangeVersion] ON [tx].[PriorYearSSAOrgAssociationExt] ([ChangeVersion] ASC)
     GO
@@ -109,6 +109,18 @@ COMMIT
 BEGIN TRANSACTION
     IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'tx.ReportingPeriodExt') AND name = N'UX_ReportingPeriodExt_ChangeVersion')
     CREATE INDEX [UX_ReportingPeriodExt_ChangeVersion] ON [tx].[ReportingPeriodExt] ([ChangeVersion] ASC)
+    GO
+COMMIT
+
+BEGIN TRANSACTION
+    IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'tx.RequisitionExt') AND name = N'UX_RequisitionExt_ChangeVersion')
+    CREATE INDEX [UX_RequisitionExt_ChangeVersion] ON [tx].[RequisitionExt] ([ChangeVersion] ASC)
+    GO
+COMMIT
+
+BEGIN TRANSACTION
+    IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'tx.SPEDVideoCameraRequestExt') AND name = N'UX_SPEDVideoCameraRequestExt_ChangeVersion')
+    CREATE INDEX [UX_SPEDVideoCameraRequestExt_ChangeVersion] ON [tx].[SPEDVideoCameraRequestExt] ([ChangeVersion] ASC)
     GO
 COMMIT
 
@@ -127,6 +139,12 @@ COMMIT
 BEGIN TRANSACTION
     IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'tx.SpecialEducationProgramReportingPeriodAttendance') AND name = N'UX_SpecialEducationProgramReportingPeriodAttendance_ChangeVersion')
     CREATE INDEX [UX_SpecialEducationProgramReportingPeriodAttendance_ChangeVersion] ON [tx].[SpecialEducationProgramReportingPeriodAttendance] ([ChangeVersion] ASC)
+    GO
+COMMIT
+
+BEGIN TRANSACTION
+    IF NOT EXISTS (SELECT * FROM sys.indexes WHERE object_id = OBJECT_ID(N'tx.SpecialEducationTierOfIntensityAttendance') AND name = N'UX_SpecialEducationTierOfIntensityAttendance_ChangeVersion')
+    CREATE INDEX [UX_SpecialEducationTierOfIntensityAttendance_ChangeVersion] ON [tx].[SpecialEducationTierOfIntensityAttendance] ([ChangeVersion] ASC)
     GO
 COMMIT
 

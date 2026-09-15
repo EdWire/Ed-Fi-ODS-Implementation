@@ -244,32 +244,32 @@ CREATE TABLE tracked_changes_tx.descriptormappinghistory
 );
 END IF;
 
-IF NOT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_schema = 'tracked_changes_tx' AND table_name = 'extendedschoolyearservicesattendance') THEN
-CREATE TABLE tracked_changes_tx.extendedschoolyearservicesattendance
+IF NOT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_schema = 'tracked_changes_tx' AND table_name = 'esytierofintensityattendance') THEN
+CREATE TABLE tracked_changes_tx.esytierofintensityattendance
 (
-       oldfirstinstructionalsettingdescriptorid INT NOT NULL,
-       oldfirstinstructionalsettingdescriptornamespace VARCHAR(255) NOT NULL,
-       oldfirstinstructionalsettingdescriptorcodevalue VARCHAR(50) NOT NULL,
        oldgradeleveldescriptorid INT NOT NULL,
        oldgradeleveldescriptornamespace VARCHAR(255) NOT NULL,
        oldgradeleveldescriptorcodevalue VARCHAR(50) NOT NULL,
        oldschoolid INT NOT NULL,
        oldstudentusi INT NOT NULL,
        oldstudentuniqueid VARCHAR(32) NOT NULL,
-       newfirstinstructionalsettingdescriptorid INT NULL,
-       newfirstinstructionalsettingdescriptornamespace VARCHAR(255) NULL,
-       newfirstinstructionalsettingdescriptorcodevalue VARCHAR(50) NULL,
+       oldtierofintensitydescriptorid INT NOT NULL,
+       oldtierofintensitydescriptornamespace VARCHAR(255) NOT NULL,
+       oldtierofintensitydescriptorcodevalue VARCHAR(50) NOT NULL,
        newgradeleveldescriptorid INT NULL,
        newgradeleveldescriptornamespace VARCHAR(255) NULL,
        newgradeleveldescriptorcodevalue VARCHAR(50) NULL,
        newschoolid INT NULL,
        newstudentusi INT NULL,
        newstudentuniqueid VARCHAR(32) NULL,
+       newtierofintensitydescriptorid INT NULL,
+       newtierofintensitydescriptornamespace VARCHAR(255) NULL,
+       newtierofintensitydescriptorcodevalue VARCHAR(50) NULL,
        id uuid NOT NULL,
        changeversion bigint NOT NULL,
        discriminator varchar(128) NULL,
        createdate timestamp NOT NULL DEFAULT (now()),
-       CONSTRAINT extendedschoolyearservicesattendance_pk PRIMARY KEY (ChangeVersion)
+       CONSTRAINT esytierofintensityattendance_pk PRIMARY KEY (ChangeVersion)
 );
 END IF;
 
@@ -433,6 +433,79 @@ CREATE TABLE tracked_changes_tx.flexiblespecialeducationprogramreportingperiodat
 );
 END IF;
 
+IF NOT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_schema = 'tracked_changes_tx' AND table_name = 'flexiblespecialeducationtierofintensityattendance') THEN
+CREATE TABLE tracked_changes_tx.flexiblespecialeducationtierofintensityattendance
+(
+       oldcalendarcode VARCHAR(60) NOT NULL,
+       oldflexattendanceprogramdescriptorid INT NOT NULL,
+       oldflexattendanceprogramdescriptornamespace VARCHAR(255) NOT NULL,
+       oldflexattendanceprogramdescriptorcodevalue VARCHAR(50) NOT NULL,
+       oldgradeleveldescriptorid INT NOT NULL,
+       oldgradeleveldescriptornamespace VARCHAR(255) NOT NULL,
+       oldgradeleveldescriptorcodevalue VARCHAR(50) NOT NULL,
+       oldreportingperioddescriptorid INT NOT NULL,
+       oldreportingperioddescriptornamespace VARCHAR(255) NOT NULL,
+       oldreportingperioddescriptorcodevalue VARCHAR(50) NOT NULL,
+       oldschoolid INT NOT NULL,
+       oldstudentusi INT NOT NULL,
+       oldstudentuniqueid VARCHAR(32) NOT NULL,
+       oldtierofintensitydescriptorid INT NOT NULL,
+       oldtierofintensitydescriptornamespace VARCHAR(255) NOT NULL,
+       oldtierofintensitydescriptorcodevalue VARCHAR(50) NOT NULL,
+       newcalendarcode VARCHAR(60) NULL,
+       newflexattendanceprogramdescriptorid INT NULL,
+       newflexattendanceprogramdescriptornamespace VARCHAR(255) NULL,
+       newflexattendanceprogramdescriptorcodevalue VARCHAR(50) NULL,
+       newgradeleveldescriptorid INT NULL,
+       newgradeleveldescriptornamespace VARCHAR(255) NULL,
+       newgradeleveldescriptorcodevalue VARCHAR(50) NULL,
+       newreportingperioddescriptorid INT NULL,
+       newreportingperioddescriptornamespace VARCHAR(255) NULL,
+       newreportingperioddescriptorcodevalue VARCHAR(50) NULL,
+       newschoolid INT NULL,
+       newstudentusi INT NULL,
+       newstudentuniqueid VARCHAR(32) NULL,
+       newtierofintensitydescriptorid INT NULL,
+       newtierofintensitydescriptornamespace VARCHAR(255) NULL,
+       newtierofintensitydescriptorcodevalue VARCHAR(50) NULL,
+       id uuid NOT NULL,
+       changeversion bigint NOT NULL,
+       discriminator varchar(128) NULL,
+       createdate timestamp NOT NULL DEFAULT (now()),
+       CONSTRAINT flexiblespecialeducationtierofintensityattendance_pk PRIMARY KEY (ChangeVersion)
+);
+END IF;
+
+IF NOT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_schema = 'tracked_changes_tx' AND table_name = 'grievanceext') THEN
+CREATE TABLE tracked_changes_tx.grievanceext
+(
+       oldeducationorganizationid INT NOT NULL,
+       oldgrievanceidentifier INT NOT NULL,
+       neweducationorganizationid INT NULL,
+       newgrievanceidentifier INT NULL,
+       id uuid NOT NULL,
+       changeversion bigint NOT NULL,
+       discriminator varchar(128) NULL,
+       createdate timestamp NOT NULL DEFAULT (now()),
+       CONSTRAINT grievanceext_pk PRIMARY KEY (ChangeVersion)
+);
+END IF;
+
+IF NOT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_schema = 'tracked_changes_tx' AND table_name = 'openstaffpositionext') THEN
+CREATE TABLE tracked_changes_tx.openstaffpositionext
+(
+       oldeducationorganizationid INT NOT NULL,
+       oldpositionnumber VARCHAR(20) NOT NULL,
+       neweducationorganizationid INT NULL,
+       newpositionnumber VARCHAR(20) NULL,
+       id uuid NOT NULL,
+       changeversion bigint NOT NULL,
+       discriminator varchar(128) NULL,
+       createdate timestamp NOT NULL DEFAULT (now()),
+       CONSTRAINT openstaffpositionext_pk PRIMARY KEY (ChangeVersion)
+);
+END IF;
+
 IF NOT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_schema = 'tracked_changes_tx' AND table_name = 'payrollext') THEN
 CREATE TABLE tracked_changes_tx.payrollext
 (
@@ -527,51 +600,6 @@ CREATE TABLE tracked_changes_tx.prioryearactualext
 );
 END IF;
 
-IF NOT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_schema = 'tracked_changes_tx' AND table_name = 'prioryearleaver') THEN
-CREATE TABLE tracked_changes_tx.prioryearleaver
-(
-       oldschoolid INT NOT NULL,
-       oldstudentuid VARCHAR(32) NOT NULL,
-       newschoolid INT NULL,
-       newstudentuid VARCHAR(32) NULL,
-       id uuid NOT NULL,
-       changeversion bigint NOT NULL,
-       discriminator varchar(128) NULL,
-       createdate timestamp NOT NULL DEFAULT (now()),
-       CONSTRAINT prioryearleaver_pk PRIMARY KEY (ChangeVersion)
-);
-END IF;
-
-IF NOT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_schema = 'tracked_changes_tx' AND table_name = 'prioryearleaverparent') THEN
-CREATE TABLE tracked_changes_tx.prioryearleaverparent
-(
-       oldparentuid VARCHAR(32) NOT NULL,
-       newparentuid VARCHAR(32) NULL,
-       id uuid NOT NULL,
-       changeversion bigint NOT NULL,
-       discriminator varchar(128) NULL,
-       createdate timestamp NOT NULL DEFAULT (now()),
-       CONSTRAINT prioryearleaverparent_pk PRIMARY KEY (ChangeVersion)
-);
-END IF;
-
-IF NOT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_schema = 'tracked_changes_tx' AND table_name = 'prioryearleaverstudentparentassociation') THEN
-CREATE TABLE tracked_changes_tx.prioryearleaverstudentparentassociation
-(
-       oldparentuid VARCHAR(32) NOT NULL,
-       oldschoolid INT NOT NULL,
-       oldstudentuid VARCHAR(32) NOT NULL,
-       newparentuid VARCHAR(32) NULL,
-       newschoolid INT NULL,
-       newstudentuid VARCHAR(32) NULL,
-       id uuid NOT NULL,
-       changeversion bigint NOT NULL,
-       discriminator varchar(128) NULL,
-       createdate timestamp NOT NULL DEFAULT (now()),
-       CONSTRAINT prioryearleaverstudentparentassociation_pk PRIMARY KEY (ChangeVersion)
-);
-END IF;
-
 IF NOT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_schema = 'tracked_changes_tx' AND table_name = 'prioryearssaorgassociationext') THEN
 CREATE TABLE tracked_changes_tx.prioryearssaorgassociationext
 (
@@ -615,6 +643,23 @@ CREATE TABLE tracked_changes_tx.reportingperiodext
        discriminator varchar(128) NULL,
        createdate timestamp NOT NULL DEFAULT (now()),
        CONSTRAINT reportingperiodext_pk PRIMARY KEY (ChangeVersion)
+);
+END IF;
+
+IF NOT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_schema = 'tracked_changes_tx' AND table_name = 'requisitionext') THEN
+CREATE TABLE tracked_changes_tx.requisitionext
+(
+       oldeducationorganizationid INT NOT NULL,
+       oldpositionnumber VARCHAR(20) NOT NULL,
+       oldrequisitionnumber VARCHAR(20) NOT NULL,
+       neweducationorganizationid INT NULL,
+       newpositionnumber VARCHAR(20) NULL,
+       newrequisitionnumber VARCHAR(20) NULL,
+       id uuid NOT NULL,
+       changeversion bigint NOT NULL,
+       discriminator varchar(128) NULL,
+       createdate timestamp NOT NULL DEFAULT (now()),
+       CONSTRAINT requisitionext_pk PRIMARY KEY (ChangeVersion)
 );
 END IF;
 
@@ -690,6 +735,49 @@ CREATE TABLE tracked_changes_tx.specialeducationprogramreportingperiodattendance
 );
 END IF;
 
+IF NOT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_schema = 'tracked_changes_tx' AND table_name = 'specialeducationtierofintensityattendance') THEN
+CREATE TABLE tracked_changes_tx.specialeducationtierofintensityattendance
+(
+       oldcalendarcode VARCHAR(60) NOT NULL,
+       oldgradeleveldescriptorid INT NOT NULL,
+       oldgradeleveldescriptornamespace VARCHAR(255) NOT NULL,
+       oldgradeleveldescriptorcodevalue VARCHAR(50) NOT NULL,
+       oldregionaldayschoolprogramfordeafdescriptorid INT NOT NULL,
+       oldregionaldayschoolprogramfordeafdescriptornamespace VARCHAR(255) NOT NULL,
+       oldregionaldayschoolprogramfordeafdescriptorcodevalue VARCHAR(50) NOT NULL,
+       oldreportingperioddescriptorid INT NOT NULL,
+       oldreportingperioddescriptornamespace VARCHAR(255) NOT NULL,
+       oldreportingperioddescriptorcodevalue VARCHAR(50) NOT NULL,
+       oldschoolid INT NOT NULL,
+       oldstudentusi INT NOT NULL,
+       oldstudentuniqueid VARCHAR(32) NOT NULL,
+       oldtierofintensitydescriptorid INT NOT NULL,
+       oldtierofintensitydescriptornamespace VARCHAR(255) NOT NULL,
+       oldtierofintensitydescriptorcodevalue VARCHAR(50) NOT NULL,
+       newcalendarcode VARCHAR(60) NULL,
+       newgradeleveldescriptorid INT NULL,
+       newgradeleveldescriptornamespace VARCHAR(255) NULL,
+       newgradeleveldescriptorcodevalue VARCHAR(50) NULL,
+       newregionaldayschoolprogramfordeafdescriptorid INT NULL,
+       newregionaldayschoolprogramfordeafdescriptornamespace VARCHAR(255) NULL,
+       newregionaldayschoolprogramfordeafdescriptorcodevalue VARCHAR(50) NULL,
+       newreportingperioddescriptorid INT NULL,
+       newreportingperioddescriptornamespace VARCHAR(255) NULL,
+       newreportingperioddescriptorcodevalue VARCHAR(50) NULL,
+       newschoolid INT NULL,
+       newstudentusi INT NULL,
+       newstudentuniqueid VARCHAR(32) NULL,
+       newtierofintensitydescriptorid INT NULL,
+       newtierofintensitydescriptornamespace VARCHAR(255) NULL,
+       newtierofintensitydescriptorcodevalue VARCHAR(50) NULL,
+       id uuid NOT NULL,
+       changeversion bigint NOT NULL,
+       discriminator varchar(128) NULL,
+       createdate timestamp NOT NULL DEFAULT (now()),
+       CONSTRAINT specialeducationtierofintensityattendance_pk PRIMARY KEY (ChangeVersion)
+);
+END IF;
+
 IF NOT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_schema = 'tracked_changes_tx' AND table_name = 'specialprogramsreportingperiodattendance') THEN
 CREATE TABLE tracked_changes_tx.specialprogramsreportingperiodattendance
 (
@@ -718,6 +806,21 @@ CREATE TABLE tracked_changes_tx.specialprogramsreportingperiodattendance
        discriminator varchar(128) NULL,
        createdate timestamp NOT NULL DEFAULT (now()),
        CONSTRAINT specialprogramsreportingperiodattendance_pk PRIMARY KEY (ChangeVersion)
+);
+END IF;
+
+IF NOT EXISTS (SELECT 1 FROM information_schema.tables WHERE table_schema = 'tracked_changes_tx' AND table_name = 'spedvideocamerarequestext') THEN
+CREATE TABLE tracked_changes_tx.spedvideocamerarequestext
+(
+       oldrequestid VARCHAR(20) NOT NULL,
+       oldschoolid INT NOT NULL,
+       newrequestid VARCHAR(20) NULL,
+       newschoolid INT NULL,
+       id uuid NOT NULL,
+       changeversion bigint NOT NULL,
+       discriminator varchar(128) NULL,
+       createdate timestamp NOT NULL DEFAULT (now()),
+       CONSTRAINT spedvideocamerarequestext_pk PRIMARY KEY (ChangeVersion)
 );
 END IF;
 
