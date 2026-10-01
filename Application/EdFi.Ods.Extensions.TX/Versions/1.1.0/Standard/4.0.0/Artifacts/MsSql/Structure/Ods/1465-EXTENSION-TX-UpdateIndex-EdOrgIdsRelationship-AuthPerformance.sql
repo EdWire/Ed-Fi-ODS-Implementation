@@ -46,12 +46,12 @@ END;
 DROP INDEX IF EXISTS IX_DescriptorMappingHistory_EducationOrganizationId ON [tx].[DescriptorMappingHistory];
 CREATE INDEX IX_DescriptorMappingHistory_EducationOrganizationId ON [tx].[DescriptorMappingHistory](EducationOrganizationId) INCLUDE (AggregateId);
 
-DROP INDEX IF EXISTS IX_ExtendedSchoolYearServicesAttendance_SchoolId ON [tx].[ExtendedSchoolYearServicesAttendance];
-CREATE INDEX IX_ExtendedSchoolYearServicesAttendance_SchoolId ON [tx].[ExtendedSchoolYearServicesAttendance](SchoolId) INCLUDE (AggregateId);
+DROP INDEX IF EXISTS IX_ESYTierOfIntensityAttendance_SchoolId ON [tx].[ESYTierOfIntensityAttendance];
+CREATE INDEX IX_ESYTierOfIntensityAttendance_SchoolId ON [tx].[ESYTierOfIntensityAttendance](SchoolId) INCLUDE (AggregateId);
 
-IF NOT EXISTS(SELECT * FROM sys.indexes WHERE name='IX_ExtendedSchoolYearServicesAttendance_StudentUSI' AND object_id = OBJECT_ID('tx.ExtendedSchoolYearServicesAttendance')) 
+IF NOT EXISTS(SELECT * FROM sys.indexes WHERE name='IX_ESYTierOfIntensityAttendance_StudentUSI' AND object_id = OBJECT_ID('tx.ESYTierOfIntensityAttendance')) 
 BEGIN
-    CREATE INDEX IX_ExtendedSchoolYearServicesAttendance_StudentUSI ON [tx].[ExtendedSchoolYearServicesAttendance](StudentUSI) INCLUDE (AggregateId)
+    CREATE INDEX IX_ESYTierOfIntensityAttendance_StudentUSI ON [tx].[ESYTierOfIntensityAttendance](StudentUSI) INCLUDE (AggregateId)
 END;
 
 DROP INDEX IF EXISTS IX_FlexibleBilingualESLProgramReportingPeriodAttendance_SchoolId ON [tx].[FlexibleBilingualESLProgramReportingPeriodAttendance];
@@ -86,6 +86,20 @@ BEGIN
     CREATE INDEX IX_FlexibleSpecialEducationProgramReportingPeriodAttendance_StudentUSI ON [tx].[FlexibleSpecialEducationProgramReportingPeriodAttendance](StudentUSI) INCLUDE (AggregateId)
 END;
 
+DROP INDEX IF EXISTS IX_FlexibleSpecialEducationTierOfIntensityAttendance_SchoolId ON [tx].[FlexibleSpecialEducationTierOfIntensityAttendance];
+CREATE INDEX IX_FlexibleSpecialEducationTierOfIntensityAttendance_SchoolId ON [tx].[FlexibleSpecialEducationTierOfIntensityAttendance](SchoolId) INCLUDE (AggregateId);
+
+IF NOT EXISTS(SELECT * FROM sys.indexes WHERE name='IX_FlexibleSpecialEducationTierOfIntensityAttendance_StudentUSI' AND object_id = OBJECT_ID('tx.FlexibleSpecialEducationTierOfIntensityAttendance')) 
+BEGIN
+    CREATE INDEX IX_FlexibleSpecialEducationTierOfIntensityAttendance_StudentUSI ON [tx].[FlexibleSpecialEducationTierOfIntensityAttendance](StudentUSI) INCLUDE (AggregateId)
+END;
+
+DROP INDEX IF EXISTS IX_GrievanceExt_EducationOrganizationId ON [tx].[GrievanceExt];
+CREATE INDEX IX_GrievanceExt_EducationOrganizationId ON [tx].[GrievanceExt](EducationOrganizationId) INCLUDE (AggregateId);
+
+DROP INDEX IF EXISTS IX_OpenStaffPositionExt_EducationOrganizationId ON [tx].[OpenStaffPositionExt];
+CREATE INDEX IX_OpenStaffPositionExt_EducationOrganizationId ON [tx].[OpenStaffPositionExt](EducationOrganizationId) INCLUDE (AggregateId);
+
 DROP INDEX IF EXISTS IX_PayrollExt_EducationOrganizationId ON [tx].[PayrollExt];
 CREATE INDEX IX_PayrollExt_EducationOrganizationId ON [tx].[PayrollExt](EducationOrganizationId) INCLUDE (AggregateId);
 
@@ -97,17 +111,14 @@ END;
 DROP INDEX IF EXISTS IX_PriorYearActualExt_EducationOrganizationId ON [tx].[PriorYearActualExt];
 CREATE INDEX IX_PriorYearActualExt_EducationOrganizationId ON [tx].[PriorYearActualExt](EducationOrganizationId) INCLUDE (AggregateId);
 
-DROP INDEX IF EXISTS IX_PriorYearLeaver_SchoolId ON [tx].[PriorYearLeaver];
-CREATE INDEX IX_PriorYearLeaver_SchoolId ON [tx].[PriorYearLeaver](SchoolId) INCLUDE (AggregateId);
-
-DROP INDEX IF EXISTS IX_PriorYearLeaverStudentParentAssociation_SchoolId ON [tx].[PriorYearLeaverStudentParentAssociation];
-CREATE INDEX IX_PriorYearLeaverStudentParentAssociation_SchoolId ON [tx].[PriorYearLeaverStudentParentAssociation](SchoolId) INCLUDE (AggregateId);
-
 DROP INDEX IF EXISTS IX_PriorYearSSAOrgAssociationExt_EducationOrganizationId ON [tx].[PriorYearSSAOrgAssociationExt];
 CREATE INDEX IX_PriorYearSSAOrgAssociationExt_EducationOrganizationId ON [tx].[PriorYearSSAOrgAssociationExt](EducationOrganizationId) INCLUDE (AggregateId);
 
 DROP INDEX IF EXISTS IX_ReportingPeriodExt_SchoolId ON [tx].[ReportingPeriodExt];
 CREATE INDEX IX_ReportingPeriodExt_SchoolId ON [tx].[ReportingPeriodExt](SchoolId) INCLUDE (AggregateId);
+
+DROP INDEX IF EXISTS IX_RequisitionExt_EducationOrganizationId ON [tx].[RequisitionExt];
+CREATE INDEX IX_RequisitionExt_EducationOrganizationId ON [tx].[RequisitionExt](EducationOrganizationId) INCLUDE (AggregateId);
 
 DROP INDEX IF EXISTS IX_SharedServiceArrangementExt_EducationOrganizationId ON [tx].[SharedServiceArrangementExt];
 CREATE INDEX IX_SharedServiceArrangementExt_EducationOrganizationId ON [tx].[SharedServiceArrangementExt](EducationOrganizationId) INCLUDE (AggregateId);
@@ -120,6 +131,14 @@ BEGIN
     CREATE INDEX IX_SpecialEducationProgramReportingPeriodAttendance_StudentUSI ON [tx].[SpecialEducationProgramReportingPeriodAttendance](StudentUSI) INCLUDE (AggregateId)
 END;
 
+DROP INDEX IF EXISTS IX_SpecialEducationTierOfIntensityAttendance_SchoolId ON [tx].[SpecialEducationTierOfIntensityAttendance];
+CREATE INDEX IX_SpecialEducationTierOfIntensityAttendance_SchoolId ON [tx].[SpecialEducationTierOfIntensityAttendance](SchoolId) INCLUDE (AggregateId);
+
+IF NOT EXISTS(SELECT * FROM sys.indexes WHERE name='IX_SpecialEducationTierOfIntensityAttendance_StudentUSI' AND object_id = OBJECT_ID('tx.SpecialEducationTierOfIntensityAttendance')) 
+BEGIN
+    CREATE INDEX IX_SpecialEducationTierOfIntensityAttendance_StudentUSI ON [tx].[SpecialEducationTierOfIntensityAttendance](StudentUSI) INCLUDE (AggregateId)
+END;
+
 DROP INDEX IF EXISTS IX_SpecialProgramsReportingPeriodAttendance_SchoolId ON [tx].[SpecialProgramsReportingPeriodAttendance];
 CREATE INDEX IX_SpecialProgramsReportingPeriodAttendance_SchoolId ON [tx].[SpecialProgramsReportingPeriodAttendance](SchoolId) INCLUDE (AggregateId);
 
@@ -127,6 +146,9 @@ IF NOT EXISTS(SELECT * FROM sys.indexes WHERE name='IX_SpecialProgramsReportingP
 BEGIN
     CREATE INDEX IX_SpecialProgramsReportingPeriodAttendance_StudentUSI ON [tx].[SpecialProgramsReportingPeriodAttendance](StudentUSI) INCLUDE (AggregateId)
 END;
+
+DROP INDEX IF EXISTS IX_SPEDVideoCameraRequestExt_SchoolId ON [tx].[SPEDVideoCameraRequestExt];
+CREATE INDEX IX_SPEDVideoCameraRequestExt_SchoolId ON [tx].[SPEDVideoCameraRequestExt](SchoolId) INCLUDE (AggregateId);
 
 DROP INDEX IF EXISTS IX_SSAOrgAssociationExt_EducationOrganizationId ON [tx].[SSAOrgAssociationExt];
 CREATE INDEX IX_SSAOrgAssociationExt_EducationOrganizationId ON [tx].[SSAOrgAssociationExt](EducationOrganizationId) INCLUDE (AggregateId);

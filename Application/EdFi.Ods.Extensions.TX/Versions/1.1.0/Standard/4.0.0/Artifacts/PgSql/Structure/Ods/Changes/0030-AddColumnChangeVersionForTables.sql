@@ -36,9 +36,9 @@ ALTER TABLE tx.DescriptorMappingHistory ADD ChangeVersion BIGINT DEFAULT (0) NOT
 ALTER TABLE tx.DescriptorMappingHistory ALTER ChangeVersion SET DEFAULT nextval('changes.ChangeVersionSequence');
 END IF;
 
-IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='tx' AND table_name='extendedschoolyearservicesattendance' AND column_name='changeversion') THEN
-ALTER TABLE tx.ExtendedSchoolYearServicesAttendance ADD ChangeVersion BIGINT DEFAULT (0) NOT NULL;
-ALTER TABLE tx.ExtendedSchoolYearServicesAttendance ALTER ChangeVersion SET DEFAULT nextval('changes.ChangeVersionSequence');
+IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='tx' AND table_name='esytierofintensityattendance' AND column_name='changeversion') THEN
+ALTER TABLE tx.ESYTierOfIntensityAttendance ADD ChangeVersion BIGINT DEFAULT (0) NOT NULL;
+ALTER TABLE tx.ESYTierOfIntensityAttendance ALTER ChangeVersion SET DEFAULT nextval('changes.ChangeVersionSequence');
 END IF;
 
 IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='tx' AND table_name='flexiblebilingualeslprogramreportingperiodattendance' AND column_name='changeversion') THEN
@@ -61,6 +61,21 @@ ALTER TABLE tx.FlexibleSpecialEducationProgramReportingPeriodAttendance ADD Chan
 ALTER TABLE tx.FlexibleSpecialEducationProgramReportingPeriodAttendance ALTER ChangeVersion SET DEFAULT nextval('changes.ChangeVersionSequence');
 END IF;
 
+IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='tx' AND table_name='flexiblespecialeducationtierofintensityattendance' AND column_name='changeversion') THEN
+ALTER TABLE tx.FlexibleSpecialEducationTierOfIntensityAttendance ADD ChangeVersion BIGINT DEFAULT (0) NOT NULL;
+ALTER TABLE tx.FlexibleSpecialEducationTierOfIntensityAttendance ALTER ChangeVersion SET DEFAULT nextval('changes.ChangeVersionSequence');
+END IF;
+
+IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='tx' AND table_name='grievanceext' AND column_name='changeversion') THEN
+ALTER TABLE tx.GrievanceExt ADD ChangeVersion BIGINT DEFAULT (0) NOT NULL;
+ALTER TABLE tx.GrievanceExt ALTER ChangeVersion SET DEFAULT nextval('changes.ChangeVersionSequence');
+END IF;
+
+IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='tx' AND table_name='openstaffpositionext' AND column_name='changeversion') THEN
+ALTER TABLE tx.OpenStaffPositionExt ADD ChangeVersion BIGINT DEFAULT (0) NOT NULL;
+ALTER TABLE tx.OpenStaffPositionExt ALTER ChangeVersion SET DEFAULT nextval('changes.ChangeVersionSequence');
+END IF;
+
 IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='tx' AND table_name='payrollext' AND column_name='changeversion') THEN
 ALTER TABLE tx.PayrollExt ADD ChangeVersion BIGINT DEFAULT (0) NOT NULL;
 ALTER TABLE tx.PayrollExt ALTER ChangeVersion SET DEFAULT nextval('changes.ChangeVersionSequence');
@@ -71,21 +86,6 @@ ALTER TABLE tx.PriorYearActualExt ADD ChangeVersion BIGINT DEFAULT (0) NOT NULL;
 ALTER TABLE tx.PriorYearActualExt ALTER ChangeVersion SET DEFAULT nextval('changes.ChangeVersionSequence');
 END IF;
 
-IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='tx' AND table_name='prioryearleaver' AND column_name='changeversion') THEN
-ALTER TABLE tx.PriorYearLeaver ADD ChangeVersion BIGINT DEFAULT (0) NOT NULL;
-ALTER TABLE tx.PriorYearLeaver ALTER ChangeVersion SET DEFAULT nextval('changes.ChangeVersionSequence');
-END IF;
-
-IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='tx' AND table_name='prioryearleaverparent' AND column_name='changeversion') THEN
-ALTER TABLE tx.PriorYearLeaverParent ADD ChangeVersion BIGINT DEFAULT (0) NOT NULL;
-ALTER TABLE tx.PriorYearLeaverParent ALTER ChangeVersion SET DEFAULT nextval('changes.ChangeVersionSequence');
-END IF;
-
-IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='tx' AND table_name='prioryearleaverstudentparentassociation' AND column_name='changeversion') THEN
-ALTER TABLE tx.PriorYearLeaverStudentParentAssociation ADD ChangeVersion BIGINT DEFAULT (0) NOT NULL;
-ALTER TABLE tx.PriorYearLeaverStudentParentAssociation ALTER ChangeVersion SET DEFAULT nextval('changes.ChangeVersionSequence');
-END IF;
-
 IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='tx' AND table_name='prioryearssaorgassociationext' AND column_name='changeversion') THEN
 ALTER TABLE tx.PriorYearSSAOrgAssociationExt ADD ChangeVersion BIGINT DEFAULT (0) NOT NULL;
 ALTER TABLE tx.PriorYearSSAOrgAssociationExt ALTER ChangeVersion SET DEFAULT nextval('changes.ChangeVersionSequence');
@@ -94,6 +94,16 @@ END IF;
 IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='tx' AND table_name='reportingperiodext' AND column_name='changeversion') THEN
 ALTER TABLE tx.ReportingPeriodExt ADD ChangeVersion BIGINT DEFAULT (0) NOT NULL;
 ALTER TABLE tx.ReportingPeriodExt ALTER ChangeVersion SET DEFAULT nextval('changes.ChangeVersionSequence');
+END IF;
+
+IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='tx' AND table_name='requisitionext' AND column_name='changeversion') THEN
+ALTER TABLE tx.RequisitionExt ADD ChangeVersion BIGINT DEFAULT (0) NOT NULL;
+ALTER TABLE tx.RequisitionExt ALTER ChangeVersion SET DEFAULT nextval('changes.ChangeVersionSequence');
+END IF;
+
+IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='tx' AND table_name='spedvideocamerarequestext' AND column_name='changeversion') THEN
+ALTER TABLE tx.SPEDVideoCameraRequestExt ADD ChangeVersion BIGINT DEFAULT (0) NOT NULL;
+ALTER TABLE tx.SPEDVideoCameraRequestExt ALTER ChangeVersion SET DEFAULT nextval('changes.ChangeVersionSequence');
 END IF;
 
 IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='tx' AND table_name='ssaorgassociationext' AND column_name='changeversion') THEN
@@ -109,6 +119,11 @@ END IF;
 IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='tx' AND table_name='specialeducationprogramreportingperiodattendance' AND column_name='changeversion') THEN
 ALTER TABLE tx.SpecialEducationProgramReportingPeriodAttendance ADD ChangeVersion BIGINT DEFAULT (0) NOT NULL;
 ALTER TABLE tx.SpecialEducationProgramReportingPeriodAttendance ALTER ChangeVersion SET DEFAULT nextval('changes.ChangeVersionSequence');
+END IF;
+
+IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='tx' AND table_name='specialeducationtierofintensityattendance' AND column_name='changeversion') THEN
+ALTER TABLE tx.SpecialEducationTierOfIntensityAttendance ADD ChangeVersion BIGINT DEFAULT (0) NOT NULL;
+ALTER TABLE tx.SpecialEducationTierOfIntensityAttendance ALTER ChangeVersion SET DEFAULT nextval('changes.ChangeVersionSequence');
 END IF;
 
 IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='tx' AND table_name='specialprogramsreportingperiodattendance' AND column_name='changeversion') THEN

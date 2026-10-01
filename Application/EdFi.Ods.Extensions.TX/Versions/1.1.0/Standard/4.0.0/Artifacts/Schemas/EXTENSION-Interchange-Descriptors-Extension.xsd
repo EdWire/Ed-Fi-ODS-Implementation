@@ -211,8 +211,8 @@ The Descriptor interchange is used to describe metadata about the descriptors an
         <xs:element name="ApplicationTypeDescriptor" type="EXTENSION-ApplicationTypeDescriptor" />
         <xs:element name="ARDInvitedRepresentativeDescriptor" type="EXTENSION-ARDInvitedRepresentativeDescriptor" />
         <xs:element name="ArmedServicesVocAptBatteryDescriptor" type="EXTENSION-ArmedServicesVocAptBatteryDescriptor" />
+        <xs:element name="AsOfStatusFirstFridayOctoberDescriptor" type="EXTENSION-AsOfStatusFirstFridayOctoberDescriptor" />
         <xs:element name="AsOfStatusLastDayEnrollmentDescriptor" type="EXTENSION-AsOfStatusLastDayEnrollmentDescriptor" />
-        <xs:element name="AsOfStatusLastFridayOctoberDescriptor" type="EXTENSION-AsOfStatusLastFridayOctoberDescriptor" />
         <xs:element name="AssessmentResultsObtainedDescriptor" type="EXTENSION-AssessmentResultsObtainedDescriptor" />
         <xs:element name="AssociateDegreeIndicatorDescriptor" type="EXTENSION-AssociateDegreeIndicatorDescriptor" />
         <xs:element name="AuxiliaryRoleIdDescriptor" type="EXTENSION-AuxiliaryRoleIdDescriptor" />
@@ -222,6 +222,8 @@ The Descriptor interchange is used to describe metadata about the descriptors an
         <xs:element name="BudgetObjectDescriptor" type="EXTENSION-BudgetObjectDescriptor" />
         <xs:element name="BudgetProgramIntentDescriptor" type="EXTENSION-BudgetProgramIntentDescriptor" />
         <xs:element name="CalendarWaiverEventTypeDescriptor" type="EXTENSION-CalendarWaiverEventTypeDescriptor" />
+        <xs:element name="CameraRequestorDescriptor" type="EXTENSION-CameraRequestorDescriptor" />
+        <xs:element name="CameraStatusDescriptor" type="EXTENSION-CameraStatusDescriptor" />
         <xs:element name="CampusEnrollmentTypeDescriptor" type="EXTENSION-CampusEnrollmentTypeDescriptor" />
         <xs:element name="ChildCountFundingDescriptor" type="EXTENSION-ChildCountFundingDescriptor" />
         <xs:element name="CIStaffProgramIntentDescriptor" type="EXTENSION-CIStaffProgramIntentDescriptor" />
@@ -230,12 +232,12 @@ The Descriptor interchange is used to describe metadata about the descriptors an
         <xs:element name="CrisisEventDescriptor" type="EXTENSION-CrisisEventDescriptor" />
         <xs:element name="CTEProgramSvcDescriptor" type="EXTENSION-CTEProgramSvcDescriptor" />
         <xs:element name="CTEServiceIdDescriptor" type="EXTENSION-CTEServiceIdDescriptor" />
+        <xs:element name="DenialReasonDescriptor" type="EXTENSION-DenialReasonDescriptor" />
         <xs:element name="DifferenceReasonHoursAcceleratedInstructionDescriptor" type="EXTENSION-DifferenceReasonHoursAcceleratedInstructionDescriptor" />
         <xs:element name="DropoutRecoveryCourseCompletionDescriptor" type="EXTENSION-DropoutRecoveryCourseCompletionDescriptor" />
         <xs:element name="DyslexiaRiskDescriptor" type="EXTENSION-DyslexiaRiskDescriptor" />
         <xs:element name="DyslexiaScreeningExceptionReasonDescriptor" type="EXTENSION-DyslexiaScreeningExceptionReasonDescriptor" />
         <xs:element name="DyslexiaServicesDescriptor" type="EXTENSION-DyslexiaServicesDescriptor" />
-        <xs:element name="EarlyReadingIndicatorDescriptor" type="EXTENSION-EarlyReadingIndicatorDescriptor" />
         <xs:element name="EconomicDisadvantageDescriptor" type="EXTENSION-EconomicDisadvantageDescriptor" />
         <xs:element name="ECSEServiceExitReasonDescriptor" type="EXTENSION-ECSEServiceExitReasonDescriptor" />
         <xs:element name="ECSEServiceLocationDescriptor" type="EXTENSION-ECSEServiceLocationDescriptor" />
@@ -256,13 +258,14 @@ The Descriptor interchange is used to describe metadata about the descriptors an
         <xs:element name="FullTimeHybridVirtualProgramParticipationDescriptor" type="EXTENSION-FullTimeHybridVirtualProgramParticipationDescriptor" />
         <xs:element name="GenerationCodeDescriptor" type="EXTENSION-GenerationCodeDescriptor" />
         <xs:element name="GiftedTalentedProgramDescriptor" type="EXTENSION-GiftedTalentedProgramDescriptor" />
-        <xs:element name="HearingAmplificationAccessDescriptor" type="EXTENSION-HearingAmplificationAccessDescriptor" />
-        <xs:element name="HearingAmplificationDailyUseDescriptor" type="EXTENSION-HearingAmplificationDailyUseDescriptor" />
+        <xs:element name="GradeLevelRangeDescriptor" type="EXTENSION-GradeLevelRangeDescriptor" />
+        <xs:element name="GrievanceCorrectiveActionDescriptor" type="EXTENSION-GrievanceCorrectiveActionDescriptor" />
+        <xs:element name="GrievanceLevelDescriptor" type="EXTENSION-GrievanceLevelDescriptor" />
         <xs:element name="HearingAmplificationTypeDescriptor" type="EXTENSION-HearingAmplificationTypeDescriptor" />
         <xs:element name="HomelessStatusDescriptor" type="EXTENSION-HomelessStatusDescriptor" />
-        <xs:element name="HoursSpentReceivingServicesDescriptor" type="EXTENSION-HoursSpentReceivingServicesDescriptor" />
         <xs:element name="IBCVendorDescriptor" type="EXTENSION-IBCVendorDescriptor" />
         <xs:element name="InstructionalSettingDescriptor" type="EXTENSION-InstructionalSettingDescriptor" />
+        <xs:element name="InstructionalSubjectDescriptor" type="EXTENSION-InstructionalSubjectDescriptor" />
         <xs:element name="LangAcqServicesProvidedDescriptor" type="EXTENSION-LangAcqServicesProvidedDescriptor" />
         <xs:element name="LangInstruProgramSvcDescriptor" type="EXTENSION-LangInstruProgramSvcDescriptor" />
         <xs:element name="MilitaryConnectedStudentDescriptor" type="EXTENSION-MilitaryConnectedStudentDescriptor" />
@@ -282,17 +285,21 @@ The Descriptor interchange is used to describe metadata about the descriptors an
         <xs:element name="PKSchoolTypeDescriptor" type="EXTENSION-PKSchoolTypeDescriptor" />
         <xs:element name="PKStudentInstructionDescriptor" type="EXTENSION-PKStudentInstructionDescriptor" />
         <xs:element name="PKTeacherRequirementDescriptor" type="EXTENSION-PKTeacherRequirementDescriptor" />
+        <xs:element name="PostingClosedReasonDescriptor" type="EXTENSION-PostingClosedReasonDescriptor" />
         <xs:element name="PostSecondaryCertificationLicensureDescriptor" type="EXTENSION-PostSecondaryCertificationLicensureDescriptor" />
         <xs:element name="PostSecondaryCertLicensureResultDescriptor" type="EXTENSION-PostSecondaryCertLicensureResultDescriptor" />
         <xs:element name="PreferredHomeCommunicationMethodDescriptor" type="EXTENSION-PreferredHomeCommunicationMethodDescriptor" />
         <xs:element name="PriorYearSSATypeDescriptor" type="EXTENSION-PriorYearSSATypeDescriptor" />
         <xs:element name="ProgramOfStudyDescriptor" type="EXTENSION-ProgramOfStudyDescriptor" />
+        <xs:element name="ReasonNoSPEDServicesDescriptor" type="EXTENSION-ReasonNoSPEDServicesDescriptor" />
         <xs:element name="RegionalDaySchoolProgramForDeafDescriptor" type="EXTENSION-RegionalDaySchoolProgramForDeafDescriptor" />
         <xs:element name="ReportAssessmentTypeDescriptor" type="EXTENSION-ReportAssessmentTypeDescriptor" />
         <xs:element name="ReportingPeriodDescriptor" type="EXTENSION-ReportingPeriodDescriptor" />
+        <xs:element name="ResolutionOfGrievanceDescriptor" type="EXTENSION-ResolutionOfGrievanceDescriptor" />
         <xs:element name="RestraintStaffTypeDescriptor" type="EXTENSION-RestraintStaffTypeDescriptor" />
         <xs:element name="SharedServiceArrangementStaffDescriptor" type="EXTENSION-SharedServiceArrangementStaffDescriptor" />
         <xs:element name="SPEDProgramSvcDescriptor" type="EXTENSION-SPEDProgramSvcDescriptor" />
+        <xs:element name="SPEDServiceGroupDescriptor" type="EXTENSION-SPEDServiceGroupDescriptor" />
         <xs:element name="SPEDStudentAgeRangeDescriptor" type="EXTENSION-SPEDStudentAgeRangeDescriptor" />
         <xs:element name="SSAFundDescriptor" type="EXTENSION-SSAFundDescriptor" />
         <xs:element name="SSATypeDescriptor" type="EXTENSION-SSATypeDescriptor" />
@@ -302,11 +309,13 @@ The Descriptor interchange is used to describe metadata about the descriptors an
         <xs:element name="StudentAttributionDescriptor" type="EXTENSION-StudentAttributionDescriptor" />
         <xs:element name="TeacherIncentiveAllotmentDesignationDescriptor" type="EXTENSION-TeacherIncentiveAllotmentDesignationDescriptor" />
         <xs:element name="TexasFirstEarlyHSCompletionProgramDescriptor" type="EXTENSION-TexasFirstEarlyHSCompletionProgramDescriptor" />
+        <xs:element name="TierOfIntensityDescriptor" type="EXTENSION-TierOfIntensityDescriptor" />
         <xs:element name="TitleOfAssessmentDescriptor" type="EXTENSION-TitleOfAssessmentDescriptor" />
         <xs:element name="ToolOrAssessmentUsedDescriptor" type="EXTENSION-ToolOrAssessmentUsedDescriptor" />
         <xs:element name="TruancyDescriptor" type="EXTENSION-TruancyDescriptor" />
         <xs:element name="UnaccompaniedYouthDescriptor" type="EXTENSION-UnaccompaniedYouthDescriptor" />
         <xs:element name="UnschooledAsyleeRefugeeDescriptor" type="EXTENSION-UnschooledAsyleeRefugeeDescriptor" />
+        <xs:element name="VacancyReasonDescriptor" type="EXTENSION-VacancyReasonDescriptor" />
       </xs:choice>
     </xs:complexType>
   </xs:element>

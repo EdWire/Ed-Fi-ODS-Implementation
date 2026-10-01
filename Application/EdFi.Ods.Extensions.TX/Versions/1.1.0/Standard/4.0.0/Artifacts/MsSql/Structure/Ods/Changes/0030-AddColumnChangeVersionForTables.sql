@@ -56,11 +56,11 @@ ALTER TABLE [tx].[DescriptorMappingHistory] ADD CONSTRAINT DescriptorMappingHist
 END
 
 
-IF NOT EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID(N'[tx].[ExtendedSchoolYearServicesAttendance]') AND name = 'ChangeVersion')
+IF NOT EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID(N'[tx].[ESYTierOfIntensityAttendance]') AND name = 'ChangeVersion')
 BEGIN
-ALTER TABLE [tx].[ExtendedSchoolYearServicesAttendance] ADD [ChangeVersion] [BIGINT] CONSTRAINT ExtendedSchoolYearServicesAttendance_DF_ChangeVersion DEFAULT (0) NOT NULL;
-ALTER TABLE [tx].[ExtendedSchoolYearServicesAttendance] DROP CONSTRAINT ExtendedSchoolYearServicesAttendance_DF_ChangeVersion;
-ALTER TABLE [tx].[ExtendedSchoolYearServicesAttendance] ADD CONSTRAINT ExtendedSchoolYearServicesAttendance_DF_ChangeVersion DEFAULT (NEXT VALUE FOR [changes].[ChangeVersionSequence]) For [ChangeVersion];
+ALTER TABLE [tx].[ESYTierOfIntensityAttendance] ADD [ChangeVersion] [BIGINT] CONSTRAINT ESYTierOfIntensityAttendance_DF_ChangeVersion DEFAULT (0) NOT NULL;
+ALTER TABLE [tx].[ESYTierOfIntensityAttendance] DROP CONSTRAINT ESYTierOfIntensityAttendance_DF_ChangeVersion;
+ALTER TABLE [tx].[ESYTierOfIntensityAttendance] ADD CONSTRAINT ESYTierOfIntensityAttendance_DF_ChangeVersion DEFAULT (NEXT VALUE FOR [changes].[ChangeVersionSequence]) For [ChangeVersion];
 END
 
 
@@ -96,6 +96,30 @@ ALTER TABLE [tx].[FlexibleSpecialEducationProgramReportingPeriodAttendance] ADD 
 END
 
 
+IF NOT EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID(N'[tx].[FlexibleSpecialEducationTierOfIntensityAttendance]') AND name = 'ChangeVersion')
+BEGIN
+ALTER TABLE [tx].[FlexibleSpecialEducationTierOfIntensityAttendance] ADD [ChangeVersion] [BIGINT] CONSTRAINT FlexibleSpecialEducationTierOfIntensityAttendance_DF_ChangeVersion DEFAULT (0) NOT NULL;
+ALTER TABLE [tx].[FlexibleSpecialEducationTierOfIntensityAttendance] DROP CONSTRAINT FlexibleSpecialEducationTierOfIntensityAttendance_DF_ChangeVersion;
+ALTER TABLE [tx].[FlexibleSpecialEducationTierOfIntensityAttendance] ADD CONSTRAINT FlexibleSpecialEducationTierOfIntensityAttendance_DF_ChangeVersion DEFAULT (NEXT VALUE FOR [changes].[ChangeVersionSequence]) For [ChangeVersion];
+END
+
+
+IF NOT EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID(N'[tx].[GrievanceExt]') AND name = 'ChangeVersion')
+BEGIN
+ALTER TABLE [tx].[GrievanceExt] ADD [ChangeVersion] [BIGINT] CONSTRAINT GrievanceExt_DF_ChangeVersion DEFAULT (0) NOT NULL;
+ALTER TABLE [tx].[GrievanceExt] DROP CONSTRAINT GrievanceExt_DF_ChangeVersion;
+ALTER TABLE [tx].[GrievanceExt] ADD CONSTRAINT GrievanceExt_DF_ChangeVersion DEFAULT (NEXT VALUE FOR [changes].[ChangeVersionSequence]) For [ChangeVersion];
+END
+
+
+IF NOT EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID(N'[tx].[OpenStaffPositionExt]') AND name = 'ChangeVersion')
+BEGIN
+ALTER TABLE [tx].[OpenStaffPositionExt] ADD [ChangeVersion] [BIGINT] CONSTRAINT OpenStaffPositionExt_DF_ChangeVersion DEFAULT (0) NOT NULL;
+ALTER TABLE [tx].[OpenStaffPositionExt] DROP CONSTRAINT OpenStaffPositionExt_DF_ChangeVersion;
+ALTER TABLE [tx].[OpenStaffPositionExt] ADD CONSTRAINT OpenStaffPositionExt_DF_ChangeVersion DEFAULT (NEXT VALUE FOR [changes].[ChangeVersionSequence]) For [ChangeVersion];
+END
+
+
 IF NOT EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID(N'[tx].[PayrollExt]') AND name = 'ChangeVersion')
 BEGIN
 ALTER TABLE [tx].[PayrollExt] ADD [ChangeVersion] [BIGINT] CONSTRAINT PayrollExt_DF_ChangeVersion DEFAULT (0) NOT NULL;
@@ -112,30 +136,6 @@ ALTER TABLE [tx].[PriorYearActualExt] ADD CONSTRAINT PriorYearActualExt_DF_Chang
 END
 
 
-IF NOT EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID(N'[tx].[PriorYearLeaver]') AND name = 'ChangeVersion')
-BEGIN
-ALTER TABLE [tx].[PriorYearLeaver] ADD [ChangeVersion] [BIGINT] CONSTRAINT PriorYearLeaver_DF_ChangeVersion DEFAULT (0) NOT NULL;
-ALTER TABLE [tx].[PriorYearLeaver] DROP CONSTRAINT PriorYearLeaver_DF_ChangeVersion;
-ALTER TABLE [tx].[PriorYearLeaver] ADD CONSTRAINT PriorYearLeaver_DF_ChangeVersion DEFAULT (NEXT VALUE FOR [changes].[ChangeVersionSequence]) For [ChangeVersion];
-END
-
-
-IF NOT EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID(N'[tx].[PriorYearLeaverParent]') AND name = 'ChangeVersion')
-BEGIN
-ALTER TABLE [tx].[PriorYearLeaverParent] ADD [ChangeVersion] [BIGINT] CONSTRAINT PriorYearLeaverParent_DF_ChangeVersion DEFAULT (0) NOT NULL;
-ALTER TABLE [tx].[PriorYearLeaverParent] DROP CONSTRAINT PriorYearLeaverParent_DF_ChangeVersion;
-ALTER TABLE [tx].[PriorYearLeaverParent] ADD CONSTRAINT PriorYearLeaverParent_DF_ChangeVersion DEFAULT (NEXT VALUE FOR [changes].[ChangeVersionSequence]) For [ChangeVersion];
-END
-
-
-IF NOT EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID(N'[tx].[PriorYearLeaverStudentParentAssociation]') AND name = 'ChangeVersion')
-BEGIN
-ALTER TABLE [tx].[PriorYearLeaverStudentParentAssociation] ADD [ChangeVersion] [BIGINT] CONSTRAINT PriorYearLeaverStudentParentAssociation_DF_ChangeVersion DEFAULT (0) NOT NULL;
-ALTER TABLE [tx].[PriorYearLeaverStudentParentAssociation] DROP CONSTRAINT PriorYearLeaverStudentParentAssociation_DF_ChangeVersion;
-ALTER TABLE [tx].[PriorYearLeaverStudentParentAssociation] ADD CONSTRAINT PriorYearLeaverStudentParentAssociation_DF_ChangeVersion DEFAULT (NEXT VALUE FOR [changes].[ChangeVersionSequence]) For [ChangeVersion];
-END
-
-
 IF NOT EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID(N'[tx].[PriorYearSSAOrgAssociationExt]') AND name = 'ChangeVersion')
 BEGIN
 ALTER TABLE [tx].[PriorYearSSAOrgAssociationExt] ADD [ChangeVersion] [BIGINT] CONSTRAINT PriorYearSSAOrgAssociationExt_DF_ChangeVersion DEFAULT (0) NOT NULL;
@@ -149,6 +149,22 @@ BEGIN
 ALTER TABLE [tx].[ReportingPeriodExt] ADD [ChangeVersion] [BIGINT] CONSTRAINT ReportingPeriodExt_DF_ChangeVersion DEFAULT (0) NOT NULL;
 ALTER TABLE [tx].[ReportingPeriodExt] DROP CONSTRAINT ReportingPeriodExt_DF_ChangeVersion;
 ALTER TABLE [tx].[ReportingPeriodExt] ADD CONSTRAINT ReportingPeriodExt_DF_ChangeVersion DEFAULT (NEXT VALUE FOR [changes].[ChangeVersionSequence]) For [ChangeVersion];
+END
+
+
+IF NOT EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID(N'[tx].[RequisitionExt]') AND name = 'ChangeVersion')
+BEGIN
+ALTER TABLE [tx].[RequisitionExt] ADD [ChangeVersion] [BIGINT] CONSTRAINT RequisitionExt_DF_ChangeVersion DEFAULT (0) NOT NULL;
+ALTER TABLE [tx].[RequisitionExt] DROP CONSTRAINT RequisitionExt_DF_ChangeVersion;
+ALTER TABLE [tx].[RequisitionExt] ADD CONSTRAINT RequisitionExt_DF_ChangeVersion DEFAULT (NEXT VALUE FOR [changes].[ChangeVersionSequence]) For [ChangeVersion];
+END
+
+
+IF NOT EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID(N'[tx].[SPEDVideoCameraRequestExt]') AND name = 'ChangeVersion')
+BEGIN
+ALTER TABLE [tx].[SPEDVideoCameraRequestExt] ADD [ChangeVersion] [BIGINT] CONSTRAINT SPEDVideoCameraRequestExt_DF_ChangeVersion DEFAULT (0) NOT NULL;
+ALTER TABLE [tx].[SPEDVideoCameraRequestExt] DROP CONSTRAINT SPEDVideoCameraRequestExt_DF_ChangeVersion;
+ALTER TABLE [tx].[SPEDVideoCameraRequestExt] ADD CONSTRAINT SPEDVideoCameraRequestExt_DF_ChangeVersion DEFAULT (NEXT VALUE FOR [changes].[ChangeVersionSequence]) For [ChangeVersion];
 END
 
 
@@ -173,6 +189,14 @@ BEGIN
 ALTER TABLE [tx].[SpecialEducationProgramReportingPeriodAttendance] ADD [ChangeVersion] [BIGINT] CONSTRAINT SpecialEducationProgramReportingPeriodAttendance_DF_ChangeVersion DEFAULT (0) NOT NULL;
 ALTER TABLE [tx].[SpecialEducationProgramReportingPeriodAttendance] DROP CONSTRAINT SpecialEducationProgramReportingPeriodAttendance_DF_ChangeVersion;
 ALTER TABLE [tx].[SpecialEducationProgramReportingPeriodAttendance] ADD CONSTRAINT SpecialEducationProgramReportingPeriodAttendance_DF_ChangeVersion DEFAULT (NEXT VALUE FOR [changes].[ChangeVersionSequence]) For [ChangeVersion];
+END
+
+
+IF NOT EXISTS (SELECT * FROM sys.columns WHERE object_id = OBJECT_ID(N'[tx].[SpecialEducationTierOfIntensityAttendance]') AND name = 'ChangeVersion')
+BEGIN
+ALTER TABLE [tx].[SpecialEducationTierOfIntensityAttendance] ADD [ChangeVersion] [BIGINT] CONSTRAINT SpecialEducationTierOfIntensityAttendance_DF_ChangeVersion DEFAULT (0) NOT NULL;
+ALTER TABLE [tx].[SpecialEducationTierOfIntensityAttendance] DROP CONSTRAINT SpecialEducationTierOfIntensityAttendance_DF_ChangeVersion;
+ALTER TABLE [tx].[SpecialEducationTierOfIntensityAttendance] ADD CONSTRAINT SpecialEducationTierOfIntensityAttendance_DF_ChangeVersion DEFAULT (NEXT VALUE FOR [changes].[ChangeVersionSequence]) For [ChangeVersion];
 END
 
 

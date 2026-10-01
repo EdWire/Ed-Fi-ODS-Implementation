@@ -577,9 +577,9 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="EXTENSION-ExtendedSchoolYearServicesAttendance">
+  <xs:complexType name="EXTENSION-ESYTierOfIntensityAttendance">
     <xs:annotation>
-      <xs:documentation>This extended entity represents the students who are served through the Extended School Year (ESY) Services Program.</xs:documentation>
+      <xs:documentation>The ESYTierOfIntensityAttendance Entity represents the cumulative attendance of the special education students who are provided special education Extended School Year (ESY) services.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Domain Entity</ann:TypeGroup>
       </xs:appinfo>
@@ -605,30 +605,22 @@
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
-          <xs:element name="FirstInstructionalSetting" type="EXTENSION-InstructionalSettingDescriptorReferenceType">
+          <xs:element name="NumberDaysTaught" type="EXTENSION-NumberDaysTaught">
             <xs:annotation>
-              <xs:documentation>E3031, C035. The FirstInstructionalSetting identifies the setting used in providing extended year services component of special education. The InstructionalSetting reported is the EducationalEnvironment in which the student was served during the regular school year.</xs:documentation>
+              <xs:documentation>E0935. NumberDaysTaught indicates the number of days of instruction offered, as shown on the school calendar, during a particular reporting period.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="TierOfIntensity" type="EXTENSION-TierOfIntensityDescriptorReferenceType">
+            <xs:annotation>
+              <xs:documentation>E3153, C371. TierOfIntensity refers to the level of support and services provided to a student receiving special education and related services as documented in their individualized education program.</xs:documentation>
               <xs:appinfo>
-                <ann:Descriptor>EXTENSION-InstructionalSettingDescriptor</ann:Descriptor>
+                <ann:Descriptor>EXTENSION-TierOfIntensityDescriptor</ann:Descriptor>
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
-          <xs:element name="TotalESYContactHoursInFirstInstructionalSetting" type="EXTENSION-TotalESYContactHoursInFirstInstructionalSetting">
+          <xs:element name="EligibleDaysPresentInTierOfIntensity" type="EXTENSION-EligibleDaysPresentInTierOfIntensity">
             <xs:annotation>
-              <xs:documentation>E1013. TotalESYContactHoursInFirstInstructionalSetting indicates the total contact hours in a special education setting provided to the student through the extended school year services component of special education. InstructionalSetting1 reported is the EducationalEnvironment in which the student was served during the regular school year.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="SecondInstructionalSetting" type="EXTENSION-InstructionalSettingDescriptorReferenceType" minOccurs="0">
-            <xs:annotation>
-              <xs:documentation>E3054, C035. The SecondInstructionalSetting identifies the setting used in providing extended year services component of special education. The InstructionalSetting reported is the EducationalEnvironment in which the student was served during the regular school year.</xs:documentation>
-              <xs:appinfo>
-                <ann:Descriptor>EXTENSION-InstructionalSettingDescriptor</ann:Descriptor>
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="TotalESYContactHoursInSecondInstructionalSetting" type="EXTENSION-TotalESYContactHoursInSecondInstructionalSetting" minOccurs="0">
-            <xs:annotation>
-              <xs:documentation>E3096. TotalESYContactHoursInSecondInstructionalSetting indicates the total contact hours in a special education setting provided to the student through the extended school year services component of special education. InstructionalSetting1 reported is the EducationalEnvironment in which the student was served during the regular school year.</xs:documentation>
+              <xs:documentation>E3154. EligibleDaysPresentInTierOfIntensity indicates the number of days the student was eligible and present in a tier of intensity during a particular reporting period.</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -928,6 +920,124 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+  <xs:complexType name="EXTENSION-FlexibleSpecialEducationTierOfIntensityAttendance">
+    <xs:annotation>
+      <xs:documentation>This extended entity represents the special education program attendance for students who are served through a flexible attendance program.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Domain Entity</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ComplexObjectType">
+        <xs:sequence>
+          <xs:element name="SchoolReference" type="SchoolReferenceType">
+            <xs:annotation>
+              <xs:documentation>School reference.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="StudentReference" type="StudentReferenceType">
+            <xs:annotation>
+              <xs:documentation>Student reference.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="CalendarCode" type="EXTENSION-CalendarCode">
+            <xs:annotation>
+              <xs:documentation>E0975. CalendarCode indicates a unique campus calendar of school days for a particular group of students on a campus. Students with the same CalendarCode have the same number of days taught in a particular reporting period at a campus.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="ReportingPeriod" type="EXTENSION-ReportingPeriodDescriptorReferenceType">
+            <xs:annotation>
+              <xs:documentation>E0934, C130. ReportingPeriod indicates the period for which the attendance data are being reported.</xs:documentation>
+              <xs:appinfo>
+                <ann:Descriptor>EXTENSION-ReportingPeriodDescriptor</ann:Descriptor>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="GradeLevel" type="GradeLevelDescriptorReferenceType">
+            <xs:annotation>
+              <xs:documentation>E0017, C050. GradeLevel indicates the current grade level of the student.</xs:documentation>
+              <xs:appinfo>
+                <ann:Descriptor>GradeLevelDescriptor</ann:Descriptor>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="NumberDaysTaught" type="EXTENSION-NumberDaysTaught">
+            <xs:annotation>
+              <xs:documentation>E0935. NumberDaysTaught indicates the number of days of instruction offered, as shown on the school calendar, during a particular reporting period.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="FlexAttendanceProgram" type="EXTENSION-FlexAttendanceProgramDescriptorReferenceType">
+            <xs:annotation>
+              <xs:documentation>E1045, C177. FlexAttendanceProgram indicates the unique type of flexible attendance program to which the student’s flexible attendance is related.</xs:documentation>
+              <xs:appinfo>
+                <ann:Descriptor>EXTENSION-FlexAttendanceProgramDescriptor</ann:Descriptor>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="TierOfIntensity" type="EXTENSION-TierOfIntensityDescriptorReferenceType">
+            <xs:annotation>
+              <xs:documentation>E3153, C371. TierOfIntensity refers to the level of support and services provided to a student receiving special education and related services as documented in their individualized education program.</xs:documentation>
+              <xs:appinfo>
+                <ann:Descriptor>EXTENSION-TierOfIntensityDescriptor</ann:Descriptor>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="FlexAttendDaysEligibleInTierOfIntensity" type="EXTENSION-FlexAttendDaysEligibleInTierOfIntensity" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>E3156. FlexAttendDaysEligibleInTierOfIntensity indicates the total number of school days the student was eligible for a tier of intensity that was eligible for Foundation School Program funding during a particular reporting period.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-GrievanceExt">
+    <xs:annotation>
+      <xs:documentation>The Grievance Entity represents a formal written complaint submitted to a school district by a parent, student, employee, or any other individual, including vendors and taxpayers.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Domain Entity</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ComplexObjectType">
+        <xs:sequence>
+          <xs:element name="EducationOrganizationReference" type="EducationOrganizationReferenceType">
+            <xs:annotation>
+              <xs:documentation>E0212. The LocalEducationAgency Reference represents the identifier assigned to the Local Education Agency.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="GrievanceIdentifier" type="EXTENSION-GrievanceIdentifier">
+            <xs:annotation>
+              <xs:documentation>E3136. GrievanceIdentifier indicates a unique number associated to a particular grievance filed.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="GrievanceFiledDate" type="xs:date">
+            <xs:annotation>
+              <xs:documentation>E3137. GrievanceFiledDate indicates the date the overall grievance was filed.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="GrievanceResolvedDate" type="xs:date" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>E3138. GrievanceResolvedDate indicates the date the overall grievance was resolved.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="GrievanceCorrectiveAction" type="EXTENSION-GrievanceCorrectiveActionDescriptorReferenceType" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation>E3139, C364. GrievanceCorrectiveAction indicates corrective action taken by the district based on the grievance filed.</xs:documentation>
+              <xs:appinfo>
+                <ann:Descriptor>EXTENSION-GrievanceCorrectiveActionDescriptor</ann:Descriptor>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="GrievanceLevelResolutionSet" type="EXTENSION-GrievanceLevelResolutionSet" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation>The resolution of each level of a particular grievance.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
   <xs:complexType name="EXTENSION-LocalEducationAgencyExtension">
     <xs:annotation>
       <xs:documentation></xs:documentation>
@@ -1005,9 +1115,75 @@
               <xs:documentation>E3128. SecondaryTransitionReporting indicates a local educational agency does not have any students who meet the criteria for reporting SPP Indicator 13 Secondary Transition.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="LEAGrievanceLink" type="EXTENSION-LEAGrievanceLink" minOccurs="0">
+          <xs:element name="GrievanceLink" type="EXTENSION-GrievanceLink" minOccurs="0">
             <xs:annotation>
               <xs:documentation>E3132. LEAGrievanceLink indicates the internet website address that connects directly to the Local Education Agency's grievance policy.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="SPEDVideoCameraReporting" type="xs:boolean" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>E3165. SPEDVideoCameraReporting indicates whether a local education agency has received any video camera requests for cameras to be placed in special education classrooms from July 1 through June 30.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-OpenStaffPositionExt">
+    <xs:annotation>
+      <xs:documentation>The OpenStaffPositionExt Entity represents an open staff position that the education organization is seeking to fill.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Domain Entity</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ComplexObjectType">
+        <xs:sequence>
+          <xs:element name="EducationOrganizationReference" type="EducationOrganizationReferenceType">
+            <xs:annotation>
+              <xs:documentation>E0212. The LocalEducationAgency Reference represents the identifier assigned to the Local Education Agency.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="PositionNumber" type="EXTENSION-PositionNumber">
+            <xs:annotation>
+              <xs:documentation>E3143. PositionNumber indicates the locally assigned position number for the open staff position, typically a number assigned by Human Resources that is associated with the specific role.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="StaffClassification" type="StaffClassificationDescriptorReferenceType">
+            <xs:annotation>
+              <xs:documentation>E0721, C021. StaffClassification identifies the capacity in which a person serves. Examples are teachers, art therapists, and the superintendent.</xs:documentation>
+              <xs:appinfo>
+                <ann:Descriptor>StaffClassificationDescriptor</ann:Descriptor>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="ProgramAssignment" type="ProgramAssignmentDescriptorReferenceType" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation>E3045, C338. ProgramAssignment defines the name of the education program for which a teacher is assigned to a school.</xs:documentation>
+              <xs:appinfo>
+                <ann:Descriptor>ProgramAssignmentDescriptor</ann:Descriptor>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="GradeLevelRange" type="EXTENSION-GradeLevelRangeDescriptorReferenceType" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation>E3144, C370. GradeLevelRange indicates the range of grade levels of a teaching position.</xs:documentation>
+              <xs:appinfo>
+                <ann:Descriptor>EXTENSION-GradeLevelRangeDescriptor</ann:Descriptor>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="InstructionalSubject" type="EXTENSION-InstructionalSubjectDescriptorReferenceType" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation>E3145, C366. InstructionalSubject indicates the academic subject of instruction for the position.</xs:documentation>
+              <xs:appinfo>
+                <ann:Descriptor>EXTENSION-InstructionalSubjectDescriptor</ann:Descriptor>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="PositionVacancySet" type="EXTENSION-PositionVacancySet" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation>The PositionVacancy common type includes a set of data elements that provide information about when and why the position became vacant.</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -1191,209 +1367,6 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="EXTENSION-PriorYearLeaver">
-    <xs:annotation>
-      <xs:documentation>PriorYearLeaver - This entity is being reported on non-enrolled students and graduates that are enrolled in the prior school year and do not return in the current school year.</xs:documentation>
-      <xs:appinfo>
-        <ann:TypeGroup>Domain Entity</ann:TypeGroup>
-      </xs:appinfo>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:extension base="ComplexObjectType">
-        <xs:sequence>
-          <xs:element name="StudentUId" type="EXTENSION-StudentUId">
-            <xs:annotation>
-              <xs:documentation>E1523. StudentUId (StudentUniqueId) is a unique number assigned to a student by the Texas Education Agency.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="SchoolReference" type="SchoolReferenceType">
-            <xs:annotation>
-              <xs:documentation>This entity represents an educational organization that includes staff and students who participate in classes and educational activity groups.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="GradeLevel" type="GradeLevelDescriptorReferenceType" minOccurs="0">
-            <xs:annotation>
-              <xs:documentation>This descriptor defines the set of grade levels. The map to known Ed-Fi enumeration values is required.</xs:documentation>
-              <xs:appinfo>
-                <ann:Descriptor>GradeLevelDescriptor</ann:Descriptor>
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="ExitWithdrawDate" type="xs:date" minOccurs="0">
-            <xs:annotation>
-              <xs:documentation>E3028. The ExitWithdrawDate is the month, day, and year of the first day after an individual's last attendance at school (if known), the date on which an individual graduated, or the date it becomes known officially that an individual left school.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="ExitWithdrawType" type="ExitWithdrawTypeDescriptorReferenceType">
-            <xs:annotation>
-              <xs:documentation>This descriptor defines the circumstances under which the student exited from membership in an educational institution.</xs:documentation>
-              <xs:appinfo>
-                <ann:Descriptor>ExitWithdrawTypeDescriptor</ann:Descriptor>
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="LocalStudentId" type="EXTENSION-LocalStudentId" minOccurs="0">
-            <xs:annotation>
-              <xs:documentation>E0923. LocalStudentId is the student's local identification number as assigned by the local education agency.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="StudentId" type="EXTENSION-StudentId">
-            <xs:annotation>
-              <xs:documentation>E0001. StudentId is the student's Social Security number or a state-approved alternative identification number.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="GenerationCode" type="EXTENSION-GenerationCodeDescriptorReferenceType" minOccurs="0">
-            <xs:annotation>
-              <xs:documentation>E0706, C012. GenerationCode identifies the generation suffix, if any, which the person attaches to his name.</xs:documentation>
-              <xs:appinfo>
-                <ann:Descriptor>EXTENSION-GenerationCodeDescriptor</ann:Descriptor>
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="Sex" type="SexDescriptorReferenceType" minOccurs="0">
-            <xs:annotation>
-              <xs:documentation>A person's gender.</xs:documentation>
-              <xs:appinfo>
-                <ann:Descriptor>SexDescriptor</ann:Descriptor>
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="HispanicLatinoEthnicity" type="xs:boolean" minOccurs="0">
-            <xs:annotation>
-              <xs:documentation>E1064. HispanicLatinoEthnicity is an indication that the individual traces his or her origin or descent to Mexico, Puerto Rico, Cuba, Central and South America, and other Spanish cultures, regardless of race. The term, "Spanish origin," can be used in addition to "Hispanic or Latino."</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="Race" type="RaceDescriptorReferenceType" minOccurs="0" maxOccurs="unbounded">
-            <xs:annotation>
-              <xs:documentation>The enumeration items defining the racial categories which most clearly reflects the individual's recognition of his or her community or with which the individual most identifies.</xs:documentation>
-              <xs:appinfo>
-                <ann:Descriptor>RaceDescriptor</ann:Descriptor>
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="AssociateDegreeIndicator" type="EXTENSION-AssociateDegreeIndicatorDescriptorReferenceType" minOccurs="0">
-            <xs:annotation>
-              <xs:documentation>E1596. AssociateDegreeIndicator indicates that the student earned an associate degree by August 31 immediately following graduation.</xs:documentation>
-              <xs:appinfo>
-                <ann:Descriptor>EXTENSION-AssociateDegreeIndicatorDescriptor</ann:Descriptor>
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="FinancialAidApplication" type="EXTENSION-FinancialAidApplicationDescriptorReferenceType" minOccurs="0">
-            <xs:annotation>
-              <xs:documentation>E1724, C230. The FinancialAidApplication indicates the manner in which the student completed the graduation requirement of either completing a financial aid application (Free application for Federal Student Aid (FAFSA) or Texas Application for State Financial Aid (TASFA)) or submitting an exemption.</xs:documentation>
-              <xs:appinfo>
-                <ann:Descriptor>EXTENSION-FinancialAidApplicationDescriptor</ann:Descriptor>
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="AsOfStatusLastFridayOctober" type="EXTENSION-AsOfStatusLastFridayOctoberDescriptorReferenceType">
-            <xs:annotation>
-              <xs:documentation>E3007, C324. AsOfStatusLastFridayOctober indicates the student's status in the local education agency on the last Friday in October in the current school year.</xs:documentation>
-              <xs:appinfo>
-                <ann:Descriptor>EXTENSION-AsOfStatusLastFridayOctoberDescriptor</ann:Descriptor>
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="EndorsementCompleted" type="EXTENSION-EndorsementCompletedDescriptorReferenceType" minOccurs="0" maxOccurs="unbounded">
-            <xs:annotation>
-              <xs:documentation>E3021, C332. EndorsementCompleted indicates the student has successfully completed a Foundation High School Program to earn a STEM, Business and Industry, Public Services, Arts and Humanities, or Multi-Disciplinary Studies endorsement.</xs:documentation>
-              <xs:appinfo>
-                <ann:Descriptor>EXTENSION-EndorsementCompletedDescriptor</ann:Descriptor>
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="Name" type="Name">
-            <xs:annotation>
-              <xs:documentation>The set of elements that comprise an individual's legal name.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="BirthData" type="BirthData">
-            <xs:annotation>
-              <xs:documentation>The set of elements that capture relevant data regarding a person's birth, including birth date and place of birth.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="Language" type="Language" minOccurs="0" maxOccurs="unbounded">
-            <xs:annotation>
-              <xs:documentation>E3033, C092. Language indicates the language used in the student’s home and the language used by the student, as determined by the student’s home language survey. (see 19 TAC §89.1215).</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="IndustryBasedCertificationSet" type="EXTENSION-IndustryBasedCertificationSet" minOccurs="0" maxOccurs="unbounded">
-            <xs:annotation>
-              <xs:documentation>Common Type IndustryBasedCertificationSet.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="GraduationSet" type="EXTENSION-GraduationSet" minOccurs="0">
-            <xs:annotation>
-              <xs:documentation>This educational entity represents the conferring or certification by an educational organization that the student has successfully completed a particular course of study. It represents the electronic version of its physical document counterpart.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="Address" type="Address" minOccurs="0">
-            <xs:annotation>
-              <xs:documentation>The set of elements that describes an address, including the street address, city, state, and ZIP code.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="ElectronicMail" type="ElectronicMail" minOccurs="0" maxOccurs="unbounded">
-            <xs:annotation>
-              <xs:documentation>The numbers, letters, and symbols used to identify an electronic mail (e-mail) user within the network to which the individual or organization belongs.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="Telephone" type="Telephone" minOccurs="0" maxOccurs="unbounded">
-            <xs:annotation>
-              <xs:documentation>The 10-digit telephone number, including the area code, of an individual or organization.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="EXTENSION-PriorYearLeaverParent">
-    <xs:annotation>
-      <xs:documentation>This entity represents a parent or guardian of a student, such as mother, father, or caretaker, for a prior year leaver.</xs:documentation>
-      <xs:appinfo>
-        <ann:TypeGroup>Domain Entity</ann:TypeGroup>
-      </xs:appinfo>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:extension base="ComplexObjectType">
-        <xs:sequence>
-          <xs:element name="ParentUId" type="EXTENSION-ParentUId">
-            <xs:annotation>
-              <xs:documentation>E3078. ParentUId is a unique number or alphanumeric code assigned to a person by the LEA.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="GenerationCode" type="EXTENSION-GenerationCodeDescriptorReferenceType" minOccurs="0">
-            <xs:annotation>
-              <xs:documentation>E0706, C012. GenerationCode identifies the generation suffix, if any, which the person attaches to his name (e.g., Jr., Sr., III).</xs:documentation>
-              <xs:appinfo>
-                <ann:Descriptor>EXTENSION-GenerationCodeDescriptor</ann:Descriptor>
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="Name" type="Name">
-            <xs:annotation>
-              <xs:documentation>The set of elements that comprise an individual's legal name.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="Address" type="Address" minOccurs="0">
-            <xs:annotation>
-              <xs:documentation>The set of elements that describes an address, including the street address, city, state, and ZIP code.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="ElectronicMail" type="ElectronicMail" minOccurs="0">
-            <xs:annotation>
-              <xs:documentation>The numbers, letters, and symbols used to identify an electronic mail (e-mail) user within the network to which the individual or organization belongs.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="Telephone" type="Telephone" minOccurs="0">
-            <xs:annotation>
-              <xs:documentation>The 10-digit telephone number, including the area code, of an individual or organization.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
   <xs:complexType name="EXTENSION-PriorYearSSAOrgAssociationExt">
     <xs:annotation>
       <xs:documentation>The PriorYearSSAOrgAssociationExt entity identifies the Education Service Center (ESC) or Local Education Agency (LEA) fiscal agent(s) and the ESC or LEA member(s) for each type of shared services arrangement (SSA) that exists among two or more ESCs and LEAs.</xs:documentation>
@@ -1468,6 +1441,61 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+  <xs:complexType name="EXTENSION-RequisitionExt">
+    <xs:annotation>
+      <xs:documentation>The RequisitionExt Entity represents a specific open staff position requisition that the education organization is seeking to fill.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Domain Entity</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ComplexObjectType">
+        <xs:sequence>
+          <xs:element name="OpenStaffPositionExtReference" type="EXTENSION-OpenStaffPositionExtReferenceType">
+            <xs:annotation>
+              <xs:documentation>The OpenStaffPositionExt Entity represents an open staff position that the education organization is seeking to fill.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="RequisitionNumber" type="EXTENSION-RequisitionNumber">
+            <xs:annotation>
+              <xs:documentation>E3148. RequisitionNumber indicates the identifier assigned to an open staff position to initiate hiring, typically a number assigned by Human Resources.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="EmploymentStatus" type="EmploymentStatusDescriptorReferenceType">
+            <xs:annotation>
+              <xs:documentation>E3149, C368. EmploymentStatus indicates the type of employment or contract desired for the position</xs:documentation>
+              <xs:appinfo>
+                <ann:Descriptor>EmploymentStatusDescriptor</ann:Descriptor>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="DatePosted" type="xs:date">
+            <xs:annotation>
+              <xs:documentation>E3150. DatePosted indicates the date that the requisition was posted.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="DatePostingClosed" type="xs:date" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>E3151. DatePostingClosed indicates the date the posting was closed or filled.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="PostingClosedReason" type="EXTENSION-PostingClosedReasonDescriptorReferenceType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>E3152, C369. PostingClosedReason indicates whether the position was filled or closed unfilled.</xs:documentation>
+              <xs:appinfo>
+                <ann:Descriptor>EXTENSION-PostingClosedReasonDescriptor</ann:Descriptor>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="HireDate" type="xs:date" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>E3032. HireDate is the first day a staff member is employed at an educational organization.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
   <xs:complexType name="EXTENSION-RestraintEventExtension">
     <xs:annotation>
       <xs:documentation></xs:documentation>
@@ -1505,11 +1533,6 @@
     <xs:complexContent>
       <xs:extension base="School">
         <xs:sequence>
-          <xs:element name="PKFullDayWaiver" type="xs:boolean" minOccurs="0">
-            <xs:annotation>
-              <xs:documentation>E1646. PKFullDayWaiver indicates whether the campus has received an exemption from offering a full-day prekindergarten program.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
           <xs:element name="AdditionalDaysProgram" type="xs:boolean" minOccurs="0">
             <xs:annotation>
               <xs:documentation>E1671. AdditionalDaysProgram indicates whether the campus implemented an Additional Days School Year (ADSY) program for any students in prekindergarten through eighth grades as described in TEC §48.0051.</xs:documentation>
@@ -1704,6 +1727,82 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+  <xs:complexType name="EXTENSION-SpecialEducationTierOfIntensityAttendance">
+    <xs:annotation>
+      <xs:documentation>The SpecialEducationTierOfIntensityAttendance Entity represents the cumulative attendance of a student participating in a special education program under a tier of intensity.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Domain Entity</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ComplexObjectType">
+        <xs:sequence>
+          <xs:element name="SchoolReference" type="SchoolReferenceType">
+            <xs:annotation>
+              <xs:documentation>School reference.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="StudentReference" type="StudentReferenceType">
+            <xs:annotation>
+              <xs:documentation>Student reference.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="CalendarCode" type="EXTENSION-CalendarCode">
+            <xs:annotation>
+              <xs:documentation>E0975. CalendarCode indicates a unique campus calendar of school days for a particular group of students on a campus. Students with the same CalendarCode have the same number of days taught in a particular reporting period at a campus.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="ReportingPeriod" type="EXTENSION-ReportingPeriodDescriptorReferenceType">
+            <xs:annotation>
+              <xs:documentation>E0934, C130. ReportingPeriod indicates the period for which the attendance data are being reported.</xs:documentation>
+              <xs:appinfo>
+                <ann:Descriptor>EXTENSION-ReportingPeriodDescriptor</ann:Descriptor>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="GradeLevel" type="GradeLevelDescriptorReferenceType">
+            <xs:annotation>
+              <xs:documentation>E0017, C050. GradeLevel indicates the current grade level of the student, or the grade level(s) offered at a school.</xs:documentation>
+              <xs:appinfo>
+                <ann:Descriptor>GradeLevelDescriptor</ann:Descriptor>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="NumberDaysTaught" type="EXTENSION-NumberDaysTaught">
+            <xs:annotation>
+              <xs:documentation>E0935. NumberDaysTaught indicates the number of days of instruction offered, as shown on the school calendar, during a particular reporting period.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="RegionalDaySchoolProgramForDeaf" type="EXTENSION-RegionalDaySchoolProgramForDeafDescriptorReferenceType">
+            <xs:annotation>
+              <xs:documentation>E0833, C067. RegionalDaySchoolProgramForDeaf indicates the student is receiving instructional servies from the regional day school program for the deaf.</xs:documentation>
+              <xs:appinfo>
+                <ann:Descriptor>EXTENSION-RegionalDaySchoolProgramForDeafDescriptor</ann:Descriptor>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="LEAOfRDSPDService" type="EXTENSION-LEAOfRDSPDService" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>E1527. LEAOfRDSPDService indicates the LEA identification number of the Regional Day School Program for the Deaf (RDSPD) Fiscal Agent that is providing RDSPD services.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="TierOfIntensity" type="EXTENSION-TierOfIntensityDescriptorReferenceType">
+            <xs:annotation>
+              <xs:documentation>E3153, C371. TierOfIntensity refers to the level of support and services provided to a student receiving special education and related services as documented in their individualized education program.</xs:documentation>
+              <xs:appinfo>
+                <ann:Descriptor>EXTENSION-TierOfIntensityDescriptor</ann:Descriptor>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="EligibleDaysPresentInTierOfIntensity" type="EXTENSION-EligibleDaysPresentInTierOfIntensity" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>E3154. EligibleDaysPresentInTierOfIntensity indicates the number of days the student was eligible and present in a tier of intensity during a particular reporting period.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
   <xs:complexType name="EXTENSION-SpecialProgramsReportingPeriodAttendance">
     <xs:annotation>
       <xs:documentation>This extended entity represents the recording of a student’s special programs reporting period attendance.</xs:documentation>
@@ -1763,6 +1862,69 @@
               <xs:appinfo>
                 <ann:Descriptor>EXTENSION-ReportingPeriodDescriptor</ann:Descriptor>
               </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-SPEDVideoCameraRequestExt">
+    <xs:annotation>
+      <xs:documentation>The SPEDVideoCameraRequest Entity represents the requests made for a camera placement in a special education setting.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Domain Entity</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ComplexObjectType">
+        <xs:sequence>
+          <xs:element name="SchoolReference" type="SchoolReferenceType">
+            <xs:annotation>
+              <xs:documentation>School reference.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="RequestId" type="EXTENSION-RequestId">
+            <xs:annotation>
+              <xs:documentation>E3166. RequestId indicates the unique identifier for the individual special education classroom video camera request.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="CameraRequestReceivedDate" type="xs:date">
+            <xs:annotation>
+              <xs:documentation>E3167. CameraRequestReceivedDate indicates the date the local education agency received the special education classroom video camera request.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="CameraRequestor" type="EXTENSION-CameraRequestorDescriptorReferenceType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>E3168, C374. CameraRequestor indicates the category to which the person belongs who is making the request for a video camera to be installed in a special education classroom.</xs:documentation>
+              <xs:appinfo>
+                <ann:Descriptor>EXTENSION-CameraRequestorDescriptor</ann:Descriptor>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="CameraStatus" type="EXTENSION-CameraStatusDescriptorReferenceType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>E3169, C375. CameraStatus indicates if the special education camera request has been authorized, denied, or withdrawn.</xs:documentation>
+              <xs:appinfo>
+                <ann:Descriptor>EXTENSION-CameraStatusDescriptor</ann:Descriptor>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="CameraStatusDeterminationDate" type="xs:date" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>E3170. CameraStatusDeterminationDate indicates the date the special education camera request was authorized, denied, or withdrawn.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="DenialReason" type="EXTENSION-DenialReasonDescriptorReferenceType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>E3171, C376. DenialReason indicates the reason the camera request was denied. The local education agency should maintain documentation of the reason the denial was made.</xs:documentation>
+              <xs:appinfo>
+                <ann:Descriptor>EXTENSION-DenialReasonDescriptor</ann:Descriptor>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="CameraOperationalDate" type="xs:date" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>E3172. CameraOperationalDate indicates the date the camera became operational.</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -1854,7 +2016,7 @@
           </xs:element>
           <xs:element name="TeacherIncentiveAllotmentDesignation" type="EXTENSION-TeacherIncentiveAllotmentDesignationDescriptorReferenceType" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation>
-              <xs:documentation>E1722, C322. TeacherIncentiveAllotmentDesignationCode indicates a teacher (ROLE-ID 087) is an Active National Board Certified Teacher, holds a current designation (Recognized, Exemplary, or Master) and/or has been submitted by an LEA for a new or change of designation in the Teacher Incentive Allotment.</xs:documentation>
+              <xs:documentation>E1722, C322. TeacherIncentiveAllotmentDesignation indicates a teacher (StaffClassification 087) is an Active National Board Certified Teacher, holds a current designation (Recognized, Exemplary, Master, or Achievement), or has been submitted by an LEA for a new or change of designation in the Teacher Incentive Allotment.</xs:documentation>
               <xs:appinfo>
                 <ann:Descriptor>EXTENSION-TeacherIncentiveAllotmentDesignationDescriptor</ann:Descriptor>
               </xs:appinfo>
@@ -2161,11 +2323,11 @@
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
-          <xs:element name="AsOfStatusLastFridayOctober" type="EXTENSION-AsOfStatusLastFridayOctoberDescriptorReferenceType" minOccurs="0">
+          <xs:element name="AsOfStatusFirstFridayOctober" type="EXTENSION-AsOfStatusFirstFridayOctoberDescriptorReferenceType" minOccurs="0">
             <xs:annotation>
-              <xs:documentation>E3007, C324. AsOfStatusLastFridayOctober indicates the student's status in the local education agency on the last Friday in October in the current school year.</xs:documentation>
+              <xs:documentation>E3119, C361. AsOfStatusFirstFridayOctober indicates the student’s status in the LEA on the first Friday in October.</xs:documentation>
               <xs:appinfo>
-                <ann:Descriptor>EXTENSION-AsOfStatusLastFridayOctoberDescriptor</ann:Descriptor>
+                <ann:Descriptor>EXTENSION-AsOfStatusFirstFridayOctoberDescriptor</ann:Descriptor>
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
@@ -2350,9 +2512,9 @@
       <xs:extension base="DescriptorType" />
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="EXTENSION-AsOfStatusLastDayEnrollmentDescriptor">
+  <xs:complexType name="EXTENSION-AsOfStatusFirstFridayOctoberDescriptor">
     <xs:annotation>
-      <xs:documentation>E3006. AsOfStatusLastDayEnrollment indicates the student's status in the district on the last day of school or last date of enrollment in the current school year.</xs:documentation>
+      <xs:documentation>E3119. AsOfStatusFirstFridayOctober indicates the student’s status in the LEA on the first Friday in October.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Descriptor</ann:TypeGroup>
       </xs:appinfo>
@@ -2361,9 +2523,9 @@
       <xs:extension base="DescriptorType" />
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="EXTENSION-AsOfStatusLastFridayOctoberDescriptor">
+  <xs:complexType name="EXTENSION-AsOfStatusLastDayEnrollmentDescriptor">
     <xs:annotation>
-      <xs:documentation>E3007. AsOfStatusLastFridayOctober indicates the student's status in the local education agency on the last Friday in October in the current school year.</xs:documentation>
+      <xs:documentation>E3006. AsOfStatusLastDayEnrollment indicates the student's status in the district on the last day of school or last date of enrollment in the current school year.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Descriptor</ann:TypeGroup>
       </xs:appinfo>
@@ -2471,6 +2633,28 @@
       <xs:extension base="DescriptorType" />
     </xs:complexContent>
   </xs:complexType>
+  <xs:complexType name="EXTENSION-CameraRequestorDescriptor">
+    <xs:annotation>
+      <xs:documentation>E3168, C374. CameraRequestor indicates the category to which the person belongs who is making the request for a video camera to be installed in a special education classroom.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Descriptor</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DescriptorType" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-CameraStatusDescriptor">
+    <xs:annotation>
+      <xs:documentation>E3169, C375. CameraStatus indicates if the special education camera request has been authorized, denied, or withdrawn.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Descriptor</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DescriptorType" />
+    </xs:complexContent>
+  </xs:complexType>
   <xs:complexType name="EXTENSION-CampusEnrollmentTypeDescriptor">
     <xs:annotation>
       <xs:documentation>Descriptor CampusEnrollmentType is populated from code table C219.</xs:documentation>
@@ -2559,6 +2743,17 @@
       <xs:extension base="DescriptorType" />
     </xs:complexContent>
   </xs:complexType>
+  <xs:complexType name="EXTENSION-DenialReasonDescriptor">
+    <xs:annotation>
+      <xs:documentation>E3171, C376. DenialReason indicates the reason the camera request was denied. The local education agency should maintain documentation of the reason the denial was made.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Descriptor</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DescriptorType" />
+    </xs:complexContent>
+  </xs:complexType>
   <xs:complexType name="EXTENSION-DifferenceReasonHoursAcceleratedInstructionDescriptor">
     <xs:annotation>
       <xs:documentation>E3088. DifferenceReasonHoursAcceleratedInstruction indicates the reason the student did not complete the full number of assigned hours of accelerated instruction.</xs:documentation>
@@ -2606,17 +2801,6 @@
   <xs:complexType name="EXTENSION-DyslexiaServicesDescriptor">
     <xs:annotation>
       <xs:documentation>Descriptor DyslexiaServices is based on code table C224.</xs:documentation>
-      <xs:appinfo>
-        <ann:TypeGroup>Descriptor</ann:TypeGroup>
-      </xs:appinfo>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:extension base="DescriptorType" />
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="EXTENSION-EarlyReadingIndicatorDescriptor">
-    <xs:annotation>
-      <xs:documentation>Descriptor EarlyReadingIndicator is populated from Code Table C195.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Descriptor</ann:TypeGroup>
       </xs:appinfo>
@@ -2845,9 +3029,9 @@
       <xs:extension base="DescriptorType" />
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="EXTENSION-HearingAmplificationAccessDescriptor">
+  <xs:complexType name="EXTENSION-GradeLevelRangeDescriptor">
     <xs:annotation>
-      <xs:documentation>Descriptor HearingAmplificationAccess identifies whether the student has access to the hearing amplification device for the full-day or partial day for each HEARING-AMPLIFICATION-TYPE reported. (C318)</xs:documentation>
+      <xs:documentation>E3144, C370. GradeLevelRange indicates the range of grade levels of a teaching position.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Descriptor</ann:TypeGroup>
       </xs:appinfo>
@@ -2856,9 +3040,20 @@
       <xs:extension base="DescriptorType" />
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="EXTENSION-HearingAmplificationDailyUseDescriptor">
+  <xs:complexType name="EXTENSION-GrievanceCorrectiveActionDescriptor">
     <xs:annotation>
-      <xs:documentation>Descriptor HearingAmplificationDailyUse identifies the average amount of time the hearing amplification device is used in a day based on the HEARING-AMPLIFICATION-ACCESS reported. (C319)</xs:documentation>
+      <xs:documentation>E3139, C364. GrievanceCorrectiveAction indicates corrective action taken by the district based on the grievance filed.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Descriptor</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DescriptorType" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-GrievanceLevelDescriptor">
+    <xs:annotation>
+      <xs:documentation>E3142, C378. GrievanceLevel indicates the level of grievance.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Descriptor</ann:TypeGroup>
       </xs:appinfo>
@@ -2895,17 +3090,6 @@
       <xs:extension base="DescriptorType" />
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="EXTENSION-HoursSpentReceivingServicesDescriptor">
-    <xs:annotation>
-      <xs:documentation>Descriptor HoursSpentReceivingServices identifies the amount of time in which the student receives services. (C316)</xs:documentation>
-      <xs:appinfo>
-        <ann:TypeGroup>Descriptor</ann:TypeGroup>
-      </xs:appinfo>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:extension base="DescriptorType" />
-    </xs:complexContent>
-  </xs:complexType>
   <xs:complexType name="EXTENSION-IBCVendorDescriptor">
     <xs:annotation>
       <xs:documentation>Descriptor IBCVendorCode identifies the organization or company that offered the service. (C226)</xs:documentation>
@@ -2920,6 +3104,17 @@
   <xs:complexType name="EXTENSION-InstructionalSettingDescriptor">
     <xs:annotation>
       <xs:documentation>Descriptor InstructionalSetting is based on code table C035.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Descriptor</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DescriptorType" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-InstructionalSubjectDescriptor">
+    <xs:annotation>
+      <xs:documentation>E3145, C366. InstructionalSubject indicates the academic subject of instruction for the position.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Descriptor</ann:TypeGroup>
       </xs:appinfo>
@@ -3137,6 +3332,17 @@
       <xs:extension base="DescriptorType" />
     </xs:complexContent>
   </xs:complexType>
+  <xs:complexType name="EXTENSION-PostingClosedReasonDescriptor">
+    <xs:annotation>
+      <xs:documentation>E3152, C369. PostingClosedReason indicates whether the position was filled or closed unfilled.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Descriptor</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DescriptorType" />
+    </xs:complexContent>
+  </xs:complexType>
   <xs:complexType name="EXTENSION-PostSecondaryCertificationLicensureDescriptor">
     <xs:annotation>
       <xs:documentation>Descriptor PostSecondaryCertificationLicensure indicates a nationally or internationally recognized business or industry certification or license earned by a student. (C214)</xs:documentation>
@@ -3192,6 +3398,17 @@
       <xs:extension base="DescriptorType" />
     </xs:complexContent>
   </xs:complexType>
+  <xs:complexType name="EXTENSION-ReasonNoSPEDServicesDescriptor">
+    <xs:annotation>
+      <xs:documentation>E3174, C377. ReasonNoSPEDServices indicates the outcome of the admission, review, and dismissal (ARD) committee meeting after completing the full and individual initial evaluation (FIIE) when the student is determined ineligible or does not enroll in the Local Education Agency (LEA) and receive special education and related services.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Descriptor</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DescriptorType" />
+    </xs:complexContent>
+  </xs:complexType>
   <xs:complexType name="EXTENSION-RegionalDaySchoolProgramForDeafDescriptor">
     <xs:annotation>
       <xs:documentation>Descriptor RegionalDaySchoolProgramForDeaf is based on code table C067.</xs:documentation>
@@ -3225,6 +3442,17 @@
       <xs:extension base="DescriptorType" />
     </xs:complexContent>
   </xs:complexType>
+  <xs:complexType name="EXTENSION-ResolutionOfGrievanceDescriptor">
+    <xs:annotation>
+      <xs:documentation>E3141, C365. ResolutionOfGrievance indicates the specific resolution of the grievance at any given level.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Descriptor</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DescriptorType" />
+    </xs:complexContent>
+  </xs:complexType>
   <xs:complexType name="EXTENSION-RestraintStaffTypeDescriptor">
     <xs:annotation>
       <xs:documentation>Descriptor RestraintStaffType indicates the kind of school staff person that performed a student restraint. (C194)</xs:documentation>
@@ -3250,6 +3478,17 @@
   <xs:complexType name="EXTENSION-SPEDProgramSvcDescriptor">
     <xs:annotation>
       <xs:documentation>E3058. SPEDProgramSvc defines the services provided by an education organization to populations of students associated with a special education program.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Descriptor</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DescriptorType" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-SPEDServiceGroupDescriptor">
+    <xs:annotation>
+      <xs:documentation>E3159, C373. SPEDServiceGroup indicates the category or group of students based on the type, intensity, or setting of special education services the student receives.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Descriptor</ann:TypeGroup>
       </xs:appinfo>
@@ -3337,7 +3576,7 @@
   </xs:complexType>
   <xs:complexType name="EXTENSION-TeacherIncentiveAllotmentDesignationDescriptor">
     <xs:annotation>
-      <xs:documentation>Descriptor TeacherIncentiveAllotmentDesignation is based on code table C322</xs:documentation>
+      <xs:documentation>E1722. TeacherIncentiveAllotmentDesignation indicates a teacher (StaffClassification 087) is an Active National Board Certified Teacher, holds a current designation (Recognized, Exemplary, Master, or Achievement), or has been submitted by an LEA for a new or change of designation in the Teacher Incentive Allotment.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Descriptor</ann:TypeGroup>
       </xs:appinfo>
@@ -3349,6 +3588,17 @@
   <xs:complexType name="EXTENSION-TexasFirstEarlyHSCompletionProgramDescriptor">
     <xs:annotation>
       <xs:documentation>Descriptor TexasFirstEarlyHSCompletionProgram is based on code table C233.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Descriptor</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DescriptorType" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-TierOfIntensityDescriptor">
+    <xs:annotation>
+      <xs:documentation>E3153, C371. TierOfIntensity refers to the level of support and services provided to a student receiving special education and related services as documented in their individualized education program.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Descriptor</ann:TypeGroup>
       </xs:appinfo>
@@ -3412,46 +3662,20 @@
       <xs:extension base="DescriptorType" />
     </xs:complexContent>
   </xs:complexType>
-  <xs:annotation>
-    <xs:documentation>===== Associations =====</xs:documentation>
-  </xs:annotation>
-  <xs:complexType name="EXTENSION-PriorYearLeaverStudentParentAssociation">
+  <xs:complexType name="EXTENSION-VacancyReasonDescriptor">
     <xs:annotation>
-      <xs:documentation>This association relates prior year leavers to their parents, guardians, or caretakers, as they were reported in the prior year.</xs:documentation>
+      <xs:documentation>E3147, C367. VacancyReason indicates the reason that the position became vacant.</xs:documentation>
       <xs:appinfo>
-        <ann:TypeGroup>Association</ann:TypeGroup>
+        <ann:TypeGroup>Descriptor</ann:TypeGroup>
       </xs:appinfo>
     </xs:annotation>
     <xs:complexContent>
-      <xs:extension base="ComplexObjectType">
-        <xs:sequence>
-          <xs:element name="PriorYearLeaverReference" type="EXTENSION-PriorYearLeaverReferenceType">
-            <xs:annotation>
-              <xs:documentation>Prior year leaver associated with the Parent.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="PriorYearLeaverParentReference" type="EXTENSION-PriorYearLeaverParentReferenceType">
-            <xs:annotation>
-              <xs:documentation>The Parent associated with the prior year leaver as reported in the prior year.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="Relation" type="RelationDescriptorReferenceType" minOccurs="0">
-            <xs:annotation>
-              <xs:documentation>The nature of an individual's relationship to a student.</xs:documentation>
-              <xs:appinfo>
-                <ann:Descriptor>RelationDescriptor</ann:Descriptor>
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="ContactPriority" type="EXTENSION-ContactPriority" minOccurs="0">
-            <xs:annotation>
-              <xs:documentation>E1427. ContactPriority indicates the numeric order of the preferred sequence or priority of contact.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
+      <xs:extension base="DescriptorType" />
     </xs:complexContent>
   </xs:complexType>
+  <xs:annotation>
+    <xs:documentation>===== Associations =====</xs:documentation>
+  </xs:annotation>
   <xs:complexType name="EXTENSION-StaffEducationOrganizationAssignmentAssociationExtension">
     <xs:annotation>
       <xs:documentation></xs:documentation>
@@ -3663,11 +3887,6 @@
               <xs:documentation>UnschooledAsyleeRefugee with effective dates.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="EarlyReadingIndicatorSet" type="EXTENSION-EarlyReadingIndicatorSet" minOccurs="0" maxOccurs="unbounded">
-            <xs:annotation>
-              <xs:documentation>EarlyReadingIndicator with effective dates.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
           <xs:element name="MilitaryConnectedStudentSet" type="EXTENSION-MilitaryConnectedStudentSet" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation>
               <xs:documentation>MilitaryConnectedStudentIndicator with effective dates.</xs:documentation>
@@ -3711,6 +3930,11 @@
           <xs:element name="FullTimeHybridVirtualProgramParticipationSet" type="EXTENSION-FullTimeHybridVirtualProgramParticipationSet" minOccurs="0" maxOccurs="unbounded">
             <xs:annotation>
               <xs:documentation>The FullTimeHybridVirtualProgramParticipationSet common type indicates the type (hybrid or virtual) of program participation for a student.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="ArmedForcesQualificationTestScore" type="EXTENSION-ArmedForcesQualificationTestScore" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>E3173. ArmedForcesQualificationTestScore indicates the score the student received on the Armed Forces Qualification Test (AFQT), which determines basic eligibility to join the US military. This score is derived from specific sections of the Armed Services Vocational Aptitude Battery (ASVAB), including Math Knowledge, Arithmetic Reasoning, Word Knowledge, and Paragraph Comprehension.</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -3779,9 +4003,17 @@
               </xs:appinfo>
             </xs:annotation>
           </xs:element>
-          <xs:element name="EnrollmentTrackingVerification" type="EXTENSION-EnrollmentTrackingVerificationDescriptorReferenceType" minOccurs="0">
+          <xs:element name="EntryEnrollmentTrackingVerification" type="EXTENSION-EnrollmentTrackingVerificationDescriptorReferenceType" minOccurs="0">
             <xs:annotation>
-              <xs:documentation>E3080, C351. The EnrollmentTrackingVerification indicates the status of the enrollment event.</xs:documentation>
+              <xs:documentation>E3080, C351. The EntryEnrollmentTrackingVerification indicates the status of the enrollment event.</xs:documentation>
+              <xs:appinfo>
+                <ann:Descriptor>EXTENSION-EnrollmentTrackingVerificationDescriptor</ann:Descriptor>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="ExitEnrollmentTrackingVerification" type="EXTENSION-EnrollmentTrackingVerificationDescriptorReferenceType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>E3177, C351. The ExitEnrollmentTrackingVerification indicates the status of the exit enrollment event.</xs:documentation>
               <xs:appinfo>
                 <ann:Descriptor>EXTENSION-EnrollmentTrackingVerificationDescriptor</ann:Descriptor>
               </xs:appinfo>
@@ -3891,6 +4123,21 @@
           <xs:element name="StudentSecondaryTransitionSet" type="EXTENSION-StudentSecondaryTransitionSet" minOccurs="0">
             <xs:annotation>
               <xs:documentation>The StudentSecondaryTransitionSet captures the information for SPPI-13.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="TierOfIntensitySet" type="EXTENSION-TierOfIntensitySet" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation>The TierOfIntensitySet common type captures the tier of intensity for a student and the TierOfIntensityBeginDate and TierOfIntensityEndDate associated with the TierOfIntensity data element.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="SPEDServiceGroupSet" type="EXTENSION-SPEDServiceGroupSet" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation>The SPEDServiceGroupSet common type captures the SPED service group for a student and the SPEDServiceGroupBeginDate and SPEDServiceGroupEndDate associated with the SPEDServiceGroup data element.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="NumberOfMinutesInSPEDSet" type="EXTENSION-NumberOfMinutesInSPEDSet" minOccurs="0" maxOccurs="unbounded">
+            <xs:annotation>
+              <xs:documentation>The NumberOfMinutesInSPEDSet common type captures the average number of minutes per day a student receives special education services in a special education classroom or setting and the NumberOfMinutesInSPEDBeginDate and NumberOfMinutesInSPEDEndDate</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -4074,7 +4321,7 @@
           </xs:element>
           <xs:element name="IDEAIndicator" type="xs:boolean" minOccurs="0">
             <xs:annotation>
-              <xs:documentation>E1717. IDEAIndicator indicates whether or not the student was determined eligible and enrolled in special education and related services as a result of the full individual and initial evaluation (FIIE) report and the admission, review, and dismissal (ARD) committee meeting decision.</xs:documentation>
+              <xs:documentation>IDEAIndicator indicates whether or not the student was determined eligible and enrolled in a special education program as a result of the eligibility meeting conducted by the admission, review, and dismissal (ARD) committee after a full and individual initial evaluation (FIIE) is conducted. </xs:documentation>
             </xs:annotation>
           </xs:element>
           <xs:element name="EligibilityDelayReason" type="EXTENSION-EligibilityDelayReasonDescriptorReferenceType" minOccurs="0">
@@ -4098,6 +4345,19 @@
           <xs:element name="TransitionConferenceDate" type="xs:date" minOccurs="0">
             <xs:annotation>
               <xs:documentation>E1713. TransitionConferenceDate indicates the month, day, and year when the transition conference was held (for a child receiving early childhood intervention (ECI) services) among the lead agency, the family, and the LEA where the child resides to discuss the child’s potential eligibility for early childhood special education (ECSE) services.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="ReasonNoSPEDServices" type="EXTENSION-ReasonNoSPEDServicesDescriptorReferenceType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>E3174, C377. ReasonNoSPEDServices indicates the outcome of the admission, review, and dismissal (ARD) committee meeting after completing the full and individual initial evaluation (FIIE) when the student is determined ineligible or does not enroll in the Local Education Agency (LEA) and receive special education and related services.</xs:documentation>
+              <xs:appinfo>
+                <ann:Descriptor>EXTENSION-ReasonNoSPEDServicesDescriptor</ann:Descriptor>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="ECIReferralReinitiatedIndicator" type="xs:boolean" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>E3178. ECIReferralReinitiatedIndicator indicates whether a parent or guardian, after initially opting out of an Early Childhood Intervention (ECI) referral to the local education agency (LEA), subsequently requested a referral less than 90 calendar days prior to the child's third birthday.</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -4564,9 +4824,9 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="EXTENSION-ExtendedSchoolYearServicesAttendanceIdentityType">
+  <xs:complexType name="EXTENSION-ESYTierOfIntensityAttendanceIdentityType">
     <xs:annotation>
-      <xs:documentation>Identity of an ExtendedSchoolYearServicesAttendance.</xs:documentation>
+      <xs:documentation>Identity of an ESYTierOfIntensityAttendance.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Identity</ann:TypeGroup>
       </xs:appinfo>
@@ -4590,19 +4850,19 @@
           </xs:appinfo>
         </xs:annotation>
       </xs:element>
-      <xs:element name="FirstInstructionalSetting" type="EXTENSION-InstructionalSettingDescriptorReferenceType">
+      <xs:element name="TierOfIntensity" type="EXTENSION-TierOfIntensityDescriptorReferenceType">
         <xs:annotation>
-          <xs:documentation>E3031, C035. The FirstInstructionalSetting identifies the setting used in providing extended year services component of special education. The InstructionalSetting reported is the EducationalEnvironment in which the student was served during the regular school year.</xs:documentation>
+          <xs:documentation>E3153, C371. TierOfIntensity refers to the level of support and services provided to a student receiving special education and related services as documented in their individualized education program.</xs:documentation>
           <xs:appinfo>
-            <ann:Descriptor>EXTENSION-InstructionalSettingDescriptor</ann:Descriptor>
+            <ann:Descriptor>EXTENSION-TierOfIntensityDescriptor</ann:Descriptor>
           </xs:appinfo>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="EXTENSION-ExtendedSchoolYearServicesAttendanceReferenceType">
+  <xs:complexType name="EXTENSION-ESYTierOfIntensityAttendanceReferenceType">
     <xs:annotation>
-      <xs:documentation>Provides alternative references for an ExtendedSchoolYearServicesAttendance. Use XML IDREF to reference a record that is included in the interchange. Use the identity type to look up a record that was loaded previously.</xs:documentation>
+      <xs:documentation>Provides alternative references for an ESYTierOfIntensityAttendance. Use XML IDREF to reference a record that is included in the interchange. Use the identity type to look up a record that was loaded previously.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Extended Reference</ann:TypeGroup>
       </xs:appinfo>
@@ -4610,9 +4870,9 @@
     <xs:complexContent>
       <xs:extension base="ReferenceType">
         <xs:sequence>
-          <xs:element name="ExtendedSchoolYearServicesAttendanceIdentity" type="EXTENSION-ExtendedSchoolYearServicesAttendanceIdentityType" minOccurs="0">
+          <xs:element name="ESYTierOfIntensityAttendanceIdentity" type="EXTENSION-ESYTierOfIntensityAttendanceIdentityType" minOccurs="0">
             <xs:annotation>
-              <xs:documentation>Identity of an ExtendedSchoolYearServicesAttendance.</xs:documentation>
+              <xs:documentation>Identity of an ESYTierOfIntensityAttendance.</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -4907,6 +5167,160 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+  <xs:complexType name="EXTENSION-FlexibleSpecialEducationTierOfIntensityAttendanceIdentityType">
+    <xs:annotation>
+      <xs:documentation>Identity of a FlexibleSpecialEducationTierOfIntensityAttendance.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Identity</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="SchoolReference" type="SchoolReferenceType">
+        <xs:annotation>
+          <xs:documentation>School reference.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="StudentReference" type="StudentReferenceType">
+        <xs:annotation>
+          <xs:documentation>Student reference.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CalendarCode" type="EXTENSION-CalendarCode">
+        <xs:annotation>
+          <xs:documentation>E0975. CalendarCode indicates a unique campus calendar of school days for a particular group of students on a campus. Students with the same CalendarCode have the same number of days taught in a particular reporting period at a campus.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ReportingPeriod" type="EXTENSION-ReportingPeriodDescriptorReferenceType">
+        <xs:annotation>
+          <xs:documentation>E0934, C130. ReportingPeriod indicates the period for which the attendance data are being reported.</xs:documentation>
+          <xs:appinfo>
+            <ann:Descriptor>EXTENSION-ReportingPeriodDescriptor</ann:Descriptor>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="GradeLevel" type="GradeLevelDescriptorReferenceType">
+        <xs:annotation>
+          <xs:documentation>E0017, C050. GradeLevel indicates the current grade level of the student.</xs:documentation>
+          <xs:appinfo>
+            <ann:Descriptor>GradeLevelDescriptor</ann:Descriptor>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="FlexAttendanceProgram" type="EXTENSION-FlexAttendanceProgramDescriptorReferenceType">
+        <xs:annotation>
+          <xs:documentation>E1045, C177. FlexAttendanceProgram indicates the unique type of flexible attendance program to which the student’s flexible attendance is related.</xs:documentation>
+          <xs:appinfo>
+            <ann:Descriptor>EXTENSION-FlexAttendanceProgramDescriptor</ann:Descriptor>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="TierOfIntensity" type="EXTENSION-TierOfIntensityDescriptorReferenceType">
+        <xs:annotation>
+          <xs:documentation>E3153, C371. TierOfIntensity refers to the level of support and services provided to a student receiving special education and related services as documented in their individualized education program.</xs:documentation>
+          <xs:appinfo>
+            <ann:Descriptor>EXTENSION-TierOfIntensityDescriptor</ann:Descriptor>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-FlexibleSpecialEducationTierOfIntensityAttendanceReferenceType">
+    <xs:annotation>
+      <xs:documentation>Provides alternative references for a FlexibleSpecialEducationTierOfIntensityAttendance. Use XML IDREF to reference a record that is included in the interchange. Use the identity type to look up a record that was loaded previously.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ReferenceType">
+        <xs:sequence>
+          <xs:element name="FlexibleSpecialEducationTierOfIntensityAttendanceIdentity" type="EXTENSION-FlexibleSpecialEducationTierOfIntensityAttendanceIdentityType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Identity of a FlexibleSpecialEducationTierOfIntensityAttendance.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-GrievanceExtIdentityType">
+    <xs:annotation>
+      <xs:documentation>Identity of a GrievanceExt.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Identity</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="EducationOrganizationReference" type="EducationOrganizationReferenceType">
+        <xs:annotation>
+          <xs:documentation>E0212. The LocalEducationAgency Reference represents the identifier assigned to the Local Education Agency.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="GrievanceIdentifier" type="EXTENSION-GrievanceIdentifier">
+        <xs:annotation>
+          <xs:documentation>E3136. GrievanceIdentifier indicates a unique number associated to a particular grievance filed.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-GrievanceExtReferenceType">
+    <xs:annotation>
+      <xs:documentation>Provides alternative references for a GrievanceExt. Use XML IDREF to reference a record that is included in the interchange. Use the identity type to look up a record that was loaded previously.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ReferenceType">
+        <xs:sequence>
+          <xs:element name="GrievanceExtIdentity" type="EXTENSION-GrievanceExtIdentityType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Identity of a GrievanceExt.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-OpenStaffPositionExtIdentityType">
+    <xs:annotation>
+      <xs:documentation>Identity of an OpenStaffPositionExt.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Identity</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="EducationOrganizationReference" type="EducationOrganizationReferenceType">
+        <xs:annotation>
+          <xs:documentation>E0212. The LocalEducationAgency Reference represents the identifier assigned to the Local Education Agency.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="PositionNumber" type="EXTENSION-PositionNumber">
+        <xs:annotation>
+          <xs:documentation>E3143. PositionNumber indicates the locally assigned position number for the open staff position, typically a number assigned by Human Resources that is associated with the specific role.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-OpenStaffPositionExtReferenceType">
+    <xs:annotation>
+      <xs:documentation>Provides alternative references for an OpenStaffPositionExt. Use XML IDREF to reference a record that is included in the interchange. Use the identity type to look up a record that was loaded previously.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ReferenceType">
+        <xs:sequence>
+          <xs:element name="OpenStaffPositionExtIdentity" type="EXTENSION-OpenStaffPositionExtIdentityType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Identity of an OpenStaffPositionExt.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
   <xs:complexType name="EXTENSION-PayrollExtIdentityType">
     <xs:annotation>
       <xs:documentation>Identity of a PayrollExt.</xs:documentation>
@@ -5077,118 +5491,6 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
-  <xs:complexType name="EXTENSION-PriorYearLeaverIdentityType">
-    <xs:annotation>
-      <xs:documentation>Identity of a PriorYearLeaver.</xs:documentation>
-      <xs:appinfo>
-        <ann:TypeGroup>Identity</ann:TypeGroup>
-      </xs:appinfo>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element name="StudentUId" type="EXTENSION-StudentUId">
-        <xs:annotation>
-          <xs:documentation>E1523. StudentUId (StudentUniqueId) is a unique number assigned to a student by the Texas Education Agency.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="SchoolReference" type="SchoolReferenceType">
-        <xs:annotation>
-          <xs:documentation>This entity represents an educational organization that includes staff and students who participate in classes and educational activity groups.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="EXTENSION-PriorYearLeaverParentIdentityType">
-    <xs:annotation>
-      <xs:documentation>Identity of a PriorYearLeaverParent.</xs:documentation>
-      <xs:appinfo>
-        <ann:TypeGroup>Identity</ann:TypeGroup>
-      </xs:appinfo>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element name="ParentUId" type="EXTENSION-ParentUId">
-        <xs:annotation>
-          <xs:documentation>E3078. ParentUId is a unique number or alphanumeric code assigned to a person by the LEA.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="EXTENSION-PriorYearLeaverParentReferenceType">
-    <xs:annotation>
-      <xs:documentation>Provides alternative references for a PriorYearLeaverParent. Use XML IDREF to reference a record that is included in the interchange. Use the identity type to look up a record that was loaded previously.</xs:documentation>
-      <xs:appinfo>
-        <ann:TypeGroup>Extended Reference</ann:TypeGroup>
-      </xs:appinfo>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:extension base="ReferenceType">
-        <xs:sequence>
-          <xs:element name="PriorYearLeaverParentIdentity" type="EXTENSION-PriorYearLeaverParentIdentityType" minOccurs="0">
-            <xs:annotation>
-              <xs:documentation>Identity of a PriorYearLeaverParent.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="EXTENSION-PriorYearLeaverReferenceType">
-    <xs:annotation>
-      <xs:documentation>Provides alternative references for a PriorYearLeaver. Use XML IDREF to reference a record that is included in the interchange. Use the identity type to look up a record that was loaded previously.</xs:documentation>
-      <xs:appinfo>
-        <ann:TypeGroup>Extended Reference</ann:TypeGroup>
-      </xs:appinfo>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:extension base="ReferenceType">
-        <xs:sequence>
-          <xs:element name="PriorYearLeaverIdentity" type="EXTENSION-PriorYearLeaverIdentityType" minOccurs="0">
-            <xs:annotation>
-              <xs:documentation>Identity of a PriorYearLeaver.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
-  <xs:complexType name="EXTENSION-PriorYearLeaverStudentParentAssociationIdentityType">
-    <xs:annotation>
-      <xs:documentation>Identity of a PriorYearLeaverStudentParentAssociation.</xs:documentation>
-      <xs:appinfo>
-        <ann:TypeGroup>Identity</ann:TypeGroup>
-      </xs:appinfo>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element name="PriorYearLeaverReference" type="EXTENSION-PriorYearLeaverReferenceType">
-        <xs:annotation>
-          <xs:documentation>Prior year leaver associated with the Parent.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="PriorYearLeaverParentReference" type="EXTENSION-PriorYearLeaverParentReferenceType">
-        <xs:annotation>
-          <xs:documentation>The Parent associated with the prior year leaver as reported in the prior year.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-  </xs:complexType>
-  <xs:complexType name="EXTENSION-PriorYearLeaverStudentParentAssociationReferenceType">
-    <xs:annotation>
-      <xs:documentation>Provides alternative references for a PriorYearLeaverStudentParentAssociation. Use XML IDREF to reference a record that is included in the interchange. Use the identity type to look up a record that was loaded previously.</xs:documentation>
-      <xs:appinfo>
-        <ann:TypeGroup>Extended Reference</ann:TypeGroup>
-      </xs:appinfo>
-    </xs:annotation>
-    <xs:complexContent>
-      <xs:extension base="ReferenceType">
-        <xs:sequence>
-          <xs:element name="PriorYearLeaverStudentParentAssociationIdentity" type="EXTENSION-PriorYearLeaverStudentParentAssociationIdentityType" minOccurs="0">
-            <xs:annotation>
-              <xs:documentation>Identity of a PriorYearLeaverStudentParentAssociation.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-        </xs:sequence>
-      </xs:extension>
-    </xs:complexContent>
-  </xs:complexType>
   <xs:complexType name="EXTENSION-PriorYearSSAOrgAssociationExtIdentityType">
     <xs:annotation>
       <xs:documentation>Identity of a PriorYearSSAOrgAssociationExt.</xs:documentation>
@@ -5272,6 +5574,45 @@
           <xs:element name="ReportingPeriodExtIdentity" type="EXTENSION-ReportingPeriodExtIdentityType" minOccurs="0">
             <xs:annotation>
               <xs:documentation>Identity of a ReportingPeriodExt.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-RequisitionExtIdentityType">
+    <xs:annotation>
+      <xs:documentation>Identity of a RequisitionExt.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Identity</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="OpenStaffPositionExtReference" type="EXTENSION-OpenStaffPositionExtReferenceType">
+        <xs:annotation>
+          <xs:documentation>The OpenStaffPositionExt Entity represents an open staff position that the education organization is seeking to fill.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="RequisitionNumber" type="EXTENSION-RequisitionNumber">
+        <xs:annotation>
+          <xs:documentation>E3148. RequisitionNumber indicates the identifier assigned to an open staff position to initiate hiring, typically a number assigned by Human Resources.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-RequisitionExtReferenceType">
+    <xs:annotation>
+      <xs:documentation>Provides alternative references for a RequisitionExt. Use XML IDREF to reference a record that is included in the interchange. Use the identity type to look up a record that was loaded previously.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ReferenceType">
+        <xs:sequence>
+          <xs:element name="RequisitionExtIdentity" type="EXTENSION-RequisitionExtIdentityType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Identity of a RequisitionExt.</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -5414,6 +5755,82 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+  <xs:complexType name="EXTENSION-SpecialEducationTierOfIntensityAttendanceIdentityType">
+    <xs:annotation>
+      <xs:documentation>Identity of a SpecialEducationTierOfIntensityAttendance.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Identity</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="SchoolReference" type="SchoolReferenceType">
+        <xs:annotation>
+          <xs:documentation>School reference.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="StudentReference" type="StudentReferenceType">
+        <xs:annotation>
+          <xs:documentation>Student reference.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="CalendarCode" type="EXTENSION-CalendarCode">
+        <xs:annotation>
+          <xs:documentation>E0975. CalendarCode indicates a unique campus calendar of school days for a particular group of students on a campus. Students with the same CalendarCode have the same number of days taught in a particular reporting period at a campus.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ReportingPeriod" type="EXTENSION-ReportingPeriodDescriptorReferenceType">
+        <xs:annotation>
+          <xs:documentation>E0934, C130. ReportingPeriod indicates the period for which the attendance data are being reported.</xs:documentation>
+          <xs:appinfo>
+            <ann:Descriptor>EXTENSION-ReportingPeriodDescriptor</ann:Descriptor>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="GradeLevel" type="GradeLevelDescriptorReferenceType">
+        <xs:annotation>
+          <xs:documentation>E0017, C050. GradeLevel indicates the current grade level of the student, or the grade level(s) offered at a school.</xs:documentation>
+          <xs:appinfo>
+            <ann:Descriptor>GradeLevelDescriptor</ann:Descriptor>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="RegionalDaySchoolProgramForDeaf" type="EXTENSION-RegionalDaySchoolProgramForDeafDescriptorReferenceType">
+        <xs:annotation>
+          <xs:documentation>E0833, C067. RegionalDaySchoolProgramForDeaf indicates the student is receiving instructional servies from the regional day school program for the deaf.</xs:documentation>
+          <xs:appinfo>
+            <ann:Descriptor>EXTENSION-RegionalDaySchoolProgramForDeafDescriptor</ann:Descriptor>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="TierOfIntensity" type="EXTENSION-TierOfIntensityDescriptorReferenceType">
+        <xs:annotation>
+          <xs:documentation>E3153, C371. TierOfIntensity refers to the level of support and services provided to a student receiving special education and related services as documented in their individualized education program.</xs:documentation>
+          <xs:appinfo>
+            <ann:Descriptor>EXTENSION-TierOfIntensityDescriptor</ann:Descriptor>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-SpecialEducationTierOfIntensityAttendanceReferenceType">
+    <xs:annotation>
+      <xs:documentation>Provides alternative references for a SpecialEducationTierOfIntensityAttendance. Use XML IDREF to reference a record that is included in the interchange. Use the identity type to look up a record that was loaded previously.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ReferenceType">
+        <xs:sequence>
+          <xs:element name="SpecialEducationTierOfIntensityAttendanceIdentity" type="EXTENSION-SpecialEducationTierOfIntensityAttendanceIdentityType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Identity of a SpecialEducationTierOfIntensityAttendance.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
   <xs:complexType name="EXTENSION-SpecialProgramsReportingPeriodAttendanceIdentityType">
     <xs:annotation>
       <xs:documentation>Identity of a SpecialProgramsReportingPeriodAttendance.</xs:documentation>
@@ -5468,6 +5885,45 @@
           <xs:element name="SpecialProgramsReportingPeriodAttendanceIdentity" type="EXTENSION-SpecialProgramsReportingPeriodAttendanceIdentityType" minOccurs="0">
             <xs:annotation>
               <xs:documentation>Identity of a SpecialProgramsReportingPeriodAttendance.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-SPEDVideoCameraRequestExtIdentityType">
+    <xs:annotation>
+      <xs:documentation>Identity of a SPEDVideoCameraRequestExt.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Identity</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="SchoolReference" type="SchoolReferenceType">
+        <xs:annotation>
+          <xs:documentation>School reference.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="RequestId" type="EXTENSION-RequestId">
+        <xs:annotation>
+          <xs:documentation>E3166. RequestId indicates the unique identifier for the individual special education classroom video camera request.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-SPEDVideoCameraRequestExtReferenceType">
+    <xs:annotation>
+      <xs:documentation>Provides alternative references for a SPEDVideoCameraRequestExt. Use XML IDREF to reference a record that is included in the interchange. Use the identity type to look up a record that was loaded previously.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ReferenceType">
+        <xs:sequence>
+          <xs:element name="SPEDVideoCameraRequestExtIdentity" type="EXTENSION-SPEDVideoCameraRequestExtIdentityType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Identity of a SPEDVideoCameraRequestExt.</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -5711,18 +6167,18 @@
     </xs:annotation>
     <xs:restriction base="DescriptorReferenceType" />
   </xs:simpleType>
-  <xs:simpleType name="EXTENSION-AsOfStatusLastDayEnrollmentDescriptorReferenceType">
+  <xs:simpleType name="EXTENSION-AsOfStatusFirstFridayOctoberDescriptorReferenceType">
     <xs:annotation>
-      <xs:documentation>E3006. AsOfStatusLastDayEnrollment indicates the student's status in the district on the last day of school or last date of enrollment in the current school year.</xs:documentation>
+      <xs:documentation>E3119. AsOfStatusFirstFridayOctober indicates the student’s status in the LEA on the first Friday in October.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
       </xs:appinfo>
     </xs:annotation>
     <xs:restriction base="DescriptorReferenceType" />
   </xs:simpleType>
-  <xs:simpleType name="EXTENSION-AsOfStatusLastFridayOctoberDescriptorReferenceType">
+  <xs:simpleType name="EXTENSION-AsOfStatusLastDayEnrollmentDescriptorReferenceType">
     <xs:annotation>
-      <xs:documentation>E3007. AsOfStatusLastFridayOctober indicates the student's status in the local education agency on the last Friday in October in the current school year.</xs:documentation>
+      <xs:documentation>E3006. AsOfStatusLastDayEnrollment indicates the student's status in the district on the last day of school or last date of enrollment in the current school year.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
       </xs:appinfo>
@@ -5810,6 +6266,24 @@
     </xs:annotation>
     <xs:restriction base="DescriptorReferenceType" />
   </xs:simpleType>
+  <xs:simpleType name="EXTENSION-CameraRequestorDescriptorReferenceType">
+    <xs:annotation>
+      <xs:documentation>E3168, C374. CameraRequestor indicates the category to which the person belongs who is making the request for a video camera to be installed in a special education classroom.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="DescriptorReferenceType" />
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-CameraStatusDescriptorReferenceType">
+    <xs:annotation>
+      <xs:documentation>E3169, C375. CameraStatus indicates if the special education camera request has been authorized, denied, or withdrawn.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="DescriptorReferenceType" />
+  </xs:simpleType>
   <xs:simpleType name="EXTENSION-CampusEnrollmentTypeDescriptorReferenceType">
     <xs:annotation>
       <xs:documentation>Descriptor CampusEnrollmentType is populated from code table C219.</xs:documentation>
@@ -5882,6 +6356,15 @@
     </xs:annotation>
     <xs:restriction base="DescriptorReferenceType" />
   </xs:simpleType>
+  <xs:simpleType name="EXTENSION-DenialReasonDescriptorReferenceType">
+    <xs:annotation>
+      <xs:documentation>E3171, C376. DenialReason indicates the reason the camera request was denied. The local education agency should maintain documentation of the reason the denial was made.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="DescriptorReferenceType" />
+  </xs:simpleType>
   <xs:simpleType name="EXTENSION-DifferenceReasonHoursAcceleratedInstructionDescriptorReferenceType">
     <xs:annotation>
       <xs:documentation>E3088. DifferenceReasonHoursAcceleratedInstruction indicates the reason the student did not complete the full number of assigned hours of accelerated instruction.</xs:documentation>
@@ -5921,15 +6404,6 @@
   <xs:simpleType name="EXTENSION-DyslexiaServicesDescriptorReferenceType">
     <xs:annotation>
       <xs:documentation>Descriptor DyslexiaServices is based on code table C224.</xs:documentation>
-      <xs:appinfo>
-        <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
-      </xs:appinfo>
-    </xs:annotation>
-    <xs:restriction base="DescriptorReferenceType" />
-  </xs:simpleType>
-  <xs:simpleType name="EXTENSION-EarlyReadingIndicatorDescriptorReferenceType">
-    <xs:annotation>
-      <xs:documentation>Descriptor EarlyReadingIndicator is populated from Code Table C195.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
       </xs:appinfo>
@@ -6116,18 +6590,27 @@
     </xs:annotation>
     <xs:restriction base="DescriptorReferenceType" />
   </xs:simpleType>
-  <xs:simpleType name="EXTENSION-HearingAmplificationAccessDescriptorReferenceType">
+  <xs:simpleType name="EXTENSION-GradeLevelRangeDescriptorReferenceType">
     <xs:annotation>
-      <xs:documentation>Descriptor HearingAmplificationAccess identifies whether the student has access to the hearing amplification device for the full-day or partial day for each HEARING-AMPLIFICATION-TYPE reported. (C318)</xs:documentation>
+      <xs:documentation>E3144, C370. GradeLevelRange indicates the range of grade levels of a teaching position.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
       </xs:appinfo>
     </xs:annotation>
     <xs:restriction base="DescriptorReferenceType" />
   </xs:simpleType>
-  <xs:simpleType name="EXTENSION-HearingAmplificationDailyUseDescriptorReferenceType">
+  <xs:simpleType name="EXTENSION-GrievanceCorrectiveActionDescriptorReferenceType">
     <xs:annotation>
-      <xs:documentation>Descriptor HearingAmplificationDailyUse identifies the average amount of time the hearing amplification device is used in a day based on the HEARING-AMPLIFICATION-ACCESS reported. (C319)</xs:documentation>
+      <xs:documentation>E3139, C364. GrievanceCorrectiveAction indicates corrective action taken by the district based on the grievance filed.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="DescriptorReferenceType" />
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-GrievanceLevelDescriptorReferenceType">
+    <xs:annotation>
+      <xs:documentation>E3142, C378. GrievanceLevel indicates the level of grievance.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
       </xs:appinfo>
@@ -6158,15 +6641,6 @@
     </xs:annotation>
     <xs:restriction base="DescriptorReferenceType" />
   </xs:simpleType>
-  <xs:simpleType name="EXTENSION-HoursSpentReceivingServicesDescriptorReferenceType">
-    <xs:annotation>
-      <xs:documentation>Descriptor HoursSpentReceivingServices identifies the amount of time in which the student receives services. (C316)</xs:documentation>
-      <xs:appinfo>
-        <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
-      </xs:appinfo>
-    </xs:annotation>
-    <xs:restriction base="DescriptorReferenceType" />
-  </xs:simpleType>
   <xs:simpleType name="EXTENSION-IBCVendorDescriptorReferenceType">
     <xs:annotation>
       <xs:documentation>Descriptor IBCVendorCode identifies the organization or company that offered the service. (C226)</xs:documentation>
@@ -6179,6 +6653,15 @@
   <xs:simpleType name="EXTENSION-InstructionalSettingDescriptorReferenceType">
     <xs:annotation>
       <xs:documentation>Descriptor InstructionalSetting is based on code table C035.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="DescriptorReferenceType" />
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-InstructionalSubjectDescriptorReferenceType">
+    <xs:annotation>
+      <xs:documentation>E3145, C366. InstructionalSubject indicates the academic subject of instruction for the position.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
       </xs:appinfo>
@@ -6356,6 +6839,15 @@
     </xs:annotation>
     <xs:restriction base="DescriptorReferenceType" />
   </xs:simpleType>
+  <xs:simpleType name="EXTENSION-PostingClosedReasonDescriptorReferenceType">
+    <xs:annotation>
+      <xs:documentation>E3152, C369. PostingClosedReason indicates whether the position was filled or closed unfilled.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="DescriptorReferenceType" />
+  </xs:simpleType>
   <xs:simpleType name="EXTENSION-PostSecondaryCertificationLicensureDescriptorReferenceType">
     <xs:annotation>
       <xs:documentation>Descriptor PostSecondaryCertificationLicensure indicates a nationally or internationally recognized business or industry certification or license earned by a student. (C214)</xs:documentation>
@@ -6401,6 +6893,15 @@
     </xs:annotation>
     <xs:restriction base="DescriptorReferenceType" />
   </xs:simpleType>
+  <xs:simpleType name="EXTENSION-ReasonNoSPEDServicesDescriptorReferenceType">
+    <xs:annotation>
+      <xs:documentation>E3174, C377. ReasonNoSPEDServices indicates the outcome of the admission, review, and dismissal (ARD) committee meeting after completing the full and individual initial evaluation (FIIE) when the student is determined ineligible or does not enroll in the Local Education Agency (LEA) and receive special education and related services.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="DescriptorReferenceType" />
+  </xs:simpleType>
   <xs:simpleType name="EXTENSION-RegionalDaySchoolProgramForDeafDescriptorReferenceType">
     <xs:annotation>
       <xs:documentation>Descriptor RegionalDaySchoolProgramForDeaf is based on code table C067.</xs:documentation>
@@ -6428,6 +6929,15 @@
     </xs:annotation>
     <xs:restriction base="DescriptorReferenceType" />
   </xs:simpleType>
+  <xs:simpleType name="EXTENSION-ResolutionOfGrievanceDescriptorReferenceType">
+    <xs:annotation>
+      <xs:documentation>E3141, C365. ResolutionOfGrievance indicates the specific resolution of the grievance at any given level.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="DescriptorReferenceType" />
+  </xs:simpleType>
   <xs:simpleType name="EXTENSION-RestraintStaffTypeDescriptorReferenceType">
     <xs:annotation>
       <xs:documentation>Descriptor RestraintStaffType indicates the kind of school staff person that performed a student restraint. (C194)</xs:documentation>
@@ -6449,6 +6959,15 @@
   <xs:simpleType name="EXTENSION-SPEDProgramSvcDescriptorReferenceType">
     <xs:annotation>
       <xs:documentation>E3058. SPEDProgramSvc defines the services provided by an education organization to populations of students associated with a special education program.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="DescriptorReferenceType" />
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-SPEDServiceGroupDescriptorReferenceType">
+    <xs:annotation>
+      <xs:documentation>E3159, C373. SPEDServiceGroup indicates the category or group of students based on the type, intensity, or setting of special education services the student receives.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
       </xs:appinfo>
@@ -6520,7 +7039,7 @@
   </xs:simpleType>
   <xs:simpleType name="EXTENSION-TeacherIncentiveAllotmentDesignationDescriptorReferenceType">
     <xs:annotation>
-      <xs:documentation>Descriptor TeacherIncentiveAllotmentDesignation is based on code table C322</xs:documentation>
+      <xs:documentation>E1722. TeacherIncentiveAllotmentDesignation indicates a teacher (StaffClassification 087) is an Active National Board Certified Teacher, holds a current designation (Recognized, Exemplary, Master, or Achievement), or has been submitted by an LEA for a new or change of designation in the Teacher Incentive Allotment.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
       </xs:appinfo>
@@ -6530,6 +7049,15 @@
   <xs:simpleType name="EXTENSION-TexasFirstEarlyHSCompletionProgramDescriptorReferenceType">
     <xs:annotation>
       <xs:documentation>Descriptor TexasFirstEarlyHSCompletionProgram is based on code table C233.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="DescriptorReferenceType" />
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-TierOfIntensityDescriptorReferenceType">
+    <xs:annotation>
+      <xs:documentation>E3153, C371. TierOfIntensity refers to the level of support and services provided to a student receiving special education and related services as documented in their individualized education program.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
       </xs:appinfo>
@@ -6575,6 +7103,15 @@
   <xs:simpleType name="EXTENSION-UnschooledAsyleeRefugeeDescriptorReferenceType">
     <xs:annotation>
       <xs:documentation>Descriptor UnschooledAsyleeRefugee is populated from Code Table C183.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="DescriptorReferenceType" />
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-VacancyReasonDescriptorReferenceType">
+    <xs:annotation>
+      <xs:documentation>E3147, C367. VacancyReason indicates the reason that the position became vacant.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
       </xs:appinfo>
@@ -7030,34 +7567,6 @@
       </xs:element>
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="EXTENSION-EarlyReadingIndicatorSet">
-    <xs:annotation>
-      <xs:documentation>EarlyReadingIndicators 1, 2, and 3 only apply to students in grades KG, 01, and 02. Students enrolled in all other grade levels should be reported with a blank.</xs:documentation>
-      <xs:appinfo>
-        <ann:TypeGroup>Common</ann:TypeGroup>
-      </xs:appinfo>
-    </xs:annotation>
-    <xs:sequence>
-      <xs:element name="EarlyReadingIndicator" type="EXTENSION-EarlyReadingIndicatorDescriptorReferenceType">
-        <xs:annotation>
-          <xs:documentation>E1522, C195. EarlyReadingIndicator indicates whether a student is eligible for accelerated reading instruction as indicated by the administered reading instrument.</xs:documentation>
-          <xs:appinfo>
-            <ann:Descriptor>EXTENSION-EarlyReadingIndicatorDescriptor</ann:Descriptor>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="BeginDate" type="xs:date">
-        <xs:annotation>
-          <xs:documentation>Begin date of the effecive date for the EarlyReadingIndicator</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="EndDate" type="xs:date" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation>EndDate is the first day after the last instructional day a kindergarten, first, or second-grade student was assigned to the EarlyReadingIndicator descriptor.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-    </xs:sequence>
-  </xs:complexType>
   <xs:complexType name="EXTENSION-EconomicDisadvantageSet">
     <xs:annotation>
       <xs:documentation>Common type EconomicDisadvantage indicates the student's economic disadvantage status</xs:documentation>
@@ -7082,6 +7591,34 @@
       <xs:element name="EndDate" type="xs:date" minOccurs="0">
         <xs:annotation>
           <xs:documentation>EndDate is the first day after the last instructional day a student was assigned to the EconomicDisadvantage descriptor.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-EducationalEnvironmentSet">
+    <xs:annotation>
+      <xs:documentation>The EducationalEnvironmentSet common type captures the educational environment setting in which a student receives special education and related services and the EducationalEnvironmentBeginDate and EducationalEnvironmentEndDate.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Common</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="EducationalEnvironment" type="EducationalEnvironmentDescriptorReferenceType">
+        <xs:annotation>
+          <xs:documentation>E3155, C372. EducationalEnvironment indicates the setting in which a student receives special education and related services.</xs:documentation>
+          <xs:appinfo>
+            <ann:Descriptor>EducationalEnvironmentDescriptor</ann:Descriptor>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="EducationalEnvironmentBeginDate" type="xs:date">
+        <xs:annotation>
+          <xs:documentation>E3175. EducationalEnvironmentBeginDate is the first instructional day a student is assigned to the EducationalEnvironment descriptor.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="EducationalEnvironmentEndDate" type="xs:date" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>E3176. EducationalEnvironmentEndDate is the first day after the last instructional day a student was assigned to the EducationalEnvironment descriptor.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -7272,51 +7809,33 @@
       </xs:element>
     </xs:sequence>
   </xs:complexType>
-  <xs:complexType name="EXTENSION-GraduationSet">
+  <xs:complexType name="EXTENSION-GrievanceLevelResolutionSet">
     <xs:annotation>
-      <xs:documentation>Common type based on EdFi.Diploma but with TEA specific elements.</xs:documentation>
+      <xs:documentation>The resolution of each level of a particular grievance.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Common</ann:TypeGroup>
       </xs:appinfo>
     </xs:annotation>
     <xs:sequence>
-      <xs:element name="DiplomaAwardDate" type="xs:date">
+      <xs:element name="GrievanceLevelResolvedDate" type="xs:date">
         <xs:annotation>
-          <xs:documentation>E0791. DiplomaAwardDate indicates the month and year that the student graduated from high school.</xs:documentation>
+          <xs:documentation>E3140.  GrievanceLevelResolvedDate indicates the date the level (1,2,3,4) of the grievance was resolved.</xs:documentation>
         </xs:annotation>
       </xs:element>
-      <xs:element name="DiplomaType" type="DiplomaTypeDescriptorReferenceType">
+      <xs:element name="ResolutionOfGrievance" type="EXTENSION-ResolutionOfGrievanceDescriptorReferenceType">
         <xs:annotation>
-          <xs:documentation>E0806, C062. DiplomaType indicates the type of plan under which the student graduated.</xs:documentation>
+          <xs:documentation>E3141, C365. ResolutionOfGrievance indicates the specific resolution of the grievance at any given level.</xs:documentation>
           <xs:appinfo>
-            <ann:Descriptor>DiplomaTypeDescriptor</ann:Descriptor>
+            <ann:Descriptor>EXTENSION-ResolutionOfGrievanceDescriptor</ann:Descriptor>
           </xs:appinfo>
         </xs:annotation>
       </xs:element>
-      <xs:element name="AchievementCategory" type="AchievementCategoryDescriptorReferenceType">
+      <xs:element name="GrievanceLevel" type="EXTENSION-GrievanceLevelDescriptorReferenceType">
         <xs:annotation>
-          <xs:documentation>The category of achievement attributed to the learner.</xs:documentation>
+          <xs:documentation>E3142, C378. GrievanceLevel indicates the level of grievance.</xs:documentation>
           <xs:appinfo>
-            <ann:Descriptor>AchievementCategoryDescriptor</ann:Descriptor>
+            <ann:Descriptor>EXTENSION-GrievanceLevelDescriptor</ann:Descriptor>
           </xs:appinfo>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="IndividualGraduationCommitteeGraduateIndicator" type="xs:boolean" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation>E1562. IndividualGraduationCommitteeGraduateIndicator Indicates whether a student for whom an IGC was established has graduated based on an IGC decision.</xs:documentation>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="TexasFirstEarlyHSCompletionProgram" type="EXTENSION-TexasFirstEarlyHSCompletionProgramDescriptorReferenceType" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation>E1736, C233. TexasFirstEarlyHSCompletionProgram indicates the student graduated early under the Texas First Early High School Completion Program and specifies whether the student graduated two or more semesters or less than two semesters or equivalent earlier than the expected graduation date of the student's high school cohort.</xs:documentation>
-          <xs:appinfo>
-            <ann:Descriptor>EXTENSION-TexasFirstEarlyHSCompletionProgramDescriptor</ann:Descriptor>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="DistingLevelAchievementGraduate" type="xs:boolean" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation>E3089. DistingLevelAchievementGraduate indicates the student has successfully completed the distinguished level of achievement as provided by TEC §28.025 (b-15) or TEC §28.0253.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -7334,22 +7853,6 @@
           <xs:documentation>E1665, C317. HearingAmplificationType identifies the type of hearing amplification device used by the student.</xs:documentation>
           <xs:appinfo>
             <ann:Descriptor>EXTENSION-HearingAmplificationTypeDescriptor</ann:Descriptor>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="HearingAmplificationAccess" type="EXTENSION-HearingAmplificationAccessDescriptorReferenceType" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation>E1666, C318. HearingAmplificationAccess identifies whether the student has access to the hearing amplification device for the full-day or partial day for each HEARING-AMPLIFICATION-TYPE reported.</xs:documentation>
-          <xs:appinfo>
-            <ann:Descriptor>EXTENSION-HearingAmplificationAccessDescriptor</ann:Descriptor>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:element>
-      <xs:element name="HearingAmplificationDailyUse" type="EXTENSION-HearingAmplificationDailyUseDescriptorReferenceType" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation>E1667, C319. HearingAmplificationDailyUse identifies the average amount of time the hearing amplification device is used in a day based on the HEARING-AMPLIFICATION-ACCESS reported.</xs:documentation>
-          <xs:appinfo>
-            <ann:Descriptor>EXTENSION-HearingAmplificationDailyUseDescriptor</ann:Descriptor>
           </xs:appinfo>
         </xs:annotation>
       </xs:element>
@@ -7538,14 +8041,6 @@
           </xs:appinfo>
         </xs:annotation>
       </xs:element>
-      <xs:element name="HoursSpentReceivingServices" type="EXTENSION-HoursSpentReceivingServicesDescriptorReferenceType" minOccurs="0">
-        <xs:annotation>
-          <xs:documentation>E1664, C316. HoursSpentReceivingServices identifies the amount of time in which the student receives services.</xs:documentation>
-          <xs:appinfo>
-            <ann:Descriptor>EXTENSION-HoursSpentReceivingServicesDescriptor</ann:Descriptor>
-          </xs:appinfo>
-        </xs:annotation>
-      </xs:element>
     </xs:sequence>
   </xs:complexType>
   <xs:complexType name="EXTENSION-MilitaryConnectedStudentSet">
@@ -7600,6 +8095,31 @@
       <xs:element name="EndDate" type="xs:date" minOccurs="0">
         <xs:annotation>
           <xs:documentation>EndDate is the first day after the last instructional day a campus was assigned to the NSLPType descriptor.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-NumberOfMinutesInSPEDSet">
+    <xs:annotation>
+      <xs:documentation>The NumberOfMinutesInSPEDSet common type captures the average number of minutes per day a student receives special education services in a special education classroom or setting and the NumberOfMinutesInSPEDBeginDate and NumberOfMinutesInSPEDEndDate.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Common</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="NumberOfMinutesInSPED" type="EXTENSION-NumberOfMinutesInSPED">
+        <xs:annotation>
+          <xs:documentation>E3162. NumberOfMinutesInSPED indicates the average number of minutes per day that a student receives special education services in a special education classroom or setting, as determined by the Admission, Review, and Dismissal (ARD) Committee.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="NumberOfMinutesInSPEDBeginDate" type="xs:date">
+        <xs:annotation>
+          <xs:documentation>E3163. NumberOfMinutesInSPEDBeginDate is the first instructional day a student receives the reported number of minutes in special education.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="NumberOfMinutesInSPEDEndDate" type="xs:date" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>E3164. NumberOfMinutesInSPEDEndDate is the first day after the last instructional day a student received the reported number of minutes in special education.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -7714,6 +8234,29 @@
       <xs:element name="EndDate" type="xs:date" minOccurs="0">
         <xs:annotation>
           <xs:documentation>EndDate is the first day after the last instructional day a prekindergarten student was assigned to the PKProgramType descriptor.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-PositionVacancySet">
+    <xs:annotation>
+      <xs:documentation>The PositionVacancy common type includes a set of data elements that provide information about when and why the position became vacant.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Common</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="DatePositionVacant" type="xs:date">
+        <xs:annotation>
+          <xs:documentation>E3146. DatePositionVacant indicates the date when the position becomes vacant. This should be the day after the final day of employment for the individual currently holding the position.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="VacancyReason" type="EXTENSION-VacancyReasonDescriptorReferenceType">
+        <xs:annotation>
+          <xs:documentation>E3147, C367. VacancyReason indicates the reason that the position became vacant.</xs:documentation>
+          <xs:appinfo>
+            <ann:Descriptor>EXTENSION-VacancyReasonDescriptor</ann:Descriptor>
+          </xs:appinfo>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -7841,6 +8384,34 @@
       <xs:element name="ServiceEndDate" type="xs:date" minOccurs="0">
         <xs:annotation>
           <xs:documentation>E3056. ServiceEndDate  is the first day after the last instructional day a student is no longer assigned to the SPEDProgramSvc descriptor.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-SPEDServiceGroupSet">
+    <xs:annotation>
+      <xs:documentation>The SPEDServiceGroupSet common type captures the SPED service group for a student and the SPEDServiceGroupBeginDate and SPEDServiceGroupEndDate associated with the SPEDServiceGroup data element.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Common</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="SPEDServiceGroup" type="EXTENSION-SPEDServiceGroupDescriptorReferenceType">
+        <xs:annotation>
+          <xs:documentation>E3159, C373. SPEDServiceGroup indicates the category or group of students based on the type, intensity, or setting of special education services the student receives.</xs:documentation>
+          <xs:appinfo>
+            <ann:Descriptor>EXTENSION-SPEDServiceGroupDescriptor</ann:Descriptor>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="SPEDServiceGroupBeginDate" type="xs:date">
+        <xs:annotation>
+          <xs:documentation>E3160. SPEDServiceGroupBeginDate is the first instructional day a student is assigned to the SPEDServiceGroup descriptor.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="SPEDServiceGroupEndDate" type="xs:date" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>E3161. SPEDServiceGroupEndDate is the first day after the last instructional day a student was assigned to the SPEDServiceGroup descriptor.</xs:documentation>
         </xs:annotation>
       </xs:element>
     </xs:sequence>
@@ -8053,37 +8624,37 @@
     <xs:sequence>
       <xs:element name="StudentResFacAssocSetBeginDate" type="xs:date">
         <xs:annotation>
-          <xs:documentation>E3064. StudentResFacAssocSetBeginDate indicates the first month, day, and year any data element in the StudentResFacAssocSet common type becomes true for the student.</xs:documentation>
+          <xs:documentation>E3064. StudentResFacAssocSetBeginDate indicates the first month, day, and year any data element in the StudentResFacAssocSet common type becomes true for the student receiving special education services.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="StudentResFacAssocSetEndDate" type="xs:date" minOccurs="0">
         <xs:annotation>
-          <xs:documentation>E3065. StudentResFacAssocSetEndDate is the first day after the last instructional day any data element in the StudentResFasAssocSet common type changes or becomes false for the student.</xs:documentation>
+          <xs:documentation>E3065. StudentResFacAssocSetEndDate is the first day after the last instructional day any data element in the StudentResFacAssocSet common type changes or becomes false for the student receiving special education services.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="AttendanceZoneCampus" type="EXTENSION-AttendanceZoneCampus">
         <xs:annotation>
-          <xs:documentation>E1633. AttendanceZoneCampus is the nine-digit identifying number (assigned by the TEA) of the campus the student is expected to attend based on the geographic location (address) of the residential facility in which the student resides. This may or may not be the same as the “SchoolId.”</xs:documentation>
+          <xs:documentation>E1633. AttendanceZoneCampus is the nine-digit identifying number (assigned by the TEA) of the campus the student receiving special education services is expected to attend based on the geographic location (address) of the residential facility in which the student resides.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="EducatedAtResidentialFacility" type="xs:boolean" minOccurs="0">
         <xs:annotation>
-          <xs:documentation>E1634. EducatedAtResidentialFacility indicates whether a student is educated at or in the general location of a residential facility.</xs:documentation>
+          <xs:documentation>E1634. EducatedAtResidentialFacility indicates whether a student receiving special education services is educated at or in the general location of a residential facility.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="SurrogateParentAssigned" type="xs:boolean" minOccurs="0">
         <xs:annotation>
-          <xs:documentation>E1635. SurrogateParentAssigned indicates whether the student has been assigned a surrogate parent.</xs:documentation>
+          <xs:documentation>E1635. SurrogateParentAssigned indicates whether the student receiving special education services has been assigned a surrogate parent.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="NumberOtherStudentsAssignedSameSurrogateParent" type="EXTENSION-NumberOtherStudentsAssignedSameSurrogateParent" minOccurs="0">
         <xs:annotation>
-          <xs:documentation>E1636. NumberOtherStudentsAssignedSameSurrogateParent indicates how many other students have been assigned to the same surrogate parent.</xs:documentation>
+          <xs:documentation>E1636. NumberOtherStudentsAssignedSameSurrogateParent indicates how many other students receiving special education services have been assigned to the same surrogate parent.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="ResidentialFacilityStudentSchoolDayLength" type="EXTENSION-ResidentialFacilityStudentSchoolDayLength" minOccurs="0">
         <xs:annotation>
-          <xs:documentation>E1637. ResidentialFacilityStudentSchoolDayLength indicates the number of minutes the residential facility student receives instruction based on the Individualized Education Program (IEP).</xs:documentation>
+          <xs:documentation>E1637. ResidentialFacilityStudentSchoolDayLength indicates the number of minutes the residential facility student receiving special education services receives instruction based on the Individualized Education Program (IEP).</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="CampusIdOfEnrollmentSchoolDayLength" type="EXTENSION-CampusIdOfEnrollmentSchoolDayLength" minOccurs="0">
@@ -8108,12 +8679,12 @@
       </xs:element>
       <xs:element name="DateEnteredRF" type="xs:date">
         <xs:annotation>
-          <xs:documentation>E1630. DateEnteredRF indicates the date the student enters the residential facility.</xs:documentation>
+          <xs:documentation>E1630. DateEnteredRF is the first instructional day in the current school year a student receiving special education services is assigned to the residential facility.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="DateExitedRF" type="xs:date" minOccurs="0">
         <xs:annotation>
-          <xs:documentation>E1631. DateExitedRF indicates the date the student exits the residential facility.</xs:documentation>
+          <xs:documentation>E1631. DateExitedRF is the first day after the last instructional day a student receiving special education services is assigned to the residential facility.</xs:documentation>
         </xs:annotation>
       </xs:element>
       <xs:element name="StudentResFacAssocSet" type="EXTENSION-StudentResFacAssocSet" maxOccurs="unbounded">
@@ -8269,6 +8840,34 @@
       </xs:element>
     </xs:sequence>
   </xs:complexType>
+  <xs:complexType name="EXTENSION-TierOfIntensitySet">
+    <xs:annotation>
+      <xs:documentation>The TierOfIntensitySet common type captures the tier of intensity for a student and the TierOfIntensityBeginDate and TierOfIntensityEndDate associated with the TierOfIntensity data element.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Common</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="TierOfIntensity" type="EXTENSION-TierOfIntensityDescriptorReferenceType">
+        <xs:annotation>
+          <xs:documentation>E3153, C371. TierOfIntensity refers to the level of support and services provided to a student receiving special education and related services as documented in their individualized education program.</xs:documentation>
+          <xs:appinfo>
+            <ann:Descriptor>EXTENSION-TierOfIntensityDescriptor</ann:Descriptor>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="TierOfIntensityBeginDate" type="xs:date">
+        <xs:annotation>
+          <xs:documentation>E3157. TierOfIntensityBeginDate is the first instructional day a student is assigned to the TierOfIntensity descriptor.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="TierOfIntensityEndDate" type="xs:date" minOccurs="0">
+        <xs:annotation>
+          <xs:documentation>E3158. TierOfIntensityEndDate is the first day after the last instructional day a student was assigned to the TierOfIntensity descriptor.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
   <xs:complexType name="EXTENSION-TruancySet">
     <xs:annotation>
       <xs:documentation>TruancySet represents truancy data associated to students.</xs:documentation>
@@ -8413,7 +9012,7 @@
       <xs:maxLength value="200" />
     </xs:restriction>
   </xs:simpleType>
-  <xs:simpleType name="EXTENSION-LEAGrievanceLink">
+  <xs:simpleType name="EXTENSION-GrievanceLink">
     <xs:annotation>
       <xs:documentation>E3132. LEAGrievanceLink indicates the internet website address that connects directly to the Local Education Agency's grievance policy.</xs:documentation>
       <xs:appinfo>
@@ -8447,15 +9046,37 @@
       <xs:maxLength value="50" />
     </xs:restriction>
   </xs:simpleType>
-  <xs:simpleType name="EXTENSION-ParentUId">
+  <xs:simpleType name="EXTENSION-PositionNumber">
     <xs:annotation>
-      <xs:documentation>E3078. ParentUId is a unique number or alphanumeric code assigned to a person by the LEA.</xs:documentation>
+      <xs:documentation>E3143. PositionNumber indicates the locally assigned position number for the open staff position, typically a number assigned by Human Resources that is associated with the specific role.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Simple</ann:TypeGroup>
       </xs:appinfo>
     </xs:annotation>
     <xs:restriction base="xs:string">
-      <xs:maxLength value="32" />
+      <xs:maxLength value="20" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-RequestId">
+    <xs:annotation>
+      <xs:documentation>E3166. RequestId indicates the unique identifier for the individual special education classroom video camera request.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="20" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-RequisitionNumber">
+    <xs:annotation>
+      <xs:documentation>E3148. RequisitionNumber indicates the identifier assigned to an open staff position to initiate hiring, typically a number assigned by Human Resources.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="20" />
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="EXTENSION-StaffId">
@@ -8540,6 +9161,18 @@
       <xs:maxInclusive value="260" />
     </xs:restriction>
   </xs:simpleType>
+  <xs:simpleType name="EXTENSION-ArmedForcesQualificationTestScore">
+    <xs:annotation>
+      <xs:documentation>E3173. ArmedForcesQualificationTestScore indicates the score the student received on the Armed Forces Qualification Test (AFQT), which determines basic eligibility to join the US military. This score is derived from specific sections of the Armed Services Vocational Aptitude Battery (ASVAB), including Math Knowledge, Arithmetic Reasoning, Word Knowledge, and Paragraph Comprehension.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:int">
+      <xs:minInclusive value="1" />
+      <xs:maxInclusive value="99" />
+    </xs:restriction>
+  </xs:simpleType>
   <xs:simpleType name="EXTENSION-AssignedHoursAcceleratedInstruction">
     <xs:annotation>
       <xs:documentation>E3086. AssignedHoursAcceleratedInstruction indicates the number of hours of accelerated instruction assigned to the student for a particular subject.</xs:documentation>
@@ -8549,14 +9182,14 @@
     </xs:annotation>
     <xs:restriction base="xs:decimal">
       <xs:minInclusive value="0.00" />
-      <xs:maxInclusive value="90.00" />
-      <xs:totalDigits value="4" />
+      <xs:maxInclusive value="999.99" />
+      <xs:totalDigits value="6" />
       <xs:fractionDigits value="2" />
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="EXTENSION-AttendanceZoneCampus">
     <xs:annotation>
-      <xs:documentation>E1633. AttendanceZoneCampus is the nine-digit identifying number (assigned by the TEA) of the campus the student is expected to attend based on the geographic location (address) of the residential facility in which the student resides. This may or may not be the same as the “SchoolId.”</xs:documentation>
+      <xs:documentation>E1633. AttendanceZoneCampus is the nine-digit identifying number (assigned by the TEA) of the campus the student receiving special education services is expected to attend based on the geographic location (address) of the residential facility in which the student resides.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Simple</ann:TypeGroup>
       </xs:appinfo>
@@ -8646,21 +9279,9 @@
     </xs:annotation>
     <xs:restriction base="xs:decimal">
       <xs:minInclusive value="0.00" />
-      <xs:maxInclusive value="90.00" />
-      <xs:totalDigits value="4" />
+      <xs:maxInclusive value="999.99" />
+      <xs:totalDigits value="6" />
       <xs:fractionDigits value="2" />
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:simpleType name="EXTENSION-ContactPriority">
-    <xs:annotation>
-      <xs:documentation>E1427. ContactPriority indicates the numeric order of the preferred sequence or priority of contact.</xs:documentation>
-      <xs:appinfo>
-        <ann:TypeGroup>Simple</ann:TypeGroup>
-      </xs:appinfo>
-    </xs:annotation>
-    <xs:restriction base="xs:int">
-      <xs:minInclusive value="0" />
-      <xs:maxInclusive value="99" />
     </xs:restriction>
   </xs:simpleType>
   <xs:simpleType name="EXTENSION-CTEHours">
@@ -8678,6 +9299,20 @@
   <xs:simpleType name="EXTENSION-EligibleDaysPresentInInstrSetting">
     <xs:annotation>
       <xs:documentation>E0944. EligibleDaysPresentInInstrSetting indicates the number of days the student was eligible and present in a designated instructional setting during a particular reporting period.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:decimal">
+      <xs:minInclusive value="0.5" />
+      <xs:maxInclusive value="180.00" />
+      <xs:totalDigits value="4" />
+      <xs:fractionDigits value="1" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-EligibleDaysPresentInTierOfIntensity">
+    <xs:annotation>
+      <xs:documentation>E3154. EligibleDaysPresentInTierOfIntensity indicates the number of days the student was eligible and present in a tier of intensity during a particular reporting period.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Simple</ann:TypeGroup>
       </xs:appinfo>
@@ -8819,6 +9454,20 @@
       <xs:fractionDigits value="1" />
     </xs:restriction>
   </xs:simpleType>
+  <xs:simpleType name="EXTENSION-FlexAttendDaysEligibleInTierOfIntensity">
+    <xs:annotation>
+      <xs:documentation>E3156. FlexAttendDaysEligibleInTierOfIntensity indicates the total number of school days the student was eligible for a tier of intensity that was eligible for Foundation School Program funding during a particular reporting period.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:decimal">
+      <xs:minInclusive value="0.0" />
+      <xs:maxInclusive value="180.00" />
+      <xs:totalDigits value="4" />
+      <xs:fractionDigits value="1" />
+    </xs:restriction>
+  </xs:simpleType>
   <xs:simpleType name="EXTENSION-FlexAttendExcessMinutesInInstrSetting">
     <xs:annotation>
       <xs:documentation>E1052. NumberDaysTaught indicates the number of days of instruction offered, as shown on the school calendar, during a particular reporting period.</xs:documentation>
@@ -8923,6 +9572,18 @@
       <xs:fractionDigits value="1" />
     </xs:restriction>
   </xs:simpleType>
+  <xs:simpleType name="EXTENSION-GrievanceIdentifier">
+    <xs:annotation>
+      <xs:documentation>E3136. GrievanceIdentifier indicates a unique number associated to a particular grievance filed.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:int">
+      <xs:minInclusive value="0" />
+      <xs:maxInclusive value="9999" />
+    </xs:restriction>
+  </xs:simpleType>
   <xs:simpleType name="EXTENSION-IBCBackgroundCheckCost">
     <xs:annotation>
       <xs:documentation>E3133. IBCBackgroundCheckCost identifies the amount of money that was paid for the background check (fingerprinting or criminal history record information reveiw) associated to an Industry-Based Certification passed/earned by a student.</xs:documentation>
@@ -8953,7 +9614,7 @@
   </xs:simpleType>
   <xs:simpleType name="EXTENSION-LEAOfRDSPDService">
     <xs:annotation>
-      <xs:documentation>E1527. LEAOfRDSPDService indicates the RDSPD Fiscal Agent district that provides the RDSPD service to a particular RDSPD student.</xs:documentation>
+      <xs:documentation>E1527. LEAOfRDSPDService indicates the LEA identification number of the Regional Day School Program for the Deaf (RDSPD) Fiscal Agent that is providing RDSPD services.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Simple</ann:TypeGroup>
       </xs:appinfo>
@@ -9145,6 +9806,18 @@
       <xs:fractionDigits value="2" />
     </xs:restriction>
   </xs:simpleType>
+  <xs:simpleType name="EXTENSION-NumberOfMinutesInSPED">
+    <xs:annotation>
+      <xs:documentation>E3162. NumberOfMinutesInSPED indicates the average number of minutes per day that a student receives special education services in a special education classroom or setting, as determined by the Admission, Review, and Dismissal (ARD) Committee.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:int">
+      <xs:minInclusive value="0" />
+      <xs:maxInclusive value="600" />
+    </xs:restriction>
+  </xs:simpleType>
   <xs:simpleType name="EXTENSION-NumberOfStudentsInClass">
     <xs:annotation>
       <xs:documentation>E0170. NumberOfStudentsInClass indicates the number of students served in the class.</xs:documentation>
@@ -9159,7 +9832,7 @@
   </xs:simpleType>
   <xs:simpleType name="EXTENSION-NumberOtherStudentsAssignedSameSurrogateParent">
     <xs:annotation>
-      <xs:documentation>E1636. NumberOtherStudentsAssignedSameSurrogateParent indicates how many other students have been assigned to the same surrogate parent.</xs:documentation>
+      <xs:documentation>E1636. NumberOtherStudentsAssignedSameSurrogateParent indicates how many other students receiving special education services have been assigned to the same surrogate parent.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Simple</ann:TypeGroup>
       </xs:appinfo>
@@ -9255,7 +9928,7 @@
   </xs:simpleType>
   <xs:simpleType name="EXTENSION-ResidentialFacilityStudentSchoolDayLength">
     <xs:annotation>
-      <xs:documentation>E1637. ResidentialFacilityStudentSchoolDayLength indicates the number of minutes the residential facility student receives instruction based on the Individualized Education Program (IEP).</xs:documentation>
+      <xs:documentation>E1637. ResidentialFacilityStudentSchoolDayLength indicates the number of minutes the residential facility student receiving special education services receives instruction based on the Individualized Education Program (IEP).</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Simple</ann:TypeGroup>
       </xs:appinfo>
@@ -9419,34 +10092,6 @@
     <xs:restriction base="xs:decimal">
       <xs:minInclusive value="0.00" />
       <xs:maxInclusive value="180.00" />
-      <xs:totalDigits value="4" />
-      <xs:fractionDigits value="1" />
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:simpleType name="EXTENSION-TotalESYContactHoursInFirstInstructionalSetting">
-    <xs:annotation>
-      <xs:documentation>E1013. TotalESYContactHoursInFirstInstructionalSetting indicates the total contact hours in a special education setting provided to the student through the extended school year services component of special education. InstructionalSetting1 reported is the EducationalEnvironment in which the student was served during the regular school year.</xs:documentation>
-      <xs:appinfo>
-        <ann:TypeGroup>Simple</ann:TypeGroup>
-      </xs:appinfo>
-    </xs:annotation>
-    <xs:restriction base="xs:decimal">
-      <xs:minInclusive value="0.5" />
-      <xs:maxInclusive value="999.5" />
-      <xs:totalDigits value="4" />
-      <xs:fractionDigits value="1" />
-    </xs:restriction>
-  </xs:simpleType>
-  <xs:simpleType name="EXTENSION-TotalESYContactHoursInSecondInstructionalSetting">
-    <xs:annotation>
-      <xs:documentation>E3096. TotalESYContactHoursInSecondInstructionalSetting indicates the total contact hours in a special education setting provided to the student through the extended school year services component of special education. InstructionalSetting1 reported is the EducationalEnvironment in which the student was served during the regular school year.</xs:documentation>
-      <xs:appinfo>
-        <ann:TypeGroup>Simple</ann:TypeGroup>
-      </xs:appinfo>
-    </xs:annotation>
-    <xs:restriction base="xs:decimal">
-      <xs:minInclusive value="0.5" />
-      <xs:maxInclusive value="999.5" />
       <xs:totalDigits value="4" />
       <xs:fractionDigits value="1" />
     </xs:restriction>

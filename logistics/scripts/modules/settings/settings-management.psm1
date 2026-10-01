@@ -821,12 +821,12 @@ function Get-DefaultFeatures() {
             @{ Name = 'Profiles'; IsEnabled=$true }
             @{ Name = 'ChangeQueries'; IsEnabled=$true }
             @{ Name = 'IdentityManagement'; IsEnabled=$false }
-            @{ Name = 'OwnershipBasedAuthorization'; IsEnabled=$true }
+            @{ Name = 'OwnershipBasedAuthorization'; IsEnabled=$false }
             @{ Name = 'UniqueIdValidation'; IsEnabled=$false }
             @{ Name = 'XsdMetadata'; IsEnabled=$true }
-            @{ Name = 'MultiTenancy'; IsEnabled=$false }
-            @{ Name = 'SerializedData'; IsEnabled=$true }
-            @{ Name = 'ResourceLinks'; IsEnabled=$true }
+            @{ Name = 'MultiTenancy'; IsEnabled=$true }
+            @{ Name = 'SerializedData'; IsEnabled=$false }
+            @{ Name = 'ResourceLinks'; IsEnabled=$false }
         )
     }
 }

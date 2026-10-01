@@ -17,7 +17,7 @@ CREATE INDEX IF NOT EXISTS IX_CTEProgramReportingPeriodAttendance_SchoolId ON tx
 
 CREATE INDEX IF NOT EXISTS IX_DescriptorMappingHistory_EducationOrganizationId ON tx.DescriptorMappingHistory(EducationOrganizationId) INCLUDE (Id);
 
-CREATE INDEX IF NOT EXISTS IX_ExtendedSchoolYearServicesAttendance_SchoolId ON tx.ExtendedSchoolYearServicesAttendance(SchoolId) INCLUDE (Id);
+CREATE INDEX IF NOT EXISTS IX_ESYTierOfIntensityAttendance_SchoolId ON tx.ESYTierOfIntensityAttendance(SchoolId) INCLUDE (Id);
 
 CREATE INDEX IF NOT EXISTS IX_FlexibleBilingualESLProgramReportingPeriodAttendance_SchoolId ON tx.FlexibleBilingualESLProgramReportingPeriodAttendance(SchoolId) INCLUDE (Id);
 
@@ -27,23 +27,31 @@ CREATE INDEX IF NOT EXISTS IX_FlexibleRegularProgramReportingPeriodAttendance_Sc
 
 CREATE INDEX IF NOT EXISTS IX_FlexibleSpecialEducationProgramReportingPeriodAttendance_SchoolId ON tx.FlexibleSpecialEducationProgramReportingPeriodAttendance(SchoolId) INCLUDE (Id);
 
+CREATE INDEX IF NOT EXISTS IX_FlexibleSpecialEducationTierOfIntensityAttendance_SchoolId ON tx.FlexibleSpecialEducationTierOfIntensityAttendance(SchoolId) INCLUDE (Id);
+
+CREATE INDEX IF NOT EXISTS IX_GrievanceExt_EducationOrganizationId ON tx.GrievanceExt(EducationOrganizationId) INCLUDE (Id);
+
+CREATE INDEX IF NOT EXISTS IX_OpenStaffPositionExt_EducationOrganizationId ON tx.OpenStaffPositionExt(EducationOrganizationId) INCLUDE (Id);
+
 CREATE INDEX IF NOT EXISTS IX_PayrollExt_EducationOrganizationId ON tx.PayrollExt(EducationOrganizationId) INCLUDE (Id);
 
 CREATE INDEX IF NOT EXISTS IX_PriorYearActualExt_EducationOrganizationId ON tx.PriorYearActualExt(EducationOrganizationId) INCLUDE (Id);
-
-CREATE INDEX IF NOT EXISTS IX_PriorYearLeaver_SchoolId ON tx.PriorYearLeaver(SchoolId) INCLUDE (Id);
-
-CREATE INDEX IF NOT EXISTS IX_PriorYearLeaverStudentParentAssociation_SchoolId ON tx.PriorYearLeaverStudentParentAssociation(SchoolId) INCLUDE (Id);
 
 CREATE INDEX IF NOT EXISTS IX_PriorYearSSAOrgAssociationExt_EducationOrganizationId ON tx.PriorYearSSAOrgAssociationExt(EducationOrganizationId) INCLUDE (Id);
 
 CREATE INDEX IF NOT EXISTS IX_ReportingPeriodExt_SchoolId ON tx.ReportingPeriodExt(SchoolId) INCLUDE (Id);
 
+CREATE INDEX IF NOT EXISTS IX_RequisitionExt_EducationOrganizationId ON tx.RequisitionExt(EducationOrganizationId) INCLUDE (Id);
+
 CREATE INDEX IF NOT EXISTS IX_SharedServiceArrangementExt_EducationOrganizationId ON tx.SharedServiceArrangementExt(EducationOrganizationId) INCLUDE (Id);
 
 CREATE INDEX IF NOT EXISTS IX_SpecialEducationProgramReportingPeriodAttendance_SchoolId ON tx.SpecialEducationProgramReportingPeriodAttendance(SchoolId) INCLUDE (Id);
 
+CREATE INDEX IF NOT EXISTS IX_SpecialEducationTierOfIntensityAttendance_SchoolId ON tx.SpecialEducationTierOfIntensityAttendance(SchoolId) INCLUDE (Id);
+
 CREATE INDEX IF NOT EXISTS IX_SpecialProgramsReportingPeriodAttendance_SchoolId ON tx.SpecialProgramsReportingPeriodAttendance(SchoolId) INCLUDE (Id);
+
+CREATE INDEX IF NOT EXISTS IX_SPEDVideoCameraRequestExt_SchoolId ON tx.SPEDVideoCameraRequestExt(SchoolId) INCLUDE (Id);
 
 CREATE INDEX IF NOT EXISTS IX_SSAOrgAssociationExt_EducationOrganizationId ON tx.SSAOrgAssociationExt(EducationOrganizationId) INCLUDE (Id);
 

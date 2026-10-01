@@ -26,9 +26,9 @@ CREATE SEQUENCE [tx].[DescriptorMappingHistory_AggSeq] START WITH -2147483648 IN
 ALTER TABLE [tx].[DescriptorMappingHistory] ADD AggregateId int NOT NULL DEFAULT NEXT VALUE FOR [tx].[DescriptorMappingHistory_AggSeq], AggregateData varbinary(8000);
 CREATE INDEX [IX_DescriptorMappingHistory_AggregateId] ON [tx].[DescriptorMappingHistory] (AggregateId);
 
-CREATE SEQUENCE [tx].[ExtendedSchoolYearServicesAttendance_AggSeq] START WITH -2147483648 INCREMENT BY 1;
-ALTER TABLE [tx].[ExtendedSchoolYearServicesAttendance] ADD AggregateId int NOT NULL DEFAULT NEXT VALUE FOR [tx].[ExtendedSchoolYearServicesAttendance_AggSeq], AggregateData varbinary(8000);
-CREATE INDEX [IX_ExtendedSchoolYearServicesAttendance_AggregateId] ON [tx].[ExtendedSchoolYearServicesAttendance] (AggregateId);
+CREATE SEQUENCE [tx].[ESYTierOfIntensityAttendance_AggSeq] START WITH -2147483648 INCREMENT BY 1;
+ALTER TABLE [tx].[ESYTierOfIntensityAttendance] ADD AggregateId int NOT NULL DEFAULT NEXT VALUE FOR [tx].[ESYTierOfIntensityAttendance_AggSeq], AggregateData varbinary(8000);
+CREATE INDEX [IX_ESYTierOfIntensityAttendance_AggregateId] ON [tx].[ESYTierOfIntensityAttendance] (AggregateId);
 
 CREATE SEQUENCE [tx].[FlexibleBilingualESLProgramReportingPeriodAttendance_AggSeq] START WITH -2147483648 INCREMENT BY 1;
 ALTER TABLE [tx].[FlexibleBilingualESLProgramReportingPeriodAttendance] ADD AggregateId int NOT NULL DEFAULT NEXT VALUE FOR [tx].[FlexibleBilingualESLProgramReportingPeriodAttendance_AggSeq], AggregateData varbinary(8000);
@@ -46,6 +46,18 @@ CREATE SEQUENCE [tx].[FlexibleSpecialEducationProgramReportingPeriodAttendance_A
 ALTER TABLE [tx].[FlexibleSpecialEducationProgramReportingPeriodAttendance] ADD AggregateId int NOT NULL DEFAULT NEXT VALUE FOR [tx].[FlexibleSpecialEducationProgramReportingPeriodAttendance_AggSeq], AggregateData varbinary(8000);
 CREATE INDEX [IX_FlexibleSpecialEducationProgramReportingPeriodAttendance_AggregateId] ON [tx].[FlexibleSpecialEducationProgramReportingPeriodAttendance] (AggregateId);
 
+CREATE SEQUENCE [tx].[FlexibleSpecialEducationTierOfIntensityAttendance_AggSeq] START WITH -2147483648 INCREMENT BY 1;
+ALTER TABLE [tx].[FlexibleSpecialEducationTierOfIntensityAttendance] ADD AggregateId int NOT NULL DEFAULT NEXT VALUE FOR [tx].[FlexibleSpecialEducationTierOfIntensityAttendance_AggSeq], AggregateData varbinary(8000);
+CREATE INDEX [IX_FlexibleSpecialEducationTierOfIntensityAttendance_AggregateId] ON [tx].[FlexibleSpecialEducationTierOfIntensityAttendance] (AggregateId);
+
+CREATE SEQUENCE [tx].[GrievanceExt_AggSeq] START WITH -2147483648 INCREMENT BY 1;
+ALTER TABLE [tx].[GrievanceExt] ADD AggregateId int NOT NULL DEFAULT NEXT VALUE FOR [tx].[GrievanceExt_AggSeq], AggregateData varbinary(8000);
+CREATE INDEX [IX_GrievanceExt_AggregateId] ON [tx].[GrievanceExt] (AggregateId);
+
+CREATE SEQUENCE [tx].[OpenStaffPositionExt_AggSeq] START WITH -2147483648 INCREMENT BY 1;
+ALTER TABLE [tx].[OpenStaffPositionExt] ADD AggregateId int NOT NULL DEFAULT NEXT VALUE FOR [tx].[OpenStaffPositionExt_AggSeq], AggregateData varbinary(8000);
+CREATE INDEX [IX_OpenStaffPositionExt_AggregateId] ON [tx].[OpenStaffPositionExt] (AggregateId);
+
 CREATE SEQUENCE [tx].[PayrollExt_AggSeq] START WITH -2147483648 INCREMENT BY 1;
 ALTER TABLE [tx].[PayrollExt] ADD AggregateId int NOT NULL DEFAULT NEXT VALUE FOR [tx].[PayrollExt_AggSeq], AggregateData varbinary(8000);
 CREATE INDEX [IX_PayrollExt_AggregateId] ON [tx].[PayrollExt] (AggregateId);
@@ -53,18 +65,6 @@ CREATE INDEX [IX_PayrollExt_AggregateId] ON [tx].[PayrollExt] (AggregateId);
 CREATE SEQUENCE [tx].[PriorYearActualExt_AggSeq] START WITH -2147483648 INCREMENT BY 1;
 ALTER TABLE [tx].[PriorYearActualExt] ADD AggregateId int NOT NULL DEFAULT NEXT VALUE FOR [tx].[PriorYearActualExt_AggSeq], AggregateData varbinary(8000);
 CREATE INDEX [IX_PriorYearActualExt_AggregateId] ON [tx].[PriorYearActualExt] (AggregateId);
-
-CREATE SEQUENCE [tx].[PriorYearLeaver_AggSeq] START WITH -2147483648 INCREMENT BY 1;
-ALTER TABLE [tx].[PriorYearLeaver] ADD AggregateId int NOT NULL DEFAULT NEXT VALUE FOR [tx].[PriorYearLeaver_AggSeq], AggregateData varbinary(8000);
-CREATE INDEX [IX_PriorYearLeaver_AggregateId] ON [tx].[PriorYearLeaver] (AggregateId);
-
-CREATE SEQUENCE [tx].[PriorYearLeaverParent_AggSeq] START WITH -2147483648 INCREMENT BY 1;
-ALTER TABLE [tx].[PriorYearLeaverParent] ADD AggregateId int NOT NULL DEFAULT NEXT VALUE FOR [tx].[PriorYearLeaverParent_AggSeq], AggregateData varbinary(8000);
-CREATE INDEX [IX_PriorYearLeaverParent_AggregateId] ON [tx].[PriorYearLeaverParent] (AggregateId);
-
-CREATE SEQUENCE [tx].[PriorYearLeaverStudentParentAssociation_AggSeq] START WITH -2147483648 INCREMENT BY 1;
-ALTER TABLE [tx].[PriorYearLeaverStudentParentAssociation] ADD AggregateId int NOT NULL DEFAULT NEXT VALUE FOR [tx].[PriorYearLeaverStudentParentAssociation_AggSeq], AggregateData varbinary(8000);
-CREATE INDEX [IX_PriorYearLeaverStudentParentAssociation_AggregateId] ON [tx].[PriorYearLeaverStudentParentAssociation] (AggregateId);
 
 CREATE SEQUENCE [tx].[PriorYearSSAOrgAssociationExt_AggSeq] START WITH -2147483648 INCREMENT BY 1;
 ALTER TABLE [tx].[PriorYearSSAOrgAssociationExt] ADD AggregateId int NOT NULL DEFAULT NEXT VALUE FOR [tx].[PriorYearSSAOrgAssociationExt_AggSeq], AggregateData varbinary(8000);
@@ -74,6 +74,10 @@ CREATE SEQUENCE [tx].[ReportingPeriodExt_AggSeq] START WITH -2147483648 INCREMEN
 ALTER TABLE [tx].[ReportingPeriodExt] ADD AggregateId int NOT NULL DEFAULT NEXT VALUE FOR [tx].[ReportingPeriodExt_AggSeq], AggregateData varbinary(8000);
 CREATE INDEX [IX_ReportingPeriodExt_AggregateId] ON [tx].[ReportingPeriodExt] (AggregateId);
 
+CREATE SEQUENCE [tx].[RequisitionExt_AggSeq] START WITH -2147483648 INCREMENT BY 1;
+ALTER TABLE [tx].[RequisitionExt] ADD AggregateId int NOT NULL DEFAULT NEXT VALUE FOR [tx].[RequisitionExt_AggSeq], AggregateData varbinary(8000);
+CREATE INDEX [IX_RequisitionExt_AggregateId] ON [tx].[RequisitionExt] (AggregateId);
+
 CREATE SEQUENCE [tx].[SharedServiceArrangementExt_AggSeq] START WITH -2147483648 INCREMENT BY 1;
 ALTER TABLE [tx].[SharedServiceArrangementExt] ADD AggregateId int NOT NULL DEFAULT NEXT VALUE FOR [tx].[SharedServiceArrangementExt_AggSeq], AggregateData varbinary(8000);
 CREATE INDEX [IX_SharedServiceArrangementExt_AggregateId] ON [tx].[SharedServiceArrangementExt] (AggregateId);
@@ -82,9 +86,17 @@ CREATE SEQUENCE [tx].[SpecialEducationProgramReportingPeriodAttendance_AggSeq] S
 ALTER TABLE [tx].[SpecialEducationProgramReportingPeriodAttendance] ADD AggregateId int NOT NULL DEFAULT NEXT VALUE FOR [tx].[SpecialEducationProgramReportingPeriodAttendance_AggSeq], AggregateData varbinary(8000);
 CREATE INDEX [IX_SpecialEducationProgramReportingPeriodAttendance_AggregateId] ON [tx].[SpecialEducationProgramReportingPeriodAttendance] (AggregateId);
 
+CREATE SEQUENCE [tx].[SpecialEducationTierOfIntensityAttendance_AggSeq] START WITH -2147483648 INCREMENT BY 1;
+ALTER TABLE [tx].[SpecialEducationTierOfIntensityAttendance] ADD AggregateId int NOT NULL DEFAULT NEXT VALUE FOR [tx].[SpecialEducationTierOfIntensityAttendance_AggSeq], AggregateData varbinary(8000);
+CREATE INDEX [IX_SpecialEducationTierOfIntensityAttendance_AggregateId] ON [tx].[SpecialEducationTierOfIntensityAttendance] (AggregateId);
+
 CREATE SEQUENCE [tx].[SpecialProgramsReportingPeriodAttendance_AggSeq] START WITH -2147483648 INCREMENT BY 1;
 ALTER TABLE [tx].[SpecialProgramsReportingPeriodAttendance] ADD AggregateId int NOT NULL DEFAULT NEXT VALUE FOR [tx].[SpecialProgramsReportingPeriodAttendance_AggSeq], AggregateData varbinary(8000);
 CREATE INDEX [IX_SpecialProgramsReportingPeriodAttendance_AggregateId] ON [tx].[SpecialProgramsReportingPeriodAttendance] (AggregateId);
+
+CREATE SEQUENCE [tx].[SPEDVideoCameraRequestExt_AggSeq] START WITH -2147483648 INCREMENT BY 1;
+ALTER TABLE [tx].[SPEDVideoCameraRequestExt] ADD AggregateId int NOT NULL DEFAULT NEXT VALUE FOR [tx].[SPEDVideoCameraRequestExt_AggSeq], AggregateData varbinary(8000);
+CREATE INDEX [IX_SPEDVideoCameraRequestExt_AggregateId] ON [tx].[SPEDVideoCameraRequestExt] (AggregateId);
 
 CREATE SEQUENCE [tx].[SSAOrgAssociationExt_AggSeq] START WITH -2147483648 INCREMENT BY 1;
 ALTER TABLE [tx].[SSAOrgAssociationExt] ADD AggregateId int NOT NULL DEFAULT NEXT VALUE FOR [tx].[SSAOrgAssociationExt_AggSeq], AggregateData varbinary(8000);

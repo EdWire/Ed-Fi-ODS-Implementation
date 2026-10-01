@@ -34,9 +34,9 @@ ALTER TABLE tx.DescriptorMappingHistory ADD COLUMN AggregateId int NOT NULL DEFA
 CREATE INDEX ix_DescriptorMappingHistory_aggid ON tx.DescriptorMappingHistory (AggregateId);
 
 
-CREATE SEQUENCE tx.ExtendedSchoolYearServicesAttendance_aggseq START WITH -2147483648 INCREMENT BY 1 MINVALUE -2147483648;
-ALTER TABLE tx.ExtendedSchoolYearServicesAttendance ADD COLUMN AggregateId int NOT NULL DEFAULT nextval('tx.ExtendedSchoolYearServicesAttendance_aggseq'), ADD COLUMN AggregateData bytea;
-CREATE INDEX ix_ExtendedSchoolYearServicesAttendance_aggid ON tx.ExtendedSchoolYearServicesAttendance (AggregateId);
+CREATE SEQUENCE tx.ESYTierOfIntensityAttendance_aggseq START WITH -2147483648 INCREMENT BY 1 MINVALUE -2147483648;
+ALTER TABLE tx.ESYTierOfIntensityAttendance ADD COLUMN AggregateId int NOT NULL DEFAULT nextval('tx.ESYTierOfIntensityAttendance_aggseq'), ADD COLUMN AggregateData bytea;
+CREATE INDEX ix_ESYTierOfIntensityAttendance_aggid ON tx.ESYTierOfIntensityAttendance (AggregateId);
 
 
 CREATE SEQUENCE tx.FlexibleBilingualESLProgramReportingPeriodAttendance_aggseq START WITH -2147483648 INCREMENT BY 1 MINVALUE -2147483648;
@@ -59,6 +59,21 @@ ALTER TABLE tx.FlexibleSpecialEducationProgramReportingPeriodAttendance ADD COLU
 CREATE INDEX ix_FlexibleSpecialEducationProgramReportingPeriodA_ec6ab0_aggid ON tx.FlexibleSpecialEducationProgramReportingPeriodAttendance (AggregateId);
 
 
+CREATE SEQUENCE tx.FlexibleSpecialEducationTierOfIntensityAttendance_aggseq START WITH -2147483648 INCREMENT BY 1 MINVALUE -2147483648;
+ALTER TABLE tx.FlexibleSpecialEducationTierOfIntensityAttendance ADD COLUMN AggregateId int NOT NULL DEFAULT nextval('tx.FlexibleSpecialEducationTierOfIntensityAttendance_aggseq'), ADD COLUMN AggregateData bytea;
+CREATE INDEX ix_FlexibleSpecialEducationTierOfIntensityAttendance_aggid ON tx.FlexibleSpecialEducationTierOfIntensityAttendance (AggregateId);
+
+
+CREATE SEQUENCE tx.GrievanceExt_aggseq START WITH -2147483648 INCREMENT BY 1 MINVALUE -2147483648;
+ALTER TABLE tx.GrievanceExt ADD COLUMN AggregateId int NOT NULL DEFAULT nextval('tx.GrievanceExt_aggseq'), ADD COLUMN AggregateData bytea;
+CREATE INDEX ix_GrievanceExt_aggid ON tx.GrievanceExt (AggregateId);
+
+
+CREATE SEQUENCE tx.OpenStaffPositionExt_aggseq START WITH -2147483648 INCREMENT BY 1 MINVALUE -2147483648;
+ALTER TABLE tx.OpenStaffPositionExt ADD COLUMN AggregateId int NOT NULL DEFAULT nextval('tx.OpenStaffPositionExt_aggseq'), ADD COLUMN AggregateData bytea;
+CREATE INDEX ix_OpenStaffPositionExt_aggid ON tx.OpenStaffPositionExt (AggregateId);
+
+
 CREATE SEQUENCE tx.PayrollExt_aggseq START WITH -2147483648 INCREMENT BY 1 MINVALUE -2147483648;
 ALTER TABLE tx.PayrollExt ADD COLUMN AggregateId int NOT NULL DEFAULT nextval('tx.PayrollExt_aggseq'), ADD COLUMN AggregateData bytea;
 CREATE INDEX ix_PayrollExt_aggid ON tx.PayrollExt (AggregateId);
@@ -67,21 +82,6 @@ CREATE INDEX ix_PayrollExt_aggid ON tx.PayrollExt (AggregateId);
 CREATE SEQUENCE tx.PriorYearActualExt_aggseq START WITH -2147483648 INCREMENT BY 1 MINVALUE -2147483648;
 ALTER TABLE tx.PriorYearActualExt ADD COLUMN AggregateId int NOT NULL DEFAULT nextval('tx.PriorYearActualExt_aggseq'), ADD COLUMN AggregateData bytea;
 CREATE INDEX ix_PriorYearActualExt_aggid ON tx.PriorYearActualExt (AggregateId);
-
-
-CREATE SEQUENCE tx.PriorYearLeaver_aggseq START WITH -2147483648 INCREMENT BY 1 MINVALUE -2147483648;
-ALTER TABLE tx.PriorYearLeaver ADD COLUMN AggregateId int NOT NULL DEFAULT nextval('tx.PriorYearLeaver_aggseq'), ADD COLUMN AggregateData bytea;
-CREATE INDEX ix_PriorYearLeaver_aggid ON tx.PriorYearLeaver (AggregateId);
-
-
-CREATE SEQUENCE tx.PriorYearLeaverParent_aggseq START WITH -2147483648 INCREMENT BY 1 MINVALUE -2147483648;
-ALTER TABLE tx.PriorYearLeaverParent ADD COLUMN AggregateId int NOT NULL DEFAULT nextval('tx.PriorYearLeaverParent_aggseq'), ADD COLUMN AggregateData bytea;
-CREATE INDEX ix_PriorYearLeaverParent_aggid ON tx.PriorYearLeaverParent (AggregateId);
-
-
-CREATE SEQUENCE tx.PriorYearLeaverStudentParentAssociation_aggseq START WITH -2147483648 INCREMENT BY 1 MINVALUE -2147483648;
-ALTER TABLE tx.PriorYearLeaverStudentParentAssociation ADD COLUMN AggregateId int NOT NULL DEFAULT nextval('tx.PriorYearLeaverStudentParentAssociation_aggseq'), ADD COLUMN AggregateData bytea;
-CREATE INDEX ix_PriorYearLeaverStudentParentAssociation_aggid ON tx.PriorYearLeaverStudentParentAssociation (AggregateId);
 
 
 CREATE SEQUENCE tx.PriorYearSSAOrgAssociationExt_aggseq START WITH -2147483648 INCREMENT BY 1 MINVALUE -2147483648;
@@ -94,6 +94,11 @@ ALTER TABLE tx.ReportingPeriodExt ADD COLUMN AggregateId int NOT NULL DEFAULT ne
 CREATE INDEX ix_ReportingPeriodExt_aggid ON tx.ReportingPeriodExt (AggregateId);
 
 
+CREATE SEQUENCE tx.RequisitionExt_aggseq START WITH -2147483648 INCREMENT BY 1 MINVALUE -2147483648;
+ALTER TABLE tx.RequisitionExt ADD COLUMN AggregateId int NOT NULL DEFAULT nextval('tx.RequisitionExt_aggseq'), ADD COLUMN AggregateData bytea;
+CREATE INDEX ix_RequisitionExt_aggid ON tx.RequisitionExt (AggregateId);
+
+
 CREATE SEQUENCE tx.SharedServiceArrangementExt_aggseq START WITH -2147483648 INCREMENT BY 1 MINVALUE -2147483648;
 ALTER TABLE tx.SharedServiceArrangementExt ADD COLUMN AggregateId int NOT NULL DEFAULT nextval('tx.SharedServiceArrangementExt_aggseq'), ADD COLUMN AggregateData bytea;
 CREATE INDEX ix_SharedServiceArrangementExt_aggid ON tx.SharedServiceArrangementExt (AggregateId);
@@ -104,9 +109,19 @@ ALTER TABLE tx.SpecialEducationProgramReportingPeriodAttendance ADD COLUMN Aggre
 CREATE INDEX ix_SpecialEducationProgramReportingPeriodAttendance_aggid ON tx.SpecialEducationProgramReportingPeriodAttendance (AggregateId);
 
 
+CREATE SEQUENCE tx.SpecialEducationTierOfIntensityAttendance_aggseq START WITH -2147483648 INCREMENT BY 1 MINVALUE -2147483648;
+ALTER TABLE tx.SpecialEducationTierOfIntensityAttendance ADD COLUMN AggregateId int NOT NULL DEFAULT nextval('tx.SpecialEducationTierOfIntensityAttendance_aggseq'), ADD COLUMN AggregateData bytea;
+CREATE INDEX ix_SpecialEducationTierOfIntensityAttendance_aggid ON tx.SpecialEducationTierOfIntensityAttendance (AggregateId);
+
+
 CREATE SEQUENCE tx.SpecialProgramsReportingPeriodAttendance_aggseq START WITH -2147483648 INCREMENT BY 1 MINVALUE -2147483648;
 ALTER TABLE tx.SpecialProgramsReportingPeriodAttendance ADD COLUMN AggregateId int NOT NULL DEFAULT nextval('tx.SpecialProgramsReportingPeriodAttendance_aggseq'), ADD COLUMN AggregateData bytea;
 CREATE INDEX ix_SpecialProgramsReportingPeriodAttendance_aggid ON tx.SpecialProgramsReportingPeriodAttendance (AggregateId);
+
+
+CREATE SEQUENCE tx.SPEDVideoCameraRequestExt_aggseq START WITH -2147483648 INCREMENT BY 1 MINVALUE -2147483648;
+ALTER TABLE tx.SPEDVideoCameraRequestExt ADD COLUMN AggregateId int NOT NULL DEFAULT nextval('tx.SPEDVideoCameraRequestExt_aggseq'), ADD COLUMN AggregateData bytea;
+CREATE INDEX ix_SPEDVideoCameraRequestExt_aggid ON tx.SPEDVideoCameraRequestExt (AggregateId);
 
 
 CREATE SEQUENCE tx.SSAOrgAssociationExt_aggseq START WITH -2147483648 INCREMENT BY 1 MINVALUE -2147483648;
