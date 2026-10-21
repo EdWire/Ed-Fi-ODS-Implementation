@@ -39,6 +39,68 @@ CREATE TABLE ne.EarlyLearningSettingDescriptor (
     CONSTRAINT EarlyLearningSettingDescriptor_PK PRIMARY KEY (EarlyLearningSettingDescriptorId)
 );
 
+-- Table ne.EmergencyExclusion --
+CREATE TABLE ne.EmergencyExclusion (
+    EducationOrganizationId BIGINT NOT NULL,
+    ExclusionDate DATE NOT NULL,
+    StudentUSI INT NOT NULL,
+    EmergencyExclusionReasonDescriptorId INT NOT NULL,
+    ExclusionDuration DECIMAL(5, 2) NOT NULL,
+    Discriminator VARCHAR(128) NULL,
+    CreateDate TIMESTAMP NOT NULL,
+    LastModifiedDate TIMESTAMP NOT NULL,
+    Id UUID NOT NULL,
+    CONSTRAINT EmergencyExclusion_PK PRIMARY KEY (EducationOrganizationId, ExclusionDate, StudentUSI)
+);
+ALTER TABLE ne.EmergencyExclusion ALTER COLUMN CreateDate SET DEFAULT current_timestamp AT TIME ZONE 'UTC';
+ALTER TABLE ne.EmergencyExclusion ALTER COLUMN Id SET DEFAULT gen_random_uuid();
+ALTER TABLE ne.EmergencyExclusion ALTER COLUMN LastModifiedDate SET DEFAULT current_timestamp AT TIME ZONE 'UTC';
+
+-- Table ne.EmergencyExclusionReasonDescriptor --
+CREATE TABLE ne.EmergencyExclusionReasonDescriptor (
+    EmergencyExclusionReasonDescriptorId INT NOT NULL,
+    CONSTRAINT EmergencyExclusionReasonDescriptor_PK PRIMARY KEY (EmergencyExclusionReasonDescriptorId)
+);
+
+-- Table ne.EventComplianceDescriptor --
+CREATE TABLE ne.EventComplianceDescriptor (
+    EventComplianceDescriptorId INT NOT NULL,
+    CONSTRAINT EventComplianceDescriptor_PK PRIMARY KEY (EventComplianceDescriptorId)
+);
+
+-- Table ne.EventReasonDescriptor --
+CREATE TABLE ne.EventReasonDescriptor (
+    EventReasonDescriptorId INT NOT NULL,
+    CONSTRAINT EventReasonDescriptor_PK PRIMARY KEY (EventReasonDescriptorId)
+);
+
+-- Table ne.IdeaEvent --
+CREATE TABLE ne.IdeaEvent (
+    EducationOrganizationId BIGINT NOT NULL,
+    IDEAEventDescriptorId INT NOT NULL,
+    IDEAEventID VARCHAR(128) NOT NULL,
+    StudentUSI INT NOT NULL,
+    BeginDate DATE NOT NULL,
+    EndDate DATE NOT NULL,
+    EventComplianceDescriptorId INT NULL,
+    EventNarrative VARCHAR(2048) NULL,
+    EventReasonDescriptorId INT NULL,
+    Discriminator VARCHAR(128) NULL,
+    CreateDate TIMESTAMP NOT NULL,
+    LastModifiedDate TIMESTAMP NOT NULL,
+    Id UUID NOT NULL,
+    CONSTRAINT IdeaEvent_PK PRIMARY KEY (EducationOrganizationId, IDEAEventDescriptorId, IDEAEventID, StudentUSI)
+);
+ALTER TABLE ne.IdeaEvent ALTER COLUMN CreateDate SET DEFAULT current_timestamp AT TIME ZONE 'UTC';
+ALTER TABLE ne.IdeaEvent ALTER COLUMN Id SET DEFAULT gen_random_uuid();
+ALTER TABLE ne.IdeaEvent ALTER COLUMN LastModifiedDate SET DEFAULT current_timestamp AT TIME ZONE 'UTC';
+
+-- Table ne.IDEAEventDescriptor --
+CREATE TABLE ne.IDEAEventDescriptor (
+    IDEAEventDescriptorId INT NOT NULL,
+    CONSTRAINT IDEAEventDescriptor_PK PRIMARY KEY (IDEAEventDescriptorId)
+);
+
 -- Table ne.ImmigrantIndicatorDescriptor --
 CREATE TABLE ne.ImmigrantIndicatorDescriptor (
     ImmigrantIndicatorDescriptorId INT NOT NULL,
@@ -175,8 +237,8 @@ CREATE TABLE ne.StudentLanguageInstructionProgramAssociationExtension (
     ProgramName VARCHAR(60) NOT NULL,
     ProgramTypeDescriptorId INT NOT NULL,
     StudentUSI INT NOT NULL,
-    DismissedViaIEPReview BOOLEAN NULL,
     RedesignatedEnglishFluent BOOLEAN NULL,
+    TestedProficientOnScreener BOOLEAN NULL,
     CreateDate TIMESTAMP NOT NULL,
     CONSTRAINT StudentLanguageInstructionProgramAssociationExtension_PK PRIMARY KEY (BeginDate, EducationOrganizationId, ProgramEducationOrganizationId, ProgramName, ProgramTypeDescriptorId, StudentUSI)
 );
@@ -187,7 +249,6 @@ CREATE TABLE ne.StudentSchoolAssociationExtension (
     EntryDate DATE NOT NULL,
     SchoolId BIGINT NOT NULL,
     StudentUSI INT NOT NULL,
-    ExpectedHighSchoolOfGraduationSchoolId BIGINT NULL,
     ReportingSchoolId BIGINT NOT NULL,
     ResidentLocalEducationAgencyId BIGINT NOT NULL,
     ResidentSchoolId BIGINT NULL,
@@ -206,7 +267,6 @@ CREATE TABLE ne.StudentSpecialEducationProgramAssociationExtension (
     ProgramTypeDescriptorId INT NOT NULL,
     StudentUSI INT NOT NULL,
     InitialSpecialEducationEntryDate DATE NULL,
-    PartCTransitionDelayReasonDescriptorId INT NULL,
     PlacementTypeDescriptorId INT NULL,
     SpecialEducationProgramDescriptorId INT NULL,
     ToTakeAlternateAssessment BOOLEAN NULL,

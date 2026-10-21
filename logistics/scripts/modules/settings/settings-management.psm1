@@ -809,18 +809,18 @@ function Get-DefaultFeatures() {
         FeatureManagement = @{
             OpenApiMetadata = $true
             AggregateDependencies = $true
-            TokenInfo = $true
+            TokenInfo = $false
             Extensions = $true
             Composites = $true
-            Profiles = $true
+            Profiles = $false
             ChangeQueries = $true
             IdentityManagement = $false
-            OwnershipBasedAuthorization = $true
+            OwnershipBasedAuthorization = $false
             UniqueIdValidation = $false
             XsdMetadata = $true
-            MultiTenancy = $false
-            SerializedData = $true
-            ResourceLinks = $true
+            MultiTenancy = $true
+            SerializedData = $false
+            ResourceLinks = $false
         }
     }
 }

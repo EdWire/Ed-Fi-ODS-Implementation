@@ -1,2 +1,6 @@
+CREATE UNIQUE INDEX IF NOT EXISTS UX_b9a73b_Id ON ne.EmergencyExclusion(Id);
+
+CREATE UNIQUE INDEX IF NOT EXISTS UX_2fdbd1_Id ON ne.IdeaEvent(Id);
+
 CREATE UNIQUE INDEX IF NOT EXISTS UX_bc1d0a_Id ON ne.PostGraduateActivity(Id);
 

@@ -17,6 +17,125 @@ CREATE TRIGGER TrackDeletes AFTER DELETE ON ne.earlylearningsettingdescriptor
     FOR EACH ROW EXECUTE PROCEDURE tracked_changes_ne.earlylearningsettingdescriptor_deleted();
 END IF;
 
+CREATE OR REPLACE FUNCTION tracked_changes_ne.emergencyexclusion_deleted()
+    RETURNS trigger AS
+$BODY$
+DECLARE
+    dj0 edfi.student%ROWTYPE;
+BEGIN
+    SELECT INTO dj0 * FROM edfi.student j0 WHERE studentusi = old.studentusi;
+
+    INSERT INTO tracked_changes_ne.emergencyexclusion(
+        oldeducationorganizationid, oldexclusiondate, oldstudentusi, oldstudentuniqueid,
+        id, discriminator, changeversion)
+    VALUES (
+        OLD.educationorganizationid, OLD.exclusiondate, OLD.studentusi, dj0.studentuniqueid, 
+        OLD.id, OLD.discriminator, nextval('changes.changeversionsequence'));
+
+    RETURN NULL;
+END;
+$BODY$ LANGUAGE plpgsql;
+
+IF NOT EXISTS(SELECT 1 FROM information_schema.triggers WHERE trigger_name = 'trackdeletes' AND event_object_schema = 'ne' AND event_object_table = 'emergencyexclusion') THEN
+CREATE TRIGGER TrackDeletes AFTER DELETE ON ne.emergencyexclusion 
+    FOR EACH ROW EXECUTE PROCEDURE tracked_changes_ne.emergencyexclusion_deleted();
+END IF;
+
+CREATE OR REPLACE FUNCTION tracked_changes_ne.emergencyexclusionreasondescriptor_deleted()
+    RETURNS trigger AS
+$BODY$
+BEGIN
+    INSERT INTO tracked_changes_edfi.descriptor(olddescriptorid, oldcodevalue, oldnamespace, id, discriminator, changeversion)
+    SELECT OLD.EmergencyExclusionReasonDescriptorId, b.codevalue, b.namespace, b.id, 'ne.EmergencyExclusionReasonDescriptor', nextval('changes.ChangeVersionSequence')
+    FROM edfi.descriptor b WHERE old.EmergencyExclusionReasonDescriptorId = b.descriptorid ;
+
+    RETURN NULL;
+END;
+$BODY$ LANGUAGE plpgsql;
+
+IF NOT EXISTS(SELECT 1 FROM information_schema.triggers WHERE trigger_name = 'trackdeletes' AND event_object_schema = 'ne' AND event_object_table = 'emergencyexclusionreasondescriptor') THEN
+CREATE TRIGGER TrackDeletes AFTER DELETE ON ne.emergencyexclusionreasondescriptor 
+    FOR EACH ROW EXECUTE PROCEDURE tracked_changes_ne.emergencyexclusionreasondescriptor_deleted();
+END IF;
+
+CREATE OR REPLACE FUNCTION tracked_changes_ne.eventcompliancedescriptor_deleted()
+    RETURNS trigger AS
+$BODY$
+BEGIN
+    INSERT INTO tracked_changes_edfi.descriptor(olddescriptorid, oldcodevalue, oldnamespace, id, discriminator, changeversion)
+    SELECT OLD.EventComplianceDescriptorId, b.codevalue, b.namespace, b.id, 'ne.EventComplianceDescriptor', nextval('changes.ChangeVersionSequence')
+    FROM edfi.descriptor b WHERE old.EventComplianceDescriptorId = b.descriptorid ;
+
+    RETURN NULL;
+END;
+$BODY$ LANGUAGE plpgsql;
+
+IF NOT EXISTS(SELECT 1 FROM information_schema.triggers WHERE trigger_name = 'trackdeletes' AND event_object_schema = 'ne' AND event_object_table = 'eventcompliancedescriptor') THEN
+CREATE TRIGGER TrackDeletes AFTER DELETE ON ne.eventcompliancedescriptor 
+    FOR EACH ROW EXECUTE PROCEDURE tracked_changes_ne.eventcompliancedescriptor_deleted();
+END IF;
+
+CREATE OR REPLACE FUNCTION tracked_changes_ne.eventreasondescriptor_deleted()
+    RETURNS trigger AS
+$BODY$
+BEGIN
+    INSERT INTO tracked_changes_edfi.descriptor(olddescriptorid, oldcodevalue, oldnamespace, id, discriminator, changeversion)
+    SELECT OLD.EventReasonDescriptorId, b.codevalue, b.namespace, b.id, 'ne.EventReasonDescriptor', nextval('changes.ChangeVersionSequence')
+    FROM edfi.descriptor b WHERE old.EventReasonDescriptorId = b.descriptorid ;
+
+    RETURN NULL;
+END;
+$BODY$ LANGUAGE plpgsql;
+
+IF NOT EXISTS(SELECT 1 FROM information_schema.triggers WHERE trigger_name = 'trackdeletes' AND event_object_schema = 'ne' AND event_object_table = 'eventreasondescriptor') THEN
+CREATE TRIGGER TrackDeletes AFTER DELETE ON ne.eventreasondescriptor 
+    FOR EACH ROW EXECUTE PROCEDURE tracked_changes_ne.eventreasondescriptor_deleted();
+END IF;
+
+CREATE OR REPLACE FUNCTION tracked_changes_ne.ideaevent_deleted()
+    RETURNS trigger AS
+$BODY$
+DECLARE
+    dj0 edfi.descriptor%ROWTYPE;
+    dj1 edfi.student%ROWTYPE;
+BEGIN
+    SELECT INTO dj0 * FROM edfi.descriptor j0 WHERE descriptorid = old.ideaeventdescriptorid;
+
+    SELECT INTO dj1 * FROM edfi.student j1 WHERE studentusi = old.studentusi;
+
+    INSERT INTO tracked_changes_ne.ideaevent(
+        oldeducationorganizationid, oldideaeventdescriptorid, oldideaeventdescriptornamespace, oldideaeventdescriptorcodevalue, oldideaeventid, oldstudentusi, oldstudentuniqueid,
+        id, discriminator, changeversion)
+    VALUES (
+        OLD.educationorganizationid, OLD.ideaeventdescriptorid, dj0.namespace, dj0.codevalue, OLD.ideaeventid, OLD.studentusi, dj1.studentuniqueid, 
+        OLD.id, OLD.discriminator, nextval('changes.changeversionsequence'));
+
+    RETURN NULL;
+END;
+$BODY$ LANGUAGE plpgsql;
+
+IF NOT EXISTS(SELECT 1 FROM information_schema.triggers WHERE trigger_name = 'trackdeletes' AND event_object_schema = 'ne' AND event_object_table = 'ideaevent') THEN
+CREATE TRIGGER TrackDeletes AFTER DELETE ON ne.ideaevent 
+    FOR EACH ROW EXECUTE PROCEDURE tracked_changes_ne.ideaevent_deleted();
+END IF;
+
+CREATE OR REPLACE FUNCTION tracked_changes_ne.ideaeventdescriptor_deleted()
+    RETURNS trigger AS
+$BODY$
+BEGIN
+    INSERT INTO tracked_changes_edfi.descriptor(olddescriptorid, oldcodevalue, oldnamespace, id, discriminator, changeversion)
+    SELECT OLD.IDEAEventDescriptorId, b.codevalue, b.namespace, b.id, 'ne.IDEAEventDescriptor', nextval('changes.ChangeVersionSequence')
+    FROM edfi.descriptor b WHERE old.IDEAEventDescriptorId = b.descriptorid ;
+
+    RETURN NULL;
+END;
+$BODY$ LANGUAGE plpgsql;
+
+IF NOT EXISTS(SELECT 1 FROM information_schema.triggers WHERE trigger_name = 'trackdeletes' AND event_object_schema = 'ne' AND event_object_table = 'ideaeventdescriptor') THEN
+CREATE TRIGGER TrackDeletes AFTER DELETE ON ne.ideaeventdescriptor 
+    FOR EACH ROW EXECUTE PROCEDURE tracked_changes_ne.ideaeventdescriptor_deleted();
+END IF;
+
 CREATE OR REPLACE FUNCTION tracked_changes_ne.immigrantindicatordescriptor_deleted()
     RETURNS trigger AS
 $BODY$

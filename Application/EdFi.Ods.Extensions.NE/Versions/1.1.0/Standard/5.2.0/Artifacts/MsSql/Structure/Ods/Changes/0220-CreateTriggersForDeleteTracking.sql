@@ -19,6 +19,136 @@ ALTER TABLE [ne].[EarlyLearningSettingDescriptor] ENABLE TRIGGER [ne_EarlyLearni
 GO
 
 
+DROP TRIGGER IF EXISTS [ne].[ne_EmergencyExclusion_TR_DeleteTracking]
+GO
+
+CREATE TRIGGER [ne].[ne_EmergencyExclusion_TR_DeleteTracking] ON [ne].[EmergencyExclusion] AFTER DELETE AS
+BEGIN
+    IF @@rowcount = 0 
+        RETURN
+
+    SET NOCOUNT ON
+
+    INSERT INTO [tracked_changes_ne].[EmergencyExclusion](OldEducationOrganizationId, OldExclusionDate, OldStudentUSI, OldStudentUniqueId, Id, Discriminator, ChangeVersion)
+    SELECT d.EducationOrganizationId, d.ExclusionDate, d.StudentUSI, j0.StudentUniqueId, d.Id, d.Discriminator, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
+    FROM    deleted d
+        INNER JOIN edfi.Student j0
+            ON d.StudentUSI = j0.StudentUSI
+END
+GO
+
+ALTER TABLE [ne].[EmergencyExclusion] ENABLE TRIGGER [ne_EmergencyExclusion_TR_DeleteTracking]
+GO
+
+
+DROP TRIGGER IF EXISTS [ne].[ne_EmergencyExclusionReasonDescriptor_TR_DeleteTracking]
+GO
+
+CREATE TRIGGER [ne].[ne_EmergencyExclusionReasonDescriptor_TR_DeleteTracking] ON [ne].[EmergencyExclusionReasonDescriptor] AFTER DELETE AS
+BEGIN
+    IF @@rowcount = 0 
+        RETURN
+
+    SET NOCOUNT ON
+
+    INSERT INTO [tracked_changes_edfi].[Descriptor](OldDescriptorId, OldCodeValue, OldNamespace, Id, Discriminator, ChangeVersion)
+    SELECT  d.EmergencyExclusionReasonDescriptorId, b.CodeValue, b.Namespace, b.Id, 'ne.EmergencyExclusionReasonDescriptor', (NEXT VALUE FOR [changes].[ChangeVersionSequence])
+    FROM    deleted d
+            INNER JOIN edfi.Descriptor b ON d.EmergencyExclusionReasonDescriptorId = b.DescriptorId
+END
+GO
+
+ALTER TABLE [ne].[EmergencyExclusionReasonDescriptor] ENABLE TRIGGER [ne_EmergencyExclusionReasonDescriptor_TR_DeleteTracking]
+GO
+
+
+DROP TRIGGER IF EXISTS [ne].[ne_EventComplianceDescriptor_TR_DeleteTracking]
+GO
+
+CREATE TRIGGER [ne].[ne_EventComplianceDescriptor_TR_DeleteTracking] ON [ne].[EventComplianceDescriptor] AFTER DELETE AS
+BEGIN
+    IF @@rowcount = 0 
+        RETURN
+
+    SET NOCOUNT ON
+
+    INSERT INTO [tracked_changes_edfi].[Descriptor](OldDescriptorId, OldCodeValue, OldNamespace, Id, Discriminator, ChangeVersion)
+    SELECT  d.EventComplianceDescriptorId, b.CodeValue, b.Namespace, b.Id, 'ne.EventComplianceDescriptor', (NEXT VALUE FOR [changes].[ChangeVersionSequence])
+    FROM    deleted d
+            INNER JOIN edfi.Descriptor b ON d.EventComplianceDescriptorId = b.DescriptorId
+END
+GO
+
+ALTER TABLE [ne].[EventComplianceDescriptor] ENABLE TRIGGER [ne_EventComplianceDescriptor_TR_DeleteTracking]
+GO
+
+
+DROP TRIGGER IF EXISTS [ne].[ne_EventReasonDescriptor_TR_DeleteTracking]
+GO
+
+CREATE TRIGGER [ne].[ne_EventReasonDescriptor_TR_DeleteTracking] ON [ne].[EventReasonDescriptor] AFTER DELETE AS
+BEGIN
+    IF @@rowcount = 0 
+        RETURN
+
+    SET NOCOUNT ON
+
+    INSERT INTO [tracked_changes_edfi].[Descriptor](OldDescriptorId, OldCodeValue, OldNamespace, Id, Discriminator, ChangeVersion)
+    SELECT  d.EventReasonDescriptorId, b.CodeValue, b.Namespace, b.Id, 'ne.EventReasonDescriptor', (NEXT VALUE FOR [changes].[ChangeVersionSequence])
+    FROM    deleted d
+            INNER JOIN edfi.Descriptor b ON d.EventReasonDescriptorId = b.DescriptorId
+END
+GO
+
+ALTER TABLE [ne].[EventReasonDescriptor] ENABLE TRIGGER [ne_EventReasonDescriptor_TR_DeleteTracking]
+GO
+
+
+DROP TRIGGER IF EXISTS [ne].[ne_IdeaEvent_TR_DeleteTracking]
+GO
+
+CREATE TRIGGER [ne].[ne_IdeaEvent_TR_DeleteTracking] ON [ne].[IdeaEvent] AFTER DELETE AS
+BEGIN
+    IF @@rowcount = 0 
+        RETURN
+
+    SET NOCOUNT ON
+
+    INSERT INTO [tracked_changes_ne].[IdeaEvent](OldEducationOrganizationId, OldIDEAEventDescriptorId, OldIDEAEventDescriptorNamespace, OldIDEAEventDescriptorCodeValue, OldIDEAEventID, OldStudentUSI, OldStudentUniqueId, Id, Discriminator, ChangeVersion)
+    SELECT d.EducationOrganizationId, d.IDEAEventDescriptorId, j0.Namespace, j0.CodeValue, d.IDEAEventID, d.StudentUSI, j1.StudentUniqueId, d.Id, d.Discriminator, (NEXT VALUE FOR [changes].[ChangeVersionSequence])
+    FROM    deleted d
+        INNER JOIN edfi.Descriptor j0
+            ON d.IDEAEventDescriptorId = j0.DescriptorId
+        INNER JOIN edfi.Student j1
+            ON d.StudentUSI = j1.StudentUSI
+END
+GO
+
+ALTER TABLE [ne].[IdeaEvent] ENABLE TRIGGER [ne_IdeaEvent_TR_DeleteTracking]
+GO
+
+
+DROP TRIGGER IF EXISTS [ne].[ne_IDEAEventDescriptor_TR_DeleteTracking]
+GO
+
+CREATE TRIGGER [ne].[ne_IDEAEventDescriptor_TR_DeleteTracking] ON [ne].[IDEAEventDescriptor] AFTER DELETE AS
+BEGIN
+    IF @@rowcount = 0 
+        RETURN
+
+    SET NOCOUNT ON
+
+    INSERT INTO [tracked_changes_edfi].[Descriptor](OldDescriptorId, OldCodeValue, OldNamespace, Id, Discriminator, ChangeVersion)
+    SELECT  d.IDEAEventDescriptorId, b.CodeValue, b.Namespace, b.Id, 'ne.IDEAEventDescriptor', (NEXT VALUE FOR [changes].[ChangeVersionSequence])
+    FROM    deleted d
+            INNER JOIN edfi.Descriptor b ON d.IDEAEventDescriptorId = b.DescriptorId
+END
+GO
+
+ALTER TABLE [ne].[IDEAEventDescriptor] ENABLE TRIGGER [ne_IDEAEventDescriptor_TR_DeleteTracking]
+GO
+
+
 DROP TRIGGER IF EXISTS [ne].[ne_ImmigrantIndicatorDescriptor_TR_DeleteTracking]
 GO
 

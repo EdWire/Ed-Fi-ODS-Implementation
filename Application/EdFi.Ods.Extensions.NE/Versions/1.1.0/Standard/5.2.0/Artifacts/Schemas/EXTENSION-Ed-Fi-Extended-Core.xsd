@@ -77,6 +77,116 @@
       </xs:extension>
     </xs:complexContent>
   </xs:complexType>
+  <xs:complexType name="EXTENSION-EmergencyExclusion">
+    <xs:annotation>
+      <xs:documentation>Captures emergency exclusion details when a student is temporarily removed from school due to health, safety, or educational disruption concerns.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Domain Entity</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ComplexObjectType">
+        <xs:sequence>
+          <xs:element name="StudentReference" type="StudentReferenceType">
+            <xs:annotation>
+              <xs:documentation>The student who was subject to the emergency exclusion.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="EducationOrganizationReference" type="EducationOrganizationReferenceType">
+            <xs:annotation>
+              <xs:documentation>The education organization (school or district) that implemented the emergency exclusion.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="ExclusionDate" type="xs:date">
+            <xs:annotation>
+              <xs:documentation>The date the emergency exclusion began.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="ExclusionDuration" type="EXTENSION-ExclusionDuration">
+            <xs:annotation>
+              <xs:documentation>The duration of the emergency exclusion in days.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="EmergencyExclusionReason" type="EXTENSION-EmergencyExclusionReasonDescriptorReferenceType">
+            <xs:annotation>
+              <xs:documentation>The reason for the emergency exclusion (Health, Safety of Themselves or Others, Disruption to Education).</xs:documentation>
+              <xs:appinfo>
+                <ann:Descriptor>EXTENSION-EmergencyExclusionReasonDescriptor</ann:Descriptor>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-IdeaEvent">
+    <xs:annotation>
+      <xs:documentation>An IDEA related student event describing status, dates and narrative.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Domain Entity</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ComplexObjectType">
+        <xs:sequence>
+          <xs:element name="StudentReference" type="StudentReferenceType">
+            <xs:annotation>
+              <xs:documentation>A reference to the student.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="IDEAEventID" type="EXTENSION-IDEAEventID">
+            <xs:annotation>
+              <xs:documentation>A unique identifier for the event record as assigned by the provider of IEP services.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="EducationOrganizationReference" type="EducationOrganizationReferenceType">
+            <xs:annotation>
+              <xs:documentation>The identifier assigned to the education organization (usually District/LEA) providing IDEA Services.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="IDEAEvent" type="EXTENSION-IDEAEventDescriptorReferenceType">
+            <xs:annotation>
+              <xs:documentation>The IDEA event recorded for the student.</xs:documentation>
+              <xs:appinfo>
+                <ann:Descriptor>EXTENSION-IDEAEventDescriptor</ann:Descriptor>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="BeginDate" type="xs:date">
+            <xs:annotation>
+              <xs:documentation>The date when the IDEA related event started.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="EndDate" type="xs:date">
+            <xs:annotation>
+              <xs:documentation>The date when the IDEA event concluded.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="EventReason" type="EXTENSION-EventReasonDescriptorReferenceType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The reason why the IDEA event occured.</xs:documentation>
+              <xs:appinfo>
+                <ann:Descriptor>EXTENSION-EventReasonDescriptor</ann:Descriptor>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="EventCompliance" type="EXTENSION-EventComplianceDescriptorReferenceType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>The type of compliance represented by this event.</xs:documentation>
+              <xs:appinfo>
+                <ann:Descriptor>EXTENSION-EventComplianceDescriptor</ann:Descriptor>
+              </xs:appinfo>
+            </xs:annotation>
+          </xs:element>
+          <xs:element name="EventNarrative" type="EXTENSION-EventNarrative" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Detailed and summary notes recorded during the event.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
   <xs:complexType name="EXTENSION-PostGraduateActivity">
     <xs:annotation>
       <xs:documentation>NDE new Domain for capturing the CTE post graduation activity details. The Post School Survey template is provided for all 12th grade Career Education Concentrators identified as a [School-Year] completer with diploma and is submitted ONE-YEAR AFTER high school graduation.</xs:documentation>
@@ -155,6 +265,50 @@
   <xs:complexType name="EXTENSION-EarlyLearningSettingDescriptor">
     <xs:annotation>
       <xs:documentation>To indicate the classroom setting of the student's program participation.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Descriptor</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DescriptorType" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-EmergencyExclusionReasonDescriptor">
+    <xs:annotation>
+      <xs:documentation>Description that best reflects the reason for a student's exclusion.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Descriptor</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DescriptorType" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-EventComplianceDescriptor">
+    <xs:annotation>
+      <xs:documentation>The policy or law for which an event is compliant.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Descriptor</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DescriptorType" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-EventReasonDescriptor">
+    <xs:annotation>
+      <xs:documentation>Reason the event occured.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Descriptor</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="DescriptorType" />
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-IDEAEventDescriptor">
+    <xs:annotation>
+      <xs:documentation>IDEA event type. Examples: Referral for Evaluation, IEP Approved, Parental COnsent Given, Evaluation Complete.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Descriptor</ann:TypeGroup>
       </xs:appinfo>
@@ -358,9 +512,9 @@
               <xs:documentation>students that have been redesignated as English Fluent.</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="DismissedViaIEPReview" type="xs:boolean" minOccurs="0">
+          <xs:element name="TestedProficientOnScreener" type="xs:boolean" minOccurs="0">
             <xs:annotation>
-              <xs:documentation>A special education student that is no longer considered an English Learner due to a decision by the IEP review team to dismiss the ELPA testing requirement.</xs:documentation>
+              <xs:documentation>Indicates whether the student was tested on a language proficiency screener and demonstrated fluency on that initial screening assessment.</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -395,11 +549,6 @@
           <xs:element name="ReportingSchoolReference" type="SchoolReferenceType">
             <xs:annotation>
               <xs:documentation>School within a district where student's records should be reported for state reporting purposes.</xs:documentation>
-            </xs:annotation>
-          </xs:element>
-          <xs:element name="ExpectedHighSchoolOfGraduationSchoolReference" type="SchoolReferenceType" minOccurs="0">
-            <xs:annotation>
-              <xs:documentation>School from which the student expectes to graduate. Required only enrollment record is not at Expected High school of Graduation and for grades 9-12.</xs:documentation>
             </xs:annotation>
           </xs:element>
         </xs:sequence>
@@ -442,14 +591,6 @@
               <xs:documentation>Date when the child's first IEP or IFSP</xs:documentation>
             </xs:annotation>
           </xs:element>
-          <xs:element name="PartCTransitionDelayReason" type="EXTENSION-PartCTransitionDelayReasonDescriptorReferenceType" minOccurs="0">
-            <xs:annotation>
-              <xs:documentation>The reason the Part C IDEA child was delayed in transitioning to Part B.</xs:documentation>
-              <xs:appinfo>
-                <ann:Descriptor>EXTENSION-PartCTransitionDelayReasonDescriptor</ann:Descriptor>
-              </xs:appinfo>
-            </xs:annotation>
-          </xs:element>
         </xs:sequence>
       </xs:extension>
     </xs:complexContent>
@@ -457,6 +598,102 @@
   <xs:annotation>
     <xs:documentation>===== Extended Reference Types =====</xs:documentation>
   </xs:annotation>
+  <xs:complexType name="EXTENSION-EmergencyExclusionIdentityType">
+    <xs:annotation>
+      <xs:documentation>Identity of an EmergencyExclusion.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Identity</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="StudentReference" type="StudentReferenceType">
+        <xs:annotation>
+          <xs:documentation>The student who was subject to the emergency exclusion.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="EducationOrganizationReference" type="EducationOrganizationReferenceType">
+        <xs:annotation>
+          <xs:documentation>The education organization (school or district) that implemented the emergency exclusion.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="ExclusionDate" type="xs:date">
+        <xs:annotation>
+          <xs:documentation>The date the emergency exclusion began.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-EmergencyExclusionReferenceType">
+    <xs:annotation>
+      <xs:documentation>Provides alternative references for an EmergencyExclusion. Use XML IDREF to reference a record that is included in the interchange. Use the identity type to look up a record that was loaded previously.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ReferenceType">
+        <xs:sequence>
+          <xs:element name="EmergencyExclusionIdentity" type="EXTENSION-EmergencyExclusionIdentityType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Identity of an EmergencyExclusion.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-IdeaEventIdentityType">
+    <xs:annotation>
+      <xs:documentation>Identity of an IdeaEvent.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Identity</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="StudentReference" type="StudentReferenceType">
+        <xs:annotation>
+          <xs:documentation>A reference to the student.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="IDEAEventID" type="EXTENSION-IDEAEventID">
+        <xs:annotation>
+          <xs:documentation>A unique identifier for the event record as assigned by the provider of IEP services.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="EducationOrganizationReference" type="EducationOrganizationReferenceType">
+        <xs:annotation>
+          <xs:documentation>The identifier assigned to the education organization (usually District/LEA) providing IDEA Services.</xs:documentation>
+        </xs:annotation>
+      </xs:element>
+      <xs:element name="IDEAEvent" type="EXTENSION-IDEAEventDescriptorReferenceType">
+        <xs:annotation>
+          <xs:documentation>The IDEA event recorded for the student.</xs:documentation>
+          <xs:appinfo>
+            <ann:Descriptor>EXTENSION-IDEAEventDescriptor</ann:Descriptor>
+          </xs:appinfo>
+        </xs:annotation>
+      </xs:element>
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="EXTENSION-IdeaEventReferenceType">
+    <xs:annotation>
+      <xs:documentation>Provides alternative references for an IdeaEvent. Use XML IDREF to reference a record that is included in the interchange. Use the identity type to look up a record that was loaded previously.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:complexContent>
+      <xs:extension base="ReferenceType">
+        <xs:sequence>
+          <xs:element name="IdeaEventIdentity" type="EXTENSION-IdeaEventIdentityType" minOccurs="0">
+            <xs:annotation>
+              <xs:documentation>Identity of an IdeaEvent.</xs:documentation>
+            </xs:annotation>
+          </xs:element>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
   <xs:complexType name="EXTENSION-PostGraduateActivityIdentityType">
     <xs:annotation>
       <xs:documentation>Identity of a PostGraduateActivity.</xs:documentation>
@@ -556,6 +793,42 @@
   <xs:simpleType name="EXTENSION-EarlyLearningSettingDescriptorReferenceType">
     <xs:annotation>
       <xs:documentation>To indicate the classroom setting of the student's program participation.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="DescriptorReferenceType" />
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-EmergencyExclusionReasonDescriptorReferenceType">
+    <xs:annotation>
+      <xs:documentation>Description that best reflects the reason for a student's exclusion.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="DescriptorReferenceType" />
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-EventComplianceDescriptorReferenceType">
+    <xs:annotation>
+      <xs:documentation>The policy or law for which an event is compliant.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="DescriptorReferenceType" />
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-EventReasonDescriptorReferenceType">
+    <xs:annotation>
+      <xs:documentation>Reason the event occured.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="DescriptorReferenceType" />
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-IDEAEventDescriptorReferenceType">
+    <xs:annotation>
+      <xs:documentation>IDEA event type. Examples: Referral for Evaluation, IEP Approved, Parental COnsent Given, Evaluation Complete.</xs:documentation>
       <xs:appinfo>
         <ann:TypeGroup>Extended Descriptor Reference</ann:TypeGroup>
       </xs:appinfo>
@@ -664,9 +937,44 @@
       <xs:maxLength value="10" />
     </xs:restriction>
   </xs:simpleType>
+  <xs:simpleType name="EXTENSION-EventNarrative">
+    <xs:annotation>
+      <xs:documentation>Detailed and summary notes recorded during the event.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="2048" />
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="EXTENSION-IDEAEventID">
+    <xs:annotation>
+      <xs:documentation>A unique identifier for the event record as assigned by the provider of IEP services.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:maxLength value="128" />
+    </xs:restriction>
+  </xs:simpleType>
   <xs:annotation>
     <xs:documentation>===== Numeric Simple Types =====</xs:documentation>
   </xs:annotation>
+  <xs:simpleType name="EXTENSION-ExclusionDuration">
+    <xs:annotation>
+      <xs:documentation>The amount of time as a decimal fraction for the event as recognized by the school: 1 day = 1.0, 1/2 day = 0.5, 1/3 day = 0.33. The value can have up to two decimal places with a min of 0.00.</xs:documentation>
+      <xs:appinfo>
+        <ann:TypeGroup>Simple</ann:TypeGroup>
+      </xs:appinfo>
+    </xs:annotation>
+    <xs:restriction base="xs:decimal">
+      <xs:minInclusive value="0" />
+      <xs:totalDigits value="5" />
+      <xs:fractionDigits value="2" />
+    </xs:restriction>
+  </xs:simpleType>
   <xs:simpleType name="EXTENSION-StudentDaysEnrolled">
     <xs:annotation>
       <xs:documentation>Override field to determine number of days the student was in membership for ADA and ADM calculation.  This field is optional, and records without a value will use the related calendar to determine days enrolled.</xs:documentation>

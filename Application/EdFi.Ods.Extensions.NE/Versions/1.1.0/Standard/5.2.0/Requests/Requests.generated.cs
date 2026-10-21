@@ -58,6 +58,324 @@ namespace EdFi.Ods.Api.Common.Models.Requests.NE.EarlyLearningSettingDescriptors
     }
 }
 
+namespace EdFi.Ods.Api.Common.Models.Requests.NE.EmergencyExclusions
+{
+
+    [ExcludeFromCodeCoverage]
+    public class EmergencyExclusionGetByExample
+    {
+        public long EducationOrganizationId { get; set; }
+        public string EmergencyExclusionReasonDescriptor { get; set; }
+        public DateTime ExclusionDate { get; set; }
+        public decimal ExclusionDuration { get; set; }
+        public Guid Id { get; set; }
+        public string StudentUniqueId { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class EmergencyExclusionGetByIds : IHasIdentifiers<Guid>
+    {
+        public EmergencyExclusionGetByIds() { }
+
+        public EmergencyExclusionGetByIds(params Guid[] ids)
+        {
+            Ids = new List<Guid>(ids);
+        }
+
+        public List<Guid> Ids { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class EmergencyExclusionPost : Resources.EmergencyExclusion.NE.EmergencyExclusion
+    {
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class EmergencyExclusionPut : Resources.EmergencyExclusion.NE.EmergencyExclusion
+    {
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class EmergencyExclusionDelete : IHasIdentifier
+    {
+        public EmergencyExclusionDelete() { }
+
+        public EmergencyExclusionDelete(Guid id)
+        {
+            Id = id;
+        }
+
+        public Guid Id { get; set; }
+    }
+}
+
+namespace EdFi.Ods.Api.Common.Models.Requests.NE.EmergencyExclusionReasonDescriptors
+{
+
+    [ExcludeFromCodeCoverage]
+    public class EmergencyExclusionReasonDescriptorGetByExample
+    {
+        public string CodeValue { get; set; }
+        public string Description { get; set; }
+        public DateTime EffectiveBeginDate { get; set; }
+        public DateTime EffectiveEndDate { get; set; }
+        public int EmergencyExclusionReasonDescriptorId { get; set; }
+        public Guid Id { get; set; }
+        public string Namespace { get; set; }
+        public string ShortDescription { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class EmergencyExclusionReasonDescriptorGetByIds : IHasIdentifiers<Guid>
+    {
+        public EmergencyExclusionReasonDescriptorGetByIds() { }
+
+        public EmergencyExclusionReasonDescriptorGetByIds(params Guid[] ids)
+        {
+            Ids = new List<Guid>(ids);
+        }
+
+        public List<Guid> Ids { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class EmergencyExclusionReasonDescriptorPost : Resources.EmergencyExclusionReasonDescriptor.NE.EmergencyExclusionReasonDescriptor
+    {
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class EmergencyExclusionReasonDescriptorPut : Resources.EmergencyExclusionReasonDescriptor.NE.EmergencyExclusionReasonDescriptor
+    {
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class EmergencyExclusionReasonDescriptorDelete : IHasIdentifier
+    {
+        public EmergencyExclusionReasonDescriptorDelete() { }
+
+        public EmergencyExclusionReasonDescriptorDelete(Guid id)
+        {
+            Id = id;
+        }
+
+        public Guid Id { get; set; }
+    }
+}
+
+namespace EdFi.Ods.Api.Common.Models.Requests.NE.EventComplianceDescriptors
+{
+
+    [ExcludeFromCodeCoverage]
+    public class EventComplianceDescriptorGetByExample
+    {
+        public string CodeValue { get; set; }
+        public string Description { get; set; }
+        public DateTime EffectiveBeginDate { get; set; }
+        public DateTime EffectiveEndDate { get; set; }
+        public int EventComplianceDescriptorId { get; set; }
+        public Guid Id { get; set; }
+        public string Namespace { get; set; }
+        public string ShortDescription { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class EventComplianceDescriptorGetByIds : IHasIdentifiers<Guid>
+    {
+        public EventComplianceDescriptorGetByIds() { }
+
+        public EventComplianceDescriptorGetByIds(params Guid[] ids)
+        {
+            Ids = new List<Guid>(ids);
+        }
+
+        public List<Guid> Ids { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class EventComplianceDescriptorPost : Resources.EventComplianceDescriptor.NE.EventComplianceDescriptor
+    {
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class EventComplianceDescriptorPut : Resources.EventComplianceDescriptor.NE.EventComplianceDescriptor
+    {
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class EventComplianceDescriptorDelete : IHasIdentifier
+    {
+        public EventComplianceDescriptorDelete() { }
+
+        public EventComplianceDescriptorDelete(Guid id)
+        {
+            Id = id;
+        }
+
+        public Guid Id { get; set; }
+    }
+}
+
+namespace EdFi.Ods.Api.Common.Models.Requests.NE.EventReasonDescriptors
+{
+
+    [ExcludeFromCodeCoverage]
+    public class EventReasonDescriptorGetByExample
+    {
+        public string CodeValue { get; set; }
+        public string Description { get; set; }
+        public DateTime EffectiveBeginDate { get; set; }
+        public DateTime EffectiveEndDate { get; set; }
+        public int EventReasonDescriptorId { get; set; }
+        public Guid Id { get; set; }
+        public string Namespace { get; set; }
+        public string ShortDescription { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class EventReasonDescriptorGetByIds : IHasIdentifiers<Guid>
+    {
+        public EventReasonDescriptorGetByIds() { }
+
+        public EventReasonDescriptorGetByIds(params Guid[] ids)
+        {
+            Ids = new List<Guid>(ids);
+        }
+
+        public List<Guid> Ids { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class EventReasonDescriptorPost : Resources.EventReasonDescriptor.NE.EventReasonDescriptor
+    {
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class EventReasonDescriptorPut : Resources.EventReasonDescriptor.NE.EventReasonDescriptor
+    {
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class EventReasonDescriptorDelete : IHasIdentifier
+    {
+        public EventReasonDescriptorDelete() { }
+
+        public EventReasonDescriptorDelete(Guid id)
+        {
+            Id = id;
+        }
+
+        public Guid Id { get; set; }
+    }
+}
+
+namespace EdFi.Ods.Api.Common.Models.Requests.NE.IdeaEvents
+{
+
+    [ExcludeFromCodeCoverage]
+    public class IdeaEventGetByExample
+    {
+        public DateTime BeginDate { get; set; }
+        public long EducationOrganizationId { get; set; }
+        public DateTime EndDate { get; set; }
+        public string EventComplianceDescriptor { get; set; }
+        public string EventNarrative { get; set; }
+        public string EventReasonDescriptor { get; set; }
+        public Guid Id { get; set; }
+        public string IDEAEventDescriptor { get; set; }
+        public string IDEAEventID { get; set; }
+        public string StudentUniqueId { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class IdeaEventGetByIds : IHasIdentifiers<Guid>
+    {
+        public IdeaEventGetByIds() { }
+
+        public IdeaEventGetByIds(params Guid[] ids)
+        {
+            Ids = new List<Guid>(ids);
+        }
+
+        public List<Guid> Ids { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class IdeaEventPost : Resources.IdeaEvent.NE.IdeaEvent
+    {
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class IdeaEventPut : Resources.IdeaEvent.NE.IdeaEvent
+    {
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class IdeaEventDelete : IHasIdentifier
+    {
+        public IdeaEventDelete() { }
+
+        public IdeaEventDelete(Guid id)
+        {
+            Id = id;
+        }
+
+        public Guid Id { get; set; }
+    }
+}
+
+namespace EdFi.Ods.Api.Common.Models.Requests.NE.IDEAEventDescriptors
+{
+
+    [ExcludeFromCodeCoverage]
+    public class IDEAEventDescriptorGetByExample
+    {
+        public string CodeValue { get; set; }
+        public string Description { get; set; }
+        public DateTime EffectiveBeginDate { get; set; }
+        public DateTime EffectiveEndDate { get; set; }
+        public Guid Id { get; set; }
+        public int IDEAEventDescriptorId { get; set; }
+        public string Namespace { get; set; }
+        public string ShortDescription { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class IDEAEventDescriptorGetByIds : IHasIdentifiers<Guid>
+    {
+        public IDEAEventDescriptorGetByIds() { }
+
+        public IDEAEventDescriptorGetByIds(params Guid[] ids)
+        {
+            Ids = new List<Guid>(ids);
+        }
+
+        public List<Guid> Ids { get; set; }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class IDEAEventDescriptorPost : Resources.IDEAEventDescriptor.NE.IDEAEventDescriptor
+    {
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class IDEAEventDescriptorPut : Resources.IDEAEventDescriptor.NE.IDEAEventDescriptor
+    {
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class IDEAEventDescriptorDelete : IHasIdentifier
+    {
+        public IDEAEventDescriptorDelete() { }
+
+        public IDEAEventDescriptorDelete(Guid id)
+        {
+            Id = id;
+        }
+
+        public Guid Id { get; set; }
+    }
+}
+
 namespace EdFi.Ods.Api.Common.Models.Requests.NE.ImmigrantIndicatorDescriptors
 {
 

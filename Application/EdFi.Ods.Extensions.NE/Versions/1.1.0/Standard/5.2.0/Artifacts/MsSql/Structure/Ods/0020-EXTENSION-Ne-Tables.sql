@@ -60,6 +60,97 @@ CREATE TABLE [ne].[EarlyLearningSettingDescriptor] (
 ) ON [PRIMARY]
 GO
 
+-- Table [ne].[EmergencyExclusion] --
+CREATE TABLE [ne].[EmergencyExclusion] (
+    [EducationOrganizationId] [BIGINT] NOT NULL,
+    [ExclusionDate] [DATE] NOT NULL,
+    [StudentUSI] [INT] NOT NULL,
+    [EmergencyExclusionReasonDescriptorId] [INT] NOT NULL,
+    [ExclusionDuration] [DECIMAL](5, 2) NOT NULL,
+    [Discriminator] [NVARCHAR](128) NULL,
+    [CreateDate] [DATETIME2] NOT NULL,
+    [LastModifiedDate] [DATETIME2] NOT NULL,
+    [Id] [UNIQUEIDENTIFIER] NOT NULL,
+    CONSTRAINT [EmergencyExclusion_PK] PRIMARY KEY CLUSTERED (
+        [EducationOrganizationId] ASC,
+        [ExclusionDate] ASC,
+        [StudentUSI] ASC
+    ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+ALTER TABLE [ne].[EmergencyExclusion] ADD CONSTRAINT [EmergencyExclusion_DF_CreateDate] DEFAULT (getutcdate()) FOR [CreateDate]
+GO
+ALTER TABLE [ne].[EmergencyExclusion] ADD CONSTRAINT [EmergencyExclusion_DF_Id] DEFAULT (newid()) FOR [Id]
+GO
+ALTER TABLE [ne].[EmergencyExclusion] ADD CONSTRAINT [EmergencyExclusion_DF_LastModifiedDate] DEFAULT (getutcdate()) FOR [LastModifiedDate]
+GO
+
+-- Table [ne].[EmergencyExclusionReasonDescriptor] --
+CREATE TABLE [ne].[EmergencyExclusionReasonDescriptor] (
+    [EmergencyExclusionReasonDescriptorId] [INT] NOT NULL,
+    CONSTRAINT [EmergencyExclusionReasonDescriptor_PK] PRIMARY KEY CLUSTERED (
+        [EmergencyExclusionReasonDescriptorId] ASC
+    ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+-- Table [ne].[EventComplianceDescriptor] --
+CREATE TABLE [ne].[EventComplianceDescriptor] (
+    [EventComplianceDescriptorId] [INT] NOT NULL,
+    CONSTRAINT [EventComplianceDescriptor_PK] PRIMARY KEY CLUSTERED (
+        [EventComplianceDescriptorId] ASC
+    ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+-- Table [ne].[EventReasonDescriptor] --
+CREATE TABLE [ne].[EventReasonDescriptor] (
+    [EventReasonDescriptorId] [INT] NOT NULL,
+    CONSTRAINT [EventReasonDescriptor_PK] PRIMARY KEY CLUSTERED (
+        [EventReasonDescriptorId] ASC
+    ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+-- Table [ne].[IdeaEvent] --
+CREATE TABLE [ne].[IdeaEvent] (
+    [EducationOrganizationId] [BIGINT] NOT NULL,
+    [IDEAEventDescriptorId] [INT] NOT NULL,
+    [IDEAEventID] [NVARCHAR](128) NOT NULL,
+    [StudentUSI] [INT] NOT NULL,
+    [BeginDate] [DATE] NOT NULL,
+    [EndDate] [DATE] NOT NULL,
+    [EventComplianceDescriptorId] [INT] NULL,
+    [EventNarrative] [NVARCHAR](2048) NULL,
+    [EventReasonDescriptorId] [INT] NULL,
+    [Discriminator] [NVARCHAR](128) NULL,
+    [CreateDate] [DATETIME2] NOT NULL,
+    [LastModifiedDate] [DATETIME2] NOT NULL,
+    [Id] [UNIQUEIDENTIFIER] NOT NULL,
+    CONSTRAINT [IdeaEvent_PK] PRIMARY KEY CLUSTERED (
+        [EducationOrganizationId] ASC,
+        [IDEAEventDescriptorId] ASC,
+        [IDEAEventID] ASC,
+        [StudentUSI] ASC
+    ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+ALTER TABLE [ne].[IdeaEvent] ADD CONSTRAINT [IdeaEvent_DF_CreateDate] DEFAULT (getutcdate()) FOR [CreateDate]
+GO
+ALTER TABLE [ne].[IdeaEvent] ADD CONSTRAINT [IdeaEvent_DF_Id] DEFAULT (newid()) FOR [Id]
+GO
+ALTER TABLE [ne].[IdeaEvent] ADD CONSTRAINT [IdeaEvent_DF_LastModifiedDate] DEFAULT (getutcdate()) FOR [LastModifiedDate]
+GO
+
+-- Table [ne].[IDEAEventDescriptor] --
+CREATE TABLE [ne].[IDEAEventDescriptor] (
+    [IDEAEventDescriptorId] [INT] NOT NULL,
+    CONSTRAINT [IDEAEventDescriptor_PK] PRIMARY KEY CLUSTERED (
+        [IDEAEventDescriptorId] ASC
+    ) WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
 -- Table [ne].[ImmigrantIndicatorDescriptor] --
 CREATE TABLE [ne].[ImmigrantIndicatorDescriptor] (
     [ImmigrantIndicatorDescriptorId] [INT] NOT NULL,
@@ -265,8 +356,8 @@ CREATE TABLE [ne].[StudentLanguageInstructionProgramAssociationExtension] (
     [ProgramName] [NVARCHAR](60) NOT NULL,
     [ProgramTypeDescriptorId] [INT] NOT NULL,
     [StudentUSI] [INT] NOT NULL,
-    [DismissedViaIEPReview] [BIT] NULL,
     [RedesignatedEnglishFluent] [BIT] NULL,
+    [TestedProficientOnScreener] [BIT] NULL,
     [CreateDate] [DATETIME2] NOT NULL,
     CONSTRAINT [StudentLanguageInstructionProgramAssociationExtension_PK] PRIMARY KEY CLUSTERED (
         [BeginDate] ASC,
@@ -286,7 +377,6 @@ CREATE TABLE [ne].[StudentSchoolAssociationExtension] (
     [EntryDate] [DATE] NOT NULL,
     [SchoolId] [BIGINT] NOT NULL,
     [StudentUSI] [INT] NOT NULL,
-    [ExpectedHighSchoolOfGraduationSchoolId] [BIGINT] NULL,
     [ReportingSchoolId] [BIGINT] NOT NULL,
     [ResidentLocalEducationAgencyId] [BIGINT] NOT NULL,
     [ResidentSchoolId] [BIGINT] NULL,
@@ -311,7 +401,6 @@ CREATE TABLE [ne].[StudentSpecialEducationProgramAssociationExtension] (
     [ProgramTypeDescriptorId] [INT] NOT NULL,
     [StudentUSI] [INT] NOT NULL,
     [InitialSpecialEducationEntryDate] [DATE] NULL,
-    [PartCTransitionDelayReasonDescriptorId] [INT] NULL,
     [PlacementTypeDescriptorId] [INT] NULL,
     [SpecialEducationProgramDescriptorId] [INT] NULL,
     [ToTakeAlternateAssessment] [BIT] NULL,

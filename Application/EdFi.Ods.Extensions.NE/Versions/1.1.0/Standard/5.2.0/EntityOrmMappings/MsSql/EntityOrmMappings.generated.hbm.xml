@@ -81,6 +81,121 @@
 
 
     <!-- Aggregate reference data class mapping -->
+    <class name="EdFi.Ods.Entities.NHibernate.EmergencyExclusionAggregate.NE.EmergencyExclusionReferenceData" table="EmergencyExclusion" lazy="true"  schema="ne" >
+        <!-- Composite primary key -->
+        <composite-id>
+            <key-property name="EducationOrganizationId" column="EducationOrganizationId" type="long"  />
+            <key-property name="ExclusionDate" column="ExclusionDate" type="date"  />
+            <key-property name="StudentUSI" column="StudentUSI" type="int"  />
+        </composite-id>
+
+        <property name="Id" column="Id" type="guid" insert="false" update="false" />
+
+        <!-- Readonly property to surface the discriminator value -->
+        <property name="Discriminator" column="Discriminator" type="string" insert="false" update="false" />
+    </class>
+
+  <!-- Class definition -->
+  <class name="EdFi.Ods.Entities.NHibernate.EmergencyExclusionAggregate.NE.EmergencyExclusion" table="EmergencyExclusion" lazy="false" schema="ne" discriminator-value="null">
+    <!-- Composite primary key -->
+    <composite-id>
+      <key-property name="EducationOrganizationId" column="EducationOrganizationId" type="long" />
+      <key-property name="ExclusionDate" column="ExclusionDate" type="date" />
+      <key-property name="StudentUSI" column="StudentUSI" type="int" />
+    </composite-id>
+
+    <!-- Discriminator -->
+    <discriminator column="Discriminator" type="string" />
+
+    <!-- Optimistic locking for aggregate root -->
+    <version name="LastModifiedDate" column="LastModifiedDate" type="UtcDateTime" />
+
+    <!-- Transient state detection -->
+    <property name="CreateDate" column="CreateDate" type="UtcDateTime" not-null="true" />
+
+    <!-- Unique Guid-based identifier for aggregate root -->
+    <property name="Id" column="Id" type="guid" not-null="true" />
+    <property name="AggregateId" column="AggregateId" type="int" not-null="true" insert="false" update="false" />
+
+    <!-- Properties -->
+    <property name="EmergencyExclusionReasonDescriptorId" column="EmergencyExclusionReasonDescriptorId" type="int" not-null="true" />
+    <property name="ExclusionDuration" column="ExclusionDuration" type="decimal" not-null="true" />
+
+    <!-- Aggregate references -->
+    <many-to-one name="EducationOrganizationReferenceData" class="EdFi.Ods.Entities.NHibernate.EducationOrganizationAggregate.EdFi.EducationOrganizationReferenceData" fetch="join" insert="false" update="false" cascade="none" lazy="proxy">
+      <column name="EducationOrganizationId" />
+    </many-to-one>
+    <many-to-one name="StudentReferenceData" class="EdFi.Ods.Entities.NHibernate.StudentAggregate.EdFi.StudentReferenceData" fetch="join" insert="false" update="false" cascade="none" lazy="proxy">
+      <column name="StudentUSI" />
+    </many-to-one>
+
+    <!-- Back references -->
+
+    <!-- Collections -->
+</class>
+
+
+    <!-- Aggregate reference data class mapping -->
+    <class name="EdFi.Ods.Entities.NHibernate.IdeaEventAggregate.NE.IdeaEventReferenceData" table="IdeaEvent" lazy="true"  schema="ne" >
+        <!-- Composite primary key -->
+        <composite-id>
+            <key-property name="EducationOrganizationId" column="EducationOrganizationId" type="long"  />
+            <key-property name="IDEAEventDescriptorId" column="IDEAEventDescriptorId" type="int"  />
+            <key-property name="IDEAEventID" column="IDEAEventID" type="string"  length="128"  />
+            <key-property name="StudentUSI" column="StudentUSI" type="int"  />
+        </composite-id>
+
+        <property name="Id" column="Id" type="guid" insert="false" update="false" />
+
+        <!-- Readonly property to surface the discriminator value -->
+        <property name="Discriminator" column="Discriminator" type="string" insert="false" update="false" />
+    </class>
+
+  <!-- Class definition -->
+  <class name="EdFi.Ods.Entities.NHibernate.IdeaEventAggregate.NE.IdeaEvent" table="IdeaEvent" lazy="false" schema="ne" discriminator-value="null">
+    <!-- Composite primary key -->
+    <composite-id>
+      <key-property name="EducationOrganizationId" column="EducationOrganizationId" type="long" />
+      <key-property name="IDEAEventDescriptorId" column="IDEAEventDescriptorId" type="int" />
+      <key-property name="IDEAEventID" column="IDEAEventID" type="string" length="128" />
+      <key-property name="StudentUSI" column="StudentUSI" type="int" />
+    </composite-id>
+
+    <!-- Discriminator -->
+    <discriminator column="Discriminator" type="string" />
+
+    <!-- Optimistic locking for aggregate root -->
+    <version name="LastModifiedDate" column="LastModifiedDate" type="UtcDateTime" />
+
+    <!-- Transient state detection -->
+    <property name="CreateDate" column="CreateDate" type="UtcDateTime" not-null="true" />
+
+    <!-- Unique Guid-based identifier for aggregate root -->
+    <property name="Id" column="Id" type="guid" not-null="true" />
+    <property name="AggregateId" column="AggregateId" type="int" not-null="true" insert="false" update="false" />
+
+    <!-- Properties -->
+    <property name="BeginDate" column="BeginDate" type="date" not-null="true" />
+    <property name="EndDate" column="EndDate" type="date" not-null="true" />
+    <property name="EventComplianceDescriptorId" column="EventComplianceDescriptorId" type="int" />
+    <property name="EventNarrative" column="EventNarrative" type="string" length="2048" />
+    <property name="EventReasonDescriptorId" column="EventReasonDescriptorId" type="int" />
+
+    <!-- Aggregate references -->
+    <many-to-one name="EducationOrganizationReferenceData" class="EdFi.Ods.Entities.NHibernate.EducationOrganizationAggregate.EdFi.EducationOrganizationReferenceData" fetch="join" insert="false" update="false" cascade="none" lazy="proxy">
+      <column name="EducationOrganizationId" />
+    </many-to-one>
+    <many-to-one name="StudentReferenceData" class="EdFi.Ods.Entities.NHibernate.StudentAggregate.EdFi.StudentReferenceData" fetch="join" insert="false" update="false" cascade="none" lazy="proxy">
+      <column name="StudentUSI" />
+    </many-to-one>
+
+    <!-- Back references -->
+
+    <!-- Collections -->
+</class>
+
+
+    <!-- Aggregate reference data class mapping -->
     <class name="EdFi.Ods.Entities.NHibernate.PostGraduateActivityAggregate.NE.PostGraduateActivityReferenceData" table="PostGraduateActivity" lazy="true"  schema="ne" >
         <!-- Composite primary key -->
         <composite-id>
@@ -268,8 +383,8 @@
 
 
     <!-- Properties -->
-    <property name="DismissedViaIEPReview" column="DismissedViaIEPReview" type="bool" />
     <property name="RedesignatedEnglishFluent" column="RedesignatedEnglishFluent" type="bool" />
+    <property name="TestedProficientOnScreener" column="TestedProficientOnScreener" type="bool" />
 
     <!-- Aggregate references -->
 
@@ -295,16 +410,12 @@
 
 
     <!-- Properties -->
-    <property name="ExpectedHighSchoolOfGraduationSchoolId" column="ExpectedHighSchoolOfGraduationSchoolId" type="long" />
     <property name="ReportingSchoolId" column="ReportingSchoolId" type="long" not-null="true" />
     <property name="ResidentLocalEducationAgencyId" column="ResidentLocalEducationAgencyId" type="long" not-null="true" />
     <property name="ResidentSchoolId" column="ResidentSchoolId" type="long" />
     <property name="StudentDaysEnrolled" column="StudentDaysEnrolled" type="decimal" />
 
     <!-- Aggregate references -->
-    <many-to-one name="ExpectedHighSchoolOfGraduationSchoolReferenceData" class="EdFi.Ods.Entities.NHibernate.EducationOrganizationAggregate.EdFi.EducationOrganizationReferenceData" fetch="join" insert="false" update="false" cascade="none" lazy="proxy">
-      <column name="ExpectedHighSchoolOfGraduationSchoolId" />
-    </many-to-one>
     <many-to-one name="ReportingSchoolReferenceData" class="EdFi.Ods.Entities.NHibernate.EducationOrganizationAggregate.EdFi.EducationOrganizationReferenceData" fetch="join" insert="false" update="false" cascade="none" lazy="proxy">
       <column name="ReportingSchoolId" />
     </many-to-one>
@@ -341,7 +452,6 @@
 
     <!-- Properties -->
     <property name="InitialSpecialEducationEntryDate" column="InitialSpecialEducationEntryDate" type="date" />
-    <property name="PartCTransitionDelayReasonDescriptorId" column="PartCTransitionDelayReasonDescriptorId" type="int" />
     <property name="PlacementTypeDescriptorId" column="PlacementTypeDescriptorId" type="int" />
     <property name="SpecialEducationProgramDescriptorId" column="SpecialEducationProgramDescriptorId" type="int" />
     <property name="ToTakeAlternateAssessment" column="ToTakeAlternateAssessment" type="bool" />

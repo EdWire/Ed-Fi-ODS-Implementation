@@ -11,6 +11,42 @@ namespace EdFi.Ods.Api.Pipelines.NE
     }
 
     [ExcludeFromCodeCoverage]
+    public class EmergencyExclusionCreateOrUpdatePipeline : CreateOrUpdatePipeline<Common.Models.Resources.EmergencyExclusion.NE.EmergencyExclusion, Entities.NHibernate.EmergencyExclusionAggregate.NE.EmergencyExclusion>
+    {
+        public EmergencyExclusionCreateOrUpdatePipeline(IPipelineFactory factory) : base(factory) { }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class EmergencyExclusionReasonDescriptorCreateOrUpdatePipeline : CreateOrUpdatePipeline<Common.Models.Resources.EmergencyExclusionReasonDescriptor.NE.EmergencyExclusionReasonDescriptor, Entities.NHibernate.EmergencyExclusionReasonDescriptorAggregate.NE.EmergencyExclusionReasonDescriptor>
+    {
+        public EmergencyExclusionReasonDescriptorCreateOrUpdatePipeline(IPipelineFactory factory) : base(factory) { }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class EventComplianceDescriptorCreateOrUpdatePipeline : CreateOrUpdatePipeline<Common.Models.Resources.EventComplianceDescriptor.NE.EventComplianceDescriptor, Entities.NHibernate.EventComplianceDescriptorAggregate.NE.EventComplianceDescriptor>
+    {
+        public EventComplianceDescriptorCreateOrUpdatePipeline(IPipelineFactory factory) : base(factory) { }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class EventReasonDescriptorCreateOrUpdatePipeline : CreateOrUpdatePipeline<Common.Models.Resources.EventReasonDescriptor.NE.EventReasonDescriptor, Entities.NHibernate.EventReasonDescriptorAggregate.NE.EventReasonDescriptor>
+    {
+        public EventReasonDescriptorCreateOrUpdatePipeline(IPipelineFactory factory) : base(factory) { }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class IdeaEventCreateOrUpdatePipeline : CreateOrUpdatePipeline<Common.Models.Resources.IdeaEvent.NE.IdeaEvent, Entities.NHibernate.IdeaEventAggregate.NE.IdeaEvent>
+    {
+        public IdeaEventCreateOrUpdatePipeline(IPipelineFactory factory) : base(factory) { }
+    }
+
+    [ExcludeFromCodeCoverage]
+    public class IDEAEventDescriptorCreateOrUpdatePipeline : CreateOrUpdatePipeline<Common.Models.Resources.IDEAEventDescriptor.NE.IDEAEventDescriptor, Entities.NHibernate.IDEAEventDescriptorAggregate.NE.IDEAEventDescriptor>
+    {
+        public IDEAEventDescriptorCreateOrUpdatePipeline(IPipelineFactory factory) : base(factory) { }
+    }
+
+    [ExcludeFromCodeCoverage]
     public class ImmigrantIndicatorDescriptorCreateOrUpdatePipeline : CreateOrUpdatePipeline<Common.Models.Resources.ImmigrantIndicatorDescriptor.NE.ImmigrantIndicatorDescriptor, Entities.NHibernate.ImmigrantIndicatorDescriptorAggregate.NE.ImmigrantIndicatorDescriptor>
     {
         public ImmigrantIndicatorDescriptorCreateOrUpdatePipeline(IPipelineFactory factory) : base(factory) { }

@@ -223,6 +223,10 @@ The Descriptor interchange is used to describe metadata about the descriptors an
         <xs:element name="VisaDescriptor" type="VisaDescriptor" />
         <xs:element name="WeaponDescriptor" type="WeaponDescriptor" />
         <xs:element name="EarlyLearningSettingDescriptor" type="EXTENSION-EarlyLearningSettingDescriptor" />
+        <xs:element name="EmergencyExclusionReasonDescriptor" type="EXTENSION-EmergencyExclusionReasonDescriptor" />
+        <xs:element name="EventComplianceDescriptor" type="EXTENSION-EventComplianceDescriptor" />
+        <xs:element name="EventReasonDescriptor" type="EXTENSION-EventReasonDescriptor" />
+        <xs:element name="IDEAEventDescriptor" type="EXTENSION-IDEAEventDescriptor" />
         <xs:element name="ImmigrantIndicatorDescriptor" type="EXTENSION-ImmigrantIndicatorDescriptor" />
         <xs:element name="PartCTransitionDelayReasonDescriptor" type="EXTENSION-PartCTransitionDelayReasonDescriptor" />
         <xs:element name="PlacementTypeDescriptor" type="EXTENSION-PlacementTypeDescriptor" />

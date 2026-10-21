@@ -33,7 +33,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.CalendarDate.EdFi.Extensions.NE
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    [Display(Name="Ne")]
+    [Display(Name="NE")]
     [NoUnsuppliedRequiredMembersWithMeaningfulDefaults]
     public class CalendarDateExtension : Entities.Common.NE.ICalendarDateExtension, IHasRequiredMembersWithMeaningfulDefaultValues, IChildEntity
     {
@@ -279,7 +279,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineAction.EdFi.Extensions.
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    [Display(Name="Ne")]
+    [Display(Name="NE")]
     public class DisciplineActionExtension : Entities.Common.NE.IDisciplineActionExtension, IChildEntity
     {
         private static FullName _fullName = new FullName("ne", "DisciplineActionExtension");
@@ -511,7 +511,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.DisciplineIncident.EdFi.Extension
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    [Display(Name="Ne")]
+    [Display(Name="NE")]
     public class DisciplineIncidentExtension : Entities.Common.NE.IDisciplineIncidentExtension, IChildEntity
     {
         private static FullName _fullName = new FullName("ne", "DisciplineIncidentExtension");
@@ -976,6 +976,2181 @@ namespace EdFi.Ods.Api.Common.Models.Resources.EarlyLearningSettingDescriptor.NE
     public class EarlyLearningSettingDescriptorPutPostRequestValidator : FluentValidation.AbstractValidator<EarlyLearningSettingDescriptor>
     {
         protected override bool PreValidate(FluentValidation.ValidationContext<EarlyLearningSettingDescriptor> context, FluentValidation.Results.ValidationResult result)
+        {
+            if (context.InstanceToValidate == null)
+            {
+                result.Errors.Add(new ValidationFailure("", "Please ensure a model was supplied."));
+
+                return false;
+            }
+
+            var instance = context.InstanceToValidate;
+
+            var failures = new List<ValidationFailure>();
+
+            if (failures.Any())
+            {
+                foreach (var failure in failures)
+                {
+                    result.Errors.Add(failure);
+                }
+
+                return false;
+            }
+
+            return true;
+        }
+    }
+    // -----------------------------------------------------------------
+
+}
+// Aggregate: EmergencyExclusion
+
+namespace EdFi.Ods.Api.Common.Models.Resources.EmergencyExclusion.NE
+{
+    /// <summary>
+    /// Represents a reference to the EmergencyExclusion resource.
+    /// </summary>
+    [DataContract]
+    [ExcludeFromCodeCoverage]
+    public class EmergencyExclusionReference : IResourceReference
+    {
+        [DataMember(Name="educationOrganizationId")]
+        public long EducationOrganizationId { get; set; }
+
+        [DataMember(Name="exclusionDate")][JsonConverter(typeof(Iso8601UtcDateOnlyConverter))]
+        public DateTime ExclusionDate { get; set; }
+
+        [DataMember(Name="studentUniqueId")]
+        public string StudentUniqueId 
+        {
+            get => _studentUniqueId;
+            set
+            {
+                _studentUniqueId = value;
+                GeneratedArtifactStaticDependencies.UsiLookupsByUniqueIdContextProvider.Get().AddLookup("Student", value);
+            }
+        }
+        private string _studentUniqueId;
+
+        /// <summary>
+        /// Gets or sets the resource identifier of the referenced resource.
+        /// </summary>
+        public Guid ResourceId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the discriminator value which identifies the concrete sub-type of the referenced resource
+        /// when the referenced resource has been derived; otherwise <b>null</b>.
+        /// </summary>
+        public string Discriminator { get; set; }
+
+
+        private Link _link;
+
+        [DataMember(Name="link")]
+        public Link Link
+        {
+            get
+            {
+                if (_link == null)
+                {
+                    // Only generate links when all values are present
+                    if (GeneratedArtifactStaticDependencies.ResourceLinksEnabled && IsReferenceFullyDefined())
+                        _link = CreateLink();
+                }
+
+                return _link;
+            }
+        }
+
+        /// <summary>
+        /// Indicates whether the reference has been fully defined (all key values are currently assigned non-default values).
+        /// </summary>
+        /// <returns><b>true</b> if the reference's properties are all set to non-default values; otherwise <b>false</b>.</returns>
+        public bool IsReferenceFullyDefined()
+        {
+            return EducationOrganizationId != default(long) && ExclusionDate != default(DateTime) && StudentUniqueId != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (EducationOrganizationId == default)
+            {
+                yield return "EducationOrganizationId";
+            }
+
+            if (ExclusionDate == default)
+            {
+                yield return "ExclusionDate";
+            }
+
+            if (StudentUniqueId == default)
+            {
+                yield return "StudentUniqueId";
+            }
+
+        }
+
+        private Link CreateLink()
+        {
+            var link = new Link
+            {
+                Rel = "EmergencyExclusion",
+                Href = $"/NE/emergencyExclusions/{ResourceId:n}"
+            };
+
+            if (string.IsNullOrEmpty(Discriminator))
+                return link;
+
+            string[] linkParts = Discriminator.Split('.');
+
+            if (linkParts.Length < 2)
+                return link;
+
+            var resource = GeneratedArtifactStaticDependencies.ResourceModelProvider.GetResourceModel()
+                .GetResourceByFullName(new FullName(linkParts[0], linkParts[1]));
+
+            // return the default link if the relationship is already correct, and/or if the resource is not found.
+            if (resource == null || link.Rel == resource.Name)
+                return link;
+
+            return new Link
+            {
+                Rel = resource.Name,
+                Href = $"/{resource.SchemaUriSegment()}/{resource.PluralName.ToCamelCase()}/{ResourceId:n}"
+            };
+        }
+    } // Aggregate reference
+
+    /// <summary>
+    /// A class which represents the ne.EmergencyExclusion table of the EmergencyExclusion aggregate in the ODS Database.
+    /// </summary>
+    [Serializable, DataContract]
+    [ExcludeFromCodeCoverage]
+    [NoUnsuppliedRequiredMembersWithMeaningfulDefaults]
+    public class EmergencyExclusion : Entities.Common.NE.IEmergencyExclusion, IHasETag, IDateVersionedEntity, IHasRequiredMembersWithMeaningfulDefaultValues
+    {
+        private static FullName _fullName = new FullName("ne", "EmergencyExclusion");
+
+        // Fluent validator instance (threadsafe)
+        private static EmergencyExclusionPutPostRequestValidator _validator = new EmergencyExclusionPutPostRequestValidator();
+        
+#pragma warning disable 414
+        private bool _SuspendReferenceAssignmentCheck = false;
+        public void SuspendReferenceAssignmentCheck() { _SuspendReferenceAssignmentCheck = true; }
+#pragma warning restore 414
+
+        // =============================================================
+        //                         Constructor
+        // -------------------------------------------------------------
+
+        
+        // ------------------------------------------------------------
+
+        // ============================================================
+        //                Unique Identifier
+        // ------------------------------------------------------------
+
+        /// <summary>
+        /// The unique identifier for the EmergencyExclusion resource.
+        /// </summary>
+        [DataMember(Name="id")]
+        [JsonConverter(typeof(GuidConverter))]
+        public Guid Id { get; set; }
+        // ------------------------------------------------------------
+
+        // =============================================================
+        //                         References
+        // -------------------------------------------------------------
+
+        private bool _educationOrganizationReferenceExplicitlyAssigned;
+        private EducationOrganization.EdFi.EducationOrganizationReference _educationOrganizationReference;
+        private EducationOrganization.EdFi.EducationOrganizationReference ImplicitEducationOrganizationReference
+        {
+            get
+            {
+                // if the Reference is null, it is instantiated unless it has been explicitly assigned to null
+                if (_educationOrganizationReference == null && !_educationOrganizationReferenceExplicitlyAssigned)
+                    _educationOrganizationReference = new EducationOrganization.EdFi.EducationOrganizationReference();
+
+                return _educationOrganizationReference;
+            }
+        }
+
+        [DataMember(Name="educationOrganizationReference")]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
+        public EducationOrganization.EdFi.EducationOrganizationReference EducationOrganizationReference
+        {
+            get
+            {
+                // Only return the reference if it's non-null, and all its properties have non-default values assigned
+                if (ImplicitEducationOrganizationReference != null
+                    && (_educationOrganizationReferenceExplicitlyAssigned || _SuspendReferenceAssignmentCheck || ImplicitEducationOrganizationReference.IsReferenceFullyDefined()))
+                    return ImplicitEducationOrganizationReference;
+
+                return null;
+            }
+            set
+            {
+                _educationOrganizationReferenceExplicitlyAssigned = true;
+                _educationOrganizationReference = value;
+            }
+        }
+        private bool _studentReferenceExplicitlyAssigned;
+        private Student.EdFi.StudentReference _studentReference;
+        private Student.EdFi.StudentReference ImplicitStudentReference
+        {
+            get
+            {
+                // if the Reference is null, it is instantiated unless it has been explicitly assigned to null
+                if (_studentReference == null && !_studentReferenceExplicitlyAssigned)
+                    _studentReference = new Student.EdFi.StudentReference();
+
+                return _studentReference;
+            }
+        }
+
+        [DataMember(Name="studentReference")]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
+        public Student.EdFi.StudentReference StudentReference
+        {
+            get
+            {
+                // Only return the reference if it's non-null, and all its properties have non-default values assigned
+                if (ImplicitStudentReference != null
+                    && (_studentReferenceExplicitlyAssigned || _SuspendReferenceAssignmentCheck || ImplicitStudentReference.IsReferenceFullyDefined()))
+                    return ImplicitStudentReference;
+
+                return null;
+            }
+            set
+            {
+                _studentReferenceExplicitlyAssigned = true;
+                _studentReference = value;
+            }
+        }
+        // -------------------------------------------------------------
+
+        //==============================================================
+        //                         Primary Key
+        // -------------------------------------------------------------
+
+        /// <summary>
+        /// The identifier assigned to an education organization.
+        /// </summary>
+        // IS in a reference, NOT a lookup column 
+        long Entities.Common.NE.IEmergencyExclusion.EducationOrganizationId
+        {
+            get
+            {
+                if (ImplicitEducationOrganizationReference != null
+                    && (_SuspendReferenceAssignmentCheck || ImplicitEducationOrganizationReference.IsReferenceFullyDefined()))
+                    return ImplicitEducationOrganizationReference.EducationOrganizationId;
+
+                return default(long);
+            }
+            set
+            {
+                // When a property is assigned, Reference should not be null even if it has been explicitly assigned to null.
+                // All ExplicitlyAssigned are reset to false in advanced
+
+                // EducationOrganization
+                _educationOrganizationReferenceExplicitlyAssigned = false;
+                ImplicitEducationOrganizationReference.EducationOrganizationId = value;
+            }
+        }
+
+        /// <summary>
+        /// The date the emergency exclusion began.
+        /// </summary>
+        // NOT in a reference, NOT a lookup column 
+        [RequiredWithNonDefault]
+        [DataMember(Name="exclusionDate")][JsonConverter(typeof(Iso8601UtcDateOnlyConverter))]
+        public DateTime ExclusionDate { get; set; }
+
+        /// <summary>
+        /// A unique alphanumeric code assigned to a student.
+        /// </summary>
+        // IS in a reference, NOT a lookup column 
+        string Entities.Common.NE.IEmergencyExclusion.StudentUniqueId
+        {
+            get
+            {
+                if (ImplicitStudentReference != null
+                    && (_SuspendReferenceAssignmentCheck || ImplicitStudentReference.IsReferenceFullyDefined()))
+                    return ImplicitStudentReference.StudentUniqueId;
+
+                return default(string);
+            }
+            set
+            {
+                // When a property is assigned, Reference should not be null even if it has been explicitly assigned to null.
+                // All ExplicitlyAssigned are reset to false in advanced
+
+                // Student
+                _studentReferenceExplicitlyAssigned = false;
+                ImplicitStudentReference.StudentUniqueId = value;
+                GeneratedArtifactStaticDependencies.UsiLookupsByUniqueIdContextProvider.Get().AddLookup("Student", value);                
+            }
+        }
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                      Equality
+        // -------------------------------------------------------------
+
+        /// <summary>
+        /// Determines equality based on the natural key properties of the resource.
+        /// </summary>
+        /// <returns>
+        /// A boolean value indicating equality result of the compared resources.
+        /// </returns>
+        public override bool Equals(object obj)
+        {
+            var compareTo = obj as Entities.Common.NE.IEmergencyExclusion;
+
+            if (ReferenceEquals(this, compareTo))
+                return true;
+
+            if (compareTo == null)
+                return false;
+
+
+            // Referenced Property
+            if (!(this as Entities.Common.NE.IEmergencyExclusion).EducationOrganizationId.Equals(compareTo.EducationOrganizationId))
+                return false;
+
+
+            // Standard Property
+            if (!(this as Entities.Common.NE.IEmergencyExclusion).ExclusionDate.Equals(compareTo.ExclusionDate))
+                return false;
+
+
+            // Referenced Property
+            if (!GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer.Equals((this as Entities.Common.NE.IEmergencyExclusion).StudentUniqueId, compareTo.StudentUniqueId))
+                return false;
+
+
+            return true;
+        }
+
+        /// <summary>
+        /// Builds the hash code based on the unique identifying values.
+        /// </summary>
+        /// <returns>
+        /// A hash code for the resource.
+        /// </returns>
+        public override int GetHashCode()
+        {
+            var hash = new HashCode();
+
+            //Referenced Property
+            hash.Add((this as Entities.Common.NE.IEmergencyExclusion).EducationOrganizationId);
+
+            // Standard Property
+                hash.Add((this as Entities.Common.NE.IEmergencyExclusion).ExclusionDate);
+
+
+            //Referenced Property
+            hash.Add((this as Entities.Common.NE.IEmergencyExclusion).StudentUniqueId);
+            return hash.ToHashCode();
+        }
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                      Inherited Properties
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                          Properties
+        // -------------------------------------------------------------
+
+        /// <summary>
+        /// The reason for the emergency exclusion (Health, Safety of Themselves or Others, Disruption to Education).
+        /// </summary>
+        // NOT in a reference, IS a lookup column 
+        [RequiredWithNonDefault]
+        [NonDefaultStringLength(306, ErrorMessage=ValidationHelpers.StringLengthMessageFormat), NoDangerousText]
+        [DataMember(Name="emergencyExclusionReasonDescriptor")][DescriptorExists("EmergencyExclusionReasonDescriptor")]
+        public string EmergencyExclusionReasonDescriptor { get; set; }
+        
+        private bool _exclusionDurationExplicitlyAssigned = false;
+        private decimal _exclusionDuration;
+
+        /// <summary>
+        /// The duration of the emergency exclusion in days.
+        /// </summary>
+        // NOT in a reference, NOT a lookup column 
+        [Range(typeof(decimal), "0", "999.99", ErrorMessage=ValidationHelpers.RangeMessageFormat)]
+        [DataMember(Name="exclusionDuration")]
+        public decimal ExclusionDuration 
+        { 
+            get => _exclusionDuration;
+            set 
+            { 
+                _exclusionDuration = value;
+                _exclusionDurationExplicitlyAssigned = true; 
+            }
+        }
+
+        // -------------------------------------------------------------
+
+        IEnumerable<string> IHasRequiredMembersWithMeaningfulDefaultValues.GetUnassignedMemberNames()
+        {
+            if (!_exclusionDurationExplicitlyAssigned)
+            {
+                yield return "ExclusionDuration";
+            }
+        }
+
+        // =============================================================
+        //                     One-to-one relationships
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //              Inherited One-to-one relationships
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                     Inherited Collections
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                     Extensions
+        // -------------------------------------------------------------
+        // NOT a lookup column, Not supported by this model, so there's "null object pattern" style implementation
+        public System.Collections.IDictionary Extensions {
+            get { return null; }
+            set { }
+        }
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                          Collections
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                         Versioning
+        // -------------------------------------------------------------
+
+        [DataMember(Name="_etag")]
+        public virtual string ETag { get; set; }
+            
+        [DataMember(Name="_lastModifiedDate")]
+        public virtual DateTime LastModifiedDate { get; set; }
+
+        // -------------------------------------------------------------
+
+        // -------------------------------------------------------------
+        //                        OnDeserialize
+        // -------------------------------------------------------------
+        // ------------------------------------------------------------
+
+        // ============================================================
+        //                      Data Synchronization
+        // ------------------------------------------------------------
+        bool ISynchronizable.Synchronize(object target)
+        {
+            return Entities.Common.NE.EmergencyExclusionMapper.SynchronizeTo(this, (Entities.Common.NE.IEmergencyExclusion)target);
+        }
+
+        void IMappable.Map(object target)
+        {
+            Entities.Common.NE.EmergencyExclusionMapper.MapTo(this, (Entities.Common.NE.IEmergencyExclusion)target, null);
+        }
+        // -------------------------------------------------------------
+
+        // =================================================================
+        //                    Resource Reference Data
+        // -----------------------------------------------------------------
+        Guid? Entities.Common.NE.IEmergencyExclusion.EducationOrganizationResourceId
+        {
+            get { return null; }
+            set { ImplicitEducationOrganizationReference.ResourceId = value ?? default(Guid); }
+        }
+
+        string Entities.Common.NE.IEmergencyExclusion.EducationOrganizationDiscriminator
+        {
+            // Not supported for Resources
+            get { return null; }
+            set { ImplicitEducationOrganizationReference.Discriminator = value; }
+        }
+
+
+        Guid? Entities.Common.NE.IEmergencyExclusion.StudentResourceId
+        {
+            get { return null; }
+            set { ImplicitStudentReference.ResourceId = value ?? default(Guid); }
+        }
+
+        string Entities.Common.NE.IEmergencyExclusion.StudentDiscriminator
+        {
+            // Not supported for Resources
+            get { return null; }
+            set { ImplicitStudentReference.Discriminator = value; }
+        }
+
+
+        // -----------------------------------------------------------------
+    }
+
+    // =================================================================
+    //                         Validators
+    // -----------------------------------------------------------------
+
+    [ExcludeFromCodeCoverage]
+    public class EmergencyExclusionPutPostRequestValidator : FluentValidation.AbstractValidator<EmergencyExclusion>
+    {
+        protected override bool PreValidate(FluentValidation.ValidationContext<EmergencyExclusion> context, FluentValidation.Results.ValidationResult result)
+        {
+            if (context.InstanceToValidate == null)
+            {
+                result.Errors.Add(new ValidationFailure("", "Please ensure a model was supplied."));
+
+                return false;
+            }
+
+            var instance = context.InstanceToValidate;
+
+            var failures = new List<ValidationFailure>();
+
+            if (failures.Any())
+            {
+                foreach (var failure in failures)
+                {
+                    result.Errors.Add(failure);
+                }
+
+                return false;
+            }
+
+            return true;
+        }
+    }
+    // -----------------------------------------------------------------
+
+}
+// Aggregate: EmergencyExclusionReasonDescriptor
+
+namespace EdFi.Ods.Api.Common.Models.Resources.EmergencyExclusionReasonDescriptor.NE
+{
+    /// <summary>
+    /// A class which represents the ne.EmergencyExclusionReasonDescriptor table of the EmergencyExclusionReasonDescriptor aggregate in the ODS Database.
+    /// </summary>
+    [Serializable, DataContract]
+    [ExcludeFromCodeCoverage]
+    public class EmergencyExclusionReasonDescriptor : Entities.Common.NE.IEmergencyExclusionReasonDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
+    {
+        private static FullName _fullName = new FullName("ne", "EmergencyExclusionReasonDescriptor");
+
+        // Fluent validator instance (threadsafe)
+        private static EmergencyExclusionReasonDescriptorPutPostRequestValidator _validator = new EmergencyExclusionReasonDescriptorPutPostRequestValidator();
+        
+#pragma warning disable 414
+        private bool _SuspendReferenceAssignmentCheck = false;
+        public void SuspendReferenceAssignmentCheck() { _SuspendReferenceAssignmentCheck = true; }
+#pragma warning restore 414
+
+        // =============================================================
+        //                         Constructor
+        // -------------------------------------------------------------
+
+        
+        // ------------------------------------------------------------
+
+        // ============================================================
+        //                Unique Identifier
+        // ------------------------------------------------------------
+
+        /// <summary>
+        /// The unique identifier for the EmergencyExclusionReasonDescriptor resource.
+        /// </summary>
+        [DataMember(Name="id")]
+        [JsonConverter(typeof(GuidConverter))]
+        public Guid Id { get; set; }
+        // ------------------------------------------------------------
+
+        // =============================================================
+        //                         References
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        //==============================================================
+        //                         Primary Key
+        // -------------------------------------------------------------
+
+        /// <summary>
+        /// A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.
+        /// </summary>
+        // NOT in a reference, NOT a lookup column 
+        [JsonIgnore]
+        public int EmergencyExclusionReasonDescriptorId { get; set; }
+
+        int IDescriptor.DescriptorId
+        {
+            get { return EmergencyExclusionReasonDescriptorId; }
+            set { EmergencyExclusionReasonDescriptorId = value; }
+        }
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                      Equality
+        // -------------------------------------------------------------
+
+        /// <summary>
+        /// Determines equality based on the natural key properties of the resource.
+        /// </summary>
+        /// <returns>
+        /// A boolean value indicating equality result of the compared resources.
+        /// </returns>
+        public override bool Equals(object obj)
+        {
+            var compareTo = obj as Entities.Common.NE.IEmergencyExclusionReasonDescriptor;
+
+            if (ReferenceEquals(this, compareTo))
+                return true;
+
+            if (compareTo == null)
+                return false;
+
+
+            // Derived Property
+            if (!(this as Entities.Common.NE.IEmergencyExclusionReasonDescriptor).EmergencyExclusionReasonDescriptorId.Equals(compareTo.EmergencyExclusionReasonDescriptorId))
+                return false;
+
+
+            return true;
+        }
+
+        /// <summary>
+        /// Builds the hash code based on the unique identifying values.
+        /// </summary>
+        /// <returns>
+        /// A hash code for the resource.
+        /// </returns>
+        public override int GetHashCode()
+        {
+            var hash = new HashCode();
+
+            //Derived Property
+            hash.Add((this as Entities.Common.NE.IEmergencyExclusionReasonDescriptor).EmergencyExclusionReasonDescriptorId);
+
+            return hash.ToHashCode();
+        }
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                      Inherited Properties
+        // -------------------------------------------------------------
+
+        /// <summary>
+        /// A code or abbreviation that is used to refer to the descriptor.
+        /// </summary>
+        // NOT in a reference, NOT a lookup column 
+        [RequiredWithNonDefault]
+        [NonDefaultStringLength(50, ErrorMessage=ValidationHelpers.StringLengthMessageFormat), NoDangerousText]
+        [DataMember(Name="codeValue")]
+        public string CodeValue { get; set; }
+
+        /// <summary>
+        /// The description of the descriptor.
+        /// </summary>
+        // NOT in a reference, NOT a lookup column 
+        [NonDefaultStringLength(1024, ErrorMessage=ValidationHelpers.StringLengthMessageFormat), NoDangerousText]
+        [DataMember(Name="description")]
+        public string Description { get; set; }
+
+        /// <summary>
+        /// The beginning date of the period when the descriptor is in effect. If omitted, the default is immediate effectiveness.
+        /// </summary>
+        // NOT in a reference, NOT a lookup column 
+        [DataMember(Name="effectiveBeginDate")][JsonConverter(typeof(Iso8601UtcDateOnlyConverter))]
+        public DateTime? EffectiveBeginDate { get; set; }
+
+        /// <summary>
+        /// The end date of the period when the descriptor is in effect.
+        /// </summary>
+        // NOT in a reference, NOT a lookup column 
+        [DataMember(Name="effectiveEndDate")][JsonConverter(typeof(Iso8601UtcDateOnlyConverter))]
+        public DateTime? EffectiveEndDate { get; set; }
+
+        /// <summary>
+        /// A globally unique namespace that identifies this descriptor set. Author is strongly encouraged to use the Universal Resource Identifier (http, ftp, file, etc.) for the source of the descriptor definition. Best practice is for this source to be the descriptor file itself, so that it can be machine-readable and be fetched in real-time, if necessary.
+        /// </summary>
+        // NOT in a reference, NOT a lookup column 
+        [RequiredWithNonDefault]
+        [NonDefaultStringLength(255, ErrorMessage=ValidationHelpers.StringLengthMessageFormat), NoDangerousText]
+        [DataMember(Name="namespace")]
+        public string Namespace { get; set; }
+
+        /// <summary>
+        /// A shortened description for the descriptor.
+        /// </summary>
+        // NOT in a reference, NOT a lookup column 
+        [RequiredWithNonDefault]
+        [NonDefaultStringLength(75, ErrorMessage=ValidationHelpers.StringLengthMessageFormat), NoDangerousText]
+        [DataMember(Name="shortDescription")]
+        public string ShortDescription { get; set; }
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                          Properties
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                     One-to-one relationships
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //              Inherited One-to-one relationships
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                     Inherited Collections
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                     Extensions
+        // -------------------------------------------------------------
+        // NOT a lookup column, Not supported by this model, so there's "null object pattern" style implementation
+        public System.Collections.IDictionary Extensions {
+            get { return null; }
+            set { }
+        }
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                          Collections
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                         Versioning
+        // -------------------------------------------------------------
+
+        [DataMember(Name="_etag")]
+        public virtual string ETag { get; set; }
+            
+        [DataMember(Name="_lastModifiedDate")]
+        public virtual DateTime LastModifiedDate { get; set; }
+
+        // -------------------------------------------------------------
+
+        // -------------------------------------------------------------
+        //                        OnDeserialize
+        // -------------------------------------------------------------
+        // ------------------------------------------------------------
+
+        // ============================================================
+        //                      Data Synchronization
+        // ------------------------------------------------------------
+        bool ISynchronizable.Synchronize(object target)
+        {
+            return Entities.Common.NE.EmergencyExclusionReasonDescriptorMapper.SynchronizeTo(this, (Entities.Common.NE.IEmergencyExclusionReasonDescriptor)target);
+        }
+
+        void IMappable.Map(object target)
+        {
+            Entities.Common.NE.EmergencyExclusionReasonDescriptorMapper.MapTo(this, (Entities.Common.NE.IEmergencyExclusionReasonDescriptor)target, null);
+        }
+        // -------------------------------------------------------------
+
+        // =================================================================
+        //                    Resource Reference Data
+        // -----------------------------------------------------------------
+        // -----------------------------------------------------------------
+    }
+
+    // =================================================================
+    //                         Validators
+    // -----------------------------------------------------------------
+
+    [ExcludeFromCodeCoverage]
+    public class EmergencyExclusionReasonDescriptorPutPostRequestValidator : FluentValidation.AbstractValidator<EmergencyExclusionReasonDescriptor>
+    {
+        protected override bool PreValidate(FluentValidation.ValidationContext<EmergencyExclusionReasonDescriptor> context, FluentValidation.Results.ValidationResult result)
+        {
+            if (context.InstanceToValidate == null)
+            {
+                result.Errors.Add(new ValidationFailure("", "Please ensure a model was supplied."));
+
+                return false;
+            }
+
+            var instance = context.InstanceToValidate;
+
+            var failures = new List<ValidationFailure>();
+
+            if (failures.Any())
+            {
+                foreach (var failure in failures)
+                {
+                    result.Errors.Add(failure);
+                }
+
+                return false;
+            }
+
+            return true;
+        }
+    }
+    // -----------------------------------------------------------------
+
+}
+// Aggregate: EventComplianceDescriptor
+
+namespace EdFi.Ods.Api.Common.Models.Resources.EventComplianceDescriptor.NE
+{
+    /// <summary>
+    /// A class which represents the ne.EventComplianceDescriptor table of the EventComplianceDescriptor aggregate in the ODS Database.
+    /// </summary>
+    [Serializable, DataContract]
+    [ExcludeFromCodeCoverage]
+    public class EventComplianceDescriptor : Entities.Common.NE.IEventComplianceDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
+    {
+        private static FullName _fullName = new FullName("ne", "EventComplianceDescriptor");
+
+        // Fluent validator instance (threadsafe)
+        private static EventComplianceDescriptorPutPostRequestValidator _validator = new EventComplianceDescriptorPutPostRequestValidator();
+        
+#pragma warning disable 414
+        private bool _SuspendReferenceAssignmentCheck = false;
+        public void SuspendReferenceAssignmentCheck() { _SuspendReferenceAssignmentCheck = true; }
+#pragma warning restore 414
+
+        // =============================================================
+        //                         Constructor
+        // -------------------------------------------------------------
+
+        
+        // ------------------------------------------------------------
+
+        // ============================================================
+        //                Unique Identifier
+        // ------------------------------------------------------------
+
+        /// <summary>
+        /// The unique identifier for the EventComplianceDescriptor resource.
+        /// </summary>
+        [DataMember(Name="id")]
+        [JsonConverter(typeof(GuidConverter))]
+        public Guid Id { get; set; }
+        // ------------------------------------------------------------
+
+        // =============================================================
+        //                         References
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        //==============================================================
+        //                         Primary Key
+        // -------------------------------------------------------------
+
+        /// <summary>
+        /// A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.
+        /// </summary>
+        // NOT in a reference, NOT a lookup column 
+        [JsonIgnore]
+        public int EventComplianceDescriptorId { get; set; }
+
+        int IDescriptor.DescriptorId
+        {
+            get { return EventComplianceDescriptorId; }
+            set { EventComplianceDescriptorId = value; }
+        }
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                      Equality
+        // -------------------------------------------------------------
+
+        /// <summary>
+        /// Determines equality based on the natural key properties of the resource.
+        /// </summary>
+        /// <returns>
+        /// A boolean value indicating equality result of the compared resources.
+        /// </returns>
+        public override bool Equals(object obj)
+        {
+            var compareTo = obj as Entities.Common.NE.IEventComplianceDescriptor;
+
+            if (ReferenceEquals(this, compareTo))
+                return true;
+
+            if (compareTo == null)
+                return false;
+
+
+            // Derived Property
+            if (!(this as Entities.Common.NE.IEventComplianceDescriptor).EventComplianceDescriptorId.Equals(compareTo.EventComplianceDescriptorId))
+                return false;
+
+
+            return true;
+        }
+
+        /// <summary>
+        /// Builds the hash code based on the unique identifying values.
+        /// </summary>
+        /// <returns>
+        /// A hash code for the resource.
+        /// </returns>
+        public override int GetHashCode()
+        {
+            var hash = new HashCode();
+
+            //Derived Property
+            hash.Add((this as Entities.Common.NE.IEventComplianceDescriptor).EventComplianceDescriptorId);
+
+            return hash.ToHashCode();
+        }
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                      Inherited Properties
+        // -------------------------------------------------------------
+
+        /// <summary>
+        /// A code or abbreviation that is used to refer to the descriptor.
+        /// </summary>
+        // NOT in a reference, NOT a lookup column 
+        [RequiredWithNonDefault]
+        [NonDefaultStringLength(50, ErrorMessage=ValidationHelpers.StringLengthMessageFormat), NoDangerousText]
+        [DataMember(Name="codeValue")]
+        public string CodeValue { get; set; }
+
+        /// <summary>
+        /// The description of the descriptor.
+        /// </summary>
+        // NOT in a reference, NOT a lookup column 
+        [NonDefaultStringLength(1024, ErrorMessage=ValidationHelpers.StringLengthMessageFormat), NoDangerousText]
+        [DataMember(Name="description")]
+        public string Description { get; set; }
+
+        /// <summary>
+        /// The beginning date of the period when the descriptor is in effect. If omitted, the default is immediate effectiveness.
+        /// </summary>
+        // NOT in a reference, NOT a lookup column 
+        [DataMember(Name="effectiveBeginDate")][JsonConverter(typeof(Iso8601UtcDateOnlyConverter))]
+        public DateTime? EffectiveBeginDate { get; set; }
+
+        /// <summary>
+        /// The end date of the period when the descriptor is in effect.
+        /// </summary>
+        // NOT in a reference, NOT a lookup column 
+        [DataMember(Name="effectiveEndDate")][JsonConverter(typeof(Iso8601UtcDateOnlyConverter))]
+        public DateTime? EffectiveEndDate { get; set; }
+
+        /// <summary>
+        /// A globally unique namespace that identifies this descriptor set. Author is strongly encouraged to use the Universal Resource Identifier (http, ftp, file, etc.) for the source of the descriptor definition. Best practice is for this source to be the descriptor file itself, so that it can be machine-readable and be fetched in real-time, if necessary.
+        /// </summary>
+        // NOT in a reference, NOT a lookup column 
+        [RequiredWithNonDefault]
+        [NonDefaultStringLength(255, ErrorMessage=ValidationHelpers.StringLengthMessageFormat), NoDangerousText]
+        [DataMember(Name="namespace")]
+        public string Namespace { get; set; }
+
+        /// <summary>
+        /// A shortened description for the descriptor.
+        /// </summary>
+        // NOT in a reference, NOT a lookup column 
+        [RequiredWithNonDefault]
+        [NonDefaultStringLength(75, ErrorMessage=ValidationHelpers.StringLengthMessageFormat), NoDangerousText]
+        [DataMember(Name="shortDescription")]
+        public string ShortDescription { get; set; }
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                          Properties
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                     One-to-one relationships
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //              Inherited One-to-one relationships
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                     Inherited Collections
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                     Extensions
+        // -------------------------------------------------------------
+        // NOT a lookup column, Not supported by this model, so there's "null object pattern" style implementation
+        public System.Collections.IDictionary Extensions {
+            get { return null; }
+            set { }
+        }
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                          Collections
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                         Versioning
+        // -------------------------------------------------------------
+
+        [DataMember(Name="_etag")]
+        public virtual string ETag { get; set; }
+            
+        [DataMember(Name="_lastModifiedDate")]
+        public virtual DateTime LastModifiedDate { get; set; }
+
+        // -------------------------------------------------------------
+
+        // -------------------------------------------------------------
+        //                        OnDeserialize
+        // -------------------------------------------------------------
+        // ------------------------------------------------------------
+
+        // ============================================================
+        //                      Data Synchronization
+        // ------------------------------------------------------------
+        bool ISynchronizable.Synchronize(object target)
+        {
+            return Entities.Common.NE.EventComplianceDescriptorMapper.SynchronizeTo(this, (Entities.Common.NE.IEventComplianceDescriptor)target);
+        }
+
+        void IMappable.Map(object target)
+        {
+            Entities.Common.NE.EventComplianceDescriptorMapper.MapTo(this, (Entities.Common.NE.IEventComplianceDescriptor)target, null);
+        }
+        // -------------------------------------------------------------
+
+        // =================================================================
+        //                    Resource Reference Data
+        // -----------------------------------------------------------------
+        // -----------------------------------------------------------------
+    }
+
+    // =================================================================
+    //                         Validators
+    // -----------------------------------------------------------------
+
+    [ExcludeFromCodeCoverage]
+    public class EventComplianceDescriptorPutPostRequestValidator : FluentValidation.AbstractValidator<EventComplianceDescriptor>
+    {
+        protected override bool PreValidate(FluentValidation.ValidationContext<EventComplianceDescriptor> context, FluentValidation.Results.ValidationResult result)
+        {
+            if (context.InstanceToValidate == null)
+            {
+                result.Errors.Add(new ValidationFailure("", "Please ensure a model was supplied."));
+
+                return false;
+            }
+
+            var instance = context.InstanceToValidate;
+
+            var failures = new List<ValidationFailure>();
+
+            if (failures.Any())
+            {
+                foreach (var failure in failures)
+                {
+                    result.Errors.Add(failure);
+                }
+
+                return false;
+            }
+
+            return true;
+        }
+    }
+    // -----------------------------------------------------------------
+
+}
+// Aggregate: EventReasonDescriptor
+
+namespace EdFi.Ods.Api.Common.Models.Resources.EventReasonDescriptor.NE
+{
+    /// <summary>
+    /// A class which represents the ne.EventReasonDescriptor table of the EventReasonDescriptor aggregate in the ODS Database.
+    /// </summary>
+    [Serializable, DataContract]
+    [ExcludeFromCodeCoverage]
+    public class EventReasonDescriptor : Entities.Common.NE.IEventReasonDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
+    {
+        private static FullName _fullName = new FullName("ne", "EventReasonDescriptor");
+
+        // Fluent validator instance (threadsafe)
+        private static EventReasonDescriptorPutPostRequestValidator _validator = new EventReasonDescriptorPutPostRequestValidator();
+        
+#pragma warning disable 414
+        private bool _SuspendReferenceAssignmentCheck = false;
+        public void SuspendReferenceAssignmentCheck() { _SuspendReferenceAssignmentCheck = true; }
+#pragma warning restore 414
+
+        // =============================================================
+        //                         Constructor
+        // -------------------------------------------------------------
+
+        
+        // ------------------------------------------------------------
+
+        // ============================================================
+        //                Unique Identifier
+        // ------------------------------------------------------------
+
+        /// <summary>
+        /// The unique identifier for the EventReasonDescriptor resource.
+        /// </summary>
+        [DataMember(Name="id")]
+        [JsonConverter(typeof(GuidConverter))]
+        public Guid Id { get; set; }
+        // ------------------------------------------------------------
+
+        // =============================================================
+        //                         References
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        //==============================================================
+        //                         Primary Key
+        // -------------------------------------------------------------
+
+        /// <summary>
+        /// A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.
+        /// </summary>
+        // NOT in a reference, NOT a lookup column 
+        [JsonIgnore]
+        public int EventReasonDescriptorId { get; set; }
+
+        int IDescriptor.DescriptorId
+        {
+            get { return EventReasonDescriptorId; }
+            set { EventReasonDescriptorId = value; }
+        }
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                      Equality
+        // -------------------------------------------------------------
+
+        /// <summary>
+        /// Determines equality based on the natural key properties of the resource.
+        /// </summary>
+        /// <returns>
+        /// A boolean value indicating equality result of the compared resources.
+        /// </returns>
+        public override bool Equals(object obj)
+        {
+            var compareTo = obj as Entities.Common.NE.IEventReasonDescriptor;
+
+            if (ReferenceEquals(this, compareTo))
+                return true;
+
+            if (compareTo == null)
+                return false;
+
+
+            // Derived Property
+            if (!(this as Entities.Common.NE.IEventReasonDescriptor).EventReasonDescriptorId.Equals(compareTo.EventReasonDescriptorId))
+                return false;
+
+
+            return true;
+        }
+
+        /// <summary>
+        /// Builds the hash code based on the unique identifying values.
+        /// </summary>
+        /// <returns>
+        /// A hash code for the resource.
+        /// </returns>
+        public override int GetHashCode()
+        {
+            var hash = new HashCode();
+
+            //Derived Property
+            hash.Add((this as Entities.Common.NE.IEventReasonDescriptor).EventReasonDescriptorId);
+
+            return hash.ToHashCode();
+        }
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                      Inherited Properties
+        // -------------------------------------------------------------
+
+        /// <summary>
+        /// A code or abbreviation that is used to refer to the descriptor.
+        /// </summary>
+        // NOT in a reference, NOT a lookup column 
+        [RequiredWithNonDefault]
+        [NonDefaultStringLength(50, ErrorMessage=ValidationHelpers.StringLengthMessageFormat), NoDangerousText]
+        [DataMember(Name="codeValue")]
+        public string CodeValue { get; set; }
+
+        /// <summary>
+        /// The description of the descriptor.
+        /// </summary>
+        // NOT in a reference, NOT a lookup column 
+        [NonDefaultStringLength(1024, ErrorMessage=ValidationHelpers.StringLengthMessageFormat), NoDangerousText]
+        [DataMember(Name="description")]
+        public string Description { get; set; }
+
+        /// <summary>
+        /// The beginning date of the period when the descriptor is in effect. If omitted, the default is immediate effectiveness.
+        /// </summary>
+        // NOT in a reference, NOT a lookup column 
+        [DataMember(Name="effectiveBeginDate")][JsonConverter(typeof(Iso8601UtcDateOnlyConverter))]
+        public DateTime? EffectiveBeginDate { get; set; }
+
+        /// <summary>
+        /// The end date of the period when the descriptor is in effect.
+        /// </summary>
+        // NOT in a reference, NOT a lookup column 
+        [DataMember(Name="effectiveEndDate")][JsonConverter(typeof(Iso8601UtcDateOnlyConverter))]
+        public DateTime? EffectiveEndDate { get; set; }
+
+        /// <summary>
+        /// A globally unique namespace that identifies this descriptor set. Author is strongly encouraged to use the Universal Resource Identifier (http, ftp, file, etc.) for the source of the descriptor definition. Best practice is for this source to be the descriptor file itself, so that it can be machine-readable and be fetched in real-time, if necessary.
+        /// </summary>
+        // NOT in a reference, NOT a lookup column 
+        [RequiredWithNonDefault]
+        [NonDefaultStringLength(255, ErrorMessage=ValidationHelpers.StringLengthMessageFormat), NoDangerousText]
+        [DataMember(Name="namespace")]
+        public string Namespace { get; set; }
+
+        /// <summary>
+        /// A shortened description for the descriptor.
+        /// </summary>
+        // NOT in a reference, NOT a lookup column 
+        [RequiredWithNonDefault]
+        [NonDefaultStringLength(75, ErrorMessage=ValidationHelpers.StringLengthMessageFormat), NoDangerousText]
+        [DataMember(Name="shortDescription")]
+        public string ShortDescription { get; set; }
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                          Properties
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                     One-to-one relationships
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //              Inherited One-to-one relationships
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                     Inherited Collections
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                     Extensions
+        // -------------------------------------------------------------
+        // NOT a lookup column, Not supported by this model, so there's "null object pattern" style implementation
+        public System.Collections.IDictionary Extensions {
+            get { return null; }
+            set { }
+        }
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                          Collections
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                         Versioning
+        // -------------------------------------------------------------
+
+        [DataMember(Name="_etag")]
+        public virtual string ETag { get; set; }
+            
+        [DataMember(Name="_lastModifiedDate")]
+        public virtual DateTime LastModifiedDate { get; set; }
+
+        // -------------------------------------------------------------
+
+        // -------------------------------------------------------------
+        //                        OnDeserialize
+        // -------------------------------------------------------------
+        // ------------------------------------------------------------
+
+        // ============================================================
+        //                      Data Synchronization
+        // ------------------------------------------------------------
+        bool ISynchronizable.Synchronize(object target)
+        {
+            return Entities.Common.NE.EventReasonDescriptorMapper.SynchronizeTo(this, (Entities.Common.NE.IEventReasonDescriptor)target);
+        }
+
+        void IMappable.Map(object target)
+        {
+            Entities.Common.NE.EventReasonDescriptorMapper.MapTo(this, (Entities.Common.NE.IEventReasonDescriptor)target, null);
+        }
+        // -------------------------------------------------------------
+
+        // =================================================================
+        //                    Resource Reference Data
+        // -----------------------------------------------------------------
+        // -----------------------------------------------------------------
+    }
+
+    // =================================================================
+    //                         Validators
+    // -----------------------------------------------------------------
+
+    [ExcludeFromCodeCoverage]
+    public class EventReasonDescriptorPutPostRequestValidator : FluentValidation.AbstractValidator<EventReasonDescriptor>
+    {
+        protected override bool PreValidate(FluentValidation.ValidationContext<EventReasonDescriptor> context, FluentValidation.Results.ValidationResult result)
+        {
+            if (context.InstanceToValidate == null)
+            {
+                result.Errors.Add(new ValidationFailure("", "Please ensure a model was supplied."));
+
+                return false;
+            }
+
+            var instance = context.InstanceToValidate;
+
+            var failures = new List<ValidationFailure>();
+
+            if (failures.Any())
+            {
+                foreach (var failure in failures)
+                {
+                    result.Errors.Add(failure);
+                }
+
+                return false;
+            }
+
+            return true;
+        }
+    }
+    // -----------------------------------------------------------------
+
+}
+// Aggregate: IdeaEvent
+
+namespace EdFi.Ods.Api.Common.Models.Resources.IdeaEvent.NE
+{
+    /// <summary>
+    /// Represents a reference to the IdeaEvent resource.
+    /// </summary>
+    [DataContract]
+    [ExcludeFromCodeCoverage]
+    public class IdeaEventReference : IResourceReference
+    {
+        [DataMember(Name="educationOrganizationId")]
+        public long EducationOrganizationId { get; set; }
+
+        [DataMember(Name="ideaEventDescriptor")][DescriptorExists("IDEAEventDescriptor")]
+        public string IDEAEventDescriptor { get; set; }
+
+        [DataMember(Name="ideaEventID")]
+        public string IDEAEventID { get; set; }
+
+        [DataMember(Name="studentUniqueId")]
+        public string StudentUniqueId 
+        {
+            get => _studentUniqueId;
+            set
+            {
+                _studentUniqueId = value;
+                GeneratedArtifactStaticDependencies.UsiLookupsByUniqueIdContextProvider.Get().AddLookup("Student", value);
+            }
+        }
+        private string _studentUniqueId;
+
+        /// <summary>
+        /// Gets or sets the resource identifier of the referenced resource.
+        /// </summary>
+        public Guid ResourceId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the discriminator value which identifies the concrete sub-type of the referenced resource
+        /// when the referenced resource has been derived; otherwise <b>null</b>.
+        /// </summary>
+        public string Discriminator { get; set; }
+
+
+        private Link _link;
+
+        [DataMember(Name="link")]
+        public Link Link
+        {
+            get
+            {
+                if (_link == null)
+                {
+                    // Only generate links when all values are present
+                    if (GeneratedArtifactStaticDependencies.ResourceLinksEnabled && IsReferenceFullyDefined())
+                        _link = CreateLink();
+                }
+
+                return _link;
+            }
+        }
+
+        /// <summary>
+        /// Indicates whether the reference has been fully defined (all key values are currently assigned non-default values).
+        /// </summary>
+        /// <returns><b>true</b> if the reference's properties are all set to non-default values; otherwise <b>false</b>.</returns>
+        public bool IsReferenceFullyDefined()
+        {
+            return EducationOrganizationId != default(long) && IDEAEventDescriptor != default(string) && IDEAEventID != default(string) && StudentUniqueId != default(string);
+        }
+
+        IEnumerable<string> IResourceReference.GetUndefinedProperties()
+        {
+            if (EducationOrganizationId == default)
+            {
+                yield return "EducationOrganizationId";
+            }
+
+            if (IDEAEventDescriptor == default)
+            {
+                yield return "IDEAEventDescriptor";
+            }
+
+            if (IDEAEventID == default)
+            {
+                yield return "IDEAEventID";
+            }
+
+            if (StudentUniqueId == default)
+            {
+                yield return "StudentUniqueId";
+            }
+
+        }
+
+        private Link CreateLink()
+        {
+            var link = new Link
+            {
+                Rel = "IdeaEvent",
+                Href = $"/NE/ideaEvents/{ResourceId:n}"
+            };
+
+            if (string.IsNullOrEmpty(Discriminator))
+                return link;
+
+            string[] linkParts = Discriminator.Split('.');
+
+            if (linkParts.Length < 2)
+                return link;
+
+            var resource = GeneratedArtifactStaticDependencies.ResourceModelProvider.GetResourceModel()
+                .GetResourceByFullName(new FullName(linkParts[0], linkParts[1]));
+
+            // return the default link if the relationship is already correct, and/or if the resource is not found.
+            if (resource == null || link.Rel == resource.Name)
+                return link;
+
+            return new Link
+            {
+                Rel = resource.Name,
+                Href = $"/{resource.SchemaUriSegment()}/{resource.PluralName.ToCamelCase()}/{ResourceId:n}"
+            };
+        }
+    } // Aggregate reference
+
+    /// <summary>
+    /// A class which represents the ne.IdeaEvent table of the IdeaEvent aggregate in the ODS Database.
+    /// </summary>
+    [Serializable, DataContract]
+    [ExcludeFromCodeCoverage]
+    public class IdeaEvent : Entities.Common.NE.IIdeaEvent, IHasETag, IDateVersionedEntity
+    {
+        private static FullName _fullName = new FullName("ne", "IdeaEvent");
+
+        // Fluent validator instance (threadsafe)
+        private static IdeaEventPutPostRequestValidator _validator = new IdeaEventPutPostRequestValidator();
+        
+#pragma warning disable 414
+        private bool _SuspendReferenceAssignmentCheck = false;
+        public void SuspendReferenceAssignmentCheck() { _SuspendReferenceAssignmentCheck = true; }
+#pragma warning restore 414
+
+        // =============================================================
+        //                         Constructor
+        // -------------------------------------------------------------
+
+        
+        // ------------------------------------------------------------
+
+        // ============================================================
+        //                Unique Identifier
+        // ------------------------------------------------------------
+
+        /// <summary>
+        /// The unique identifier for the IdeaEvent resource.
+        /// </summary>
+        [DataMember(Name="id")]
+        [JsonConverter(typeof(GuidConverter))]
+        public Guid Id { get; set; }
+        // ------------------------------------------------------------
+
+        // =============================================================
+        //                         References
+        // -------------------------------------------------------------
+
+        private bool _educationOrganizationReferenceExplicitlyAssigned;
+        private EducationOrganization.EdFi.EducationOrganizationReference _educationOrganizationReference;
+        private EducationOrganization.EdFi.EducationOrganizationReference ImplicitEducationOrganizationReference
+        {
+            get
+            {
+                // if the Reference is null, it is instantiated unless it has been explicitly assigned to null
+                if (_educationOrganizationReference == null && !_educationOrganizationReferenceExplicitlyAssigned)
+                    _educationOrganizationReference = new EducationOrganization.EdFi.EducationOrganizationReference();
+
+                return _educationOrganizationReference;
+            }
+        }
+
+        [DataMember(Name="educationOrganizationReference")]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
+        public EducationOrganization.EdFi.EducationOrganizationReference EducationOrganizationReference
+        {
+            get
+            {
+                // Only return the reference if it's non-null, and all its properties have non-default values assigned
+                if (ImplicitEducationOrganizationReference != null
+                    && (_educationOrganizationReferenceExplicitlyAssigned || _SuspendReferenceAssignmentCheck || ImplicitEducationOrganizationReference.IsReferenceFullyDefined()))
+                    return ImplicitEducationOrganizationReference;
+
+                return null;
+            }
+            set
+            {
+                _educationOrganizationReferenceExplicitlyAssigned = true;
+                _educationOrganizationReference = value;
+            }
+        }
+        private bool _studentReferenceExplicitlyAssigned;
+        private Student.EdFi.StudentReference _studentReference;
+        private Student.EdFi.StudentReference ImplicitStudentReference
+        {
+            get
+            {
+                // if the Reference is null, it is instantiated unless it has been explicitly assigned to null
+                if (_studentReference == null && !_studentReferenceExplicitlyAssigned)
+                    _studentReference = new Student.EdFi.StudentReference();
+
+                return _studentReference;
+            }
+        }
+
+        [DataMember(Name="studentReference")]
+        [FullyDefinedReference][RequiredReference(isIdentifying: true)]
+        public Student.EdFi.StudentReference StudentReference
+        {
+            get
+            {
+                // Only return the reference if it's non-null, and all its properties have non-default values assigned
+                if (ImplicitStudentReference != null
+                    && (_studentReferenceExplicitlyAssigned || _SuspendReferenceAssignmentCheck || ImplicitStudentReference.IsReferenceFullyDefined()))
+                    return ImplicitStudentReference;
+
+                return null;
+            }
+            set
+            {
+                _studentReferenceExplicitlyAssigned = true;
+                _studentReference = value;
+            }
+        }
+        // -------------------------------------------------------------
+
+        //==============================================================
+        //                         Primary Key
+        // -------------------------------------------------------------
+
+        /// <summary>
+        /// The identifier assigned to an education organization.
+        /// </summary>
+        // IS in a reference, NOT a lookup column 
+        long Entities.Common.NE.IIdeaEvent.EducationOrganizationId
+        {
+            get
+            {
+                if (ImplicitEducationOrganizationReference != null
+                    && (_SuspendReferenceAssignmentCheck || ImplicitEducationOrganizationReference.IsReferenceFullyDefined()))
+                    return ImplicitEducationOrganizationReference.EducationOrganizationId;
+
+                return default(long);
+            }
+            set
+            {
+                // When a property is assigned, Reference should not be null even if it has been explicitly assigned to null.
+                // All ExplicitlyAssigned are reset to false in advanced
+
+                // EducationOrganization
+                _educationOrganizationReferenceExplicitlyAssigned = false;
+                ImplicitEducationOrganizationReference.EducationOrganizationId = value;
+            }
+        }
+
+        /// <summary>
+        /// The IDEA event recorded for the student.
+        /// </summary>
+        // NOT in a reference, IS a lookup column 
+        [RequiredWithNonDefault]
+        [NonDefaultStringLength(306, ErrorMessage=ValidationHelpers.StringLengthMessageFormat), NoDangerousText, NoWhitespace]
+        [DataMember(Name="ideaEventDescriptor")][DescriptorExists("IDEAEventDescriptor")]
+        public string IDEAEventDescriptor { get; set; }
+
+        /// <summary>
+        /// A unique identifier for the event record as assigned by the provider of IEP services.
+        /// </summary>
+        // NOT in a reference, NOT a lookup column 
+        [RequiredWithNonDefault]
+        [NonDefaultStringLength(128, ErrorMessage=ValidationHelpers.StringLengthMessageFormat), NoDangerousText, NoWhitespace]
+        [DataMember(Name="ideaEventID")]
+        public string IDEAEventID { get; set; }
+
+        /// <summary>
+        /// A unique alphanumeric code assigned to a student.
+        /// </summary>
+        // IS in a reference, NOT a lookup column 
+        string Entities.Common.NE.IIdeaEvent.StudentUniqueId
+        {
+            get
+            {
+                if (ImplicitStudentReference != null
+                    && (_SuspendReferenceAssignmentCheck || ImplicitStudentReference.IsReferenceFullyDefined()))
+                    return ImplicitStudentReference.StudentUniqueId;
+
+                return default(string);
+            }
+            set
+            {
+                // When a property is assigned, Reference should not be null even if it has been explicitly assigned to null.
+                // All ExplicitlyAssigned are reset to false in advanced
+
+                // Student
+                _studentReferenceExplicitlyAssigned = false;
+                ImplicitStudentReference.StudentUniqueId = value;
+                GeneratedArtifactStaticDependencies.UsiLookupsByUniqueIdContextProvider.Get().AddLookup("Student", value);                
+            }
+        }
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                      Equality
+        // -------------------------------------------------------------
+
+        /// <summary>
+        /// Determines equality based on the natural key properties of the resource.
+        /// </summary>
+        /// <returns>
+        /// A boolean value indicating equality result of the compared resources.
+        /// </returns>
+        public override bool Equals(object obj)
+        {
+            var compareTo = obj as Entities.Common.NE.IIdeaEvent;
+
+            if (ReferenceEquals(this, compareTo))
+                return true;
+
+            if (compareTo == null)
+                return false;
+
+
+            // Referenced Property
+            if (!(this as Entities.Common.NE.IIdeaEvent).EducationOrganizationId.Equals(compareTo.EducationOrganizationId))
+                return false;
+
+
+            // Standard Property
+            if (!StringComparer.OrdinalIgnoreCase.Equals((this as Entities.Common.NE.IIdeaEvent).IDEAEventDescriptor, compareTo.IDEAEventDescriptor))
+                return false;
+
+
+            // Standard Property
+            if (!GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer.Equals((this as Entities.Common.NE.IIdeaEvent).IDEAEventID, compareTo.IDEAEventID))
+                return false;
+
+
+            // Referenced Property
+            if (!GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer.Equals((this as Entities.Common.NE.IIdeaEvent).StudentUniqueId, compareTo.StudentUniqueId))
+                return false;
+
+
+            return true;
+        }
+
+        /// <summary>
+        /// Builds the hash code based on the unique identifying values.
+        /// </summary>
+        /// <returns>
+        /// A hash code for the resource.
+        /// </returns>
+        public override int GetHashCode()
+        {
+            var hash = new HashCode();
+
+            //Referenced Property
+            hash.Add((this as Entities.Common.NE.IIdeaEvent).EducationOrganizationId);
+
+            // Standard Property
+                hash.Add((this as Entities.Common.NE.IIdeaEvent).IDEAEventDescriptor);
+
+
+            // Standard Property
+                hash.Add((this as Entities.Common.NE.IIdeaEvent).IDEAEventID);
+
+
+            //Referenced Property
+            hash.Add((this as Entities.Common.NE.IIdeaEvent).StudentUniqueId);
+            return hash.ToHashCode();
+        }
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                      Inherited Properties
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                          Properties
+        // -------------------------------------------------------------
+
+        /// <summary>
+        /// The date when the IDEA related event started.
+        /// </summary>
+        // NOT in a reference, NOT a lookup column 
+        [RequiredWithNonDefault]
+        [DataMember(Name="beginDate")][JsonConverter(typeof(Iso8601UtcDateOnlyConverter))]
+        public DateTime BeginDate { get; set; }
+
+        /// <summary>
+        /// The date when the IDEA event concluded.
+        /// </summary>
+        // NOT in a reference, NOT a lookup column 
+        [RequiredWithNonDefault]
+        [DataMember(Name="endDate")][JsonConverter(typeof(Iso8601UtcDateOnlyConverter))]
+        public DateTime EndDate { get; set; }
+
+        /// <summary>
+        /// The type of compliance represented by this event.
+        /// </summary>
+        // NOT in a reference, IS a lookup column 
+        [NonDefaultStringLength(306, ErrorMessage=ValidationHelpers.StringLengthMessageFormat), NoDangerousText]
+        [DataMember(Name="eventComplianceDescriptor")][DescriptorExists("EventComplianceDescriptor")]
+        public string EventComplianceDescriptor { get; set; }
+
+        /// <summary>
+        /// Detailed and summary notes recorded during the event.
+        /// </summary>
+        // NOT in a reference, NOT a lookup column 
+        [NonDefaultStringLength(2048, ErrorMessage=ValidationHelpers.StringLengthMessageFormat), NoDangerousText]
+        [DataMember(Name="eventNarrative")]
+        public string EventNarrative { get; set; }
+
+        /// <summary>
+        /// The reason why the IDEA event occured.
+        /// </summary>
+        // NOT in a reference, IS a lookup column 
+        [NonDefaultStringLength(306, ErrorMessage=ValidationHelpers.StringLengthMessageFormat), NoDangerousText]
+        [DataMember(Name="eventReasonDescriptor")][DescriptorExists("EventReasonDescriptor")]
+        public string EventReasonDescriptor { get; set; }
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                     One-to-one relationships
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //              Inherited One-to-one relationships
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                     Inherited Collections
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                     Extensions
+        // -------------------------------------------------------------
+        // NOT a lookup column, Not supported by this model, so there's "null object pattern" style implementation
+        public System.Collections.IDictionary Extensions {
+            get { return null; }
+            set { }
+        }
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                          Collections
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                         Versioning
+        // -------------------------------------------------------------
+
+        [DataMember(Name="_etag")]
+        public virtual string ETag { get; set; }
+            
+        [DataMember(Name="_lastModifiedDate")]
+        public virtual DateTime LastModifiedDate { get; set; }
+
+        // -------------------------------------------------------------
+
+        // -------------------------------------------------------------
+        //                        OnDeserialize
+        // -------------------------------------------------------------
+        // ------------------------------------------------------------
+
+        // ============================================================
+        //                      Data Synchronization
+        // ------------------------------------------------------------
+        bool ISynchronizable.Synchronize(object target)
+        {
+            return Entities.Common.NE.IdeaEventMapper.SynchronizeTo(this, (Entities.Common.NE.IIdeaEvent)target);
+        }
+
+        void IMappable.Map(object target)
+        {
+            Entities.Common.NE.IdeaEventMapper.MapTo(this, (Entities.Common.NE.IIdeaEvent)target, null);
+        }
+        // -------------------------------------------------------------
+
+        // =================================================================
+        //                    Resource Reference Data
+        // -----------------------------------------------------------------
+        Guid? Entities.Common.NE.IIdeaEvent.EducationOrganizationResourceId
+        {
+            get { return null; }
+            set { ImplicitEducationOrganizationReference.ResourceId = value ?? default(Guid); }
+        }
+
+        string Entities.Common.NE.IIdeaEvent.EducationOrganizationDiscriminator
+        {
+            // Not supported for Resources
+            get { return null; }
+            set { ImplicitEducationOrganizationReference.Discriminator = value; }
+        }
+
+
+        Guid? Entities.Common.NE.IIdeaEvent.StudentResourceId
+        {
+            get { return null; }
+            set { ImplicitStudentReference.ResourceId = value ?? default(Guid); }
+        }
+
+        string Entities.Common.NE.IIdeaEvent.StudentDiscriminator
+        {
+            // Not supported for Resources
+            get { return null; }
+            set { ImplicitStudentReference.Discriminator = value; }
+        }
+
+
+        // -----------------------------------------------------------------
+    }
+
+    // =================================================================
+    //                         Validators
+    // -----------------------------------------------------------------
+
+    [ExcludeFromCodeCoverage]
+    public class IdeaEventPutPostRequestValidator : FluentValidation.AbstractValidator<IdeaEvent>
+    {
+        protected override bool PreValidate(FluentValidation.ValidationContext<IdeaEvent> context, FluentValidation.Results.ValidationResult result)
+        {
+            if (context.InstanceToValidate == null)
+            {
+                result.Errors.Add(new ValidationFailure("", "Please ensure a model was supplied."));
+
+                return false;
+            }
+
+            var instance = context.InstanceToValidate;
+
+            var failures = new List<ValidationFailure>();
+
+            if (failures.Any())
+            {
+                foreach (var failure in failures)
+                {
+                    result.Errors.Add(failure);
+                }
+
+                return false;
+            }
+
+            return true;
+        }
+    }
+    // -----------------------------------------------------------------
+
+}
+// Aggregate: IDEAEventDescriptor
+
+namespace EdFi.Ods.Api.Common.Models.Resources.IDEAEventDescriptor.NE
+{
+    /// <summary>
+    /// A class which represents the ne.IDEAEventDescriptor table of the IDEAEventDescriptor aggregate in the ODS Database.
+    /// </summary>
+    [Serializable, DataContract]
+    [ExcludeFromCodeCoverage]
+    public class IDEAEventDescriptor : Entities.Common.NE.IIDEAEventDescriptor, Entities.Common.EdFi.IDescriptor, IHasETag, IDateVersionedEntity
+    {
+        private static FullName _fullName = new FullName("ne", "IDEAEventDescriptor");
+
+        // Fluent validator instance (threadsafe)
+        private static IDEAEventDescriptorPutPostRequestValidator _validator = new IDEAEventDescriptorPutPostRequestValidator();
+        
+#pragma warning disable 414
+        private bool _SuspendReferenceAssignmentCheck = false;
+        public void SuspendReferenceAssignmentCheck() { _SuspendReferenceAssignmentCheck = true; }
+#pragma warning restore 414
+
+        // =============================================================
+        //                         Constructor
+        // -------------------------------------------------------------
+
+        
+        // ------------------------------------------------------------
+
+        // ============================================================
+        //                Unique Identifier
+        // ------------------------------------------------------------
+
+        /// <summary>
+        /// The unique identifier for the IDEAEventDescriptor resource.
+        /// </summary>
+        [DataMember(Name="id")]
+        [JsonConverter(typeof(GuidConverter))]
+        public Guid Id { get; set; }
+        // ------------------------------------------------------------
+
+        // =============================================================
+        //                         References
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        //==============================================================
+        //                         Primary Key
+        // -------------------------------------------------------------
+
+        /// <summary>
+        /// A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.
+        /// </summary>
+        // NOT in a reference, NOT a lookup column 
+        [JsonIgnore]
+        public int IDEAEventDescriptorId { get; set; }
+
+        int IDescriptor.DescriptorId
+        {
+            get { return IDEAEventDescriptorId; }
+            set { IDEAEventDescriptorId = value; }
+        }
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                      Equality
+        // -------------------------------------------------------------
+
+        /// <summary>
+        /// Determines equality based on the natural key properties of the resource.
+        /// </summary>
+        /// <returns>
+        /// A boolean value indicating equality result of the compared resources.
+        /// </returns>
+        public override bool Equals(object obj)
+        {
+            var compareTo = obj as Entities.Common.NE.IIDEAEventDescriptor;
+
+            if (ReferenceEquals(this, compareTo))
+                return true;
+
+            if (compareTo == null)
+                return false;
+
+
+            // Derived Property
+            if (!(this as Entities.Common.NE.IIDEAEventDescriptor).IDEAEventDescriptorId.Equals(compareTo.IDEAEventDescriptorId))
+                return false;
+
+
+            return true;
+        }
+
+        /// <summary>
+        /// Builds the hash code based on the unique identifying values.
+        /// </summary>
+        /// <returns>
+        /// A hash code for the resource.
+        /// </returns>
+        public override int GetHashCode()
+        {
+            var hash = new HashCode();
+
+            //Derived Property
+            hash.Add((this as Entities.Common.NE.IIDEAEventDescriptor).IDEAEventDescriptorId);
+
+            return hash.ToHashCode();
+        }
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                      Inherited Properties
+        // -------------------------------------------------------------
+
+        /// <summary>
+        /// A code or abbreviation that is used to refer to the descriptor.
+        /// </summary>
+        // NOT in a reference, NOT a lookup column 
+        [RequiredWithNonDefault]
+        [NonDefaultStringLength(50, ErrorMessage=ValidationHelpers.StringLengthMessageFormat), NoDangerousText]
+        [DataMember(Name="codeValue")]
+        public string CodeValue { get; set; }
+
+        /// <summary>
+        /// The description of the descriptor.
+        /// </summary>
+        // NOT in a reference, NOT a lookup column 
+        [NonDefaultStringLength(1024, ErrorMessage=ValidationHelpers.StringLengthMessageFormat), NoDangerousText]
+        [DataMember(Name="description")]
+        public string Description { get; set; }
+
+        /// <summary>
+        /// The beginning date of the period when the descriptor is in effect. If omitted, the default is immediate effectiveness.
+        /// </summary>
+        // NOT in a reference, NOT a lookup column 
+        [DataMember(Name="effectiveBeginDate")][JsonConverter(typeof(Iso8601UtcDateOnlyConverter))]
+        public DateTime? EffectiveBeginDate { get; set; }
+
+        /// <summary>
+        /// The end date of the period when the descriptor is in effect.
+        /// </summary>
+        // NOT in a reference, NOT a lookup column 
+        [DataMember(Name="effectiveEndDate")][JsonConverter(typeof(Iso8601UtcDateOnlyConverter))]
+        public DateTime? EffectiveEndDate { get; set; }
+
+        /// <summary>
+        /// A globally unique namespace that identifies this descriptor set. Author is strongly encouraged to use the Universal Resource Identifier (http, ftp, file, etc.) for the source of the descriptor definition. Best practice is for this source to be the descriptor file itself, so that it can be machine-readable and be fetched in real-time, if necessary.
+        /// </summary>
+        // NOT in a reference, NOT a lookup column 
+        [RequiredWithNonDefault]
+        [NonDefaultStringLength(255, ErrorMessage=ValidationHelpers.StringLengthMessageFormat), NoDangerousText]
+        [DataMember(Name="namespace")]
+        public string Namespace { get; set; }
+
+        /// <summary>
+        /// A shortened description for the descriptor.
+        /// </summary>
+        // NOT in a reference, NOT a lookup column 
+        [RequiredWithNonDefault]
+        [NonDefaultStringLength(75, ErrorMessage=ValidationHelpers.StringLengthMessageFormat), NoDangerousText]
+        [DataMember(Name="shortDescription")]
+        public string ShortDescription { get; set; }
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                          Properties
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                     One-to-one relationships
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //              Inherited One-to-one relationships
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                     Inherited Collections
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                     Extensions
+        // -------------------------------------------------------------
+        // NOT a lookup column, Not supported by this model, so there's "null object pattern" style implementation
+        public System.Collections.IDictionary Extensions {
+            get { return null; }
+            set { }
+        }
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                          Collections
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                         Versioning
+        // -------------------------------------------------------------
+
+        [DataMember(Name="_etag")]
+        public virtual string ETag { get; set; }
+            
+        [DataMember(Name="_lastModifiedDate")]
+        public virtual DateTime LastModifiedDate { get; set; }
+
+        // -------------------------------------------------------------
+
+        // -------------------------------------------------------------
+        //                        OnDeserialize
+        // -------------------------------------------------------------
+        // ------------------------------------------------------------
+
+        // ============================================================
+        //                      Data Synchronization
+        // ------------------------------------------------------------
+        bool ISynchronizable.Synchronize(object target)
+        {
+            return Entities.Common.NE.IDEAEventDescriptorMapper.SynchronizeTo(this, (Entities.Common.NE.IIDEAEventDescriptor)target);
+        }
+
+        void IMappable.Map(object target)
+        {
+            Entities.Common.NE.IDEAEventDescriptorMapper.MapTo(this, (Entities.Common.NE.IIDEAEventDescriptor)target, null);
+        }
+        // -------------------------------------------------------------
+
+        // =================================================================
+        //                    Resource Reference Data
+        // -----------------------------------------------------------------
+        // -----------------------------------------------------------------
+    }
+
+    // =================================================================
+    //                         Validators
+    // -----------------------------------------------------------------
+
+    [ExcludeFromCodeCoverage]
+    public class IDEAEventDescriptorPutPostRequestValidator : FluentValidation.AbstractValidator<IDEAEventDescriptor>
+    {
+        protected override bool PreValidate(FluentValidation.ValidationContext<IDEAEventDescriptor> context, FluentValidation.Results.ValidationResult result)
         {
             if (context.InstanceToValidate == null)
             {
@@ -2180,7 +4355,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.PostGraduateActivity.NE
             var link = new Link
             {
                 Rel = "PostGraduateActivity",
-                Href = $"/ne/postGraduateActivities/{ResourceId:n}"
+                Href = $"/NE/postGraduateActivities/{ResourceId:n}"
             };
 
             if (string.IsNullOrEmpty(Discriminator))
@@ -3423,7 +5598,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.Section.EdFi.Extensions.NE
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    [Display(Name="Ne")]
+    [Display(Name="NE")]
     public class SectionExtension : Entities.Common.NE.ISectionExtension, IChildEntity, IValidatableObject
     {
         private static FullName _fullName = new FullName("ne", "SectionExtension");
@@ -4319,7 +6494,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentDisciplineIncidentBehavior
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    [Display(Name="Ne")]
+    [Display(Name="NE")]
     public class StudentDisciplineIncidentBehaviorAssociationExtension : Entities.Common.NE.IStudentDisciplineIncidentBehaviorAssociationExtension, IChildEntity
     {
         private static FullName _fullName = new FullName("ne", "StudentDisciplineIncidentBehaviorAssociationExtension");
@@ -4665,7 +6840,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEarlyLearningProgramAssoci
             var link = new Link
             {
                 Rel = "StudentEarlyLearningProgramAssociation",
-                Href = $"/ne/studentEarlyLearningProgramAssociations/{ResourceId:n}"
+                Href = $"/NE/studentEarlyLearningProgramAssociations/{ResourceId:n}"
             };
 
             return link;
@@ -5350,7 +7525,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentEducationOrganizationAssoc
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    [Display(Name="Ne")]
+    [Display(Name="NE")]
     public class StudentEducationOrganizationAssociationExtension : Entities.Common.NE.IStudentEducationOrganizationAssociationExtension, IChildEntity
     {
         private static FullName _fullName = new FullName("ne", "StudentEducationOrganizationAssociationExtension");
@@ -5575,7 +7750,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentLanguageInstructionProgram
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    [Display(Name="Ne")]
+    [Display(Name="NE")]
     public class StudentLanguageInstructionProgramAssociationExtension : Entities.Common.NE.IStudentLanguageInstructionProgramAssociationExtension, IChildEntity
     {
         private static FullName _fullName = new FullName("ne", "StudentLanguageInstructionProgramAssociationExtension");
@@ -5682,18 +7857,18 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentLanguageInstructionProgram
         // -------------------------------------------------------------
 
         /// <summary>
-        /// A special education student that is no longer considered an English Learner due to a decision by the IEP review team to dismiss the ELPA testing requirement.
-        /// </summary>
-        // NOT in a reference, NOT a lookup column 
-        [DataMember(Name="dismissedViaIEPReview")][JsonConverter(typeof(StrictBooleanConverter))]
-        public bool? DismissedViaIEPReview { get; set; }
-
-        /// <summary>
         /// students that have been redesignated as English Fluent.
         /// </summary>
         // NOT in a reference, NOT a lookup column 
         [DataMember(Name="redesignatedEnglishFluent")][JsonConverter(typeof(StrictBooleanConverter))]
         public bool? RedesignatedEnglishFluent { get; set; }
+
+        /// <summary>
+        /// Indicates whether the student was tested on a language proficiency screener and demonstrated fluency on that initial screening assessment.
+        /// </summary>
+        // NOT in a reference, NOT a lookup column 
+        [DataMember(Name="testedProficientOnScreener")][JsonConverter(typeof(StrictBooleanConverter))]
+        public bool? TestedProficientOnScreener { get; set; }
         // -------------------------------------------------------------
 
         // =============================================================
@@ -5806,7 +7981,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSchoolAssociation.EdFi.Ext
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    [Display(Name="Ne")]
+    [Display(Name="NE")]
     public class StudentSchoolAssociationExtension : Entities.Common.NE.IStudentSchoolAssociationExtension, IChildEntity
     {
         private static FullName _fullName = new FullName("ne", "StudentSchoolAssociationExtension");
@@ -5835,39 +8010,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSchoolAssociation.EdFi.Ext
         //                         References
         // -------------------------------------------------------------
 
-        private bool _expectedHighSchoolOfGraduationSchoolReferenceExplicitlyAssigned;
-        private School.EdFi.SchoolReference _expectedHighSchoolOfGraduationSchoolReference;
-        private School.EdFi.SchoolReference ImplicitExpectedHighSchoolOfGraduationSchoolReference
-        {
-            get
-            {
-                // if the Reference is null, it is instantiated unless it has been explicitly assigned to null
-                if (_expectedHighSchoolOfGraduationSchoolReference == null && !_expectedHighSchoolOfGraduationSchoolReferenceExplicitlyAssigned)
-                    _expectedHighSchoolOfGraduationSchoolReference = new School.EdFi.SchoolReference();
-
-                return _expectedHighSchoolOfGraduationSchoolReference;
-            }
-        }
-
-        [DataMember(Name="expectedHighSchoolOfGraduationSchoolReference")]
-        [FullyDefinedReference]
-        public School.EdFi.SchoolReference ExpectedHighSchoolOfGraduationSchoolReference
-        {
-            get
-            {
-                // Only return the reference if it's non-null, and all its properties have non-default values assigned
-                if (ImplicitExpectedHighSchoolOfGraduationSchoolReference != null
-                    && (_expectedHighSchoolOfGraduationSchoolReferenceExplicitlyAssigned || _SuspendReferenceAssignmentCheck || ImplicitExpectedHighSchoolOfGraduationSchoolReference.IsReferenceFullyDefined()))
-                    return ImplicitExpectedHighSchoolOfGraduationSchoolReference;
-
-                return null;
-            }
-            set
-            {
-                _expectedHighSchoolOfGraduationSchoolReferenceExplicitlyAssigned = true;
-                _expectedHighSchoolOfGraduationSchoolReference = value;
-            }
-        }
         private bool _reportingSchoolReferenceExplicitlyAssigned;
         private School.EdFi.SchoolReference _reportingSchoolReference;
         private School.EdFi.SchoolReference ImplicitReportingSchoolReference
@@ -6049,33 +8191,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSchoolAssociation.EdFi.Ext
         /// The identifier assigned to a school. It must be distinct from any other identifier assigned to educational organizations, such as a LocalEducationAgencyId, to prevent duplication.
         /// </summary>
         // IS in a reference, NOT a lookup column 
-        long? Entities.Common.NE.IStudentSchoolAssociationExtension.ExpectedHighSchoolOfGraduationSchoolId
-        {
-            get
-            {
-                if (ImplicitExpectedHighSchoolOfGraduationSchoolReference != null
-                    && (_SuspendReferenceAssignmentCheck || ImplicitExpectedHighSchoolOfGraduationSchoolReference.IsReferenceFullyDefined()))
-                    {
-                        return ImplicitExpectedHighSchoolOfGraduationSchoolReference.SchoolId;
-                    }
-
-                return default(long?);
-            }
-            set
-            {
-                // When a property is assigned, Reference should not be null even if it has been explicitly assigned to null.
-                // All ExplicitlyAssigned are reset to false in advanced
-
-                // ExpectedHighSchoolOfGraduationSchool
-                _expectedHighSchoolOfGraduationSchoolReferenceExplicitlyAssigned = false;
-                ImplicitExpectedHighSchoolOfGraduationSchoolReference.SchoolId = value.GetValueOrDefault();
-            }
-        }
-
-        /// <summary>
-        /// The identifier assigned to a school. It must be distinct from any other identifier assigned to educational organizations, such as a LocalEducationAgencyId, to prevent duplication.
-        /// </summary>
-        // IS in a reference, NOT a lookup column 
         long Entities.Common.NE.IStudentSchoolAssociationExtension.ReportingSchoolId
         {
             get
@@ -6219,13 +8334,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSchoolAssociation.EdFi.Ext
         // =================================================================
         //                    Resource Reference Data
         // -----------------------------------------------------------------
-        Guid? Entities.Common.NE.IStudentSchoolAssociationExtension.ExpectedHighSchoolOfGraduationSchoolResourceId
-        {
-            get { return null; }
-            set { ImplicitExpectedHighSchoolOfGraduationSchoolReference.ResourceId = value ?? default(Guid); }
-        }
-
-
         Guid? Entities.Common.NE.IStudentSchoolAssociationExtension.ReportingSchoolResourceId
         {
             get { return null; }
@@ -6300,7 +8408,7 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSpecialEducationProgramAss
     /// </summary>
     [Serializable, DataContract]
     [ExcludeFromCodeCoverage]
-    [Display(Name="Ne")]
+    [Display(Name="NE")]
     public class StudentSpecialEducationProgramAssociationExtension : Entities.Common.NE.IStudentSpecialEducationProgramAssociationExtension, IChildEntity
     {
         private static FullName _fullName = new FullName("ne", "StudentSpecialEducationProgramAssociationExtension");
@@ -6412,14 +8520,6 @@ namespace EdFi.Ods.Api.Common.Models.Resources.StudentSpecialEducationProgramAss
         // NOT in a reference, NOT a lookup column 
         [DataMember(Name="initialSpecialEducationEntryDate")][JsonConverter(typeof(Iso8601UtcDateOnlyConverter))]
         public DateTime? InitialSpecialEducationEntryDate { get; set; }
-
-        /// <summary>
-        /// The reason the Part C IDEA child was delayed in transitioning to Part B.
-        /// </summary>
-        // NOT in a reference, IS a lookup column 
-        [NonDefaultStringLength(306, ErrorMessage=ValidationHelpers.StringLengthMessageFormat), NoDangerousText]
-        [DataMember(Name="partCTransitionDelayReasonDescriptor")][DescriptorExists("PartCTransitionDelayReasonDescriptor")]
-        public string PartCTransitionDelayReasonDescriptor { get; set; }
 
         /// <summary>
         /// Placement type of the student.

@@ -25,6 +25,42 @@ COMMENT ON COLUMN ne.DisciplineIncidentExtension.ShootingIndicator IS 'Indicates
 COMMENT ON TABLE ne.EarlyLearningSettingDescriptor IS 'To indicate the classroom setting of the student''s program participation.';
 COMMENT ON COLUMN ne.EarlyLearningSettingDescriptor.EarlyLearningSettingDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
 
+-- Extended Properties [ne].[EmergencyExclusion] --
+COMMENT ON TABLE ne.EmergencyExclusion IS 'Captures emergency exclusion details when a student is temporarily removed from school due to health, safety, or educational disruption concerns.';
+COMMENT ON COLUMN ne.EmergencyExclusion.EducationOrganizationId IS 'The identifier assigned to an education organization.';
+COMMENT ON COLUMN ne.EmergencyExclusion.ExclusionDate IS 'The date the emergency exclusion began.';
+COMMENT ON COLUMN ne.EmergencyExclusion.StudentUSI IS 'A unique alphanumeric code assigned to a student.';
+COMMENT ON COLUMN ne.EmergencyExclusion.EmergencyExclusionReasonDescriptorId IS 'The reason for the emergency exclusion (Health, Safety of Themselves or Others, Disruption to Education).';
+COMMENT ON COLUMN ne.EmergencyExclusion.ExclusionDuration IS 'The duration of the emergency exclusion in days.';
+
+-- Extended Properties [ne].[EmergencyExclusionReasonDescriptor] --
+COMMENT ON TABLE ne.EmergencyExclusionReasonDescriptor IS 'Description that best reflects the reason for a student''s exclusion.';
+COMMENT ON COLUMN ne.EmergencyExclusionReasonDescriptor.EmergencyExclusionReasonDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
+
+-- Extended Properties [ne].[EventComplianceDescriptor] --
+COMMENT ON TABLE ne.EventComplianceDescriptor IS 'The policy or law for which an event is compliant.';
+COMMENT ON COLUMN ne.EventComplianceDescriptor.EventComplianceDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
+
+-- Extended Properties [ne].[EventReasonDescriptor] --
+COMMENT ON TABLE ne.EventReasonDescriptor IS 'Reason the event occured.';
+COMMENT ON COLUMN ne.EventReasonDescriptor.EventReasonDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
+
+-- Extended Properties [ne].[IdeaEvent] --
+COMMENT ON TABLE ne.IdeaEvent IS 'An IDEA related student event describing status, dates and narrative.';
+COMMENT ON COLUMN ne.IdeaEvent.EducationOrganizationId IS 'The identifier assigned to an education organization.';
+COMMENT ON COLUMN ne.IdeaEvent.IDEAEventDescriptorId IS 'The IDEA event recorded for the student.';
+COMMENT ON COLUMN ne.IdeaEvent.IDEAEventID IS 'A unique identifier for the event record as assigned by the provider of IEP services.';
+COMMENT ON COLUMN ne.IdeaEvent.StudentUSI IS 'A unique alphanumeric code assigned to a student.';
+COMMENT ON COLUMN ne.IdeaEvent.BeginDate IS 'The date when the IDEA related event started.';
+COMMENT ON COLUMN ne.IdeaEvent.EndDate IS 'The date when the IDEA event concluded.';
+COMMENT ON COLUMN ne.IdeaEvent.EventComplianceDescriptorId IS 'The type of compliance represented by this event.';
+COMMENT ON COLUMN ne.IdeaEvent.EventNarrative IS 'Detailed and summary notes recorded during the event.';
+COMMENT ON COLUMN ne.IdeaEvent.EventReasonDescriptorId IS 'The reason why the IDEA event occured.';
+
+-- Extended Properties [ne].[IDEAEventDescriptor] --
+COMMENT ON TABLE ne.IDEAEventDescriptor IS 'IDEA event type. Examples: Referral for Evaluation, IEP Approved, Parental COnsent Given, Evaluation Complete.';
+COMMENT ON COLUMN ne.IDEAEventDescriptor.IDEAEventDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
+
 -- Extended Properties [ne].[ImmigrantIndicatorDescriptor] --
 COMMENT ON TABLE ne.ImmigrantIndicatorDescriptor IS 'Description that best reflects the student''s immigrant status.';
 COMMENT ON COLUMN ne.ImmigrantIndicatorDescriptor.ImmigrantIndicatorDescriptorId IS 'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.';
@@ -118,15 +154,14 @@ COMMENT ON COLUMN ne.StudentLanguageInstructionProgramAssociationExtension.Progr
 COMMENT ON COLUMN ne.StudentLanguageInstructionProgramAssociationExtension.ProgramName IS 'The formal name of the program of instruction, training, services, or benefits available through federal, state, or local agencies.';
 COMMENT ON COLUMN ne.StudentLanguageInstructionProgramAssociationExtension.ProgramTypeDescriptorId IS 'The type of program.';
 COMMENT ON COLUMN ne.StudentLanguageInstructionProgramAssociationExtension.StudentUSI IS 'A unique alphanumeric code assigned to a student.';
-COMMENT ON COLUMN ne.StudentLanguageInstructionProgramAssociationExtension.DismissedViaIEPReview IS 'A special education student that is no longer considered an English Learner due to a decision by the IEP review team to dismiss the ELPA testing requirement.';
 COMMENT ON COLUMN ne.StudentLanguageInstructionProgramAssociationExtension.RedesignatedEnglishFluent IS 'students that have been redesignated as English Fluent.';
+COMMENT ON COLUMN ne.StudentLanguageInstructionProgramAssociationExtension.TestedProficientOnScreener IS 'Indicates whether the student was tested on a language proficiency screener and demonstrated fluency on that initial screening assessment.';
 
 -- Extended Properties [ne].[StudentSchoolAssociationExtension] --
 COMMENT ON TABLE ne.StudentSchoolAssociationExtension IS '';
 COMMENT ON COLUMN ne.StudentSchoolAssociationExtension.EntryDate IS 'The month, day, and year on which an individual enters and begins to receive instructional services in a school for each school year. The EntryDate value should be the date the student enrolled, or when the student''s enrollment materially changed, such as with a grade promotion.  Note: Date interpretation may vary. Ed-Fi recommends inclusive dates, but states may define dates as inclusive or exclusive. For calculations, align with local guidelines.';
 COMMENT ON COLUMN ne.StudentSchoolAssociationExtension.SchoolId IS 'The identifier assigned to a school. It must be distinct from any other identifier assigned to educational organizations, such as a LocalEducationAgencyId, to prevent duplication.';
 COMMENT ON COLUMN ne.StudentSchoolAssociationExtension.StudentUSI IS 'A unique alphanumeric code assigned to a student.';
-COMMENT ON COLUMN ne.StudentSchoolAssociationExtension.ExpectedHighSchoolOfGraduationSchoolId IS 'The identifier assigned to a school. It must be distinct from any other identifier assigned to educational organizations, such as a LocalEducationAgencyId, to prevent duplication.';
 COMMENT ON COLUMN ne.StudentSchoolAssociationExtension.ReportingSchoolId IS 'The identifier assigned to a school. It must be distinct from any other identifier assigned to educational organizations, such as a LocalEducationAgencyId, to prevent duplication.';
 COMMENT ON COLUMN ne.StudentSchoolAssociationExtension.ResidentLocalEducationAgencyId IS 'The identifier assigned to a local education agency. It must be distinct from any other identifier assigned to educational organizations, such as a SchoolId, to prevent duplication.';
 COMMENT ON COLUMN ne.StudentSchoolAssociationExtension.ResidentSchoolId IS 'The identifier assigned to a school. It must be distinct from any other identifier assigned to educational organizations, such as a LocalEducationAgencyId, to prevent duplication.';
@@ -141,7 +176,6 @@ COMMENT ON COLUMN ne.StudentSpecialEducationProgramAssociationExtension.ProgramN
 COMMENT ON COLUMN ne.StudentSpecialEducationProgramAssociationExtension.ProgramTypeDescriptorId IS 'The type of program.';
 COMMENT ON COLUMN ne.StudentSpecialEducationProgramAssociationExtension.StudentUSI IS 'A unique alphanumeric code assigned to a student.';
 COMMENT ON COLUMN ne.StudentSpecialEducationProgramAssociationExtension.InitialSpecialEducationEntryDate IS 'Date when the child''s first IEP or IFSP';
-COMMENT ON COLUMN ne.StudentSpecialEducationProgramAssociationExtension.PartCTransitionDelayReasonDescriptorId IS 'The reason the Part C IDEA child was delayed in transitioning to Part B.';
 COMMENT ON COLUMN ne.StudentSpecialEducationProgramAssociationExtension.PlacementTypeDescriptorId IS 'Placement type of the student.';
 COMMENT ON COLUMN ne.StudentSpecialEducationProgramAssociationExtension.SpecialEducationProgramDescriptorId IS 'Type of program a Special Education student is in - Part B or Part C.';
 COMMENT ON COLUMN ne.StudentSpecialEducationProgramAssociationExtension.ToTakeAlternateAssessment IS 'True = Indicates the student needs alternate assessment.';

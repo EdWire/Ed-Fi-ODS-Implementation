@@ -747,6 +747,2169 @@ namespace EdFi.Ods.Entities.NHibernate.EarlyLearningSettingDescriptorAggregate.N
 
     }
 }
+// Aggregate: EmergencyExclusion
+
+namespace EdFi.Ods.Entities.NHibernate.EmergencyExclusionAggregate.NE
+{
+    /// <summary>
+    /// Represents a read-only reference to the <see cref="EmergencyExclusion"/> entity.
+    /// </summary>
+    [MessagePackObject]
+    public class EmergencyExclusionReferenceData : IEntityReferenceData
+    {
+        private bool _trackLookupContext;
+        private Action<EmergencyExclusionReferenceData> _contextualValuesInitializer;
+        private bool _contextualValuesInitialized;
+
+        // Default constructor (used by NHibernate)
+        public EmergencyExclusionReferenceData() { }
+
+        // Constructor used for deferred initialization when the parent reference hasn't yet been initialized because we're falling back from stale serialized data to NHibernate hydration
+        public EmergencyExclusionReferenceData(Action<EmergencyExclusionReferenceData> contextualValuesInitializer)
+        {
+            _trackLookupContext = true;
+            _contextualValuesInitializer = contextualValuesInitializer;
+        }
+
+        // Constructor used for link support with Serialized Data feature
+        public EmergencyExclusionReferenceData(long contextualEducationOrganizationId = default, DateTime contextualExclusionDate = default, int contextualStudentUSI = default, bool trackLookupContext = true)
+        {
+            _trackLookupContext = trackLookupContext;
+    
+            // Assign supplied contextual values (values pre-determined from parent context)
+            _educationOrganizationId = contextualEducationOrganizationId;
+            _exclusionDate = contextualExclusionDate;
+            _studentUSI = contextualStudentUSI;
+
+            _contextualValuesInitialized = true;
+        }
+
+        // =============================================================
+        //                         Primary Key
+        // -------------------------------------------------------------
+        private Guid? _id;
+
+        /// <summary>
+        /// The id of the referenced entity (used as the resource identifier in the API).
+        /// </summary>
+        [Key(0)]
+        public virtual Guid? Id
+        {
+            get => _id;
+            set
+            {
+                _id = value;
+
+                if (_trackLookupContext || (GeneratedArtifactStaticDependencies.SerializedDataEnabled && GeneratedArtifactStaticDependencies.ResourceLinksEnabled))
+                {
+                    // If explicitly setting this to a non-value, it needs to be resolved.
+                    if (value == default(Guid) || value == null)
+                    {
+                        GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
+                    }
+                }
+            }
+        }
+
+        private long _educationOrganizationId;
+
+        [Key(1)]
+        public virtual long EducationOrganizationId
+        {
+            get { EnsureContextualValuesInitialized(); return _educationOrganizationId; }
+            set
+            {
+                var originalValue = _educationOrganizationId;
+                _educationOrganizationId = value;
+
+                if (_trackLookupContext)
+                {
+                    // If Id is NOT already known then value is being initialized (from mapping or syncing -- not deserialized) and needs resolution 
+                    if (_id == default && originalValue == default && value != default && IsFullyDefined())
+                    {
+                        GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
+                    }
+                }
+                
+                // If reference's key value is changing from a non-default value (i.e. only via Synchronize) it needs resolution
+                if (originalValue != default && value != originalValue) 
+                {
+                    // Clear the values
+                    Id = default;
+                    Discriminator = null;
+                    GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
+                }
+            }
+        }
+        private DateTime _exclusionDate;
+
+        [Key(2)]
+        public virtual DateTime ExclusionDate
+        {
+            get { EnsureContextualValuesInitialized(); return _exclusionDate; }
+            set
+            {
+                var originalValue = _exclusionDate;
+                _exclusionDate = value;
+
+                if (_trackLookupContext)
+                {
+                    // If Id is NOT already known then value is being initialized (from mapping or syncing -- not deserialized) and needs resolution 
+                    if (_id == default && originalValue == default && value != default && IsFullyDefined())
+                    {
+                        GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
+                    }
+                }
+                
+                // If reference's key value is changing from a non-default value (i.e. only via Synchronize) it needs resolution
+                if (originalValue != default && value != originalValue) 
+                {
+                    // Clear the values
+                    Id = default;
+                    Discriminator = null;
+                    GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
+                }
+            }
+        }
+        private int _studentUSI;
+
+        [Key(3)]
+        public virtual int StudentUSI
+        {
+            get { EnsureContextualValuesInitialized(); return _studentUSI; }
+            set
+            {
+                var originalValue = _studentUSI;
+                _studentUSI = value;
+
+                if (_trackLookupContext)
+                {
+                    // If Id is NOT already known then value is being initialized (from mapping or syncing -- not deserialized) and needs resolution 
+                    if (_id == default && originalValue == default && value != default && IsFullyDefined())
+                    {
+                        GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
+                    }
+                }
+                
+                // If reference's key value is changing from a non-default value (i.e. only via Synchronize) it needs resolution
+                if (originalValue != default && value != originalValue) 
+                {
+                    // Clear the values
+                    Id = default;
+                    Discriminator = null;
+                    GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
+                }
+            }
+        }
+
+        private void EnsureContextualValuesInitialized()
+        {
+            if (!_contextualValuesInitialized && _contextualValuesInitializer != null)
+            {
+                _contextualValuesInitializer(this);
+                _contextualValuesInitialized = true;
+            }
+        }
+
+        public virtual bool IsFullyDefined()
+        {
+            return
+                _educationOrganizationId != default
+                            && _exclusionDate != default
+                            && _studentUSI != default
+            ;
+        }
+
+        /// <summary>
+        /// Gets and sets the discriminator value which identifies the concrete sub-type of the referenced entity
+        /// when that entity has been derived; otherwise <b>null</b>.
+        /// </summary>
+        [Key(4)]
+        public virtual string Discriminator { get; set; }
+
+        private static FullName _fullName = new FullName("ne", "EmergencyExclusion"); 
+        FullName IEntityReferenceData.FullName { get => _fullName; }
+    
+        // Provide primary key information
+        OrderedDictionary IHasPrimaryKeyValues.GetPrimaryKeyValues()
+        {
+            // Initialize a new dictionary to hold the key values
+            var keyValues = new OrderedDictionary();
+
+            // Add current key values
+            keyValues.Add("EducationOrganizationId", EducationOrganizationId);
+            keyValues.Add("ExclusionDate", ExclusionDate);
+            keyValues.Add("StudentUSI", StudentUSI);
+
+            return keyValues;
+        }
+
+        #region Overrides for Equals() and GetHashCode()
+        public override bool Equals(object obj)
+        {
+            var compareTo = obj as IHasPrimaryKeyValues;
+
+            if (ReferenceEquals(this, compareTo))
+                return true;
+
+            if (compareTo == null)
+                return false;
+
+            var theseKeys = (this as IHasPrimaryKeyValues).GetPrimaryKeyValues();
+            var thoseKeys = compareTo.GetPrimaryKeyValues();
+
+            foreach (DictionaryEntry entry in theseKeys)
+            {
+                if (!entry.Value.Equals(thoseKeys[entry.Key]))
+                    return false;
+            }
+
+            return true;
+        }
+
+        public override int GetHashCode()
+        {
+            var keyValues = (this as IHasPrimaryKeyValues).GetPrimaryKeyValues();
+
+            if (keyValues.Count == 0)
+                return base.GetHashCode();
+
+            var hashCode = new HashCode();
+
+            foreach (DictionaryEntry entry in keyValues)
+            {
+                hashCode.Add(entry.Value);
+            }
+
+            return hashCode.ToHashCode();
+        }
+        #endregion
+    }
+
+// disable warnings for inheritance from classes marked Obsolete within this generated code only
+#pragma warning disable 612, 618
+
+    /// <summary>
+    /// A class which represents the ne.EmergencyExclusion table of the EmergencyExclusion aggregate in the ODS database.
+    /// </summary>
+    [Schema("ne")]
+    [ExcludeFromCodeCoverage]
+    [MessagePackObject]
+    public class EmergencyExclusion : AggregateRootWithCompositeKey,
+        Entities.Common.NE.IEmergencyExclusion, IHasPrimaryKeyValues, IHasLookupColumnPropertyMap
+    {
+        public virtual void SuspendReferenceAssignmentCheck() { }
+
+        public EmergencyExclusion()
+        {
+        }
+// restore warnings for inheritance from classes marked Obsolete
+#pragma warning restore 612, 618
+
+        // =============================================================
+        //                     Reference Data
+        // -------------------------------------------------------------
+        private NHibernate.EducationOrganizationAggregate.EdFi.EducationOrganizationReferenceData _educationOrganizationReferenceData;
+
+        private bool EducationOrganizationReferenceDataIsProxied()
+        {
+            return _educationOrganizationReferenceData != null 
+                && _educationOrganizationReferenceData.GetType() != typeof(NHibernate.EducationOrganizationAggregate.EdFi.EducationOrganizationReferenceData);
+        }
+
+        [IgnoreMember]
+        public virtual NHibernate.EducationOrganizationAggregate.EdFi.EducationOrganizationReferenceData EducationOrganizationReferenceData
+        {
+            get => _educationOrganizationReferenceData;
+            set
+            {
+                _educationOrganizationReferenceData = value;
+
+                if (value != null && GeneratedArtifactStaticDependencies.SerializedDataEnabled && GeneratedArtifactStaticDependencies.ResourceLinksEnabled
+                    // NHibernate will proxy this object reference if it is not hydrated through an outer join in the query
+                    && !EducationOrganizationReferenceDataIsProxied())
+                {
+                    // We've encountered an NHibernate hydrated reference data meaning we've already got all reference data needed
+                    GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Suppress();
+                }
+            }
+        }
+
+        [Key(6)]
+        public virtual NHibernate.EducationOrganizationAggregate.EdFi.EducationOrganizationReferenceData EducationOrganizationSerializedReferenceData { get => _educationOrganizationSerializedReferenceData; set { if (value != null) _educationOrganizationSerializedReferenceData = value; } }
+        private NHibernate.EducationOrganizationAggregate.EdFi.EducationOrganizationReferenceData _educationOrganizationSerializedReferenceData;
+
+        /// <summary>
+        /// A read-only property implementation that allows the EducationOrganization discriminator value to be mapped to the resource reference.
+        /// </summary>
+        string Entities.Common.NE.IEmergencyExclusion.EducationOrganizationDiscriminator
+        {
+            get
+            {
+                return EducationOrganizationReferenceDataIsProxied()
+                    ? (EducationOrganizationSerializedReferenceData ?? EducationOrganizationReferenceData)?.Discriminator
+                    : (EducationOrganizationReferenceData ?? EducationOrganizationSerializedReferenceData)?.Discriminator;
+            }
+            set { }
+        }
+
+        /// <summary>
+        /// A property implementation whose getter allows the EducationOrganization resource identifier value to be mapped to the resource reference,
+        /// and whose setter is used with serialized data and links features to signal need to resolve reference data from the ODS.
+        /// </summary>
+        Guid? Entities.Common.NE.IEmergencyExclusion.EducationOrganizationResourceId
+        {
+            get
+            {
+                return EducationOrganizationReferenceDataIsProxied()
+                    ? (EducationOrganizationSerializedReferenceData ?? EducationOrganizationReferenceData)?.Id
+                    : (EducationOrganizationReferenceData ?? EducationOrganizationSerializedReferenceData)?.Id;
+            }
+            set { if (EducationOrganizationSerializedReferenceData?.IsFullyDefined() == true) EducationOrganizationSerializedReferenceData.Id = value; }
+        }
+
+        private NHibernate.StudentAggregate.EdFi.StudentReferenceData _studentReferenceData;
+
+        private bool StudentReferenceDataIsProxied()
+        {
+            return _studentReferenceData != null 
+                && _studentReferenceData.GetType() != typeof(NHibernate.StudentAggregate.EdFi.StudentReferenceData);
+        }
+
+        [IgnoreMember]
+        public virtual NHibernate.StudentAggregate.EdFi.StudentReferenceData StudentReferenceData
+        {
+            get => _studentReferenceData;
+            set
+            {
+                _studentReferenceData = value;
+
+                if (value != null && GeneratedArtifactStaticDependencies.SerializedDataEnabled && GeneratedArtifactStaticDependencies.ResourceLinksEnabled
+                    // NHibernate will proxy this object reference if it is not hydrated through an outer join in the query
+                    && !StudentReferenceDataIsProxied())
+                {
+                    // We've encountered an NHibernate hydrated reference data meaning we've already got all reference data needed
+                    GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Suppress();
+                }
+            }
+        }
+
+        [Key(7)]
+        public virtual NHibernate.StudentAggregate.EdFi.StudentReferenceData StudentSerializedReferenceData { get => _studentSerializedReferenceData; set { if (value != null) _studentSerializedReferenceData = value; } }
+        private NHibernate.StudentAggregate.EdFi.StudentReferenceData _studentSerializedReferenceData;
+
+        /// <summary>
+        /// A read-only property implementation that allows the Student discriminator value to be mapped to the resource reference.
+        /// </summary>
+        string Entities.Common.NE.IEmergencyExclusion.StudentDiscriminator
+        {
+            get
+            {
+                return StudentReferenceDataIsProxied()
+                    ? (StudentSerializedReferenceData ?? StudentReferenceData)?.Discriminator
+                    : (StudentReferenceData ?? StudentSerializedReferenceData)?.Discriminator;
+            }
+            set { }
+        }
+
+        /// <summary>
+        /// A property implementation whose getter allows the Student resource identifier value to be mapped to the resource reference,
+        /// and whose setter is used with serialized data and links features to signal need to resolve reference data from the ODS.
+        /// </summary>
+        Guid? Entities.Common.NE.IEmergencyExclusion.StudentResourceId
+        {
+            get
+            {
+                return StudentReferenceDataIsProxied()
+                    ? (StudentSerializedReferenceData ?? StudentReferenceData)?.Id
+                    : (StudentReferenceData ?? StudentSerializedReferenceData)?.Id;
+            }
+            set { if (StudentSerializedReferenceData?.IsFullyDefined() == true) StudentSerializedReferenceData.Id = value; }
+        }
+
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                         Primary Key
+        // -------------------------------------------------------------
+        [DomainSignature]
+        [Key(8)]
+        public virtual long EducationOrganizationId 
+        {
+            get => _educationOrganizationId;
+            set
+            {
+                _educationOrganizationId = value;
+
+                if (GeneratedArtifactStaticDependencies.SerializedDataEnabled && GeneratedArtifactStaticDependencies.ResourceLinksEnabled)
+                {
+                    EducationOrganizationSerializedReferenceData ??= new NHibernate.EducationOrganizationAggregate.EdFi.EducationOrganizationReferenceData(trackLookupContext: true);
+                    EducationOrganizationSerializedReferenceData.EducationOrganizationId = value;
+                }
+            }
+        }
+
+        private long _educationOrganizationId;
+
+        [DomainSignature]
+        [Key(9)]
+        public virtual DateTime ExclusionDate 
+        {
+            get { return _exclusionDate; }
+            //This is only stored as a Date in the DB and NHibernate will retrieve it using the default (local) DateTime.Kind.  We must ensure it is set consistently for any equality/change evaluation.
+            set { _exclusionDate = new DateTime(value.Year, value.Month, value.Day); }
+        }
+
+        private DateTime _exclusionDate;
+
+        [Display(Name="StudentUniqueId")][DomainSignature]
+        [Key(10)]
+        public virtual int StudentUSI 
+        {
+            get
+            {
+                if (_studentUSI == default(int) && _studentUniqueId != null)
+                {
+                    if (GeneratedArtifactStaticDependencies.UsiLookupsByUniqueIdContextProvider.Get().UsiByUniqueIdByPersonType.TryGetValue("Student", out var usiByUniqueId)
+                        && usiByUniqueId.TryGetValue(_studentUniqueId, out var usi))
+                    {
+                        _studentUSI = usi;
+
+                        if (GeneratedArtifactStaticDependencies.SerializedDataEnabled && GeneratedArtifactStaticDependencies.ResourceLinksEnabled)
+                        {
+                            StudentSerializedReferenceData ??= new NHibernate.StudentAggregate.EdFi.StudentReferenceData(trackLookupContext: true);
+                            StudentSerializedReferenceData.StudentUSI = _studentUSI;
+                        }
+                    }
+                }
+
+                return _studentUSI;
+            } 
+            set
+            {
+                _studentUSI = value;
+                GeneratedArtifactStaticDependencies.UniqueIdLookupsByUsiContextProvider.Get().AddLookup("Student", value);
+
+                if (GeneratedArtifactStaticDependencies.SerializedDataEnabled && GeneratedArtifactStaticDependencies.ResourceLinksEnabled)
+                {
+                    StudentSerializedReferenceData ??= new NHibernate.StudentAggregate.EdFi.StudentReferenceData(trackLookupContext: true);
+                    StudentSerializedReferenceData.StudentUSI = value;
+                }
+            }
+        }
+
+        private int _studentUSI;
+        private string _studentUniqueId;
+
+        [IgnoreMember]
+        public virtual string StudentUniqueId
+        {
+            get
+            {
+                if (_studentUniqueId == null)
+                {
+                    if (GeneratedArtifactStaticDependencies.UniqueIdLookupsByUsiContextProvider.Get().UniqueIdByUsiByPersonType.TryGetValue("Student", out var uniqueIdByUsi)
+                        && uniqueIdByUsi.TryGetValue(_studentUSI, out var uniqueId))
+                    {
+                        _studentUniqueId = uniqueId;
+                    }
+                }
+
+                return _studentUniqueId;
+            }
+            set
+            {
+                if (_studentUniqueId != value)
+                        _studentUSI = default(int);
+
+                _studentUniqueId = value;
+
+                if (value != null && GeneratedArtifactStaticDependencies.SerializedDataEnabled && GeneratedArtifactStaticDependencies.ResourceLinksEnabled)
+                {
+                    if (GeneratedArtifactStaticDependencies.UsiLookupsByUniqueIdContextProvider.Get().UsiByUniqueIdByPersonType.TryGetValue("Student", out var usiByUniqueId)
+                        && usiByUniqueId.TryGetValue(_studentUniqueId, out var usi))
+                    {
+                        StudentSerializedReferenceData ??= new NHibernate.StudentAggregate.EdFi.StudentReferenceData(trackLookupContext: true);
+                        StudentSerializedReferenceData.StudentUSI = usi;
+                    }
+                }
+            }
+        }
+
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                      Inherited Properties
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                          Properties
+        // -------------------------------------------------------------
+        [Key(11)]
+        public virtual int EmergencyExclusionReasonDescriptorId 
+        {
+            get
+            {
+                if (_emergencyExclusionReasonDescriptorId == default(int))
+                {
+                    _emergencyExclusionReasonDescriptorId = GeneratedArtifactStaticDependencies.DescriptorResolver.GetDescriptorId("EmergencyExclusionReasonDescriptor", _emergencyExclusionReasonDescriptor);
+                }
+
+                return _emergencyExclusionReasonDescriptorId;
+            } 
+            set
+            {
+                _emergencyExclusionReasonDescriptorId = value;
+                _emergencyExclusionReasonDescriptor = null;
+            }
+        }
+
+        private int _emergencyExclusionReasonDescriptorId;
+        private string _emergencyExclusionReasonDescriptor;
+
+        [IgnoreMember]
+        public virtual string EmergencyExclusionReasonDescriptor
+        {
+            get
+            {
+                if (_emergencyExclusionReasonDescriptor == null)
+                    _emergencyExclusionReasonDescriptor = GeneratedArtifactStaticDependencies.DescriptorResolver.GetUri("EmergencyExclusionReasonDescriptor", _emergencyExclusionReasonDescriptorId);
+                    
+                return _emergencyExclusionReasonDescriptor;
+            }
+            set
+            {
+                _emergencyExclusionReasonDescriptor = value;
+                _emergencyExclusionReasonDescriptorId = default(int);
+            }
+        }
+
+        [Key(12)]
+        public virtual decimal ExclusionDuration { get => _exclusionDuration; set { _exclusionDuration = value; } }
+        private decimal _exclusionDuration;
+
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                     One-to-one relationships
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                          Extensions
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        //=============================================================
+        //                          Collections
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        // Provide lookup property map
+        private static readonly Dictionary<string, LookupColumnDetails> _idPropertyByLookupProperty = new Dictionary<string, LookupColumnDetails>(StringComparer.InvariantCultureIgnoreCase)
+            {
+                { "EmergencyExclusionReasonDescriptor", new LookupColumnDetails { PropertyName = "EmergencyExclusionReasonDescriptorId", LookupTypeName = "EmergencyExclusionReasonDescriptor"} },
+            };
+
+        Dictionary<string, LookupColumnDetails> IHasLookupColumnPropertyMap.IdPropertyByLookupProperty
+        {
+            get { return _idPropertyByLookupProperty; }
+        }
+
+        // Provide primary key information
+        OrderedDictionary IHasPrimaryKeyValues.GetPrimaryKeyValues()
+        {
+            // Initialize a new dictionary to hold the key values
+            var keyValues = new OrderedDictionary();
+
+            // Add current key values
+            keyValues.Add("EducationOrganizationId", EducationOrganizationId);
+            keyValues.Add("ExclusionDate", ExclusionDate);
+            keyValues.Add("StudentUSI", StudentUSI);
+
+            return keyValues;
+        }
+
+        #region Overrides for Equals() and GetHashCode()
+        public override bool Equals(object obj)
+        {
+            var compareTo = obj as IHasPrimaryKeyValues;
+
+            if (ReferenceEquals(this, compareTo))
+                return true;
+
+            if (compareTo == null)
+                return false;
+
+            var theseKeys = (this as IHasPrimaryKeyValues).GetPrimaryKeyValues();
+            var thoseKeys = compareTo.GetPrimaryKeyValues();
+
+            foreach (DictionaryEntry entry in theseKeys)
+            {
+                if (entry.Value is string)
+                {
+                    if (!GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer.Equals((string) entry.Value, (string) thoseKeys[entry.Key]))
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    if (!entry.Value.Equals(thoseKeys[entry.Key]))
+                        return false;
+                }
+            }
+
+            return true;
+        }
+
+        public override int GetHashCode()
+        {
+            var keyValues = (this as IHasPrimaryKeyValues).GetPrimaryKeyValues();
+
+            if (keyValues.Count == 0)
+                return base.GetHashCode();
+
+            var hashCode = new HashCode();
+
+            foreach (DictionaryEntry entry in keyValues)
+            {
+                if (entry.Value is string)
+                {
+                    hashCode.Add(entry.Value as string, GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer);
+                }
+                else
+                {
+                    hashCode.Add(entry.Value);
+                }
+            }
+
+            return hashCode.ToHashCode();
+        }
+        #endregion
+        bool ISynchronizable.Synchronize(object target)
+        {
+            return this.SynchronizeTo((Entities.Common.NE.IEmergencyExclusion)target);
+        }
+
+        void IMappable.Map(object target)
+        {
+            this.MapTo((Entities.Common.NE.IEmergencyExclusion) target, null);
+        }
+
+    }
+}
+// Aggregate: EmergencyExclusionReasonDescriptor
+
+namespace EdFi.Ods.Entities.NHibernate.EmergencyExclusionReasonDescriptorAggregate.NE
+{
+// disable warnings for inheritance from classes marked Obsolete within this generated code only
+#pragma warning disable 612, 618
+
+    /// <summary>
+    /// A class which represents the ne.EmergencyExclusionReasonDescriptor table of the EmergencyExclusionReasonDescriptor aggregate in the ODS database.
+    /// </summary>
+    [Schema("ne")]
+    [ExcludeFromCodeCoverage]
+    [MessagePackObject]
+    public class EmergencyExclusionReasonDescriptor : DescriptorAggregate.EdFi.Descriptor,
+        Entities.Common.NE.IEmergencyExclusionReasonDescriptor, IHasPrimaryKeyValues, IHasLookupColumnPropertyMap, IEdFiDescriptor
+    {
+
+        // =============================================================
+        //                     Reference Data
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                         Primary Key
+        // -------------------------------------------------------------
+        [DomainSignature]
+        [IgnoreMember]
+        public virtual int EmergencyExclusionReasonDescriptorId 
+        {
+            get { return base.DescriptorId; }
+            set { base.DescriptorId = value; }
+        }
+        
+
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                      Inherited Properties
+        // -------------------------------------------------------------
+        string IDescriptor.CodeValue
+        {
+            get { return CodeValue; }
+            set { CodeValue = value; }
+        }
+        string IDescriptor.Description
+        {
+            get { return Description; }
+            set { Description = value; }
+        }
+        DateTime? IDescriptor.EffectiveBeginDate
+        {
+            get { return EffectiveBeginDate; }
+            set { EffectiveBeginDate = value; }
+        }
+        DateTime? IDescriptor.EffectiveEndDate
+        {
+            get { return EffectiveEndDate; }
+            set { EffectiveEndDate = value; }
+        }
+        string IDescriptor.Namespace
+        {
+            get { return Namespace; }
+            set { Namespace = value; }
+        }
+        string IDescriptor.ShortDescription
+        {
+            get { return ShortDescription; }
+            set { ShortDescription = value; }
+        }
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                          Properties
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                     One-to-one relationships
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                          Extensions
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        //=============================================================
+        //                          Collections
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        // Provide lookup property map
+        private static readonly Dictionary<string, LookupColumnDetails> _idPropertyByLookupProperty = new Dictionary<string, LookupColumnDetails>(StringComparer.InvariantCultureIgnoreCase)
+            {
+            };
+
+        Dictionary<string, LookupColumnDetails> IHasLookupColumnPropertyMap.IdPropertyByLookupProperty
+        {
+            get { return _idPropertyByLookupProperty; }
+        }
+
+        // Provide primary key information
+        OrderedDictionary IHasPrimaryKeyValues.GetPrimaryKeyValues()
+        {
+            // Initialize a new dictionary to hold the key values
+            var keyValues = new OrderedDictionary();
+
+            // Add current key values
+            keyValues.Add("EmergencyExclusionReasonDescriptorId", EmergencyExclusionReasonDescriptorId);
+
+            return keyValues;
+        }
+
+        #region Overrides for Equals() and GetHashCode()
+        public override bool Equals(object obj)
+        {
+            var compareTo = obj as IHasPrimaryKeyValues;
+
+            if (ReferenceEquals(this, compareTo))
+                return true;
+
+            if (compareTo == null)
+                return false;
+
+            var theseKeys = (this as IHasPrimaryKeyValues).GetPrimaryKeyValues();
+            var thoseKeys = compareTo.GetPrimaryKeyValues();
+
+            foreach (DictionaryEntry entry in theseKeys)
+            {
+                if (entry.Value is string)
+                {
+                    if (!GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer.Equals((string) entry.Value, (string) thoseKeys[entry.Key]))
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    if (!entry.Value.Equals(thoseKeys[entry.Key]))
+                        return false;
+                }
+            }
+
+            return true;
+        }
+
+        public override int GetHashCode()
+        {
+            var keyValues = (this as IHasPrimaryKeyValues).GetPrimaryKeyValues();
+
+            if (keyValues.Count == 0)
+                return base.GetHashCode();
+
+            var hashCode = new HashCode();
+
+            foreach (DictionaryEntry entry in keyValues)
+            {
+                if (entry.Value is string)
+                {
+                    hashCode.Add(entry.Value as string, GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer);
+                }
+                else
+                {
+                    hashCode.Add(entry.Value);
+                }
+            }
+
+            return hashCode.ToHashCode();
+        }
+        #endregion
+        bool ISynchronizable.Synchronize(object target)
+        {
+            return this.SynchronizeTo((Entities.Common.NE.IEmergencyExclusionReasonDescriptor)target);
+        }
+
+        void IMappable.Map(object target)
+        {
+            this.MapTo((Entities.Common.NE.IEmergencyExclusionReasonDescriptor) target, null);
+        }
+
+    }
+}
+// Aggregate: EventComplianceDescriptor
+
+namespace EdFi.Ods.Entities.NHibernate.EventComplianceDescriptorAggregate.NE
+{
+// disable warnings for inheritance from classes marked Obsolete within this generated code only
+#pragma warning disable 612, 618
+
+    /// <summary>
+    /// A class which represents the ne.EventComplianceDescriptor table of the EventComplianceDescriptor aggregate in the ODS database.
+    /// </summary>
+    [Schema("ne")]
+    [ExcludeFromCodeCoverage]
+    [MessagePackObject]
+    public class EventComplianceDescriptor : DescriptorAggregate.EdFi.Descriptor,
+        Entities.Common.NE.IEventComplianceDescriptor, IHasPrimaryKeyValues, IHasLookupColumnPropertyMap, IEdFiDescriptor
+    {
+
+        // =============================================================
+        //                     Reference Data
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                         Primary Key
+        // -------------------------------------------------------------
+        [DomainSignature]
+        [IgnoreMember]
+        public virtual int EventComplianceDescriptorId 
+        {
+            get { return base.DescriptorId; }
+            set { base.DescriptorId = value; }
+        }
+        
+
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                      Inherited Properties
+        // -------------------------------------------------------------
+        string IDescriptor.CodeValue
+        {
+            get { return CodeValue; }
+            set { CodeValue = value; }
+        }
+        string IDescriptor.Description
+        {
+            get { return Description; }
+            set { Description = value; }
+        }
+        DateTime? IDescriptor.EffectiveBeginDate
+        {
+            get { return EffectiveBeginDate; }
+            set { EffectiveBeginDate = value; }
+        }
+        DateTime? IDescriptor.EffectiveEndDate
+        {
+            get { return EffectiveEndDate; }
+            set { EffectiveEndDate = value; }
+        }
+        string IDescriptor.Namespace
+        {
+            get { return Namespace; }
+            set { Namespace = value; }
+        }
+        string IDescriptor.ShortDescription
+        {
+            get { return ShortDescription; }
+            set { ShortDescription = value; }
+        }
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                          Properties
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                     One-to-one relationships
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                          Extensions
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        //=============================================================
+        //                          Collections
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        // Provide lookup property map
+        private static readonly Dictionary<string, LookupColumnDetails> _idPropertyByLookupProperty = new Dictionary<string, LookupColumnDetails>(StringComparer.InvariantCultureIgnoreCase)
+            {
+            };
+
+        Dictionary<string, LookupColumnDetails> IHasLookupColumnPropertyMap.IdPropertyByLookupProperty
+        {
+            get { return _idPropertyByLookupProperty; }
+        }
+
+        // Provide primary key information
+        OrderedDictionary IHasPrimaryKeyValues.GetPrimaryKeyValues()
+        {
+            // Initialize a new dictionary to hold the key values
+            var keyValues = new OrderedDictionary();
+
+            // Add current key values
+            keyValues.Add("EventComplianceDescriptorId", EventComplianceDescriptorId);
+
+            return keyValues;
+        }
+
+        #region Overrides for Equals() and GetHashCode()
+        public override bool Equals(object obj)
+        {
+            var compareTo = obj as IHasPrimaryKeyValues;
+
+            if (ReferenceEquals(this, compareTo))
+                return true;
+
+            if (compareTo == null)
+                return false;
+
+            var theseKeys = (this as IHasPrimaryKeyValues).GetPrimaryKeyValues();
+            var thoseKeys = compareTo.GetPrimaryKeyValues();
+
+            foreach (DictionaryEntry entry in theseKeys)
+            {
+                if (entry.Value is string)
+                {
+                    if (!GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer.Equals((string) entry.Value, (string) thoseKeys[entry.Key]))
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    if (!entry.Value.Equals(thoseKeys[entry.Key]))
+                        return false;
+                }
+            }
+
+            return true;
+        }
+
+        public override int GetHashCode()
+        {
+            var keyValues = (this as IHasPrimaryKeyValues).GetPrimaryKeyValues();
+
+            if (keyValues.Count == 0)
+                return base.GetHashCode();
+
+            var hashCode = new HashCode();
+
+            foreach (DictionaryEntry entry in keyValues)
+            {
+                if (entry.Value is string)
+                {
+                    hashCode.Add(entry.Value as string, GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer);
+                }
+                else
+                {
+                    hashCode.Add(entry.Value);
+                }
+            }
+
+            return hashCode.ToHashCode();
+        }
+        #endregion
+        bool ISynchronizable.Synchronize(object target)
+        {
+            return this.SynchronizeTo((Entities.Common.NE.IEventComplianceDescriptor)target);
+        }
+
+        void IMappable.Map(object target)
+        {
+            this.MapTo((Entities.Common.NE.IEventComplianceDescriptor) target, null);
+        }
+
+    }
+}
+// Aggregate: EventReasonDescriptor
+
+namespace EdFi.Ods.Entities.NHibernate.EventReasonDescriptorAggregate.NE
+{
+// disable warnings for inheritance from classes marked Obsolete within this generated code only
+#pragma warning disable 612, 618
+
+    /// <summary>
+    /// A class which represents the ne.EventReasonDescriptor table of the EventReasonDescriptor aggregate in the ODS database.
+    /// </summary>
+    [Schema("ne")]
+    [ExcludeFromCodeCoverage]
+    [MessagePackObject]
+    public class EventReasonDescriptor : DescriptorAggregate.EdFi.Descriptor,
+        Entities.Common.NE.IEventReasonDescriptor, IHasPrimaryKeyValues, IHasLookupColumnPropertyMap, IEdFiDescriptor
+    {
+
+        // =============================================================
+        //                     Reference Data
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                         Primary Key
+        // -------------------------------------------------------------
+        [DomainSignature]
+        [IgnoreMember]
+        public virtual int EventReasonDescriptorId 
+        {
+            get { return base.DescriptorId; }
+            set { base.DescriptorId = value; }
+        }
+        
+
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                      Inherited Properties
+        // -------------------------------------------------------------
+        string IDescriptor.CodeValue
+        {
+            get { return CodeValue; }
+            set { CodeValue = value; }
+        }
+        string IDescriptor.Description
+        {
+            get { return Description; }
+            set { Description = value; }
+        }
+        DateTime? IDescriptor.EffectiveBeginDate
+        {
+            get { return EffectiveBeginDate; }
+            set { EffectiveBeginDate = value; }
+        }
+        DateTime? IDescriptor.EffectiveEndDate
+        {
+            get { return EffectiveEndDate; }
+            set { EffectiveEndDate = value; }
+        }
+        string IDescriptor.Namespace
+        {
+            get { return Namespace; }
+            set { Namespace = value; }
+        }
+        string IDescriptor.ShortDescription
+        {
+            get { return ShortDescription; }
+            set { ShortDescription = value; }
+        }
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                          Properties
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                     One-to-one relationships
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                          Extensions
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        //=============================================================
+        //                          Collections
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        // Provide lookup property map
+        private static readonly Dictionary<string, LookupColumnDetails> _idPropertyByLookupProperty = new Dictionary<string, LookupColumnDetails>(StringComparer.InvariantCultureIgnoreCase)
+            {
+            };
+
+        Dictionary<string, LookupColumnDetails> IHasLookupColumnPropertyMap.IdPropertyByLookupProperty
+        {
+            get { return _idPropertyByLookupProperty; }
+        }
+
+        // Provide primary key information
+        OrderedDictionary IHasPrimaryKeyValues.GetPrimaryKeyValues()
+        {
+            // Initialize a new dictionary to hold the key values
+            var keyValues = new OrderedDictionary();
+
+            // Add current key values
+            keyValues.Add("EventReasonDescriptorId", EventReasonDescriptorId);
+
+            return keyValues;
+        }
+
+        #region Overrides for Equals() and GetHashCode()
+        public override bool Equals(object obj)
+        {
+            var compareTo = obj as IHasPrimaryKeyValues;
+
+            if (ReferenceEquals(this, compareTo))
+                return true;
+
+            if (compareTo == null)
+                return false;
+
+            var theseKeys = (this as IHasPrimaryKeyValues).GetPrimaryKeyValues();
+            var thoseKeys = compareTo.GetPrimaryKeyValues();
+
+            foreach (DictionaryEntry entry in theseKeys)
+            {
+                if (entry.Value is string)
+                {
+                    if (!GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer.Equals((string) entry.Value, (string) thoseKeys[entry.Key]))
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    if (!entry.Value.Equals(thoseKeys[entry.Key]))
+                        return false;
+                }
+            }
+
+            return true;
+        }
+
+        public override int GetHashCode()
+        {
+            var keyValues = (this as IHasPrimaryKeyValues).GetPrimaryKeyValues();
+
+            if (keyValues.Count == 0)
+                return base.GetHashCode();
+
+            var hashCode = new HashCode();
+
+            foreach (DictionaryEntry entry in keyValues)
+            {
+                if (entry.Value is string)
+                {
+                    hashCode.Add(entry.Value as string, GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer);
+                }
+                else
+                {
+                    hashCode.Add(entry.Value);
+                }
+            }
+
+            return hashCode.ToHashCode();
+        }
+        #endregion
+        bool ISynchronizable.Synchronize(object target)
+        {
+            return this.SynchronizeTo((Entities.Common.NE.IEventReasonDescriptor)target);
+        }
+
+        void IMappable.Map(object target)
+        {
+            this.MapTo((Entities.Common.NE.IEventReasonDescriptor) target, null);
+        }
+
+    }
+}
+// Aggregate: IdeaEvent
+
+namespace EdFi.Ods.Entities.NHibernate.IdeaEventAggregate.NE
+{
+    /// <summary>
+    /// Represents a read-only reference to the <see cref="IdeaEvent"/> entity.
+    /// </summary>
+    [MessagePackObject]
+    public class IdeaEventReferenceData : IEntityReferenceData
+    {
+        private bool _trackLookupContext;
+        private Action<IdeaEventReferenceData> _contextualValuesInitializer;
+        private bool _contextualValuesInitialized;
+
+        // Default constructor (used by NHibernate)
+        public IdeaEventReferenceData() { }
+
+        // Constructor used for deferred initialization when the parent reference hasn't yet been initialized because we're falling back from stale serialized data to NHibernate hydration
+        public IdeaEventReferenceData(Action<IdeaEventReferenceData> contextualValuesInitializer)
+        {
+            _trackLookupContext = true;
+            _contextualValuesInitializer = contextualValuesInitializer;
+        }
+
+        // Constructor used for link support with Serialized Data feature
+        public IdeaEventReferenceData(long contextualEducationOrganizationId = default, int contextualIDEAEventDescriptorId = default, string contextualIDEAEventID = default, int contextualStudentUSI = default, bool trackLookupContext = true)
+        {
+            _trackLookupContext = trackLookupContext;
+    
+            // Assign supplied contextual values (values pre-determined from parent context)
+            _educationOrganizationId = contextualEducationOrganizationId;
+            _ideaEventDescriptorId = contextualIDEAEventDescriptorId;
+            _ideaEventID = contextualIDEAEventID;
+            _studentUSI = contextualStudentUSI;
+
+            _contextualValuesInitialized = true;
+        }
+
+        // =============================================================
+        //                         Primary Key
+        // -------------------------------------------------------------
+        private Guid? _id;
+
+        /// <summary>
+        /// The id of the referenced entity (used as the resource identifier in the API).
+        /// </summary>
+        [Key(0)]
+        public virtual Guid? Id
+        {
+            get => _id;
+            set
+            {
+                _id = value;
+
+                if (_trackLookupContext || (GeneratedArtifactStaticDependencies.SerializedDataEnabled && GeneratedArtifactStaticDependencies.ResourceLinksEnabled))
+                {
+                    // If explicitly setting this to a non-value, it needs to be resolved.
+                    if (value == default(Guid) || value == null)
+                    {
+                        GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
+                    }
+                }
+            }
+        }
+
+        private long _educationOrganizationId;
+
+        [Key(1)]
+        public virtual long EducationOrganizationId
+        {
+            get { EnsureContextualValuesInitialized(); return _educationOrganizationId; }
+            set
+            {
+                var originalValue = _educationOrganizationId;
+                _educationOrganizationId = value;
+
+                if (_trackLookupContext)
+                {
+                    // If Id is NOT already known then value is being initialized (from mapping or syncing -- not deserialized) and needs resolution 
+                    if (_id == default && originalValue == default && value != default && IsFullyDefined())
+                    {
+                        GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
+                    }
+                }
+                
+                // If reference's key value is changing from a non-default value (i.e. only via Synchronize) it needs resolution
+                if (originalValue != default && value != originalValue) 
+                {
+                    // Clear the values
+                    Id = default;
+                    Discriminator = null;
+                    GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
+                }
+            }
+        }
+        private int _ideaEventDescriptorId;
+
+        [Key(2)]
+        public virtual int IDEAEventDescriptorId
+        {
+            get { EnsureContextualValuesInitialized(); return _ideaEventDescriptorId; }
+            set
+            {
+                var originalValue = _ideaEventDescriptorId;
+                _ideaEventDescriptorId = value;
+
+                if (_trackLookupContext)
+                {
+                    // If Id is NOT already known then value is being initialized (from mapping or syncing -- not deserialized) and needs resolution 
+                    if (_id == default && originalValue == default && value != default && IsFullyDefined())
+                    {
+                        GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
+                    }
+                }
+                
+                // If reference's key value is changing from a non-default value (i.e. only via Synchronize) it needs resolution
+                if (originalValue != default && value != originalValue) 
+                {
+                    // Clear the values
+                    Id = default;
+                    Discriminator = null;
+                    GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
+                }
+            }
+        }
+        private string _ideaEventID;
+
+        [Key(3)]
+        public virtual string IDEAEventID
+        {
+            get { EnsureContextualValuesInitialized(); return _ideaEventID; }
+            set
+            {
+                var originalValue = _ideaEventID;
+                _ideaEventID = value;
+
+                if (_trackLookupContext)
+                {
+                    // If Id is NOT already known then value is being initialized (from mapping or syncing -- not deserialized) and needs resolution 
+                    if (_id == default && originalValue == default && value != default && IsFullyDefined())
+                    {
+                        GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
+                    }
+                }
+                
+                // If reference's key value is changing from a non-default value (i.e. only via Synchronize) it needs resolution
+                if (originalValue != default && value != originalValue) 
+                {
+                    // Clear the values
+                    Id = default;
+                    Discriminator = null;
+                    GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
+                }
+            }
+        }
+        private int _studentUSI;
+
+        [Key(4)]
+        public virtual int StudentUSI
+        {
+            get { EnsureContextualValuesInitialized(); return _studentUSI; }
+            set
+            {
+                var originalValue = _studentUSI;
+                _studentUSI = value;
+
+                if (_trackLookupContext)
+                {
+                    // If Id is NOT already known then value is being initialized (from mapping or syncing -- not deserialized) and needs resolution 
+                    if (_id == default && originalValue == default && value != default && IsFullyDefined())
+                    {
+                        GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
+                    }
+                }
+                
+                // If reference's key value is changing from a non-default value (i.e. only via Synchronize) it needs resolution
+                if (originalValue != default && value != originalValue) 
+                {
+                    // Clear the values
+                    Id = default;
+                    Discriminator = null;
+                    GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Add(this);
+                }
+            }
+        }
+
+        private void EnsureContextualValuesInitialized()
+        {
+            if (!_contextualValuesInitialized && _contextualValuesInitializer != null)
+            {
+                _contextualValuesInitializer(this);
+                _contextualValuesInitialized = true;
+            }
+        }
+
+        public virtual bool IsFullyDefined()
+        {
+            return
+                _educationOrganizationId != default
+                            && _ideaEventDescriptorId != default
+                            && _ideaEventID != default
+                            && _studentUSI != default
+            ;
+        }
+
+        /// <summary>
+        /// Gets and sets the discriminator value which identifies the concrete sub-type of the referenced entity
+        /// when that entity has been derived; otherwise <b>null</b>.
+        /// </summary>
+        [Key(5)]
+        public virtual string Discriminator { get; set; }
+
+        private static FullName _fullName = new FullName("ne", "IdeaEvent"); 
+        FullName IEntityReferenceData.FullName { get => _fullName; }
+    
+        // Provide primary key information
+        OrderedDictionary IHasPrimaryKeyValues.GetPrimaryKeyValues()
+        {
+            // Initialize a new dictionary to hold the key values
+            var keyValues = new OrderedDictionary();
+
+            // Add current key values
+            keyValues.Add("EducationOrganizationId", EducationOrganizationId);
+            keyValues.Add("IDEAEventDescriptorId", IDEAEventDescriptorId);
+            keyValues.Add("IDEAEventID", IDEAEventID);
+            keyValues.Add("StudentUSI", StudentUSI);
+
+            return keyValues;
+        }
+
+        #region Overrides for Equals() and GetHashCode()
+        public override bool Equals(object obj)
+        {
+            var compareTo = obj as IHasPrimaryKeyValues;
+
+            if (ReferenceEquals(this, compareTo))
+                return true;
+
+            if (compareTo == null)
+                return false;
+
+            var theseKeys = (this as IHasPrimaryKeyValues).GetPrimaryKeyValues();
+            var thoseKeys = compareTo.GetPrimaryKeyValues();
+
+            foreach (DictionaryEntry entry in theseKeys)
+            {
+                if (!entry.Value.Equals(thoseKeys[entry.Key]))
+                    return false;
+            }
+
+            return true;
+        }
+
+        public override int GetHashCode()
+        {
+            var keyValues = (this as IHasPrimaryKeyValues).GetPrimaryKeyValues();
+
+            if (keyValues.Count == 0)
+                return base.GetHashCode();
+
+            var hashCode = new HashCode();
+
+            foreach (DictionaryEntry entry in keyValues)
+            {
+                hashCode.Add(entry.Value);
+            }
+
+            return hashCode.ToHashCode();
+        }
+        #endregion
+    }
+
+// disable warnings for inheritance from classes marked Obsolete within this generated code only
+#pragma warning disable 612, 618
+
+    /// <summary>
+    /// A class which represents the ne.IdeaEvent table of the IdeaEvent aggregate in the ODS database.
+    /// </summary>
+    [Schema("ne")]
+    [ExcludeFromCodeCoverage]
+    [MessagePackObject]
+    public class IdeaEvent : AggregateRootWithCompositeKey,
+        Entities.Common.NE.IIdeaEvent, IHasPrimaryKeyValues, IHasLookupColumnPropertyMap
+    {
+        public virtual void SuspendReferenceAssignmentCheck() { }
+
+        public IdeaEvent()
+        {
+        }
+// restore warnings for inheritance from classes marked Obsolete
+#pragma warning restore 612, 618
+
+        // =============================================================
+        //                     Reference Data
+        // -------------------------------------------------------------
+        private NHibernate.EducationOrganizationAggregate.EdFi.EducationOrganizationReferenceData _educationOrganizationReferenceData;
+
+        private bool EducationOrganizationReferenceDataIsProxied()
+        {
+            return _educationOrganizationReferenceData != null 
+                && _educationOrganizationReferenceData.GetType() != typeof(NHibernate.EducationOrganizationAggregate.EdFi.EducationOrganizationReferenceData);
+        }
+
+        [IgnoreMember]
+        public virtual NHibernate.EducationOrganizationAggregate.EdFi.EducationOrganizationReferenceData EducationOrganizationReferenceData
+        {
+            get => _educationOrganizationReferenceData;
+            set
+            {
+                _educationOrganizationReferenceData = value;
+
+                if (value != null && GeneratedArtifactStaticDependencies.SerializedDataEnabled && GeneratedArtifactStaticDependencies.ResourceLinksEnabled
+                    // NHibernate will proxy this object reference if it is not hydrated through an outer join in the query
+                    && !EducationOrganizationReferenceDataIsProxied())
+                {
+                    // We've encountered an NHibernate hydrated reference data meaning we've already got all reference data needed
+                    GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Suppress();
+                }
+            }
+        }
+
+        [Key(6)]
+        public virtual NHibernate.EducationOrganizationAggregate.EdFi.EducationOrganizationReferenceData EducationOrganizationSerializedReferenceData { get => _educationOrganizationSerializedReferenceData; set { if (value != null) _educationOrganizationSerializedReferenceData = value; } }
+        private NHibernate.EducationOrganizationAggregate.EdFi.EducationOrganizationReferenceData _educationOrganizationSerializedReferenceData;
+
+        /// <summary>
+        /// A read-only property implementation that allows the EducationOrganization discriminator value to be mapped to the resource reference.
+        /// </summary>
+        string Entities.Common.NE.IIdeaEvent.EducationOrganizationDiscriminator
+        {
+            get
+            {
+                return EducationOrganizationReferenceDataIsProxied()
+                    ? (EducationOrganizationSerializedReferenceData ?? EducationOrganizationReferenceData)?.Discriminator
+                    : (EducationOrganizationReferenceData ?? EducationOrganizationSerializedReferenceData)?.Discriminator;
+            }
+            set { }
+        }
+
+        /// <summary>
+        /// A property implementation whose getter allows the EducationOrganization resource identifier value to be mapped to the resource reference,
+        /// and whose setter is used with serialized data and links features to signal need to resolve reference data from the ODS.
+        /// </summary>
+        Guid? Entities.Common.NE.IIdeaEvent.EducationOrganizationResourceId
+        {
+            get
+            {
+                return EducationOrganizationReferenceDataIsProxied()
+                    ? (EducationOrganizationSerializedReferenceData ?? EducationOrganizationReferenceData)?.Id
+                    : (EducationOrganizationReferenceData ?? EducationOrganizationSerializedReferenceData)?.Id;
+            }
+            set { if (EducationOrganizationSerializedReferenceData?.IsFullyDefined() == true) EducationOrganizationSerializedReferenceData.Id = value; }
+        }
+
+        private NHibernate.StudentAggregate.EdFi.StudentReferenceData _studentReferenceData;
+
+        private bool StudentReferenceDataIsProxied()
+        {
+            return _studentReferenceData != null 
+                && _studentReferenceData.GetType() != typeof(NHibernate.StudentAggregate.EdFi.StudentReferenceData);
+        }
+
+        [IgnoreMember]
+        public virtual NHibernate.StudentAggregate.EdFi.StudentReferenceData StudentReferenceData
+        {
+            get => _studentReferenceData;
+            set
+            {
+                _studentReferenceData = value;
+
+                if (value != null && GeneratedArtifactStaticDependencies.SerializedDataEnabled && GeneratedArtifactStaticDependencies.ResourceLinksEnabled
+                    // NHibernate will proxy this object reference if it is not hydrated through an outer join in the query
+                    && !StudentReferenceDataIsProxied())
+                {
+                    // We've encountered an NHibernate hydrated reference data meaning we've already got all reference data needed
+                    GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Suppress();
+                }
+            }
+        }
+
+        [Key(7)]
+        public virtual NHibernate.StudentAggregate.EdFi.StudentReferenceData StudentSerializedReferenceData { get => _studentSerializedReferenceData; set { if (value != null) _studentSerializedReferenceData = value; } }
+        private NHibernate.StudentAggregate.EdFi.StudentReferenceData _studentSerializedReferenceData;
+
+        /// <summary>
+        /// A read-only property implementation that allows the Student discriminator value to be mapped to the resource reference.
+        /// </summary>
+        string Entities.Common.NE.IIdeaEvent.StudentDiscriminator
+        {
+            get
+            {
+                return StudentReferenceDataIsProxied()
+                    ? (StudentSerializedReferenceData ?? StudentReferenceData)?.Discriminator
+                    : (StudentReferenceData ?? StudentSerializedReferenceData)?.Discriminator;
+            }
+            set { }
+        }
+
+        /// <summary>
+        /// A property implementation whose getter allows the Student resource identifier value to be mapped to the resource reference,
+        /// and whose setter is used with serialized data and links features to signal need to resolve reference data from the ODS.
+        /// </summary>
+        Guid? Entities.Common.NE.IIdeaEvent.StudentResourceId
+        {
+            get
+            {
+                return StudentReferenceDataIsProxied()
+                    ? (StudentSerializedReferenceData ?? StudentReferenceData)?.Id
+                    : (StudentReferenceData ?? StudentSerializedReferenceData)?.Id;
+            }
+            set { if (StudentSerializedReferenceData?.IsFullyDefined() == true) StudentSerializedReferenceData.Id = value; }
+        }
+
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                         Primary Key
+        // -------------------------------------------------------------
+        [DomainSignature]
+        [Key(8)]
+        public virtual long EducationOrganizationId 
+        {
+            get => _educationOrganizationId;
+            set
+            {
+                _educationOrganizationId = value;
+
+                if (GeneratedArtifactStaticDependencies.SerializedDataEnabled && GeneratedArtifactStaticDependencies.ResourceLinksEnabled)
+                {
+                    EducationOrganizationSerializedReferenceData ??= new NHibernate.EducationOrganizationAggregate.EdFi.EducationOrganizationReferenceData(trackLookupContext: true);
+                    EducationOrganizationSerializedReferenceData.EducationOrganizationId = value;
+                }
+            }
+        }
+
+        private long _educationOrganizationId;
+
+        [DomainSignature]
+        [Key(9)]
+        public virtual int IDEAEventDescriptorId 
+        {
+            get
+            {
+                if (_ideaEventDescriptorId == default(int))
+                {
+                    _ideaEventDescriptorId = GeneratedArtifactStaticDependencies.DescriptorResolver.GetDescriptorId("IDEAEventDescriptor", _ideaEventDescriptor);
+                }
+
+                return _ideaEventDescriptorId;
+            } 
+            set
+            {
+                _ideaEventDescriptorId = value;
+                _ideaEventDescriptor = null;
+            }
+        }
+
+        private int _ideaEventDescriptorId;
+        private string _ideaEventDescriptor;
+
+        [IgnoreMember]
+        public virtual string IDEAEventDescriptor
+        {
+            get
+            {
+                if (_ideaEventDescriptor == null)
+                    _ideaEventDescriptor = GeneratedArtifactStaticDependencies.DescriptorResolver.GetUri("IDEAEventDescriptor", _ideaEventDescriptorId);
+                    
+                return _ideaEventDescriptor;
+            }
+            set
+            {
+                _ideaEventDescriptor = value;
+                _ideaEventDescriptorId = default(int);
+            }
+        }
+
+        [DomainSignature]
+        [Key(10)]
+        public virtual string IDEAEventID { get => _ideaEventID; set { _ideaEventID = value; } }
+        private string _ideaEventID;
+
+        [Display(Name="StudentUniqueId")][DomainSignature]
+        [Key(11)]
+        public virtual int StudentUSI 
+        {
+            get
+            {
+                if (_studentUSI == default(int) && _studentUniqueId != null)
+                {
+                    if (GeneratedArtifactStaticDependencies.UsiLookupsByUniqueIdContextProvider.Get().UsiByUniqueIdByPersonType.TryGetValue("Student", out var usiByUniqueId)
+                        && usiByUniqueId.TryGetValue(_studentUniqueId, out var usi))
+                    {
+                        _studentUSI = usi;
+
+                        if (GeneratedArtifactStaticDependencies.SerializedDataEnabled && GeneratedArtifactStaticDependencies.ResourceLinksEnabled)
+                        {
+                            StudentSerializedReferenceData ??= new NHibernate.StudentAggregate.EdFi.StudentReferenceData(trackLookupContext: true);
+                            StudentSerializedReferenceData.StudentUSI = _studentUSI;
+                        }
+                    }
+                }
+
+                return _studentUSI;
+            } 
+            set
+            {
+                _studentUSI = value;
+                GeneratedArtifactStaticDependencies.UniqueIdLookupsByUsiContextProvider.Get().AddLookup("Student", value);
+
+                if (GeneratedArtifactStaticDependencies.SerializedDataEnabled && GeneratedArtifactStaticDependencies.ResourceLinksEnabled)
+                {
+                    StudentSerializedReferenceData ??= new NHibernate.StudentAggregate.EdFi.StudentReferenceData(trackLookupContext: true);
+                    StudentSerializedReferenceData.StudentUSI = value;
+                }
+            }
+        }
+
+        private int _studentUSI;
+        private string _studentUniqueId;
+
+        [IgnoreMember]
+        public virtual string StudentUniqueId
+        {
+            get
+            {
+                if (_studentUniqueId == null)
+                {
+                    if (GeneratedArtifactStaticDependencies.UniqueIdLookupsByUsiContextProvider.Get().UniqueIdByUsiByPersonType.TryGetValue("Student", out var uniqueIdByUsi)
+                        && uniqueIdByUsi.TryGetValue(_studentUSI, out var uniqueId))
+                    {
+                        _studentUniqueId = uniqueId;
+                    }
+                }
+
+                return _studentUniqueId;
+            }
+            set
+            {
+                if (_studentUniqueId != value)
+                        _studentUSI = default(int);
+
+                _studentUniqueId = value;
+
+                if (value != null && GeneratedArtifactStaticDependencies.SerializedDataEnabled && GeneratedArtifactStaticDependencies.ResourceLinksEnabled)
+                {
+                    if (GeneratedArtifactStaticDependencies.UsiLookupsByUniqueIdContextProvider.Get().UsiByUniqueIdByPersonType.TryGetValue("Student", out var usiByUniqueId)
+                        && usiByUniqueId.TryGetValue(_studentUniqueId, out var usi))
+                    {
+                        StudentSerializedReferenceData ??= new NHibernate.StudentAggregate.EdFi.StudentReferenceData(trackLookupContext: true);
+                        StudentSerializedReferenceData.StudentUSI = usi;
+                    }
+                }
+            }
+        }
+
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                      Inherited Properties
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                          Properties
+        // -------------------------------------------------------------
+        [Key(12)]
+        public virtual DateTime BeginDate 
+        {
+            get { return _beginDate; }
+            //This is only stored as a Date in the DB and NHibernate will retrieve it using the default (local) DateTime.Kind.  We must ensure it is set consistently for any equality/change evaluation.
+            set { _beginDate = new DateTime(value.Year, value.Month, value.Day); }
+        }
+
+        private DateTime _beginDate;
+
+        [Key(13)]
+        public virtual DateTime EndDate 
+        {
+            get { return _endDate; }
+            //This is only stored as a Date in the DB and NHibernate will retrieve it using the default (local) DateTime.Kind.  We must ensure it is set consistently for any equality/change evaluation.
+            set { _endDate = new DateTime(value.Year, value.Month, value.Day); }
+        }
+
+        private DateTime _endDate;
+
+        [Key(14)]
+        public virtual int? EventComplianceDescriptorId 
+        {
+            get
+            {
+                if (_eventComplianceDescriptorId == default(int?))
+                {
+                    _eventComplianceDescriptorId = string.IsNullOrWhiteSpace(_eventComplianceDescriptor) ? default(int?) : GeneratedArtifactStaticDependencies.DescriptorResolver.GetDescriptorId("EventComplianceDescriptor", _eventComplianceDescriptor);
+                }
+
+                return _eventComplianceDescriptorId;
+            } 
+            set
+            {
+                _eventComplianceDescriptorId = value;
+                _eventComplianceDescriptor = null;
+            }
+        }
+
+        private int? _eventComplianceDescriptorId;
+        private string _eventComplianceDescriptor;
+
+        [IgnoreMember]
+        public virtual string EventComplianceDescriptor
+        {
+            get
+            {
+                if (_eventComplianceDescriptor == null)
+                    _eventComplianceDescriptor = _eventComplianceDescriptorId == null ? null : GeneratedArtifactStaticDependencies.DescriptorResolver.GetUri("EventComplianceDescriptor", _eventComplianceDescriptorId.Value);
+                    
+                return _eventComplianceDescriptor;
+            }
+            set
+            {
+                _eventComplianceDescriptor = value;
+                _eventComplianceDescriptorId = default(int?);
+            }
+        }
+
+        [Key(15)]
+        public virtual string EventNarrative { get => _eventNarrative; set { _eventNarrative = value; } }
+        private string _eventNarrative;
+
+        [Key(16)]
+        public virtual int? EventReasonDescriptorId 
+        {
+            get
+            {
+                if (_eventReasonDescriptorId == default(int?))
+                {
+                    _eventReasonDescriptorId = string.IsNullOrWhiteSpace(_eventReasonDescriptor) ? default(int?) : GeneratedArtifactStaticDependencies.DescriptorResolver.GetDescriptorId("EventReasonDescriptor", _eventReasonDescriptor);
+                }
+
+                return _eventReasonDescriptorId;
+            } 
+            set
+            {
+                _eventReasonDescriptorId = value;
+                _eventReasonDescriptor = null;
+            }
+        }
+
+        private int? _eventReasonDescriptorId;
+        private string _eventReasonDescriptor;
+
+        [IgnoreMember]
+        public virtual string EventReasonDescriptor
+        {
+            get
+            {
+                if (_eventReasonDescriptor == null)
+                    _eventReasonDescriptor = _eventReasonDescriptorId == null ? null : GeneratedArtifactStaticDependencies.DescriptorResolver.GetUri("EventReasonDescriptor", _eventReasonDescriptorId.Value);
+                    
+                return _eventReasonDescriptor;
+            }
+            set
+            {
+                _eventReasonDescriptor = value;
+                _eventReasonDescriptorId = default(int?);
+            }
+        }
+
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                     One-to-one relationships
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                          Extensions
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        //=============================================================
+        //                          Collections
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        // Provide lookup property map
+        private static readonly Dictionary<string, LookupColumnDetails> _idPropertyByLookupProperty = new Dictionary<string, LookupColumnDetails>(StringComparer.InvariantCultureIgnoreCase)
+            {
+                { "EventComplianceDescriptor", new LookupColumnDetails { PropertyName = "EventComplianceDescriptorId", LookupTypeName = "EventComplianceDescriptor"} },
+                { "EventReasonDescriptor", new LookupColumnDetails { PropertyName = "EventReasonDescriptorId", LookupTypeName = "EventReasonDescriptor"} },
+                { "IDEAEventDescriptor", new LookupColumnDetails { PropertyName = "IDEAEventDescriptorId", LookupTypeName = "IDEAEventDescriptor"} },
+            };
+
+        Dictionary<string, LookupColumnDetails> IHasLookupColumnPropertyMap.IdPropertyByLookupProperty
+        {
+            get { return _idPropertyByLookupProperty; }
+        }
+
+        // Provide primary key information
+        OrderedDictionary IHasPrimaryKeyValues.GetPrimaryKeyValues()
+        {
+            // Initialize a new dictionary to hold the key values
+            var keyValues = new OrderedDictionary();
+
+            // Add current key values
+            keyValues.Add("EducationOrganizationId", EducationOrganizationId);
+            keyValues.Add("IDEAEventDescriptorId", IDEAEventDescriptorId);
+            keyValues.Add("IDEAEventID", IDEAEventID);
+            keyValues.Add("StudentUSI", StudentUSI);
+
+            return keyValues;
+        }
+
+        #region Overrides for Equals() and GetHashCode()
+        public override bool Equals(object obj)
+        {
+            var compareTo = obj as IHasPrimaryKeyValues;
+
+            if (ReferenceEquals(this, compareTo))
+                return true;
+
+            if (compareTo == null)
+                return false;
+
+            var theseKeys = (this as IHasPrimaryKeyValues).GetPrimaryKeyValues();
+            var thoseKeys = compareTo.GetPrimaryKeyValues();
+
+            foreach (DictionaryEntry entry in theseKeys)
+            {
+                if (entry.Value is string)
+                {
+                    if (!GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer.Equals((string) entry.Value, (string) thoseKeys[entry.Key]))
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    if (!entry.Value.Equals(thoseKeys[entry.Key]))
+                        return false;
+                }
+            }
+
+            return true;
+        }
+
+        public override int GetHashCode()
+        {
+            var keyValues = (this as IHasPrimaryKeyValues).GetPrimaryKeyValues();
+
+            if (keyValues.Count == 0)
+                return base.GetHashCode();
+
+            var hashCode = new HashCode();
+
+            foreach (DictionaryEntry entry in keyValues)
+            {
+                if (entry.Value is string)
+                {
+                    hashCode.Add(entry.Value as string, GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer);
+                }
+                else
+                {
+                    hashCode.Add(entry.Value);
+                }
+            }
+
+            return hashCode.ToHashCode();
+        }
+        #endregion
+        bool ISynchronizable.Synchronize(object target)
+        {
+            return this.SynchronizeTo((Entities.Common.NE.IIdeaEvent)target);
+        }
+
+        void IMappable.Map(object target)
+        {
+            this.MapTo((Entities.Common.NE.IIdeaEvent) target, null);
+        }
+
+    }
+}
+// Aggregate: IDEAEventDescriptor
+
+namespace EdFi.Ods.Entities.NHibernate.IDEAEventDescriptorAggregate.NE
+{
+// disable warnings for inheritance from classes marked Obsolete within this generated code only
+#pragma warning disable 612, 618
+
+    /// <summary>
+    /// A class which represents the ne.IDEAEventDescriptor table of the IDEAEventDescriptor aggregate in the ODS database.
+    /// </summary>
+    [Schema("ne")]
+    [ExcludeFromCodeCoverage]
+    [MessagePackObject]
+    public class IDEAEventDescriptor : DescriptorAggregate.EdFi.Descriptor,
+        Entities.Common.NE.IIDEAEventDescriptor, IHasPrimaryKeyValues, IHasLookupColumnPropertyMap, IEdFiDescriptor
+    {
+
+        // =============================================================
+        //                     Reference Data
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                         Primary Key
+        // -------------------------------------------------------------
+        [DomainSignature]
+        [IgnoreMember]
+        public virtual int IDEAEventDescriptorId 
+        {
+            get { return base.DescriptorId; }
+            set { base.DescriptorId = value; }
+        }
+        
+
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                      Inherited Properties
+        // -------------------------------------------------------------
+        string IDescriptor.CodeValue
+        {
+            get { return CodeValue; }
+            set { CodeValue = value; }
+        }
+        string IDescriptor.Description
+        {
+            get { return Description; }
+            set { Description = value; }
+        }
+        DateTime? IDescriptor.EffectiveBeginDate
+        {
+            get { return EffectiveBeginDate; }
+            set { EffectiveBeginDate = value; }
+        }
+        DateTime? IDescriptor.EffectiveEndDate
+        {
+            get { return EffectiveEndDate; }
+            set { EffectiveEndDate = value; }
+        }
+        string IDescriptor.Namespace
+        {
+            get { return Namespace; }
+            set { Namespace = value; }
+        }
+        string IDescriptor.ShortDescription
+        {
+            get { return ShortDescription; }
+            set { ShortDescription = value; }
+        }
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                          Properties
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                     One-to-one relationships
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        // =============================================================
+        //                          Extensions
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        //=============================================================
+        //                          Collections
+        // -------------------------------------------------------------
+        // -------------------------------------------------------------
+
+        // Provide lookup property map
+        private static readonly Dictionary<string, LookupColumnDetails> _idPropertyByLookupProperty = new Dictionary<string, LookupColumnDetails>(StringComparer.InvariantCultureIgnoreCase)
+            {
+            };
+
+        Dictionary<string, LookupColumnDetails> IHasLookupColumnPropertyMap.IdPropertyByLookupProperty
+        {
+            get { return _idPropertyByLookupProperty; }
+        }
+
+        // Provide primary key information
+        OrderedDictionary IHasPrimaryKeyValues.GetPrimaryKeyValues()
+        {
+            // Initialize a new dictionary to hold the key values
+            var keyValues = new OrderedDictionary();
+
+            // Add current key values
+            keyValues.Add("IDEAEventDescriptorId", IDEAEventDescriptorId);
+
+            return keyValues;
+        }
+
+        #region Overrides for Equals() and GetHashCode()
+        public override bool Equals(object obj)
+        {
+            var compareTo = obj as IHasPrimaryKeyValues;
+
+            if (ReferenceEquals(this, compareTo))
+                return true;
+
+            if (compareTo == null)
+                return false;
+
+            var theseKeys = (this as IHasPrimaryKeyValues).GetPrimaryKeyValues();
+            var thoseKeys = compareTo.GetPrimaryKeyValues();
+
+            foreach (DictionaryEntry entry in theseKeys)
+            {
+                if (entry.Value is string)
+                {
+                    if (!GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer.Equals((string) entry.Value, (string) thoseKeys[entry.Key]))
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    if (!entry.Value.Equals(thoseKeys[entry.Key]))
+                        return false;
+                }
+            }
+
+            return true;
+        }
+
+        public override int GetHashCode()
+        {
+            var keyValues = (this as IHasPrimaryKeyValues).GetPrimaryKeyValues();
+
+            if (keyValues.Count == 0)
+                return base.GetHashCode();
+
+            var hashCode = new HashCode();
+
+            foreach (DictionaryEntry entry in keyValues)
+            {
+                if (entry.Value is string)
+                {
+                    hashCode.Add(entry.Value as string, GeneratedArtifactStaticDependencies.DatabaseEngineSpecificStringComparer);
+                }
+                else
+                {
+                    hashCode.Add(entry.Value);
+                }
+            }
+
+            return hashCode.ToHashCode();
+        }
+        #endregion
+        bool ISynchronizable.Synchronize(object target)
+        {
+            return this.SynchronizeTo((Entities.Common.NE.IIDEAEventDescriptor)target);
+        }
+
+        void IMappable.Map(object target)
+        {
+            this.MapTo((Entities.Common.NE.IIDEAEventDescriptor) target, null);
+        }
+
+    }
+}
 // Aggregate: ImmigrantIndicatorDescriptor
 
 namespace EdFi.Ods.Entities.NHibernate.ImmigrantIndicatorDescriptorAggregate.NE
@@ -2604,8 +4767,8 @@ namespace EdFi.Ods.Entities.NHibernate.SectionAggregate.NE
 
         Entities.Common.NE.ISectionExtension ISectionDelivery.SectionExtension
         {
-            get { return (ISectionExtension) Section.Extensions["Ne"]; }
-            set { Section.Extensions["Ne"] = value; }
+            get { return (ISectionExtension) Section.Extensions["NE"]; }
+            set { Section.Extensions["NE"] = value; }
         }
 
         [DomainSignature]
@@ -2842,7 +5005,7 @@ namespace EdFi.Ods.Entities.NHibernate.SectionAggregate.NE
         {
             get
             {
-                var sourceList =  new ContravariantCollectionAdapter<object, SectionDelivery>((IList<object>) Section.AggregateExtensions["Ne_SectionDeliveries"]);
+                var sourceList =  new ContravariantCollectionAdapter<object, SectionDelivery>((IList<object>) Section.AggregateExtensions["NE_SectionDeliveries"]);
 
                 // -------------------------------------------------------------
                 // Back-reference is required by NHibernate for persistence.
@@ -2859,7 +5022,7 @@ namespace EdFi.Ods.Entities.NHibernate.SectionAggregate.NE
             }
             set
             {
-                Section.AggregateExtensions["Ne_SectionDeliveries"] = value;
+                Section.AggregateExtensions["NE_SectionDeliveries"] = value;
             }
         }
         // -------------------------------------------------------------
@@ -3988,12 +6151,12 @@ namespace EdFi.Ods.Entities.NHibernate.StudentLanguageInstructionProgramAssociat
         //                          Properties
         // -------------------------------------------------------------
         [Key(1)]
-        public virtual bool? DismissedViaIEPReview { get => _dismissedViaIEPReview; set { _dismissedViaIEPReview = value; } }
-        private bool? _dismissedViaIEPReview;
-
-        [Key(2)]
         public virtual bool? RedesignatedEnglishFluent { get => _redesignatedEnglishFluent; set { _redesignatedEnglishFluent = value; } }
         private bool? _redesignatedEnglishFluent;
+
+        [Key(2)]
+        public virtual bool? TestedProficientOnScreener { get => _testedProficientOnScreener; set { _testedProficientOnScreener = value; } }
+        private bool? _testedProficientOnScreener;
 
         // -------------------------------------------------------------
 
@@ -4133,51 +6296,6 @@ namespace EdFi.Ods.Entities.NHibernate.StudentSchoolAssociationAggregate.NE
         // =============================================================
         //                     Reference Data
         // -------------------------------------------------------------
-        private NHibernate.EducationOrganizationAggregate.EdFi.EducationOrganizationReferenceData _expectedHighSchoolOfGraduationSchoolReferenceData;
-
-        private bool ExpectedHighSchoolOfGraduationSchoolReferenceDataIsProxied()
-        {
-            return _expectedHighSchoolOfGraduationSchoolReferenceData != null 
-                && _expectedHighSchoolOfGraduationSchoolReferenceData.GetType() != typeof(NHibernate.EducationOrganizationAggregate.EdFi.EducationOrganizationReferenceData);
-        }
-
-        [IgnoreMember]
-        public virtual NHibernate.EducationOrganizationAggregate.EdFi.EducationOrganizationReferenceData ExpectedHighSchoolOfGraduationSchoolReferenceData
-        {
-            get => _expectedHighSchoolOfGraduationSchoolReferenceData;
-            set
-            {
-                _expectedHighSchoolOfGraduationSchoolReferenceData = value;
-
-                if (value != null && GeneratedArtifactStaticDependencies.SerializedDataEnabled && GeneratedArtifactStaticDependencies.ResourceLinksEnabled
-                    // NHibernate will proxy this object reference if it is not hydrated through an outer join in the query
-                    && !ExpectedHighSchoolOfGraduationSchoolReferenceDataIsProxied())
-                {
-                    // We've encountered an NHibernate hydrated reference data meaning we've already got all reference data needed
-                    GeneratedArtifactStaticDependencies.ReferenceDataLookupContextProvider.Get()?.Suppress();
-                }
-            }
-        }
-
-        [Key(1)]
-        public virtual NHibernate.EducationOrganizationAggregate.EdFi.EducationOrganizationReferenceData ExpectedHighSchoolOfGraduationSchoolSerializedReferenceData { get => _expectedHighSchoolOfGraduationSchoolSerializedReferenceData; set { if (value != null) _expectedHighSchoolOfGraduationSchoolSerializedReferenceData = value; } }
-        private NHibernate.EducationOrganizationAggregate.EdFi.EducationOrganizationReferenceData _expectedHighSchoolOfGraduationSchoolSerializedReferenceData;
-
-        /// <summary>
-        /// A property implementation whose getter allows the ExpectedHighSchoolOfGraduationSchool resource identifier value to be mapped to the resource reference,
-        /// and whose setter is used with serialized data and links features to signal need to resolve reference data from the ODS.
-        /// </summary>
-        Guid? Entities.Common.NE.IStudentSchoolAssociationExtension.ExpectedHighSchoolOfGraduationSchoolResourceId
-        {
-            get
-            {
-                return ExpectedHighSchoolOfGraduationSchoolReferenceDataIsProxied()
-                    ? (ExpectedHighSchoolOfGraduationSchoolSerializedReferenceData ?? ExpectedHighSchoolOfGraduationSchoolReferenceData)?.Id
-                    : (ExpectedHighSchoolOfGraduationSchoolReferenceData ?? ExpectedHighSchoolOfGraduationSchoolSerializedReferenceData)?.Id;
-            }
-            set { if (ExpectedHighSchoolOfGraduationSchoolSerializedReferenceData?.IsFullyDefined() == true) ExpectedHighSchoolOfGraduationSchoolSerializedReferenceData.Id = value; }
-        }
-
         private NHibernate.EducationOrganizationAggregate.EdFi.EducationOrganizationReferenceData _reportingSchoolReferenceData;
 
         private bool ReportingSchoolReferenceDataIsProxied()
@@ -4204,7 +6322,7 @@ namespace EdFi.Ods.Entities.NHibernate.StudentSchoolAssociationAggregate.NE
             }
         }
 
-        [Key(2)]
+        [Key(1)]
         public virtual NHibernate.EducationOrganizationAggregate.EdFi.EducationOrganizationReferenceData ReportingSchoolSerializedReferenceData { get => _reportingSchoolSerializedReferenceData; set { if (value != null) _reportingSchoolSerializedReferenceData = value; } }
         private NHibernate.EducationOrganizationAggregate.EdFi.EducationOrganizationReferenceData _reportingSchoolSerializedReferenceData;
 
@@ -4249,7 +6367,7 @@ namespace EdFi.Ods.Entities.NHibernate.StudentSchoolAssociationAggregate.NE
             }
         }
 
-        [Key(3)]
+        [Key(2)]
         public virtual NHibernate.EducationOrganizationAggregate.EdFi.EducationOrganizationReferenceData ResidentLocalEducationAgencySerializedReferenceData { get => _residentLocalEducationAgencySerializedReferenceData; set { if (value != null) _residentLocalEducationAgencySerializedReferenceData = value; } }
         private NHibernate.EducationOrganizationAggregate.EdFi.EducationOrganizationReferenceData _residentLocalEducationAgencySerializedReferenceData;
 
@@ -4294,7 +6412,7 @@ namespace EdFi.Ods.Entities.NHibernate.StudentSchoolAssociationAggregate.NE
             }
         }
 
-        [Key(4)]
+        [Key(3)]
         public virtual NHibernate.EducationOrganizationAggregate.EdFi.EducationOrganizationReferenceData ResidentSchoolSerializedReferenceData { get => _residentSchoolSerializedReferenceData; set { if (value != null) _residentSchoolSerializedReferenceData = value; } }
         private NHibernate.EducationOrganizationAggregate.EdFi.EducationOrganizationReferenceData _residentSchoolSerializedReferenceData;
 
@@ -4337,25 +6455,7 @@ namespace EdFi.Ods.Entities.NHibernate.StudentSchoolAssociationAggregate.NE
         // =============================================================
         //                          Properties
         // -------------------------------------------------------------
-        [Key(5)]
-        public virtual long? ExpectedHighSchoolOfGraduationSchoolId 
-        {
-            get => _expectedHighSchoolOfGraduationSchoolId;
-            set
-            {
-                _expectedHighSchoolOfGraduationSchoolId = value;
-
-                if (GeneratedArtifactStaticDependencies.SerializedDataEnabled && GeneratedArtifactStaticDependencies.ResourceLinksEnabled)
-                {
-                    ExpectedHighSchoolOfGraduationSchoolSerializedReferenceData ??= new NHibernate.EducationOrganizationAggregate.EdFi.EducationOrganizationReferenceData(trackLookupContext: true);
-                    ExpectedHighSchoolOfGraduationSchoolSerializedReferenceData.EducationOrganizationId = value ?? default;
-                }
-            }
-        }
-
-        private long? _expectedHighSchoolOfGraduationSchoolId;
-
-        [Key(6)]
+        [Key(4)]
         public virtual long ReportingSchoolId 
         {
             get => _reportingSchoolId;
@@ -4373,7 +6473,7 @@ namespace EdFi.Ods.Entities.NHibernate.StudentSchoolAssociationAggregate.NE
 
         private long _reportingSchoolId;
 
-        [Key(7)]
+        [Key(5)]
         public virtual long ResidentLocalEducationAgencyId 
         {
             get => _residentLocalEducationAgencyId;
@@ -4391,7 +6491,7 @@ namespace EdFi.Ods.Entities.NHibernate.StudentSchoolAssociationAggregate.NE
 
         private long _residentLocalEducationAgencyId;
 
-        [Key(8)]
+        [Key(6)]
         public virtual long? ResidentSchoolId 
         {
             get => _residentSchoolId;
@@ -4409,7 +6509,7 @@ namespace EdFi.Ods.Entities.NHibernate.StudentSchoolAssociationAggregate.NE
 
         private long? _residentSchoolId;
 
-        [Key(9)]
+        [Key(7)]
         public virtual decimal? StudentDaysEnrolled { get => _studentDaysEnrolled; set { _studentDaysEnrolled = value; } }
         private decimal? _studentDaysEnrolled;
 
@@ -4596,45 +6696,6 @@ namespace EdFi.Ods.Entities.NHibernate.StudentSpecialEducationProgramAssociation
         private DateTime? _initialSpecialEducationEntryDate;
 
         [Key(2)]
-        public virtual int? PartCTransitionDelayReasonDescriptorId 
-        {
-            get
-            {
-                if (_partCTransitionDelayReasonDescriptorId == default(int?))
-                {
-                    _partCTransitionDelayReasonDescriptorId = string.IsNullOrWhiteSpace(_partCTransitionDelayReasonDescriptor) ? default(int?) : GeneratedArtifactStaticDependencies.DescriptorResolver.GetDescriptorId("PartCTransitionDelayReasonDescriptor", _partCTransitionDelayReasonDescriptor);
-                }
-
-                return _partCTransitionDelayReasonDescriptorId;
-            } 
-            set
-            {
-                _partCTransitionDelayReasonDescriptorId = value;
-                _partCTransitionDelayReasonDescriptor = null;
-            }
-        }
-
-        private int? _partCTransitionDelayReasonDescriptorId;
-        private string _partCTransitionDelayReasonDescriptor;
-
-        [IgnoreMember]
-        public virtual string PartCTransitionDelayReasonDescriptor
-        {
-            get
-            {
-                if (_partCTransitionDelayReasonDescriptor == null)
-                    _partCTransitionDelayReasonDescriptor = _partCTransitionDelayReasonDescriptorId == null ? null : GeneratedArtifactStaticDependencies.DescriptorResolver.GetUri("PartCTransitionDelayReasonDescriptor", _partCTransitionDelayReasonDescriptorId.Value);
-                    
-                return _partCTransitionDelayReasonDescriptor;
-            }
-            set
-            {
-                _partCTransitionDelayReasonDescriptor = value;
-                _partCTransitionDelayReasonDescriptorId = default(int?);
-            }
-        }
-
-        [Key(3)]
         public virtual int? PlacementTypeDescriptorId 
         {
             get
@@ -4673,7 +6734,7 @@ namespace EdFi.Ods.Entities.NHibernate.StudentSpecialEducationProgramAssociation
             }
         }
 
-        [Key(4)]
+        [Key(3)]
         public virtual int? SpecialEducationProgramDescriptorId 
         {
             get
@@ -4712,7 +6773,7 @@ namespace EdFi.Ods.Entities.NHibernate.StudentSpecialEducationProgramAssociation
             }
         }
 
-        [Key(5)]
+        [Key(4)]
         public virtual bool? ToTakeAlternateAssessment { get => _toTakeAlternateAssessment; set { _toTakeAlternateAssessment = value; } }
         private bool? _toTakeAlternateAssessment;
 
@@ -4736,7 +6797,6 @@ namespace EdFi.Ods.Entities.NHibernate.StudentSpecialEducationProgramAssociation
         // Provide lookup property map
         private static readonly Dictionary<string, LookupColumnDetails> _idPropertyByLookupProperty = new Dictionary<string, LookupColumnDetails>(StringComparer.InvariantCultureIgnoreCase)
             {
-                { "PartCTransitionDelayReasonDescriptor", new LookupColumnDetails { PropertyName = "PartCTransitionDelayReasonDescriptorId", LookupTypeName = "PartCTransitionDelayReasonDescriptor"} },
                 { "PlacementTypeDescriptor", new LookupColumnDetails { PropertyName = "PlacementTypeDescriptorId", LookupTypeName = "PlacementTypeDescriptor"} },
                 { "SpecialEducationProgramDescriptor", new LookupColumnDetails { PropertyName = "SpecialEducationProgramDescriptorId", LookupTypeName = "SpecialEducationProgramDescriptor"} },
             };

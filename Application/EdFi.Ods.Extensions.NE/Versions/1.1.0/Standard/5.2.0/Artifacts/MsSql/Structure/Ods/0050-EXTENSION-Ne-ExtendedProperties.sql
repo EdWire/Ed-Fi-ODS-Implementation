@@ -44,6 +44,66 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.', @level0type=N'SCHEMA', @level0name=N'ne', @level1type=N'TABLE', @level1name=N'EarlyLearningSettingDescriptor', @level2type=N'COLUMN', @level2name=N'EarlyLearningSettingDescriptorId'
 GO
 
+-- Extended Properties [ne].[EmergencyExclusion] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Captures emergency exclusion details when a student is temporarily removed from school due to health, safety, or educational disruption concerns.', @level0type=N'SCHEMA', @level0name=N'ne', @level1type=N'TABLE', @level1name=N'EmergencyExclusion'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to an education organization.', @level0type=N'SCHEMA', @level0name=N'ne', @level1type=N'TABLE', @level1name=N'EmergencyExclusion', @level2type=N'COLUMN', @level2name=N'EducationOrganizationId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The date the emergency exclusion began.', @level0type=N'SCHEMA', @level0name=N'ne', @level1type=N'TABLE', @level1name=N'EmergencyExclusion', @level2type=N'COLUMN', @level2name=N'ExclusionDate'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique alphanumeric code assigned to a student.', @level0type=N'SCHEMA', @level0name=N'ne', @level1type=N'TABLE', @level1name=N'EmergencyExclusion', @level2type=N'COLUMN', @level2name=N'StudentUSI'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The reason for the emergency exclusion (Health, Safety of Themselves or Others, Disruption to Education).', @level0type=N'SCHEMA', @level0name=N'ne', @level1type=N'TABLE', @level1name=N'EmergencyExclusion', @level2type=N'COLUMN', @level2name=N'EmergencyExclusionReasonDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The duration of the emergency exclusion in days.', @level0type=N'SCHEMA', @level0name=N'ne', @level1type=N'TABLE', @level1name=N'EmergencyExclusion', @level2type=N'COLUMN', @level2name=N'ExclusionDuration'
+GO
+
+-- Extended Properties [ne].[EmergencyExclusionReasonDescriptor] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Description that best reflects the reason for a student''s exclusion.', @level0type=N'SCHEMA', @level0name=N'ne', @level1type=N'TABLE', @level1name=N'EmergencyExclusionReasonDescriptor'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.', @level0type=N'SCHEMA', @level0name=N'ne', @level1type=N'TABLE', @level1name=N'EmergencyExclusionReasonDescriptor', @level2type=N'COLUMN', @level2name=N'EmergencyExclusionReasonDescriptorId'
+GO
+
+-- Extended Properties [ne].[EventComplianceDescriptor] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The policy or law for which an event is compliant.', @level0type=N'SCHEMA', @level0name=N'ne', @level1type=N'TABLE', @level1name=N'EventComplianceDescriptor'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.', @level0type=N'SCHEMA', @level0name=N'ne', @level1type=N'TABLE', @level1name=N'EventComplianceDescriptor', @level2type=N'COLUMN', @level2name=N'EventComplianceDescriptorId'
+GO
+
+-- Extended Properties [ne].[EventReasonDescriptor] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Reason the event occured.', @level0type=N'SCHEMA', @level0name=N'ne', @level1type=N'TABLE', @level1name=N'EventReasonDescriptor'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.', @level0type=N'SCHEMA', @level0name=N'ne', @level1type=N'TABLE', @level1name=N'EventReasonDescriptor', @level2type=N'COLUMN', @level2name=N'EventReasonDescriptorId'
+GO
+
+-- Extended Properties [ne].[IdeaEvent] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'An IDEA related student event describing status, dates and narrative.', @level0type=N'SCHEMA', @level0name=N'ne', @level1type=N'TABLE', @level1name=N'IdeaEvent'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to an education organization.', @level0type=N'SCHEMA', @level0name=N'ne', @level1type=N'TABLE', @level1name=N'IdeaEvent', @level2type=N'COLUMN', @level2name=N'EducationOrganizationId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The IDEA event recorded for the student.', @level0type=N'SCHEMA', @level0name=N'ne', @level1type=N'TABLE', @level1name=N'IdeaEvent', @level2type=N'COLUMN', @level2name=N'IDEAEventDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique identifier for the event record as assigned by the provider of IEP services.', @level0type=N'SCHEMA', @level0name=N'ne', @level1type=N'TABLE', @level1name=N'IdeaEvent', @level2type=N'COLUMN', @level2name=N'IDEAEventID'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique alphanumeric code assigned to a student.', @level0type=N'SCHEMA', @level0name=N'ne', @level1type=N'TABLE', @level1name=N'IdeaEvent', @level2type=N'COLUMN', @level2name=N'StudentUSI'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The date when the IDEA related event started.', @level0type=N'SCHEMA', @level0name=N'ne', @level1type=N'TABLE', @level1name=N'IdeaEvent', @level2type=N'COLUMN', @level2name=N'BeginDate'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The date when the IDEA event concluded.', @level0type=N'SCHEMA', @level0name=N'ne', @level1type=N'TABLE', @level1name=N'IdeaEvent', @level2type=N'COLUMN', @level2name=N'EndDate'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The type of compliance represented by this event.', @level0type=N'SCHEMA', @level0name=N'ne', @level1type=N'TABLE', @level1name=N'IdeaEvent', @level2type=N'COLUMN', @level2name=N'EventComplianceDescriptorId'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Detailed and summary notes recorded during the event.', @level0type=N'SCHEMA', @level0name=N'ne', @level1type=N'TABLE', @level1name=N'IdeaEvent', @level2type=N'COLUMN', @level2name=N'EventNarrative'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The reason why the IDEA event occured.', @level0type=N'SCHEMA', @level0name=N'ne', @level1type=N'TABLE', @level1name=N'IdeaEvent', @level2type=N'COLUMN', @level2name=N'EventReasonDescriptorId'
+GO
+
+-- Extended Properties [ne].[IDEAEventDescriptor] --
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'IDEA event type. Examples: Referral for Evaluation, IEP Approved, Parental COnsent Given, Evaluation Complete.', @level0type=N'SCHEMA', @level0name=N'ne', @level1type=N'TABLE', @level1name=N'IDEAEventDescriptor'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.', @level0type=N'SCHEMA', @level0name=N'ne', @level1type=N'TABLE', @level1name=N'IDEAEventDescriptor', @level2type=N'COLUMN', @level2name=N'IDEAEventDescriptorId'
+GO
+
 -- Extended Properties [ne].[ImmigrantIndicatorDescriptor] --
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Description that best reflects the student''s immigrant status.', @level0type=N'SCHEMA', @level0name=N'ne', @level1type=N'TABLE', @level1name=N'ImmigrantIndicatorDescriptor'
 GO
@@ -201,9 +261,9 @@ EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The type of pr
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique alphanumeric code assigned to a student.', @level0type=N'SCHEMA', @level0name=N'ne', @level1type=N'TABLE', @level1name=N'StudentLanguageInstructionProgramAssociationExtension', @level2type=N'COLUMN', @level2name=N'StudentUSI'
 GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A special education student that is no longer considered an English Learner due to a decision by the IEP review team to dismiss the ELPA testing requirement.', @level0type=N'SCHEMA', @level0name=N'ne', @level1type=N'TABLE', @level1name=N'StudentLanguageInstructionProgramAssociationExtension', @level2type=N'COLUMN', @level2name=N'DismissedViaIEPReview'
-GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'students that have been redesignated as English Fluent.', @level0type=N'SCHEMA', @level0name=N'ne', @level1type=N'TABLE', @level1name=N'StudentLanguageInstructionProgramAssociationExtension', @level2type=N'COLUMN', @level2name=N'RedesignatedEnglishFluent'
+GO
+EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Indicates whether the student was tested on a language proficiency screener and demonstrated fluency on that initial screening assessment.', @level0type=N'SCHEMA', @level0name=N'ne', @level1type=N'TABLE', @level1name=N'StudentLanguageInstructionProgramAssociationExtension', @level2type=N'COLUMN', @level2name=N'TestedProficientOnScreener'
 GO
 
 -- Extended Properties [ne].[StudentSchoolAssociationExtension] --
@@ -214,8 +274,6 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to a school. It must be distinct from any other identifier assigned to educational organizations, such as a LocalEducationAgencyId, to prevent duplication.', @level0type=N'SCHEMA', @level0name=N'ne', @level1type=N'TABLE', @level1name=N'StudentSchoolAssociationExtension', @level2type=N'COLUMN', @level2name=N'SchoolId'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique alphanumeric code assigned to a student.', @level0type=N'SCHEMA', @level0name=N'ne', @level1type=N'TABLE', @level1name=N'StudentSchoolAssociationExtension', @level2type=N'COLUMN', @level2name=N'StudentUSI'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to a school. It must be distinct from any other identifier assigned to educational organizations, such as a LocalEducationAgencyId, to prevent duplication.', @level0type=N'SCHEMA', @level0name=N'ne', @level1type=N'TABLE', @level1name=N'StudentSchoolAssociationExtension', @level2type=N'COLUMN', @level2name=N'ExpectedHighSchoolOfGraduationSchoolId'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The identifier assigned to a school. It must be distinct from any other identifier assigned to educational organizations, such as a LocalEducationAgencyId, to prevent duplication.', @level0type=N'SCHEMA', @level0name=N'ne', @level1type=N'TABLE', @level1name=N'StudentSchoolAssociationExtension', @level2type=N'COLUMN', @level2name=N'ReportingSchoolId'
 GO
@@ -242,8 +300,6 @@ GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'A unique alphanumeric code assigned to a student.', @level0type=N'SCHEMA', @level0name=N'ne', @level1type=N'TABLE', @level1name=N'StudentSpecialEducationProgramAssociationExtension', @level2type=N'COLUMN', @level2name=N'StudentUSI'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Date when the child''s first IEP or IFSP', @level0type=N'SCHEMA', @level0name=N'ne', @level1type=N'TABLE', @level1name=N'StudentSpecialEducationProgramAssociationExtension', @level2type=N'COLUMN', @level2name=N'InitialSpecialEducationEntryDate'
-GO
-EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'The reason the Part C IDEA child was delayed in transitioning to Part B.', @level0type=N'SCHEMA', @level0name=N'ne', @level1type=N'TABLE', @level1name=N'StudentSpecialEducationProgramAssociationExtension', @level2type=N'COLUMN', @level2name=N'PartCTransitionDelayReasonDescriptorId'
 GO
 EXEC sys.sp_addextendedproperty @name=N'MS_Description', @value=N'Placement type of the student.', @level0type=N'SCHEMA', @level0name=N'ne', @level1type=N'TABLE', @level1name=N'StudentSpecialEducationProgramAssociationExtension', @level2type=N'COLUMN', @level2name=N'PlacementTypeDescriptorId'
 GO

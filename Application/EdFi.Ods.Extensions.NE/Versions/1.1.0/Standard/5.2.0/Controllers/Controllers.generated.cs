@@ -27,7 +27,7 @@ namespace EdFi.Ods.Api.Services.Controllers.NE.EarlyLearningSettingDescriptors
     [ExcludeFromCodeCoverage]
     [ApiController]
     [Authorize]
-    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/ne/earlyLearningSettingDescriptors")]
+    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/NE/earlyLearningSettingDescriptors")]
     public partial class EarlyLearningSettingDescriptorsController : DataManagementControllerBase<
         Api.Common.Models.Resources.EarlyLearningSettingDescriptor.NE.EarlyLearningSettingDescriptor,
         Entities.Common.NE.IEarlyLearningSettingDescriptor,
@@ -58,13 +58,235 @@ namespace EdFi.Ods.Api.Services.Controllers.NE.EarlyLearningSettingDescriptors
     }
 }
 
+namespace EdFi.Ods.Api.Services.Controllers.NE.EmergencyExclusions
+{
+    [ApiExplorerSettings(IgnoreApi = true)]
+    [ExcludeFromCodeCoverage]
+    [ApiController]
+    [Authorize]
+    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/NE/emergencyExclusions")]
+    public partial class EmergencyExclusionsController : DataManagementControllerBase<
+        Api.Common.Models.Resources.EmergencyExclusion.NE.EmergencyExclusion,
+        Entities.Common.NE.IEmergencyExclusion,
+        Entities.NHibernate.EmergencyExclusionAggregate.NE.EmergencyExclusion,
+        Api.Common.Models.Requests.NE.EmergencyExclusions.EmergencyExclusionPut,
+        Api.Common.Models.Requests.NE.EmergencyExclusions.EmergencyExclusionPost,
+        Api.Common.Models.Requests.NE.EmergencyExclusions.EmergencyExclusionDelete,
+        Api.Common.Models.Requests.NE.EmergencyExclusions.EmergencyExclusionGetByExample>
+    {
+        public EmergencyExclusionsController(IPipelineFactory pipelineFactory, IEdFiProblemDetailsProvider problemDetailsProvider, IDefaultPageSizeLimitProvider defaultPageSizeLimitProvider, ApiSettings apiSettings, IContextProvider<ProfileContentTypeContext> profileContentTypeContextProvider, IContextProvider<DataManagementResourceContext> dataManagementResourceContextProvider, ILogContextAccessor logContextAccessor)
+            : base(pipelineFactory, problemDetailsProvider, defaultPageSizeLimitProvider, apiSettings, profileContentTypeContextProvider, dataManagementResourceContextProvider, logContextAccessor)
+        {
+        }
+
+        protected override void MapAll(Api.Common.Models.Requests.NE.EmergencyExclusions.EmergencyExclusionGetByExample request, Entities.Common.NE.IEmergencyExclusion specification)
+        {
+            // Copy all existing values
+            specification.SuspendReferenceAssignmentCheck();
+            specification.EducationOrganizationId = request.EducationOrganizationId;
+            specification.EmergencyExclusionReasonDescriptor = request.EmergencyExclusionReasonDescriptor;
+            specification.ExclusionDate = request.ExclusionDate;
+            specification.ExclusionDuration = request.ExclusionDuration;
+            specification.Id = request.Id;
+            specification.StudentUniqueId = request.StudentUniqueId;
+        }
+    }
+}
+
+namespace EdFi.Ods.Api.Services.Controllers.NE.EmergencyExclusionReasonDescriptors
+{
+    [ApiExplorerSettings(IgnoreApi = true)]
+    [ExcludeFromCodeCoverage]
+    [ApiController]
+    [Authorize]
+    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/NE/emergencyExclusionReasonDescriptors")]
+    public partial class EmergencyExclusionReasonDescriptorsController : DataManagementControllerBase<
+        Api.Common.Models.Resources.EmergencyExclusionReasonDescriptor.NE.EmergencyExclusionReasonDescriptor,
+        Entities.Common.NE.IEmergencyExclusionReasonDescriptor,
+        Entities.NHibernate.EmergencyExclusionReasonDescriptorAggregate.NE.EmergencyExclusionReasonDescriptor,
+        Api.Common.Models.Requests.NE.EmergencyExclusionReasonDescriptors.EmergencyExclusionReasonDescriptorPut,
+        Api.Common.Models.Requests.NE.EmergencyExclusionReasonDescriptors.EmergencyExclusionReasonDescriptorPost,
+        Api.Common.Models.Requests.NE.EmergencyExclusionReasonDescriptors.EmergencyExclusionReasonDescriptorDelete,
+        Api.Common.Models.Requests.NE.EmergencyExclusionReasonDescriptors.EmergencyExclusionReasonDescriptorGetByExample>
+    {
+        public EmergencyExclusionReasonDescriptorsController(IPipelineFactory pipelineFactory, IEdFiProblemDetailsProvider problemDetailsProvider, IDefaultPageSizeLimitProvider defaultPageSizeLimitProvider, ApiSettings apiSettings, IContextProvider<ProfileContentTypeContext> profileContentTypeContextProvider, IContextProvider<DataManagementResourceContext> dataManagementResourceContextProvider, ILogContextAccessor logContextAccessor)
+            : base(pipelineFactory, problemDetailsProvider, defaultPageSizeLimitProvider, apiSettings, profileContentTypeContextProvider, dataManagementResourceContextProvider, logContextAccessor)
+        {
+        }
+
+        protected override void MapAll(Api.Common.Models.Requests.NE.EmergencyExclusionReasonDescriptors.EmergencyExclusionReasonDescriptorGetByExample request, Entities.Common.NE.IEmergencyExclusionReasonDescriptor specification)
+        {
+            // Copy all existing values
+            specification.SuspendReferenceAssignmentCheck();
+            specification.CodeValue = request.CodeValue;
+            specification.Description = request.Description;
+            specification.EffectiveBeginDate = request.EffectiveBeginDate;
+            specification.EffectiveEndDate = request.EffectiveEndDate;
+            specification.EmergencyExclusionReasonDescriptorId = request.EmergencyExclusionReasonDescriptorId;
+            specification.Id = request.Id;
+            specification.Namespace = request.Namespace;
+            specification.ShortDescription = request.ShortDescription;
+        }
+    }
+}
+
+namespace EdFi.Ods.Api.Services.Controllers.NE.EventComplianceDescriptors
+{
+    [ApiExplorerSettings(IgnoreApi = true)]
+    [ExcludeFromCodeCoverage]
+    [ApiController]
+    [Authorize]
+    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/NE/eventComplianceDescriptors")]
+    public partial class EventComplianceDescriptorsController : DataManagementControllerBase<
+        Api.Common.Models.Resources.EventComplianceDescriptor.NE.EventComplianceDescriptor,
+        Entities.Common.NE.IEventComplianceDescriptor,
+        Entities.NHibernate.EventComplianceDescriptorAggregate.NE.EventComplianceDescriptor,
+        Api.Common.Models.Requests.NE.EventComplianceDescriptors.EventComplianceDescriptorPut,
+        Api.Common.Models.Requests.NE.EventComplianceDescriptors.EventComplianceDescriptorPost,
+        Api.Common.Models.Requests.NE.EventComplianceDescriptors.EventComplianceDescriptorDelete,
+        Api.Common.Models.Requests.NE.EventComplianceDescriptors.EventComplianceDescriptorGetByExample>
+    {
+        public EventComplianceDescriptorsController(IPipelineFactory pipelineFactory, IEdFiProblemDetailsProvider problemDetailsProvider, IDefaultPageSizeLimitProvider defaultPageSizeLimitProvider, ApiSettings apiSettings, IContextProvider<ProfileContentTypeContext> profileContentTypeContextProvider, IContextProvider<DataManagementResourceContext> dataManagementResourceContextProvider, ILogContextAccessor logContextAccessor)
+            : base(pipelineFactory, problemDetailsProvider, defaultPageSizeLimitProvider, apiSettings, profileContentTypeContextProvider, dataManagementResourceContextProvider, logContextAccessor)
+        {
+        }
+
+        protected override void MapAll(Api.Common.Models.Requests.NE.EventComplianceDescriptors.EventComplianceDescriptorGetByExample request, Entities.Common.NE.IEventComplianceDescriptor specification)
+        {
+            // Copy all existing values
+            specification.SuspendReferenceAssignmentCheck();
+            specification.CodeValue = request.CodeValue;
+            specification.Description = request.Description;
+            specification.EffectiveBeginDate = request.EffectiveBeginDate;
+            specification.EffectiveEndDate = request.EffectiveEndDate;
+            specification.EventComplianceDescriptorId = request.EventComplianceDescriptorId;
+            specification.Id = request.Id;
+            specification.Namespace = request.Namespace;
+            specification.ShortDescription = request.ShortDescription;
+        }
+    }
+}
+
+namespace EdFi.Ods.Api.Services.Controllers.NE.EventReasonDescriptors
+{
+    [ApiExplorerSettings(IgnoreApi = true)]
+    [ExcludeFromCodeCoverage]
+    [ApiController]
+    [Authorize]
+    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/NE/eventReasonDescriptors")]
+    public partial class EventReasonDescriptorsController : DataManagementControllerBase<
+        Api.Common.Models.Resources.EventReasonDescriptor.NE.EventReasonDescriptor,
+        Entities.Common.NE.IEventReasonDescriptor,
+        Entities.NHibernate.EventReasonDescriptorAggregate.NE.EventReasonDescriptor,
+        Api.Common.Models.Requests.NE.EventReasonDescriptors.EventReasonDescriptorPut,
+        Api.Common.Models.Requests.NE.EventReasonDescriptors.EventReasonDescriptorPost,
+        Api.Common.Models.Requests.NE.EventReasonDescriptors.EventReasonDescriptorDelete,
+        Api.Common.Models.Requests.NE.EventReasonDescriptors.EventReasonDescriptorGetByExample>
+    {
+        public EventReasonDescriptorsController(IPipelineFactory pipelineFactory, IEdFiProblemDetailsProvider problemDetailsProvider, IDefaultPageSizeLimitProvider defaultPageSizeLimitProvider, ApiSettings apiSettings, IContextProvider<ProfileContentTypeContext> profileContentTypeContextProvider, IContextProvider<DataManagementResourceContext> dataManagementResourceContextProvider, ILogContextAccessor logContextAccessor)
+            : base(pipelineFactory, problemDetailsProvider, defaultPageSizeLimitProvider, apiSettings, profileContentTypeContextProvider, dataManagementResourceContextProvider, logContextAccessor)
+        {
+        }
+
+        protected override void MapAll(Api.Common.Models.Requests.NE.EventReasonDescriptors.EventReasonDescriptorGetByExample request, Entities.Common.NE.IEventReasonDescriptor specification)
+        {
+            // Copy all existing values
+            specification.SuspendReferenceAssignmentCheck();
+            specification.CodeValue = request.CodeValue;
+            specification.Description = request.Description;
+            specification.EffectiveBeginDate = request.EffectiveBeginDate;
+            specification.EffectiveEndDate = request.EffectiveEndDate;
+            specification.EventReasonDescriptorId = request.EventReasonDescriptorId;
+            specification.Id = request.Id;
+            specification.Namespace = request.Namespace;
+            specification.ShortDescription = request.ShortDescription;
+        }
+    }
+}
+
+namespace EdFi.Ods.Api.Services.Controllers.NE.IdeaEvents
+{
+    [ApiExplorerSettings(IgnoreApi = true)]
+    [ExcludeFromCodeCoverage]
+    [ApiController]
+    [Authorize]
+    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/NE/ideaEvents")]
+    public partial class IdeaEventsController : DataManagementControllerBase<
+        Api.Common.Models.Resources.IdeaEvent.NE.IdeaEvent,
+        Entities.Common.NE.IIdeaEvent,
+        Entities.NHibernate.IdeaEventAggregate.NE.IdeaEvent,
+        Api.Common.Models.Requests.NE.IdeaEvents.IdeaEventPut,
+        Api.Common.Models.Requests.NE.IdeaEvents.IdeaEventPost,
+        Api.Common.Models.Requests.NE.IdeaEvents.IdeaEventDelete,
+        Api.Common.Models.Requests.NE.IdeaEvents.IdeaEventGetByExample>
+    {
+        public IdeaEventsController(IPipelineFactory pipelineFactory, IEdFiProblemDetailsProvider problemDetailsProvider, IDefaultPageSizeLimitProvider defaultPageSizeLimitProvider, ApiSettings apiSettings, IContextProvider<ProfileContentTypeContext> profileContentTypeContextProvider, IContextProvider<DataManagementResourceContext> dataManagementResourceContextProvider, ILogContextAccessor logContextAccessor)
+            : base(pipelineFactory, problemDetailsProvider, defaultPageSizeLimitProvider, apiSettings, profileContentTypeContextProvider, dataManagementResourceContextProvider, logContextAccessor)
+        {
+        }
+
+        protected override void MapAll(Api.Common.Models.Requests.NE.IdeaEvents.IdeaEventGetByExample request, Entities.Common.NE.IIdeaEvent specification)
+        {
+            // Copy all existing values
+            specification.SuspendReferenceAssignmentCheck();
+            specification.BeginDate = request.BeginDate;
+            specification.EducationOrganizationId = request.EducationOrganizationId;
+            specification.EndDate = request.EndDate;
+            specification.EventComplianceDescriptor = request.EventComplianceDescriptor;
+            specification.EventNarrative = request.EventNarrative;
+            specification.EventReasonDescriptor = request.EventReasonDescriptor;
+            specification.Id = request.Id;
+            specification.IDEAEventDescriptor = request.IDEAEventDescriptor;
+            specification.IDEAEventID = request.IDEAEventID;
+            specification.StudentUniqueId = request.StudentUniqueId;
+        }
+    }
+}
+
+namespace EdFi.Ods.Api.Services.Controllers.NE.IDEAEventDescriptors
+{
+    [ApiExplorerSettings(IgnoreApi = true)]
+    [ExcludeFromCodeCoverage]
+    [ApiController]
+    [Authorize]
+    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/NE/ideaEventDescriptors")]
+    public partial class IDEAEventDescriptorsController : DataManagementControllerBase<
+        Api.Common.Models.Resources.IDEAEventDescriptor.NE.IDEAEventDescriptor,
+        Entities.Common.NE.IIDEAEventDescriptor,
+        Entities.NHibernate.IDEAEventDescriptorAggregate.NE.IDEAEventDescriptor,
+        Api.Common.Models.Requests.NE.IDEAEventDescriptors.IDEAEventDescriptorPut,
+        Api.Common.Models.Requests.NE.IDEAEventDescriptors.IDEAEventDescriptorPost,
+        Api.Common.Models.Requests.NE.IDEAEventDescriptors.IDEAEventDescriptorDelete,
+        Api.Common.Models.Requests.NE.IDEAEventDescriptors.IDEAEventDescriptorGetByExample>
+    {
+        public IDEAEventDescriptorsController(IPipelineFactory pipelineFactory, IEdFiProblemDetailsProvider problemDetailsProvider, IDefaultPageSizeLimitProvider defaultPageSizeLimitProvider, ApiSettings apiSettings, IContextProvider<ProfileContentTypeContext> profileContentTypeContextProvider, IContextProvider<DataManagementResourceContext> dataManagementResourceContextProvider, ILogContextAccessor logContextAccessor)
+            : base(pipelineFactory, problemDetailsProvider, defaultPageSizeLimitProvider, apiSettings, profileContentTypeContextProvider, dataManagementResourceContextProvider, logContextAccessor)
+        {
+        }
+
+        protected override void MapAll(Api.Common.Models.Requests.NE.IDEAEventDescriptors.IDEAEventDescriptorGetByExample request, Entities.Common.NE.IIDEAEventDescriptor specification)
+        {
+            // Copy all existing values
+            specification.SuspendReferenceAssignmentCheck();
+            specification.CodeValue = request.CodeValue;
+            specification.Description = request.Description;
+            specification.EffectiveBeginDate = request.EffectiveBeginDate;
+            specification.EffectiveEndDate = request.EffectiveEndDate;
+            specification.Id = request.Id;
+            specification.IDEAEventDescriptorId = request.IDEAEventDescriptorId;
+            specification.Namespace = request.Namespace;
+            specification.ShortDescription = request.ShortDescription;
+        }
+    }
+}
+
 namespace EdFi.Ods.Api.Services.Controllers.NE.ImmigrantIndicatorDescriptors
 {
     [ApiExplorerSettings(IgnoreApi = true)]
     [ExcludeFromCodeCoverage]
     [ApiController]
     [Authorize]
-    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/ne/immigrantIndicatorDescriptors")]
+    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/NE/immigrantIndicatorDescriptors")]
     public partial class ImmigrantIndicatorDescriptorsController : DataManagementControllerBase<
         Api.Common.Models.Resources.ImmigrantIndicatorDescriptor.NE.ImmigrantIndicatorDescriptor,
         Entities.Common.NE.IImmigrantIndicatorDescriptor,
@@ -101,7 +323,7 @@ namespace EdFi.Ods.Api.Services.Controllers.NE.PartCTransitionDelayReasonDescrip
     [ExcludeFromCodeCoverage]
     [ApiController]
     [Authorize]
-    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/ne/partCTransitionDelayReasonDescriptors")]
+    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/NE/partCTransitionDelayReasonDescriptors")]
     public partial class PartCTransitionDelayReasonDescriptorsController : DataManagementControllerBase<
         Api.Common.Models.Resources.PartCTransitionDelayReasonDescriptor.NE.PartCTransitionDelayReasonDescriptor,
         Entities.Common.NE.IPartCTransitionDelayReasonDescriptor,
@@ -138,7 +360,7 @@ namespace EdFi.Ods.Api.Services.Controllers.NE.PlacementTypeDescriptors
     [ExcludeFromCodeCoverage]
     [ApiController]
     [Authorize]
-    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/ne/placementTypeDescriptors")]
+    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/NE/placementTypeDescriptors")]
     public partial class PlacementTypeDescriptorsController : DataManagementControllerBase<
         Api.Common.Models.Resources.PlacementTypeDescriptor.NE.PlacementTypeDescriptor,
         Entities.Common.NE.IPlacementTypeDescriptor,
@@ -175,7 +397,7 @@ namespace EdFi.Ods.Api.Services.Controllers.NE.PositionTitleDescriptors
     [ExcludeFromCodeCoverage]
     [ApiController]
     [Authorize]
-    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/ne/positionTitleDescriptors")]
+    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/NE/positionTitleDescriptors")]
     public partial class PositionTitleDescriptorsController : DataManagementControllerBase<
         Api.Common.Models.Resources.PositionTitleDescriptor.NE.PositionTitleDescriptor,
         Entities.Common.NE.IPositionTitleDescriptor,
@@ -212,7 +434,7 @@ namespace EdFi.Ods.Api.Services.Controllers.NE.PostGraduateActivities
     [ExcludeFromCodeCoverage]
     [ApiController]
     [Authorize]
-    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/ne/postGraduateActivities")]
+    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/NE/postGraduateActivities")]
     public partial class PostGraduateActivitiesController : DataManagementControllerBase<
         Api.Common.Models.Resources.PostGraduateActivity.NE.PostGraduateActivity,
         Entities.Common.NE.IPostGraduateActivity,
@@ -247,7 +469,7 @@ namespace EdFi.Ods.Api.Services.Controllers.NE.PostGraduateActivityDescriptors
     [ExcludeFromCodeCoverage]
     [ApiController]
     [Authorize]
-    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/ne/postGraduateActivityDescriptors")]
+    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/NE/postGraduateActivityDescriptors")]
     public partial class PostGraduateActivityDescriptorsController : DataManagementControllerBase<
         Api.Common.Models.Resources.PostGraduateActivityDescriptor.NE.PostGraduateActivityDescriptor,
         Entities.Common.NE.IPostGraduateActivityDescriptor,
@@ -284,7 +506,7 @@ namespace EdFi.Ods.Api.Services.Controllers.NE.PostGraduateActivityDetermination
     [ExcludeFromCodeCoverage]
     [ApiController]
     [Authorize]
-    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/ne/postGraduateActivityDeterminationDescriptors")]
+    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/NE/postGraduateActivityDeterminationDescriptors")]
     public partial class PostGraduateActivityDeterminationDescriptorsController : DataManagementControllerBase<
         Api.Common.Models.Resources.PostGraduateActivityDeterminationDescriptor.NE.PostGraduateActivityDeterminationDescriptor,
         Entities.Common.NE.IPostGraduateActivityDeterminationDescriptor,
@@ -321,7 +543,7 @@ namespace EdFi.Ods.Api.Services.Controllers.NE.SectionDeliveryDescriptors
     [ExcludeFromCodeCoverage]
     [ApiController]
     [Authorize]
-    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/ne/sectionDeliveryDescriptors")]
+    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/NE/sectionDeliveryDescriptors")]
     public partial class SectionDeliveryDescriptorsController : DataManagementControllerBase<
         Api.Common.Models.Resources.SectionDeliveryDescriptor.NE.SectionDeliveryDescriptor,
         Entities.Common.NE.ISectionDeliveryDescriptor,
@@ -358,7 +580,7 @@ namespace EdFi.Ods.Api.Services.Controllers.NE.SpecialEducationProgramDescriptor
     [ExcludeFromCodeCoverage]
     [ApiController]
     [Authorize]
-    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/ne/specialEducationProgramDescriptors")]
+    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/NE/specialEducationProgramDescriptors")]
     public partial class SpecialEducationProgramDescriptorsController : DataManagementControllerBase<
         Api.Common.Models.Resources.SpecialEducationProgramDescriptor.NE.SpecialEducationProgramDescriptor,
         Entities.Common.NE.ISpecialEducationProgramDescriptor,
@@ -395,7 +617,7 @@ namespace EdFi.Ods.Api.Services.Controllers.NE.StudentEarlyLearningProgramAssoci
     [ExcludeFromCodeCoverage]
     [ApiController]
     [Authorize]
-    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/ne/studentEarlyLearningProgramAssociations")]
+    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/NE/studentEarlyLearningProgramAssociations")]
     public partial class StudentEarlyLearningProgramAssociationsController : DataManagementControllerBase<
         Api.Common.Models.Resources.StudentEarlyLearningProgramAssociation.NE.StudentEarlyLearningProgramAssociation,
         Entities.Common.NE.IStudentEarlyLearningProgramAssociation,
@@ -435,7 +657,7 @@ namespace EdFi.Ods.Api.Services.Controllers.NE.UnilateralRemovalDescriptors
     [ExcludeFromCodeCoverage]
     [ApiController]
     [Authorize]
-    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/ne/unilateralRemovalDescriptors")]
+    [ApplyOdsRouteRootTemplate, Route($"{RouteConstants.DataManagementRoutePrefix}/NE/unilateralRemovalDescriptors")]
     public partial class UnilateralRemovalDescriptorsController : DataManagementControllerBase<
         Api.Common.Models.Resources.UnilateralRemovalDescriptor.NE.UnilateralRemovalDescriptor,
         Entities.Common.NE.IUnilateralRemovalDescriptor,

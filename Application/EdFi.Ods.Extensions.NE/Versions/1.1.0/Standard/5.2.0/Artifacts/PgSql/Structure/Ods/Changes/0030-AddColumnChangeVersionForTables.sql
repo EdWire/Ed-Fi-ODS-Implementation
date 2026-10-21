@@ -1,6 +1,16 @@
 -- For performance reasons on existing data sets, all existing records will start with ChangeVersion of 0.
 DO $$
 BEGIN
+IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='ne' AND table_name='emergencyexclusion' AND column_name='changeversion') THEN
+ALTER TABLE ne.EmergencyExclusion ADD ChangeVersion BIGINT DEFAULT (0) NOT NULL;
+ALTER TABLE ne.EmergencyExclusion ALTER ChangeVersion SET DEFAULT nextval('changes.ChangeVersionSequence');
+END IF;
+
+IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='ne' AND table_name='ideaevent' AND column_name='changeversion') THEN
+ALTER TABLE ne.IdeaEvent ADD ChangeVersion BIGINT DEFAULT (0) NOT NULL;
+ALTER TABLE ne.IdeaEvent ALTER ChangeVersion SET DEFAULT nextval('changes.ChangeVersionSequence');
+END IF;
+
 IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_schema='ne' AND table_name='postgraduateactivity' AND column_name='changeversion') THEN
 ALTER TABLE ne.PostGraduateActivity ADD ChangeVersion BIGINT DEFAULT (0) NOT NULL;
 ALTER TABLE ne.PostGraduateActivity ALTER ChangeVersion SET DEFAULT nextval('changes.ChangeVersionSequence');

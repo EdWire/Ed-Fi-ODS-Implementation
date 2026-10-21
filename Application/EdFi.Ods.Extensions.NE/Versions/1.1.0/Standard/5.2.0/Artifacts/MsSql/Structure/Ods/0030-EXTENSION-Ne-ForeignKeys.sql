@@ -26,6 +26,74 @@ REFERENCES [edfi].[Descriptor] ([DescriptorId])
 ON DELETE CASCADE
 GO
 
+ALTER TABLE [ne].[EmergencyExclusion] WITH CHECK ADD CONSTRAINT [FK_EmergencyExclusion_EducationOrganization] FOREIGN KEY ([EducationOrganizationId])
+REFERENCES [edfi].[EducationOrganization] ([EducationOrganizationId])
+GO
+
+ALTER TABLE [ne].[EmergencyExclusion] WITH CHECK ADD CONSTRAINT [FK_EmergencyExclusion_EmergencyExclusionReasonDescriptor] FOREIGN KEY ([EmergencyExclusionReasonDescriptorId])
+REFERENCES [ne].[EmergencyExclusionReasonDescriptor] ([EmergencyExclusionReasonDescriptorId])
+GO
+
+CREATE NONCLUSTERED INDEX [FK_EmergencyExclusion_EmergencyExclusionReasonDescriptor]
+ON [ne].[EmergencyExclusion] ([EmergencyExclusionReasonDescriptorId] ASC)
+GO
+
+ALTER TABLE [ne].[EmergencyExclusion] WITH CHECK ADD CONSTRAINT [FK_EmergencyExclusion_Student] FOREIGN KEY ([StudentUSI])
+REFERENCES [edfi].[Student] ([StudentUSI])
+GO
+
+ALTER TABLE [ne].[EmergencyExclusionReasonDescriptor] WITH CHECK ADD CONSTRAINT [FK_EmergencyExclusionReasonDescriptor_Descriptor] FOREIGN KEY ([EmergencyExclusionReasonDescriptorId])
+REFERENCES [edfi].[Descriptor] ([DescriptorId])
+ON DELETE CASCADE
+GO
+
+ALTER TABLE [ne].[EventComplianceDescriptor] WITH CHECK ADD CONSTRAINT [FK_EventComplianceDescriptor_Descriptor] FOREIGN KEY ([EventComplianceDescriptorId])
+REFERENCES [edfi].[Descriptor] ([DescriptorId])
+ON DELETE CASCADE
+GO
+
+ALTER TABLE [ne].[EventReasonDescriptor] WITH CHECK ADD CONSTRAINT [FK_EventReasonDescriptor_Descriptor] FOREIGN KEY ([EventReasonDescriptorId])
+REFERENCES [edfi].[Descriptor] ([DescriptorId])
+ON DELETE CASCADE
+GO
+
+ALTER TABLE [ne].[IdeaEvent] WITH CHECK ADD CONSTRAINT [FK_IdeaEvent_EducationOrganization] FOREIGN KEY ([EducationOrganizationId])
+REFERENCES [edfi].[EducationOrganization] ([EducationOrganizationId])
+GO
+
+ALTER TABLE [ne].[IdeaEvent] WITH CHECK ADD CONSTRAINT [FK_IdeaEvent_EventComplianceDescriptor] FOREIGN KEY ([EventComplianceDescriptorId])
+REFERENCES [ne].[EventComplianceDescriptor] ([EventComplianceDescriptorId])
+GO
+
+CREATE NONCLUSTERED INDEX [FK_IdeaEvent_EventComplianceDescriptor]
+ON [ne].[IdeaEvent] ([EventComplianceDescriptorId] ASC)
+GO
+
+ALTER TABLE [ne].[IdeaEvent] WITH CHECK ADD CONSTRAINT [FK_IdeaEvent_EventReasonDescriptor] FOREIGN KEY ([EventReasonDescriptorId])
+REFERENCES [ne].[EventReasonDescriptor] ([EventReasonDescriptorId])
+GO
+
+CREATE NONCLUSTERED INDEX [FK_IdeaEvent_EventReasonDescriptor]
+ON [ne].[IdeaEvent] ([EventReasonDescriptorId] ASC)
+GO
+
+ALTER TABLE [ne].[IdeaEvent] WITH CHECK ADD CONSTRAINT [FK_IdeaEvent_IDEAEventDescriptor] FOREIGN KEY ([IDEAEventDescriptorId])
+REFERENCES [ne].[IDEAEventDescriptor] ([IDEAEventDescriptorId])
+GO
+
+CREATE NONCLUSTERED INDEX [FK_IdeaEvent_IDEAEventDescriptor]
+ON [ne].[IdeaEvent] ([IDEAEventDescriptorId] ASC)
+GO
+
+ALTER TABLE [ne].[IdeaEvent] WITH CHECK ADD CONSTRAINT [FK_IdeaEvent_Student] FOREIGN KEY ([StudentUSI])
+REFERENCES [edfi].[Student] ([StudentUSI])
+GO
+
+ALTER TABLE [ne].[IDEAEventDescriptor] WITH CHECK ADD CONSTRAINT [FK_IDEAEventDescriptor_Descriptor] FOREIGN KEY ([IDEAEventDescriptorId])
+REFERENCES [edfi].[Descriptor] ([DescriptorId])
+ON DELETE CASCADE
+GO
+
 ALTER TABLE [ne].[ImmigrantIndicatorDescriptor] WITH CHECK ADD CONSTRAINT [FK_ImmigrantIndicatorDescriptor_Descriptor] FOREIGN KEY ([ImmigrantIndicatorDescriptorId])
 REFERENCES [edfi].[Descriptor] ([DescriptorId])
 ON DELETE CASCADE
@@ -162,27 +230,19 @@ CREATE NONCLUSTERED INDEX [FK_StudentSchoolAssociationExtension_LocalEducationAg
 ON [ne].[StudentSchoolAssociationExtension] ([ResidentLocalEducationAgencyId] ASC)
 GO
 
-ALTER TABLE [ne].[StudentSchoolAssociationExtension] WITH CHECK ADD CONSTRAINT [FK_StudentSchoolAssociationExtension_School] FOREIGN KEY ([ExpectedHighSchoolOfGraduationSchoolId])
+ALTER TABLE [ne].[StudentSchoolAssociationExtension] WITH CHECK ADD CONSTRAINT [FK_StudentSchoolAssociationExtension_School] FOREIGN KEY ([ReportingSchoolId])
 REFERENCES [edfi].[School] ([SchoolId])
 GO
 
 CREATE NONCLUSTERED INDEX [FK_StudentSchoolAssociationExtension_School]
-ON [ne].[StudentSchoolAssociationExtension] ([ExpectedHighSchoolOfGraduationSchoolId] ASC)
+ON [ne].[StudentSchoolAssociationExtension] ([ReportingSchoolId] ASC)
 GO
 
-ALTER TABLE [ne].[StudentSchoolAssociationExtension] WITH CHECK ADD CONSTRAINT [FK_StudentSchoolAssociationExtension_School1] FOREIGN KEY ([ReportingSchoolId])
+ALTER TABLE [ne].[StudentSchoolAssociationExtension] WITH CHECK ADD CONSTRAINT [FK_StudentSchoolAssociationExtension_School1] FOREIGN KEY ([ResidentSchoolId])
 REFERENCES [edfi].[School] ([SchoolId])
 GO
 
 CREATE NONCLUSTERED INDEX [FK_StudentSchoolAssociationExtension_School1]
-ON [ne].[StudentSchoolAssociationExtension] ([ReportingSchoolId] ASC)
-GO
-
-ALTER TABLE [ne].[StudentSchoolAssociationExtension] WITH CHECK ADD CONSTRAINT [FK_StudentSchoolAssociationExtension_School2] FOREIGN KEY ([ResidentSchoolId])
-REFERENCES [edfi].[School] ([SchoolId])
-GO
-
-CREATE NONCLUSTERED INDEX [FK_StudentSchoolAssociationExtension_School2]
 ON [ne].[StudentSchoolAssociationExtension] ([ResidentSchoolId] ASC)
 GO
 
@@ -190,14 +250,6 @@ ALTER TABLE [ne].[StudentSchoolAssociationExtension] WITH CHECK ADD CONSTRAINT [
 REFERENCES [edfi].[StudentSchoolAssociation] ([EntryDate], [SchoolId], [StudentUSI])
 ON DELETE CASCADE
 ON UPDATE CASCADE
-GO
-
-ALTER TABLE [ne].[StudentSpecialEducationProgramAssociationExtension] WITH CHECK ADD CONSTRAINT [FK_StudentSpecialEducationProgramAssociationExtension_PartCTransitionDelayReasonDescriptor] FOREIGN KEY ([PartCTransitionDelayReasonDescriptorId])
-REFERENCES [ne].[PartCTransitionDelayReasonDescriptor] ([PartCTransitionDelayReasonDescriptorId])
-GO
-
-CREATE NONCLUSTERED INDEX [FK_StudentSpecialEducationProgramAssociationExtension_PartCTransitionDelayReasonDescriptor]
-ON [ne].[StudentSpecialEducationProgramAssociationExtension] ([PartCTransitionDelayReasonDescriptorId] ASC)
 GO
 
 ALTER TABLE [ne].[StudentSpecialEducationProgramAssociationExtension] WITH CHECK ADD CONSTRAINT [FK_StudentSpecialEducationProgramAssociationExtension_PlacementTypeDescriptor] FOREIGN KEY ([PlacementTypeDescriptorId])

@@ -1,10 +1,10 @@
 {
   "odsApiVersion": "7.3",
   "schemaDefinition": {
-    "logicalName": "Ne",
+    "logicalName": "NE",
     "physicalName": "ne",
     "description": "",
-    "version": "1.0.0"
+    "version": "1.1.0"
   },
   "aggregateDefinitions": [
     {
@@ -16,6 +16,78 @@
         {
           "schema": "ne",
           "name": "EarlyLearningSettingDescriptor"
+        }
+      ]
+    },
+    {
+      "aggregateRootEntityName": {
+        "schema": "ne",
+        "name": "EmergencyExclusion"
+      },
+      "aggregateEntityNames": [
+        {
+          "schema": "ne",
+          "name": "EmergencyExclusion"
+        }
+      ]
+    },
+    {
+      "aggregateRootEntityName": {
+        "schema": "ne",
+        "name": "EmergencyExclusionReasonDescriptor"
+      },
+      "aggregateEntityNames": [
+        {
+          "schema": "ne",
+          "name": "EmergencyExclusionReasonDescriptor"
+        }
+      ]
+    },
+    {
+      "aggregateRootEntityName": {
+        "schema": "ne",
+        "name": "EventComplianceDescriptor"
+      },
+      "aggregateEntityNames": [
+        {
+          "schema": "ne",
+          "name": "EventComplianceDescriptor"
+        }
+      ]
+    },
+    {
+      "aggregateRootEntityName": {
+        "schema": "ne",
+        "name": "EventReasonDescriptor"
+      },
+      "aggregateEntityNames": [
+        {
+          "schema": "ne",
+          "name": "EventReasonDescriptor"
+        }
+      ]
+    },
+    {
+      "aggregateRootEntityName": {
+        "schema": "ne",
+        "name": "IdeaEvent"
+      },
+      "aggregateEntityNames": [
+        {
+          "schema": "ne",
+          "name": "IdeaEvent"
+        }
+      ]
+    },
+    {
+      "aggregateRootEntityName": {
+        "schema": "ne",
+        "name": "IDEAEventDescriptor"
+      },
+      "aggregateEntityNames": [
+        {
+          "schema": "ne",
+          "name": "IDEAEventDescriptor"
         }
       ]
     },
@@ -402,6 +474,403 @@
       "tableNames": {
         "sqlServer": "EarlyLearningSettingDescriptor",
         "postgreSql": "EarlyLearningSettingDescriptor"
+      }
+    },
+    {
+      "schema": "ne",
+      "name": "EmergencyExclusion",
+      "locallyDefinedProperties": [
+        {
+          "propertyName": "CreateDate",
+          "propertyType": {
+            "dbType": "DateTime2",
+            "maxLength": 0,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "CreateDate",
+            "postgreSql": "CreateDate"
+          }
+        },
+        {
+          "propertyName": "ExclusionDate",
+          "propertyType": {
+            "dbType": "Date",
+            "minLength": 0,
+            "maxLength": 0,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The date the emergency exclusion began.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "ExclusionDate",
+            "postgreSql": "ExclusionDate"
+          }
+        },
+        {
+          "propertyName": "ExclusionDuration",
+          "propertyType": {
+            "dbType": "Decimal",
+            "maxLength": 0,
+            "precision": 5,
+            "scale": 2,
+            "isNullable": false,
+            "minValue": 0
+          },
+          "description": "The duration of the emergency exclusion in days.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "ExclusionDuration",
+            "postgreSql": "ExclusionDuration"
+          }
+        },
+        {
+          "propertyName": "Id",
+          "propertyType": {
+            "dbType": "Guid",
+            "maxLength": 0,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "Id",
+            "postgreSql": "Id"
+          }
+        },
+        {
+          "propertyName": "LastModifiedDate",
+          "propertyType": {
+            "dbType": "DateTime2",
+            "maxLength": 0,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "LastModifiedDate",
+            "postgreSql": "LastModifiedDate"
+          }
+        }
+      ],
+      "identifiers": [
+        {
+          "identifierName": "EmergencyExclusion_PK",
+          "identifyingPropertyNames": [
+            "EducationOrganizationId",
+            "ExclusionDate",
+            "StudentUSI"
+          ],
+          "isPrimary": true,
+          "isUpdatable": false,
+          "constraintNames": {
+            "sqlServer": "EmergencyExclusion_PK",
+            "postgreSql": "EmergencyExclusion_PK"
+          }
+        },
+        {
+          "identifierName": "UX_EmergencyExclusion_Id",
+          "identifyingPropertyNames": [
+            "Id"
+          ],
+          "isPrimary": false,
+          "isUpdatable": false,
+          "constraintNames": {
+            "sqlServer": "UX_EmergencyExclusion_Id",
+            "postgreSql": "UX_b9a73b_Id"
+          }
+        }
+      ],
+      "isAbstract": false,
+      "description": "Captures emergency exclusion details when a student is temporarily removed from school due to health, safety, or educational disruption concerns.",
+      "domains": [],
+      "tableNames": {
+        "sqlServer": "EmergencyExclusion",
+        "postgreSql": "EmergencyExclusion"
+      }
+    },
+    {
+      "schema": "ne",
+      "name": "EmergencyExclusionReasonDescriptor",
+      "locallyDefinedProperties": [],
+      "identifiers": [
+        {
+          "identifierName": "EmergencyExclusionReasonDescriptor_PK",
+          "identifyingPropertyNames": [
+            "EmergencyExclusionReasonDescriptorId"
+          ],
+          "isPrimary": true,
+          "isUpdatable": false,
+          "constraintNames": {
+            "sqlServer": "EmergencyExclusionReasonDescriptor_PK",
+            "postgreSql": "EmergencyExclusionReasonDescriptor_PK"
+          }
+        }
+      ],
+      "isAbstract": false,
+      "description": "Description that best reflects the reason for a student's exclusion.",
+      "domains": [],
+      "tableNames": {
+        "sqlServer": "EmergencyExclusionReasonDescriptor",
+        "postgreSql": "EmergencyExclusionReasonDescriptor"
+      }
+    },
+    {
+      "schema": "ne",
+      "name": "EventComplianceDescriptor",
+      "locallyDefinedProperties": [],
+      "identifiers": [
+        {
+          "identifierName": "EventComplianceDescriptor_PK",
+          "identifyingPropertyNames": [
+            "EventComplianceDescriptorId"
+          ],
+          "isPrimary": true,
+          "isUpdatable": false,
+          "constraintNames": {
+            "sqlServer": "EventComplianceDescriptor_PK",
+            "postgreSql": "EventComplianceDescriptor_PK"
+          }
+        }
+      ],
+      "isAbstract": false,
+      "description": "The policy or law for which an event is compliant.",
+      "domains": [],
+      "tableNames": {
+        "sqlServer": "EventComplianceDescriptor",
+        "postgreSql": "EventComplianceDescriptor"
+      }
+    },
+    {
+      "schema": "ne",
+      "name": "EventReasonDescriptor",
+      "locallyDefinedProperties": [],
+      "identifiers": [
+        {
+          "identifierName": "EventReasonDescriptor_PK",
+          "identifyingPropertyNames": [
+            "EventReasonDescriptorId"
+          ],
+          "isPrimary": true,
+          "isUpdatable": false,
+          "constraintNames": {
+            "sqlServer": "EventReasonDescriptor_PK",
+            "postgreSql": "EventReasonDescriptor_PK"
+          }
+        }
+      ],
+      "isAbstract": false,
+      "description": "Reason the event occured.",
+      "domains": [],
+      "tableNames": {
+        "sqlServer": "EventReasonDescriptor",
+        "postgreSql": "EventReasonDescriptor"
+      }
+    },
+    {
+      "schema": "ne",
+      "name": "IdeaEvent",
+      "locallyDefinedProperties": [
+        {
+          "propertyName": "BeginDate",
+          "propertyType": {
+            "dbType": "Date",
+            "minLength": 0,
+            "maxLength": 0,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The date when the IDEA related event started.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "BeginDate",
+            "postgreSql": "BeginDate"
+          }
+        },
+        {
+          "propertyName": "CreateDate",
+          "propertyType": {
+            "dbType": "DateTime2",
+            "maxLength": 0,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "CreateDate",
+            "postgreSql": "CreateDate"
+          }
+        },
+        {
+          "propertyName": "EndDate",
+          "propertyType": {
+            "dbType": "Date",
+            "minLength": 0,
+            "maxLength": 0,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The date when the IDEA event concluded.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "EndDate",
+            "postgreSql": "EndDate"
+          }
+        },
+        {
+          "propertyName": "EventNarrative",
+          "propertyType": {
+            "dbType": "String",
+            "minLength": 0,
+            "maxLength": 2048,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": true
+          },
+          "description": "Detailed and summary notes recorded during the event.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "EventNarrative",
+            "postgreSql": "EventNarrative"
+          }
+        },
+        {
+          "propertyName": "Id",
+          "propertyType": {
+            "dbType": "Guid",
+            "maxLength": 0,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "Id",
+            "postgreSql": "Id"
+          }
+        },
+        {
+          "propertyName": "IDEAEventID",
+          "propertyType": {
+            "dbType": "String",
+            "minLength": 0,
+            "maxLength": 128,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique identifier for the event record as assigned by the provider of IEP services.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "IDEAEventID",
+            "postgreSql": "IDEAEventID"
+          }
+        },
+        {
+          "propertyName": "LastModifiedDate",
+          "propertyType": {
+            "dbType": "DateTime2",
+            "maxLength": 0,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "LastModifiedDate",
+            "postgreSql": "LastModifiedDate"
+          }
+        }
+      ],
+      "identifiers": [
+        {
+          "identifierName": "IdeaEvent_PK",
+          "identifyingPropertyNames": [
+            "EducationOrganizationId",
+            "IDEAEventDescriptorId",
+            "IDEAEventID",
+            "StudentUSI"
+          ],
+          "isPrimary": true,
+          "isUpdatable": false,
+          "constraintNames": {
+            "sqlServer": "IdeaEvent_PK",
+            "postgreSql": "IdeaEvent_PK"
+          }
+        },
+        {
+          "identifierName": "UX_IdeaEvent_Id",
+          "identifyingPropertyNames": [
+            "Id"
+          ],
+          "isPrimary": false,
+          "isUpdatable": false,
+          "constraintNames": {
+            "sqlServer": "UX_IdeaEvent_Id",
+            "postgreSql": "UX_2fdbd1_Id"
+          }
+        }
+      ],
+      "isAbstract": false,
+      "description": "An IDEA related student event describing status, dates and narrative.",
+      "domains": [],
+      "tableNames": {
+        "sqlServer": "IdeaEvent",
+        "postgreSql": "IdeaEvent"
+      }
+    },
+    {
+      "schema": "ne",
+      "name": "IDEAEventDescriptor",
+      "locallyDefinedProperties": [],
+      "identifiers": [
+        {
+          "identifierName": "IDEAEventDescriptor_PK",
+          "identifyingPropertyNames": [
+            "IDEAEventDescriptorId"
+          ],
+          "isPrimary": true,
+          "isUpdatable": false,
+          "constraintNames": {
+            "sqlServer": "IDEAEventDescriptor_PK",
+            "postgreSql": "IDEAEventDescriptor_PK"
+          }
+        }
+      ],
+      "isAbstract": false,
+      "description": "IDEA event type. Examples: Referral for Evaluation, IEP Approved, Parental COnsent Given, Evaluation Complete.",
+      "domains": [],
+      "tableNames": {
+        "sqlServer": "IDEAEventDescriptor",
+        "postgreSql": "IDEAEventDescriptor"
       }
     },
     {
@@ -1036,24 +1505,6 @@
           }
         },
         {
-          "propertyName": "DismissedViaIEPReview",
-          "propertyType": {
-            "dbType": "Boolean",
-            "minLength": 0,
-            "maxLength": 0,
-            "precision": 0,
-            "scale": 0,
-            "isNullable": true
-          },
-          "description": "A special education student that is no longer considered an English Learner due to a decision by the IEP review team to dismiss the ELPA testing requirement.",
-          "isIdentifying": false,
-          "isServerAssigned": false,
-          "columnNames": {
-            "sqlServer": "DismissedViaIEPReview",
-            "postgreSql": "DismissedViaIEPReview"
-          }
-        },
-        {
           "propertyName": "RedesignatedEnglishFluent",
           "propertyType": {
             "dbType": "Boolean",
@@ -1069,6 +1520,24 @@
           "columnNames": {
             "sqlServer": "RedesignatedEnglishFluent",
             "postgreSql": "RedesignatedEnglishFluent"
+          }
+        },
+        {
+          "propertyName": "TestedProficientOnScreener",
+          "propertyType": {
+            "dbType": "Boolean",
+            "minLength": 0,
+            "maxLength": 0,
+            "precision": 0,
+            "scale": 0,
+            "isNullable": true
+          },
+          "description": "Indicates whether the student was tested on a language proficiency screener and demonstrated fluency on that initial screening assessment.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "TestedProficientOnScreener",
+            "postgreSql": "TestedProficientOnScreener"
           }
         }
       ],
@@ -1783,6 +2252,726 @@
       "constraintNames": {
         "sqlServer": "FK_EarlyLearningSettingDescriptor_Descriptor",
         "postgreSql": "FK_1abdc8_Descriptor"
+      },
+      "potentiallyLogical": false
+    },
+    {
+      "fullName": {
+        "schema": "ne",
+        "name": "FK_EmergencyExclusion_EducationOrganization"
+      },
+      "cardinality": "OneToZeroOrMore",
+      "primaryEntityFullName": {
+        "schema": "edfi",
+        "name": "EducationOrganization"
+      },
+      "primaryEntityProperties": [
+        {
+          "propertyName": "EducationOrganizationId",
+          "propertyType": {
+            "dbType": "Int64",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The identifier assigned to an education organization.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "EducationOrganizationId",
+            "postgreSql": "EducationOrganizationId"
+          }
+        }
+      ],
+      "secondaryEntityFullName": {
+        "schema": "ne",
+        "name": "EmergencyExclusion"
+      },
+      "secondaryEntityProperties": [
+        {
+          "propertyName": "EducationOrganizationId",
+          "propertyType": {
+            "dbType": "Int64",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The identifier assigned to an education organization.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "EducationOrganizationId",
+            "postgreSql": "EducationOrganizationId"
+          }
+        }
+      ],
+      "isIdentifying": true,
+      "isRequired": true,
+      "constraintNames": {
+        "sqlServer": "FK_EmergencyExclusion_EducationOrganization",
+        "postgreSql": "FK_b9a73b_EducationOrganization"
+      },
+      "potentiallyLogical": false
+    },
+    {
+      "fullName": {
+        "schema": "ne",
+        "name": "FK_EmergencyExclusion_EmergencyExclusionReasonDescriptor"
+      },
+      "cardinality": "OneToZeroOrMore",
+      "primaryEntityFullName": {
+        "schema": "ne",
+        "name": "EmergencyExclusionReasonDescriptor"
+      },
+      "primaryEntityProperties": [
+        {
+          "propertyName": "EmergencyExclusionReasonDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "EmergencyExclusionReasonDescriptorId",
+            "postgreSql": "EmergencyExclusionReasonDescriptorId"
+          }
+        }
+      ],
+      "secondaryEntityFullName": {
+        "schema": "ne",
+        "name": "EmergencyExclusion"
+      },
+      "secondaryEntityProperties": [
+        {
+          "propertyName": "EmergencyExclusionReasonDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The reason for the emergency exclusion (Health, Safety of Themselves or Others, Disruption to Education).",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "EmergencyExclusionReasonDescriptorId",
+            "postgreSql": "EmergencyExclusionReasonDescriptorId"
+          }
+        }
+      ],
+      "isIdentifying": false,
+      "isRequired": true,
+      "constraintNames": {
+        "sqlServer": "FK_EmergencyExclusion_EmergencyExclusionReasonDescriptor",
+        "postgreSql": "FK_b9a73b_EmergencyExclusionReasonDescriptor"
+      },
+      "potentiallyLogical": false
+    },
+    {
+      "fullName": {
+        "schema": "ne",
+        "name": "FK_EmergencyExclusion_Student"
+      },
+      "cardinality": "OneToZeroOrMore",
+      "primaryEntityFullName": {
+        "schema": "edfi",
+        "name": "Student"
+      },
+      "primaryEntityProperties": [
+        {
+          "propertyName": "StudentUSI",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique alphanumeric code assigned to a student.",
+          "isIdentifying": true,
+          "isServerAssigned": true,
+          "columnNames": {
+            "sqlServer": "StudentUSI",
+            "postgreSql": "StudentUSI"
+          }
+        }
+      ],
+      "secondaryEntityFullName": {
+        "schema": "ne",
+        "name": "EmergencyExclusion"
+      },
+      "secondaryEntityProperties": [
+        {
+          "propertyName": "StudentUSI",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique alphanumeric code assigned to a student.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "StudentUSI",
+            "postgreSql": "StudentUSI"
+          }
+        }
+      ],
+      "isIdentifying": true,
+      "isRequired": true,
+      "constraintNames": {
+        "sqlServer": "FK_EmergencyExclusion_Student",
+        "postgreSql": "FK_b9a73b_Student"
+      },
+      "potentiallyLogical": false
+    },
+    {
+      "fullName": {
+        "schema": "ne",
+        "name": "FK_EmergencyExclusionReasonDescriptor_Descriptor"
+      },
+      "cardinality": "OneToOneInheritance",
+      "primaryEntityFullName": {
+        "schema": "edfi",
+        "name": "Descriptor"
+      },
+      "primaryEntityProperties": [
+        {
+          "propertyName": "DescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.",
+          "isIdentifying": true,
+          "isServerAssigned": true,
+          "columnNames": {
+            "sqlServer": "DescriptorId",
+            "postgreSql": "DescriptorId"
+          }
+        }
+      ],
+      "secondaryEntityFullName": {
+        "schema": "ne",
+        "name": "EmergencyExclusionReasonDescriptor"
+      },
+      "secondaryEntityProperties": [
+        {
+          "propertyName": "EmergencyExclusionReasonDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.",
+          "isIdentifying": true,
+          "isServerAssigned": true,
+          "columnNames": {
+            "sqlServer": "EmergencyExclusionReasonDescriptorId",
+            "postgreSql": "EmergencyExclusionReasonDescriptorId"
+          }
+        }
+      ],
+      "isIdentifying": true,
+      "isRequired": true,
+      "constraintNames": {
+        "sqlServer": "FK_EmergencyExclusionReasonDescriptor_Descriptor",
+        "postgreSql": "FK_f885ae_Descriptor"
+      },
+      "potentiallyLogical": false
+    },
+    {
+      "fullName": {
+        "schema": "ne",
+        "name": "FK_EventComplianceDescriptor_Descriptor"
+      },
+      "cardinality": "OneToOneInheritance",
+      "primaryEntityFullName": {
+        "schema": "edfi",
+        "name": "Descriptor"
+      },
+      "primaryEntityProperties": [
+        {
+          "propertyName": "DescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.",
+          "isIdentifying": true,
+          "isServerAssigned": true,
+          "columnNames": {
+            "sqlServer": "DescriptorId",
+            "postgreSql": "DescriptorId"
+          }
+        }
+      ],
+      "secondaryEntityFullName": {
+        "schema": "ne",
+        "name": "EventComplianceDescriptor"
+      },
+      "secondaryEntityProperties": [
+        {
+          "propertyName": "EventComplianceDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.",
+          "isIdentifying": true,
+          "isServerAssigned": true,
+          "columnNames": {
+            "sqlServer": "EventComplianceDescriptorId",
+            "postgreSql": "EventComplianceDescriptorId"
+          }
+        }
+      ],
+      "isIdentifying": true,
+      "isRequired": true,
+      "constraintNames": {
+        "sqlServer": "FK_EventComplianceDescriptor_Descriptor",
+        "postgreSql": "FK_dd7d39_Descriptor"
+      },
+      "potentiallyLogical": false
+    },
+    {
+      "fullName": {
+        "schema": "ne",
+        "name": "FK_EventReasonDescriptor_Descriptor"
+      },
+      "cardinality": "OneToOneInheritance",
+      "primaryEntityFullName": {
+        "schema": "edfi",
+        "name": "Descriptor"
+      },
+      "primaryEntityProperties": [
+        {
+          "propertyName": "DescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.",
+          "isIdentifying": true,
+          "isServerAssigned": true,
+          "columnNames": {
+            "sqlServer": "DescriptorId",
+            "postgreSql": "DescriptorId"
+          }
+        }
+      ],
+      "secondaryEntityFullName": {
+        "schema": "ne",
+        "name": "EventReasonDescriptor"
+      },
+      "secondaryEntityProperties": [
+        {
+          "propertyName": "EventReasonDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.",
+          "isIdentifying": true,
+          "isServerAssigned": true,
+          "columnNames": {
+            "sqlServer": "EventReasonDescriptorId",
+            "postgreSql": "EventReasonDescriptorId"
+          }
+        }
+      ],
+      "isIdentifying": true,
+      "isRequired": true,
+      "constraintNames": {
+        "sqlServer": "FK_EventReasonDescriptor_Descriptor",
+        "postgreSql": "FK_ee5ffc_Descriptor"
+      },
+      "potentiallyLogical": false
+    },
+    {
+      "fullName": {
+        "schema": "ne",
+        "name": "FK_IdeaEvent_EducationOrganization"
+      },
+      "cardinality": "OneToZeroOrMore",
+      "primaryEntityFullName": {
+        "schema": "edfi",
+        "name": "EducationOrganization"
+      },
+      "primaryEntityProperties": [
+        {
+          "propertyName": "EducationOrganizationId",
+          "propertyType": {
+            "dbType": "Int64",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The identifier assigned to an education organization.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "EducationOrganizationId",
+            "postgreSql": "EducationOrganizationId"
+          }
+        }
+      ],
+      "secondaryEntityFullName": {
+        "schema": "ne",
+        "name": "IdeaEvent"
+      },
+      "secondaryEntityProperties": [
+        {
+          "propertyName": "EducationOrganizationId",
+          "propertyType": {
+            "dbType": "Int64",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The identifier assigned to an education organization.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "EducationOrganizationId",
+            "postgreSql": "EducationOrganizationId"
+          }
+        }
+      ],
+      "isIdentifying": true,
+      "isRequired": true,
+      "constraintNames": {
+        "sqlServer": "FK_IdeaEvent_EducationOrganization",
+        "postgreSql": "FK_2fdbd1_EducationOrganization"
+      },
+      "potentiallyLogical": false
+    },
+    {
+      "fullName": {
+        "schema": "ne",
+        "name": "FK_IdeaEvent_EventComplianceDescriptor"
+      },
+      "cardinality": "OneToZeroOrMore",
+      "primaryEntityFullName": {
+        "schema": "ne",
+        "name": "EventComplianceDescriptor"
+      },
+      "primaryEntityProperties": [
+        {
+          "propertyName": "EventComplianceDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "EventComplianceDescriptorId",
+            "postgreSql": "EventComplianceDescriptorId"
+          }
+        }
+      ],
+      "secondaryEntityFullName": {
+        "schema": "ne",
+        "name": "IdeaEvent"
+      },
+      "secondaryEntityProperties": [
+        {
+          "propertyName": "EventComplianceDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": true
+          },
+          "description": "The type of compliance represented by this event.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "EventComplianceDescriptorId",
+            "postgreSql": "EventComplianceDescriptorId"
+          }
+        }
+      ],
+      "isIdentifying": false,
+      "isRequired": false,
+      "constraintNames": {
+        "sqlServer": "FK_IdeaEvent_EventComplianceDescriptor",
+        "postgreSql": "FK_2fdbd1_EventComplianceDescriptor"
+      },
+      "potentiallyLogical": false
+    },
+    {
+      "fullName": {
+        "schema": "ne",
+        "name": "FK_IdeaEvent_EventReasonDescriptor"
+      },
+      "cardinality": "OneToZeroOrMore",
+      "primaryEntityFullName": {
+        "schema": "ne",
+        "name": "EventReasonDescriptor"
+      },
+      "primaryEntityProperties": [
+        {
+          "propertyName": "EventReasonDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "EventReasonDescriptorId",
+            "postgreSql": "EventReasonDescriptorId"
+          }
+        }
+      ],
+      "secondaryEntityFullName": {
+        "schema": "ne",
+        "name": "IdeaEvent"
+      },
+      "secondaryEntityProperties": [
+        {
+          "propertyName": "EventReasonDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": true
+          },
+          "description": "The reason why the IDEA event occured.",
+          "isIdentifying": false,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "EventReasonDescriptorId",
+            "postgreSql": "EventReasonDescriptorId"
+          }
+        }
+      ],
+      "isIdentifying": false,
+      "isRequired": false,
+      "constraintNames": {
+        "sqlServer": "FK_IdeaEvent_EventReasonDescriptor",
+        "postgreSql": "FK_2fdbd1_EventReasonDescriptor"
+      },
+      "potentiallyLogical": false
+    },
+    {
+      "fullName": {
+        "schema": "ne",
+        "name": "FK_IdeaEvent_IDEAEventDescriptor"
+      },
+      "cardinality": "OneToZeroOrMore",
+      "primaryEntityFullName": {
+        "schema": "ne",
+        "name": "IDEAEventDescriptor"
+      },
+      "primaryEntityProperties": [
+        {
+          "propertyName": "IDEAEventDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "IDEAEventDescriptorId",
+            "postgreSql": "IDEAEventDescriptorId"
+          }
+        }
+      ],
+      "secondaryEntityFullName": {
+        "schema": "ne",
+        "name": "IdeaEvent"
+      },
+      "secondaryEntityProperties": [
+        {
+          "propertyName": "IDEAEventDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "The IDEA event recorded for the student.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "IDEAEventDescriptorId",
+            "postgreSql": "IDEAEventDescriptorId"
+          }
+        }
+      ],
+      "isIdentifying": true,
+      "isRequired": true,
+      "constraintNames": {
+        "sqlServer": "FK_IdeaEvent_IDEAEventDescriptor",
+        "postgreSql": "FK_2fdbd1_IDEAEventDescriptor"
+      },
+      "potentiallyLogical": false
+    },
+    {
+      "fullName": {
+        "schema": "ne",
+        "name": "FK_IdeaEvent_Student"
+      },
+      "cardinality": "OneToZeroOrMore",
+      "primaryEntityFullName": {
+        "schema": "edfi",
+        "name": "Student"
+      },
+      "primaryEntityProperties": [
+        {
+          "propertyName": "StudentUSI",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique alphanumeric code assigned to a student.",
+          "isIdentifying": true,
+          "isServerAssigned": true,
+          "columnNames": {
+            "sqlServer": "StudentUSI",
+            "postgreSql": "StudentUSI"
+          }
+        }
+      ],
+      "secondaryEntityFullName": {
+        "schema": "ne",
+        "name": "IdeaEvent"
+      },
+      "secondaryEntityProperties": [
+        {
+          "propertyName": "StudentUSI",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique alphanumeric code assigned to a student.",
+          "isIdentifying": true,
+          "isServerAssigned": false,
+          "columnNames": {
+            "sqlServer": "StudentUSI",
+            "postgreSql": "StudentUSI"
+          }
+        }
+      ],
+      "isIdentifying": true,
+      "isRequired": true,
+      "constraintNames": {
+        "sqlServer": "FK_IdeaEvent_Student",
+        "postgreSql": "FK_2fdbd1_Student"
+      },
+      "potentiallyLogical": false
+    },
+    {
+      "fullName": {
+        "schema": "ne",
+        "name": "FK_IDEAEventDescriptor_Descriptor"
+      },
+      "cardinality": "OneToOneInheritance",
+      "primaryEntityFullName": {
+        "schema": "edfi",
+        "name": "Descriptor"
+      },
+      "primaryEntityProperties": [
+        {
+          "propertyName": "DescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.",
+          "isIdentifying": true,
+          "isServerAssigned": true,
+          "columnNames": {
+            "sqlServer": "DescriptorId",
+            "postgreSql": "DescriptorId"
+          }
+        }
+      ],
+      "secondaryEntityFullName": {
+        "schema": "ne",
+        "name": "IDEAEventDescriptor"
+      },
+      "secondaryEntityProperties": [
+        {
+          "propertyName": "IDEAEventDescriptorId",
+          "propertyType": {
+            "dbType": "Int32",
+            "maxLength": 0,
+            "precision": 10,
+            "scale": 0,
+            "isNullable": false
+          },
+          "description": "A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.",
+          "isIdentifying": true,
+          "isServerAssigned": true,
+          "columnNames": {
+            "sqlServer": "IDEAEventDescriptorId",
+            "postgreSql": "IDEAEventDescriptorId"
+          }
+        }
+      ],
+      "isIdentifying": true,
+      "isRequired": true,
+      "constraintNames": {
+        "sqlServer": "FK_IDEAEventDescriptor_Descriptor",
+        "postgreSql": "FK_cbac23_Descriptor"
       },
       "potentiallyLogical": false
     },
@@ -3966,66 +5155,6 @@
       },
       "secondaryEntityProperties": [
         {
-          "propertyName": "ExpectedHighSchoolOfGraduationSchoolId",
-          "propertyType": {
-            "dbType": "Int64",
-            "maxLength": 0,
-            "precision": 10,
-            "scale": 0,
-            "isNullable": true
-          },
-          "description": "The identifier assigned to a school. It must be distinct from any other identifier assigned to educational organizations, such as a LocalEducationAgencyId, to prevent duplication.",
-          "isIdentifying": false,
-          "isServerAssigned": false,
-          "columnNames": {
-            "sqlServer": "ExpectedHighSchoolOfGraduationSchoolId",
-            "postgreSql": "ExpectedHighSchoolOfGraduationSchoolId"
-          }
-        }
-      ],
-      "isIdentifying": false,
-      "isRequired": false,
-      "constraintNames": {
-        "sqlServer": "FK_StudentSchoolAssociationExtension_School",
-        "postgreSql": "FK_880cb1_School"
-      },
-      "potentiallyLogical": false
-    },
-    {
-      "fullName": {
-        "schema": "ne",
-        "name": "FK_StudentSchoolAssociationExtension_School1"
-      },
-      "cardinality": "OneToZeroOrMore",
-      "primaryEntityFullName": {
-        "schema": "edfi",
-        "name": "School"
-      },
-      "primaryEntityProperties": [
-        {
-          "propertyName": "SchoolId",
-          "propertyType": {
-            "dbType": "Int64",
-            "maxLength": 0,
-            "precision": 10,
-            "scale": 0,
-            "isNullable": false
-          },
-          "description": "The identifier assigned to a school. It must be distinct from any other identifier assigned to educational organizations, such as a LocalEducationAgencyId, to prevent duplication.",
-          "isIdentifying": false,
-          "isServerAssigned": false,
-          "columnNames": {
-            "sqlServer": "SchoolId",
-            "postgreSql": "SchoolId"
-          }
-        }
-      ],
-      "secondaryEntityFullName": {
-        "schema": "ne",
-        "name": "StudentSchoolAssociationExtension"
-      },
-      "secondaryEntityProperties": [
-        {
           "propertyName": "ReportingSchoolId",
           "propertyType": {
             "dbType": "Int64",
@@ -4046,15 +5175,15 @@
       "isIdentifying": false,
       "isRequired": true,
       "constraintNames": {
-        "sqlServer": "FK_StudentSchoolAssociationExtension_School1",
-        "postgreSql": "FK_880cb1_School1"
+        "sqlServer": "FK_StudentSchoolAssociationExtension_School",
+        "postgreSql": "FK_880cb1_School"
       },
       "potentiallyLogical": false
     },
     {
       "fullName": {
         "schema": "ne",
-        "name": "FK_StudentSchoolAssociationExtension_School2"
+        "name": "FK_StudentSchoolAssociationExtension_School1"
       },
       "cardinality": "OneToZeroOrMore",
       "primaryEntityFullName": {
@@ -4106,8 +5235,8 @@
       "isIdentifying": false,
       "isRequired": false,
       "constraintNames": {
-        "sqlServer": "FK_StudentSchoolAssociationExtension_School2",
-        "postgreSql": "FK_880cb1_School2"
+        "sqlServer": "FK_StudentSchoolAssociationExtension_School1",
+        "postgreSql": "FK_880cb1_School1"
       },
       "potentiallyLogical": false
     },
@@ -4239,66 +5368,6 @@
         "sqlServer": "FK_StudentSchoolAssociationExtension_StudentSchoolAssociation",
         "postgreSql": "FK_880cb1_StudentSchoolAssociation"
       }
-    },
-    {
-      "fullName": {
-        "schema": "ne",
-        "name": "FK_StudentSpecialEducationProgramAssociationExtension_PartCTransitionDelayReasonDescriptor"
-      },
-      "cardinality": "OneToZeroOrMore",
-      "primaryEntityFullName": {
-        "schema": "ne",
-        "name": "PartCTransitionDelayReasonDescriptor"
-      },
-      "primaryEntityProperties": [
-        {
-          "propertyName": "PartCTransitionDelayReasonDescriptorId",
-          "propertyType": {
-            "dbType": "Int32",
-            "maxLength": 0,
-            "precision": 10,
-            "scale": 0,
-            "isNullable": false
-          },
-          "description": "A unique identifier used as Primary Key, not derived from business logic, when acting as Foreign Key, references the parent table.",
-          "isIdentifying": false,
-          "isServerAssigned": false,
-          "columnNames": {
-            "sqlServer": "PartCTransitionDelayReasonDescriptorId",
-            "postgreSql": "PartCTransitionDelayReasonDescriptorId"
-          }
-        }
-      ],
-      "secondaryEntityFullName": {
-        "schema": "ne",
-        "name": "StudentSpecialEducationProgramAssociationExtension"
-      },
-      "secondaryEntityProperties": [
-        {
-          "propertyName": "PartCTransitionDelayReasonDescriptorId",
-          "propertyType": {
-            "dbType": "Int32",
-            "maxLength": 0,
-            "precision": 10,
-            "scale": 0,
-            "isNullable": true
-          },
-          "description": "The reason the Part C IDEA child was delayed in transitioning to Part B.",
-          "isIdentifying": false,
-          "isServerAssigned": false,
-          "columnNames": {
-            "sqlServer": "PartCTransitionDelayReasonDescriptorId",
-            "postgreSql": "PartCTransitionDelayReasonDescriptorId"
-          }
-        }
-      ],
-      "isIdentifying": false,
-      "isRequired": false,
-      "constraintNames": {
-        "sqlServer": "FK_StudentSpecialEducationProgramAssociationExtension_PartCTransitionDelayReasonDescriptor",
-        "postgreSql": "FK_3da84f_PartCTransitionDelayReasonDescriptor"
-      },
-      "potentiallyLogical": false
     },
     {
       "fullName": {

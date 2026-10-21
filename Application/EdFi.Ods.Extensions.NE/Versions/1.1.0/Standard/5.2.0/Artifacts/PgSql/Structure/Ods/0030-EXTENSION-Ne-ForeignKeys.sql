@@ -25,6 +25,70 @@ REFERENCES edfi.Descriptor (DescriptorId)
 ON DELETE CASCADE
 ;
 
+ALTER TABLE ne.EmergencyExclusion ADD CONSTRAINT FK_b9a73b_EducationOrganization FOREIGN KEY (EducationOrganizationId)
+REFERENCES edfi.EducationOrganization (EducationOrganizationId)
+;
+
+ALTER TABLE ne.EmergencyExclusion ADD CONSTRAINT FK_b9a73b_EmergencyExclusionReasonDescriptor FOREIGN KEY (EmergencyExclusionReasonDescriptorId)
+REFERENCES ne.EmergencyExclusionReasonDescriptor (EmergencyExclusionReasonDescriptorId)
+;
+
+CREATE INDEX FK_b9a73b_EmergencyExclusionReasonDescriptor
+ON ne.EmergencyExclusion (EmergencyExclusionReasonDescriptorId ASC);
+
+ALTER TABLE ne.EmergencyExclusion ADD CONSTRAINT FK_b9a73b_Student FOREIGN KEY (StudentUSI)
+REFERENCES edfi.Student (StudentUSI)
+;
+
+ALTER TABLE ne.EmergencyExclusionReasonDescriptor ADD CONSTRAINT FK_f885ae_Descriptor FOREIGN KEY (EmergencyExclusionReasonDescriptorId)
+REFERENCES edfi.Descriptor (DescriptorId)
+ON DELETE CASCADE
+;
+
+ALTER TABLE ne.EventComplianceDescriptor ADD CONSTRAINT FK_dd7d39_Descriptor FOREIGN KEY (EventComplianceDescriptorId)
+REFERENCES edfi.Descriptor (DescriptorId)
+ON DELETE CASCADE
+;
+
+ALTER TABLE ne.EventReasonDescriptor ADD CONSTRAINT FK_ee5ffc_Descriptor FOREIGN KEY (EventReasonDescriptorId)
+REFERENCES edfi.Descriptor (DescriptorId)
+ON DELETE CASCADE
+;
+
+ALTER TABLE ne.IdeaEvent ADD CONSTRAINT FK_2fdbd1_EducationOrganization FOREIGN KEY (EducationOrganizationId)
+REFERENCES edfi.EducationOrganization (EducationOrganizationId)
+;
+
+ALTER TABLE ne.IdeaEvent ADD CONSTRAINT FK_2fdbd1_EventComplianceDescriptor FOREIGN KEY (EventComplianceDescriptorId)
+REFERENCES ne.EventComplianceDescriptor (EventComplianceDescriptorId)
+;
+
+CREATE INDEX FK_2fdbd1_EventComplianceDescriptor
+ON ne.IdeaEvent (EventComplianceDescriptorId ASC);
+
+ALTER TABLE ne.IdeaEvent ADD CONSTRAINT FK_2fdbd1_EventReasonDescriptor FOREIGN KEY (EventReasonDescriptorId)
+REFERENCES ne.EventReasonDescriptor (EventReasonDescriptorId)
+;
+
+CREATE INDEX FK_2fdbd1_EventReasonDescriptor
+ON ne.IdeaEvent (EventReasonDescriptorId ASC);
+
+ALTER TABLE ne.IdeaEvent ADD CONSTRAINT FK_2fdbd1_IDEAEventDescriptor FOREIGN KEY (IDEAEventDescriptorId)
+REFERENCES ne.IDEAEventDescriptor (IDEAEventDescriptorId)
+;
+
+CREATE INDEX FK_2fdbd1_IDEAEventDescriptor
+ON ne.IdeaEvent (IDEAEventDescriptorId ASC);
+
+ALTER TABLE ne.IdeaEvent ADD CONSTRAINT FK_2fdbd1_Student FOREIGN KEY (StudentUSI)
+REFERENCES edfi.Student (StudentUSI)
+;
+
+ALTER TABLE ne.IDEAEventDescriptor ADD CONSTRAINT FK_cbac23_Descriptor FOREIGN KEY (IDEAEventDescriptorId)
+REFERENCES edfi.Descriptor (DescriptorId)
+ON DELETE CASCADE
+;
+
 ALTER TABLE ne.ImmigrantIndicatorDescriptor ADD CONSTRAINT FK_17b1e7_Descriptor FOREIGN KEY (ImmigrantIndicatorDescriptorId)
 REFERENCES edfi.Descriptor (DescriptorId)
 ON DELETE CASCADE
@@ -154,25 +218,18 @@ REFERENCES edfi.LocalEducationAgency (LocalEducationAgencyId)
 CREATE INDEX FK_880cb1_LocalEducationAgency
 ON ne.StudentSchoolAssociationExtension (ResidentLocalEducationAgencyId ASC);
 
-ALTER TABLE ne.StudentSchoolAssociationExtension ADD CONSTRAINT FK_880cb1_School FOREIGN KEY (ExpectedHighSchoolOfGraduationSchoolId)
+ALTER TABLE ne.StudentSchoolAssociationExtension ADD CONSTRAINT FK_880cb1_School FOREIGN KEY (ReportingSchoolId)
 REFERENCES edfi.School (SchoolId)
 ;
 
 CREATE INDEX FK_880cb1_School
-ON ne.StudentSchoolAssociationExtension (ExpectedHighSchoolOfGraduationSchoolId ASC);
+ON ne.StudentSchoolAssociationExtension (ReportingSchoolId ASC);
 
-ALTER TABLE ne.StudentSchoolAssociationExtension ADD CONSTRAINT FK_880cb1_School1 FOREIGN KEY (ReportingSchoolId)
+ALTER TABLE ne.StudentSchoolAssociationExtension ADD CONSTRAINT FK_880cb1_School1 FOREIGN KEY (ResidentSchoolId)
 REFERENCES edfi.School (SchoolId)
 ;
 
 CREATE INDEX FK_880cb1_School1
-ON ne.StudentSchoolAssociationExtension (ReportingSchoolId ASC);
-
-ALTER TABLE ne.StudentSchoolAssociationExtension ADD CONSTRAINT FK_880cb1_School2 FOREIGN KEY (ResidentSchoolId)
-REFERENCES edfi.School (SchoolId)
-;
-
-CREATE INDEX FK_880cb1_School2
 ON ne.StudentSchoolAssociationExtension (ResidentSchoolId ASC);
 
 ALTER TABLE ne.StudentSchoolAssociationExtension ADD CONSTRAINT FK_880cb1_StudentSchoolAssociation FOREIGN KEY (EntryDate, SchoolId, StudentUSI)
@@ -180,13 +237,6 @@ REFERENCES edfi.StudentSchoolAssociation (EntryDate, SchoolId, StudentUSI)
 ON DELETE CASCADE
 ON UPDATE CASCADE
 ;
-
-ALTER TABLE ne.StudentSpecialEducationProgramAssociationExtension ADD CONSTRAINT FK_3da84f_PartCTransitionDelayReasonDescriptor FOREIGN KEY (PartCTransitionDelayReasonDescriptorId)
-REFERENCES ne.PartCTransitionDelayReasonDescriptor (PartCTransitionDelayReasonDescriptorId)
-;
-
-CREATE INDEX FK_3da84f_PartCTransitionDelayReasonDescriptor
-ON ne.StudentSpecialEducationProgramAssociationExtension (PartCTransitionDelayReasonDescriptorId ASC);
 
 ALTER TABLE ne.StudentSpecialEducationProgramAssociationExtension ADD CONSTRAINT FK_3da84f_PlacementTypeDescriptor FOREIGN KEY (PlacementTypeDescriptorId)
 REFERENCES ne.PlacementTypeDescriptor (PlacementTypeDescriptorId)
